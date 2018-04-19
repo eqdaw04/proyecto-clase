@@ -1,0 +1,119 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2973C56C-1096-58E8-28A7-7DB310250281" name="Resultado">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 11:14:55 UTC</createdTime>
+<generatorID>DA17FD6F-F01A-660C-3B4B-F191E2FAC753</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_resultado" id="09C4B23C-8B6E-4E78-FBBA-5268F10A882E">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 11:14:55 UTC</createdTime>
+<generatorID>3EBA54B6-7FA9-738D-329A-75D2CA89EB46</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="resultado" id="21599990-6815-4AD2-FF76-83260F93FE76">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 11:14:55 UTC</createdTime>
+<generatorID>CC107937-9B67-41D3-5CB2-FD9B6D9161BB</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Equipo_id_equipo" id="E87F4E35-79EF-2A49-CF80-982A6F55C0B0">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 11:14:55 UTC</createdTime>
+<generatorID>54564F74-862B-D011-73B9-527A677CC06A</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C46EB5BE-EF02-8685-3FCF-DDBA049F3E2F" referredColumn="84989135-21BD-590E-E67A-CD5E2AA40F20"/>
+</associations>
+</Column>
+<Column name="Partido_id_Partido" id="DECCBB3C-01E4-5688-BE7C-FA53B060D4E3">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 11:14:55 UTC</createdTime>
+<generatorID>A27C6A16-527F-5D61-1325-A306004870A7</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="43978302-729E-A11E-33DC-55467D0E433D" referredColumn="01420643-8B96-A1F5-338A-B771315D3A39"/>
+</associations>
+</Column>
+<Column name="Partido_Jornada_Id_Jornada" id="ABA4C661-C830-2B75-FDE6-D48E0D805C52">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 11:14:55 UTC</createdTime>
+<generatorID>D79809BF-0C97-5BAB-F804-D74846D67538</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="43978302-729E-A11E-33DC-55467D0E433D" referredColumn="68264147-A221-8590-AFBC-1E82EA0C312B"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B77066AF-EA10-654D-E9FA-91DE435AA308" name="Resultado_PK">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 11:14:55 UTC</createdTime>
+<generatorID>85EA2E70-A99F-C088-52D6-DF48D9B2CD0E</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="09C4B23C-8B6E-4E78-FBBA-5268F10A882E"/>
+<colUsage columnID="E87F4E35-79EF-2A49-CF80-982A6F55C0B0"/>
+<colUsage columnID="DECCBB3C-01E4-5688-BE7C-FA53B060D4E3"/>
+<colUsage columnID="ABA4C661-C830-2B75-FDE6-D48E0D805C52"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ED49D795-9E4F-1971-F4E8-131B42AAFDF9" name="Resultado_Equipo_FK">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 11:14:55 UTC</createdTime>
+<generatorID>2327C3B0-6661-1460-0EF8-D43127D54611</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E87F4E35-79EF-2A49-CF80-982A6F55C0B0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8E5219CF-87A4-7A66-E7F7-82F5204CA469" name="Resultado_Partido_FK">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 11:14:55 UTC</createdTime>
+<generatorID>187FC8BA-7B78-E509-9EF7-297CD7C633D8</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DECCBB3C-01E4-5688-BE7C-FA53B060D4E3"/>
+<colUsage columnID="ABA4C661-C830-2B75-FDE6-D48E0D805C52"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
