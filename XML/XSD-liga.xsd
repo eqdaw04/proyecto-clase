@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="liga" type="tipo_liga"/>
+
+<xs:complexType name="tipo_liga">
+    <xs:sequence>
+        <xs:element name="nombre" type="xs:string"></xs:element>
+        <xs:element name="jornada" type="tipo_jornada"></xs:element>
+        <xs:element name="clasificacion" type="tipo_clasificacion"></xs:element>
+        <xs:element name="equipo" type="tipo_equipo"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="id_liga" type="xs:ID"></xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="tipo_jornada">
+    <xs:sequence>
+        <xs:element name="fecha_inicio" type="xs:date"></xs:element>
+        <xs:element name="fecha_fin" minOccurs="0"></xs:element>
+        <xs:element name="hora_inicio" type="xs:string"></xs:element>
+        <xs:element name="hora_fin" minOccurs="0"></xs:element>
+        <xs:element name="lugar" type="xs:string"></xs:element>
+        <xs:element name="fk_liga" type="xs:IDREF"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="id_jornada" type="xs:ID"></xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="tipo_clasificacion">
+    <xs:sequence>
+        <xs:element name="marcador" type="xs:int"></xs:element>
+        <xs:element name="fk_jornada" type="xs:IDREF"></xs:element>
+        <xs:element name="fk_equipo" type="xs:IDREF"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="id_clasificacion" type="xs:ID"></xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="tipo_equipo">
+    <xs:sequence>
+        <xs:element name="nombre" type="xs:string"></xs:element>
+        <xs:element name="fecha_alta" type="xs:string"></xs:element>
+        <xs:element name="estado" type="xs:string"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="id_equipo" type="xs:ID"></xs:attribute>
+</xs:complexType>
+</xs:schema>

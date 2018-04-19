@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<liga id_liga="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="XSD-liga.xsd">
+    <nombre>  </nombre>
+    <jornada id_jornada=""> <!-- Poner en documento DTD el + para añadirle que puede haber de 1 a n jornadas-->
+        <fecha_inicio> </fecha_inicio>
+        <fecha_fin> </fecha_fin> <!-- Opcional-->
+        <hora_inicio> </hora_inicio>
+        <hora_fin> </hora_fin> <!-- Opcional -->
+        <lugar> </lugar> <!-- Donde se juega el partido -->
+        <fk_liga> </fk_liga> <!-- FK de liga -->
+    </jornada>
+    <clasificacion id_clasificacion="">
+        <marcador> </marcador> <!-- Puntuacion -->
+        <fk_jornada> </fk_jornada> <!-- FK de jornada-->
+        <fk_equipo> </fk_equipo> <!-- FK de equipo -->
+    </clasificacion>
+    <equipo id_equipo=""> <!-- + en DTD -->
+        <nombre> </nombre>
+        <fecha_alta> </fecha_alta>
+        <estado> </estado>
+    </equipo>
+</liga>
