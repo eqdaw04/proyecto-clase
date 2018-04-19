@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E8417EF1-50B7-F101-BF05-05AC75AF7065" name="Administrador">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 11:14:55 UTC</createdTime>
+<generatorID>45671F3A-0FE4-9A97-B636-481EF7DB8D24</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_persona" id="44511151-6687-179C-5631-C955D501D653">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 11:14:55 UTC</createdTime>
+<generatorID>66EFC992-7321-D5B3-77C2-C5E99760FE20</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BE821096-DF50-ABBE-513E-D37955B60059" referredColumn="D1CA2C00-2FA7-5179-4C24-656FB8244EF6"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7AAF3674-6D35-B62D-AD13-7DDFC8E82DD1" name="Administrador_PK">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 11:14:55 UTC</createdTime>
+<generatorID>594A8696-D482-BCE2-39B4-490267B65C20</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="44511151-6687-179C-5631-C955D501D653"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DA178534-F4F8-B3DB-890C-52ADE4203591" name="Administrador_Persona_FK">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 11:14:55 UTC</createdTime>
+<generatorID>B18F4599-9DD8-72B2-499F-0AE48D51D678</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="44511151-6687-179C-5631-C955D501D653"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

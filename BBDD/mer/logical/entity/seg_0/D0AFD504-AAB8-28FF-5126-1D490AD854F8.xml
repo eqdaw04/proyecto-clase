@@ -1,0 +1,147 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D0AFD504-AAB8-28FF-5126-1D490AD854F8" name="Persona">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:14:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<engineerTo>
+<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_persona" id="66EFC992-7321-D5B3-77C2-C5E99760FE20">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:18:59 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<engineerTo>
+<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="C2E113C1-54FD-E25D-31A0-A3DA13A07BB1">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:19:16 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<engineerTo>
+<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="apellido1" id="93930085-B793-4C47-3FD9-9ACB89DF3CF9">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:19:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<engineerTo>
+<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="apellido2" id="2DBC6BE7-5E53-6A3A-232D-4245DF78E82C">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:22:04 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<engineerTo>
+<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="telefono" id="DC79C35F-C608-7E66-D2A3-E0085559EF66">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:22:49 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<engineerTo>
+<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_alta" id="DB201B02-5DC8-CAA6-4219-AA04A26CB755">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:23:46 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<engineerTo>
+<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="usuario" id="75DC934F-363B-E245-D32B-12A376E02D59">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:24:05 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<engineerTo>
+<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="contrasena" id="CC49856E-D772-AFB4-D75D-2A93131F6D3C">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:24:52 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<engineerTo>
+<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="594A8696-D482-BCE2-39B4-490267B65C20" name="Persona PK">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:19:15 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>66EFC992-7321-D5B3-77C2-C5E99760FE20</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
