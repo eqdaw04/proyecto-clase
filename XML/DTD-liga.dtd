@@ -1,0 +1,23 @@
+<!ELEMENT liga (nombre,fecha_expiracion,jornada)*>
+        <!ELEMENT nombre (#PCDATA) >
+        <!ELEMENT fecha_expiracion (#PCDATA)>
+        <!ELEMENT jornada (fecha_inicio,fecha_fin,hora_inicio,hora_fin,lugar,partido)+>
+        <!ATTLIST jornada
+                id_jornada CDATA #REQUIRED>
+        <!ELEMENT fecha_inicio (#PCDATA)>
+        <!ELEMENT fecha_fin (#PCDATA)> -- Como le pongo el IMPLIED de opcional?--
+        <!ELEMENT hora_inicio (#PCDATA)>
+        <!ELEMENT hora_fin (#PCDATA)> -- Opcional --
+        <!ELEMENT lugar (#PCDATA)>
+        <!ELEMENT partido (resultado)*>
+        <!ATTLIST partido
+                id_partido CDATA #REQUIRED>
+        <!ELEMENT resultado (marcador,ident_jornada,ident_equipo,equipo)>
+        <!ELEMENT marcador (#PCDATA)>
+        <!ELEMENT ident_jornada (#PCDATA)>
+        <!ELEMENT ident_equipo (#PCDATA)>
+        <!ELEMENT equipo (nombre,fecha_alta,estado)> -- Se puede poner que SOLO sean 2?--
+        <!ATTLIST equipo
+                id_equipo CDATA #REQUIRED>
+        <!ELEMENT fecha_alta (#PCDATA)>
+        <!ELEMENT estado (#PCDATA)>
