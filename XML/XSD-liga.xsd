@@ -6,7 +6,7 @@
     <xs:sequence>
         <xs:element name="nombre" type="xs:string"></xs:element>
         <xs:element name="fecha_expiracion" type="xs:date"></xs:element>
-        <xs:element name="jornada" type="tipo_jornada" maxOccurs="10"></xs:element> <!-- MIRAR!!-->
+        <xs:element name="jornada" type="tipo_jornada" maxOccurs="14"></xs:element> <!-- MIRAR!!-->
     </xs:sequence>
 </xs:complexType>
 
@@ -34,7 +34,7 @@
         <xs:element name="marcador" type="xs:string"></xs:element>
         <xs:element name="ident_jornada" type="xs:IDREF"></xs:element>
         <xs:element name="ident_equipo" type="xs:IDREF"></xs:element>
-        <xs:element name="equipo" type="tipo_equipo" minOccurs="2" maxOccurs="2"></xs:element>
+        <xs:element name="equipo" type="tipo_equipo" minOccurs="2" maxOccurs="8"></xs:element>
     </xs:sequence>
     <xs:attribute name="id_clasificacion" type="xs:ID"></xs:attribute>
 </xs:complexType>
