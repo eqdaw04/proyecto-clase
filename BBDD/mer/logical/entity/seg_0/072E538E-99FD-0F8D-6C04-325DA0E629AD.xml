@@ -5,7 +5,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -17,13 +17,13 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_equipo" id="0F811E14-07C2-A812-7FF5-FD75801AC519">
-<createdBy>1gdaw11</createdBy>
-<createdTime>2018-04-19 11:02:37 UTC</createdTime>
-<generatorID>07DD9131-37DD-12A3-2CBF-8E697B85D774</generatorID>
+<Attribute name="id_equipo" id="7277D20F-CD8A-D390-9205-2306C58FAEB9">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 07:04:07 UTC</createdTime>
+<generatorID>C3A1B898-3D1B-4837-35EF-D7325F916EB3</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <referedAttribute>37D548FF-115E-41DB-5B7B-96462F5A13BF</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>

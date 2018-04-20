@@ -5,7 +5,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -22,7 +22,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -35,7 +35,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -49,7 +49,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -63,7 +63,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -77,7 +77,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -91,7 +91,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -104,7 +104,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -117,7 +117,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -126,13 +126,13 @@
 <dataTypeSize>300</dataTypeSize>
 <ownDataTypeParameters>300,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_equipo" id="61AB4914-7CFE-F0A1-5D4D-657EEC8BEF14">
-<createdBy>1gdaw11</createdBy>
-<createdTime>2018-04-19 11:02:57 UTC</createdTime>
-<generatorID>85410247-6C5E-2EED-46CC-705F3C4CA1A2</generatorID>
+<Attribute name="id_equipo" id="B51E1041-D92F-0514-2FCA-54465738D7C0">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 07:06:14 UTC</createdTime>
+<generatorID>88C3F727-6059-EDF5-BCEF-2D966D05CB82</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <referedAttribute>37D548FF-115E-41DB-5B7B-96462F5A13BF</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -147,9 +147,8 @@
 <createdTime>2018-04-19 10:13:04 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
-<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="false"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

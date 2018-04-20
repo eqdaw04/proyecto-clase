@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FB929179-9807-D65E-6A39-7EA05F321992" name="Duenno">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 07:07:01 UTC</createdTime>
+<generatorID>072E538E-99FD-0F8D-6C04-325DA0E629AD</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_persona" id="085E821A-28D9-D09C-FD88-686342A10B02">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 07:07:01 UTC</createdTime>
+<generatorID>66EFC992-7321-D5B3-77C2-C5E99760FE20</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4135E4BF-892E-EAD2-475A-BB62CD65F967" referredColumn="98B9B0F6-D6E4-D88F-068B-80DA21DCDBF1"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="356EADD3-1090-76AD-7705-F011D59C07DD" name="Duenno_PK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 07:07:01 UTC</createdTime>
+<generatorID>594A8696-D482-BCE2-39B4-490267B65C20</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="085E821A-28D9-D09C-FD88-686342A10B02"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4F507920-F63E-62A0-210B-A64432F1B6AB" name="Duenno__IDX">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 07:07:01 UTC</createdTime>
+<ownerDesignName>mer</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>C3A1B898-3D1B-4837-35EF-D7325F916EB3</relationGeneratorID>
+</ind_PK_UK>
+<ind_PK_UK id="BD5FF69B-D10F-AE0B-1C04-7A09F8BC5E32" name="Duenno_Persona_FK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 07:07:01 UTC</createdTime>
+<generatorID>11308633-ED81-50C9-0FDB-72DF95606BCC</generatorID>
+<ownerDesignName>mer</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="085E821A-28D9-D09C-FD88-686342A10B02"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

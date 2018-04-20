@@ -5,7 +5,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -22,7 +22,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -35,20 +35,20 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_equipo" id="54564F74-862B-D011-73B9-527A677CC06A">
-<createdBy>1gdaw11</createdBy>
-<createdTime>2018-04-19 11:03:45 UTC</createdTime>
-<generatorID>2327C3B0-6661-1460-0EF8-D43127D54611</generatorID>
+<Attribute name="id_equipo" id="F39A9EB1-8D35-02D9-895B-5609B4AF2F29">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 07:06:03 UTC</createdTime>
+<generatorID>AD05A363-B0A6-599A-5C67-3E1FDBBCFD5D</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <referedAttribute>37D548FF-115E-41DB-5B7B-96462F5A13BF</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -56,29 +56,15 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_Partido" id="A27C6A16-527F-5D61-1325-A306004870A7">
-<createdBy>1gdaw11</createdBy>
-<createdTime>2018-04-19 11:04:03 UTC</createdTime>
-<generatorID>187FC8BA-7B78-E509-9EF7-297CD7C633D8</generatorID>
+<Attribute name="id_Partido" id="E761F47B-E0ED-ED78-E696-98DEE2E39CBA">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 07:06:26 UTC</createdTime>
+<generatorID>C8162A30-C52C-DEA7-BB61-2761FB5CA237</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <referedAttribute>97AD1660-0AA7-A5BA-5757-7275404F8B7F</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Id_Jornada" id="D79809BF-0C97-5BAB-F804-D74846D67538">
-<createdBy>1gdaw11</createdBy>
-<createdTime>2018-04-19 11:06:24 UTC</createdTime>
-<generatorID>187FC8BA-7B78-E509-9EF7-297CD7C633D8</generatorID>
-<ownerDesignName>mer</ownerDesignName>
-<engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="true"/>
-</engineerTo>
-<referedAttribute>57ED09D5-8CB6-998B-F97A-692DD4884780</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -91,16 +77,12 @@
 <createdTime>2018-04-19 10:58:06 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
-<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="41F9AA35-4B67-F2DC-4386-B3E09441CE51" value="false"/>
+<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>3EBA54B6-7FA9-738D-329A-75D2CA89EB46</attributeRef>
-<attributeRef>54564F74-862B-D011-73B9-527A677CC06A</attributeRef>
-<attributeRef>A27C6A16-527F-5D61-1325-A306004870A7</attributeRef>
-<attributeRef>D79809BF-0C97-5BAB-F804-D74846D67538</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>
