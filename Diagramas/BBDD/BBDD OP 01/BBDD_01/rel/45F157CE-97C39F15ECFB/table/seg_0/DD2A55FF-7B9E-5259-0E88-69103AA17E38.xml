@@ -1,0 +1,118 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DD2A55FF-7B9E-5259-0E88-69103AA17E38" name="Equipo">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:55:25 UTC</createdTime>
+<generatorID>881DB2B4-AE6F-5EF6-5DBB-42E825CD6255</generatorID>
+<ownerDesignName>BBDD_01</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_equipo" id="5C55A5B6-946B-3AB1-8BA9-5AD2331B7DB2">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:55:25 UTC</createdTime>
+<generatorID>37D548FF-115E-41DB-5B7B-96462F5A13BF</generatorID>
+<ownerDesignName>BBDD_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="0E07DA42-2859-4B4C-7AB2-FC0C2BA33D76">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:55:25 UTC</createdTime>
+<generatorID>932B51D1-A70E-BF78-169A-34D81B12E4BB</generatorID>
+<ownerDesignName>BBDD_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_creacion" id="DCA6C592-5F29-6250-018F-3961E232E411">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:55:25 UTC</createdTime>
+<generatorID>01717C21-7A50-F984-9356-583E420D6C9A</generatorID>
+<ownerDesignName>BBDD_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="comentario" id="C73F5D98-1F4C-60A5-BBAF-484ACA17C371">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:55:25 UTC</createdTime>
+<generatorID>C2B338B4-94ED-911E-49CB-C41704CCC2C3</generatorID>
+<ownerDesignName>BBDD_01</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
+<ownDataTypeParameters>300,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Duenno_id_persona" id="6367ACF4-601B-77DA-6884-D94A6BE16CFB">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:55:25 UTC</createdTime>
+<generatorID>D8C7F538-307A-B9F0-97EF-764C65BBBCAE</generatorID>
+<ownerDesignName>BBDD_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="108177C2-572F-A14C-90C3-A1653BE06E04" referredColumn="8E570A65-3181-2936-5EBE-5DBE910164F1"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="81A63F97-1725-DC0F-D456-B91A79687B91" name="Equipo_PK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:55:25 UTC</createdTime>
+<generatorID>40ED9AFF-BED7-5A8C-44C2-952AD2FB71A0</generatorID>
+<ownerDesignName>BBDD_01</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5C55A5B6-946B-3AB1-8BA9-5AD2331B7DB2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="387BDCAB-D59B-D3A5-8251-BAC03B59F29E" name="Equipo__IDX">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:55:25 UTC</createdTime>
+<ownerDesignName>BBDD_01</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>FD1191E1-ABA9-9551-A6BE-D08E457C2620</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="6367ACF4-601B-77DA-6884-D94A6BE16CFB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E3C71508-2AD3-0CFE-67E4-CF69B50C182A" name="Equipo__IDXv1">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:55:25 UTC</createdTime>
+<ownerDesignName>BBDD_01</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>AD05A363-B0A6-599A-5C67-3E1FDBBCFD5D</relationGeneratorID>
+</ind_PK_UK>
+<ind_PK_UK id="113DA5C4-CB03-0A9D-C44C-33A68ADE0DC7" name="Equipo_Duenno_FK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:55:25 UTC</createdTime>
+<generatorID>FD1191E1-ABA9-9551-A6BE-D08E457C2620</generatorID>
+<ownerDesignName>BBDD_01</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6367ACF4-601B-77DA-6884-D94A6BE16CFB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

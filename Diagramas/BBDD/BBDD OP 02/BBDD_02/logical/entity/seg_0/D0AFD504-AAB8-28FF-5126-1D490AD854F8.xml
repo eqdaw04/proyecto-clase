@@ -1,0 +1,160 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D0AFD504-AAB8-28FF-5126-1D490AD854F8" name="Persona">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:14:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_persona" id="66EFC992-7321-D5B3-77C2-C5E99760FE20">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:18:59 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="C2E113C1-54FD-E25D-31A0-A3DA13A07BB1">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:19:16 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="apellido1" id="93930085-B793-4C47-3FD9-9ACB89DF3CF9">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:19:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="apellido2" id="2DBC6BE7-5E53-6A3A-232D-4245DF78E82C">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:22:04 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_alta" id="DB201B02-5DC8-CAA6-4219-AA04A26CB755">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:23:46 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="usuario" id="75DC934F-363B-E245-D32B-12A376E02D59">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:24:05 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="contrasena" id="CC49856E-D772-AFB4-D75D-2A93131F6D3C">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:24:52 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_perfil" id="570F9494-F2AA-0A12-4F03-932224DF442A">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 09:57:21 UTC</createdTime>
+<generatorID>5C1504A7-476B-4BCC-E84D-5A72DC1BCB2C</generatorID>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<referedAttribute>D4C69E74-17DE-A744-544E-24863B44D0AA</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="email" id="DF387C21-2D32-6407-50DE-A23078D2979F">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:08:34 UTC</createdTime>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="594A8696-D482-BCE2-39B4-490267B65C20" name="Persona PK">
+<createdBy>1gdaw11</createdBy>
+<createdTime>2018-04-19 10:19:15 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>66EFC992-7321-D5B3-77C2-C5E99760FE20</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

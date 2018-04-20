@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="11D08072-9EF9-6460-C5EE-5B644B50E076" name="Administrador">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:55:25 UTC</createdTime>
+<generatorID>1ED7ED85-3B9C-5C94-8307-2EC8C360EEAA</generatorID>
+<ownerDesignName>BBDD_01</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_persona" id="E2C9BB29-153E-C8A3-D506-9464FAA2A40A">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:55:25 UTC</createdTime>
+<generatorID>66EFC992-7321-D5B3-77C2-C5E99760FE20</generatorID>
+<ownerDesignName>BBDD_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="26B82171-1847-D017-0CB5-BE0900C00F1C" referredColumn="501EF388-8E2A-A617-657D-58B8166096E2"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="054B1214-86AA-C541-DB38-F1F6F3C774D7" name="Administrador_PK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:55:25 UTC</createdTime>
+<generatorID>594A8696-D482-BCE2-39B4-490267B65C20</generatorID>
+<ownerDesignName>BBDD_01</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E2C9BB29-153E-C8A3-D506-9464FAA2A40A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BB87ABB0-F967-EF21-7AC3-A916E75875C0" name="Administrador_Cuenta_FK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:55:25 UTC</createdTime>
+<generatorID>6DD487FE-781F-2BCB-5AEF-4F41C899F9D0</generatorID>
+<ownerDesignName>BBDD_01</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E2C9BB29-153E-C8A3-D506-9464FAA2A40A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
