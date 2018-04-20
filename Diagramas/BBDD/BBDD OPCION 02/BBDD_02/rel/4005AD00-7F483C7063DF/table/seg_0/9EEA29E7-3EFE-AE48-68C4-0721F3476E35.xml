@@ -55,10 +55,9 @@
 <ownDataTypeParameters>300,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Duenno_id_duenno" id="3172F809-FD13-F1E7-B2C6-3C655B9B0F39">
+<Column name="Duenno_Persona_id_persona" id="F2C5A8FA-3312-3C9F-4BD9-37328647E23D">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-20 10:28:43 UTC</createdTime>
-<generatorID>A29AD900-8126-32E1-1221-73954E82A27F</generatorID>
+<createdTime>2018-04-20 12:04:20 UTC</createdTime>
 <ownerDesignName>BBDD_02</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -67,7 +66,7 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="21732EC4-AB4C-1FE8-794C-AE32172700C7" referredColumn="B52EC99B-2686-86BA-893A-E75319DDE6AC"/>
+<colAssociation fkAssociation="21732EC4-AB4C-1FE8-794C-AE32172700C7" referredColumn="0AA9AFC0-F4A5-040F-3E89-6A85C0B33BF3"/>
 </associations>
 </Column>
 </columns>
@@ -100,7 +99,7 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="3172F809-FD13-F1E7-B2C6-3C655B9B0F39"/>
+<colUsage columnID="F2C5A8FA-3312-3C9F-4BD9-37328647E23D"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

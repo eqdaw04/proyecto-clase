@@ -15,18 +15,6 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_duenno" id="3EDC9C8C-3463-3725-BF96-F89A6B04D2D1">
-<createdBy>v6222</createdBy>
-<createdTime>2018-04-20 09:59:01 UTC</createdTime>
-<ownerDesignName>BBDD_02</ownerDesignName>
-<engineerTo>
-<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="telf" id="4FCCFF0A-F3EE-F41F-624F-CC86419D8319">
 <createdBy>v6222</createdBy>
 <createdTime>2018-04-20 10:06:04 UTC</createdTime>
@@ -66,7 +54,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>3EDC9C8C-3463-3725-BF96-F89A6B04D2D1</attributeRef>
+<attributeRef>8A2D6C14-A2FB-0F3C-125D-CE44569C0D10</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>
