@@ -5,7 +5,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -16,13 +16,13 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_Partido" id="97AD1660-0AA7-A5BA-5757-7275404F8B7F">
+<Attribute name="id_partido" id="97AD1660-0AA7-A5BA-5757-7275404F8B7F">
 <createdBy>1gdaw11</createdBy>
 <createdTime>2018-04-19 10:06:05 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -35,7 +35,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -48,7 +48,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -61,7 +61,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -69,13 +69,13 @@
 <dataTypeSize>45</dataTypeSize>
 <ownDataTypeParameters>45,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Id_Jornada" id="B1ADBDD5-578B-A804-92F6-4C7A61418F47">
+<Attribute name="Id_jornada" id="B1ADBDD5-578B-A804-92F6-4C7A61418F47">
 <createdBy>v6222</createdBy>
 <createdTime>2018-04-20 07:06:33 UTC</createdTime>
 <generatorID>1992F48D-13BC-2AEB-6CD4-3100C4205ADA</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
 </engineerTo>
 <referedAttribute>DCA2FD3C-E783-FC30-E7C1-DADCD10C5B41</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -91,7 +91,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

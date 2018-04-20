@@ -1,11 +1,11 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="DA17FD6F-F01A-660C-3B4B-F191E2FAC753" name="Resultado">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="DA17FD6F-F01A-660C-3B4B-F191E2FAC753" name="Marcador">
 <createdBy>1gdaw11</createdBy>
 <createdTime>2018-04-19 10:57:36 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -16,26 +16,26 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_resultado" id="3EBA54B6-7FA9-738D-329A-75D2CA89EB46">
+<Attribute name="id_marcador" id="3EBA54B6-7FA9-738D-329A-75D2CA89EB46">
 <createdBy>1gdaw11</createdBy>
 <createdTime>2018-04-19 10:57:45 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="resultado" id="CC107937-9B67-41D3-5CB2-FD9B6D9161BB">
+<Attribute name="puntuacion" id="CC107937-9B67-41D3-5CB2-FD9B6D9161BB">
 <createdBy>1gdaw11</createdBy>
 <createdTime>2018-04-19 10:58:08 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -48,7 +48,7 @@
 <generatorID>AD05A363-B0A6-599A-5C67-3E1FDBBCFD5D</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
 </engineerTo>
 <referedAttribute>37D548FF-115E-41DB-5B7B-96462F5A13BF</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -56,19 +56,33 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_Partido" id="E761F47B-E0ED-ED78-E696-98DEE2E39CBA">
+<Attribute name="id_partido" id="E761F47B-E0ED-ED78-E696-98DEE2E39CBA">
 <createdBy>v6222</createdBy>
 <createdTime>2018-04-20 07:06:26 UTC</createdTime>
 <generatorID>C8162A30-C52C-DEA7-BB61-2761FB5CA237</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
 </engineerTo>
 <referedAttribute>97AD1660-0AA7-A5BA-5757-7275404F8B7F</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="local" id="B9311C9C-0991-9354-80F3-B12C809A400B">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 08:33:35 UTC</createdTime>
+<ownerDesignName>mer</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -78,7 +92,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer</ownerDesignName>
 <engineerTo>
-<item key="5C98421B-8A42-76D2-90A0-0C0E852B4421" value="true"/>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
