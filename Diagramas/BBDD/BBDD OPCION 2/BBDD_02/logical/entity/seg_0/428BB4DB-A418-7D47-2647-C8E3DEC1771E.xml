@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="428BB4DB-A418-7D47-2647-C8E3DEC1771E" name="Duenno">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 09:55:07 UTC</createdTime>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_duenno" id="3EDC9C8C-3463-3725-BF96-F89A6B04D2D1">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 09:59:01 UTC</createdTime>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="telf" id="4FCCFF0A-F3EE-F41F-624F-CC86419D8319">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:06:04 UTC</createdTime>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_persona" id="8A2D6C14-A2FB-0F3C-125D-CE44569C0D10">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 10:08:00 UTC</createdTime>
+<generatorID>928100A0-47CC-11B8-5BD7-8529B5F6963E</generatorID>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<referedAttribute>66EFC992-7321-D5B3-77C2-C5E99760FE20</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="3C17F493-C195-74E2-5F70-44FAA7C5EC5E" name="Duenno PK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-20 09:59:11 UTC</createdTime>
+<ownerDesignName>BBDD_02</ownerDesignName>
+<engineerTo>
+<item key="4005AD00-1B9F-282F-B2EB-7F483C7063DF" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3EDC9C8C-3463-3725-BF96-F89A6B04D2D1</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
