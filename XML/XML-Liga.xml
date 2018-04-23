@@ -35,6 +35,238 @@
 
         </partido>
 
+        <partido id_partido="_p2">
+
+            <fecha>2018-02-10</fecha_inicio>
+            <hora>10:00</hora_inicio>
+            <lugar>Arriaga</lugar>
+
+            <resultado>
+
+                <equipo id_equipo="_e3">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>false</visitante>
+                </equipo>
+
+                <equipo id_equipo="_e4">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>true</visitante>
+                </equipo>
+
+            </resultado>
+
+        </partido>
+
+        <partido id_partido="_p3">
+
+            <fecha>2018-02-10</fecha_inicio>
+            <hora>10:00</hora_inicio>
+            <lugar>Arriaga</lugar>
+
+            <resultado>
+
+                <equipo id_equipo="_e5">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>false</visitante>
+                </equipo>
+
+                <equipo id_equipo="_e6">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>true</visitante>
+                </equipo>
+
+            </resultado>
+
+        </partido>
+
+    </jornada>
+
+    <jornada id_jornada="_j2">
+
+        <partido id_partido="_p1">
+
+            <fecha>2018-02-10</fecha_inicio>
+            <hora>10:00</hora_inicio>
+            <lugar>Arriaga</lugar>
+
+            <resultado>
+
+                <equipo id_equipo="_e2">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>false</visitante>
+                </equipo>
+
+                <equipo id_equipo="_e3">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>true</visitante>
+                </equipo>
+
+            </resultado>
+
+        </partido>
+
+        <partido id_partido="_p2">
+
+            <fecha>2018-02-10</fecha_inicio>
+            <hora>10:00</hora_inicio>
+            <lugar>Arriaga</lugar>
+
+            <resultado>
+
+                <equipo id_equipo="_e4">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>false</visitante>
+                </equipo>
+
+                <equipo id_equipo="_e5">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>true</visitante>
+                </equipo>
+
+            </resultado>
+
+        </partido>
+
+        <partido id_partido="_p3">
+
+            <fecha>2018-02-10</fecha_inicio>
+            <hora>10:00</hora_inicio>
+            <lugar>Arriaga</lugar>
+
+            <resultado>
+
+                <equipo id_equipo="_e6">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>false</visitante>
+                </equipo>
+
+                <equipo id_equipo="_e1">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>true</visitante>
+                </equipo>
+
+            </resultado>
+
+        </partido>
+
+    </jornada>
+
+    <jornada id_jornada="_j3">
+
+        <partido id_partido="_p1">
+
+            <fecha>2018-02-10</fecha_inicio>
+            <hora>10:00</hora_inicio>
+            <lugar>Arriaga</lugar>
+
+            <resultado>
+
+                <equipo id_equipo="_e3">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>false</visitante>
+                </equipo>
+
+                <equipo id_equipo="_e4">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>true</visitante>
+                </equipo>
+
+            </resultado>
+
+        </partido>
+
+        <partido id_partido="_p2">
+
+            <fecha>2018-02-10</fecha_inicio>
+            <hora>10:00</hora_inicio>
+            <lugar>Arriaga</lugar>
+
+            <resultado>
+
+                <equipo id_equipo="_e5">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>false</visitante>
+                </equipo>
+
+                <equipo id_equipo="_e6">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>true</visitante>
+                </equipo>
+
+            </resultado>
+
+        </partido>
+
+        <partido id_partido="_p3">
+
+            <fecha>2018-02-10</fecha_inicio>
+            <hora>10:00</hora_inicio>
+            <lugar>Arriaga</lugar>
+
+            <resultado>
+
+                <equipo id_equipo="_e1">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>false</visitante>
+                </equipo>
+
+                <equipo id_equipo="_e2">
+                    <nombre>Equipo1</nombre>
+                    <fecha_creacion>2018-02-01</fecha_creacion>
+                    <comentario></comentario>
+                    <puntuacion>5</puntuacion>
+                    <visitante>true</visitante>
+                </equipo>
+
+            </resultado>
+
+        </partido>
+
     </jornada>
 
 </liga>
