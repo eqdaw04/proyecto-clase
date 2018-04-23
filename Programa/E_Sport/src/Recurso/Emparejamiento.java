@@ -18,7 +18,11 @@ public class Emparejamiento {
     ArrayList <Equipo> listadoEquipo;
     
     public void calcularJornada(){
-        listadoEquipo.size();
+        int t = listadoEquipo.size();   
+        // obtener numero de jornadas
+        int j = (t-1)*2;
+        // establecemos que 1 jornada = 1 semana = 7 días
+        
         
     }
 }
