@@ -5,6 +5,7 @@
  */
 package Recurso;
 
+import UML.Equipo;
 import java.util.ArrayList;
 
 /**
@@ -15,4 +16,9 @@ public class Emparejamiento {
     
     int dia;
     ArrayList <Equipo> listadoEquipo;
+    
+    public void calcularJornada(){
+        listadoEquipo.size();
+        
+    }
 }
