@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE liga SYSTEM "DTD-liga.dtd">
+<liga xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="XSD-liga.xsd">
+    <nombre>  </nombre>
+    <fecha_expiracion>2018-12-15</fecha_expiracion>
+    <jornada id_jornada="_j1">
+        <fecha_inicio>2018-02-10</fecha_inicio>
+        <fecha_fin> </fecha_fin>
+        <hora_inicio> </hora_inicio>
+        <hora_fin> </hora_fin>
+        <lugar> </lugar>
+        <partido id_partido="_p1">
+            <resultado>
+                <marcador> 1-0 </marcador>
+                <ident_jornada> _j1 </ident_jornada>
+                <ident_equipo> _e1 </ident_equipo>
+
+                <equipo id_equipo="_e1">
+                    <nombre> </nombre>
+                    <fecha_alta> </fecha_alta>
+                    <estado> </estado>
+                </equipo>
+                <equipo id_equipo="_e2">
+                    <nombre> </nombre>
+                    <fecha_alta> </fecha_alta>
+                    <estado> </estado>
+                </equipo>
+            </resultado>
+        </partido>
+    </jornada>
+</liga>

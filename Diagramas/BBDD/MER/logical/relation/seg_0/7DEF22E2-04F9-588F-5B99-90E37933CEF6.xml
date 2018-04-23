@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Marcador" directorySegmentName="seg_0" id="7DEF22E2-04F9-588F-5B99-90E37933CEF6">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:37:35 UTC</createdTime>
+<ownerDesignName>MER</ownerDesignName>
+<engineerTo>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>881DB2B4-AE6F-5EF6-5DBB-42E825CD6255</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>0DDAFD39-F83F-BE50-3486-E00F3DA2E51A</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<attribute name="puntuacion" id="B944D400-58C7-4AC0-D62E-46A83C901DE1">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:38:22 UTC</createdTime>
+<ownerDesignName>MER</ownerDesignName>
+<engineerTo>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</attribute>
+<attribute name="visitante" id="918B5075-1EC9-7115-71CD-A7D19930643C">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:38:39 UTC</createdTime>
+<ownerDesignName>MER</ownerDesignName>
+<engineerTo>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</attribute>
+</attributes>
+</Relation>
