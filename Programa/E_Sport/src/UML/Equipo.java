@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,3 +13,10 @@ package UML;
 public class Equipo {
     
 }
+=======
+package UML;
+
+public class Equipo {
+    
+}
+>>>>>>> Stashed changes
