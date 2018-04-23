@@ -6,6 +6,7 @@
 package Recurso;
 
 import UML.Equipo;
+import UML.Jornada;
 import java.util.ArrayList;
 
 /**
@@ -15,14 +16,33 @@ import java.util.ArrayList;
 public class Emparejamiento {
     
     int dia;
-    ArrayList <Equipo> listadoEquipo;
+    ArrayList <Equipo> listaEquipo;
+    Jornada[] listaJornada;
     
-    public void calcularJornada(){
-        int t = listadoEquipo.size();   
-        // obtener numero de jornadas
-        int j = (t-1)*2;
+    public Emparejamiento() {
+    }
+
+    public Emparejamiento(int dia, ArrayList<Equipo> listaEquipo) {
+        this.dia = dia;
+        this.listaEquipo = listaEquipo;
+    }
+    
+    public int calcularJornada(){
+        int e = listaEquipo.size();
+        // obtener numero de jornadas y crear Array
+        int j = (e-1)*2;
+        listaJornada = new Jornada[j];
         // establecemos que 1 jornada = 1 semana = 7 días
+        return j;
+    }
+    
+    public void agregarDatoJornada(){
         
         
+        
+        
+        for(int x = 0; listaJornada.length < x ; x++){
+            listaJornada[x].setListaPartidos(listaPartidos);
+        }
     }
 }
