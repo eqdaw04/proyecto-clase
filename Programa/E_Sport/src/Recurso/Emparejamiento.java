@@ -5,10 +5,14 @@
  */
 package Recurso;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author v6222
  */
 public class Emparejamiento {
     
+    int dia;
+    ArrayList <Equipo> listadoEquipo;
 }

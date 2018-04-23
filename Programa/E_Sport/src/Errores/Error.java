@@ -11,4 +11,26 @@ package Errores;
  */
 public class Error {
     
+    int cod;
+
+    public Error() {
+    }
+
+    public Error(int cod) {
+        this.cod = cod;
+    }
+    
+    public String getMessage(){
+        String dato = "";
+        switch(cod){
+            case 1:
+                dato = "El usuario no puede estar vacío.";
+                break;
+                
+            case 2:
+                dato = "La contraseña no puede estar vacío.";
+                break;
+        }
+        return dato;
+    }
 }
