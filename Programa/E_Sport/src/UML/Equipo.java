@@ -10,8 +10,5 @@ package UML;
  * @author v6222
  */
 public class Equipo {
-    
-    
-    
-    
+
 }
