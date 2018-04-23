@@ -1,0 +1,124 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="70EA495B-9773-98D1-5904-EE6DE44A62C1" name="Marcador">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>DA17FD6F-F01A-660C-3B4B-F191E2FAC753</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_marcador" id="5733977F-7CD8-47DC-D512-E0B9236FDF79">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>3EBA54B6-7FA9-738D-329A-75D2CA89EB46</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="puntuacion" id="7E955B42-B0E2-283E-6DAE-CFC3795285D8">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>CC107937-9B67-41D3-5CB2-FD9B6D9161BB</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Equipo_id_equipo" id="8E191B49-6499-DC98-341E-27A866C3FD6D">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>F39A9EB1-8D35-02D9-895B-5609B4AF2F29</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="ACFA2498-A9F6-87AA-3BF4-783EE21EB7C6" referredColumn="D2B11E0A-BB1C-FA33-3DB7-D2F1BC671E43"/>
+</associations>
+</Column>
+<Column name="Partido_id_partido" id="22366918-1DCD-FE2D-DD46-BC1FBBB77110">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>E761F47B-E0ED-ED78-E696-98DEE2E39CBA</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0252A700-651C-08AE-426B-8EFEC14F0259" referredColumn="B48AC854-C1E2-0072-EDD8-3A010343DD31"/>
+</associations>
+</Column>
+<Column name="local" id="055F6B56-BDB5-EBAB-C8D4-B38C1F1A1AF2">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>B9311C9C-0991-9354-80F3-B12C809A400B</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C8A74647-CFA2-C1AB-747E-55F2E670E6AB" name="Marcador_PK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>85EA2E70-A99F-C088-52D6-DF48D9B2CD0E</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5733977F-7CD8-47DC-D512-E0B9236FDF79"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B6A44DD6-F001-15B1-8658-8DCA3431B9D6" name="Marcador__IDX">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<ownerDesignName>MER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>AD05A363-B0A6-599A-5C67-3E1FDBBCFD5D</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="8E191B49-6499-DC98-341E-27A866C3FD6D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E2AD4CE6-96C1-4E8E-5CB9-255C2E411183" name="Marcador_Equipo_FK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>AD05A363-B0A6-599A-5C67-3E1FDBBCFD5D</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8E191B49-6499-DC98-341E-27A866C3FD6D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E4A40170-F27A-2034-E367-32E0E3AC1CE1" name="Marcador_Partido_FK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>C8162A30-C52C-DEA7-BB61-2761FB5CA237</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="22366918-1DCD-FE2D-DD46-BC1FBBB77110"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

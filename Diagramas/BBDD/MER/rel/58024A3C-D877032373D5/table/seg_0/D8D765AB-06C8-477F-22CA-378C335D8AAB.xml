@@ -1,0 +1,97 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D8D765AB-06C8-477F-22CA-378C335D8AAB" name="Partido">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>0DDAFD39-F83F-BE50-3486-E00F3DA2E51A</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_partido" id="B48AC854-C1E2-0072-EDD8-3A010343DD31">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>97AD1660-0AA7-A5BA-5757-7275404F8B7F</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha" id="F2E4B6A4-A48D-2A4F-13A9-E62EE5050748">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>3DF8859A-DEC1-7720-6CD1-0C2F51B3BF6D</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="hora" id="02B3F512-052C-69CC-A72F-4F79BE0014AB">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>191958F3-A749-A149-51E4-2919412D4552</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT046</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="lugar" id="7DC8F625-0592-E7F2-306A-AF44FEB9664C">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>FA8AD114-7AF5-AFE2-E9B7-506927DDA878</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Jornada_Id_jornada" id="06E463A0-4C15-F853-C988-005D5D012421">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>B1ADBDD5-578B-A804-92F6-4C7A61418F47</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BAB81447-2AAA-1B55-2869-E61B21F96209" referredColumn="051B8F0C-7F7F-8AD6-929F-7EF5E4DA137A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2651F296-BE44-5E2E-410C-082DD3824B96" name="Partido_PK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>B08D2508-1EAB-A1F2-1929-B63E84CD7395</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B48AC854-C1E2-0072-EDD8-3A010343DD31"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="84B560DE-E929-6D49-B035-86CF988FFAFB" name="Partido_Jornada_FK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<generatorID>1992F48D-13BC-2AEB-6CD4-3100C4205ADA</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="06E463A0-4C15-F853-C988-005D5D012421"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
