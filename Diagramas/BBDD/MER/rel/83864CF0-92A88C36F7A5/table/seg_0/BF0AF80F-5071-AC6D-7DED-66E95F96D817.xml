@@ -1,16 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E1801669-59BF-52F3-C4A0-7542EC34B0A9" name="Jornada">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BF0AF80F-5071-AC6D-7DED-66E95F96D817" name="Jornada">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
 <generatorID>B5BF99D8-FC6C-B672-E03D-DA0EDC4C9BE7</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="Id_jornada" id="051B8F0C-7F7F-8AD6-929F-7EF5E4DA137A">
+<Column name="Id_jornada" id="9CD7BD8E-71B6-CCD2-B8C0-C64543A36413">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
 <generatorID>DCA2FD3C-E783-FC30-E7C1-DADCD10C5B41</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -21,16 +21,16 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="553AEBBE-9DFF-C45C-50D6-9D70768AD9EC" name="Jornada_PK">
+<ind_PK_UK id="03A8F5E5-6D7C-AA80-949D-A8D78C00F55F" name="Jornada_PK">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
 <generatorID>6E4E02D0-45DF-2C21-4E94-AA609926656D</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="051B8F0C-7F7F-8AD6-929F-7EF5E4DA137A"/>
+<colUsage columnID="9CD7BD8E-71B6-CCD2-B8C0-C64543A36413"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

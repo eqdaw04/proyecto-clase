@@ -1,16 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="873BE9AF-85E7-FC1C-6CD7-B779125C3CAF" name="Jugador">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6722D036-E684-C472-32AD-3BCFC42EEDEA" name="Jugador">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
 <generatorID>DA62C030-A679-7436-6327-5771F7D7C64E</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id_jugador" id="B71ACD28-C44E-3E4B-DC55-296BD3B743B7">
+<Column name="id_jugador" id="9878F44D-678B-D5A7-5071-B9F64DEBAFD2">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
 <generatorID>6A938141-175E-9E88-098C-33B7C2AC8D71</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -19,9 +19,21 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="nombre" id="F7E4D9AC-8463-E8ED-41BD-B63E6A64FB22">
+<Column name="dni" id="1FB6F7E3-02CC-ADA2-8863-4A82F97F25E3">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
+<generatorID>9BAB429A-54E7-333D-4EC4-EB073F913F59</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="E929DCCA-67EB-0B13-BBBE-74697AF43699">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
 <generatorID>231AE977-98CC-AD18-E98B-578B89E48321</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -31,9 +43,9 @@
 <ownDataTypeParameters>30,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="apellido1" id="7007ABDF-4C9D-3525-3A79-FF4D55966862">
+<Column name="apellido1" id="F194F551-2097-5855-E900-61247D9CDA98">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
 <generatorID>700F8E70-E9F1-2E9E-D339-1C920A4EAF5B</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -43,9 +55,9 @@
 <ownDataTypeParameters>30,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="apellido2" id="832729A5-F080-90C4-F324-1F5840A36F43">
+<Column name="apellido2" id="B225665C-334B-90C2-91B1-0A34C3A28A37">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
 <generatorID>ABA60880-2809-65F3-E8C8-05BCDB0C2100</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -55,9 +67,9 @@
 <ownDataTypeParameters>30,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="nickname" id="AEA59A68-6E0A-221B-73AB-E3404EF60DF6">
+<Column name="nickname" id="FBB72096-3E91-EC3F-FA39-0474A307BCBE">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
 <generatorID>704B6FC0-3760-BCA6-F3A8-AE6DFBCEB91B</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -67,9 +79,9 @@
 <ownDataTypeParameters>30,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="sueldo" id="905FED2F-626E-7714-E633-A757C1C973EA">
+<Column name="sueldo" id="F6BEDBCE-F916-A436-1C70-67DC8B7382D6">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
 <generatorID>540372C9-5553-5C3A-846B-248129909DFD</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -78,9 +90,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="fechaAlta" id="C0ADFC18-4ACD-4C43-E0CF-9B7D465FFF6A">
+<Column name="fechaAlta" id="89E218F0-FD1B-64FA-AB82-98A16EC6C870">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
 <generatorID>D458CDDA-BC59-A4A4-F57D-788E0B5CEB3C</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -89,9 +101,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="comentario" id="44B468DF-CF51-83B2-0119-E78EA3BF534E">
+<Column name="comentario" id="B8B123CD-D4BB-D07E-0190-3302BE162407">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
 <generatorID>9CFCD0BA-8819-128A-BDB7-F922493FE901</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
@@ -102,9 +114,9 @@
 <ownDataTypeParameters>300,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Equipo_id_equipo" id="AD80793C-4DB5-3C4A-B453-9970BB489E6F">
+<Column name="Equipo_id_equipo" id="994DC740-1B87-7940-8B3D-44ABEA23291A">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
 <generatorID>B51E1041-D92F-0514-2FCA-54465738D7C0</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -114,32 +126,32 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="A897D0B2-C750-1834-5C6B-7BCA4A73C63E" referredColumn="D2B11E0A-BB1C-FA33-3DB7-D2F1BC671E43"/>
+<colAssociation fkAssociation="272CED8A-6DDD-03B9-FBBC-FFA53425915A" referredColumn="372D9A62-0FB8-9847-8A43-D30FF70FFFB8"/>
 </associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="DBE803F1-658F-8D34-5A4F-0B0463C47F5C" name="Jugador_PK">
+<ind_PK_UK id="E5F5934E-4967-3B94-EEAB-AE0C000F09D4" name="Jugador_PK">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
 <generatorID>EF4E71FB-9CC9-E481-B8A8-ED100991EC0B</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="B71ACD28-C44E-3E4B-DC55-296BD3B743B7"/>
+<colUsage columnID="9878F44D-678B-D5A7-5071-B9F64DEBAFD2"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="7CF249A0-6679-9810-7C8B-1FF00BBC0923" name="Jugador_Equipo_FK">
+<ind_PK_UK id="31A34934-C226-EB2B-E8BF-E34F5CBB9B4E" name="Jugador_Equipo_FK">
 <createdBy>v6222</createdBy>
-<createdTime>2018-04-23 08:32:11 UTC</createdTime>
+<createdTime>2018-04-23 10:15:08 UTC</createdTime>
 <generatorID>88C3F727-6059-EDF5-BCEF-2D966D05CB82</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="AD80793C-4DB5-3C4A-B453-9970BB489E6F"/>
+<colUsage columnID="994DC740-1B87-7940-8B3D-44ABEA23291A"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
