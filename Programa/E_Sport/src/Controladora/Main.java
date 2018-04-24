@@ -5,6 +5,10 @@
  */
 package Controladora;
 
+import Recurso.Emparejamiento;
+import UML.Equipo;
+import java.util.ArrayList;
+
 /**
  *
  * @author v6222
@@ -16,6 +20,31 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        ArrayList <Equipo> lEquipo = new ArrayList();
+        Equipo e1 = new Equipo();
+        e1.setIdEquipo(1);
+        lEquipo.add(e1);
+        Equipo e2 = new Equipo();
+        e2.setIdEquipo(2);
+        lEquipo.add(e2);
+        Equipo e3 = new Equipo();
+        e3.setIdEquipo(3);
+        lEquipo.add(e3);
+        Equipo e4 = new Equipo();
+        e4.setIdEquipo(4);
+        lEquipo.add(e4);
+        
+        Equipo e5 = new Equipo();
+        e5.setIdEquipo(5);
+        lEquipo.add(e5);
+        Equipo e6 = new Equipo();
+        e6.setIdEquipo(6);
+        lEquipo.add(e6);
+        Equipo e7 = new Equipo();
+        e7.setIdEquipo(7);
+        lEquipo.add(e7);
+        Emparejamiento e = new Emparejamiento(12, lEquipo);
+        e.calcularPartido();
     }
     
 }
