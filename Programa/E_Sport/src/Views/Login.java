@@ -1,6 +1,7 @@
 package Views;
 
 import Controladora.Main;
+import Excepciones.Excepcion;
 
 public class Login extends javax.swing.JDialog {
 
@@ -101,7 +102,7 @@ public class Login extends javax.swing.JDialog {
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
         // TODO add your handling code here:
-        Main.cerrarVentana(this);
+        // Main.cerrar(this);
     }//GEN-LAST:event_bSalirActionPerformed
 
     private void bAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAccederActionPerformed
@@ -109,12 +110,16 @@ public class Login extends javax.swing.JDialog {
         {
             if (tfUsuario.getText().isEmpty())
             {
-                throw new Exception("El nombre del usuario es obligatorio.");
+                throw new Excepcion();
             }
             if (String.copyValueOf(pfContrasenna.getPassword()).isEmpty())
             {
-                throw new Exception("La contraseña es obligatoria.");
+                throw new Excepcion();
             }
+        }
+        catch (Excepcion e)
+        {
+            javax.swing.JOptionPane.showMessageDialog(this, e.getMensaje(), "Error", 0);
         }
         catch (Exception e)
         {
