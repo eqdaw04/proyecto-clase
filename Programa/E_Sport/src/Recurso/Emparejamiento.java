@@ -7,7 +7,11 @@ package Recurso;
 
 import UML.Equipo;
 import UML.Jornada;
+import UML.Partido;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,33 +20,32 @@ import java.util.ArrayList;
 public class Emparejamiento {
     
     int dia;
-    ArrayList <Equipo> listaEquipo;
-    Jornada[] listaJornada;
+    ArrayList <Equipo> lEquipo;
+    Jornada[] lJornada;
+    Partido[] lPartido;
     
     public Emparejamiento() {
     }
 
     public Emparejamiento(int dia, ArrayList<Equipo> listaEquipo) {
         this.dia = dia;
-        this.listaEquipo = listaEquipo;
+        this.lEquipo = listaEquipo;
     }
     
-    public int calcularJornada(){
-        int e = listaEquipo.size();
-        // obtener numero de jornadas y crear Array
+    public void calcularJornada(){
+        int e = lEquipo.size();
+        // obtener numero de jornadas, partidos y crear Array
         int j = (e-1)*2;
-        listaJornada = new Jornada[j];
+        lJornada = new Jornada[j];
+        int p = e/2;
+        lPartido = new Partido[p];
         // establecemos que 1 jornada = 1 semana = 7 días
-        return j;
+        //desordenar numero equipo
+        Collections.shuffle(lEquipo);
+        //random de un numero para seleccionar una posicion aleatoria del array
+        Random rand = new Random();
+        int n = rand.nextInt(e-1) + 1;
+  
     }
-    
-    public void agregarDatoJornada(){
-        
-        
-        
-        
-        for(int x = 0; listaJornada.length < x ; x++){
-            listaJornada[x].setListaPartidos(listaPartidos);
-        }
-    }
+
 }
