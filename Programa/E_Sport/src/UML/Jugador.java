@@ -4,10 +4,9 @@ import java.util.Date;
 
 public class Jugador {
     private int idJugador;
-    private String nombre, apellido1, apellido2, nickname;
+    private String dni, nombre, apellido1, apellido2, nickname;
     private float sueldo;
     private Date fechaAlta;
-    private boolean disponible;
     private String comentario;
     
     private Equipo equipo;
@@ -21,6 +20,14 @@ public class Jugador {
 
     public void setIdJugador(int idJugador) {
         this.idJugador = idJugador;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
@@ -69,14 +76,6 @@ public class Jugador {
 
     public void setFechaAlta(Date fechaAlta) {
         this.fechaAlta = fechaAlta;
-    }
-
-    public boolean isDisponible() {
-        return disponible;
-    }
-
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
     }
 
     public String getComentario() {

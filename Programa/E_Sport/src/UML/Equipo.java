@@ -11,7 +11,7 @@ public class Equipo {
     
     private Persona persona;
     private ArrayList<Jugador> listaJugadores;
-    private ArrayList<Partido> listaPartidos;
+    private ArrayList<Marcador> listaMarcadores;
 
     public Equipo() {
     }
@@ -64,11 +64,11 @@ public class Equipo {
         this.listaJugadores = listaJugadores;
     }
 
-    public ArrayList<Partido> getListaPartidos() {
-        return listaPartidos;
+    public ArrayList<Marcador> getListaMarcadores() {
+        return listaMarcadores;
     }
 
-    public void setListaPartidos(ArrayList<Partido> listaPartidos) {
-        this.listaPartidos = listaPartidos;
+    public void setListaMarcadores(ArrayList<Marcador> listaMarcadores) {
+        this.listaMarcadores = listaMarcadores;
     }
 }
