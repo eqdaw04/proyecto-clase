@@ -4,47 +4,36 @@
 
 <xs:complexType name="tipo_liga">
     <xs:sequence>
-        <xs:element name="nombre" type="xs:string"></xs:element>
         <xs:element name="fecha_expiracion" type="xs:date"></xs:element>
-        <xs:element name="jornada" type="tipo_jornada" maxOccurs="14"></xs:element> <!-- MIRAR!!-->
+        <xs:element name="jornada" type="tipo_jornada" maxOccurs="16"></xs:element> <!-- MIRAR!!-->
     </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="tipo_jornada">
     <xs:sequence>
-        <xs:element name="fecha_inicio" type="xs:date"></xs:element>
-        <xs:element name="fecha_fin" minOccurs="0"></xs:element>
-        <xs:element name="hora_inicio" type="xs:string"></xs:element>
-        <xs:element name="hora_fin" minOccurs="0"></xs:element>
-        <xs:element name="lugar" type="xs:string"></xs:element>
-        <xs:element name="partido" type="tipo_partido"></xs:element>
+        <xs:element name="partido" type="tipo_partido"  maxOccurs="8"></xs:element>
     </xs:sequence>
-    <xs:attribute name="id_jornada" type="xs:ID"></xs:attribute>
+    <xs:attribute name="id_jornada" type="xs:int"></xs:attribute>
 </xs:complexType>
 
 <xs:complexType name="tipo_partido">
     <xs:sequence>
-        <xs:element name="resultado" type="tipo_resultado"></xs:element>
+        <xs:element name="fecha" type="xs:date"></xs:element>
+        <xs:element name="hora" minOccurs="0"></xs:element>
+        <xs:element name="lugar" type="xs:string"></xs:element>
+        <xs:element name="equipo" type="tipo_equipo"  maxOccurs="2"></xs:element>
     </xs:sequence>
-    <xs:attribute name="id_partido" type="xs:ID"></xs:attribute>
-</xs:complexType>
-
-<xs:complexType name="tipo_resultado">
-    <xs:sequence>
-        <xs:element name="marcador" type="xs:string"></xs:element>
-        <xs:element name="ident_jornada" type="xs:IDREF"></xs:element>
-        <xs:element name="ident_equipo" type="xs:IDREF"></xs:element>
-        <xs:element name="equipo" type="tipo_equipo" minOccurs="2" maxOccurs="8"></xs:element>
-    </xs:sequence>
-    <xs:attribute name="id_clasificacion" type="xs:ID"></xs:attribute>
+    <xs:attribute name="id_partido" type="xs:int"></xs:attribute>
 </xs:complexType>
 
 <xs:complexType name="tipo_equipo">
     <xs:sequence>
         <xs:element name="nombre" type="xs:string"></xs:element>
-        <xs:element name="fecha_alta" type="xs:string"></xs:element>
-        <xs:element name="estado" type="xs:string"></xs:element>
+        <xs:element name="comentario" type="xs:string" minOccurs="0"></xs:element>
+        <xs:element name="puntuacion" type="xs:int"></xs:element>
+        <xs:element name="visitante" type="xs:boolean"></xs:element>
     </xs:sequence>
-    <xs:attribute name="id_equipo" type="xs:ID"></xs:attribute>
+    <xs:attribute name="id_equipo" type="xs:int"></xs:attribute>
 </xs:complexType>
+
 </xs:schema>
