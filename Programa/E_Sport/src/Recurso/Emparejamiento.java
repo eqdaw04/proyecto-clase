@@ -65,6 +65,7 @@ public class Emparejamiento {
             n++;
         }
         JOptionPane.showMessageDialog(null, dato);
+        
     }
     
     public String asignarEquipo(int a1, int a2){

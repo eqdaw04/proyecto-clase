@@ -45,6 +45,7 @@ public class Main {
         lEquipo.add(e7);
         Emparejamiento e = new Emparejamiento(12, lEquipo);
         e.calcularPartido();
+        
     }
     
 }
