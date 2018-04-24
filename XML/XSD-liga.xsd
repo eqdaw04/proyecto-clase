@@ -11,11 +11,7 @@
 
 <xs:complexType name="tipo_jornada">
     <xs:sequence>
-<<<<<<< HEAD
         <xs:element name="partido" type="tipo_partido"  maxOccurs="8"></xs:element>
-=======
-        <xs:element name="partido" type="tipo_partido"></xs:element>
->>>>>>> master
     </xs:sequence>
     <xs:attribute name="id_jornada" type="xs:int"></xs:attribute>
 </xs:complexType>
@@ -23,22 +19,9 @@
 <xs:complexType name="tipo_partido">
     <xs:sequence>
         <xs:element name="fecha" type="xs:date"></xs:element>
-<<<<<<< HEAD
         <xs:element name="hora" minOccurs="0"></xs:element>
         <xs:element name="lugar" type="xs:string"></xs:element>
         <xs:element name="equipo" type="tipo_equipo"  maxOccurs="2"></xs:element>
-=======
-        <xs:element name="hora" type="xs:string"></xs:element>
-        <xs:element name="lugar" type="xs:string"></xs:element>
-        <xs:element name="resultado" type="tipo_resultado"></xs:element>
-    </xs:sequence>
-    <xs:attribute name="id_partido" type="xs:ID"></xs:attribute>
-</xs:complexType>
-
-<xs:complexType name="tipo_resultado">
-    <xs:sequence>
-        <xs:element name="equipo" type="tipo_equipo" minOccurs="2" maxOccurs="8"></xs:element>
->>>>>>> master
     </xs:sequence>
     <xs:attribute name="id_partido" type="xs:int"></xs:attribute>
 </xs:complexType>
@@ -46,16 +29,9 @@
 <xs:complexType name="tipo_equipo">
     <xs:sequence>
         <xs:element name="nombre" type="xs:string"></xs:element>
-<<<<<<< HEAD
         <xs:element name="comentario" type="xs:string" minOccurs="0"></xs:element>
         <xs:element name="puntuacion" type="xs:int"></xs:element>
         <xs:element name="visitante" type="xs:boolean"></xs:element>
-=======
-        <xs:element name="fecha_creacion" type="xs:string"></xs:element>
-        <xs:element name="comentario" type="xs:string" minOccurs="0"></xs:element>
-        <xs:element name="puntuacion" type="xs:string"></xs:element>
-        <xs:element name="visitante" type="xs:string"></xs:element>
->>>>>>> master
     </xs:sequence>
     <xs:attribute name="id_equipo" type="xs:int"></xs:attribute>
 </xs:complexType>

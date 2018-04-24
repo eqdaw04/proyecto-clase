@@ -9,11 +9,7 @@
 
         <partido id_partido="1">
 
-<<<<<<< HEAD
-			<fecha>2018-02-10</fecha>
-=======
             <fecha>2018-02-10</fecha>
->>>>>>> master
 			<hora>10:00</hora>
 			<lugar>Arriaga</lugar>
 
