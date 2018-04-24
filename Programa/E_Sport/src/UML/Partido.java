@@ -9,8 +9,9 @@ public class Partido {
     private Time hora;
     private String lugar;
     
-    private Jornada jornada;
     private Equipo[] listaEquipos;
+    private Marcador[] listaMarcadores;
+    private Jornada jornada;
     
     public Partido() {
         listaEquipos = new Equipo[2];
@@ -48,6 +49,14 @@ public class Partido {
         this.lugar = lugar;
     }
 
+    public Equipo[] getListaEquipos() {
+        return listaEquipos;
+    }
+
+    public void setListaEquipos(Equipo[] listaEquipos) {
+        this.listaEquipos = listaEquipos;
+    }
+
     public Jornada getJornada() {
         return jornada;
     }
@@ -56,11 +65,11 @@ public class Partido {
         this.jornada = jornada;
     }
 
-    public Equipo[] getListaEquipos() {
-        return listaEquipos;
+    public Marcador[] getListaMarcadores() {
+        return listaMarcadores;
     }
 
-    public void setListaEquipos(Equipo[] listaEquipos) {
-        this.listaEquipos = listaEquipos;
+    public void setListaMarcadores(Marcador[] listaMarcadores) {
+        this.listaMarcadores = listaMarcadores;
     }
 }
