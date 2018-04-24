@@ -7,8 +7,13 @@ public class Jugador {
     private String nombre, apellido1, apellido2, nickname;
     private float sueldo;
     private Date fechaAlta;
-    private boolean bloqueado;
+    private boolean disponible;
     private String comentario;
+    
+    private Equipo equipo;
+
+    public Jugador() {
+    }
 
     public int getIdJugador() {
         return idJugador;
@@ -66,12 +71,12 @@ public class Jugador {
         this.fechaAlta = fechaAlta;
     }
 
-    public boolean isBloqueado() {
-        return bloqueado;
+    public boolean isDisponible() {
+        return disponible;
     }
 
-    public void setBloqueado(boolean bloqueado) {
-        this.bloqueado = bloqueado;
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 
     public String getComentario() {
@@ -80,5 +85,13 @@ public class Jugador {
 
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
     }
 }

@@ -1,13 +1,20 @@
 package UML;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Equipo {
     private int idEquipo;
     private String nombre;
     private Date fechaCreacion;
-    private boolean bloqueado;
     private String comentario;
+    
+    private Persona persona;
+    private ArrayList<Jugador> listaJugadores;
+    private ArrayList<Partido> listaPartidos;
+
+    public Equipo() {
+    }
 
     public int getIdEquipo() {
         return idEquipo;
@@ -33,19 +40,35 @@ public class Equipo {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public boolean isBloqueado() {
-        return bloqueado;
-    }
-
-    public void setBloqueado(boolean bloqueado) {
-        this.bloqueado = bloqueado;
-    }
-
     public String getComentario() {
         return comentario;
     }
 
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+
+    public ArrayList<Jugador> getListaJugadores() {
+        return listaJugadores;
+    }
+
+    public void setListaJugadores(ArrayList<Jugador> listaJugadores) {
+        this.listaJugadores = listaJugadores;
+    }
+
+    public ArrayList<Partido> getListaPartidos() {
+        return listaPartidos;
+    }
+
+    public void setListaPartidos(ArrayList<Partido> listaPartidos) {
+        this.listaPartidos = listaPartidos;
     }
 }

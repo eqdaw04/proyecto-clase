@@ -11,11 +11,6 @@ public class Jornada {
         listaPartidos = new ArrayList();
     }
 
-    public Jornada(int idJornada) {
-        this.idJornada = idJornada;
-        listaPartidos = new ArrayList();
-    }
-
     public int getIdJornada() {
         return idJornada;
     }
