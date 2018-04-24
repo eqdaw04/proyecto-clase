@@ -1,0 +1,148 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CD1E34E8-233E-FE86-00E2-EFF9A79B30FB" name="Persona">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>D0AFD504-AAB8-28FF-5126-1D490AD854F8</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_persona" id="FF1FAA34-AD99-B989-3287-E879FD9C3EEC">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>66EFC992-7321-D5B3-77C2-C5E99760FE20</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="5EB59D76-DE55-66A2-8626-2CCBB5B63E88">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>C2E113C1-54FD-E25D-31A0-A3DA13A07BB1</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="apellido1" id="761F4B74-7275-B8A1-423E-6CBB8221A508">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>93930085-B793-4C47-3FD9-9ACB89DF3CF9</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="apellido2" id="33876C8D-9B6E-4762-04F6-A0A18EFE5B3A">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>2DBC6BE7-5E53-6A3A-232D-4245DF78E82C</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_alta" id="18CBA92E-04AE-5AC5-CEB2-4D1F197B6658">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>DB201B02-5DC8-CAA6-4219-AA04A26CB755</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="usuario" id="5C036B21-F295-3E71-88C8-07E14F7F5B3E">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>75DC934F-363B-E245-D32B-12A376E02D59</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="contrasena" id="DC48EDF9-0E05-9129-6787-E518CB30E5B0">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>CC49856E-D772-AFB4-D75D-2A93131F6D3C</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Perfil_id_perfil" id="65AA7E4D-DD5A-C3AB-F84F-A45293FB65A5">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>570F9494-F2AA-0A12-4F03-932224DF442A</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0DD1633B-525F-0AD1-258B-4BEA8D462620" referredColumn="D8F93659-8E4F-F322-B2B0-EA7BDADDC320"/>
+</associations>
+</Column>
+<Column name="email" id="80DE0B88-C663-96E5-DD59-964C5E5731E0">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>DF387C21-2D32-6407-50DE-A23078D2979F</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C263422B-FA9C-5D31-0EB2-9A0FC35F8162" name="Persona_PK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>594A8696-D482-BCE2-39B4-490267B65C20</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FF1FAA34-AD99-B989-3287-E879FD9C3EEC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3F842F51-D1FA-172D-BF59-5D199D1CA613" name="Persona_Perfil_FK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>5C1504A7-476B-4BCC-E84D-5A72DC1BCB2C</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="65AA7E4D-DD5A-C3AB-F84F-A45293FB65A5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

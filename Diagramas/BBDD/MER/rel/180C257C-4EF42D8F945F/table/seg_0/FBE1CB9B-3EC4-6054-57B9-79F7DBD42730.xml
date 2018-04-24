@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FBE1CB9B-3EC4-6054-57B9-79F7DBD42730" name="Marcador">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<ownerDesignName>MER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Equipo_id_equipo" id="B34F0F17-E8CA-0CB8-142D-466B65515970">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="89C632CD-FE91-DFE2-181F-E210D1F78AD4" referredColumn="0556AE80-82AB-6F19-C3B2-EE25056C67B7"/>
+</associations>
+</Column>
+<Column name="Partido_id_partido" id="684730A3-40A7-6C5C-8BA6-818767E35D34">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A722580D-5228-F586-7752-8F9604DFFE1A" referredColumn="947A6D1C-C2A6-0372-8A05-2E6C0D3BB678"/>
+</associations>
+</Column>
+<Column name="puntuacion" id="E112E5CB-6006-C139-7A3F-29648141CCFF">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>B944D400-58C7-4AC0-D62E-46A83C901DE1</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isRelationshipColumn>true</isRelationshipColumn>
+<isDependOnFK_AsMandatory>true</isDependOnFK_AsMandatory>
+</Column>
+<Column name="visitante" id="23F6BD5A-0BC5-61E5-CD74-63690FF83A81">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>918B5075-1EC9-7115-71CD-A7D19930643C</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isRelationshipColumn>true</isRelationshipColumn>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B1792F80-BB6A-755B-7A85-F99B9E409E1C" name="Marcador_PK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<ownerDesignName>MER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B34F0F17-E8CA-0CB8-142D-466B65515970"/>
+<colUsage columnID="684730A3-40A7-6C5C-8BA6-818767E35D34"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="72BE72F0-E764-937B-299C-6E091B8E642A" name="Marcador_Equipo_FK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>7DEF22E2-04F9-588F-5B99-90E37933CEF6</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B34F0F17-E8CA-0CB8-142D-466B65515970"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="49DA764A-AC93-4BF4-4615-078618A72815" name="Marcador_Partido_FK">
+<createdBy>v6222</createdBy>
+<createdTime>2018-04-23 11:42:46 UTC</createdTime>
+<generatorID>7DEF22E2-04F9-588F-5B99-90E37933CEF6</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="684730A3-40A7-6C5C-8BA6-818767E35D34"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -5,7 +5,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <engineerTo>
-<item key="58024A3C-2090-87BE-41F5-D877032373D5" value="true"/>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -22,7 +22,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <engineerTo>
-<item key="58024A3C-2090-87BE-41F5-D877032373D5" value="true"/>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -35,7 +35,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <engineerTo>
-<item key="58024A3C-2090-87BE-41F5-D877032373D5" value="true"/>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -49,7 +49,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <engineerTo>
-<item key="58024A3C-2090-87BE-41F5-D877032373D5" value="true"/>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -62,7 +62,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <engineerTo>
-<item key="58024A3C-2090-87BE-41F5-D877032373D5" value="true"/>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -71,27 +71,13 @@
 <dataTypeSize>300</dataTypeSize>
 <ownDataTypeParameters>300,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_marcador" id="29C33CF2-D1BB-A6BF-D8CE-0BE09AF2B6ED">
-<createdBy>v6222</createdBy>
-<createdTime>2018-04-20 07:06:06 UTC</createdTime>
-<generatorID>AD05A363-B0A6-599A-5C67-3E1FDBBCFD5D</generatorID>
-<ownerDesignName>MER</ownerDesignName>
-<engineerTo>
-<item key="58024A3C-2090-87BE-41F5-D877032373D5" value="true"/>
-</engineerTo>
-<referedAttribute>3EBA54B6-7FA9-738D-329A-75D2CA89EB46</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="id_persona" id="363607AA-699C-63C9-7F9F-5739ECEBCA26">
 <createdBy>v6222</createdBy>
 <createdTime>2018-04-23 07:47:00 UTC</createdTime>
 <generatorID>8B167F3F-2333-A86E-FCD1-25909D9F8425</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <engineerTo>
-<item key="58024A3C-2090-87BE-41F5-D877032373D5" value="true"/>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
 </engineerTo>
 <referedAttribute>66EFC992-7321-D5B3-77C2-C5E99760FE20</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -107,7 +93,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <engineerTo>
-<item key="58024A3C-2090-87BE-41F5-D877032373D5" value="true"/>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
