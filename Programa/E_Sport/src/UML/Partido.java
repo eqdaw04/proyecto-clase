@@ -6,9 +6,16 @@ import java.util.Date;
 public class Partido {
     private int idPartido;
     private Date fecha;
-    private Time horaInicio, horaFin;
-    private String lugar;    
-
+    private Time hora;
+    private String lugar;
+    
+    private Jornada jornada;
+    private Equipo[] listaEquipos;
+    
+    public Partido() {
+        listaEquipos = new Equipo[2];
+    }
+    
     public int getIdPartido() {
         return idPartido;
     }
@@ -25,20 +32,12 @@ public class Partido {
         this.fecha = fecha;
     }
 
-    public Time getHoraInicio() {
-        return horaInicio;
+    public Time getHora() {
+        return hora;
     }
 
-    public void setHoraInicio(Time horaInicio) {
-        this.horaInicio = horaInicio;
-    }
-
-    public Time getHoraFin() {
-        return horaFin;
-    }
-
-    public void setHoraFin(Time horaFin) {
-        this.horaFin = horaFin;
+    public void setHora(Time hora) {
+        this.hora = hora;
     }
 
     public String getLugar() {
@@ -47,5 +46,21 @@ public class Partido {
 
     public void setLugar(String lugar) {
         this.lugar = lugar;
+    }
+
+    public Jornada getJornada() {
+        return jornada;
+    }
+
+    public void setJornada(Jornada jornada) {
+        this.jornada = jornada;
+    }
+
+    public Equipo[] getListaEquipos() {
+        return listaEquipos;
+    }
+
+    public void setListaEquipos(Equipo[] listaEquipos) {
+        this.listaEquipos = listaEquipos;
     }
 }

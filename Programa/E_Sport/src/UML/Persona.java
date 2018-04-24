@@ -4,9 +4,15 @@ import java.util.Date;
 
 public class Persona {
     private int idPersona;
-    private String nombre, apellido1, apellido2, telefono;
+    private String nombre, apellido1, apellido2;
     private Date fechaAlta;
-    private String usuario, contrasenna;
+    private String usuario, contrasenna, email;
+    
+    private Perfil perfil;
+    private Equipo equipo;
+
+    public Persona() {
+    }
 
     public int getIdPersona() {
         return idPersona;
@@ -40,14 +46,6 @@ public class Persona {
         this.apellido2 = apellido2;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
     public Date getFechaAlta() {
         return fechaAlta;
     }
@@ -70,5 +68,29 @@ public class Persona {
 
     public void setContrasenna(String contrasenna) {
         this.contrasenna = contrasenna;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
+
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
     }
 }
