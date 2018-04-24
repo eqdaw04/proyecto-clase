@@ -1,8 +1,14 @@
 package UML;
 
 public class Marcador {
-    private int idMarcador, puntuacion;
-    private boolean local;
+    private int idMarcador;
+    private Partido partido;
+    private Equipo equipo;
+    private int puntos;
+    private boolean visitante;
+
+    public Marcador() {
+    }
 
     public int getIdMarcador() {
         return idMarcador;
@@ -12,19 +18,35 @@ public class Marcador {
         this.idMarcador = idMarcador;
     }
 
-    public int getPuntuacion() {
-        return puntuacion;
+    public Partido getPartido() {
+        return partido;
     }
 
-    public void setPuntuacion(int puntuacion) {
-        this.puntuacion = puntuacion;
+    public void setPartido(Partido partido) {
+        this.partido = partido;
     }
 
-    public boolean isLocal() {
-        return local;
+    public Equipo getEquipo() {
+        return equipo;
     }
 
-    public void setLocal(boolean local) {
-        this.local = local;
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
+    }
+
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
+    }
+
+    public boolean isVisitante() {
+        return visitante;
+    }
+
+    public void setVisitante(boolean visitante) {
+        this.visitante = visitante;
     }
 }

@@ -1,25 +1,22 @@
-<!ELEMENT liga (nombre,fecha_expiracion,jornada)*>
-    <!ELEMENT nombre (#PCDATA) >
-    <!ELEMENT fecha_expiracion (#PCDATA)>
-    <!ELEMENT jornada (partido)+>
+
+<!ELEMENT liga (fecha_expiracion,jornada+)>
+        <!ELEMENT fecha_expiracion (#PCDATA)>
+        <!ELEMENT jornada (partido)+>
         <!ATTLIST jornada
                 id_jornada CDATA #REQUIRED>
-        <!ELEMENT partido (fecha,hora,lugar,resultado)*>
-            <!ATTLIST partido
+
+        <!ELEMENT partido (fecha, hora, lugar ,equipo+)>
+        <!ATTLIST partido
                 id_partido CDATA #REQUIRED>
-            <!ELEMENT fecha (#PCDATA)>
-            <!ELEMENT hora (#PCDATA)>
-            <!ELEMENT lugar (#PCDATA)>
-            <!ELEMENT resultado (equipo)>
+        <!ELEMENT fecha (#PCDATA)>
+        <!ELEMENT hora (#PCDATA)>
+        <!ELEMENT lugar (#PCDATA)>
 
-
-        <!ELEMENT marcador (#PCDATA)>
-        <!ELEMENT ident_jornada (#PCDATA)>
-        <!ELEMENT ident_equipo (#PCDATA)>
-        <!ELEMENT equipo (nombre,fecha_creacion,(comentario)?,puntuacion,visitante)+>
-            <!ATTLIST equipo
+        <!ELEMENT equipo (nombre, comentario?, puntuacion, visitante)*>
+        <!ATTLIST equipo
                 id_equipo CDATA #REQUIRED>
-            <!ELEMENT fecha_creacion (#PCDATA)>
-            <!ELEMENT comentario (#PCDATA)>
-            <!ELEMENT puntuacion (#PCDATA)>
-            <!ELEMENT visitante (#PCDATA)>
+        <!ELEMENT nombre (#PCDATA)>
+        <!ELEMENT comentario (#PCDATA)>
+        <!ELEMENT puntuacion (#PCDATA)>
+        <!ELEMENT visitante (#PCDATA)>
+

@@ -1,269 +1,201 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE liga SYSTEM "DTD-liga.dtd">
 <liga xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:noNamespaceSchemaLocation="XSD-liga.xsd">
+       xsi:noNamespaceSchemaLocation="XSD-liga.xsd">
 
     <fecha_expiracion>2018-12-15</fecha_expiracion>
 
-    <jornada id_jornada="_j1">
+    <jornada id_jornada="1">
 
-        <partido id_partido="_p1">
+        <partido id_partido="1">
 
             <fecha>2018-02-10</fecha>
 			<hora>10:00</hora>
 			<lugar>Arriaga</lugar>
 
-            <resultado>
-			
-                <equipo id_equipo="_e1">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-					<puntuacion>5</puntuacion>
-					<visitante>false</visitante>
-                </equipo>
-				
-                <equipo id_equipo="_e2">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-					<puntuacion>5</puntuacion>
-					<visitante>true</visitante>
-                </equipo>
-				
-            </resultado>
+            <equipo id_equipo="1">
+                <nombre>Equipo1</nombre>
+                <comentario>blablabla</comentario>
+                <puntuacion>5</puntuacion>
+                <visitante>false</visitante>
+            </equipo>
+
+            <equipo id_equipo="2">
+                <nombre>Equipo1</nombre>
+                <comentario>blablabla</comentario>
+                <puntuacion>5</puntuacion>
+                <visitante>true</visitante>
+            </equipo>
 
         </partido>
 
-        <partido id_partido="_p2">
+        <partido id_partido="2">
 
             <fecha>2018-02-10</fecha>
             <hora>10:00</hora>
             <lugar>Arriaga</lugar>
 
-            <resultado>
+            <equipo id_equipo="3">
+                <nombre>Equipo1</nombre>
+                <puntuacion>5</puntuacion>
+                <visitante>false</visitante>
+            </equipo>
 
-                <equipo id_equipo="_e3">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>false</visitante>
-                </equipo>
-
-                <equipo id_equipo="_e4">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>true</visitante>
-                </equipo>
-
-            </resultado>
+            <equipo id_equipo="4">
+                <nombre>Equipo1</nombre>
+                <puntuacion>5</puntuacion>
+                <visitante>true</visitante>
+            </equipo>
 
         </partido>
 
-        <partido id_partido="_p3">
+        <partido id_partido="3">
 
             <fecha>2018-02-10</fecha>
             <hora>10:00</hora>
             <lugar>Arriaga</lugar>
 
-            <resultado>
+            <equipo id_equipo="5">
+                <nombre>Equipo1</nombre>
+                <puntuacion>5</puntuacion>
+                <visitante>false</visitante>
+            </equipo>
 
-                <equipo id_equipo="_e5">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>false</visitante>
-                </equipo>
-
-                <equipo id_equipo="_e6">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>true</visitante>
-                </equipo>
-
-            </resultado>
+            <equipo id_equipo="6">
+                <nombre>Equipo1</nombre>
+                <puntuacion>5</puntuacion>
+                <visitante>true</visitante>
+            </equipo>
 
         </partido>
 
     </jornada>
 
-    <jornada id_jornada="_j2">
+    <jornada id_jornada="2">
 
-        <partido id_partido="_p1">
+        <partido id_partido="1">
 
             <fecha>2018-02-10</fecha>
             <hora>10:00</hora>
             <lugar>Arriaga</lugar>
 
-            <resultado>
+            <equipo id_equipo="2">
+                <nombre>Equipo1</nombre>
+                <puntuacion>5</puntuacion>
+                <visitante>false</visitante>
+            </equipo>
 
-                <equipo id_equipo="_e2">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>false</visitante>
-                </equipo>
-
-                <equipo id_equipo="_e3">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>true</visitante>
-                </equipo>
-
-            </resultado>
+            <equipo id_equipo="3">
+                <nombre>Equipo1</nombre>
+                <puntuacion>5</puntuacion>
+                <visitante>true</visitante>
+            </equipo>
 
         </partido>
 
-        <partido id_partido="_p2">
+        <partido id_partido="2">
 
             <fecha>2018-02-10</fecha>
             <hora>10:00</hora>
             <lugar>Arriaga</lugar>
 
-            <resultado>
+            <equipo id_equipo="4">
+                <nombre>Equipo1</nombre>
+                <puntuacion>5</puntuacion>
+                <visitante>false</visitante>
+            </equipo>
 
-                <equipo id_equipo="_e4">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>false</visitante>
-                </equipo>
-
-                <equipo id_equipo="_e5">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>true</visitante>
-                </equipo>
-
-            </resultado>
+            <equipo id_equipo="5">
+                <nombre>Equipo1</nombre>
+                <puntuacion>5</puntuacion>
+                <visitante>true</visitante>
+            </equipo>
 
         </partido>
 
-        <partido id_partido="_p3">
+        <partido id_partido="3">
 
             <fecha>2018-02-10</fecha>
             <hora>10:00</hora>
             <lugar>Arriaga</lugar>
 
-            <resultado>
+            <equipo id_equipo="6">
+                <nombre>Equipo1</nombre>
+                <puntuacion>5</puntuacion>
+                <visitante>false</visitante>
+            </equipo>
 
-                <equipo id_equipo="_e6">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>false</visitante>
-                </equipo>
-
-                <equipo id_equipo="_e1">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>true</visitante>
-                </equipo>
-
-            </resultado>
+            <equipo id_equipo="1">
+                <nombre>Equipo1</nombre>
+                <puntuacion>5</puntuacion>
+                <visitante>true</visitante>
+            </equipo>
 
         </partido>
 
     </jornada>
 
-    <jornada id_jornada="_j3">
+    <jornada id_jornada="3">
 
-        <partido id_partido="_p1">
+        <partido id_partido="1">
 
             <fecha>2018-02-10</fecha>
             <hora>10:00</hora>
             <lugar>Arriaga</lugar>
 
-            <resultado>
+            <equipo id_equipo="3">
+                <nombre>Equipo1</nombre>
+                <puntuacion>5</puntuacion>
+                <visitante>false</visitante>
+            </equipo>
 
-                <equipo id_equipo="_e3">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>false</visitante>
-                </equipo>
-
-                <equipo id_equipo="_e4">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>true</visitante>
-                </equipo>
-
-            </resultado>
+            <equipo id_equipo="4">
+                <nombre>Equipo1</nombre>
+                <puntuacion>5</puntuacion>
+                <visitante>true</visitante>
+            </equipo>
 
         </partido>
 
-        <partido id_partido="_p2">
+        <partido id_partido="2">
 
             <fecha>2018-02-10</fecha>
             <hora>10:00</hora>
             <lugar>Arriaga</lugar>
 
-            <resultado>
+            <equipo id_equipo="5">
+                <nombre>Equipo1</nombre>
+                <puntuacion>5</puntuacion>
+                <visitante>false</visitante>
+            </equipo>
 
-                <equipo id_equipo="_e5">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>false</visitante>
-                </equipo>
-
-                <equipo id_equipo="_e6">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>true</visitante>
-                </equipo>
-
-            </resultado>
+            <equipo id_equipo="6">
+                <nombre>Equipo1</nombre>
+                <puntuacion>5</puntuacion>
+                <visitante>true</visitante>
+            </equipo>
 
         </partido>
 
-        <partido id_partido="_p3">
+        <partido id_partido="3">
 
             <fecha>2018-02-10</fecha>
             <hora>10:00</hora>
             <lugar>Arriaga</lugar>
 
-            <resultado>
+            <equipo id_equipo="1">
+                <nombre>Equipo1</nombre>
+                <comentario>dsfszfSzfv</comentario>
+                <puntuacion>5</puntuacion>
+                <visitante>false</visitante>
+            </equipo>
 
-                <equipo id_equipo="_e1">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>false</visitante>
-                </equipo>
-
-                <equipo id_equipo="_e2">
-                    <nombre>Equipo1</nombre>
-                    <fecha_creacion>2018-02-01</fecha_creacion>
-                    <comentario></comentario>
-                    <puntuacion>5</puntuacion>
-                    <visitante>true</visitante>
-                </equipo>
-
-            </resultado>
+            <equipo id_equipo="2">
+                <nombre>Equipo1</nombre>
+                <comentario>SFSVrSzrvzr</comentario>
+                <puntuacion>5</puntuacion>
+                <visitante>true</visitante>
+            </equipo>
 
         </partido>
 

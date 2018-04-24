@@ -3,9 +3,13 @@ package UML;
 import java.util.ArrayList;
 
 public class Jornada {
-    private int idJornada;    
+    private int idJornada;
     
     private ArrayList<Partido> listaPartidos;
+
+    public Jornada() {
+        listaPartidos = new ArrayList();
+    }
 
     public int getIdJornada() {
         return idJornada;
