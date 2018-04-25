@@ -14,9 +14,56 @@ public class VJugador extends javax.swing.JDialog {
     /**
      * Creates new form VJugador
      */
-    public VJugador(java.awt.Frame parent, boolean modal) {
+    public VJugador(java.awt.Frame parent, boolean modal, String tipo) {
         super(parent, modal);
         initComponents();
+        switch(tipo)
+        {
+            case "alta":
+                bBuscar.setEnabled(false);
+                ftfSueldo.setEnabled(false);
+                alta=true;
+                baja=false;
+                modificacion=false;
+                listado=false;
+                break;
+            case "baja":
+                tfNombre.setEnabled(false);
+                tfApellido1.setEnabled(false);
+                tfApellido2.setEnabled(false);
+                tfNickname.setEnabled(false);
+                ftfSueldo.setEnabled(false);
+                taComentario.setEnabled(false);
+                bAceptar.setEnabled(false);
+                alta=false;
+                baja=true;
+                modificacion=false;
+                listado=false;
+                break;
+            case "modificacion":
+                tfNombre.setEnabled(false);
+                tfApellido1.setEnabled(false);
+                tfApellido2.setEnabled(false);
+                tfNickname.setEnabled(false);
+                ftfSueldo.setEnabled(false);
+                taComentario.setEnabled(false);
+                bAceptar.setEnabled(false);
+                alta=false;
+                baja=false;
+                modificacion=true;
+                listado=false;
+                break;
+            case "listado":
+                bPrimero.setEnabled(true);
+                bAnterior.setEnabled(true);
+                bSiguiente.setEnabled(true);
+                bUltimo.setEnabled(true);
+                alta=false;
+                baja=false;
+                modificacion=false;
+                listado=true;
+                break;                
+        }
     }
 
     /**
@@ -91,12 +138,16 @@ public class VJugador extends javax.swing.JDialog {
         jLabel8.setText("Fecha de alta:");
 
         bPrimero.setText("|<");
+        bPrimero.setEnabled(false);
 
         bAnterior.setText("<");
+        bAnterior.setEnabled(false);
 
         bSiguiente.setText(">");
+        bSiguiente.setEnabled(false);
 
         bUltimo.setText(">|");
+        bUltimo.setEnabled(false);
 
         ftfSueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
 
