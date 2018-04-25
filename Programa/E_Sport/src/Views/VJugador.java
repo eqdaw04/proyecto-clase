@@ -6,6 +6,7 @@ import Excepciones.Excepcion;
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import UML.Jugador;
 
 public class VJugador extends javax.swing.JDialog {
     
@@ -307,6 +308,7 @@ public class VJugador extends javax.swing.JDialog {
         try
         {
             validarNIF();
+            mostrarDatos();
             if(baja)
             {
                 bAceptar.setEnabled(true);
@@ -465,5 +467,15 @@ public class VJugador extends javax.swing.JDialog {
         {
             throw new Excepcion();
         }
+    }
+    
+    private void mostrarDatos() throws Exception {
+        Jugador j =Main.buscarJugador();
+        tfNIF.getText(j.getDni());
+        tfNombre.getText(j.getNombre());
+        tfApellido1.getText(j.getApellido1());
+        tfApellido2.getText(j.getApellido2());
+        ftfSueldo.getText(j.getSueldo());
+        taComentario.getText(j.getComentario());
     }
 }
