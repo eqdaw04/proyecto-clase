@@ -1,15 +1,15 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Views;
 
-import Controladora.Main;
-import javax.swing.JOptionPane;
-import Excepciones.Excepcion;
-import java.util.Calendar;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+/**
+ *
+ * @author 1gdaw11
+ */
 public class VJugador extends javax.swing.JDialog {
-    
-    private boolean alta, baja, modificacion, listado;    
 
     /**
      * Creates new form VJugador
@@ -28,252 +28,21 @@ public class VJugador extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        tfNIF = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        tfNombre = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        tfApellido1 = new javax.swing.JTextField();
-        tfApellido2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        tfNickname = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        taComentario = new javax.swing.JTextArea();
-        bAceptar = new javax.swing.JButton();
-        bCancelar = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        bPrimero = new javax.swing.JButton();
-        bAnterior = new javax.swing.JButton();
-        bSiguiente = new javax.swing.JButton();
-        bUltimo = new javax.swing.JButton();
-        ftfSueldo = new javax.swing.JFormattedTextField();
-        bBuscar = new javax.swing.JButton();
-        cFechaAlta = new org.freixas.jcalendar.JCalendarCombo();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("JUGADOR");
-
-        jLabel2.setText("NIF:");
-
-        jLabel3.setText("Nombre:");
-
-        jLabel4.setText("Apellidos:");
-
-        jLabel5.setText("Nickname:");
-
-        jLabel6.setText("Comentario:");
-
-        taComentario.setColumns(20);
-        taComentario.setRows(5);
-        jScrollPane1.setViewportView(taComentario);
-
-        bAceptar.setText("Aceptar");
-        bAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bAceptarActionPerformed(evt);
-            }
-        });
-
-        bCancelar.setText("Cancelar");
-        bCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCancelarActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setText("Sueldo:");
-
-        jLabel8.setText("Fecha de alta:");
-
-        bPrimero.setText("|<");
-
-        bAnterior.setText("<");
-
-        bSiguiente.setText(">");
-
-        bUltimo.setText(">|");
-
-        ftfSueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-
-        bBuscar.setText("Buscar");
-        bBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bBuscarActionPerformed(evt);
-            }
-        });
-
-        cFechaAlta.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfNickname)
-                            .addComponent(tfApellido2)
-                            .addComponent(tfApellido1)
-                            .addComponent(tfNIF)
-                            .addComponent(tfNombre)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(bAceptar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bCancelar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bPrimero)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bAnterior)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bSiguiente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bUltimo))
-                            .addComponent(jScrollPane1)
-                            .addComponent(ftfSueldo)
-                            .addComponent(cFechaAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bBuscar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfNIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(bBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfNickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(ftfSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(cFechaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAceptar)
-                    .addComponent(bCancelar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bPrimero)
-                    .addComponent(bAnterior)
-                    .addComponent(bSiguiente)
-                    .addComponent(bUltimo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-        // TODO add your handling code here:
-       try
-       {
-           if(alta)
-           {
-               validarNIF();
-               validarDatos();
-               // Main.altaJugador(tfNIF.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
-           }
-           else
-           {
-               if(baja)
-               {
-                   // Main.bajaJugador(tfNIF.getText());
-               }
-               else
-               {
-                   if(modificacion)
-                   {
-                       validarDatos();
-                       // Main.modificarJugador(tfNIF.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
-                   }
-               }
-           }
-       }
-       catch (Excepcion e)
-       {
-           JOptionPane.showMessageDialog(this, e.getMensaje(), "Error", 0);
-       }
-       catch (Exception e)
-       {
-           JOptionPane.showMessageDialog(this, e.getClass());
-       }
-       
-    }//GEN-LAST:event_bAceptarActionPerformed
-
-    private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        // TODO add your handling code here:
-        // Main.cerrar(this);
-    }//GEN-LAST:event_bCancelarActionPerformed
-
-    private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
-        // TODO add your handling code here:
-        try
-        {
-            validarNIF();
-            if(modificacion)
-            {
-                tfNombre.setEnabled(true);
-                tfApellido1.setEnabled(true);
-                tfApellido2.setEnabled(true);
-                tfNickname.setEnabled(true);
-                ftfSueldo.setEnabled(true);
-                taComentario.setEnabled(true);
-                bAceptar.setEnabled(true);
-            }
-        }
-       catch (Excepcion e)
-       {
-           JOptionPane.showMessageDialog(this, e.getMensaje(), "Error", 0);
-       }
-       catch (Exception e)
-       {
-           JOptionPane.showMessageDialog(this, e.getClass());
-       }
-    }//GEN-LAST:event_bBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -318,86 +87,5 @@ public class VJugador extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bAceptar;
-    private javax.swing.JButton bAnterior;
-    private javax.swing.JButton bBuscar;
-    private javax.swing.JButton bCancelar;
-    private javax.swing.JButton bPrimero;
-    private javax.swing.JButton bSiguiente;
-    private javax.swing.JButton bUltimo;
-    private org.freixas.jcalendar.JCalendarCombo cFechaAlta;
-    private javax.swing.JFormattedTextField ftfSueldo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea taComentario;
-    private javax.swing.JTextField tfApellido1;
-    private javax.swing.JTextField tfApellido2;
-    private javax.swing.JTextField tfNIF;
-    private javax.swing.JTextField tfNickname;
-    private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
-    
-    private void validarNIF() throws Exception {
-        if(tfNIF.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        Pattern p=Pattern.compile(tfNIF.getText());
-        Matcher m=p.matcher("^[A-Z0-9][0-9]{7}[A-Z]$");
-        if(!m.matches())
-        {
-            throw new Excepcion();
-        }
-        if(alta)
-        {
-            /*if(Main.buscarNIF(tfNIF.getText()))
-            {
-                throw new Excepcion();
-            }*/
-        }
-        else
-        {
-            /*if(!Main.buscarNIF(tfNIF.getText()))
-            {
-                throw new Excepcion();
-            }*/
-        }
-    }
-    
-    private void validarDatos() throws Exception {
-        if(tfNombre.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        if(tfApellido1.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        if(tfApellido2.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        if(tfNickname.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        if(modificacion)
-        {
-            if(ftfSueldo.getText().equals("Unparseable number: \"\""))
-            {
-                throw new Excepcion();
-            }
-        }
-        if(taComentario.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-    }
 }
