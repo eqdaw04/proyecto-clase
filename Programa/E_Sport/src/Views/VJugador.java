@@ -21,7 +21,6 @@ public class VJugador extends javax.swing.JDialog {
         {
             case "alta":
                 bBuscar.setEnabled(false);
-                ftfSueldo.setEnabled(false);
                 alta=true;
                 baja=false;
                 modificacion=false;
@@ -32,7 +31,6 @@ public class VJugador extends javax.swing.JDialog {
                 tfApellido1.setEnabled(false);
                 tfApellido2.setEnabled(false);
                 tfNickname.setEnabled(false);
-                ftfSueldo.setEnabled(false);
                 taComentario.setEnabled(false);
                 bAceptar.setEnabled(false);
                 alta=false;
@@ -45,7 +43,6 @@ public class VJugador extends javax.swing.JDialog {
                 tfApellido1.setEnabled(false);
                 tfApellido2.setEnabled(false);
                 tfNickname.setEnabled(false);
-                ftfSueldo.setEnabled(false);
                 taComentario.setEnabled(false);
                 bAceptar.setEnabled(false);
                 alta=false;
@@ -54,10 +51,12 @@ public class VJugador extends javax.swing.JDialog {
                 listado=false;
                 break;
             case "listado":
-                bPrimero.setEnabled(true);
-                bAnterior.setEnabled(true);
-                bSiguiente.setEnabled(true);
-                bUltimo.setEnabled(true);
+                tfNombre.setEnabled(false);
+                tfApellido1.setEnabled(false);
+                tfApellido2.setEnabled(false);
+                tfNickname.setEnabled(false);
+                taComentario.setEnabled(false);
+                bAceptar.setEnabled(false);
                 alta=false;
                 baja=false;
                 modificacion=false;
@@ -150,6 +149,7 @@ public class VJugador extends javax.swing.JDialog {
         bUltimo.setEnabled(false);
 
         ftfSueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        ftfSueldo.setEnabled(false);
 
         bBuscar.setText("Buscar");
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -305,6 +305,10 @@ public class VJugador extends javax.swing.JDialog {
         try
         {
             validarNIF();
+            if(baja)
+            {
+                bAceptar.setEnabled(true);
+            }
             if(modificacion)
             {
                 tfNombre.setEnabled(true);
@@ -313,6 +317,14 @@ public class VJugador extends javax.swing.JDialog {
                 tfNickname.setEnabled(true);
                 ftfSueldo.setEnabled(true);
                 taComentario.setEnabled(true);
+                bAceptar.setEnabled(true);
+            }
+            if(listado)
+            {
+                bPrimero.setEnabled(true);
+                bAnterior.setEnabled(true);
+                bSiguiente.setEnabled(true);
+                bUltimo.setEnabled(true);
             }
         }
        catch (Excepcion e)
