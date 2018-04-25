@@ -58,7 +58,6 @@
                               <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jCalendarCombo1" alignment="0" max="32767" attributes="0"/>
                           <Component id="jFormattedTextField1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -104,10 +103,7 @@
                   <Component id="jFormattedTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCalendarCombo1" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -214,8 +210,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Fecha de alta:"/>
       </Properties>
-    </Component>
-    <Component class="org.freixas.jcalendar.JCalendarCombo" name="jCalendarCombo1">
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
