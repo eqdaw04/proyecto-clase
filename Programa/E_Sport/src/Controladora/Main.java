@@ -6,10 +6,13 @@
 package Controladora;
 
 
+<<<<<<< Updated upstream
 import Recurso.Emparejamiento;
 import UML.Equipo;
 import java.util.ArrayList;
 
+=======
+>>>>>>> Stashed changes
 
 /**
  *
