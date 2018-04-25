@@ -23,6 +23,7 @@ public class Emparejamiento {
     ArrayList <Equipo> lEquipo;
     Jornada[] lJornada;
     Partido[] lPartido;
+    String local, visitante;
     
     public Emparejamiento() {
     }
@@ -40,6 +41,22 @@ public class Emparejamiento {
         int p = e-1;
         lPartido = new Partido[p];
         // establecemos que 1 jornada = 1 semana = 7 días
+        
+        desordenar(e, extraerEquipo());
+    }
+    
+    public String extraerEquipo(){
+        String dato = "";
+        for(int x = 1; x < lEquipo.size()+1 ; x++){
+            
+            for(int y = 1+x; y< lEquipo.size()+1 ; y++){
+                dato += x + "x" + y + " ";
+            }
+        }
+        return dato;
+    }
+    
+    public void desordenar(int e, String excluir){
         //desordenar numero equipo
         Collections.shuffle(lEquipo);
         //random del rango del tamaño del array para seleccionar una posicion aleatoria del array para el primer array
@@ -51,7 +68,8 @@ public class Emparejamiento {
             a2 = rand.nextInt(e-1);
         }
         while(a2==a1);
-        String dato = "Equipos:\n";
+        local = "";
+        visitante = "";
         int n = 0;
         for(int x = a1+1; x!=a1; x++){
             if(x==lEquipo.size()){
@@ -61,25 +79,44 @@ public class Emparejamiento {
             if((a1+n) == lEquipo.size()){
                 n = a1/-1;
             }
-            dato += asignarEquipo(a1+n,a2) + "\n";
+             asignarEquipo(a1+n,a2, excluir);
             n++;
         }
-        JOptionPane.showMessageDialog(null, dato);
-        
+         asignarEquipo(a1-1,a2, excluir);
+        JOptionPane.showMessageDialog(null, "Local: " + local + "\nVisitante: " + visitante);
     }
     
-    public String asignarEquipo(int a1, int a2){
-        String dato = "";
-        dato += lEquipo.get(a1).getIdEquipo() + "vs" + lEquipo.get(a2).getIdEquipo() + "   ";
+    public void asignarEquipo(int a1, int a2, String excluir){
+
+        if(lEquipo.get(a1) != lEquipo.get(a2)){
+            String valor = lEquipo.get(a1).getIdEquipo() + "x" + lEquipo.get(a2).getIdEquipo() + " ";
+            if(excluir.contains(valor)){
+                local += valor;
+            }
+            else{
+                visitante += valor;
+            }
+            
+        }
+        
         for(int x = a2+1; x!=a2 ; x++){
             if(x==lEquipo.size()){
                 x=0;
             }
             if(lEquipo.get(a1) != lEquipo.get(x)){
-                dato += lEquipo.get(a1).getIdEquipo() + "vs" + lEquipo.get(x).getIdEquipo() + "   ";
+                
+                String valor = lEquipo.get(a1).getIdEquipo() + "x" + lEquipo.get(x).getIdEquipo() + " ";
+                if(excluir.contains(valor)){
+                    local += valor;
+                }
+                else{
+                    visitante += valor;
+                }
+                
+                
             }
         }
-        return dato;
+        //return dato;
     }
 
 }
