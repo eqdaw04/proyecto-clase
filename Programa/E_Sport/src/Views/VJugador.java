@@ -15,57 +15,9 @@ public class VJugador extends javax.swing.JDialog {
     /**
      * Creates new form VJugador
      */
-    public VJugador(java.awt.Frame parent, boolean modal, String tipo) {
+    public VJugador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        // Vista inicial dependiendo si es alta, baja, modificación o listado.
-        switch(tipo)
-        {
-            case "alta":
-                bBuscar.setEnabled(false);
-                alta=true;
-                baja=false;
-                modificacion=false;
-                listado=false;
-                break;
-            case "baja":
-                tfNombre.setEnabled(false);
-                tfApellido1.setEnabled(false);
-                tfApellido2.setEnabled(false);
-                tfNickname.setEnabled(false);
-                taComentario.setEnabled(false);
-                bAceptar.setEnabled(false);
-                alta=false;
-                baja=true;
-                modificacion=false;
-                listado=false;
-                break;
-            case "modificacion":
-                tfNombre.setEnabled(false);
-                tfApellido1.setEnabled(false);
-                tfApellido2.setEnabled(false);
-                tfNickname.setEnabled(false);
-                taComentario.setEnabled(false);
-                bAceptar.setEnabled(false);
-                alta=false;
-                baja=false;
-                modificacion=true;
-                listado=false;
-                break;
-            case "listado":
-                tfNombre.setEnabled(false);
-                tfApellido1.setEnabled(false);
-                tfApellido2.setEnabled(false);
-                tfNickname.setEnabled(false);
-                taComentario.setEnabled(false);
-                bAceptar.setEnabled(false);
-                alta=false;
-                baja=false;
-                modificacion=false;
-                listado=true;
-                break;                
-        }
     }
 
     /**
@@ -470,12 +422,12 @@ public class VJugador extends javax.swing.JDialog {
     }
     
     private void mostrarDatos() throws Exception {
-        Jugador j =Main.buscarJugador();
+        /*Jugador j =Main.buscarJugador();
         tfNIF.getText(j.getDni());
         tfNombre.getText(j.getNombre());
         tfApellido1.getText(j.getApellido1());
         tfApellido2.getText(j.getApellido2());
         ftfSueldo.getText(j.getSueldo());
-        taComentario.getText(j.getComentario());
+        taComentario.getText(j.getComentario());*/
     }
 }
