@@ -19,6 +19,45 @@ public class VJugador extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
+    
+    public VJugador(java.awt.Frame parent, boolean modal, String tipo) {
+        super(parent, modal);
+        initComponents();
+        switch(tipo)
+        {
+            case "alta":
+                alta=true;
+                baja=false;
+                modificacion=false;
+                listado=false;
+                tfNombre.setEnabled(true);
+                tfApellido1.setEnabled(true);
+                tfApellido2.setEnabled(true);
+                tfNickname.setEnabled(true);
+                taComentario.setEnabled(true);
+                bAceptar.setEnabled(true);
+                bBuscar.setEnabled(false);
+                break;
+            case "baja":
+                alta=false;
+                baja=true;
+                modificacion=false;
+                listado=false;
+                break;
+            case "modificacion":
+                alta=false;
+                baja=false;
+                modificacion=true;
+                listado=false;
+                break;
+            case "listado":
+                alta=false;
+                baja=false;
+                modificacion=false;
+                listado=true;
+                break;
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,17 +102,27 @@ public class VJugador extends javax.swing.JDialog {
 
         jLabel3.setText("Nombre:");
 
+        tfNombre.setEnabled(false);
+
         jLabel4.setText("Apellidos:");
 
+        tfApellido1.setEnabled(false);
+
+        tfApellido2.setEnabled(false);
+
         jLabel5.setText("Nickname:");
+
+        tfNickname.setEnabled(false);
 
         jLabel6.setText("Comentario:");
 
         taComentario.setColumns(20);
         taComentario.setRows(5);
+        taComentario.setEnabled(false);
         jScrollPane1.setViewportView(taComentario);
 
         bAceptar.setText("Aceptar");
+        bAceptar.setEnabled(false);
         bAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAceptarActionPerformed(evt);
