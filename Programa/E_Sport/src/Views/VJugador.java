@@ -17,6 +17,8 @@ public class VJugador extends javax.swing.JDialog {
     public VJugador(java.awt.Frame parent, boolean modal, String tipo) {
         super(parent, modal);
         initComponents();
+        
+        // Vista inicial dependiendo si es alta, baja, modificación o listado.
         switch(tipo)
         {
             case "alta":
@@ -417,6 +419,7 @@ public class VJugador extends javax.swing.JDialog {
         {
             throw new Excepcion();
         }
+        // Validar NIF para ver si existe algún NIF con ese número
         if(alta)
         {
             /*if(Main.buscarNIF(tfNIF.getText()))
@@ -424,6 +427,7 @@ public class VJugador extends javax.swing.JDialog {
                 throw new Excepcion();
             }*/
         }
+        // Validar NIF para ver si no existe algún NIF con ese número
         else
         {
             /*if(!Main.buscarNIF(tfNIF.getText()))
