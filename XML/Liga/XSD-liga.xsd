@@ -4,24 +4,24 @@
 
 <xs:complexType name="tipo_liga">
     <xs:sequence>
-        <xs:element name="fecha_expiracion" type="xs:date"></xs:element>
-        <xs:element name="jornada" type="tipo_jornada" maxOccurs="16"></xs:element> <!-- MIRAR!!-->
+        <xs:element name="fecha_expiracion" type="xs:date"/>
+        <xs:element name="jornada" type="tipo_jornada" maxOccurs="unbounded"/>
     </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="tipo_jornada">
     <xs:sequence>
-        <xs:element name="partido" type="tipo_partido"  maxOccurs="8"></xs:element>
+        <xs:element name="partido" type="tipo_partido"  maxOccurs="8"/>
     </xs:sequence>
-    <xs:attribute name="id_jornada" type="xs:int"></xs:attribute>
+    <xs:attribute name="id_jornada" type="xs:int"/>
 </xs:complexType>
 
 <xs:complexType name="tipo_partido">
     <xs:sequence>
-        <xs:element name="fecha" type="xs:date"></xs:element>
-        <xs:element name="hora" minOccurs="0"></xs:element>
-        <xs:element name="lugar" type="xs:string"></xs:element>
-        <xs:element name="equipo" type="tipo_equipo"  maxOccurs="2"></xs:element>
+        <xs:element name="fecha" type="xs:date"/>
+        <xs:element name="hora" minOccurs="0"/>
+        <xs:element name="lugar" type="xs:string"/>
+        <xs:element name="equipo" type="tipo_equipo"  maxOccurs="2"/>
     </xs:sequence>
     <xs:attribute name="id_partido" type="xs:int"/> 
 </xs:complexType>
