@@ -98,7 +98,7 @@ public class VJugador extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("JUGADOR");
 
-        jLabel2.setText("NIF:");
+        jLabel2.setText("DNI:");
 
         jLabel3.setText("Nombre:");
 
