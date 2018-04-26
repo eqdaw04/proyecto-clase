@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class Emparejamiento {
     
-    int diaInicio, diaFinal;
+    int diaInicio;
     ArrayList <Equipo> lEquipo;
     //array local y visitante 
     Equipo[][] lJPEquipoL;
@@ -24,9 +24,8 @@ public class Emparejamiento {
     public Emparejamiento() {
     }
 
-    public Emparejamiento(int diaInicio, int diaFinal, ArrayList<Equipo> lEquipo) {
+    public Emparejamiento(int diaInicio,ArrayList<Equipo> lEquipo) {
         this.diaInicio = diaInicio;
-        this.diaFinal = diaFinal;
         this.lEquipo = lEquipo;
     }
     
@@ -92,13 +91,78 @@ public class Emparejamiento {
                 }
             }
         }
-        String dato = "Equipos:\n";
+        //Prueba de combinación
+        prueba(e, horizontal);
+    }
+    
+    public void prueba(int e, int horizontal){
+        //emplear este código para combinar los equipos en bbdd
+        String dato = "Jornadas 1-" + (e-1) + " Equipos:\n";
+        boolean sumar = true;
+        int dia = diaInicio;
+        int jornada = 1;
+        // comienza a asignar la primera mitad de la liga
         for(int x = 0; x<e-1; x++){
+            dato += "Jornada " + jornada + " compiten: ";
+            sumar = true;
+            int d = 1;
             for(int y = 0; y< horizontal; y++){
+                dato += "Día " + dia + "(" + d + ")" + " ";
                 dato += lJPEquipoL[x][y].getIdEquipo() + "x" + lJPEquipoV[x][y].getIdEquipo() + "   ";
+                if(d==7){
+                    d=0;
+                    sumar=false;
+                }
+                if(sumar){
+                    dia++;
+                } 
+                d++;
             }
             dato += "\n";
+            dia = dia + 8 - d;
+            jornada++;
+        }    
+        // comienza a asignar la segunda mitad de la liga
+        dato += "\nJornadas " + e + "-" + ((e-1)*2) + " Equipos:\n";
+        for(int x = 0; x<e-1; x++){
+            dato += "Jornada " + jornada + " compiten: ";
+            sumar = true;
+            int d = 1;
+            for(int y = 0; y< horizontal; y++){
+                dato += "Día " + dia + "(" + d + ")" + " ";
+                dato += lJPEquipoV[x][y].getIdEquipo() + "x" + lJPEquipoL[x][y].getIdEquipo() + "   ";
+                if(d==7){
+                    d=0;
+                    sumar=false;
+                }
+                if(sumar){
+                    dia++;
+                } 
+                d++;
+            }
+            dato += "\n";
+            dia = dia + 8 - d;
+            jornada++;
         }
         JOptionPane.showMessageDialog(null, dato);
+        
     }
+
+    public Equipo[][] getlJPEquipoL() {
+        return lJPEquipoL;
+    }
+
+    public void setlJPEquipoL(Equipo[][] lJPEquipoL) {
+        this.lJPEquipoL = lJPEquipoL;
+    }
+
+    public Equipo[][] getlJPEquipoV() {
+        return lJPEquipoV;
+    }
+
+    public void setlJPEquipoV(Equipo[][] lJPEquipoV) {
+        this.lJPEquipoV = lJPEquipoV;
+    }
+    
+    
 }
