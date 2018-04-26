@@ -6,6 +6,7 @@ import Excepciones.Excepcion;
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import UML.Jugador;
 
 public class VJugador extends javax.swing.JDialog {
     
@@ -17,6 +18,45 @@ public class VJugador extends javax.swing.JDialog {
     public VJugador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+    
+    public VJugador(java.awt.Frame parent, boolean modal, String tipo) {
+        super(parent, modal);
+        initComponents();
+        switch(tipo)
+        {
+            case "alta":
+                alta=true;
+                baja=false;
+                modificacion=false;
+                listado=false;
+                tfNombre.setEnabled(true);
+                tfApellido1.setEnabled(true);
+                tfApellido2.setEnabled(true);
+                tfNickname.setEnabled(true);
+                taComentario.setEnabled(true);
+                bAceptar.setEnabled(true);
+                bBuscar.setEnabled(false);
+                break;
+            case "baja":
+                alta=false;
+                baja=true;
+                modificacion=false;
+                listado=false;
+                break;
+            case "modificacion":
+                alta=false;
+                baja=false;
+                modificacion=true;
+                listado=false;
+                break;
+            case "listado":
+                alta=false;
+                baja=false;
+                modificacion=false;
+                listado=true;
+                break;
+        }
     }
 
     /**
@@ -62,17 +102,27 @@ public class VJugador extends javax.swing.JDialog {
 
         jLabel3.setText("Nombre:");
 
+        tfNombre.setEnabled(false);
+
         jLabel4.setText("Apellidos:");
 
+        tfApellido1.setEnabled(false);
+
+        tfApellido2.setEnabled(false);
+
         jLabel5.setText("Nickname:");
+
+        tfNickname.setEnabled(false);
 
         jLabel6.setText("Comentario:");
 
         taComentario.setColumns(20);
         taComentario.setRows(5);
+        taComentario.setEnabled(false);
         jScrollPane1.setViewportView(taComentario);
 
         bAceptar.setText("Aceptar");
+        bAceptar.setEnabled(false);
         bAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAceptarActionPerformed(evt);
@@ -91,14 +141,19 @@ public class VJugador extends javax.swing.JDialog {
         jLabel8.setText("Fecha de alta:");
 
         bPrimero.setText("|<");
+        bPrimero.setEnabled(false);
 
         bAnterior.setText("<");
+        bAnterior.setEnabled(false);
 
         bSiguiente.setText(">");
+        bSiguiente.setEnabled(false);
 
         bUltimo.setText(">|");
+        bUltimo.setEnabled(false);
 
         ftfSueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        ftfSueldo.setEnabled(false);
 
         bBuscar.setText("Buscar");
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -254,6 +309,11 @@ public class VJugador extends javax.swing.JDialog {
         try
         {
             validarNIF();
+            mostrarDatos();
+            if(baja)
+            {
+                bAceptar.setEnabled(true);
+            }
             if(modificacion)
             {
                 tfNombre.setEnabled(true);
@@ -263,6 +323,13 @@ public class VJugador extends javax.swing.JDialog {
                 ftfSueldo.setEnabled(true);
                 taComentario.setEnabled(true);
                 bAceptar.setEnabled(true);
+            }
+            if(listado)
+            {
+                bPrimero.setEnabled(true);
+                bAnterior.setEnabled(true);
+                bSiguiente.setEnabled(true);
+                bUltimo.setEnabled(true);
             }
         }
        catch (Excepcion e)
@@ -355,6 +422,7 @@ public class VJugador extends javax.swing.JDialog {
         {
             throw new Excepcion();
         }
+        // Validar NIF para ver si existe algún NIF con ese número
         if(alta)
         {
             /*if(Main.buscarNIF(tfNIF.getText()))
@@ -362,6 +430,7 @@ public class VJugador extends javax.swing.JDialog {
                 throw new Excepcion();
             }*/
         }
+        // Validar NIF para ver si no existe algún NIF con ese número
         else
         {
             /*if(!Main.buscarNIF(tfNIF.getText()))
@@ -399,5 +468,15 @@ public class VJugador extends javax.swing.JDialog {
         {
             throw new Excepcion();
         }
+    }
+    
+    private void mostrarDatos() throws Exception {
+        /*Jugador j =Main.buscarJugador();
+        tfNIF.getText(j.getDni());
+        tfNombre.getText(j.getNombre());
+        tfApellido1.getText(j.getApellido1());
+        tfApellido2.getText(j.getApellido2());
+        ftfSueldo.getText(j.getSueldo());
+        taComentario.getText(j.getComentario());*/
     }
 }

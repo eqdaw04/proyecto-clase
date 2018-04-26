@@ -1,0 +1,9 @@
+<!ELEMENT clasificacion (fecha_expiracion,equipo+)>
+  <!ATTLIST clasificacion
+            CDATA #REQUIRED>
+<!ELEMENT fecha_expiracion (#PCDATA)>
+<!ELEMENT equipo (nombre,puntuacion)+>
+   <!ATTLIST equipo
+           id_equipo CDATA #REQUIRED>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT puntuacion (#PCDATA)>
