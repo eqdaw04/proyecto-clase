@@ -17,18 +17,18 @@ import javax.swing.JOptionPane;
  *
  * @author v6222
  */
-public class Emparejamiento {
+public class EmparejamientoAseguir {
     
     int dia;
     ArrayList <Equipo> lEquipo;
     Jornada[] lJornada;
     Partido[] lPartido;
-    String local, visitante;
+    String base, local, visitante;
     
-    public Emparejamiento() {
+    public EmparejamientoAseguir() {
     }
 
-    public Emparejamiento(int dia, ArrayList<Equipo> listaEquipo) {
+    public EmparejamientoAseguir(int dia, ArrayList<Equipo> listaEquipo) {
         this.dia = dia;
         this.lEquipo = listaEquipo;
     }
@@ -41,11 +41,13 @@ public class Emparejamiento {
         int p = e-1;
         lPartido = new Partido[p];
         // establecemos que 1 jornada = 1 semana = 7 días
-        
-        desordenar(e, extraerEquipo());
+        extraerEquipo();
+        desordenar(e);
     }
     
-    public String extraerEquipo(){
+    
+    
+    public void extraerEquipo(){
         String dato = "";
         for(int x = 1; x < lEquipo.size()+1 ; x++){
             
@@ -53,10 +55,18 @@ public class Emparejamiento {
                 dato += x + "x" + y + " ";
             }
         }
-        return dato;
+        base = dato;
     }
     
-    public void desordenar(int e, String excluir){
+    public boolean comprobarEquipo(String dato){
+        boolean existe = false;
+        if(base.contains(dato)){
+            existe = true;
+        }
+        return existe;
+    }
+    
+    public void desordenar(int e){
         //desordenar numero equipo
         Collections.shuffle(lEquipo);
         //random del rango del tamaño del array para seleccionar una posicion aleatoria del array para el primer array
@@ -68,8 +78,6 @@ public class Emparejamiento {
             a2 = rand.nextInt(e-1);
         }
         while(a2==a1);
-        local = "";
-        visitante = "";
         int n = 0;
         for(int x = a1+1; x!=a1; x++){
             if(x==lEquipo.size()){
@@ -79,24 +87,24 @@ public class Emparejamiento {
             if((a1+n) == lEquipo.size()){
                 n = a1/-1;
             }
-             asignarEquipo(a1+n,a2, excluir);
+            asignarEquipo(a1+n,a2);
             n++;
         }
-         asignarEquipo(a1-1,a2, excluir);
-        JOptionPane.showMessageDialog(null, "Local: " + local + "\nVisitante: " + visitante);
+        asignarEquipo(a1-1,a2);
+        JOptionPane.showMessageDialog(null, visitante);
     }
     
-    public void asignarEquipo(int a1, int a2, String excluir){
-
+    public void asignarEquipo(int a1, int a2){
+        String dato;
         if(lEquipo.get(a1) != lEquipo.get(a2)){
-            String valor = lEquipo.get(a1).getIdEquipo() + "x" + lEquipo.get(a2).getIdEquipo() + " ";
-            if(excluir.contains(valor)){
-                local += valor;
+            dato = lEquipo.get(a1).getIdEquipo() + "x" + lEquipo.get(a2).getIdEquipo();
+            
+            if(comprobarEquipo(dato)){
+                local +=  " " + dato;
             }
             else{
-                visitante += valor;
+                visitante +=  " " + dato;
             }
-            
         }
         
         for(int x = a2+1; x!=a2 ; x++){
@@ -104,19 +112,17 @@ public class Emparejamiento {
                 x=0;
             }
             if(lEquipo.get(a1) != lEquipo.get(x)){
-                
-                String valor = lEquipo.get(a1).getIdEquipo() + "x" + lEquipo.get(x).getIdEquipo() + " ";
-                if(excluir.contains(valor)){
-                    local += valor;
+                dato = lEquipo.get(a1).getIdEquipo() + "x" + lEquipo.get(a2).getIdEquipo();
+                JOptionPane.showMessageDialog(null, dato);
+                if(comprobarEquipo(dato)){
+                    local += " " + dato;
                 }
                 else{
-                    visitante += valor;
+                    visitante +=  " " + dato;
                 }
-                
-                
             }
         }
-        //return dato;
     }
 
+    
 }
