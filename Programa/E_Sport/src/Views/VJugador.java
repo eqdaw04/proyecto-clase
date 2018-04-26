@@ -91,7 +91,7 @@ public class VJugador extends javax.swing.JDialog {
         bUltimo = new javax.swing.JButton();
         ftfSueldo = new javax.swing.JFormattedTextField();
         bBuscar = new javax.swing.JButton();
-        jCalendarCombo1 = new org.freixas.jcalendar.JCalendarCombo();
+        cFechaAlta = new org.freixas.jcalendar.JCalendarCombo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -162,7 +162,7 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
 
-        jCalendarCombo1.setEnabled(false);
+        cFechaAlta.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,7 +201,7 @@ public class VJugador extends javax.swing.JDialog {
                                 .addComponent(bUltimo))
                             .addComponent(jScrollPane1)
                             .addComponent(ftfSueldo)
-                            .addComponent(jCalendarCombo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cFechaAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bBuscar))
                     .addGroup(layout.createSequentialGroup()
@@ -240,7 +240,7 @@ public class VJugador extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jCalendarCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cFechaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
@@ -414,8 +414,8 @@ public class VJugador extends javax.swing.JDialog {
     private javax.swing.JButton bPrimero;
     private javax.swing.JButton bSiguiente;
     private javax.swing.JButton bUltimo;
+    private org.freixas.jcalendar.JCalendarCombo cFechaAlta;
     private javax.swing.JFormattedTextField ftfSueldo;
-    private org.freixas.jcalendar.JCalendarCombo jCalendarCombo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
