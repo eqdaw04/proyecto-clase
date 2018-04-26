@@ -12,6 +12,7 @@ package Excepciones;
 public class Excepcion extends Exception {
     
     int cod;
+    String mensaje;
 
     public Excepcion() {
     }
@@ -20,7 +21,12 @@ public class Excepcion extends Exception {
         this.cod = cod;
     }
     
-    public String getMensaje(){
+    public Excepcion(String mensaje) {
+        this.mensaje = mensaje;
+    }
+    
+    @Override
+    public String getMessage(){
         String dato = "";
         switch(cod){
             case 1:
@@ -32,5 +38,9 @@ public class Excepcion extends Exception {
                 break;
         }
         return dato;
+    }
+    
+    public String getMensaje(){
+        return mensaje;
     }
 }
