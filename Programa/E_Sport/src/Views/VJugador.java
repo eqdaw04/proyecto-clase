@@ -70,7 +70,7 @@ public class VJugador extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        tfNIF = new javax.swing.JTextField();
+        tfDNI = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -98,7 +98,7 @@ public class VJugador extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("JUGADOR");
 
-        jLabel2.setText("NIF:");
+        jLabel2.setText("DNI:");
 
         jLabel3.setText("Nombre:");
 
@@ -185,7 +185,7 @@ public class VJugador extends javax.swing.JDialog {
                             .addComponent(tfNickname)
                             .addComponent(tfApellido2)
                             .addComponent(tfApellido1)
-                            .addComponent(tfNIF)
+                            .addComponent(tfDNI)
                             .addComponent(tfNombre)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(bAceptar)
@@ -216,7 +216,7 @@ public class VJugador extends javax.swing.JDialog {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfNIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(bBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -268,22 +268,23 @@ public class VJugador extends javax.swing.JDialog {
        {
            if(alta)
            {
-               validarNIF();
+               validarDNI();
                validarDatos();
-               // Main.altaJugador(tfNIF.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
+               // Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
            }
            else
            {
                if(baja)
                {
-                   // Main.bajaJugador(tfNIF.getText());
+                   // Main.bajaJugador(tfDNI.getText());
                }
                else
                {
                    if(modificacion)
                    {
+                       validarDNI();
                        validarDatos();
-                       // Main.modificarJugador(tfNIF.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
+                       // Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
                    }
                }
            }
@@ -308,28 +309,33 @@ public class VJugador extends javax.swing.JDialog {
         // TODO add your handling code here:
         try
         {
-            validarNIF();
-            mostrarDatos();
-            if(baja)
-            {
-                bAceptar.setEnabled(true);
-            }
-            if(modificacion)
-            {
-                tfNombre.setEnabled(true);
-                tfApellido1.setEnabled(true);
-                tfApellido2.setEnabled(true);
-                tfNickname.setEnabled(true);
-                ftfSueldo.setEnabled(true);
-                taComentario.setEnabled(true);
-                bAceptar.setEnabled(true);
-            }
             if(listado)
             {
-                bPrimero.setEnabled(true);
-                bAnterior.setEnabled(true);
-                bSiguiente.setEnabled(true);
-                bUltimo.setEnabled(true);
+                if(tfDNI.getText().isEmpty())
+                {
+                    bSiguiente.setEnabled(true);
+                    bUltimo.setEnabled(true);
+                }
+                else
+                {
+                    validarDNI();                    
+                }
+                mostrarDatos();
+            }
+            else
+            {
+                validarDNI();
+                mostrarDatos();
+                if(modificacion)
+                {
+                    tfNombre.setEnabled(true);
+                    tfApellido1.setEnabled(true);
+                    tfApellido2.setEnabled(true);
+                    tfNickname.setEnabled(true);
+                    ftfSueldo.setEnabled(true);
+                    taComentario.setEnabled(true);
+                }
+                bAceptar.setEnabled(true);
             }
         }
        catch (Excepcion e)
@@ -341,6 +347,22 @@ public class VJugador extends javax.swing.JDialog {
            JOptionPane.showMessageDialog(this, e.getClass());
        }
     }//GEN-LAST:event_bBuscarActionPerformed
+
+    private void bPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrimeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bPrimeroActionPerformed
+
+    private void bAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnteriorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bAnteriorActionPerformed
+
+    private void bSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSiguienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bSiguienteActionPerformed
+
+    private void bUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUltimoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bUltimoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -406,36 +428,36 @@ public class VJugador extends javax.swing.JDialog {
     private javax.swing.JTextArea taComentario;
     private javax.swing.JTextField tfApellido1;
     private javax.swing.JTextField tfApellido2;
-    private javax.swing.JTextField tfNIF;
+    private javax.swing.JTextField tfDNI;
     private javax.swing.JTextField tfNickname;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
     
-    private void validarNIF() throws Exception {
-        if(tfNIF.getText().isEmpty())
+    private void validarDNI() throws Exception {
+        if(tfDNI.getText().isEmpty())
         {
             throw new Excepcion();
         }
-        Pattern p=Pattern.compile(tfNIF.getText());
+        Pattern p=Pattern.compile(tfDNI.getText());
         Matcher m=p.matcher("^[A-Z0-9][0-9]{7}[A-Z]$");
         if(!m.matches())
         {
             throw new Excepcion();
         }
-        // Validar NIF para ver si existe algún NIF con ese número
+        // Validar DNI para ver si existe algún DNI con ese número
         if(alta)
         {
-            /*if(Main.buscarNIF(tfNIF.getText()))
+            /*if(Main.buscarDNI(tfDNI.getText()))
             {
-                throw new Excepcion();
+                throw new Excepcion("Ya existe un jugador con ese DNI.");
             }*/
         }
-        // Validar NIF para ver si no existe algún NIF con ese número
+        // Validar DNI para ver si no existe algún DNI con ese número
         else
         {
-            /*if(!Main.buscarNIF(tfNIF.getText()))
+            /*if(!Main.buscarDNI(tfDNI.getText()))
             {
-                throw new Excepcion();
+                throw new Excepcion(No existe ningún jugador con ese DNI.);
             }*/
         }
     }
@@ -464,19 +486,17 @@ public class VJugador extends javax.swing.JDialog {
                 throw new Excepcion();
             }
         }
-        if(taComentario.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
     }
     
     private void mostrarDatos() throws Exception {
         /*Jugador j =Main.buscarJugador();
-        tfNIF.getText(j.getDni());
-        tfNombre.getText(j.getNombre());
-        tfApellido1.getText(j.getApellido1());
-        tfApellido2.getText(j.getApellido2());
-        ftfSueldo.getText(j.getSueldo());
-        taComentario.getText(j.getComentario());*/
+        tfDNI.setText(j.getDni());
+        tfNombre.setText(j.getNombre());
+        tfApellido1.setText(j.getApellido1());
+        tfApellido2.setText(j.getApellido2());
+        ftfSueldo.setText(String.valueOf(j.getSueldo()));        
+        cFechaAlta.setDate(j.getFechaAlta());
+        tfEquipo.setText(j.getEquipo().getNombre());
+        taComentario.setText(j.getComentario());*/
     }
 }
