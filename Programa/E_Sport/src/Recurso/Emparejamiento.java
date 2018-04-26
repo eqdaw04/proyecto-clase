@@ -6,11 +6,7 @@
 package Recurso;
 
 import UML.Equipo;
-import UML.Jornada;
-import UML.Partido;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,104 +15,90 @@ import javax.swing.JOptionPane;
  */
 public class Emparejamiento {
     
-    int dia;
+    int diaInicio, diaFinal;
     ArrayList <Equipo> lEquipo;
-    Jornada[] lJornada;
-    Partido[] lPartido;
-    String local, visitante;
+    //array local y visitante 
+    Equipo[][] lJPEquipoL;
+    Equipo[][] lJPEquipoV;
     
     public Emparejamiento() {
     }
 
-    public Emparejamiento(int dia, ArrayList<Equipo> listaEquipo) {
-        this.dia = dia;
-        this.lEquipo = listaEquipo;
+    public Emparejamiento(int diaInicio, int diaFinal, ArrayList<Equipo> lEquipo) {
+        this.diaInicio = diaInicio;
+        this.diaFinal = diaFinal;
+        this.lEquipo = lEquipo;
     }
     
     public void calcularPartido(){
         int e = lEquipo.size();
-        // obtener numero de jornadas, partidos y crear Array
-        int j = (e-1)*2;
-        lJornada = new Jornada[j];
-        int p = e-1;
-        lPartido = new Partido[p];
-        // establecemos que 1 jornada = 1 semana = 7 días
-        
-        desordenar(e, extraerEquipo());
+        // obtener numero de jornadas, partidos, si es impar añadir 1 numero equipo fantasma y crear Array
+        if(e%2!=0){
+            // si el equipo es impar, se añade un equipo fantasma
+            Equipo f = new Equipo();
+            f.setNombre("DESCANSO");
+            lEquipo.add(f);
+            e = lEquipo.size();
+        }
+        int j = (e-1);
+        int p = e/2;
+        lJPEquipoL = new Equipo[j][p];
+        lJPEquipoV = new Equipo[j][p];
+        // rellenar array con los equipos
+        llenarArray(j, p, e);
     }
     
-    public String extraerEquipo(){
-        String dato = "";
-        for(int x = 1; x < lEquipo.size()+1 ; x++){
-            
-            for(int y = 1+x; y< lEquipo.size()+1 ; y++){
-                dato += x + "x" + y + " ";
-            }
-        }
-        return dato;
-    }
-    
-    public void desordenar(int e, String excluir){
-        //desordenar numero equipo
-        Collections.shuffle(lEquipo);
-        //random del rango del tamaño del array para seleccionar una posicion aleatoria del array para el primer array
-        Random rand = new Random();
-        int a1 = rand.nextInt(e-1);
-        //random igual al anterior excluyendo el número a1
-        int a2;
-        do{
-            a2 = rand.nextInt(e-1);
-        }
-        while(a2==a1);
-        local = "";
-        visitante = "";
-        int n = 0;
-        for(int x = a1+1; x!=a1; x++){
-            if(x==lEquipo.size()){
-                x = 0;
-            }
-            
-            if((a1+n) == lEquipo.size()){
-                n = a1/-1;
-            }
-             asignarEquipo(a1+n,a2, excluir);
-            n++;
-        }
-         asignarEquipo(a1-1,a2, excluir);
-        JOptionPane.showMessageDialog(null, "Local: " + local + "\nVisitante: " + visitante);
-    }
-    
-    public void asignarEquipo(int a1, int a2, String excluir){
-
-        if(lEquipo.get(a1) != lEquipo.get(a2)){
-            String valor = lEquipo.get(a1).getIdEquipo() + "x" + lEquipo.get(a2).getIdEquipo() + " ";
-            if(excluir.contains(valor)){
-                local += valor;
+    public void llenarArray(int j, int p, int e){
+        //Algoritmo de construccion de equipos
+        for(int x = 0; x<j; x++){
+            if(x%2==0){
+                lJPEquipoV[x][0] = lEquipo.get(e-1);
             }
             else{
-                visitante += valor;
+                lJPEquipoL[x][0] = lEquipo.get(e-1);
             }
-            
         }
-        
-        for(int x = a2+1; x!=a2 ; x++){
-            if(x==lEquipo.size()){
-                x=0;
-            }
-            if(lEquipo.get(a1) != lEquipo.get(x)){
-                
-                String valor = lEquipo.get(a1).getIdEquipo() + "x" + lEquipo.get(x).getIdEquipo() + " ";
-                if(excluir.contains(valor)){
-                    local += valor;
+        // Completar asignar equipos locales omitiendo array puesto 0, array[x][0 omitido]
+        int horizontal = 0;
+        horizontal = lJPEquipoL[0].length;
+        int c = 0;
+        for(int x = 0; x<e-1; x++){
+            for(int y = 1; y< horizontal; y++){
+                lJPEquipoL[x][y] = lEquipo.get(c);
+                if(c == e-2){
+                    c = 0;
                 }
                 else{
-                    visitante += valor;
+                    c ++;
                 }
-                
-                
             }
         }
-        //return dato;
+        //completar array visitante
+        c = e-2;
+        for(int x = 0; x<e-1; x++){
+            for(int y = 0; y< horizontal; y++){
+                //comprobar si visitante está libre, afirmativo llenar equipo, negativo saltar a rellenar local
+                if(lJPEquipoV[x][y] == null){
+                    lJPEquipoV[x][y] = lEquipo.get(c);
+                }
+                else{
+                    lJPEquipoL[x][y] = lEquipo.get(c);
+                }
+                if(c == 0){
+                    c = e-2;
+                }
+                else{
+                    c --;
+                }
+            }
+        }
+        String dato = "Equipos:\n";
+        for(int x = 0; x<e-1; x++){
+            for(int y = 0; y< horizontal; y++){
+                dato += lJPEquipoL[x][y].getIdEquipo() + "x" + lJPEquipoV[x][y].getIdEquipo() + "   ";
+            }
+            dato += "\n";
+        }
+        JOptionPane.showMessageDialog(null, dato);
     }
-
 }
