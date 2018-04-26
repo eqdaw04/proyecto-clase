@@ -92,10 +92,11 @@ public class Emparejamiento {
             }
         }
         //Prueba de combinación
-        prueba(e, horizontal);
+        JOptionPane.showMessageDialog(null, "El último día de partido es el " + prueba(e, horizontal));
+        
     }
     
-    public void prueba(int e, int horizontal){
+    public int prueba(int e, int horizontal){
         //emplear este código para combinar los equipos en bbdd
         String dato = "Jornadas 1-" + (e-1) + " Equipos:\n";
         boolean sumar = true;
@@ -141,11 +142,14 @@ public class Emparejamiento {
                 d++;
             }
             dato += "\n";
-            dia = dia + 8 - d;
+            if(x!=e-2){
+                dia = dia + 8 - d;
+            }
             jornada++;
         }
         JOptionPane.showMessageDialog(null, dato);
-        
+        dia--;
+        return dia;
     }
 
     public Equipo[][] getlJPEquipoL() {
