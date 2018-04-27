@@ -1,16 +1,27 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Views;
 
 import Controladora.Main;
 import Excepciones.Excepcion;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
-public class Login extends javax.swing.JDialog {
+/**
+ *
+ * @author v6222
+ */
+public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
-    public Login(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    int error;
+    
+    public Login() {
         initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     /**
@@ -30,7 +41,7 @@ public class Login extends javax.swing.JDialog {
         bSalir = new javax.swing.JButton();
         pfContrasenna = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Bienvenidos a E-Sport");
@@ -100,11 +111,6 @@ public class Login extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
-        // TODO add your handling code here:
-        // Main.cerrar(this);
-    }//GEN-LAST:event_bSalirActionPerformed
-
     private void bAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAccederActionPerformed
         try
         {
@@ -112,7 +118,7 @@ public class Login extends javax.swing.JDialog {
             {
                 throw new Excepcion(1);
             }
-            if (String.copyValueOf(pfContrasenna.getPassword()).isEmpty())
+            else if (String.copyValueOf(pfContrasenna.getPassword()).isEmpty())
             {
                 throw new Excepcion(2);
             }
@@ -125,7 +131,34 @@ public class Login extends javax.swing.JDialog {
         {
             javax.swing.JOptionPane.showMessageDialog(this, e.getClass());
         }
+        finally{
+            if(error == 13){
+                Main.salir(this);
+            }
+        }
+
     }//GEN-LAST:event_bAccederActionPerformed
+
+    public JPasswordField getPfContrasenna() {
+        return pfContrasenna;
+    }
+
+    public JTextField getTfUsuario() {
+        return tfUsuario;
+    }
+
+    public int getError() {
+        return error;
+    }
+
+    public void setError(int error) {
+        this.error = error;
+    }
+    
+    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+        // TODO add your handling code here:
+        // Main.cerrar(this);
+    }//GEN-LAST:event_bSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAcceder;

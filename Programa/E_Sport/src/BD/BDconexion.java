@@ -11,6 +11,7 @@ import javax.swing.*;
  *
  * @author 1gdaw06
  */
+<<<<<<< HEAD:Programa/E_Sport/src/BD/BDconexion.java
 public class BDconexion {
     public static void AbrirBD (){
         try{
@@ -29,4 +30,8 @@ public class BDconexion {
         }
         System.out.println("conexion establecida");
     }
+=======
+public class BDConexion {
+    
+>>>>>>> master:Programa/E_Sport/src/BD/BDConexion.java
 }

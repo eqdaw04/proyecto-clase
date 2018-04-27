@@ -5,6 +5,8 @@
  */
 package Excepciones;
 
+import Controladora.Main;
+
 /**
  *
  * @author v6222
@@ -64,6 +66,22 @@ public class Excepcion extends Exception {
             case 9:
                 dato = "Debe seleccionar un perfil.";
                 break;
+                
+            case 10:
+                dato = "No has introducido el sueldo del jugador.";
+                break;
+                
+            case 11:
+                dato = "Seleccione si es un Alta o una Baja.";
+                break;
+                
+            case 12:
+                dato = "Los datos de login son incorrectos.";
+                break;
+                
+            case 13:
+                dato = "Has superado el límite de intentos.";
+                break;
         }
         return dato;
     }
@@ -71,4 +89,10 @@ public class Excepcion extends Exception {
     public String getMensaje(){
         return mensaje;
     }
+
+    public int getCod() {
+        return cod;
+    }
+    
+    
 }

@@ -386,7 +386,7 @@ public class VEquipo extends javax.swing.JDialog {
     
     private void validarNombre() throws Exception {
         // Validar nombre para ver si existe algún equipo con ese nombre
-        ValidacionDeDatosDeEntrada.validar(4, tfNombre, "^[A-Z][a-z]{2,}$");
+        ValidacionDeDatosDeEntrada.validar(4, tfNombre);
         
         if(alta)
         {
