@@ -6,7 +6,10 @@
 package Controladora;
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 import Recurso.Emparejamiento;
 import UML.*;
 import BD.*;
@@ -18,7 +21,10 @@ import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 
 /**
  *
