@@ -1,4 +1,1 @@
-# eqdaw04
-Proyecto Reto.
-
-# [WordPress](http://10.1.11.1)
+# [EQDAW04](http://10.1.11.1)
