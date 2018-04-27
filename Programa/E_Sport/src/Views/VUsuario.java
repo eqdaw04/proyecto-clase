@@ -3,10 +3,11 @@ package Views;
 import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
-import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import UML.Persona;
+import java.awt.Color;
+import javax.swing.JTextField;
 
 public class VUsuario extends javax.swing.JDialog {
     
@@ -15,21 +16,21 @@ public class VUsuario extends javax.swing.JDialog {
     /**
      * Creates new form VUsuario
      */
-    public VUsuario(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+
+    public VUsuario(String tipo) {
         initComponents();
-    }
-    
-    public VUsuario(java.awt.Frame parent, boolean modal, String tipo) {
-        super(parent, modal);
-        initComponents();
+        setModal(true);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        //mostrar opciones según tipo de operaciones CRUD que se quiera realizar
+        alta=false;
+        baja=false;
+        modificacion=false;
+        listado=false;
         switch(tipo)
         {
             case "alta":
                 alta=true;
-                baja=false;
-                modificacion=false;
-                listado=false;
                 tfNombre.setEnabled(true);
                 tfApellido1.setEnabled(true);
                 tfApellido2.setEnabled(true);
@@ -39,21 +40,12 @@ public class VUsuario extends javax.swing.JDialog {
                 bBuscar.setEnabled(false);
                 break;
             case "baja":
-                alta=false;
                 baja=true;
-                modificacion=false;
-                listado=false;
                 break;
             case "modificacion":
-                alta=false;
-                baja=false;
                 modificacion=true;
-                listado=false;
                 break;
             case "listado":
-                alta=false;
-                baja=false;
-                modificacion=false;
                 listado=true;
                 break;
         }
@@ -206,57 +198,51 @@ public class VUsuario extends javax.swing.JDialog {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(47, 47, 47)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(tfApellido2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfApellido1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pfContrasenna, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                    .addComponent(tfEmail))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bBuscar))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(bAceptar)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(bCancelar))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(bPrimero)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(bAnterior)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(bSiguiente)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(bUltimo)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(cbEquipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(cFechaAlta, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                            .addComponent(cbPerfil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bBuscarEquipos))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addGap(24, 24, 24)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cFechaAlta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tfApellido2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                                    .addComponent(tfApellido1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pfContrasenna, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfEmail))
+                                .addGap(18, 18, 18)
+                                .addComponent(bBuscar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(bPrimero)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(bAnterior)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(bSiguiente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(bUltimo))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(bAceptar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(bCancelar))
+                                    .addComponent(cbEquipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(bBuscarEquipos)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -308,8 +294,8 @@ public class VUsuario extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bPrimero)
                     .addComponent(bAnterior)
-                    .addComponent(bSiguiente)
-                    .addComponent(bUltimo))
+                    .addComponent(bUltimo)
+                    .addComponent(bSiguiente))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -322,22 +308,57 @@ public class VUsuario extends javax.swing.JDialog {
         {
             if(alta)
             {
-                validarUsuario();
-                validarDatos();
+                // comprobar todos los campos si cumple con las condiciones, si cumple, procede el alta
+                validar(7, tfUsuario, "^[A-Za-z]{3,}$");
+                validar(8, pfContrasenna, "^[A-Za-z0-9]{3,}$");
+                validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
+                validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
+                if(tfApellido2.getText()!= null){
+                   validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
+                }
+                validar(6, tfEmail, "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$");
+                if(cbPerfil.getSelectedIndex() == -1){
+                    throw new Excepcion(9);
+                }
+                /*if(Main.buscarUsuario(tfUsuario.getText()))
+                {
+                    throw new Excepcion("Ya existe un usuario con ese nombre.");
+                }*/
                 // Main.altaUsuario(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), cFechaAlta.getDate(), String.valueOf(cbPerfil.getSelectedItem()), String.valueOf(cbEquipo.getSelectedItem()));
             }
             else
             {
+                // 
                 if(baja)
                 {
+                    //proceso de baja, sólo si existe el dni de la persona.
+                    /*if(!Main.buscarUsuario(tfUsuario.getText()))
+                        {
+                            throw new Excepcion(No existe ningún usuario con ese nombre.);
+                        }*/
                     // Main.bajaUsuario(tfUsuario.getText());
                 }
                 else
                 {
                     if(modificacion)
                     {
-                        validarUsuario();
-                        validarDatos();
+                        // comprobar todos los campos si cumple con las condiciones, si cumple, procede la modificación.
+                        validar(7, tfUsuario, "^[A-Za-z]{3,}$");
+                        validar(8, pfContrasenna, "^[A-Za-z0-9]{3,}$");
+                        validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
+                        validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
+                        if(tfApellido2.getText()!= null){
+                           validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
+                        }
+                        validar(6, tfEmail, "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$");
+                        if(cbPerfil.getSelectedIndex() == -1){
+                            throw new Excepcion(9);
+                        }
+                        //comprobar si existe el usuario
+                        /*if(!Main.buscarUsuario(tfUsuario.getText()))
+                        {
+                            throw new Excepcion(No existe ningún usuario con ese nombre.);
+                        }*/
                         // Main.modificarUsuario(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), String.valueOf(cbPerfil.getSelectedItem()), String.valueOf(cbEquipo.getSelectedItem()));
                     }
                 }
@@ -377,33 +398,43 @@ public class VUsuario extends javax.swing.JDialog {
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
         // TODO add your handling code here:
+        //búsqueda por nombre de usuario
         try
         {
             if(listado)
             {
+                //si ha entrado con opción de listado y no introduce el usuario a buscar, se carga una tabla interna de usuarios para poder recorrerla mediante los botones direccionales.
+                //si rellena campo usuario, se carga únicamente el usuario introducido
                 if(tfUsuario.getText().isEmpty())
                 {
+                    bPrimero.setEnabled(true);
+                    bAnterior.setEnabled(true);
                     bSiguiente.setEnabled(true);
                     bUltimo.setEnabled(true);
                 }
                 else
                 {
-                    validarUsuario();
+                    /*if(!Main.buscarUsuario(tfUsuario.getText()))
+                        {
+                            throw new Excepcion(No existe ningún usuario con ese nombre.);
+                        }*/
                 }
                 mostrarDatos();
             }
             else
             {
-                validarUsuario();
+                // consulta el usuario, si existe, carga los datos para modificarlo.
+                /*if(!Main.buscarUsuario(tfUsuario.getText()))
+                        {
+                            throw new Excepcion(No existe ningún usuario con ese nombre.);
+                        }*/
                 mostrarDatos();
-                if(modificacion)
-                {
-                    tfNombre.setEnabled(true);
-                    tfApellido1.setEnabled(true);
-                    tfApellido2.setEnabled(true);
-                    tfEmail.setEnabled(true);
-                    cbPerfil.setEnabled(true);
-                }
+                tfNombre.setEnabled(true);
+                tfApellido1.setEnabled(true);
+                tfApellido2.setEnabled(true);
+                tfEmail.setEnabled(true);
+                cbPerfil.setEnabled(true);
+                
                 bAceptar.setEnabled(true);
             }
         }
@@ -418,7 +449,7 @@ public class VUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_bBuscarActionPerformed
 
     private void bBuscarEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarEquiposActionPerformed
-        // TODO add your handling code here:
+        // si perfil dueño es seleccionado y presiona el botón, carga el listado de equipos que el dueño puede editar.
         if(cbPerfil.getSelectedItem().equals("Dueño"))
         {
             cbEquipo.setVisible(true);
@@ -428,44 +459,6 @@ public class VUsuario extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                VUsuario dialog = new VUsuario(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
@@ -496,62 +489,20 @@ public class VUsuario extends javax.swing.JDialog {
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
     
-    private void validarUsuario() throws Exception {
-        if(tfUsuario.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        // Validar usuario para ver si existe algún usuario con ese nombre
-        if(alta)
-        {
-            /*if(Main.buscarUsuario(tfUsuario.getText()))
-            {
-                throw new Excepcion("Ya existe un usuario con ese nombre.");
-            }*/
-        }
-        // Validar usuario para ver si no existe algún usuario con ese nombre
-        else
-        {
-            /*if(!Main.buscarUsuario(tfUsuario.getText()))
-            {
-                throw new Excepcion(No existe ningún usuario con ese nombre.);
-            }*/
-        }
-    }
-    
-    private void validarDatos() throws Exception {
-        if(pfContrasenna.getPassword().length==0)
-        {
-            throw new Excepcion();
-        }            
-        if(tfNombre.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        if(tfApellido1.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        if(tfApellido2.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        Pattern p=Pattern.compile(tfEmail.getText());
-        Matcher m=p.matcher("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$");
+    private void validar(int error, JTextField campo, String patron) throws Exception {
+        //valida los datos, funciona únicamente si recibe un TextField
+        //interpreta el patrón que recibe y lo compara con el dato introducido por el usuario
+        //recibe una excepción catalogado en la clase de excepciones.
+        Pattern p=Pattern.compile(campo.getText());
+        Matcher m=p.matcher(patron);
         if(!m.matches())
         {
-            throw new Excepcion();
+            campo.setBackground(Color.red);
+            campo.grabFocus();
+            throw new Excepcion(error);
         }
-        if(cbPerfil.getSelectedIndex()==-1)
-        {
-            throw new Excepcion();
-        }
-        if(cbPerfil.getSelectedIndex()==1)
-        {
-            if(cbEquipo.getSelectedIndex()==-1)
-            {
-                throw new Excepcion();
-            }
+        else{
+            campo.setBackground(Color.white);
         }
     }
     

@@ -6,6 +6,7 @@ import Excepciones.Excepcion;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import UML.Jugador;
+import java.awt.Color;
 import javax.swing.JTextField;
 
 public class VJugador extends javax.swing.JDialog {
@@ -21,6 +22,7 @@ public class VJugador extends javax.swing.JDialog {
         setModal(true);
         this.setLocationRelativeTo(null);
         setVisible(true);   
+        //anular todas las vistas y mostrar únicamente según tipo de operaciones CRUD que se quiera realizar
         alta=false;
         baja=false;
         modificacion=false;
@@ -258,12 +260,14 @@ public class VJugador extends javax.swing.JDialog {
        {
            if(alta)
            {
-               validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");
-               validar(4, tfNombre, "^[A-Z][a-a]{2,}$");  
-               validar(5, tfApellido1, "^[A-Z][a-a]{2,}$");
-               if(tfApellido2.getText()!= null){
-                   validar(5, tfApellido2, "^[A-Z][a-a]{2,}$");
-               }
+               //validación de datos
+                validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");
+                validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
+                validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
+                if(tfApellido2.getText()!= null){
+                   validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
+                }
+                //comprobar si existe, en caso negativo procede el alta.
                /*if(Main.buscarDNI(tfDNI.getText()))
                 {
                 throw new Excepcion("Ya existe un jugador con ese DNI.");
@@ -273,25 +277,25 @@ public class VJugador extends javax.swing.JDialog {
            else
            {
                validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");
+               //comprueba dni, en caso positivo, procede la operación.
                /*if(!Main.buscarDNI(tfDNI.getText()))
                 {
                     throw new Excepcion(No existe ningún jugador con ese DNI.);
                 }*/
                if(baja)
                {
+                   //baja del jugador
                    // Main.bajaJugador(tfDNI.getText());
                }
                else
                {
-                   if(modificacion)
-                   {
-                        validar(4, tfNombre, "^[A-Z][a-a]{2,}$");  
-                        validar(5, tfApellido1, "^[A-Z][a-a]{2,}$");
-                        if(tfApellido2.getText()!= null){
-                            validar(5, tfApellido2, "^[A-Z][a-a]{2,}$");
-                        }
-                       // Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
-                   }
+                   //valida los datos y si es correcto, modifica el jugador
+                    validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
+                    validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
+                    if(tfApellido2.getText()!= null){
+                        validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
+                    }
+                   // Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
                }
            }
        }
@@ -312,13 +316,18 @@ public class VJugador extends javax.swing.JDialog {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
-        // TODO add your handling code here:
+        
+        //localizar jugadores
         try
         {
+            // si entra como opción listado, no se permite ninguna modificación y se crea un listado para recorrer por el listado
             if(listado)
             {
+                // si dni está vacío, se crea una lista interna, permitiendo recorrerla con los botones direccionales, en caso contrario, muestra únicamente el jugador con ese dni
                 if(tfDNI.getText().isEmpty())
                 {
+                    bPrimero.setEnabled(true);
+                    bAnterior.setEnabled(true);
                     bSiguiente.setEnabled(true);
                     bUltimo.setEnabled(true);
                 }
@@ -330,6 +339,7 @@ public class VJugador extends javax.swing.JDialog {
             }
             else
             {
+                // localiza un jugador en exclusiva para su edición
                 validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");  
                 mostrarDatos();
                 if(modificacion)
@@ -398,12 +408,19 @@ public class VJugador extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     
     private void validar(int error, JTextField campo, String patron) throws Exception {
-
+        //valida los datos, funciona únicamente si recibe un TextField
+        //interpreta el patrón que recibe y lo compara con el dato introducido por el usuario
+        //recibe una excepción catalogado en la clase de excepciones.
         Pattern p=Pattern.compile(campo.getText());
         Matcher m=p.matcher(patron);
         if(!m.matches())
         {
+            campo.setBackground(Color.red);
+            campo.grabFocus();
             throw new Excepcion(error);
+        }
+        else{
+            campo.setBackground(Color.white);
         }
     }
     

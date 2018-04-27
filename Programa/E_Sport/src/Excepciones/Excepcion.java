@@ -50,11 +50,19 @@ public class Excepcion extends Exception {
                 break;
                 
             case 6:
-                dato = "La contraseña no puede estar vacío.";
+                dato = "El email debe ser coherente, ejemplo: ejemplo@compania.es";
                 break;
                 
             case 7:
-                dato = "La contraseña no puede estar vacío.";
+                dato = "El usuario debe tener un mínimo de 3 letras.";
+                break;
+                
+            case 8:
+                dato = "La contraseña ha de tener un mínimo de 3 carácteres, tipo números, letras en mayúsculas o minúsculas. ";
+                break;
+                
+            case 9:
+                dato = "Debe seleccionar un perfil.";
                 break;
         }
         return dato;
