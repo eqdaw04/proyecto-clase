@@ -6,10 +6,11 @@
 package Controladora;
 
 
-<<<<<<< Updated upstream
+
 import Recurso.Emparejamiento;
 import UML.*;
 import BD.*;
+import static BD.BDConexion.*;
 import Excepciones.Excepcion;
 import Views.Login;
 import Views.Principal;
@@ -17,8 +18,7 @@ import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
-=======
->>>>>>> Stashed changes
+
 
 /**
  *
@@ -42,6 +42,7 @@ public class Main {
     private static Login login;
     
     public static void main(String[] args) {
+        AbrirBD();
         login = new Login();
         
     }
