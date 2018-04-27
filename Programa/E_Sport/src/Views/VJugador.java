@@ -4,11 +4,7 @@ import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
 import Recurso.ValidacionDeDatosDeEntrada;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import UML.Jugador;
-import java.awt.Color;
-import javax.swing.JTextField;
 
 public class VJugador extends javax.swing.JDialog {
     

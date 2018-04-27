@@ -2,6 +2,7 @@ package Views;
 
 import Controladora.Main;
 import Excepciones.Excepcion;
+import Recurso.ValidacionDeDatosDeEntrada;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -13,9 +14,11 @@ public class VAltasBajas extends javax.swing.JDialog {
     /**
      * Creates new form VAltasBajas
      */
-    public VAltasBajas(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public VAltasBajas() {
         initComponents();
+        setModal(true);
+        setLocationRelativeTo(null);
+        setVisible(true);
         mostrarEquipo();
         mostrarPlantilla();
     }
@@ -54,7 +57,7 @@ public class VAltasBajas extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("ALTAS Y BAJAS");
 
-        jLabel2.setText("Jugador:");
+        jLabel2.setText("DNI Jugador:");
 
         tfJugadorAlta.setEnabled(false);
 
@@ -97,7 +100,7 @@ public class VAltasBajas extends javax.swing.JDialog {
             }
         });
 
-        jLabel4.setText("Jugador:");
+        jLabel4.setText("DNI Jugador:");
 
         jLabel5.setText("Equipo:");
 
@@ -255,7 +258,7 @@ public class VAltasBajas extends javax.swing.JDialog {
             {
                 if(ftfSueldo.getText().equals("Unparseable number: \"\""))
                 {
-                    throw new Excepcion("No has introducido el sueldo del jugador.");
+                    throw new Excepcion(10);
                 }
                 // Método para comprobar que no excede el límite salarial y el SMI.
                 // Main.tramitarAlta(tfJugadorAlta.getText(), ftfSalario.getText());
@@ -268,7 +271,7 @@ public class VAltasBajas extends javax.swing.JDialog {
                 }
                 else
                 {
-                    throw new Excepcion("No has seleccionado ni Alta ni Baja.");
+                    throw new Excepcion(11);
                 }
             }
             // Método para volver a abrir la ventana
@@ -287,7 +290,7 @@ public class VAltasBajas extends javax.swing.JDialog {
         // TODO add your handling code here:
         try
         {
-            validar(3, tfJugadorAlta.getText(), "^[A-Z0-9][0-9]{7}[A-Z]$");
+            ValidacionDeDatosDeEntrada.validar(3, tfJugadorBaja);
             /*if(!Main.buscarDNI(tfJugadorAlta.getText()))
             {
                 throw new Excepcion("No existe ningún jugador con ese DNI.");
@@ -312,7 +315,7 @@ public class VAltasBajas extends javax.swing.JDialog {
         // TODO add your handling code here:
         try
         {
-            validar(3, tfJugadorBaja.getText(), "^[A-Z0-9][0-9]{7}[A-Z]$");
+            ValidacionDeDatosDeEntrada.validar(3, tfJugadorBaja);
             /*if(!Main.buscarDNI(tfJugadorBaja.getText()))
             {
                 throw new Excepcion("No existe ningún jugador con ese DNI.");
@@ -335,48 +338,6 @@ public class VAltasBajas extends javax.swing.JDialog {
         // Main.cerrar(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VAltasBajas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VAltasBajas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VAltasBajas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VAltasBajas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                VAltasBajas dialog = new VAltasBajas(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bBuscarAlta;
@@ -398,16 +359,7 @@ public class VAltasBajas extends javax.swing.JDialog {
     private javax.swing.JTextField tfJugadorAlta;
     private javax.swing.JTextField tfJugadorBaja;
     // End of variables declaration//GEN-END:variables
-    
-    private void validar(int error, String campo, String patron) throws Exception {
 
-        Pattern p=Pattern.compile(campo);
-        Matcher m=p.matcher(patron);
-        if(!m.matches())
-        {
-            throw new Excepcion(error);
-        }
-    }
     private void mostrarEquipo() {
         // Método para mostrar el equipo del dueño.
         /*tfEquipo.setText(Main.buscarEquipoDuenno());*/

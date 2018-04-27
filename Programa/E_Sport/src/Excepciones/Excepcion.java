@@ -64,6 +64,14 @@ public class Excepcion extends Exception {
             case 9:
                 dato = "Debe seleccionar un perfil.";
                 break;
+                
+            case 10:
+                dato = "No has introducido el sueldo del jugador.";
+                break;
+                
+            case 11:
+                dato = "Seleccione si es un Alta o una Baja.";
+                break;
         }
         return dato;
     }

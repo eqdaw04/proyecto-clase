@@ -112,7 +112,7 @@ public class Login extends javax.swing.JDialog {
             {
                 throw new Excepcion(1);
             }
-            if (String.copyValueOf(pfContrasenna.getPassword()).isEmpty())
+            else if (String.copyValueOf(pfContrasenna.getPassword()).isEmpty())
             {
                 throw new Excepcion(2);
             }
