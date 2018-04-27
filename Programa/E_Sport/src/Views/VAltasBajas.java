@@ -257,7 +257,7 @@ public class VAltasBajas extends javax.swing.JDialog {
                 {
                     throw new Excepcion("No has introducido el sueldo del jugador.");
                 }
-                // Método para comprobar que no excede el límite salarial.
+                // Método para comprobar que no excede el límite salarial y el SMI.
                 // Main.tramitarAlta(tfJugadorAlta.getText(), ftfSalario.getText());
             }
             else
