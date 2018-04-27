@@ -3,6 +3,7 @@ package Views;
 import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
+import Recurso.ValidacionDeDatosDeEntrada;
 import java.util.Calendar;
 import UML.Equipo;
 import java.util.Date;
@@ -11,45 +12,32 @@ public class VEquipo extends javax.swing.JDialog {
     
     private boolean alta, baja, modificacion, listado; 
 
-    /**
-     * Creates new form VEquipo
-     */
-    public VEquipo(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public VEquipo(String tipo) {
         initComponents();
-    }
-    
-    public VEquipo(java.awt.Frame parent, boolean modal, String tipo) {
-        super(parent, modal);
-        initComponents();
+        setModal(true);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        //anular todas las ventanas y activar únicamente una según opción de entrada
+        alta=false;
+        baja=false;
+        modificacion=false;
+        listado=false;
         switch(tipo)
         {
             case "alta":
                 alta=true;
-                baja=false;
-                modificacion=false;
-                listado=false;
                 tfNombre.setEnabled(true);
                 taComentario.setEnabled(true);
                 bAceptar.setEnabled(true);
                 bBuscar.setEnabled(false);
                 break;
             case "baja":
-                alta=false;
                 baja=true;
-                modificacion=false;
-                listado=false;
                 break;
             case "modificacion":
-                alta=false;
-                baja=false;
                 modificacion=true;
-                listado=false;
                 break;
             case "listado":
-                alta=false;
-                baja=false;
-                modificacion=false;
                 listado=true;
                 break;
         }
@@ -82,6 +70,8 @@ public class VEquipo extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         taPlantilla = new javax.swing.JTextArea();
         cFechaCreacion = new org.freixas.jcalendar.JCalendarCombo();
+        tfPunto = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -93,7 +83,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
 
-        jLabel6.setText("Comentario:");
+        jLabel6.setText("Comentarios:");
 
         taComentario.setColumns(20);
         taComentario.setRows(5);
@@ -162,6 +152,8 @@ public class VEquipo extends javax.swing.JDialog {
 
         cFechaCreacion.setEnabled(false);
 
+        jLabel5.setText("Puntos obtenidos:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -171,43 +163,56 @@ public class VEquipo extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)
-                        .addGap(60, 60, 60)
-                        .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76)
+                        .addComponent(tfNombre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bBuscar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(138, 138, 138)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(bPrimero)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bAnterior)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bSiguiente)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bUltimo))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(bAceptar)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(bCancelar))
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                    .addComponent(cFechaCreacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel5))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                        .addComponent(bPrimero)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(bAnterior)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(bSiguiente)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(bUltimo))
+                                                    .addComponent(bCancelar, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                        .addComponent(bAceptar)
+                                                        .addGap(131, 131, 131))))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(50, 50, 50)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addComponent(tfPunto, javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)))
+                                                .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(cFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addGap(64, 64, 64)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,22 +231,27 @@ public class VEquipo extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfPunto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(bAceptar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(bPrimero)
                             .addComponent(bAnterior)
                             .addComponent(bSiguiente)
                             .addComponent(bUltimo)))
-                    .addComponent(bCancelar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(bCancelar)
+                        .addComponent(bAceptar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -252,21 +262,27 @@ public class VEquipo extends javax.swing.JDialog {
         // TODO add your handling code here:
         try
         {
+            // comprobar si se ha accedido con la opción de lsiatado, en caso afirmativo, cargar un list interno para poder recorrer con los botones de dirección
             if(listado)
             {
+                // habilitar botones de recorrer si el nombre está vacío, en caso contrario, localizar el equipo en concreto.
                 if(tfNombre.getText().isEmpty())
                 {
+                    bPrimero.setEnabled(true);
+                    bAnterior.setEnabled(true);
                     bSiguiente.setEnabled(true);
                     bUltimo.setEnabled(true);
                 }
                 else
                 {
-                    validarNombre();                    
+                    // validar si el nombre escrito es correcto y si existe en la bbdd
+                    validarNombre();
                 }
                 mostrarDatos();
             }
             else
             {
+                // validar si el nombre escrito es correcto y si existe en la bbdd, si existe, mostrar datos y permitir su modificación
                 validarNombre();
                 mostrarDatos();
                 if(modificacion)
@@ -292,11 +308,14 @@ public class VEquipo extends javax.swing.JDialog {
         {
             if(alta)
             {
-                validarNombre();                
+                //validar nombre y si existe en la bbdd, si no existe, proceder al alta
+                validarNombre();               
                 // Main.altaEquipo(tfNombre.getText(), cFechaCreacion.getDate(), taComentario.getText());
             }
             else
             {
+                //validar nombre y si existe en la bbdd, si no existe, proceder a la modificación
+                validarNombre();
                 if(baja)
                 {
                    // Main.bajaEquipo(tfNombre.getText());
@@ -305,7 +324,6 @@ public class VEquipo extends javax.swing.JDialog {
                 {
                     if(modificacion)
                     {
-                        validarNombre();
                         // Main.modificarEquipo(tfNombre.getText(), taComentario.getText());
                     }
                 }
@@ -343,48 +361,6 @@ public class VEquipo extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_bUltimoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                VEquipo dialog = new VEquipo(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bAnterior;
@@ -398,22 +374,23 @@ public class VEquipo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea taComentario;
     private javax.swing.JTextArea taPlantilla;
     private javax.swing.JTextField tfNombre;
+    private javax.swing.JTextField tfPunto;
     // End of variables declaration//GEN-END:variables
     
     private void validarNombre() throws Exception {
-        if(tfNombre.getText().isEmpty())
-        {
-            throw new Excepcion("El nombre del equipo es obligatorio.");
-        }
         // Validar nombre para ver si existe algún equipo con ese nombre
+        ValidacionDeDatosDeEntrada.validar(4, tfNombre, "^[A-Z][a-z]{2,}$");
+        
         if(alta)
         {
+            //comprobar si existe nombre, en caso contrario, no generar error
             /*if(Main.buscarNombre(tfNombre.getText()))
             {
                 throw new Excepcion("Ya existe un equipo con ese nombre.");
@@ -422,6 +399,7 @@ public class VEquipo extends javax.swing.JDialog {
         // Validar nombre para ver si no existe algún nombre con ese número
         else
         {
+            //comprobar si existe nombre, en caso afirmativo no generar error
             /*if(!Main.buscarNombre(tfNombre.getText()))
             {
                 throw new Excepcion("No existe ningún equipo con ese nombre.");

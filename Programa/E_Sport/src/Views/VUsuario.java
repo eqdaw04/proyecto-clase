@@ -3,6 +3,7 @@ package Views;
 import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
+import Recurso.ValidacionDeDatosDeEntrada;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import UML.Persona;
@@ -309,14 +310,14 @@ public class VUsuario extends javax.swing.JDialog {
             if(alta)
             {
                 // comprobar todos los campos si cumple con las condiciones, si cumple, procede el alta
-                validar(7, tfUsuario, "^[A-Za-z]{3,}$");
-                validar(8, pfContrasenna, "^[A-Za-z0-9]{3,}$");
-                validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
-                validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
+                ValidacionDeDatosDeEntrada.validar(7, tfUsuario, "^[A-Za-z]{3,}$");
+                ValidacionDeDatosDeEntrada.validar(8, pfContrasenna, "^[A-Za-z0-9]{3,}$");
+                ValidacionDeDatosDeEntrada.validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
+                ValidacionDeDatosDeEntrada.validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
                 if(tfApellido2.getText()!= null){
-                   validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
+                   ValidacionDeDatosDeEntrada.validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
                 }
-                validar(6, tfEmail, "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$");
+                ValidacionDeDatosDeEntrada.validar(6, tfEmail, "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$");
                 if(cbPerfil.getSelectedIndex() == -1){
                     throw new Excepcion(9);
                 }
@@ -343,14 +344,14 @@ public class VUsuario extends javax.swing.JDialog {
                     if(modificacion)
                     {
                         // comprobar todos los campos si cumple con las condiciones, si cumple, procede la modificación.
-                        validar(7, tfUsuario, "^[A-Za-z]{3,}$");
-                        validar(8, pfContrasenna, "^[A-Za-z0-9]{3,}$");
-                        validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
-                        validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
+                        ValidacionDeDatosDeEntrada.validar(7, tfUsuario, "^[A-Za-z]{3,}$");
+                        ValidacionDeDatosDeEntrada.validar(8, pfContrasenna, "^[A-Za-z0-9]{3,}$");
+                        ValidacionDeDatosDeEntrada.validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
+                        ValidacionDeDatosDeEntrada.validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
                         if(tfApellido2.getText()!= null){
-                           validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
+                           ValidacionDeDatosDeEntrada.validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
                         }
-                        validar(6, tfEmail, "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$");
+                        ValidacionDeDatosDeEntrada.validar(6, tfEmail, "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$");
                         if(cbPerfil.getSelectedIndex() == -1){
                             throw new Excepcion(9);
                         }
@@ -488,23 +489,7 @@ public class VUsuario extends javax.swing.JDialog {
     private javax.swing.JTextField tfNombre;
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
-    
-    private void validar(int error, JTextField campo, String patron) throws Exception {
-        //valida los datos, funciona únicamente si recibe un TextField
-        //interpreta el patrón que recibe y lo compara con el dato introducido por el usuario
-        //recibe una excepción catalogado en la clase de excepciones.
-        Pattern p=Pattern.compile(campo.getText());
-        Matcher m=p.matcher(patron);
-        if(!m.matches())
-        {
-            campo.setBackground(Color.red);
-            campo.grabFocus();
-            throw new Excepcion(error);
-        }
-        else{
-            campo.setBackground(Color.white);
-        }
-    }
+
     
     private void mostrarDatos() throws Exception {
         /*Persona p =Main.buscarPersona();

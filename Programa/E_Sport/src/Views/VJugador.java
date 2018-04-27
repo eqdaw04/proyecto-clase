@@ -3,6 +3,7 @@ package Views;
 import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
+import Recurso.ValidacionDeDatosDeEntrada;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import UML.Jugador;
@@ -261,11 +262,11 @@ public class VJugador extends javax.swing.JDialog {
            if(alta)
            {
                //validación de datos
-                validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");
-                validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
-                validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
+                ValidacionDeDatosDeEntrada.validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");
+                ValidacionDeDatosDeEntrada.validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
+                ValidacionDeDatosDeEntrada.validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
                 if(tfApellido2.getText()!= null){
-                   validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
+                   ValidacionDeDatosDeEntrada.validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
                 }
                 //comprobar si existe, en caso negativo procede el alta.
                /*if(Main.buscarDNI(tfDNI.getText()))
@@ -276,7 +277,7 @@ public class VJugador extends javax.swing.JDialog {
            }
            else
            {
-               validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");
+               ValidacionDeDatosDeEntrada.validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");
                //comprueba dni, en caso positivo, procede la operación.
                /*if(!Main.buscarDNI(tfDNI.getText()))
                 {
@@ -290,10 +291,10 @@ public class VJugador extends javax.swing.JDialog {
                else
                {
                    //valida los datos y si es correcto, modifica el jugador
-                    validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
-                    validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
+                    ValidacionDeDatosDeEntrada.validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
+                    ValidacionDeDatosDeEntrada.validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
                     if(tfApellido2.getText()!= null){
-                        validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
+                        ValidacionDeDatosDeEntrada.validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
                     }
                    // Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
                }
@@ -333,14 +334,14 @@ public class VJugador extends javax.swing.JDialog {
                 }
                 else
                 {
-                    validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");                    
+                    ValidacionDeDatosDeEntrada.validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");                    
                 }
                 mostrarDatos();
             }
             else
             {
                 // localiza un jugador en exclusiva para su edición
-                validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");  
+                ValidacionDeDatosDeEntrada.validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");  
                 mostrarDatos();
                 if(modificacion)
                 {
@@ -406,23 +407,7 @@ public class VJugador extends javax.swing.JDialog {
     private javax.swing.JTextField tfNickname;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
-    
-    private void validar(int error, JTextField campo, String patron) throws Exception {
-        //valida los datos, funciona únicamente si recibe un TextField
-        //interpreta el patrón que recibe y lo compara con el dato introducido por el usuario
-        //recibe una excepción catalogado en la clase de excepciones.
-        Pattern p=Pattern.compile(campo.getText());
-        Matcher m=p.matcher(patron);
-        if(!m.matches())
-        {
-            campo.setBackground(Color.red);
-            campo.grabFocus();
-            throw new Excepcion(error);
-        }
-        else{
-            campo.setBackground(Color.white);
-        }
-    }
+
     
     private void mostrarDatos() throws Exception {
         /*Jugador j =Main.buscarJugador();
