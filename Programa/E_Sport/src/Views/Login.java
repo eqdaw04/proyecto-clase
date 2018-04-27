@@ -122,10 +122,13 @@ public class Login extends javax.swing.JFrame {
             {
                 throw new Excepcion(2);
             }
+            else{
+                Main.abrirVentana();
+            }
         }
         catch (Excepcion e)
         {
-            javax.swing.JOptionPane.showMessageDialog(this, e.getMensaje());
+            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage());
         }
         catch (Exception e)
         {

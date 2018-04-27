@@ -33,11 +33,12 @@ public class Main {
     private static BDPerfil bdPerfil;
     private static BDPersona bdPersona;
     private static BDConexion bdConexion;
-    private static int sesion;
+    private static int perfil;
     private static Login login;
     
     public static void main(String[] args) {
         login = new Login();
+        
     }
     
     public static void abrirVentana() throws Exception{
@@ -48,8 +49,15 @@ public class Main {
         c=true;
         if(cont < 4){
             if(u && c){
+                Persona p = new Persona();
+                p.setIdPersona(1);
+                Perfil per = new Perfil();
+                per.setIdPerfil(1);
+                p.setPerfil(per);
+                perfil = p.getPerfil().getIdPerfil();
+                login.dispose();
+                new Principal(perfil);
 
-                sesion = 1;
             }
             else{
                 cont++;
@@ -65,7 +73,7 @@ public class Main {
     
     public static void cerrar(JDialog v){
         v.dispose();
-        new Principal(sesion);
+        new Principal(perfil);
     }
     
     public static void salir(JFrame v){
