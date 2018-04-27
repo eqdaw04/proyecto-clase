@@ -3,9 +3,12 @@ package Views;
 import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
-import java.util.Calendar;
+import Recurso.ValidacionDeDatosDeEntrada;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import UML.Jugador;
+import java.awt.Color;
+import javax.swing.JTextField;
 
 public class VJugador extends javax.swing.JDialog {
     
@@ -14,9 +17,39 @@ public class VJugador extends javax.swing.JDialog {
     /**
      * Creates new form VJugador
      */
-    public VJugador(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+
+    public VJugador(String tipo) {
         initComponents();
+        setModal(true);
+        this.setLocationRelativeTo(null);
+        setVisible(true);   
+        //anular todas las vistas y mostrar únicamente según tipo de operaciones CRUD que se quiera realizar
+        alta=false;
+        baja=false;
+        modificacion=false;
+        listado=false;
+        switch(tipo)
+        {
+            case "alta":
+                alta=true;
+                tfNombre.setEnabled(true);
+                tfApellido1.setEnabled(true);
+                tfApellido2.setEnabled(true);
+                tfNickname.setEnabled(true);
+                taComentario.setEnabled(true);
+                bAceptar.setEnabled(true);
+                bBuscar.setEnabled(false);
+                break;
+            case "baja":
+                baja=true;
+                break;
+            case "modificacion":
+                modificacion=true;
+                break;
+            case "listado":
+                listado=true;
+                break;
+        }
     }
 
     /**
@@ -30,7 +63,7 @@ public class VJugador extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        tfNIF = new javax.swing.JTextField();
+        tfDNI = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -58,21 +91,31 @@ public class VJugador extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("JUGADOR");
 
-        jLabel2.setText("NIF:");
+        jLabel2.setText("DNI:");
 
         jLabel3.setText("Nombre:");
 
+        tfNombre.setEnabled(false);
+
         jLabel4.setText("Apellidos:");
 
+        tfApellido1.setEnabled(false);
+
+        tfApellido2.setEnabled(false);
+
         jLabel5.setText("Nickname:");
+
+        tfNickname.setEnabled(false);
 
         jLabel6.setText("Comentario:");
 
         taComentario.setColumns(20);
         taComentario.setRows(5);
+        taComentario.setEnabled(false);
         jScrollPane1.setViewportView(taComentario);
 
         bAceptar.setText("Aceptar");
+        bAceptar.setEnabled(false);
         bAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAceptarActionPerformed(evt);
@@ -91,14 +134,19 @@ public class VJugador extends javax.swing.JDialog {
         jLabel8.setText("Fecha de alta:");
 
         bPrimero.setText("|<");
+        bPrimero.setEnabled(false);
 
         bAnterior.setText("<");
+        bAnterior.setEnabled(false);
 
         bSiguiente.setText(">");
+        bSiguiente.setEnabled(false);
 
         bUltimo.setText(">|");
+        bUltimo.setEnabled(false);
 
         ftfSueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        ftfSueldo.setEnabled(false);
 
         bBuscar.setText("Buscar");
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +178,7 @@ public class VJugador extends javax.swing.JDialog {
                             .addComponent(tfNickname)
                             .addComponent(tfApellido2)
                             .addComponent(tfApellido1)
-                            .addComponent(tfNIF)
+                            .addComponent(tfDNI)
                             .addComponent(tfNombre)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(bAceptar)
@@ -161,7 +209,7 @@ public class VJugador extends javax.swing.JDialog {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfNIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(bBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -213,23 +261,42 @@ public class VJugador extends javax.swing.JDialog {
        {
            if(alta)
            {
-               validarNIF();
-               validarDatos();
-               // Main.altaJugador(tfNIF.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
+               //validación de datos
+                ValidacionDeDatosDeEntrada.validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");
+                ValidacionDeDatosDeEntrada.validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
+                ValidacionDeDatosDeEntrada.validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
+                if(tfApellido2.getText()!= null){
+                   ValidacionDeDatosDeEntrada.validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
+                }
+                //comprobar si existe, en caso negativo procede el alta.
+               /*if(Main.buscarDNI(tfDNI.getText()))
+                {
+                throw new Excepcion("Ya existe un jugador con ese DNI.");
+                }*/
+               // Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
            }
            else
            {
+               ValidacionDeDatosDeEntrada.validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");
+               //comprueba dni, en caso positivo, procede la operación.
+               /*if(!Main.buscarDNI(tfDNI.getText()))
+                {
+                    throw new Excepcion(No existe ningún jugador con ese DNI.);
+                }*/
                if(baja)
                {
-                   // Main.bajaJugador(tfNIF.getText());
+                   //baja del jugador
+                   // Main.bajaJugador(tfDNI.getText());
                }
                else
                {
-                   if(modificacion)
-                   {
-                       validarDatos();
-                       // Main.modificarJugador(tfNIF.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
-                   }
+                   //valida los datos y si es correcto, modifica el jugador
+                    ValidacionDeDatosDeEntrada.validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
+                    ValidacionDeDatosDeEntrada.validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
+                    if(tfApellido2.getText()!= null){
+                        ValidacionDeDatosDeEntrada.validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
+                    }
+                   // Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
                }
            }
        }
@@ -250,18 +317,42 @@ public class VJugador extends javax.swing.JDialog {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
-        // TODO add your handling code here:
+        
+        //localizar jugadores
         try
         {
-            validarNIF();
-            if(modificacion)
+            // si entra como opción listado, no se permite ninguna modificación y se crea un listado para recorrer por el listado
+            if(listado)
             {
-                tfNombre.setEnabled(true);
-                tfApellido1.setEnabled(true);
-                tfApellido2.setEnabled(true);
-                tfNickname.setEnabled(true);
-                ftfSueldo.setEnabled(true);
-                taComentario.setEnabled(true);
+                // si dni está vacío, se crea una lista interna, permitiendo recorrerla con los botones direccionales, en caso contrario, muestra únicamente el jugador con ese dni
+                if(tfDNI.getText().isEmpty())
+                {
+                    bPrimero.setEnabled(true);
+                    bAnterior.setEnabled(true);
+                    bSiguiente.setEnabled(true);
+                    bUltimo.setEnabled(true);
+                }
+                else
+                {
+                    ValidacionDeDatosDeEntrada.validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");                    
+                }
+                mostrarDatos();
+            }
+            else
+            {
+                // localiza un jugador en exclusiva para su edición
+                ValidacionDeDatosDeEntrada.validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");  
+                mostrarDatos();
+                if(modificacion)
+                {
+                    tfNombre.setEnabled(true);
+                    tfApellido1.setEnabled(true);
+                    tfApellido2.setEnabled(true);
+                    tfNickname.setEnabled(true);
+                    ftfSueldo.setEnabled(true);
+                    taComentario.setEnabled(true);
+                }
+                bAceptar.setEnabled(true);
             }
         }
        catch (Excepcion e)
@@ -274,47 +365,21 @@ public class VJugador extends javax.swing.JDialog {
        }
     }//GEN-LAST:event_bBuscarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VJugador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VJugador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VJugador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VJugador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void bPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrimeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bPrimeroActionPerformed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                VJugador dialog = new VJugador(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void bAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnteriorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bAnteriorActionPerformed
+
+    private void bSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSiguienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bSiguienteActionPerformed
+
+    private void bUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUltimoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bUltimoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
@@ -338,65 +403,21 @@ public class VJugador extends javax.swing.JDialog {
     private javax.swing.JTextArea taComentario;
     private javax.swing.JTextField tfApellido1;
     private javax.swing.JTextField tfApellido2;
-    private javax.swing.JTextField tfNIF;
+    private javax.swing.JTextField tfDNI;
     private javax.swing.JTextField tfNickname;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
+
     
-    private void validarNIF() throws Exception {
-        if(tfNIF.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        Pattern p=Pattern.compile(tfNIF.getText());
-        Matcher m=p.matcher("^[A-Z0-9][0-9]{7}[A-Z]$");
-        if(!m.matches())
-        {
-            throw new Excepcion();
-        }
-        if(alta)
-        {
-            /*if(Main.buscarNIF(tfNIF.getText()))
-            {
-                throw new Excepcion();
-            }*/
-        }
-        else
-        {
-            /*if(!Main.buscarNIF(tfNIF.getText()))
-            {
-                throw new Excepcion();
-            }*/
-        }
-    }
-    
-    private void validarDatos() throws Exception {
-        if(tfNombre.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        if(tfApellido1.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        if(tfApellido2.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        if(tfNickname.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        if(modificacion)
-        {
-            if(ftfSueldo.getText().equals("Unparseable number: \"\""))
-            {
-                throw new Excepcion();
-            }
-        }
-        if(taComentario.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
+    private void mostrarDatos() throws Exception {
+        /*Jugador j =Main.buscarJugador();
+        tfDNI.setText(j.getDni());
+        tfNombre.setText(j.getNombre());
+        tfApellido1.setText(j.getApellido1());
+        tfApellido2.setText(j.getApellido2());
+        ftfSueldo.setText(String.valueOf(j.getSueldo()));        
+        cFechaAlta.setDate(j.getFechaAlta());
+        tfEquipo.setText(j.getEquipo().getNombre());
+        taComentario.setText(j.getComentario());*/
     }
 }

@@ -10,6 +10,7 @@ package Controladora;
 import Recurso.Emparejamiento;
 import UML.Equipo;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 =======
 >>>>>>> Stashed changes
@@ -25,6 +26,12 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        probando();
+        
+    }
+    
+    public static void probando(){
         ArrayList <Equipo> lEquipo = new ArrayList();
         Equipo e1 = new Equipo();
         e1.setIdEquipo(1);
@@ -52,5 +59,6 @@ public class Main {
         e.calcularPartido();
         
     }
+    
     
 }
