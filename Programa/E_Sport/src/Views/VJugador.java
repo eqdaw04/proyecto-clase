@@ -262,11 +262,11 @@ public class VJugador extends javax.swing.JDialog {
            if(alta)
            {
                //validación de datos
-                ValidacionDeDatosDeEntrada.validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");
-                ValidacionDeDatosDeEntrada.validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
-                ValidacionDeDatosDeEntrada.validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
+                ValidacionDeDatosDeEntrada.validar(3, tfDNI);
+                ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
+                ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
                 if(tfApellido2.getText()!= null){
-                   ValidacionDeDatosDeEntrada.validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
+                   ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
                 }
                 //comprobar si existe, en caso negativo procede el alta.
                /*if(Main.buscarDNI(tfDNI.getText()))
@@ -277,7 +277,7 @@ public class VJugador extends javax.swing.JDialog {
            }
            else
            {
-               ValidacionDeDatosDeEntrada.validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");
+               ValidacionDeDatosDeEntrada.validar(3, tfDNI);
                //comprueba dni, en caso positivo, procede la operación.
                /*if(!Main.buscarDNI(tfDNI.getText()))
                 {
@@ -291,10 +291,10 @@ public class VJugador extends javax.swing.JDialog {
                else
                {
                    //valida los datos y si es correcto, modifica el jugador
-                    ValidacionDeDatosDeEntrada.validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
-                    ValidacionDeDatosDeEntrada.validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
+                    ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
+                    ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
                     if(tfApellido2.getText()!= null){
-                        ValidacionDeDatosDeEntrada.validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
+                        ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
                     }
                    // Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
                }
@@ -334,14 +334,14 @@ public class VJugador extends javax.swing.JDialog {
                 }
                 else
                 {
-                    ValidacionDeDatosDeEntrada.validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");                    
+                    ValidacionDeDatosDeEntrada.validar(3, tfDNI);                    
                 }
                 mostrarDatos();
             }
             else
             {
                 // localiza un jugador en exclusiva para su edición
-                ValidacionDeDatosDeEntrada.validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");  
+                ValidacionDeDatosDeEntrada.validar(3, tfDNI);  
                 mostrarDatos();
                 if(modificacion)
                 {

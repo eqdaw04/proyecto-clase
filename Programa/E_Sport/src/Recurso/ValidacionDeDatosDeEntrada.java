@@ -20,17 +20,50 @@ public class ValidacionDeDatosDeEntrada{
     public ValidacionDeDatosDeEntrada() {
     }
     
-    public static void validar(int error, JTextField campo, String patron) throws Exception{
+    public static void validar(int cod, JTextField campo) throws Exception{
+        
+        String patron = datoPatron(cod);
         Pattern p=Pattern.compile(campo.getText());
         Matcher m=p.matcher(patron);
         if(!m.matches())
         {
             campo.setBackground(Color.red);
             campo.grabFocus();
-            throw new Excepcion(error);
+            throw new Excepcion(cod);
         }
         else{
             campo.setBackground(Color.white);
         }
+    }
+    
+    private static String datoPatron(int cod){
+        String dato = "";
+        switch(cod){
+
+            case 3:
+                dato = "^[A-Z0-9][0-9]{7}[A-Z]$";
+                break;
+                
+            case 4:
+                dato = "^[A-Z][a-z]{2,}$";
+                break;
+                
+            case 5:
+                dato = "^[A-Z][a-z]{2,}$";
+                break;
+                
+            case 6:
+                dato = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$";
+                break;
+                
+            case 7:
+                dato = "^[A-Za-z]{3,}$";
+                break;
+                
+            case 8:
+                dato = "^[A-Za-z0-9]{3,}$";
+                break;
+        }
+        return dato;
     }
 }

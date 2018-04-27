@@ -310,14 +310,14 @@ public class VUsuario extends javax.swing.JDialog {
             if(alta)
             {
                 // comprobar todos los campos si cumple con las condiciones, si cumple, procede el alta
-                ValidacionDeDatosDeEntrada.validar(7, tfUsuario, "^[A-Za-z]{3,}$");
-                ValidacionDeDatosDeEntrada.validar(8, pfContrasenna, "^[A-Za-z0-9]{3,}$");
-                ValidacionDeDatosDeEntrada.validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
-                ValidacionDeDatosDeEntrada.validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
+                ValidacionDeDatosDeEntrada.validar(7, tfUsuario);
+                ValidacionDeDatosDeEntrada.validar(8, pfContrasenna);
+                ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
+                ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
                 if(tfApellido2.getText()!= null){
-                   ValidacionDeDatosDeEntrada.validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
+                   ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
                 }
-                ValidacionDeDatosDeEntrada.validar(6, tfEmail, "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$");
+                ValidacionDeDatosDeEntrada.validar(6, tfEmail);
                 if(cbPerfil.getSelectedIndex() == -1){
                     throw new Excepcion(9);
                 }
@@ -344,14 +344,14 @@ public class VUsuario extends javax.swing.JDialog {
                     if(modificacion)
                     {
                         // comprobar todos los campos si cumple con las condiciones, si cumple, procede la modificación.
-                        ValidacionDeDatosDeEntrada.validar(7, tfUsuario, "^[A-Za-z]{3,}$");
-                        ValidacionDeDatosDeEntrada.validar(8, pfContrasenna, "^[A-Za-z0-9]{3,}$");
-                        ValidacionDeDatosDeEntrada.validar(4, tfNombre, "^[A-Z][a-z]{2,}$");  
-                        ValidacionDeDatosDeEntrada.validar(5, tfApellido1, "^[A-Z][a-z]{2,}$");
+                        ValidacionDeDatosDeEntrada.validar(7, tfUsuario);
+                        ValidacionDeDatosDeEntrada.validar(8, pfContrasenna);
+                        ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
+                        ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
                         if(tfApellido2.getText()!= null){
-                           ValidacionDeDatosDeEntrada.validar(5, tfApellido2, "^[A-Z][a-z]{2,}$");
+                           ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
                         }
-                        ValidacionDeDatosDeEntrada.validar(6, tfEmail, "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}$");
+                        ValidacionDeDatosDeEntrada.validar(6, tfEmail);
                         if(cbPerfil.getSelectedIndex() == -1){
                             throw new Excepcion(9);
                         }
