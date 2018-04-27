@@ -43,34 +43,41 @@ public class Main {
         
     }
     
-    public static void abrirVentana() throws Exception{
-        int cont = 0;
-        boolean u, c;
+    public static void abrirVentana(int cont) throws Exception{
+
+        //datos de prueba
+        Persona p = new Persona();
+        p.setIdPersona(1);
+        p.setUsuario("Jon");
+        p.setContrasenna("12345");
+        Perfil per = new Perfil();
+        per.setIdPerfil(1);
+        p.setPerfil(per);
         
-        u=true;
-        c=true;
-        if(cont < 4){
-            if(u && c){
-                Persona p = new Persona();
-                p.setIdPersona(1);
-                Perfil per = new Perfil();
-                per.setIdPerfil(1);
-                p.setPerfil(per);
+        cont ++;
+        login.setCont(cont);
+        if(cont < 3){
+            if(login.getTfUsuario().getText().equals(p.getUsuario()) && login.getPfContrasenna().getText().equals(p.getContrasenna())){
                 perfil = p.getPerfil().getIdPerfil();
                 login.dispose();
                 new Principal(perfil);
-
             }
             else{
-                cont++;
                 throw new Excepcion(12);
             }
         }
         else{
-            login.setError(13);
-            throw new Excepcion(13);
+            if(login.getTfUsuario().getText().equals(p.getUsuario()) && login.getPfContrasenna().getText().equals(p.getContrasenna())){
+                perfil = p.getPerfil().getIdPerfil();
+                login.dispose();
+                new Principal(perfil);
+            }
+            else{
+                login.setError(13);
+                throw new Excepcion(13);
+            }
+            
         }
-        
     }
     
     public static void cerrar(JDialog v){
