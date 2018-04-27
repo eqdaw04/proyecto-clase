@@ -3,10 +3,10 @@ package Views;
 import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
-import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import UML.Jugador;
+import javax.swing.JTextField;
 
 public class VJugador extends javax.swing.JDialog {
     
@@ -15,21 +15,20 @@ public class VJugador extends javax.swing.JDialog {
     /**
      * Creates new form VJugador
      */
-    public VJugador(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+
+    public VJugador(String tipo) {
         initComponents();
-    }
-    
-    public VJugador(java.awt.Frame parent, boolean modal, String tipo) {
-        super(parent, modal);
-        initComponents();
+        setModal(true);
+        this.setLocationRelativeTo(null);
+        setVisible(true);   
+        alta=false;
+        baja=false;
+        modificacion=false;
+        listado=false;
         switch(tipo)
         {
             case "alta":
                 alta=true;
-                baja=false;
-                modificacion=false;
-                listado=false;
                 tfNombre.setEnabled(true);
                 tfApellido1.setEnabled(true);
                 tfApellido2.setEnabled(true);
@@ -39,21 +38,12 @@ public class VJugador extends javax.swing.JDialog {
                 bBuscar.setEnabled(false);
                 break;
             case "baja":
-                alta=false;
                 baja=true;
-                modificacion=false;
-                listado=false;
                 break;
             case "modificacion":
-                alta=false;
-                baja=false;
                 modificacion=true;
-                listado=false;
                 break;
             case "listado":
-                alta=false;
-                baja=false;
-                modificacion=false;
                 listado=true;
                 break;
         }
@@ -268,12 +258,25 @@ public class VJugador extends javax.swing.JDialog {
        {
            if(alta)
            {
-               validarDNI();
-               validarDatos();
+               validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");
+               validar(4, tfNombre, "^[A-Z][a-a]{2,}$");  
+               validar(5, tfApellido1, "^[A-Z][a-a]{2,}$");
+               if(tfApellido2.getText()!= null){
+                   validar(5, tfApellido2, "^[A-Z][a-a]{2,}$");
+               }
+               /*if(Main.buscarDNI(tfDNI.getText()))
+                {
+                throw new Excepcion("Ya existe un jugador con ese DNI.");
+                }*/
                // Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
            }
            else
            {
+               validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");
+               /*if(!Main.buscarDNI(tfDNI.getText()))
+                {
+                    throw new Excepcion(No existe ningún jugador con ese DNI.);
+                }*/
                if(baja)
                {
                    // Main.bajaJugador(tfDNI.getText());
@@ -282,8 +285,11 @@ public class VJugador extends javax.swing.JDialog {
                {
                    if(modificacion)
                    {
-                       validarDNI();
-                       validarDatos();
+                        validar(4, tfNombre, "^[A-Z][a-a]{2,}$");  
+                        validar(5, tfApellido1, "^[A-Z][a-a]{2,}$");
+                        if(tfApellido2.getText()!= null){
+                            validar(5, tfApellido2, "^[A-Z][a-a]{2,}$");
+                        }
                        // Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
                    }
                }
@@ -318,13 +324,13 @@ public class VJugador extends javax.swing.JDialog {
                 }
                 else
                 {
-                    validarDNI();                    
+                    validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");                    
                 }
                 mostrarDatos();
             }
             else
             {
-                validarDNI();
+                validar(3, tfDNI, "^[A-Z0-9][0-9]{7}[A-Z]$");  
                 mostrarDatos();
                 if(modificacion)
                 {
@@ -364,48 +370,6 @@ public class VJugador extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_bUltimoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VJugador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VJugador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VJugador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VJugador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                VJugador dialog = new VJugador(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bAnterior;
@@ -433,58 +397,13 @@ public class VJugador extends javax.swing.JDialog {
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
     
-    private void validarDNI() throws Exception {
-        if(tfDNI.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        Pattern p=Pattern.compile(tfDNI.getText());
-        Matcher m=p.matcher("^[A-Z0-9][0-9]{7}[A-Z]$");
+    private void validar(int error, JTextField campo, String patron) throws Exception {
+
+        Pattern p=Pattern.compile(campo.getText());
+        Matcher m=p.matcher(patron);
         if(!m.matches())
         {
-            throw new Excepcion();
-        }
-        // Validar DNI para ver si existe algún DNI con ese número
-        if(alta)
-        {
-            /*if(Main.buscarDNI(tfDNI.getText()))
-            {
-                throw new Excepcion("Ya existe un jugador con ese DNI.");
-            }*/
-        }
-        // Validar DNI para ver si no existe algún DNI con ese número
-        else
-        {
-            /*if(!Main.buscarDNI(tfDNI.getText()))
-            {
-                throw new Excepcion(No existe ningún jugador con ese DNI.);
-            }*/
-        }
-    }
-    
-    private void validarDatos() throws Exception {
-        if(tfNombre.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        if(tfApellido1.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        if(tfApellido2.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        if(tfNickname.getText().isEmpty())
-        {
-            throw new Excepcion();
-        }
-        if(modificacion)
-        {
-            if(ftfSueldo.getText().equals("Unparseable number: \"\""))
-            {
-                throw new Excepcion();
-            }
+            throw new Excepcion(error);
         }
     }
     
