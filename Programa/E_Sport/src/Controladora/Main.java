@@ -6,7 +6,6 @@
 package Controladora;
 
 import Recurso.Emparejamiento;
-import Recurso.EmparejamientoAseguir;
 import UML.Equipo;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
