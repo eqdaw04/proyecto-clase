@@ -6,9 +6,14 @@
 package Controladora;
 
 import Recurso.Emparejamiento;
-import UML.Equipo;
+import UML.*;
+import BD.*;
+import Excepciones.Excepcion;
+import Views.Login;
+import Views.Principal;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 
 /**
  *
@@ -19,11 +24,52 @@ public class Main {
     /**
      * @param args the command line arguments
      */
+    
+    private static BDEquipo bdEquipo;
+    private static BDJornada bdJornada;
+    private static BDJugador bdJugador;
+    private static BDMarcador bdMarcador;
+    private static BDPartido bdPartido;
+    private static BDPerfil bdPerfil;
+    private static BDPersona bdPersona;
+    private static BDConexion bdConexion;
+    private static int sesion;
+    private static Login login;
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        login = new Login();
+    }
+    
+    public static void abrirVentana() throws Exception{
+        int cont = 0;
+        boolean u, c;
         
-        probando();
+        u=true;
+        c=true;
+        if(cont < 4){
+            if(u && c){
+
+                sesion = 1;
+            }
+            else{
+                cont++;
+                throw new Excepcion(12);
+            }
+        }
+        else{
+            login.setError(13);
+            throw new Excepcion(13);
+        }
         
+    }
+    
+    public static void cerrar(JDialog v){
+        v.dispose();
+        new Principal(sesion);
+    }
+    
+    public static void salir(JFrame v){
+        v.dispose();
     }
     
     public static void probando(){

@@ -9,6 +9,6 @@ package BD;
  *
  * @author 1gdaw06
  */
-public class BDconexion {
+public class BDConexion {
     
 }
