@@ -11,8 +11,8 @@ import javax.swing.*;
  *
  * @author 1gdaw06
  */
-<<<<<<< HEAD:Programa/E_Sport/src/BD/BDconexion.java
-public class BDconexion {
+
+public class BDConexion {
     public static void AbrirBD (){
         try{
         Class.forName("oracle.jdbc.OracleDriver");
@@ -30,8 +30,4 @@ public class BDconexion {
         }
         System.out.println("conexion establecida");
     }
-=======
-public class BDConexion {
-    
->>>>>>> master:Programa/E_Sport/src/BD/BDConexion.java
 }
