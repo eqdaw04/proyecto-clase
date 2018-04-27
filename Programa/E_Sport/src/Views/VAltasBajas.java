@@ -2,6 +2,8 @@ package Views;
 
 import Controladora.Main;
 import Excepciones.Excepcion;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 public class VAltasBajas extends javax.swing.JDialog {
@@ -15,6 +17,7 @@ public class VAltasBajas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         mostrarEquipo();
+        mostrarPlantilla();
     }
 
     /**
@@ -32,7 +35,7 @@ public class VAltasBajas extends javax.swing.JDialog {
         tfJugadorAlta = new javax.swing.JTextField();
         bBuscarAlta = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        ftfSalario = new javax.swing.JFormattedTextField();
+        ftfSueldo = new javax.swing.JFormattedTextField();
         rbAlta = new javax.swing.JRadioButton();
         rbBajas = new javax.swing.JRadioButton();
         tfJugadorBaja = new javax.swing.JTextField();
@@ -63,9 +66,10 @@ public class VAltasBajas extends javax.swing.JDialog {
             }
         });
 
-        jLabel3.setText("Salario:");
+        jLabel3.setText("Sueldo:");
 
-        ftfSalario.setEnabled(false);
+        ftfSueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        ftfSueldo.setEnabled(false);
 
         bgAltasBajas.add(rbAlta);
         rbAlta.setText("Alta");
@@ -158,7 +162,7 @@ public class VAltasBajas extends javax.swing.JDialog {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(tfJugadorAlta, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                            .addComponent(ftfSalario))
+                                            .addComponent(ftfSueldo))
                                         .addGap(18, 18, 18)
                                         .addComponent(bBuscarAlta))))))
                     .addGroup(layout.createSequentialGroup()
@@ -189,7 +193,7 @@ public class VAltasBajas extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(ftfSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ftfSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addComponent(rbBajas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -222,7 +226,7 @@ public class VAltasBajas extends javax.swing.JDialog {
         baja=false;
         tfJugadorAlta.setEnabled(true);
         bBuscarAlta.setEnabled(true);
-        ftfSalario.setEnabled(true);
+        ftfSueldo.setEnabled(true);
         tfJugadorBaja.setEnabled(false);
         tfJugadorBaja.setText("");
         bBuscarBaja.setEnabled(false);
@@ -236,8 +240,8 @@ public class VAltasBajas extends javax.swing.JDialog {
         tfJugadorAlta.setEnabled(false);
         tfJugadorAlta.setText("");
         bBuscarAlta.setEnabled(false);
-        ftfSalario.setEnabled(false);
-        ftfSalario.setText("");
+        ftfSueldo.setEnabled(false);
+        ftfSueldo.setText("");
         tfJugadorBaja.setEnabled(true);
         bBuscarBaja.setEnabled(true);
         bAceptar.setEnabled(false);
@@ -249,14 +253,17 @@ public class VAltasBajas extends javax.swing.JDialog {
         {
             if(alta)
             {
-                
-                    // Main.tramitarAlta(tfJugadorAlta.getText(), ftfSalario.getText());
+                if(ftfSueldo.getText().equals("Unparseable number: \"\""))
+                {
+                    throw new Excepcion("No has introducido el sueldo del jugador.");
+                }
+                // Método para comprobar que no excede el límite salarial.
+                // Main.tramitarAlta(tfJugadorAlta.getText(), ftfSalario.getText());
             }
             else
             {
                 if(baja)
                 {
-                    
                     // Main.tramitarBaja(tfJugadorBaja.getText());
                 }
                 else
@@ -264,6 +271,7 @@ public class VAltasBajas extends javax.swing.JDialog {
                     throw new Excepcion("No has seleccionado ni Alta ni Baja.");
                 }
             }
+            // Método para volver a abrir la ventana
         }
         catch (Excepcion e)
         {
@@ -279,11 +287,20 @@ public class VAltasBajas extends javax.swing.JDialog {
         // TODO add your handling code here:
         try
         {
-            
+            validar(3, tfJugadorAlta.getText(), "^[A-Z0-9][0-9]{7}[A-Z]$");
+            /*if(!Main.buscarDNI(tfJugadorAlta.getText()))
+            {
+                throw new Excepcion("No existe ningún jugador con ese DNI.");
+            }*/
+            /*if(!Main.esAgenteLibre(tfJugadorAlta.getText()))
+            {
+                throw new Excepcion("Ese jugador no es agente libre.");
+            }*/
+            bAceptar.setEnabled(true);
         }
         catch (Excepcion e)
         {
-            JOptionPane.showMessageDialog(this, e.getMensaje(), "Error", 0);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
         }
         catch (Exception e)
         {
@@ -293,6 +310,24 @@ public class VAltasBajas extends javax.swing.JDialog {
 
     private void bBuscarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarBajaActionPerformed
         // TODO add your handling code here:
+        try
+        {
+            validar(3, tfJugadorBaja.getText(), "^[A-Z0-9][0-9]{7}[A-Z]$");
+            /*if(!Main.buscarDNI(tfJugadorBaja.getText()))
+            {
+                throw new Excepcion("No existe ningún jugador con ese DNI.");
+            }*/
+            // Método para comprobar que ese jugador pertenece al equipo
+            bAceptar.setEnabled(true);
+        }
+        catch (Excepcion e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getClass(), "Error", 0);
+        }
     }//GEN-LAST:event_bBuscarBajaActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
@@ -348,7 +383,7 @@ public class VAltasBajas extends javax.swing.JDialog {
     private javax.swing.JButton bBuscarBaja;
     private javax.swing.JButton bCancelar;
     private javax.swing.ButtonGroup bgAltasBajas;
-    private javax.swing.JFormattedTextField ftfSalario;
+    private javax.swing.JFormattedTextField ftfSueldo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -363,7 +398,25 @@ public class VAltasBajas extends javax.swing.JDialog {
     private javax.swing.JTextField tfJugadorAlta;
     private javax.swing.JTextField tfJugadorBaja;
     // End of variables declaration//GEN-END:variables
+    
+    private void validar(int error, String campo, String patron) throws Exception {
 
+        Pattern p=Pattern.compile(campo);
+        Matcher m=p.matcher(patron);
+        if(!m.matches())
+        {
+            throw new Excepcion(error);
+        }
+    }
     private void mostrarEquipo() {
+        // Método para mostrar el equipo del dueño.
+        /*tfEquipo.setText(Main.buscarEquipoDuenno());*/
+    }
+
+    private void mostrarPlantilla() {
+        // Método para mostrar la plantilla del equipo.
+        // En la última fila límite salarial.
+        /*String mensaje=Main.mostrarPlantilla();
+        taPlantilla.setText(mensaje);*/
     }
 }
