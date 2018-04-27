@@ -100,6 +100,7 @@ public class VAltasBajas extends javax.swing.JDialog {
         tfEquipo.setEnabled(false);
 
         bAceptar.setText("Aceptar");
+        bAceptar.setEnabled(false);
         bAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAceptarActionPerformed(evt);
@@ -186,7 +187,7 @@ public class VAltasBajas extends javax.swing.JDialog {
                     .addComponent(tfJugadorAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bBuscarAlta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(ftfSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
@@ -223,7 +224,9 @@ public class VAltasBajas extends javax.swing.JDialog {
         bBuscarAlta.setEnabled(true);
         ftfSalario.setEnabled(true);
         tfJugadorBaja.setEnabled(false);
+        tfJugadorBaja.setText("");
         bBuscarBaja.setEnabled(false);
+        bAceptar.setEnabled(false);
     }//GEN-LAST:event_rbAltaActionPerformed
 
     private void rbBajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbBajasActionPerformed
@@ -231,10 +234,13 @@ public class VAltasBajas extends javax.swing.JDialog {
         alta=false;
         baja=true;
         tfJugadorAlta.setEnabled(false);
+        tfJugadorAlta.setText("");
         bBuscarAlta.setEnabled(false);
         ftfSalario.setEnabled(false);
+        ftfSalario.setText("");
         tfJugadorBaja.setEnabled(true);
-        bBuscarBaja.setEnabled(true);   
+        bBuscarBaja.setEnabled(true);
+        bAceptar.setEnabled(false);
     }//GEN-LAST:event_rbBajasActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
@@ -244,7 +250,7 @@ public class VAltasBajas extends javax.swing.JDialog {
             if(alta)
             {
                 
-                // Main.tramitarAlta(tfJugadorAlta.getText(), ftfSalario.getText());
+                    // Main.tramitarAlta(tfJugadorAlta.getText(), ftfSalario.getText());
             }
             else
             {
