@@ -123,7 +123,7 @@ public class Login extends javax.swing.JFrame {
                 throw new Excepcion(2);
             }
             else{
-                Main.abrirVentana(cont);
+                Main.abrirPrincipal();
             }
         }
         catch (Excepcion e)
@@ -141,7 +141,6 @@ public class Login extends javax.swing.JFrame {
                 Main.salir(this);
             }
         }
-
     }//GEN-LAST:event_bAccederActionPerformed
 
     public JPasswordField getPfContrasenna() {
@@ -169,8 +168,7 @@ public class Login extends javax.swing.JFrame {
     }
     
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
-        // TODO add your handling code here:
-        // Main.cerrar(this);
+        Main.salir(this);
     }//GEN-LAST:event_bSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

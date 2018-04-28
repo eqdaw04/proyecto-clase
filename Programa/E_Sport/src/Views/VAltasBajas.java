@@ -290,7 +290,7 @@ public class VAltasBajas extends javax.swing.JDialog {
         // TODO add your handling code here:
         try
         {
-            ValidacionDeDatosDeEntrada.validar(3, tfJugadorBaja);
+            ValidacionDeDatosDeEntrada.validar(3, tfJugadorAlta);
             /*if(!Main.buscarDNI(tfJugadorAlta.getText()))
             {
                 throw new Excepcion("No existe ningún jugador con ese DNI.");

@@ -10,9 +10,9 @@ import Recurso.Emparejamiento;
 import UML.*;
 import BD.*;
 import Excepciones.Excepcion;
-import Views.Login;
-import Views.Principal;
+import Views.*;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
@@ -35,15 +35,29 @@ public class Main {
     private static BDPerfil bdPerfil;
     private static BDPersona bdPersona;
     private static BDConexion bdConexion;
+    private static Persona persona;
     private static int perfil;
     private static Login login;
+    private static String driver, url, usuario, contrasenna;
     
     public static void main(String[] args) {
-        login = new Login();
+        //driver para la conexion
+        driver = "oracle.jdbc.OracleDriver";
+        //datos del usuario y servidor
+        String tipo = "oracle",
+        ruta = "thin:@SrvOracle",
+        puerto = "1521",
+        bbdd = "orcl";
+        usuario = "eqdaw04";
+        contrasenna = "eqdaw04";
+        //construccion de la ruta completa.
+        url = "jdbc:" + tipo + ":" + ruta + ":" + puerto + ":" + bbdd;
         
+        //login = new Login();
+        new Principal();
     }
     
-    public static void abrirVentana(int cont) throws Exception{
+    public static void abrirPrincipal() throws Exception{
 
         //datos de prueba
         Persona p = new Persona();
@@ -53,40 +67,69 @@ public class Main {
         Perfil per = new Perfil();
         per.setIdPerfil(1);
         p.setPerfil(per);
-        
-        cont ++;
+        int cont = login.getCont()+1;
         login.setCont(cont);
-        if(cont < 3){
-            if(login.getTfUsuario().getText().equals(p.getUsuario()) && login.getPfContrasenna().getText().equals(p.getContrasenna())){
-                perfil = p.getPerfil().getIdPerfil();
-                login.dispose();
-                new Principal(perfil);
-            }
-            else{
-                throw new Excepcion(12);
-            }
+        
+        if(login.getTfUsuario().getText().equals(p.getUsuario()) && login.getPfContrasenna().getText().equals(p.getContrasenna())){
+            perfil = p.getPerfil().getIdPerfil();
+            login.dispose();
+            new Principal(perfil);
         }
-        else{
-            if(login.getTfUsuario().getText().equals(p.getUsuario()) && login.getPfContrasenna().getText().equals(p.getContrasenna())){
-                perfil = p.getPerfil().getIdPerfil();
-                login.dispose();
-                new Principal(perfil);
-            }
-            else{
-                login.setError(13);
-                throw new Excepcion(13);
-            }
-            
+        else if(cont <3){
+            throw new Excepcion(12);
+        }else if(cont == 3){
+            login.setError(13);
+            throw new Excepcion(13);
+        }
+        
+    }
+    
+    public static void abrirVentana(int n, String tipo){
+        //abrir ventana según selección del usuario en la pantalla principal
+        switch(n){
+            case 1:
+                new VJugador(tipo);
+                break;
+                
+            case 2:
+                new VEquipo(tipo);
+                break;
+                
+            case 3:
+                new VUsuario(tipo);
+                break;
+                
+            case 4:
+                new VAltasBajas();
+                break;
         }
     }
     
     public static void cerrar(JDialog v){
+        //cierra una ventana abierta por ventana principal
         v.dispose();
-        new Principal(perfil);
+        
     }
     
     public static void salir(JFrame v){
+        //salir del programa
         v.dispose();
+    }
+    
+    public static boolean buscarUsuario(String usuario){
+        boolean existe = false;
+        //buscar por nombre de usuario  y retornar si existe
+        //persona
+        return existe;
+    }
+    
+    public static void altaUsuario( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Date fecha, String perfil, String equipo){
+        Persona p =  new Persona(nombre, ape1, ape2, fecha, usuario, contrasenna, email);
+        p.setPerfil(buscarPerfil(perfil));
+        if(equipo != null){
+            p.setEquipo(buscarEquipo(equipo));
+        }
+        
     }
     
     public static void probando(){
@@ -117,6 +160,53 @@ public class Main {
         e.calcularPartido();
         
     }
-    
-    
+
+    public static int getPerfil() {
+        return perfil;
+    }
+
+    public static void setPerfil(int perfil) {
+        Main.perfil = perfil;
+    }
+
+    public static Login getLogin() {
+        return login;
+    }
+
+    public static void setLogin(Login login) {
+        Main.login = login;
+    }
+
+    public static String getDriver() {
+        return driver;
+    }
+
+    public static void setDriver(String driver) {
+        Main.driver = driver;
+    }
+
+    public static String getUrl() {
+        return url;
+    }
+
+    public static void setUrl(String url) {
+        Main.url = url;
+    }
+
+    public static String getUsuario() {
+        return usuario;
+    }
+
+    public static void setUsuario(String usuario) {
+        Main.usuario = usuario;
+    }
+
+    public static String getContrasenna() {
+        return contrasenna;
+    }
+
+    public static void setContrasenna(String contrasenna) {
+        Main.contrasenna = contrasenna;
+    }
+
 }

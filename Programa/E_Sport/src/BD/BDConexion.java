@@ -5,6 +5,7 @@
  */
 package BD;
 
+import Controladora.Main;
 import java.sql.*;
 import javax.swing.*;
 /**
@@ -12,15 +13,22 @@ import javax.swing.*;
  * @author 1gdaw06
  */
 
+
+
 public class BDConexion {
-    public static void AbrirBD (){
+    
+    Connection connection;
+    
+    String driver = Main.getDriver(),
+            url = Main.getUrl(),
+            user = Main.getUsuario(),
+            pass = Main.getContrasenna();
+            
+    
+    public void AbrirBD () throws Exception{
         try{
-        Class.forName("oracle.jdbc.OracleDriver");
-        
-        String login = "eqdaw04";
-        String password = "eqdaw04";
-        String url = "jdbc:oracle:thin:@SrvOracle:1521:orcl";
-        Connection con = DriverManager.getConnection(url, login, password);
+            Class.forName(driver);
+            connection = DriverManager.getConnection(url, user, pass);
         }
         catch(ClassNotFoundException e){
             JOptionPane.showMessageDialog(null, "El driver de la base de datos no esta disponible!" +e.getMessage());
@@ -29,5 +37,13 @@ public class BDConexion {
             JOptionPane.showMessageDialog(null, "problemas" +e.getMessage());
         }
         System.out.println("conexion establecida");
+    }
+    
+    public Connection getConnection(){
+      return connection;
+    }
+ 
+    public void desconectar() throws Exception{
+        connection.close();
     }
 }

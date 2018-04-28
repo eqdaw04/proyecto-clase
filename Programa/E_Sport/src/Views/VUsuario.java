@@ -321,11 +321,11 @@ public class VUsuario extends javax.swing.JDialog {
                 if(cbPerfil.getSelectedIndex() == -1){
                     throw new Excepcion(9);
                 }
-                /*if(Main.buscarUsuario(tfUsuario.getText()))
+                if(Main.buscarUsuario(tfUsuario.getText()))
                 {
-                    throw new Excepcion("Ya existe un usuario con ese nombre.");
-                }*/
-                // Main.altaUsuario(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), cFechaAlta.getDate(), String.valueOf(cbPerfil.getSelectedItem()), String.valueOf(cbEquipo.getSelectedItem()));
+                    throw new Excepcion(15);
+                }
+                Main.altaUsuario(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), cFechaAlta.getDate(), String.valueOf(cbPerfil.getSelectedItem()), String.valueOf(cbEquipo.getSelectedItem()));
             }
             else
             {
@@ -415,20 +415,20 @@ public class VUsuario extends javax.swing.JDialog {
                 }
                 else
                 {
-                    /*if(!Main.buscarUsuario(tfUsuario.getText()))
-                        {
-                            throw new Excepcion(No existe ningún usuario con ese nombre.);
-                        }*/
+                    if(!Main.buscarUsuario(tfUsuario.getText()))
+                    {
+                        throw new Excepcion(14);
+                    }
                 }
                 mostrarDatos();
             }
             else
             {
                 // consulta el usuario, si existe, carga los datos para modificarlo.
-                /*if(!Main.buscarUsuario(tfUsuario.getText()))
-                        {
-                            throw new Excepcion(No existe ningún usuario con ese nombre.);
-                        }*/
+                if(!Main.buscarUsuario(tfUsuario.getText()))
+                {
+                    throw new Excepcion(14);
+                }
                 mostrarDatos();
                 tfNombre.setEnabled(true);
                 tfApellido1.setEnabled(true);
