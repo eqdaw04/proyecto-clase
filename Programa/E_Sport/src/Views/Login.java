@@ -7,6 +7,7 @@ package Views;
 
 import Controladora.Main;
 import Excepciones.Excepcion;
+import UML.Perfil;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -123,7 +124,8 @@ public class Login extends javax.swing.JFrame {
                 throw new Excepcion(2);
             }
             else{
-                Main.abrirPrincipal();
+                
+                Main.accederPrincipal(tfUsuario.getText(), pfContrasenna.getPassword());
             }
         }
         catch (Excepcion e)

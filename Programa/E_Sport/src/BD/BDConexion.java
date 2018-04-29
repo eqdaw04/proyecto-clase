@@ -18,17 +18,14 @@ import javax.swing.*;
 public class BDConexion {
     
     Connection connection;
-    
-    String driver = Main.getDriver(),
-            url = Main.getUrl(),
-            user = Main.getUsuario(),
-            pass = Main.getContrasenna();
-            
-    
-    public void AbrirBD () throws Exception{
+
+    public BDConexion() throws Exception{
         try{
-            Class.forName(driver);
-            connection = DriverManager.getConnection(url, user, pass);
+            Class.forName(Main.getDriver());
+            connection = DriverManager.getConnection(Main.getUrl(), Main.getUsuario(), Main.getContrasenna());
+            if(connection != null){
+                System.out.println("conexion establecida");
+            }
         }
         catch(ClassNotFoundException e){
             JOptionPane.showMessageDialog(null, "El driver de la base de datos no esta disponible!" +e.getMessage());
@@ -36,7 +33,7 @@ public class BDConexion {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "problemas" +e.getMessage());
         }
-        System.out.println("conexion establecida");
+        
     }
     
     public Connection getConnection(){
