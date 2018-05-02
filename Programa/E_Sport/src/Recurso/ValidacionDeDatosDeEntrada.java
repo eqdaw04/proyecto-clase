@@ -22,9 +22,8 @@ public class ValidacionDeDatosDeEntrada{
     
     public static void validar(int cod, JTextField campo) throws Exception{
         
-        String patron = datoPatron(cod);
-        Pattern p=Pattern.compile(campo.getText());
-        Matcher m=p.matcher(patron);
+        Pattern p=Pattern.compile(datoPatron(cod));
+        Matcher m=p.matcher(campo.getText());
         if(!m.matches())
         {
             campo.setBackground(Color.red);
