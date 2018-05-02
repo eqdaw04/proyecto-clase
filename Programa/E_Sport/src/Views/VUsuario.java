@@ -340,11 +340,11 @@ public class VUsuario extends javax.swing.JDialog {
                 if(baja)
                 {
                     //proceso de baja, sólo si existe el dni de la persona.
-                    /*if(!Main.buscarUsuario(tfUsuario.getText()))
-                        {
-                            throw new Excepcion(No existe ningún usuario con ese nombre.);
-                        }*/
-                    // Main.bajaUsuario(tfUsuario.getText());
+                    if(!Main.buscarUsuario(tfUsuario.getText()))
+                    {
+                        throw new Excepcion(18);
+                    }
+                    Main.bajaUsuario(tfUsuario.getText());
                 }
                 else
                 {
@@ -370,11 +370,11 @@ public class VUsuario extends javax.swing.JDialog {
                             }
                         }
                         //comprobar si existe el usuario
-                        /*if(!Main.buscarUsuario(tfUsuario.getText()))
+                        if(!Main.buscarUsuario(tfUsuario.getText()))
                         {
-                            throw new Excepcion(No existe ningún usuario con ese nombre.);
-                        }*/
-                        // Main.modificarUsuario(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), String.valueOf(cbPerfil.getSelectedItem()), String.valueOf(cbEquipo.getSelectedItem()));
+                            throw new Excepcion(18);
+                        }
+                        Main.modificarUsuario(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), String.valueOf(cbPerfil.getSelectedItem()), String.valueOf(cbEquipo.getSelectedItem()));
                     }
                 }
             }
@@ -392,7 +392,7 @@ public class VUsuario extends javax.swing.JDialog {
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         // TODO add your handling code here:
-        // Main.cerrar(this);
+        Main.cerrar(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrimeroActionPerformed
@@ -510,7 +510,7 @@ public class VUsuario extends javax.swing.JDialog {
 
     
     private void mostrarDatos() throws Exception {
-        /*Persona p =Main.buscarPersona();
+        Persona p =Main.buscarPersona();
         tfUsuario.setText(p.getUsuario());
         pfContrasenna.setText(p.getContrasenna());
         tfNombre.setText(p.getNombre());
@@ -519,6 +519,6 @@ public class VUsuario extends javax.swing.JDialog {
         tfEmail.setText(p.getEmail());        
         cFechaAlta.setDate(p.getFechaAlta());
         cbPerfil.setSelectedItem(p.getPerfil().getNombre());
-        cbEquipo.setSelectedItem(p.getEquipo().getNombre());*/
+        cbEquipo.setSelectedItem(p.getEquipo().getNombre());
     }
 }
