@@ -5,11 +5,6 @@
  */
 package Controladora;
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 import Recurso.Emparejamiento;
 import UML.*;
 import BD.*;
@@ -21,12 +16,6 @@ import java.util.Arrays;
 import java.util.Date;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-
-<<<<<<< HEAD
-
-=======
->>>>>>> master
-
 /**
  *
  * @author v6222
