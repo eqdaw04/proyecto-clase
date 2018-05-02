@@ -33,17 +33,18 @@ public class Main {
     private static BDPartido bdPartido;
     private static BDPerfil bdPerfil;
     private static BDPersona bdPersona;
+    private static BDConexion con;
     private static Persona persona;
     private static int perfil;
     private static Login login;
     private static String driver, url, usuario, contrasenna;
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         //driver para la conexion
         driver = "oracle.jdbc.OracleDriver";
         //datos del usuario y servidor
         String tipo = "oracle",
-        servidor = "localhost",
+        servidor = "10.10.10.9",//"localhost"
         puerto = "1521",
         bbdd = "db12102";
         usuario = "eqdaw04";
@@ -55,7 +56,7 @@ public class Main {
         //new Principal();
     }
     
-    public static void inicializarValores(){
+    public static void inicializarValores() throws Exception{
         bdEquipo = new BDEquipo();
         bdJornada = new BDJornada();
         bdJugador = new BDJugador();
@@ -63,12 +64,12 @@ public class Main {
         bdPartido = new BDPartido();
         bdPerfil = new BDPerfil();
         bdPersona = new BDPersona();
-        
+        con = new BDConexion();
     }
     
     public static void accederPrincipal(String usuario, char[] contrasenna) throws Exception{
         persona = null;
-        BDConexion con = new BDConexion();
+        
         persona = bdPersona.buscarPersonaPorUsuario(usuario, con);
         con.desconectar();
         int cont = login.getCont()+1;
@@ -278,9 +279,7 @@ public class Main {
     }
 
     public static boolean buscarDNI(String dni) {
-        boolean existe = false;
-        // Buscar el DNI del jugador en la BD y retornar si existe
-        return existe;
+       return BDJugador.BuscarDni(dni,con);
     }
 
     public static Jugador buscarJugador() {
