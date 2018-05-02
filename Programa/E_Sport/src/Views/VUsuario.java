@@ -4,11 +4,7 @@ import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
 import Recurso.ValidacionDeDatosDeEntrada;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import UML.Persona;
-import java.awt.Color;
-import javax.swing.JTextField;
 
 public class VUsuario extends javax.swing.JDialog {
     
@@ -75,7 +71,7 @@ public class VUsuario extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         tfUsuario = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        cFechaAlta = new org.freixas.jcalendar.JCalendarCombo();
+        ccFechaAlta = new org.freixas.jcalendar.JCalendarCombo();
         jLabel3 = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -157,7 +153,7 @@ public class VUsuario extends javax.swing.JDialog {
 
         jLabel9.setText("Equipo:");
 
-        cFechaAlta.setEnabled(false);
+        ccFechaAlta.setEnabled(false);
 
         jLabel3.setText("Nombre:");
 
@@ -217,7 +213,7 @@ public class VUsuario extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(cFechaAlta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ccFechaAlta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(tfApellido2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                                     .addComponent(tfApellido1, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(pfContrasenna, javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,7 +272,7 @@ public class VUsuario extends javax.swing.JDialog {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cFechaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ccFechaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -328,11 +324,12 @@ public class VUsuario extends javax.swing.JDialog {
                         throw new Excepcion(16);
                     }
                 }
-                if(Main.buscarUsuario(tfUsuario.getText()))
+                if(!Main.buscarUsuario(tfUsuario.getText()) ==  null)
                 {
                     throw new Excepcion(15);
+                    
                 }
-                Main.altaUsuario(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), cFechaAlta.getDate(), String.valueOf(cbPerfil.getSelectedItem()), String.valueOf(cbEquipo.getSelectedItem()));
+                Main.altaUsuario(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), ccFechaAlta.getDate(), String.valueOf(cbPerfil.getSelectedItem()), String.valueOf(cbEquipo.getSelectedItem()));
             }
             else
             {
@@ -340,7 +337,7 @@ public class VUsuario extends javax.swing.JDialog {
                 if(baja)
                 {
                     //proceso de baja, sólo si existe el dni de la persona.
-                    if(!Main.buscarUsuario(tfUsuario.getText()))
+                    if(!Main.buscarUsuario(tfUsuario.getText()) == null)
                     {
                         throw new Excepcion(18);
                     }
@@ -370,7 +367,7 @@ public class VUsuario extends javax.swing.JDialog {
                             }
                         }
                         //comprobar si existe el usuario
-                        if(!Main.buscarUsuario(tfUsuario.getText()))
+                        if(Main.buscarUsuario(tfUsuario.getText()) == null)
                         {
                             throw new Excepcion(18);
                         }
@@ -378,10 +375,6 @@ public class VUsuario extends javax.swing.JDialog {
                     }
                 }
             }
-        }
-        catch (Excepcion e)
-        {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
         }
         catch (Exception e)
         {
@@ -429,7 +422,7 @@ public class VUsuario extends javax.swing.JDialog {
                 }
                 else
                 {
-                    if(!Main.buscarUsuario(tfUsuario.getText()))
+                    if(Main.buscarUsuario(tfUsuario.getText()) != null)
                     {
                         throw new Excepcion(14);
                     }
@@ -439,7 +432,7 @@ public class VUsuario extends javax.swing.JDialog {
             else
             {
                 // consulta el usuario, si existe, carga los datos para modificarlo.
-                if(!Main.buscarUsuario(tfUsuario.getText()))
+                if(Main.buscarUsuario(tfUsuario.getText()) != null)
                 {
                     throw new Excepcion(14);
                 }
@@ -456,10 +449,6 @@ public class VUsuario extends javax.swing.JDialog {
                 
                 bAceptar.setEnabled(true);
             }
-        }
-        catch (Excepcion e)
-        {
-            JOptionPane.showMessageDialog(this, e.getMensaje(), "Error", 0);
         }
         catch (Exception e)
         {
@@ -488,9 +477,9 @@ public class VUsuario extends javax.swing.JDialog {
     private javax.swing.JButton bPrimero;
     private javax.swing.JButton bSiguiente;
     private javax.swing.JButton bUltimo;
-    private org.freixas.jcalendar.JCalendarCombo cFechaAlta;
     private javax.swing.JComboBox<String> cbEquipo;
     private javax.swing.JComboBox<String> cbPerfil;
+    private org.freixas.jcalendar.JCalendarCombo ccFechaAlta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -517,7 +506,7 @@ public class VUsuario extends javax.swing.JDialog {
         tfApellido1.setText(p.getApellido1());
         tfApellido2.setText(p.getApellido2());
         tfEmail.setText(p.getEmail());        
-        cFechaAlta.setDate(p.getFechaAlta());
+        ccFechaAlta.setDate(p.getFechaAlta());
         cbPerfil.setSelectedItem(p.getPerfil().getNombre());
         cbEquipo.setSelectedItem(p.getEquipo().getNombre());
     }
