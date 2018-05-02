@@ -57,7 +57,7 @@ public class VAltasBajas extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("ALTAS Y BAJAS");
 
-        jLabel2.setText("DNI Jugador:");
+        jLabel2.setText("DNI del jugador:");
 
         tfJugadorAlta.setEnabled(false);
 
@@ -100,7 +100,7 @@ public class VAltasBajas extends javax.swing.JDialog {
             }
         });
 
-        jLabel4.setText("DNI Jugador:");
+        jLabel4.setText("DNI del jugador:");
 
         jLabel5.setText("Equipo:");
 
@@ -131,7 +131,7 @@ public class VAltasBajas extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addComponent(jLabel1))
@@ -175,10 +175,10 @@ public class VAltasBajas extends javax.swing.JDialog {
                         .addComponent(tfEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -260,25 +260,32 @@ public class VAltasBajas extends javax.swing.JDialog {
                 {
                     throw new Excepcion(10);
                 }
-                // Método para comprobar que no excede el límite salarial y el SMI.
-                // Main.tramitarAlta(tfJugadorAlta.getText(), ftfSalario.getText());
+                if(Main.comprobarSueldo(ftfSueldo.getText()))
+                {
+                    throw new Excepcion(21);
+                }
+                if(Main.comprobarJugadores())
+                {
+                    throw new Excepcion(22);
+                }
+               Main.tramitarAlta(tfJugadorAlta.getText(), ftfSueldo.getText());
             }
             else
             {
                 if(baja)
                 {
-                    // Main.tramitarBaja(tfJugadorBaja.getText());
+                    Main.tramitarBaja(tfJugadorBaja.getText());
                 }
                 else
                 {
                     throw new Excepcion(11);
                 }
             }
-            // Método para volver a abrir la ventana
+            Main.cerrarAbrir(this, "AltasBajas");
         }
         catch (Excepcion e)
         {
-            JOptionPane.showMessageDialog(this, e.getMensaje(), "Error", 0);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
         }
         catch (Exception e)
         {
@@ -291,14 +298,14 @@ public class VAltasBajas extends javax.swing.JDialog {
         try
         {
             ValidacionDeDatosDeEntrada.validar(3, tfJugadorAlta);
-            /*if(!Main.buscarDNI(tfJugadorAlta.getText()))
+            if(!Main.buscarDNI(tfJugadorAlta.getText()))
             {
                 throw new Excepcion("No existe ningún jugador con ese DNI.");
-            }*/
-            /*if(!Main.esAgenteLibre(tfJugadorAlta.getText()))
+            }
+            if(!Main.esAgenteLibre(tfJugadorAlta.getText()))
             {
                 throw new Excepcion("Ese jugador no es agente libre.");
-            }*/
+            }
             bAceptar.setEnabled(true);
         }
         catch (Excepcion e)
@@ -316,11 +323,11 @@ public class VAltasBajas extends javax.swing.JDialog {
         try
         {
             ValidacionDeDatosDeEntrada.validar(3, tfJugadorBaja);
-            /*if(!Main.buscarDNI(tfJugadorBaja.getText()))
+            if(!Main.buscarDNI(tfJugadorBaja.getText()))
             {
                 throw new Excepcion("No existe ningún jugador con ese DNI.");
-            }*/
-            // Método para comprobar que ese jugador pertenece al equipo
+            }
+            Main.perteneceEquipo();
             bAceptar.setEnabled(true);
         }
         catch (Excepcion e)
@@ -335,7 +342,7 @@ public class VAltasBajas extends javax.swing.JDialog {
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         // TODO add your handling code here:
-        // Main.cerrar(this);
+        Main.cerrar(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -368,7 +375,7 @@ public class VAltasBajas extends javax.swing.JDialog {
     private void mostrarPlantilla() {
         // Método para mostrar la plantilla del equipo.
         // En la última fila límite salarial.
-        /*String mensaje=Main.mostrarPlantilla();
-        taPlantilla.setText(mensaje);*/
+        String mensaje=Main.buscarPlantilla();
+        taPlantilla.setText(mensaje);
     }
 }

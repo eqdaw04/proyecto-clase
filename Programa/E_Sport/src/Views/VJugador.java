@@ -160,6 +160,9 @@ public class VJugador extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
@@ -172,10 +175,6 @@ public class VJugador extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfNickname)
-                            .addComponent(tfApellido2)
-                            .addComponent(tfApellido1)
-                            .addComponent(tfDNI)
-                            .addComponent(tfNombre)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(bAceptar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -184,18 +183,19 @@ public class VJugador extends javax.swing.JDialog {
                                 .addComponent(bPrimero)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bAnterior)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bSiguiente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bUltimo))
-                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                             .addComponent(ftfSueldo)
-                            .addComponent(cFechaAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cFechaAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfDNI)
+                            .addComponent(tfNombre)
+                            .addComponent(tfApellido1)
+                            .addComponent(tfApellido2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bBuscar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(jLabel1)))
+                        .addComponent(bBuscar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -265,24 +265,24 @@ public class VJugador extends javax.swing.JDialog {
                    ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
                 }
                 //comprobar si existe, en caso negativo procede el alta.
-               /*if(Main.buscarDNI(tfDNI.getText()))
+               if(Main.buscarDNI(tfDNI.getText()))
                 {
                 throw new Excepcion("Ya existe un jugador con ese DNI.");
-                }*/
-               // Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
+                }
+               Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
            }
            else
            {
                ValidacionDeDatosDeEntrada.validar(3, tfDNI);
                //comprueba dni, en caso positivo, procede la operación.
-               /*if(!Main.buscarDNI(tfDNI.getText()))
+               if(!Main.buscarDNI(tfDNI.getText()))
                 {
-                    throw new Excepcion(No existe ningún jugador con ese DNI.);
-                }*/
+                    throw new Excepcion(17);
+                }
                if(baja)
                {
                    //baja del jugador
-                   // Main.bajaJugador(tfDNI.getText());
+                   Main.bajaJugador(tfDNI.getText());
                }
                else
                {
@@ -292,13 +292,13 @@ public class VJugador extends javax.swing.JDialog {
                     if(tfApellido2.getText()!= null){
                         ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
                     }
-                   // Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
+                   Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
                }
            }
        }
        catch (Excepcion e)
        {
-           JOptionPane.showMessageDialog(this, e.getMensaje(), "Error", 0);
+           JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
        }
        catch (Exception e)
        {
@@ -309,7 +309,7 @@ public class VJugador extends javax.swing.JDialog {
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         // TODO add your handling code here:
-        // Main.cerrar(this);
+        Main.cerrar(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
@@ -345,7 +345,6 @@ public class VJugador extends javax.swing.JDialog {
                     tfApellido1.setEnabled(true);
                     tfApellido2.setEnabled(true);
                     tfNickname.setEnabled(true);
-                    ftfSueldo.setEnabled(true);
                     taComentario.setEnabled(true);
                 }
                 bAceptar.setEnabled(true);
@@ -353,7 +352,7 @@ public class VJugador extends javax.swing.JDialog {
         }
        catch (Excepcion e)
        {
-           JOptionPane.showMessageDialog(this, e.getMensaje(), "Error", 0);
+           JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
        }
        catch (Exception e)
        {
@@ -404,16 +403,15 @@ public class VJugador extends javax.swing.JDialog {
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 
-    
     private void mostrarDatos() throws Exception {
-        /*Jugador j =Main.buscarJugador();
+        Jugador j =Main.buscarJugador();
         tfDNI.setText(j.getDni());
         tfNombre.setText(j.getNombre());
         tfApellido1.setText(j.getApellido1());
         tfApellido2.setText(j.getApellido2());
+        tfNickname.setText(j.getNickname());
         ftfSueldo.setText(String.valueOf(j.getSueldo()));        
         cFechaAlta.setDate(j.getFechaAlta());
-        tfEquipo.setText(j.getEquipo().getNombre());
-        taComentario.setText(j.getComentario());*/
+        taComentario.setText(j.getComentario());
     }
 }
