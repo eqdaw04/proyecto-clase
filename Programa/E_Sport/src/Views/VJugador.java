@@ -160,6 +160,9 @@ public class VJugador extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
@@ -172,10 +175,6 @@ public class VJugador extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfNickname)
-                            .addComponent(tfApellido2)
-                            .addComponent(tfApellido1)
-                            .addComponent(tfDNI)
-                            .addComponent(tfNombre)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(bAceptar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -184,18 +183,19 @@ public class VJugador extends javax.swing.JDialog {
                                 .addComponent(bPrimero)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bAnterior)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bSiguiente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bUltimo))
-                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                             .addComponent(ftfSueldo)
-                            .addComponent(cFechaAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cFechaAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfDNI)
+                            .addComponent(tfNombre)
+                            .addComponent(tfApellido1)
+                            .addComponent(tfApellido2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bBuscar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(jLabel1)))
+                        .addComponent(bBuscar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -292,13 +292,13 @@ public class VJugador extends javax.swing.JDialog {
                     if(tfApellido2.getText()!= null){
                         ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
                     }
-                   // Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
+                   // Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
                }
            }
        }
        catch (Excepcion e)
        {
-           JOptionPane.showMessageDialog(this, e.getMensaje(), "Error", 0);
+           JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
        }
        catch (Exception e)
        {
@@ -345,7 +345,6 @@ public class VJugador extends javax.swing.JDialog {
                     tfApellido1.setEnabled(true);
                     tfApellido2.setEnabled(true);
                     tfNickname.setEnabled(true);
-                    ftfSueldo.setEnabled(true);
                     taComentario.setEnabled(true);
                 }
                 bAceptar.setEnabled(true);
@@ -353,7 +352,7 @@ public class VJugador extends javax.swing.JDialog {
         }
        catch (Excepcion e)
        {
-           JOptionPane.showMessageDialog(this, e.getMensaje(), "Error", 0);
+           JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
        }
        catch (Exception e)
        {
@@ -404,7 +403,6 @@ public class VJugador extends javax.swing.JDialog {
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 
-    
     private void mostrarDatos() throws Exception {
         /*Jugador j =Main.buscarJugador();
         tfDNI.setText(j.getDni());

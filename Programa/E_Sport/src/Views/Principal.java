@@ -30,7 +30,9 @@ public class Principal extends javax.swing.JFrame {
         setVisible(true);
         switch(tipo)
         {
-            
+            case 1:
+                equipos.setEnabled(false);
+                break;
             case 2:
                 administracion.setEnabled(false);
                 break;

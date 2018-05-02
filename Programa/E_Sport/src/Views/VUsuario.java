@@ -220,11 +220,11 @@ public class VUsuario extends javax.swing.JDialog {
                                     .addComponent(cFechaAlta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(tfApellido2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                                     .addComponent(tfApellido1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfUsuario, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(pfContrasenna, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tfNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfEmail))
-                                .addGap(18, 18, 18)
+                                    .addComponent(tfEmail)
+                                    .addComponent(tfUsuario, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bBuscar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -242,7 +242,7 @@ public class VUsuario extends javax.swing.JDialog {
                                         .addComponent(bCancelar))
                                     .addComponent(cbEquipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cbPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(bBuscarEquipos)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -367,7 +367,7 @@ public class VUsuario extends javax.swing.JDialog {
         }
         catch (Excepcion e)
         {
-            JOptionPane.showMessageDialog(this, e.getMensaje(), "Error", 0);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
         }
         catch (Exception e)
         {
