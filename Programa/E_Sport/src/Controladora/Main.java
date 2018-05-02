@@ -11,9 +11,11 @@ import BD.*;
 import static BD.BDConexion.*;
 import Excepciones.Excepcion;
 import Views.*;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 /**
@@ -278,8 +280,12 @@ public class Main {
         j.setComentario(comentario);
     }
 
-    public static boolean buscarDNI(String dni) {
+    public static ResultSet buscarDNI(String dni) {
        return BDJugador.BuscarDni(dni,con);
+    }
+    
+    public static List obtenerJug(){
+        
     }
 
     public static Jugador buscarJugador() {
