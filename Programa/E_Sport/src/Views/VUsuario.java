@@ -321,6 +321,13 @@ public class VUsuario extends javax.swing.JDialog {
                 if(cbPerfil.getSelectedIndex() == -1){
                     throw new Excepcion(9);
                 }
+                if(cbPerfil.getSelectedItem().equals("Dueño"))
+                {
+                    if(cbEquipo.getSelectedIndex() == -1)
+                    {
+                        throw new Excepcion(16);
+                    }
+                }
                 if(Main.buscarUsuario(tfUsuario.getText()))
                 {
                     throw new Excepcion(15);
@@ -354,6 +361,13 @@ public class VUsuario extends javax.swing.JDialog {
                         ValidacionDeDatosDeEntrada.validar(6, tfEmail);
                         if(cbPerfil.getSelectedIndex() == -1){
                             throw new Excepcion(9);
+                        }
+                        if(cbPerfil.getSelectedItem().equals("Dueño"))
+                        {
+                            if(cbEquipo.getSelectedIndex() == -1)
+                            {
+                                throw new Excepcion(16);
+                            }
                         }
                         //comprobar si existe el usuario
                         /*if(!Main.buscarUsuario(tfUsuario.getText()))
@@ -435,6 +449,10 @@ public class VUsuario extends javax.swing.JDialog {
                 tfApellido2.setEnabled(true);
                 tfEmail.setEnabled(true);
                 cbPerfil.setEnabled(true);
+                if(cbPerfil.getSelectedItem().equals("Dueño"))
+                {
+                    cbEquipo.setVisible(true);
+                }
                 
                 bAceptar.setEnabled(true);
             }
