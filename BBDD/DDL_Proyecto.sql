@@ -7,8 +7,8 @@ CONSTRAINT Perf_perfid_pk PRIMARY KEY (Id_perfil),
 -- Administrador, dueño, usuario
 CONSTRAINT Perf_nom_ck Check (Nombre = INITCAP(Nombre))
 );
-
-
+INSERT INTO Perfil (Nombre) VALUES ('Admin');
+INSERT INTO Perfil (Nombre) VALUES ('Dueño');
 
    DROP TABLE Persona CASCADE CONSTRAINTS;
 
@@ -19,12 +19,14 @@ Apellido1 VARCHAR2 (45) NOT NULL,
 Apellido2 VARCHAR2 (45),
 Fecha_alta DATE NOT NULL,
 Usuario VARCHAR2 (45) NOT NULL,
-Contraseña VARCHAR2 (255) NOT NULL,
+Contrasenna VARCHAR2 (255) NOT NULL,
 Email VARCHAR2 (60),
 Id_perfil  INTEGER NOT NULL,
 CONSTRAINT Pers_persid_pk PRIMARY KEY (Id_persona),
 CONSTRAINT Pers_perfid_fk FOREIGN KEY (Id_perfil) REFERENCES Perfil (Id_perfil)
 );
+
+INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('dueño1','ape1',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'SuperDueño1','sd1',2);
 
     DROP TABLE Equipo CASCADE CONSTRAINTS;
 
@@ -38,7 +40,7 @@ CONSTRAINT Equi_equid_pk PRIMARY KEY (Id_equipo),
 CONSTRAINT Equi_persid_fk FOREIGN KEY (Id_persona) REFERENCES Persona (Id_persona)
 );
 
-INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO) VALUES ('Equipo1',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son rosas');
+INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Id_persona) VALUES ('Equipo1',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son rosas',1);
 
     DROP TABLE Jugador CASCADE CONSTRAINTS;
 
