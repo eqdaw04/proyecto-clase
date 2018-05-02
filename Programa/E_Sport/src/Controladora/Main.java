@@ -141,6 +141,7 @@ public class Main {
     }
     
     public static void altaUsuario( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Date fecha, String perfil, String equipo){
+        // Insertar usuario en la BD
         Persona p = new Persona(nombre, ape1, ape2, fecha, usuario, contrasenna, email);
         //p.setPerfil(buscarPerfil(perfil));
         if(equipo != null){
@@ -150,11 +151,13 @@ public class Main {
     }
 
     public static void bajaUsuario(String usuario) {
+        // Eliminar usuario en la BD
         Persona p = new Persona();
         p.setUsuario(usuario);
     }
 
     public static void modificarUsuario(String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil, String equipo) {
+        // Modificar usuario en la BD
         Persona p = new Persona();
         p.setNombre(nombre);
         p.setApellido1(ape1);
@@ -165,7 +168,7 @@ public class Main {
         //p.setPerfil(buscarPerfil(perfil));
         if(equipo != null){
             //p.setEquipo(buscarEquipo(equipo));
-        }
+        }       
         
     }
     
@@ -247,15 +250,31 @@ public class Main {
     }
 
     public static void altaJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String comentario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Insertar jugador en la BD
+        Jugador j = new Jugador();
+        j.setDni(dni);
+        j.setNombre(nombre);
+        j.setApellido1(apellido1);
+        j.setApellido2(apellido2);
+        j.setNickname(nickname);
+        j.setComentario(comentario);
     }
 
     public static void bajaJugador(String dni) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Eliminar jugador en la BD
+        Jugador j = new Jugador();
+        j.setDni(dni);
     }
-
+    
     public static void modificarJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String comentario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Modificar jugador en la BD
+        Jugador j = new Jugador();
+        j.setDni(dni);
+        j.setNombre(nombre);
+        j.setApellido1(apellido1);
+        j.setApellido2(apellido2);
+        j.setNickname(nickname);
+        j.setComentario(comentario);
     }
 
     public static boolean buscarDNI(String dni) {
