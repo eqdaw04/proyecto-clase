@@ -57,12 +57,12 @@
                                   <Component id="cFechaAlta" alignment="0" max="32767" attributes="0"/>
                                   <Component id="tfApellido2" alignment="0" pref="212" max="32767" attributes="0"/>
                                   <Component id="tfApellido1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tfUsuario" alignment="0" max="32767" attributes="0"/>
                                   <Component id="pfContrasenna" alignment="0" max="32767" attributes="0"/>
                                   <Component id="tfNombre" alignment="0" max="32767" attributes="0"/>
                                   <Component id="tfEmail" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="tfUsuario" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="bBuscar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -84,7 +84,7 @@
                                   <Component id="cbEquipo" alignment="0" max="32767" attributes="0"/>
                                   <Component id="cbPerfil" alignment="0" min="-2" pref="212" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="bBuscarEquipos" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>

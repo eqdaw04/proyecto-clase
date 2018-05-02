@@ -7,6 +7,7 @@ package Views;
 
 import Controladora.Main;
 import Excepciones.Excepcion;
+import UML.Perfil;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -16,7 +17,7 @@ import javax.swing.JTextField;
  */
 public class Login extends javax.swing.JFrame {
 
-    int error;
+    int error, cont = 0;
     
     public Login() {
         initComponents();
@@ -123,12 +124,15 @@ public class Login extends javax.swing.JFrame {
                 throw new Excepcion(2);
             }
             else{
-                Main.abrirVentana();
+                
+                Main.accederPrincipal(tfUsuario.getText(), pfContrasenna.getPassword());
             }
         }
         catch (Excepcion e)
         {
-            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage());
+            pfContrasenna.setText("");
+            pfContrasenna.grabFocus();
+            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)");
         }
         catch (Exception e)
         {
@@ -139,7 +143,6 @@ public class Login extends javax.swing.JFrame {
                 Main.salir(this);
             }
         }
-
     }//GEN-LAST:event_bAccederActionPerformed
 
     public JPasswordField getPfContrasenna() {
@@ -157,10 +160,17 @@ public class Login extends javax.swing.JFrame {
     public void setError(int error) {
         this.error = error;
     }
+
+    public int getCont() {
+        return cont;
+    }
+
+    public void setCont(int cont) {
+        this.cont = cont;
+    }
     
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
-        // TODO add your handling code here:
-        // Main.cerrar(this);
+        Main.salir(this);
     }//GEN-LAST:event_bSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

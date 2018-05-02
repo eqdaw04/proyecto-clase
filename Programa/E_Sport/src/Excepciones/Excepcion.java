@@ -82,6 +82,18 @@ public class Excepcion extends Exception {
             case 13:
                 dato = "Has superado el límite de intentos.";
                 break;
+                
+            case 14:
+                dato = "Usuario no registrado en la Base de datos.";
+                break;
+                
+            case 15:
+                dato = "El Usuario ya existe en la Base de datos.";
+                break;
+                
+            case 16:
+                dato = "Debe seleccionar un equipo.";
+                break;
         }
         return dato;
     }

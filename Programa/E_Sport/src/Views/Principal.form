@@ -231,6 +231,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cerrar sesi&#xf3;n"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bCerrarSesionActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -15,9 +15,10 @@ import UML.*;
 import BD.*;
 import static BD.BDConexion.*;
 import Excepciones.Excepcion;
-import Views.Login;
-import Views.Principal;
+import Views.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
@@ -43,53 +44,114 @@ public class Main {
     private static BDPartido bdPartido;
     private static BDPerfil bdPerfil;
     private static BDPersona bdPersona;
-    private static BDConexion bdConexion;
+    private static Persona persona;
     private static int perfil;
     private static Login login;
+    private static String driver, url, usuario, contrasenna;
     
     public static void main(String[] args) {
-        AbrirBD();
+        //driver para la conexion
+        driver = "oracle.jdbc.OracleDriver";
+        //datos del usuario y servidor
+        String tipo = "oracle",
+        servidor = "localhost",
+        puerto = "1521",
+        bbdd = "db12102";
+        usuario = "eqdaw04";
+        contrasenna = "eqdaw04";
+        //construccion de la ruta completa.
+        url = "jdbc:" + tipo + ":thin:@" + servidor + ":" + puerto + ":" + bbdd;
+        inicializarValores();
         login = new Login();
+        //new Principal();
+    }
+    
+    public static void inicializarValores(){
+        bdEquipo = new BDEquipo();
+        bdJornada = new BDJornada();
+        bdJugador = new BDJugador();
+        bdMarcador = new BDMarcador();
+        bdPartido = new BDPartido();
+        bdPerfil = new BDPerfil();
+        bdPersona = new BDPersona();
         
     }
     
-    public static void abrirVentana() throws Exception{
-        int cont = 0;
-        boolean u, c;
-        
-        u=true;
-        c=true;
-        if(cont < 4){
-            if(u && c){
-                Persona p = new Persona();
-                p.setIdPersona(1);
-                Perfil per = new Perfil();
-                per.setIdPerfil(1);
-                p.setPerfil(per);
-                perfil = p.getPerfil().getIdPerfil();
-                login.dispose();
-                new Principal(perfil);
-
-            }
-            else{
-                cont++;
-                throw new Excepcion(12);
-            }
+    public static void accederPrincipal(String usuario, char[] contrasenna) throws Exception{
+        persona = null;
+        BDConexion con = new BDConexion();
+        persona = bdPersona.buscarPersonaPorUsuario(usuario, con);
+        con.desconectar();
+        int cont = login.getCont()+1;
+        login.setCont(cont);
+        if(persona == null){
+            throw new Excepcion(14);
         }
-        else{
+        else if(Arrays.equals(persona.getContrasenna().toCharArray(), contrasenna)){
+            perfil = persona.getPerfil().getIdPerfil();
+            login.dispose();
+            new Principal(perfil);
+        }
+        else if(cont <3){
+            throw new Excepcion(12);
+        }else if(cont == 3){
             login.setError(13);
             throw new Excepcion(13);
         }
-        
+    }
+    
+    public static void abrirVentana(int n, String tipo){
+        //abrir ventana según selección del usuario en la pantalla principal
+        switch(n){
+            case 1:
+                new VJugador(tipo);
+                break;
+                
+            case 2:
+                new VEquipo(tipo);
+                break;
+                
+            case 3:
+                new VUsuario(tipo);
+                break;
+                
+            case 4:
+                new VAltasBajas();
+                break;
+        }
     }
     
     public static void cerrar(JDialog v){
+        //cierra una ventana abierta por ventana principal
         v.dispose();
-        new Principal(perfil);
+        
     }
     
     public static void salir(JFrame v){
+        //salir del programa
         v.dispose();
+    }
+    
+    public static boolean buscarUsuario(String usuario){
+        boolean existe = false;
+        //buscar por nombre de usuario  y retornar si existe
+        //persona
+        return existe;
+    }
+    
+    public static Perfil buscarPerfil(int cod, BDConexion con) throws Exception{
+        Perfil p = null;
+        p = bdPerfil.buscarPorCodigo(cod, con);
+        return p;
+    }
+    
+    public static void altaUsuario( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Date fecha, String perfil, String equipo){
+        Persona p =  new Persona(nombre, ape1, ape2, fecha, usuario, contrasenna, email);
+        //p.setPerfil(buscarPerfil(perfil));
+        if(equipo != null){
+            //p.setEquipo(buscarEquipo(equipo));
+        }
+        
     }
     
     public static void probando(){
@@ -120,6 +182,53 @@ public class Main {
         e.calcularPartido();
         
     }
-    
-    
+
+    public static int getPerfil() {
+        return perfil;
+    }
+
+    public static void setPerfil(int perfil) {
+        Main.perfil = perfil;
+    }
+
+    public static Login getLogin() {
+        return login;
+    }
+
+    public static void setLogin(Login login) {
+        Main.login = login;
+    }
+
+    public static String getDriver() {
+        return driver;
+    }
+
+    public static void setDriver(String driver) {
+        Main.driver = driver;
+    }
+
+    public static String getUrl() {
+        return url;
+    }
+
+    public static void setUrl(String url) {
+        Main.url = url;
+    }
+
+    public static String getUsuario() {
+        return usuario;
+    }
+
+    public static void setUsuario(String usuario) {
+        Main.usuario = usuario;
+    }
+
+    public static String getContrasenna() {
+        return contrasenna;
+    }
+
+    public static void setContrasenna(String contrasenna) {
+        Main.contrasenna = contrasenna;
+    }
+
 }

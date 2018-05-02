@@ -5,6 +5,8 @@
  */
 package Views;
 
+import Controladora.Main;
+
 /**
  *
  * @author v6222
@@ -28,7 +30,9 @@ public class Principal extends javax.swing.JFrame {
         setVisible(true);
         switch(tipo)
         {
-            
+            case 1:
+                equipos.setEnabled(false);
+                break;
             case 2:
                 administracion.setEnabled(false);
                 break;
@@ -78,6 +82,11 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bCerrarSesion.setText("Cerrar sesión");
+        bCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCerrarSesionActionPerformed(evt);
+            }
+        });
 
         administracion.setText("Administración");
 
@@ -259,63 +268,51 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearJugadorActionPerformed
-        // TODO add your handling code here:
-        // VJugador v = new VJugador("alta");
+        Main.abrirVentana(1, "alta");
     }//GEN-LAST:event_crearJugadorActionPerformed
 
     private void crearEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEquipoActionPerformed
-        // TODO add your handling code here:
-        // VEquipo v = new VEquipo("alta");
+        Main.abrirVentana(2, "alta");
     }//GEN-LAST:event_crearEquipoActionPerformed
 
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
-        // TODO add your handling code here:
-        // VUsuario v = new VUsuario("alta");
+        Main.abrirVentana(3, "alta");
     }//GEN-LAST:event_crearUsuarioActionPerformed
 
     private void modificarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarJugadorActionPerformed
-        // TODO add your handling code here:
-        // VJugador v = new VJugador("modificacion");
+        Main.abrirVentana(1, "modificacion");
     }//GEN-LAST:event_modificarJugadorActionPerformed
 
     private void modificarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEquipoActionPerformed
-        // TODO add your handling code here:
-        // VEquipo v = new VEquipo("modificacion");
+        Main.abrirVentana(2, "modificacion");
     }//GEN-LAST:event_modificarEquipoActionPerformed
 
     private void modificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarUsuarioActionPerformed
-        // TODO add your handling code here:
-        // VUsuario v = new VUsuario("modificacion");
+        Main.abrirVentana(3, "modificacion");
     }//GEN-LAST:event_modificarUsuarioActionPerformed
 
     private void eliminarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarJugadorActionPerformed
-        // TODO add your handling code here:
-        // VJugador v = new VJugador("baja");
+        Main.abrirVentana(1, "baja");
     }//GEN-LAST:event_eliminarJugadorActionPerformed
 
     private void eliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEquipoActionPerformed
-        // TODO add your handling code here:
-        // VEquipo v = new VEquipo("baja");
+        Main.abrirVentana(2, "baja");
     }//GEN-LAST:event_eliminarEquipoActionPerformed
 
     private void eliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarUsuarioActionPerformed
-        // TODO add your handling code here:
-        // VUsuario v = new VUsuario("baja");
+        Main.abrirVentana(3, "baja");
     }//GEN-LAST:event_eliminarUsuarioActionPerformed
 
     private void verJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verJugadorActionPerformed
-        // TODO add your handling code here:
-        // VJugador v = new VJugador("listado");
+        Main.abrirVentana(1, "listado");
     }//GEN-LAST:event_verJugadorActionPerformed
 
     private void verEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verEquipoActionPerformed
-        // TODO add your handling code here:
-        // VEquipo v = new VEquipo("listado");
+        Main.abrirVentana(2, "listado");
     }//GEN-LAST:event_verEquipoActionPerformed
 
     private void verUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verUsuarioActionPerformed
-        // TODO add your handling code here:
-        // VUsuario v = new VUsuario("listado");
+        Main.abrirVentana(3, "listado");
     }//GEN-LAST:event_verUsuarioActionPerformed
 
     private void introducirResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_introducirResultadosActionPerformed
@@ -325,8 +322,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_introducirResultadosActionPerformed
 
     private void altasBajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altasBajasActionPerformed
-        // TODO add your handling code here:
-        // VAltasBajas v = new VAltasBajas();
+        Main.abrirVentana(4, "");
     }//GEN-LAST:event_altasBajasActionPerformed
 
     private void verCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCalendarioActionPerformed
@@ -338,6 +334,10 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Abrir ventana
     }//GEN-LAST:event_verResultClasiActionPerformed
+
+    private void bCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCerrarSesionActionPerformed
+        Main.salir(this);
+    }//GEN-LAST:event_bCerrarSesionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu administracion;

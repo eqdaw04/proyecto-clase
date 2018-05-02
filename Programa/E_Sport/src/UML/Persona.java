@@ -14,6 +14,16 @@ public class Persona {
     public Persona() {
     }
 
+    public Persona(String nombre, String apellido1, String apellido2, Date fechaAlta, String usuario, String contrasenna, String email) {
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.fechaAlta = fechaAlta;
+        this.usuario = usuario;
+        this.contrasenna = contrasenna;
+        this.email = email;
+    }
+    
     public int getIdPersona() {
         return idPersona;
     }
