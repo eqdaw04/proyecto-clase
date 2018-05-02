@@ -327,7 +327,10 @@ public class VAltasBajas extends javax.swing.JDialog {
             {
                 throw new Excepcion("No existe ningún jugador con ese DNI.");
             }
-            Main.perteneceEquipo();
+            if(Main.perteneceEquipo())
+            {
+                throw new Excepcion("No existe ningún jugador con ese DNI.");
+            }
             bAceptar.setEnabled(true);
         }
         catch (Excepcion e)
