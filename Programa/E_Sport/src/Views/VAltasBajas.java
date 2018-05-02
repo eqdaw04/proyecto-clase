@@ -325,11 +325,11 @@ public class VAltasBajas extends javax.swing.JDialog {
             ValidacionDeDatosDeEntrada.validar(3, tfJugadorBaja);
             if(!Main.buscarDNI(tfJugadorBaja.getText()))
             {
-                throw new Excepcion("No existe ningún jugador con ese DNI.");
+                throw new Excepcion(23);
             }
             if(Main.perteneceEquipo())
             {
-                throw new Excepcion("No existe ningún jugador con ese DNI.");
+                throw new Excepcion(24);
             }
             bAceptar.setEnabled(true);
         }
