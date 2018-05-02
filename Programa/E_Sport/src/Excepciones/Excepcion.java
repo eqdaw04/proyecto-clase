@@ -29,7 +29,7 @@ public class Excepcion extends Exception {
     
     @Override
     public String getMessage(){
-        String dato = "";
+        String dato = "(" + cod + ") ";
         switch(cod){
             case 1:
                 dato = "El usuario no puede estar vacío.";
@@ -117,6 +117,14 @@ public class Excepcion extends Exception {
                 
             case 22:
                 dato = "Ya tienes 6 jugaodres.";
+                break;
+                
+            case 23:
+                dato = "No existe ningún jugador con ese DNI.";
+                break;
+                
+            case 24:
+                dato = "Ese jugador no pertenece a tu equipo.";
                 break;
         }
         return dato;
