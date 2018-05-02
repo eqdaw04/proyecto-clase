@@ -265,24 +265,24 @@ public class VJugador extends javax.swing.JDialog {
                    ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
                 }
                 //comprobar si existe, en caso negativo procede el alta.
-               /*if(Main.buscarDNI(tfDNI.getText()))
+               if(Main.buscarDNI(tfDNI.getText()))
                 {
                 throw new Excepcion("Ya existe un jugador con ese DNI.");
-                }*/
-               // Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
+                }
+               Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
            }
            else
            {
                ValidacionDeDatosDeEntrada.validar(3, tfDNI);
                //comprueba dni, en caso positivo, procede la operación.
-               /*if(!Main.buscarDNI(tfDNI.getText()))
+               if(!Main.buscarDNI(tfDNI.getText()))
                 {
-                    throw new Excepcion(No existe ningún jugador con ese DNI.);
-                }*/
+                    throw new Excepcion(17);
+                }
                if(baja)
                {
                    //baja del jugador
-                   // Main.bajaJugador(tfDNI.getText());
+                   Main.bajaJugador(tfDNI.getText());
                }
                else
                {
@@ -292,7 +292,7 @@ public class VJugador extends javax.swing.JDialog {
                     if(tfApellido2.getText()!= null){
                         ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
                     }
-                   // Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
+                   Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
                }
            }
        }
@@ -309,7 +309,7 @@ public class VJugador extends javax.swing.JDialog {
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         // TODO add your handling code here:
-        // Main.cerrar(this);
+        Main.cerrar(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
@@ -404,14 +404,14 @@ public class VJugador extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void mostrarDatos() throws Exception {
-        /*Jugador j =Main.buscarJugador();
+        Jugador j =Main.buscarJugador();
         tfDNI.setText(j.getDni());
         tfNombre.setText(j.getNombre());
         tfApellido1.setText(j.getApellido1());
         tfApellido2.setText(j.getApellido2());
+        tfNickname.setText(j.getNickname());
         ftfSueldo.setText(String.valueOf(j.getSueldo()));        
         cFechaAlta.setDate(j.getFechaAlta());
-        tfEquipo.setText(j.getEquipo().getNombre());
-        taComentario.setText(j.getComentario());*/
+        taComentario.setText(j.getComentario());
     }
 }

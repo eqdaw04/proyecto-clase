@@ -94,6 +94,30 @@ public class Excepcion extends Exception {
             case 16:
                 dato = "Debe seleccionar un equipo.";
                 break;
+                
+            case 17:
+                dato = "No existe ningún jugador con ese DNI.";
+                break;
+                
+            case 18:
+                dato = "No existe ningún usuario con ese nombre.";
+                break;
+                
+            case 19:
+                dato = "Ya existe un equipo con ese nombre.";
+                break;
+                
+            case 20:
+                dato = "No existe ningún equipo con ese nombre.";
+                break;
+                
+            case 21:
+                dato = "Has excedido el límite salario.";
+                break;
+                
+            case 22:
+                dato = "Ya tienes 6 jugaodres.";
+                break;
         }
         return dato;
     }

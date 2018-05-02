@@ -260,21 +260,28 @@ public class VAltasBajas extends javax.swing.JDialog {
                 {
                     throw new Excepcion(10);
                 }
-                // Main.comprobarSalario(ftfSueldo.getText());
-                // Main.tramitarAlta(tfJugadorAlta.getText(), ftfSalario.getText());
+                if(Main.comprobarSueldo(ftfSueldo.getText()))
+                {
+                    throw new Excepcion(21);
+                }
+                if(Main.comprobarJugadores())
+                {
+                    throw new Excepcion(22);
+                }
+               Main.tramitarAlta(tfJugadorAlta.getText(), ftfSueldo.getText());
             }
             else
             {
                 if(baja)
                 {
-                    // Main.tramitarBaja(tfJugadorBaja.getText());
+                    Main.tramitarBaja(tfJugadorBaja.getText());
                 }
                 else
                 {
                     throw new Excepcion(11);
                 }
             }
-            // Main.cerrarAbrir(this);
+            Main.cerrarAbrir(this);
         }
         catch (Excepcion e)
         {
@@ -291,14 +298,14 @@ public class VAltasBajas extends javax.swing.JDialog {
         try
         {
             ValidacionDeDatosDeEntrada.validar(3, tfJugadorAlta);
-            /*if(!Main.buscarDNI(tfJugadorAlta.getText()))
+            if(!Main.buscarDNI(tfJugadorAlta.getText()))
             {
                 throw new Excepcion("No existe ningún jugador con ese DNI.");
-            }*/
-            /*if(!Main.esAgenteLibre(tfJugadorAlta.getText()))
+            }
+            if(!Main.esAgenteLibre(tfJugadorAlta.getText()))
             {
                 throw new Excepcion("Ese jugador no es agente libre.");
-            }*/
+            }
             bAceptar.setEnabled(true);
         }
         catch (Excepcion e)
@@ -316,11 +323,11 @@ public class VAltasBajas extends javax.swing.JDialog {
         try
         {
             ValidacionDeDatosDeEntrada.validar(3, tfJugadorBaja);
-            /*if(!Main.buscarDNI(tfJugadorBaja.getText()))
+            if(!Main.buscarDNI(tfJugadorBaja.getText()))
             {
                 throw new Excepcion("No existe ningún jugador con ese DNI.");
-            }*/
-            // Main.perteneceEquuipo();
+            }
+            Main.perteneceEquipo();
             bAceptar.setEnabled(true);
         }
         catch (Excepcion e)
@@ -335,7 +342,7 @@ public class VAltasBajas extends javax.swing.JDialog {
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         // TODO add your handling code here:
-        // Main.cerrar(this);
+        Main.cerrar(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -362,13 +369,13 @@ public class VAltasBajas extends javax.swing.JDialog {
 
     private void mostrarEquipo() {
         // Método para mostrar el equipo del dueño.
-        /*tfEquipo.setText(Main.buscarEquipoDuenno());*/
+        tfEquipo.setText(Main.buscarEquipoDuenno());
     }
 
     private void mostrarPlantilla() {
         // Método para mostrar la plantilla del equipo.
         // En la última fila límite salarial.
-        /*String mensaje=Main.mostrarPlantilla();
-        taPlantilla.setText(mensaje);*/
+        String mensaje=Main.buscarPlantilla();
+        taPlantilla.setText(mensaje);
     }
 }

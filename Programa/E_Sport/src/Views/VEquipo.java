@@ -284,7 +284,7 @@ public class VEquipo extends javax.swing.JDialog {
             {
                 //validar nombre y si existe en la bbdd, si no existe, proceder al alta
                 validarNombre();               
-                // Main.altaEquipo(tfNombre.getText(), cFechaCreacion.getDate(), taComentario.getText());
+                Main.altaEquipo(tfNombre.getText(), cFechaCreacion.getDate(), taComentario.getText());
             }
             else
             {
@@ -292,13 +292,13 @@ public class VEquipo extends javax.swing.JDialog {
                 validarNombre();
                 if(baja)
                 {
-                   // Main.bajaEquipo(tfNombre.getText());
+                   Main.bajaEquipo(tfNombre.getText());
                 }
                 else
                 {
                     if(modificacion)
                     {
-                        // Main.modificarEquipo(tfNombre.getText(), taComentario.getText());
+                        Main.modificarEquipo(tfNombre.getText(), taComentario.getText());
                     }
                 }
             }
@@ -316,7 +316,7 @@ public class VEquipo extends javax.swing.JDialog {
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         // TODO add your handling code here:
-        // Main.cerrar(this);
+        Main.cerrar(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrimeroActionPerformed
@@ -363,26 +363,26 @@ public class VEquipo extends javax.swing.JDialog {
         if(alta)
         {
             //comprobar si existe nombre, en caso contrario, no generar error
-            /*if(Main.buscarNombre(tfNombre.getText()))
+            if(Main.buscarNombreEquipo(tfNombre.getText()))
             {
-                throw new Excepcion("Ya existe un equipo con ese nombre.");
-            }*/
+                throw new Excepcion(19);
+            }
         }
         // Validar nombre para ver si no existe algún nombre con ese número
         else
         {
             //comprobar si existe nombre, en caso afirmativo no generar error
-            /*if(!Main.buscarNombre(tfNombre.getText()))
+            if(!Main.buscarNombreEquipo(tfNombre.getText()))
             {
-                throw new Excepcion("No existe ningún equipo con ese nombre.");
-            }*/
+                throw new Excepcion(20);
+            }
         }
     }
     
     private void mostrarDatos() throws Exception {
-        /*Equipo e =Main.buscarEquipo();
+        Equipo e =Main.buscarEquipo();
         cFechaCreacion.setDate(e.getFechaCreacion());
         taPlantilla.setText(Main.buscarPlantilla());
-        taComentario.setText(e.getComentario());*/
+        taComentario.setText(e.getComentario());
     }
 }
