@@ -10,6 +10,7 @@ END;
 CREATE OR REPLACE TRIGGER T_cambio AFTER
 INSERT OR UPDATE OF Id_equipo, Sueldo ON JUGADOR FOR EACH ROW
  BEGIN
+--Almacenamos los datos que nos interesan de la variable en la sentencia
  Pkg_triggers.New_jug.Id_equipo := :new.Id_equipo;
  Pkg_triggers.New_jug.Sueldo := :new.Id_equipo; 
  END;
