@@ -278,39 +278,60 @@ public class Main {
     }
 
     public static boolean buscarDNI(String dni) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean existe = false;
+        // Buscar el DNI del jugador en la BD y retornar si existe
+        return existe;
     }
 
     public static Jugador buscarJugador() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Jugador j = null; // Variable global
+        // Buscar jugador y devolver datos para mostrarlos
+        return j;
     }
 
     public static void altaEquipo(String nombre, Date fechaCreacion, String comentario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Insertar equipo en la BD
+        Equipo e = new Equipo();
+        e.setNombre(nombre);
+        e.setFechaCreacion(fechaCreacion);
+        e.setComentario(comentario);
     }
 
     public static void bajaEquipo(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Eliminar equipo en la BD
+        Equipo e = new Equipo();
+        e.setNombre(nombre);
     }
 
     public static void modificarEquipo(String nombre, String comentario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Modificar equipo en la BD
+        Equipo e = new Equipo();
+        e.setNombre(nombre);
+        e.setComentario(comentario);
     }
 
     public static boolean buscarNombreEquipo(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean existe = false;
+        // Buscar el nombre de equipo en la BD y retornar si existe
+        return existe;
     }
 
     public static Equipo buscarEquipo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Equipo e = null; // Variable global
+        // Buscar equipo y devolver datos para mostrarlos
+        return e;
     }
 
     public static String buscarPlantilla() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String plantilla="";
+        // Buscar todos los jugadores de un equipo y devolverlos en un String
+        return plantilla;
     }
 
     public static Persona buscarPersona() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Persona p = null; // Variable global
+        // Buscar persona y devolver datos para mostrarlos
+        return p;
     }
 
     public static boolean comprobarSueldo(String sueldo) {
@@ -321,19 +342,27 @@ public class Main {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public static void tramitarAlta(String dni, String salario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static void tramitarAlta(String dni, String sueldo) {
+        // Modificar jugador en la BD
+        Jugador j = new Jugador();
+        j.setDni(dni);
+        j.setSueldo(Float.parseFloat(sueldo));
+        j.setEquipo(persona.getEquipo());
     }
 
     public static void tramitarBaja(String dni) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Modificar jugador en la BD
+        Jugador j = new Jugador();
+        j.setDni(dni);
+        j.setSueldo((float)(0));
+        j.setEquipo(null);
     }
 
     public static boolean esAgenteLibre(String dni) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public static void perteneceEquipo() {
+    public static boolean perteneceEquipo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
