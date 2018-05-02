@@ -281,7 +281,7 @@ public class VAltasBajas extends javax.swing.JDialog {
                     throw new Excepcion(11);
                 }
             }
-            Main.cerrarAbrir(this, "AltasBajas");
+            Main.cerrarAbrir(this);
         }
         catch (Excepcion e)
         {
@@ -369,7 +369,7 @@ public class VAltasBajas extends javax.swing.JDialog {
 
     private void mostrarEquipo() {
         // Método para mostrar el equipo del dueño.
-        /*tfEquipo.setText(Main.buscarEquipoDuenno());*/
+        tfEquipo.setText(Main.buscarEquipoDuenno());
     }
 
     private void mostrarPlantilla() {

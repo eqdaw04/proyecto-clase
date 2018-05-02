@@ -116,8 +116,10 @@ public class Main {
         
     }
 
-    public static void cerrarAbrir(JDialog v, String tipo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static void cerrarAbrir(JDialog v) {
+        v.dispose();
+        
+        new VAltasBajas();
     }
     
     public static void salir(JFrame v){
@@ -301,6 +303,10 @@ public class Main {
     }
 
     public static void perteneceEquipo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static String buscarEquipoDuenno() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
