@@ -141,7 +141,7 @@ public class Main {
     }
     
     public static void altaUsuario( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Date fecha, String perfil, String equipo){
-        Persona p =  new Persona(nombre, ape1, ape2, fecha, usuario, contrasenna, email);
+        Persona p = new Persona(nombre, ape1, ape2, fecha, usuario, contrasenna, email);
         //p.setPerfil(buscarPerfil(perfil));
         if(equipo != null){
             //p.setEquipo(buscarEquipo(equipo));
@@ -150,11 +150,23 @@ public class Main {
     }
 
     public static void bajaUsuario(String usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Persona p = new Persona();
+        p.setUsuario(usuario);
     }
 
     public static void modificarUsuario(String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil, String equipo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Persona p = new Persona();
+        p.setNombre(nombre);
+        p.setApellido1(ape1);
+        p.setApellido2(ape2);
+        p.setUsuario(usuario);
+        p.setContrasenna(contrasenna);
+        p.setEmail(email);
+        //p.setPerfil(buscarPerfil(perfil));
+        if(equipo != null){
+            //p.setEquipo(buscarEquipo(equipo));
+        }
+        
     }
     
     public static void probando(){
