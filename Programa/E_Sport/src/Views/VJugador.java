@@ -32,6 +32,7 @@ public class VJugador extends javax.swing.JDialog {
                 tfApellido1.setEnabled(true);
                 tfApellido2.setEnabled(true);
                 tfNickname.setEnabled(true);
+                ftfSueldo.setEnabled(true);
                 taComentario.setEnabled(true);
                 bAceptar.setEnabled(true);
                 bBuscar.setEnabled(false);
@@ -263,13 +264,17 @@ public class VJugador extends javax.swing.JDialog {
                 ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
                 if(tfApellido2.getText()!= null){
                    ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
+                }                
+                if(ftfSueldo.getText().equals("Unparseable number: \"\""))
+                {
+                    throw new Excepcion(10);
                 }
                 //comprobar si existe, en caso negativo procede el alta.
                if(!Main.buscarDNI(tfDNI.getText()).isEmpty())
                 {
                 throw new Excepcion(23);
                 }
-               Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
+               Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), cFechaAlta.getDate(), taComentario.getText());
            }
            else
            {
@@ -291,8 +296,12 @@ public class VJugador extends javax.swing.JDialog {
                     ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
                     if(tfApellido2.getText()!= null){
                         ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
+                    }                
+                    if(ftfSueldo.getText().equals("Unparseable number: \"\""))
+                    {
+                        throw new Excepcion(10);
                     }
-                   Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), taComentario.getText());
+                   Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
                }
            }
        }
@@ -345,6 +354,7 @@ public class VJugador extends javax.swing.JDialog {
                     tfApellido1.setEnabled(true);
                     tfApellido2.setEnabled(true);
                     tfNickname.setEnabled(true);
+                    ftfSueldo.setEnabled(true);
                     taComentario.setEnabled(true);
                 }
                 bAceptar.setEnabled(true);
