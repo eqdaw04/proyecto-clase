@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class BDEquipo {
     private static Equipo e = new Equipo();
     
-    public static Equipo BuscarNomEqui(String usu) throws Exception {
+    public static Equipo BuscarEquipoPorUsuario(String usu) throws Exception {
         ResultSet rs = null;
         BDConexion con = new BDConexion();
         try {

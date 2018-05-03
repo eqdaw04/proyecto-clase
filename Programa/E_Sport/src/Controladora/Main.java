@@ -111,7 +111,7 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static void abrirVentana(int n, String tipo){
+    public static void abrirVentana(int n, String tipo) throws Exception{
         //abrir ventana según selección del usuario en la pantalla principal
         switch(n){
             case 1:
@@ -332,8 +332,8 @@ public class Main {
     }
 
     //------------Mikel
-    public static Equipo obtenerNomEqui(String usu) throws Exception{
-        return BDEquipo.BuscarNomEqui(usu);
+    public static Equipo ConsultarEquipoPorUsuario(String usu) throws Exception{
+        return BDEquipo.BuscarEquipoPorUsuario(usu);
     }
 
     public static void altaEquipo(String nombre, Date fechaCreacion, String comentario) {

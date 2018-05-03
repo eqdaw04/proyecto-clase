@@ -6,6 +6,8 @@
 package Views;
 
 import Controladora.Main;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -297,51 +299,99 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearJugadorActionPerformed
-        Main.abrirVentana(1, "alta");
+        try {
+            Main.abrirVentana(1, "alta");
+        } catch (Exception ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_crearJugadorActionPerformed
 
     private void crearEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEquipoActionPerformed
-        Main.abrirVentana(2, "alta");
+        try {
+            Main.abrirVentana(2, "alta");
+        } catch (Exception ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_crearEquipoActionPerformed
 
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
-        Main.abrirVentana(3, "alta");
+        try {
+            Main.abrirVentana(3, "alta");
+        } catch (Exception ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_crearUsuarioActionPerformed
 
     private void modificarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarJugadorActionPerformed
-        Main.abrirVentana(1, "modificacion");
+        try {
+            Main.abrirVentana(1, "modificacion");
+        } catch (Exception ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_modificarJugadorActionPerformed
 
     private void modificarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEquipoActionPerformed
-        Main.abrirVentana(2, "modificacion");
+        try {
+            Main.abrirVentana(2, "modificacion");
+        } catch (Exception ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_modificarEquipoActionPerformed
 
     private void modificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarUsuarioActionPerformed
-        Main.abrirVentana(3, "modificacion");
+        try {
+            Main.abrirVentana(3, "modificacion");
+        } catch (Exception ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_modificarUsuarioActionPerformed
 
     private void eliminarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarJugadorActionPerformed
-        Main.abrirVentana(1, "baja");
+        try {
+            Main.abrirVentana(1, "baja");
+        } catch (Exception ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_eliminarJugadorActionPerformed
 
     private void eliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEquipoActionPerformed
-        Main.abrirVentana(2, "baja");
+        try {
+            Main.abrirVentana(2, "baja");
+        } catch (Exception ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_eliminarEquipoActionPerformed
 
     private void eliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarUsuarioActionPerformed
-        Main.abrirVentana(3, "baja");
+        try {
+            Main.abrirVentana(3, "baja");
+        } catch (Exception ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_eliminarUsuarioActionPerformed
 
     private void verJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verJugadorActionPerformed
-        Main.abrirVentana(1, "listado");
+        try {
+            Main.abrirVentana(1, "listado");
+        } catch (Exception ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_verJugadorActionPerformed
 
     private void verEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verEquipoActionPerformed
-        Main.abrirVentana(2, "listado");
+        try {
+            Main.abrirVentana(2, "listado");
+        } catch (Exception ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_verEquipoActionPerformed
 
     private void verUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verUsuarioActionPerformed
-        Main.abrirVentana(3, "listado");
+        try {
+            Main.abrirVentana(3, "listado");
+        } catch (Exception ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_verUsuarioActionPerformed
 
     private void introducirResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_introducirResultadosActionPerformed
@@ -351,7 +401,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_introducirResultadosActionPerformed
 
     private void altasBajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altasBajasActionPerformed
-        Main.abrirVentana(4, "");
+        try {
+            Main.abrirVentana(4, "");
+        } catch (Exception ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_altasBajasActionPerformed
 
     private void verCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCalendarioActionPerformed
@@ -369,7 +423,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bCerrarSesionActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-       Main.abrirVentana(5, NombreUsu.getText());
+        try {
+            Main.abrirVentana(5, NombreUsu.getText());
+        } catch (Exception ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
