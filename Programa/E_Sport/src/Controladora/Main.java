@@ -50,7 +50,7 @@ public class Main {
         String tipo = "oracle",
         servidor = "10.10.10.9",//"localhost"
         puerto = "1521",
-        bbdd = "orcl";
+        bbdd = "db12102";
         usuario = "eqdaw04";
         contrasenna = "eqdaw04";
         //construccion de la ruta completa.
