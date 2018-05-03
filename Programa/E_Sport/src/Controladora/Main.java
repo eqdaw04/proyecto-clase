@@ -105,6 +105,8 @@ public class Main {
         }
     }
     
+    //---------- Jon Xu Jin ----------
+    
     public static void abrirVentana(int n, String tipo){
         //abrir ventana según selección del usuario en la pantalla principal
         switch(n){
@@ -129,11 +131,15 @@ public class Main {
         }
     }
     
+    //---------- Jon Xu Jin ----------
+            
     public static void cerrar(JDialog v){
         //cierra una ventana abierta por ventana principal
         v.dispose();
         
     }
+    
+    //---------- Jon Xu Jin ----------
 
     public static void cerrarAbrir(JDialog v) {
         v.dispose();
@@ -141,14 +147,18 @@ public class Main {
         new VAltasBajas();
     }
     
+    //---------- Jon Xu Jin ----------
+    
     public static void salir(JFrame v){
         //salir del programa
         v.dispose();
     }
     
-    public static Perfil buscarPerfil(int cod, BDConexion con) throws Exception{
+    //---------- Jon Xu Jin ----------
+    
+    public static Perfil buscarPerfil(int cod) throws Exception{
         Perfil p = null;
-        p = bdPerfil.buscarPorCodigo(cod, con);
+        p = bdPerfil.buscarPorCodigo(cod);
         return p;
     }
     

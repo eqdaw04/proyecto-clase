@@ -16,7 +16,7 @@ import java.sql.ResultSet;
  */
 public class BDPerfil {
     
-    public Perfil buscarPorCodigo(int cod, BDConexion con) throws Exception{
+    public Perfil buscarPorCodigo(int cod) throws Exception{
         Perfil p = null;
         PreparedStatement sentencia;
         
