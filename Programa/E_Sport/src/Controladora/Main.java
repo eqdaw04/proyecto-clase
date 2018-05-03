@@ -48,9 +48,9 @@ public class Main {
         driver = "oracle.jdbc.OracleDriver";
         //datos del usuario y servidor
         String tipo = "oracle",
-        servidor = "localhost",//"localhost"
+        servidor = "10.10.10.9",//"localhost"
         puerto = "1521",
-        bbdd = "db12102";
+        bbdd = "orcl";
         usuario = "eqdaw04";
         contrasenna = "eqdaw04";
         //construccion de la ruta completa.
