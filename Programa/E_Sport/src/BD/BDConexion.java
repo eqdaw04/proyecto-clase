@@ -20,10 +20,6 @@ public class BDConexion {
     Connection connection;
 
     public BDConexion() throws Exception{
-       
-    }
-    
-    public Connection getConnection(){
        try{
             Class.forName(Main.getDriver());
             connection = DriverManager.getConnection(Main.getUrl(), Main.getUsuario(), Main.getContrasenna());
@@ -37,6 +33,10 @@ public class BDConexion {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "problemas " +e.getMessage());
         }
+    }
+    
+    public Connection getConnection(){
+       
         
         return connection;
     }

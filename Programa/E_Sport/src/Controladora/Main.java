@@ -35,7 +35,6 @@ public class Main {
     private static BDPartido bdPartido;
     private static BDPerfil bdPerfil;
     private static BDPersona bdPersona;
-    private static BDConexion con;
     private static Persona persona;
     private static int perfil;
     private static Login login;
@@ -83,14 +82,11 @@ public class Main {
         bdPartido = new BDPartido();
         bdPerfil = new BDPerfil();
         bdPersona = new BDPersona();
-        con = new BDConexion();
     }
     
     public static void accederPrincipal(String usuario, char[] contrasenna) throws Exception{
-        persona = null;
-        
-        persona = bdPersona.buscarPersonaPorUsuario(usuario, con);
-        con.desconectar();
+
+        persona = bdPersona.buscarPersonaPorUsuario(usuario);
         int cont = login.getCont()+1;
         login.setCont(cont);
         if(persona == null){
@@ -196,7 +192,7 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static Persona buscarPersona(String usuario) throws Exception{
+    public static Persona ConsultarPersona(String usuario) throws Exception{
         // Localizar a una persona con su usuario
         persona = null;
         persona = bdPersona.buscarPersonaPorUsuario(con, usuario);

@@ -20,7 +20,7 @@ public class BDPersona {
     public BDPersona() {
     }
     
-    public Persona buscarPersonaPorUsuario(BDConexion con, String usuario) throws Exception{
+    public Persona buscarPersonaPorUsuario(String usuario) throws Exception{
         // con abre la conexión y 
         Persona p = null;
         PreparedStatement sentencia;
