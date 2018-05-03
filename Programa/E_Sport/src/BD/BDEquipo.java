@@ -29,7 +29,7 @@ public class BDEquipo {
         sentencia.executeUpdate();
         rs = sentencia.executeQuery();
         while (rs.next()){
-            e.setIdEquipo(1);
+            e.setIdEquipo(Integer.parseInt(rs.getString(1)));
             e.setNombre(rs.getString(2));
             e.setFechaCreacion(rs.getDate(3));
             e.setComentario(rs.getString(4));

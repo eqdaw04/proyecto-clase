@@ -23,7 +23,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
      */
     private static Equipo e;
             
-    public ModificarEquipo(String usu) {
+    public ModificarEquipo(String usu) throws Exception {
         initComponents();
         setVisible(true);
         this.setLocationRelativeTo(null);
@@ -128,7 +128,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
             }
         });
     }
-    private void rellenar(){
+    private void rellenar() throws Exception{
         ArrayList<Jugador> j=obtenerJugEqui(String.valueOf(e.getIdEquipo()));
         DefaultListModel<String> model = new DefaultListModel<>();
         
