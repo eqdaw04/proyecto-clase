@@ -404,7 +404,7 @@ public class VJugador extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void mostrarDatos() throws Exception {
-        Jugador j =Main.buscarJugador();
+        /*Jugador j =Main.buscarJugador();
         tfDNI.setText(j.getDni());
         tfNombre.setText(j.getNombre());
         tfApellido1.setText(j.getApellido1());
@@ -412,6 +412,6 @@ public class VJugador extends javax.swing.JDialog {
         tfNickname.setText(j.getNickname());
         ftfSueldo.setText(String.valueOf(j.getSueldo()));        
         cFechaAlta.setDate(j.getFechaAlta());
-        taComentario.setText(j.getComentario());
+        taComentario.setText(j.getComentario());*/
     }
 }
