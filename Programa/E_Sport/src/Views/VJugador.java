@@ -265,7 +265,7 @@ public class VJugador extends javax.swing.JDialog {
                    ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
                 }
                 //comprobar si existe, en caso negativo procede el alta.
-               if(Main.buscarDNI(tfDNI.getText()))
+               if(!Main.buscarDNI(tfDNI.getText()).isEmpty())
                 {
                 throw new Excepcion("Ya existe un jugador con ese DNI.");
                 }
@@ -275,7 +275,7 @@ public class VJugador extends javax.swing.JDialog {
            {
                ValidacionDeDatosDeEntrada.validar(3, tfDNI);
                //comprueba dni, en caso positivo, procede la operación.
-               if(!Main.buscarDNI(tfDNI.getText()))
+               if(Main.buscarDNI(tfDNI.getText()).isEmpty())
                 {
                     throw new Excepcion(17);
                 }

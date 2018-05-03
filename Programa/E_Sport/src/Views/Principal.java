@@ -24,10 +24,11 @@ public class Principal extends javax.swing.JFrame {
         
     }
     
-    public Principal(int tipo) {
+    public Principal(int tipo,String usuario) {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
+        NombreUsu.setText(usuario);
         switch(tipo)
         {
             case 1:
@@ -53,6 +54,8 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         bCerrarSesion = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        NombreUsu = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         administracion = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -75,6 +78,7 @@ public class Principal extends javax.swing.JFrame {
         introducirResultados = new javax.swing.JMenuItem();
         equipos = new javax.swing.JMenu();
         altasBajas = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         ver = new javax.swing.JMenu();
         verCalendario = new javax.swing.JMenuItem();
         verResultClasi = new javax.swing.JMenuItem();
@@ -87,6 +91,13 @@ public class Principal extends javax.swing.JFrame {
                 bCerrarSesionActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel1.setText("Bienvenido");
+
+        NombreUsu.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        NombreUsu.setForeground(new java.awt.Color(51, 153, 0));
+        NombreUsu.setText("Nombre");
 
         administracion.setText("Administración");
 
@@ -223,6 +234,14 @@ public class Principal extends javax.swing.JFrame {
         });
         equipos.add(altasBajas);
 
+        jMenuItem1.setText("Modificar Equipo");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        equipos.add(jMenuItem1);
+
         jMenuBar1.add(equipos);
 
         ver.setText("Ver");
@@ -251,17 +270,27 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(293, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bCerrarSesion)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1)
+                .addGap(30, 30, 30)
+                .addComponent(NombreUsu)
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bCerrarSesion)
-                .addContainerGap(345, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(NombreUsu))
+                .addGap(152, 152, 152))
         );
 
         pack();
@@ -339,7 +368,12 @@ public class Principal extends javax.swing.JFrame {
         Main.salir(this);
     }//GEN-LAST:event_bCerrarSesionActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       Main.abrirVentana(5, NombreUsu.getText());
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel NombreUsu;
     private javax.swing.JMenu administracion;
     private javax.swing.JMenuItem altasBajas;
     private javax.swing.JButton bCerrarSesion;
@@ -351,11 +385,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem eliminarUsuario;
     private javax.swing.JMenu equipos;
     private javax.swing.JMenuItem introducirResultados;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem modificarEquipo;
     private javax.swing.JMenuItem modificarJugador;

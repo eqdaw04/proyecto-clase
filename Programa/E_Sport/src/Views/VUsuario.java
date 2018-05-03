@@ -324,7 +324,7 @@ public class VUsuario extends javax.swing.JDialog {
                         throw new Excepcion(16);
                     }
                 }
-                if(!Main.buscarUsuario(tfUsuario.getText()) ==  null)
+                if(!Main.buscarUsuario(tfUsuario.getText()) ==  false)
                 {
                     throw new Excepcion(15);
                     
@@ -337,7 +337,7 @@ public class VUsuario extends javax.swing.JDialog {
                 if(baja)
                 {
                     //proceso de baja, sólo si existe el dni de la persona.
-                    if(!Main.buscarUsuario(tfUsuario.getText()) == null)
+                    if(!Main.buscarUsuario(tfUsuario.getText()) == false)
                     {
                         throw new Excepcion(18);
                     }
@@ -367,7 +367,7 @@ public class VUsuario extends javax.swing.JDialog {
                             }
                         }
                         //comprobar si existe el usuario
-                        if(Main.buscarUsuario(tfUsuario.getText()) == null)
+                        if(Main.buscarUsuario(tfUsuario.getText()) == false)
                         {
                             throw new Excepcion(18);
                         }
@@ -422,7 +422,7 @@ public class VUsuario extends javax.swing.JDialog {
                 }
                 else
                 {
-                    if(Main.buscarUsuario(tfUsuario.getText()) != null)
+                    if(Main.buscarUsuario(tfUsuario.getText()) != false)
                     {
                         throw new Excepcion(14);
                     }
@@ -432,7 +432,7 @@ public class VUsuario extends javax.swing.JDialog {
             else
             {
                 // consulta el usuario, si existe, carga los datos para modificarlo.
-                if(Main.buscarUsuario(tfUsuario.getText()) != null)
+                if(Main.buscarUsuario(tfUsuario.getText()) != false)
                 {
                     throw new Excepcion(14);
                 }

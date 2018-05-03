@@ -82,7 +82,7 @@ public class Main {
         else if(Arrays.equals(persona.getContrasenna().toCharArray(), contrasenna)){
             perfil = persona.getPerfil().getIdPerfil();
             login.dispose();
-            new Principal(perfil);
+            new Principal(perfil,persona.getUsuario());
         }
         else if(cont <3){
             throw new Excepcion(12);
@@ -109,6 +109,9 @@ public class Main {
                 
             case 4:
                 new VAltasBajas();
+                break;
+            case 5:
+                new ModificarEquipo(tipo);
                 break;
         }
     }
@@ -280,14 +283,16 @@ public class Main {
         j.setComentario(comentario);
     }
 
-    public static ResultSet buscarDNI(String dni) {
+    public static ArrayList buscarDNI(String dni) {
        return BDJugador.BuscarDni(dni,con);
     }
     
-    public static List obtenerJug(){
-        
+    public static ArrayList<Jugador> obtenerJugEqui(String nomEqui){
+        return BDJugador.BuscarEqui(nomEqui,con);
     }
-
+    public static String obtenerNomEqui(String usu){
+        return BDEquipo.BuscarNomEqui(usu,con);
+    }
     public static Jugador buscarJugador() {
         Jugador j = null; // Variable global
         // Buscar jugador y devolver datos para mostrarlos

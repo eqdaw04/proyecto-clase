@@ -6,6 +6,8 @@
 package Views;
 
 import static Controladora.Main.*;
+import UML.Jugador;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 
@@ -18,10 +20,16 @@ public class ModificarEquipo extends javax.swing.JFrame {
     /**
      * Creates new form ModificarEquipo
      */
-    public ModificarEquipo() {
+    public ModificarEquipo(String usu) {
         initComponents();
+        setVisible(true);
         this.setLocationRelativeTo(null);
         rellenar();
+        nombeEquipo.setText(obtenerNomEqui(usu));
+    }
+
+    private ModificarEquipo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -115,22 +123,13 @@ public class ModificarEquipo extends javax.swing.JFrame {
         });
     }
     private void rellenar(){
-        List j=obtenerJug();
-        for (int x=0;x<a.size();x++){
-           SNexp.addItem(a.get(x).toString()); 
-        }
-        rellenarAbs("dni");
-        }
-         
-        private void rellenarAbs (String a) throws Exception{
-            List b=T8P3E2.ObtenerAbs (a);
-            DefaultListModel<String> model = new DefaultListModel<>();
-            
-            for (Object ab: b)
-                model.addElement(ab.toString());
-            
+        ArrayList<Jugador> j=obtenerJugEqui(nombeEquipo.getText());
+        DefaultListModel<String> model = new DefaultListModel<>();
         
-           ListaAbs.setModel(model);
+        for (int x=0;x< j.size();x++){
+            model.addElement(j.get(x).getNickname());
+        }
+        liJugEqui.setModel(model);
         }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
