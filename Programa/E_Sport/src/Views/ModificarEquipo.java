@@ -53,7 +53,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
         liJugEqui = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        liJugDisp = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,7 +70,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setText("Jugadores en el equipo:");
 
-        jScrollPane2.setViewportView(jList1);
+        jScrollPane2.setViewportView(liJugDisp);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setText("Jugadores Disponibles:");
@@ -155,19 +155,25 @@ public class ModificarEquipo extends javax.swing.JFrame {
     private void rellenar() throws Exception{
         ArrayList<Jugador> j=obtenerJugEqui(String.valueOf(e.getIdEquipo()));
         DefaultListModel<String> model = new DefaultListModel<>();
-        
         for (int x=0;x< j.size();x++){
             model.addElement(j.get(x).getNickname());
         }
         liJugEqui.setModel(model);
+        
+        ArrayList<Jugador> jug=consultarJugadoresDisponibles();
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+        for (int x=0;x< jug.size();x++){
+            modelo.addElement(jug.get(x).getNickname());
+        }
+        liJugDisp.setModel(model);
         }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<String> liJugDisp;
     private javax.swing.JList<String> liJugEqui;
     private javax.swing.JLabel nombeEquipo;
     // End of variables declaration//GEN-END:variables

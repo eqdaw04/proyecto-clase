@@ -27,6 +27,7 @@ CONSTRAINT Pers_perfid_fk FOREIGN KEY (Id_perfil) REFERENCES Perfil (Id_perfil)
 );
 
 INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('dueño1','ape1',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'SuperDueño1','sd1',2);
+INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('dueño2','ape12',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'usu','sus',2);
 
     DROP TABLE Equipo CASCADE CONSTRAINTS;
 
@@ -41,6 +42,7 @@ CONSTRAINT Equi_persid_fk FOREIGN KEY (Id_persona) REFERENCES Persona (Id_person
 );
 
 INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Id_persona) VALUES ('Equipo1',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son rosas',1);
+INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Id_persona) VALUES ('Equipo2',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son muy azules',2);
 
     DROP TABLE Jugador CASCADE CONSTRAINTS;
 

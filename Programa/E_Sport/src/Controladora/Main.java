@@ -335,7 +335,10 @@ public class Main {
     public static Equipo ConsultarEquipoPorUsuario(String usu) throws Exception{
         return BDEquipo.BuscarEquipoPorUsuario(usu);
     }
-
+    //------------Mikel
+    public static ArrayList <Jugador> consultarJugadoresDisponibles () throws Exception{
+        return BDJugador.BuscarJugadoresDisponibles();
+    }
     public static void altaEquipo(String nombre, Date fechaCreacion, String comentario) {
         // Insertar equipo en la BD
         Equipo e = new Equipo();

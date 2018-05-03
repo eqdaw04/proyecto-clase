@@ -71,5 +71,20 @@ public class BDJugador {
         return a;
     }
 
+    public static ArrayList<Jugador> BuscarJugadoresDisponibles() throws Exception {
+        ResultSet rs = null;
+        BDConexion con = new BDConexion();
+        try {
+        PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo is null");
+        sentencia.executeUpdate();
+        rs = sentencia.executeQuery();
+        a= recorrer (rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
+        return a ;
+    }
+
     
 }
