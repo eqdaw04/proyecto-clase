@@ -323,13 +323,9 @@ public class Main {
     public static ArrayList<Jugador> obtenerJugEqui(String id){
         return BDJugador.BuscarEqui(id,con);
     }
-<<<<<<< Updated upstream
-    
-    public static String obtenerNomEqui(String usu){
-=======
+
     //------------Mikel
     public static Equipo obtenerNomEqui(String usu){
->>>>>>> Stashed changes
         return BDEquipo.BuscarNomEqui(usu,con);
     }
     
