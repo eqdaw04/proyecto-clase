@@ -21,18 +21,24 @@ public class BDPersona {
     }
     
     public Persona buscarPersonaPorUsuario(String usuario) throws Exception{
-        // con abre la conexión y 
+        // abre la conexion
         BDConexion con = new BDConexion();
+        // Crear objeto persona nulo
         Persona p = null;
+        // preparar la conexion y sentencia
         PreparedStatement sentencia;
         sentencia = con.getConnection().prepareStatement("SELECT * FROM persona WHERE usuario = ?");
-        
+        // dato de la condicion
         sentencia.setString(1, usuario);
+        // ejecucion de la sentencia
         sentencia.executeUpdate();
+        // crear objeto para el resultado de la consulta
         ResultSet rs;
+        // cargar objeto sentencia al objeto rs
         rs = sentencia.executeQuery();
-       
+       // buscar si existe datos en la rd
         if(rs.next()){
+            // crear la persona con base Persona y llenar los datos
             p = new Persona();
             p.setIdPersona(rs.getInt(1));
             p.setNombre(rs.getString(2));
@@ -42,8 +48,9 @@ public class BDPersona {
             p.setUsuario(rs.getString(6));
             p.setContrasenna(rs.getString(7));
             p.setEmail(rs.getString(8));
-            p.setPerfil(Main.buscarPerfil(rs.getInt(9)));
+            p.setPerfil(Main.consultarPerfil(rs.getInt(9)));
         }
+        // cerrar conexiones y retornar objeto obtenido mediante consulta
         rs.close();
         sentencia.close();
         return p;

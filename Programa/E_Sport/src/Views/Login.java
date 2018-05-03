@@ -7,7 +7,6 @@ package Views;
 
 import Controladora.Main;
 import Excepciones.Excepcion;
-import UML.Perfil;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 

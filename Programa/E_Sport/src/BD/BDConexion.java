@@ -36,8 +36,6 @@ public class BDConexion {
     }
     
     public Connection getConnection(){
-       
-        
         return connection;
     }
  

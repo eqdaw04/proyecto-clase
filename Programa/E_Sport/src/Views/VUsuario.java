@@ -4,7 +4,9 @@ import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
 import Recurso.ValidacionDeDatosDeEntrada;
+import UML.Perfil;
 import UML.Persona;
+import java.util.ArrayList;
 
 public class VUsuario extends javax.swing.JDialog {
     
@@ -20,10 +22,15 @@ public class VUsuario extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         setVisible(true);
         //mostrar opciones según tipo de operaciones CRUD que se quiera realizar
+        cargarDatos(tipo);
+    }
+    
+    private void cargarDatos(String tipo){
         alta=false;
         baja=false;
         modificacion=false;
         listado=false;
+        
         switch(tipo)
         {
             case "alta":
@@ -45,6 +52,18 @@ public class VUsuario extends javax.swing.JDialog {
             case "listado":
                 listado=true;
                 break;
+        }
+        
+        try{
+            cbPerfil.removeAllItems();
+            ArrayList <Perfil> listaPerfil = new ArrayList();
+            listaPerfil = Main.consultarTodosLosPerfiles();
+            for(Perfil p : listaPerfil){
+                cbPerfil.addItem(p.getNombre());
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getClass());
         }
     }
 
@@ -81,8 +100,8 @@ public class VUsuario extends javax.swing.JDialog {
         pfContrasenna = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         cbPerfil = new javax.swing.JComboBox<>();
-        cbEquipo = new javax.swing.JComboBox<>();
-        bBuscarEquipos = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        tfEquipo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -159,7 +178,7 @@ public class VUsuario extends javax.swing.JDialog {
 
         tfNombre.setEnabled(false);
 
-        jLabel4.setText("Apellidos:");
+        jLabel4.setText("Apellido 1:");
 
         tfApellido1.setEnabled(false);
 
@@ -175,14 +194,9 @@ public class VUsuario extends javax.swing.JDialog {
         cbPerfil.setSelectedIndex(-1);
         cbPerfil.setEnabled(false);
 
-        cbEquipo.setEnabled(false);
+        jLabel10.setText("Apellido 2:");
 
-        bBuscarEquipos.setText("Buscar");
-        bBuscarEquipos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bBuscarEquiposActionPerformed(evt);
-            }
-        });
+        tfEquipo.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -196,20 +210,24 @@ public class VUsuario extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel9))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4))
+                                    .addGap(24, 24, 24)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(24, 24, 24)))
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -222,25 +240,22 @@ public class VUsuario extends javax.swing.JDialog {
                                     .addComponent(tfUsuario, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bBuscar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(bPrimero)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bAnterior)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(bSiguiente)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bUltimo))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(bAceptar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(bCancelar))
-                                    .addComponent(cbEquipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cbPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(bBuscarEquipos)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(tfEquipo, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(bPrimero)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(bAnterior)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bSiguiente)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(bUltimo))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(bAceptar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bCancelar))
+                                .addComponent(cbPerfil, javax.swing.GroupLayout.Alignment.LEADING, 0, 212, Short.MAX_VALUE)))))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +280,9 @@ public class VUsuario extends javax.swing.JDialog {
                     .addComponent(tfApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,12 +294,11 @@ public class VUsuario extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(cbPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bBuscarEquipos))
+                    .addComponent(cbPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(jLabel9)
+                    .addComponent(tfEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAceptar)
@@ -303,6 +319,8 @@ public class VUsuario extends javax.swing.JDialog {
         // TODO add your handling code here:
         try
         {
+            Persona p = null;
+            p = Main.buscarPersona(tfUsuario.getText());
             if(alta)
             {
                 // comprobar todos los campos si cumple con las condiciones, si cumple, procede el alta
@@ -317,20 +335,13 @@ public class VUsuario extends javax.swing.JDialog {
                 if(cbPerfil.getSelectedIndex() == -1){
                     throw new Excepcion(9);
                 }
-                if(cbPerfil.getSelectedItem().equals("Dueño"))
-                {
-                    if(cbEquipo.getSelectedIndex() == -1)
-                    {
-                        throw new Excepcion(16);
-                    }
-                }
-                /*
-                if(!Main.buscarUsuario(tfUsuario.getText()) ==  false)
+                
+                if(p !=  null)
                 {
                     throw new Excepcion(15);
                     
-                }*/
-                //Main.altaUsuario(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), ccFechaAlta.getDate(), String.valueOf(cbPerfil.getSelectedItem()), String.valueOf(cbEquipo.getSelectedItem()));
+                }
+                Main.altaPersona(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), ccFechaAlta.getDate(), String.valueOf(cbPerfil.getSelectedItem()));
             }
             else
             {
@@ -338,11 +349,11 @@ public class VUsuario extends javax.swing.JDialog {
                 if(baja)
                 {
                     //proceso de baja, sólo si existe el dni de la persona.
-                    //if(!Main.buscarUsuario(tfUsuario.getText()) == false)
+                    if(p != null)
                     {
                         throw new Excepcion(18);
                     }
-                    //Main.bajaUsuario(tfUsuario.getText());
+                    Main.bajaPersona(tfUsuario.getText());
                 }
                 else
                 {
@@ -360,19 +371,13 @@ public class VUsuario extends javax.swing.JDialog {
                         if(cbPerfil.getSelectedIndex() == -1){
                             throw new Excepcion(9);
                         }
-                        if(cbPerfil.getSelectedItem().equals("Dueño"))
-                        {
-                            if(cbEquipo.getSelectedIndex() == -1)
-                            {
-                                throw new Excepcion(16);
-                            }
-                        }
                         //comprobar si existe el usuario
-                        //if(Main.buscarUsuario(tfUsuario.getText()) == false)
+                        if(p == null)
                         {
                             throw new Excepcion(18);
                         }
-                        //Main.modificarUsuario(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), String.valueOf(cbPerfil.getSelectedItem()), String.valueOf(cbEquipo.getSelectedItem()));
+                        //mandar al main para modificar el usuario con los nuevos datos
+                        Main.modificarPersona(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), String.valueOf(cbPerfil.getSelectedItem()));
                     }
                 }
             }
@@ -426,7 +431,7 @@ public class VUsuario extends javax.swing.JDialog {
                 }
                 else
                 {
-                    //if(Main.buscarUsuario(tfUsuario.getText()) != false)
+                    if(Main.buscarPersona(tfUsuario.getText()) == null)
                     {
                         throw new Excepcion(14);
                     }
@@ -436,22 +441,22 @@ public class VUsuario extends javax.swing.JDialog {
             else
             {
                 // consulta el usuario, si existe, carga los datos para modificarlo.
-                //if(Main.buscarUsuario(tfUsuario.getText()) != false)
+                if(Main.buscarPersona(tfUsuario.getText()) == null)
                 {
                     throw new Excepcion(14);
                 }
-                //mostrarDatos();
-                /*tfNombre.setEnabled(true);
+                mostrarDatos();
+                tfNombre.setEnabled(true);
                 tfApellido1.setEnabled(true);
                 tfApellido2.setEnabled(true);
                 tfEmail.setEnabled(true);
                 cbPerfil.setEnabled(true);
                 if(cbPerfil.getSelectedItem().equals("Dueño"))
                 {
-                    cbEquipo.setVisible(true);
+                    tfEquipo.setVisible(true);
                 }
-                */
-                //bAceptar.setEnabled(true);
+                
+                bAceptar.setEnabled(true);
             }
         }
         catch (Exception e)
@@ -459,14 +464,6 @@ public class VUsuario extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, e.getClass());
         }
     }//GEN-LAST:event_bBuscarActionPerformed
-
-    private void bBuscarEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarEquiposActionPerformed
-        // si perfil dueño es seleccionado y presiona el botón, carga el listado de equipos que el dueño puede editar.
-        if(cbPerfil.getSelectedItem().equals("Dueño"))
-        {
-            cbEquipo.setVisible(true);
-        }
-    }//GEN-LAST:event_bBuscarEquiposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -476,15 +473,14 @@ public class VUsuario extends javax.swing.JDialog {
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bAnterior;
     private javax.swing.JButton bBuscar;
-    private javax.swing.JButton bBuscarEquipos;
     private javax.swing.JButton bCancelar;
     private javax.swing.JButton bPrimero;
     private javax.swing.JButton bSiguiente;
     private javax.swing.JButton bUltimo;
-    private javax.swing.JComboBox<String> cbEquipo;
     private javax.swing.JComboBox<String> cbPerfil;
     private org.freixas.jcalendar.JCalendarCombo ccFechaAlta;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -497,14 +493,14 @@ public class VUsuario extends javax.swing.JDialog {
     private javax.swing.JTextField tfApellido1;
     private javax.swing.JTextField tfApellido2;
     private javax.swing.JTextField tfEmail;
+    private javax.swing.JTextField tfEquipo;
     private javax.swing.JTextField tfNombre;
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
 
     
     private void mostrarDatos() throws Exception {
-        Persona p = new Persona();
-        //=Main.buscarPersona();
+        Persona p = Main.getPersona();
         tfUsuario.setText(p.getUsuario());
         pfContrasenna.setText(p.getContrasenna());
         tfNombre.setText(p.getNombre());
@@ -513,6 +509,9 @@ public class VUsuario extends javax.swing.JDialog {
         tfEmail.setText(p.getEmail());        
         ccFechaAlta.setDate(p.getFechaAlta());
         cbPerfil.setSelectedItem(p.getPerfil().getNombre());
-        cbEquipo.setSelectedItem(p.getEquipo().getNombre());
+        if(!p.getEquipo().getNombre().isEmpty()){
+            tfEquipo.setText(p.getEquipo().getNombre());
+        }
+        
     }
 }

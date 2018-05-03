@@ -146,9 +146,9 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static void cerrarAbrir(JDialog v) {
+        // Cierra la ventana abierta y abre la ventana principal
         v.dispose();
-        
-        new VAltasBajas();
+        new Principal();
     }
     
     //---------- JON XU JIN ----------
@@ -160,7 +160,15 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static Perfil buscarPerfil(int cod) throws Exception{
+    public static ArrayList <Perfil> consultarTodosLosPerfiles() throws Exception{
+        ArrayList <Perfil> listaPerfil =  new ArrayList();
+        listaPerfil = bdPerfil.buscarPerfiles();
+        return listaPerfil;
+    }
+    
+    //---------- JON XU JIN ----------
+    
+    public static Perfil consultarPerfil(int cod) throws Exception{
         Perfil p = null;
         p = bdPerfil.buscarPorCodigo(cod);
         return p;
@@ -168,7 +176,7 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static void altaPersona( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Date fecha, String perfil, String equipo){
+    public static void altaPersona( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Date fecha, String perfil){
         // Insertar usuario en la BD
         Persona p = new Persona(nombre, ape1, ape2, fecha, usuario, contrasenna, email);
         //p.setPerfil(buscarPerfil(perfil));
@@ -188,7 +196,7 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static void modificarPersona(String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil, String equipo) {
+    public static void modificarPersona(String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil) {
         // Modificar usuario en la BD
         Persona p = new Persona();
         p.setNombre(nombre);
@@ -210,7 +218,13 @@ public class Main {
         // Localizar a una persona con su usuario
         persona = null;
         persona = bdPersona.buscarPersonaPorUsuario(usuario);
-
+        if(persona.getPerfil().getNombre().equals("Dueño")){
+            Equipo eq = null;
+            eq = consultarEquipoPorUsuario(persona.getUsuario());
+            if(eq != null){
+                persona.setEquipo(eq);
+            }
+        }
         return persona;
         
     }
@@ -292,6 +306,16 @@ public class Main {
         Main.contrasenna = contrasenna;
     }
 
+    public static Persona getPersona() {
+        return persona;
+    }
+
+    public static void setPersona(Persona persona) {
+        Main.persona = persona;
+    }
+
+    
+    
     // Imanol Luis
     public static void altaJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String sueldo, Date fechaAlta, String comentario) {
         // Insertar jugador en la BD
@@ -416,6 +440,5 @@ public class Main {
     public static String buscarEquipoDuenno() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 
 }
