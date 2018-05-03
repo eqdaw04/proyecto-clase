@@ -42,7 +42,7 @@ public class BDPersona {
             p.setUsuario(rs.getString(6));
             p.setContrasenna(rs.getString(7));
             p.setEmail(rs.getString(8));
-            //p.setPerfil(Main.buscarPerfil(rs.getInt(9)));
+            p.setPerfil(Main.buscarPerfil(rs.getInt(9)));
         }
         rs.close();
         sentencia.close();

@@ -35,27 +35,42 @@ public class Main {
     private static BDPartido bdPartido;
     private static BDPerfil bdPerfil;
     private static BDPersona bdPersona;
-    private static BDConexion con;
     private static Persona persona;
     private static int perfil;
     private static Login login;
     private static String driver, url, usuario, contrasenna;
     
-    public static int numero;
     
     public static void main(String[] args) throws Exception {
         //driver para la conexion
         driver = "oracle.jdbc.OracleDriver";
+        usuario = "eqdaw04";
+        contrasenna = "eqdaw04";
+        //construccion de la ruta completa.
+        inicializarValores();
+        
+        login = new Login();
+        //new Principal();
+    }
+    
+    public static void inicializarValores() throws Exception{
+        bdEquipo = new BDEquipo();
+        bdJornada = new BDJornada();
+        bdJugador = new BDJugador();
+        bdMarcador = new BDMarcador();
+        bdPartido = new BDPartido();
+        bdPerfil = new BDPerfil();
+        bdPersona = new BDPersona();
+    }
+    
+    //---------- JON XU JIN ----------
+    
+    public static void accederPrincipal(String usuario, char[] contrasenna, int numero) throws Exception{
         //datos del usuario y servidor
         String tipo = "oracle",
         servidor = "10.10.10.9",//"localhost"
         puerto = "1521",
         bbdd = "db12102";
-        usuario = "eqdaw04";
-        contrasenna = "eqdaw04";
-        //construccion de la ruta completa.
-        url = "jdbc:" + tipo + ":thin:@" + servidor + ":" + puerto + ":" + bbdd;
-        inicializarValores();
         switch(numero){
             case 1:
                 servidor = "SrvOracle";
@@ -71,28 +86,11 @@ public class Main {
                 break;
                         
         }
-        login = new Login();
-        //new Principal();
-    }
-    
-    public static void inicializarValores() throws Exception{
-        bdEquipo = new BDEquipo();
-        bdJornada = new BDJornada();
-        bdJugador = new BDJugador();
-        bdMarcador = new BDMarcador();
-        bdPartido = new BDPartido();
-        bdPerfil = new BDPerfil();
-        bdPersona = new BDPersona();
-        con = new BDConexion();
-    }
-    
-    //---------- JON XU JIN ----------
-    
-    public static void accederPrincipal(String usuario, char[] contrasenna) throws Exception{
+        url = "jdbc:" + tipo + ":thin:@" + servidor + ":" + puerto + ":" + bbdd;
         persona = null;
         
         persona = bdPersona.buscarPersonaPorUsuario(usuario);
-        con.desconectar();
+
         int cont = login.getCont()+1;
         login.setCont(cont);
         if(persona == null){
@@ -162,7 +160,7 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static Perfil buscarPerfil(int cod, BDConexion con) throws Exception{
+    public static Perfil buscarPerfil(int cod) throws Exception{
         Perfil p = null;
         p = bdPerfil.buscarPorCodigo(cod);
         return p;

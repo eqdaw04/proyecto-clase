@@ -146,7 +146,7 @@ public class Login extends javax.swing.JFrame {
             }
             else{
                 
-                Main.accederPrincipal(tfUsuario.getText(), pfContrasenna.getPassword());
+                Main.accederPrincipal(tfUsuario.getText(), pfContrasenna.getPassword(), Integer.parseInt(jTextField1.getText()) );
             }
         }
         catch (Excepcion e)
@@ -196,7 +196,6 @@ public class Login extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-        Main.setNumero(Integer.parseInt(jTextField1.getText()));
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
