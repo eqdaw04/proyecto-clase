@@ -86,6 +86,8 @@ public class Main {
         con = new BDConexion();
     }
     
+    //---------- JON XU JIN ----------
+    
     public static void accederPrincipal(String usuario, char[] contrasenna) throws Exception{
         persona = null;
         
@@ -108,6 +110,8 @@ public class Main {
             throw new Excepcion(13);
         }
     }
+    
+    //---------- JON XU JIN ----------
     
     public static void abrirVentana(int n, String tipo){
         //abrir ventana según selección del usuario en la pantalla principal
@@ -133,22 +137,30 @@ public class Main {
         }
     }
     
+    //---------- JON XU JIN ----------
+    
     public static void cerrar(JDialog v){
         //cierra una ventana abierta por ventana principal
         v.dispose();
         
     }
 
+    //---------- JON XU JIN ----------
+    
     public static void cerrarAbrir(JDialog v) {
         v.dispose();
         
         new VAltasBajas();
     }
     
+    //---------- JON XU JIN ----------
+    
     public static void salir(JFrame v){
         //salir del programa
         v.dispose();
     }
+    
+    //---------- JON XU JIN ----------
     
     public static Perfil buscarPerfil(int cod, BDConexion con) throws Exception{
         Perfil p = null;
