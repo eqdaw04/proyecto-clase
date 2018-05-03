@@ -317,7 +317,7 @@ public class Main {
     public static ArrayList buscarDNI(String dni) {
        return BDJugador.BuscarDni(dni,con);
     }
-    
+    //------------Mikel
     public static ArrayList<Jugador> obtenerJugEqui(String nomEqui){
         return BDJugador.BuscarEqui(nomEqui,con);
     }
