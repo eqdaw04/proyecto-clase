@@ -6,6 +6,7 @@
 package Views;
 
 import static Controladora.Main.*;
+import UML.Equipo;
 import UML.Jugador;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,17 +21,22 @@ public class ModificarEquipo extends javax.swing.JFrame {
     /**
      * Creates new form ModificarEquipo
      */
+    private static Equipo e;
+            
     public ModificarEquipo(String usu) {
         initComponents();
         setVisible(true);
         this.setLocationRelativeTo(null);
+        e= obtenerNomEqui(usu);
+        nombeEquipo.setText(e.getNombre());
         rellenar();
-        nombeEquipo.setText(obtenerNomEqui(usu));
     }
 
     private ModificarEquipo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -123,7 +129,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
         });
     }
     private void rellenar(){
-        ArrayList<Jugador> j=obtenerJugEqui(nombeEquipo.getText());
+        ArrayList<Jugador> j=obtenerJugEqui(String.valueOf(e.getIdEquipo()));
         DefaultListModel<String> model = new DefaultListModel<>();
         
         for (int x=0;x< j.size();x++){

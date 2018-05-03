@@ -309,16 +309,21 @@ public class Main {
         j.setNickname(nickname);
         j.setComentario(comentario);
     }
-
+    //------------Mikel
     public static ArrayList buscarDNI(String dni) {
        return BDJugador.BuscarDni(dni,con);
     }
-    
-    public static ArrayList<Jugador> obtenerJugEqui(String nomEqui){
-        return BDJugador.BuscarEqui(nomEqui,con);
+    //------------Mikel
+    public static ArrayList<Jugador> obtenerJugEqui(String id){
+        return BDJugador.BuscarEqui(id,con);
     }
+<<<<<<< Updated upstream
     
     public static String obtenerNomEqui(String usu){
+=======
+    //------------Mikel
+    public static Equipo obtenerNomEqui(String usu){
+>>>>>>> Stashed changes
         return BDEquipo.BuscarNomEqui(usu,con);
     }
     

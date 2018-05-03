@@ -37,11 +37,11 @@ public class BDJugador {
         return a ;
     }
     
-    public static ArrayList<Jugador> BuscarEqui(String nomEqui, BDConexion con) {
+    public static ArrayList<Jugador> BuscarEqui(String id, BDConexion con) {
        ResultSet rs = null;
         try {
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo = ?");
-        sentencia.setString(1,nomEqui);
+        sentencia.setString(1,id);
         sentencia.executeUpdate();
         rs = sentencia.executeQuery();
         a= recorrer (rs);
