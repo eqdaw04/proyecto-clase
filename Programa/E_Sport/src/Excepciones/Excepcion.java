@@ -120,7 +120,7 @@ public class Excepcion extends Exception {
                 break;
                 
             case 23:
-                dato = "No existe ningún jugador con ese DNI.";
+                dato = "Ya existe un jugador con ese DNI.";
                 break;
                 
             case 24:
