@@ -165,7 +165,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
         for (int x=0;x< jug.size();x++){
             modelo.addElement(jug.get(x).getNickname());
         }
-        liJugDisp.setModel(model);
+        liJugDisp.setModel(modelo);
         }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

@@ -56,16 +56,15 @@ public class BDJugador {
     public static ArrayList recorrer (ResultSet rs) throws SQLException{
         while (rs.next()){
             Jugador j= new Jugador();
+            j.setIdJugador(Integer.parseInt(rs.getString(1)));
             j.setDni(rs.getString(2));
             j.setNombre(rs.getString(3));
             j.setApellido1(rs.getString(4));
             j.setApellido2(rs.getString(5));
             j.setNickname(rs.getString(6));
             j.setSueldo(Float.parseFloat(rs.getString(7)));
-            System.out.println(rs.getString(8));
-            System.out.println((rs.getDate(8)));
             j.setFechaAlta(rs.getDate(8));
-            j.setComentario(rs.getString(9));
+            j.setComentario(rs.getString(9));      
             a.add(j);       
         }
         return a;
