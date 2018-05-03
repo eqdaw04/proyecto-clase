@@ -324,12 +324,13 @@ public class VUsuario extends javax.swing.JDialog {
                         throw new Excepcion(16);
                     }
                 }
+                /*
                 if(!Main.buscarUsuario(tfUsuario.getText()) ==  false)
                 {
                     throw new Excepcion(15);
                     
-                }
-                Main.altaUsuario(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), ccFechaAlta.getDate(), String.valueOf(cbPerfil.getSelectedItem()), String.valueOf(cbEquipo.getSelectedItem()));
+                }*/
+                //Main.altaUsuario(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), ccFechaAlta.getDate(), String.valueOf(cbPerfil.getSelectedItem()), String.valueOf(cbEquipo.getSelectedItem()));
             }
             else
             {
@@ -337,11 +338,11 @@ public class VUsuario extends javax.swing.JDialog {
                 if(baja)
                 {
                     //proceso de baja, sólo si existe el dni de la persona.
-                    if(!Main.buscarUsuario(tfUsuario.getText()) == false)
+                    //if(!Main.buscarUsuario(tfUsuario.getText()) == false)
                     {
                         throw new Excepcion(18);
                     }
-                    Main.bajaUsuario(tfUsuario.getText());
+                    //Main.bajaUsuario(tfUsuario.getText());
                 }
                 else
                 {
@@ -367,11 +368,11 @@ public class VUsuario extends javax.swing.JDialog {
                             }
                         }
                         //comprobar si existe el usuario
-                        if(Main.buscarUsuario(tfUsuario.getText()) == false)
+                        //if(Main.buscarUsuario(tfUsuario.getText()) == false)
                         {
                             throw new Excepcion(18);
                         }
-                        Main.modificarUsuario(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), String.valueOf(cbPerfil.getSelectedItem()), String.valueOf(cbEquipo.getSelectedItem()));
+                        //Main.modificarUsuario(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), String.valueOf(cbPerfil.getSelectedItem()), String.valueOf(cbEquipo.getSelectedItem()));
                     }
                 }
             }
@@ -425,7 +426,7 @@ public class VUsuario extends javax.swing.JDialog {
                 }
                 else
                 {
-                    if(Main.buscarUsuario(tfUsuario.getText()) != false)
+                    //if(Main.buscarUsuario(tfUsuario.getText()) != false)
                     {
                         throw new Excepcion(14);
                     }
@@ -435,12 +436,12 @@ public class VUsuario extends javax.swing.JDialog {
             else
             {
                 // consulta el usuario, si existe, carga los datos para modificarlo.
-                if(Main.buscarUsuario(tfUsuario.getText()) != false)
+                //if(Main.buscarUsuario(tfUsuario.getText()) != false)
                 {
                     throw new Excepcion(14);
                 }
-                mostrarDatos();
-                tfNombre.setEnabled(true);
+                //mostrarDatos();
+                /*tfNombre.setEnabled(true);
                 tfApellido1.setEnabled(true);
                 tfApellido2.setEnabled(true);
                 tfEmail.setEnabled(true);
@@ -449,8 +450,8 @@ public class VUsuario extends javax.swing.JDialog {
                 {
                     cbEquipo.setVisible(true);
                 }
-                
-                bAceptar.setEnabled(true);
+                */
+                //bAceptar.setEnabled(true);
             }
         }
         catch (Exception e)
@@ -502,7 +503,8 @@ public class VUsuario extends javax.swing.JDialog {
 
     
     private void mostrarDatos() throws Exception {
-        Persona p =Main.buscarPersona();
+        Persona p = new Persona();
+        //=Main.buscarPersona();
         tfUsuario.setText(p.getUsuario());
         pfContrasenna.setText(p.getContrasenna());
         tfNombre.setText(p.getNombre());

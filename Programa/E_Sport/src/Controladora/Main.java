@@ -89,7 +89,7 @@ public class Main {
     public static void accederPrincipal(String usuario, char[] contrasenna) throws Exception{
         persona = null;
         
-        persona = bdPersona.buscarPersonaPorUsuario(usuario, con);
+        persona = bdPersona.buscarPersonaPorUsuario(usuario);
         con.desconectar();
         int cont = login.getCont()+1;
         login.setCont(cont);
@@ -152,7 +152,7 @@ public class Main {
     
     public static Perfil buscarPerfil(int cod, BDConexion con) throws Exception{
         Perfil p = null;
-        p = bdPerfil.buscarPorCodigo(cod, con);
+        p = bdPerfil.buscarPorCodigo(cod);
         return p;
     }
     
@@ -199,7 +199,7 @@ public class Main {
     public static Persona buscarPersona(String usuario) throws Exception{
         // Localizar a una persona con su usuario
         persona = null;
-        persona = bdPersona.buscarPersonaPorUsuario(con, usuario);
+        persona = bdPersona.buscarPersonaPorUsuario(usuario);
 
         return persona;
         
