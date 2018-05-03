@@ -324,8 +324,7 @@ public class Main {
         j.setNickname(nickname);
         j.setComentario(comentario);
     }
-
-    // Imanol Luis
+    
     public static ArrayList buscarDNI(String dni) {
        return BDJugador.BuscarDni(dni,con);
     }
