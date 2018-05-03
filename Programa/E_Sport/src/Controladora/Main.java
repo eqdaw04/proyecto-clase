@@ -41,12 +41,14 @@ public class Main {
     private static Login login;
     private static String driver, url, usuario, contrasenna;
     
+    public static int numero;
+    
     public static void main(String[] args) throws Exception {
         //driver para la conexion
         driver = "oracle.jdbc.OracleDriver";
         //datos del usuario y servidor
         String tipo = "oracle",
-        servidor = "10.10.10.9",//"localhost"
+        servidor = "localhost",//"localhost"
         puerto = "1521",
         bbdd = "db12102";
         usuario = "eqdaw04";
@@ -54,6 +56,20 @@ public class Main {
         //construccion de la ruta completa.
         url = "jdbc:" + tipo + ":thin:@" + servidor + ":" + puerto + ":" + bbdd;
         inicializarValores();
+        switch(numero){
+            case 1:
+                servidor = "SrvOracle";
+                break;
+                
+            case 2:
+                servidor = "localhost";
+                break;
+                
+            case 3:
+                servidor = "10.10.10.9";
+                break;
+                        
+        }
         login = new Login();
         //new Principal();
     }
@@ -133,18 +149,13 @@ public class Main {
         v.dispose();
     }
     
-    public static boolean buscarUsuario(String usuario){
-        boolean existe = false;
-        //buscar por nombre de usuario  y retornar si existe
-        //persona
-        return existe;
-    }
-    
     public static Perfil buscarPerfil(int cod, BDConexion con) throws Exception{
         Perfil p = null;
         p = bdPerfil.buscarPorCodigo(cod, con);
         return p;
     }
+    
+    //---------- JON XU JIN ----------
     
     public static void altaUsuario( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Date fecha, String perfil, String equipo){
         // Insertar usuario en la BD
@@ -155,13 +166,17 @@ public class Main {
         }
         
     }
+    
+    //---------- JON XU JIN ----------
 
     public static void bajaUsuario(String usuario) {
         // Eliminar usuario en la BD
         Persona p = new Persona();
         p.setUsuario(usuario);
     }
-
+    
+    //---------- JON XU JIN ----------
+    
     public static void modificarUsuario(String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil, String equipo) {
         // Modificar usuario en la BD
         Persona p = new Persona();
@@ -290,9 +305,11 @@ public class Main {
     public static ArrayList<Jugador> obtenerJugEqui(String nomEqui){
         return BDJugador.BuscarEqui(nomEqui,con);
     }
+    
     public static String obtenerNomEqui(String usu){
         return BDEquipo.BuscarNomEqui(usu,con);
     }
+    
     public static Jugador buscarJugador() {
         Jugador j = null; // Variable global
         // Buscar jugador y devolver datos para mostrarlos
@@ -338,12 +355,6 @@ public class Main {
         return plantilla;
     }
 
-    public static Persona buscarPersona() {
-        Persona p = null; // Variable global
-        // Buscar persona y devolver datos para mostrarlos
-        return p;
-    }
-
     public static boolean comprobarSueldo(String sueldo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -379,5 +390,15 @@ public class Main {
     public static String buscarEquipoDuenno() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public static int getNumero() {
+        return numero;
+    }
+
+    public static void setNumero(int numero) {
+        Main.numero = numero;
+    }
+    
+    
 
 }

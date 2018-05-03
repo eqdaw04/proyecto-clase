@@ -35,7 +35,7 @@ public class BDConexion {
             JOptionPane.showMessageDialog(null, "El driver de la base de datos no esta disponible!" +e.getMessage());
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "problemas" +e.getMessage());
+            JOptionPane.showMessageDialog(null, "problemas " +e.getMessage());
         }
         
         return connection;

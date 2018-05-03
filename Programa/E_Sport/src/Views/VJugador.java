@@ -259,7 +259,7 @@ public class VJugador extends javax.swing.JDialog {
            {
                //validación de datos
                 ValidacionDeDatosDeEntrada.validar(3, tfDNI);
-                ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
+                ValidacionDeDatosDeEntrada.validar(4, tfNombre);
                 ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
                 if(tfApellido2.getText()!= null){
                    ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
