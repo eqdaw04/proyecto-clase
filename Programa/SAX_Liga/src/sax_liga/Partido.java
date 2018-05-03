@@ -13,10 +13,10 @@ import java.util.Date;
  * @author yaiza
  */
 public class Partido {
-    private Date fecha; //Cambiar tipo a DATE
-    private String hora; //Cambiar tipo a TIME
+    private Date fecha;
+    private String hora; 
     private String lugar;
-    private int id_partido;
+    private int idPartido;
     private ArrayList <Equipo> listaequipos;
 
     public Partido() {
@@ -47,12 +47,12 @@ public class Partido {
         this.lugar = lugar;
     }
 
-    public int getId_partido() {
-        return id_partido;
+    public int getIdPartido() {
+        return idPartido;
     }
 
-    public void setId_partido(int id_partido) {
-        this.id_partido = id_partido;
+    public void setIdPartido(int idPartido) {
+        this.idPartido = idPartido;
     }
 
     public ArrayList<Equipo> getListaequipos() {

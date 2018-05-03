@@ -293,7 +293,7 @@ public class Main {
     }
 
     // Imanol Luis
-    public static void altaJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String comentario) {
+    public static void altaJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String sueldo, Date fechaAlta, String comentario) {
         // Insertar jugador en la BD
         Jugador j = new Jugador();
         j.setDni(dni);
@@ -301,6 +301,8 @@ public class Main {
         j.setApellido1(apellido1);
         j.setApellido2(apellido2);
         j.setNickname(nickname);
+        j.setSueldo(Float.parseFloat(sueldo));
+        j.setFechaAlta(fechaAlta);
         j.setComentario(comentario);
     }
 
@@ -312,7 +314,7 @@ public class Main {
     }
     
     // Imanol Luis
-    public static void modificarJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String comentario) {
+    public static void modificarJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String comentario, String sueldo) {
         // Modificar jugador en la BD
         Jugador j = new Jugador();
         j.setDni(dni);
@@ -320,6 +322,7 @@ public class Main {
         j.setApellido1(apellido1);
         j.setApellido2(apellido2);
         j.setNickname(nickname);
+        j.setSueldo(Float.parseFloat(sueldo));
         j.setComentario(comentario);
     }
     
