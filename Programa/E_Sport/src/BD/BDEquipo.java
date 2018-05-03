@@ -20,8 +20,9 @@ import java.util.logging.Logger;
 public class BDEquipo {
     private static Equipo e = new Equipo();
     
-    public static Equipo BuscarNomEqui(String usu, BDConexion con) {
+    public static Equipo BuscarNomEqui(String usu) throws Exception {
         ResultSet rs = null;
+        BDConexion con = new BDConexion();
         try {
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo WHERE Id_persona = (SELECT Id_persona FROM Persona WHERE Usuario = ?)");
         sentencia.setString(1,usu);

@@ -323,17 +323,17 @@ public class Main {
         j.setComentario(comentario);
     }
     
-    public static ArrayList buscarDNI(String dni) {
-       return BDJugador.BuscarDni(dni,con);
+    public static ArrayList buscarDNI(String dni) throws Exception {
+       return BDJugador.BuscarDni(dni);
     }
     //------------Mikel
-    public static ArrayList<Jugador> obtenerJugEqui(String nomEqui){
-        return BDJugador.BuscarEqui(nomEqui,con);
+    public static ArrayList<Jugador> obtenerJugEqui(String nomEqui) throws Exception{
+        return BDJugador.BuscarEqui(nomEqui);
     }
 
     //------------Mikel
-    public static Equipo obtenerNomEqui(String usu){
-        return BDEquipo.BuscarNomEqui(usu,con);
+    public static Equipo obtenerNomEqui(String usu) throws Exception{
+        return BDEquipo.BuscarNomEqui(usu);
     }
 
     public static void altaEquipo(String nombre, Date fechaCreacion, String comentario) {
@@ -410,15 +410,6 @@ public class Main {
     public static String buscarEquipoDuenno() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    public static int getNumero() {
-        return numero;
-    }
-
-    public static void setNumero(int numero) {
-        Main.numero = numero;
-    }
-    
     
 
 }

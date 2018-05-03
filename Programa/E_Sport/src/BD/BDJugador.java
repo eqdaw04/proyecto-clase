@@ -22,8 +22,9 @@ import java.util.logging.Logger;
 public class BDJugador {
     private static ArrayList<Jugador> a= new ArrayList();
     
-    public static ArrayList <Jugador> BuscarDni (String dni, BDConexion con){
+    public static ArrayList <Jugador> BuscarDni (String dni) throws Exception{
         ResultSet rs = null;
+        BDConexion con = new BDConexion();
         try {
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Dni = ?");
         sentencia.setString(1,dni);
@@ -37,8 +38,9 @@ public class BDJugador {
         return a ;
     }
     
-    public static ArrayList<Jugador> BuscarEqui(String id, BDConexion con) {
+    public static ArrayList<Jugador> BuscarEqui(String id) throws Exception {
        ResultSet rs = null;
+       BDConexion con = new BDConexion();
         try {
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo = ?");
         sentencia.setString(1,id);
