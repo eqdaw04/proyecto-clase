@@ -35,6 +35,7 @@ public class Main {
     private static BDPartido bdPartido;
     private static BDPerfil bdPerfil;
     private static BDPersona bdPersona;
+    private static BDConexion con;
     private static Persona persona;
     private static int perfil;
     private static Login login;
@@ -82,11 +83,14 @@ public class Main {
         bdPartido = new BDPartido();
         bdPerfil = new BDPerfil();
         bdPersona = new BDPersona();
+        con = new BDConexion();
     }
     
     public static void accederPrincipal(String usuario, char[] contrasenna) throws Exception{
-
-        persona = bdPersona.buscarPersonaPorUsuario(usuario);
+        persona = null;
+        
+        persona = bdPersona.buscarPersonaPorUsuario(usuario, con);
+        con.desconectar();
         int cont = login.getCont()+1;
         login.setCont(cont);
         if(persona == null){
@@ -104,8 +108,6 @@ public class Main {
             throw new Excepcion(13);
         }
     }
-    
-    //---------- Jon Xu Jin ----------
     
     public static void abrirVentana(int n, String tipo){
         //abrir ventana según selección del usuario en la pantalla principal
@@ -131,15 +133,11 @@ public class Main {
         }
     }
     
-    //---------- Jon Xu Jin ----------
-            
     public static void cerrar(JDialog v){
         //cierra una ventana abierta por ventana principal
         v.dispose();
         
     }
-    
-    //---------- Jon Xu Jin ----------
 
     public static void cerrarAbrir(JDialog v) {
         v.dispose();
@@ -147,18 +145,14 @@ public class Main {
         new VAltasBajas();
     }
     
-    //---------- Jon Xu Jin ----------
-    
     public static void salir(JFrame v){
         //salir del programa
         v.dispose();
     }
     
-    //---------- Jon Xu Jin ----------
-    
-    public static Perfil buscarPerfil(int cod) throws Exception{
+    public static Perfil buscarPerfil(int cod, BDConexion con) throws Exception{
         Perfil p = null;
-        p = bdPerfil.buscarPorCodigo(cod);
+        p = bdPerfil.buscarPorCodigo(cod, con);
         return p;
     }
     
@@ -202,7 +196,7 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static Persona ConsultarPersona(String usuario) throws Exception{
+    public static Persona buscarPersona(String usuario) throws Exception{
         // Localizar a una persona con su usuario
         persona = null;
         persona = bdPersona.buscarPersonaPorUsuario(con, usuario);
@@ -288,6 +282,7 @@ public class Main {
         Main.contrasenna = contrasenna;
     }
 
+    // Imanol Luis
     public static void altaJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String comentario) {
         // Insertar jugador en la BD
         Jugador j = new Jugador();
@@ -299,12 +294,14 @@ public class Main {
         j.setComentario(comentario);
     }
 
+    // Imanol Luis
     public static void bajaJugador(String dni) {
         // Eliminar jugador en la BD
         Jugador j = new Jugador();
         j.setDni(dni);
     }
     
+    // Imanol Luis
     public static void modificarJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String comentario) {
         // Modificar jugador en la BD
         Jugador j = new Jugador();
@@ -315,24 +312,19 @@ public class Main {
         j.setNickname(nickname);
         j.setComentario(comentario);
     }
-    //------------Mikel
+
+    // Imanol Luis
     public static ArrayList buscarDNI(String dni) {
        return BDJugador.BuscarDni(dni,con);
     }
-    //------------Mikel
-    public static ArrayList<Jugador> obtenerJugEqui(String id){
-        return BDJugador.BuscarEqui(id,con);
+    
+    public static ArrayList<Jugador> obtenerJugEqui(String nomEqui){
+        return BDJugador.BuscarEqui(nomEqui,con);
     }
 
     //------------Mikel
     public static Equipo obtenerNomEqui(String usu){
         return BDEquipo.BuscarNomEqui(usu,con);
-    }
-    
-    public static Jugador buscarJugador() {
-        Jugador j = null; // Variable global
-        // Buscar jugador y devolver datos para mostrarlos
-        return j;
     }
 
     public static void altaEquipo(String nombre, Date fechaCreacion, String comentario) {
