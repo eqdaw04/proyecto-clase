@@ -129,10 +129,6 @@ public class Excepcion extends Exception {
         }
         return dato;
     }
-    
-    public String getMensaje(){
-        return mensaje;
-    }
 
     public int getCod() {
         return cod;

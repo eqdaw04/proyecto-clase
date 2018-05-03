@@ -20,7 +20,8 @@ public class BDPersona {
     public BDPersona() {
     }
     
-    public Persona buscarPersonaPorUsuario(String usuario, BDConexion con) throws Exception{
+    public Persona buscarPersonaPorUsuario(BDConexion con, String usuario) throws Exception{
+        // con abre la conexión y 
         Persona p = null;
         PreparedStatement sentencia;
         sentencia = con.getConnection().prepareStatement("SELECT * FROM persona WHERE usuario = ?");

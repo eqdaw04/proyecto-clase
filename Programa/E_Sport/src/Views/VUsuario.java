@@ -376,6 +376,9 @@ public class VUsuario extends javax.swing.JDialog {
                 }
             }
         }
+        catch (Excepcion e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(this, e.getClass());

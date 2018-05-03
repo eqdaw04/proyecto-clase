@@ -59,6 +59,7 @@ public class Main {
         switch(numero){
             case 1:
                 servidor = "SrvOracle";
+                bbdd = "orcl";
                 break;
                 
             case 2:
@@ -157,7 +158,7 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static void altaUsuario( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Date fecha, String perfil, String equipo){
+    public static void altaPersona( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Date fecha, String perfil, String equipo){
         // Insertar usuario en la BD
         Persona p = new Persona(nombre, ape1, ape2, fecha, usuario, contrasenna, email);
         //p.setPerfil(buscarPerfil(perfil));
@@ -169,7 +170,7 @@ public class Main {
     
     //---------- JON XU JIN ----------
 
-    public static void bajaUsuario(String usuario) {
+    public static void bajaPersona(String usuario) {
         // Eliminar usuario en la BD
         Persona p = new Persona();
         p.setUsuario(usuario);
@@ -177,7 +178,7 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static void modificarUsuario(String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil, String equipo) {
+    public static void modificarPersona(String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil, String equipo) {
         // Modificar usuario en la BD
         Persona p = new Persona();
         p.setNombre(nombre);
@@ -190,6 +191,17 @@ public class Main {
         if(equipo != null){
             //p.setEquipo(buscarEquipo(equipo));
         }       
+        
+    }
+    
+    //---------- JON XU JIN ----------
+    
+    public static Persona buscarPersona(String usuario) throws Exception{
+        // Localizar a una persona con su usuario
+        persona = null;
+        persona = bdPersona.buscarPersonaPorUsuario(con, usuario);
+
+        return persona;
         
     }
     
