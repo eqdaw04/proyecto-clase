@@ -18,6 +18,7 @@ public class BDPerfil {
     
     public Perfil buscarPorCodigo(int cod) throws Exception{
         Perfil p = null;
+        BDConexion con = new BDConexion();
         PreparedStatement sentencia;
         
         sentencia = con.getConnection().prepareStatement("SELECT * FROM perfil WHERE id_perfil = ?");
