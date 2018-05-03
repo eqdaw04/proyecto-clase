@@ -13,19 +13,19 @@ import java.util.ArrayList;
  */
 public class Jornada {
     
-    private int id_jornada;
+    private int idJornada;
     private ArrayList <Partido> listapartidos;
 
     public Jornada() {
         listapartidos = new ArrayList();
     }
 
-    public int getId_jornada() {
-        return id_jornada;
+    public int getIdJornada() {
+        return idJornada;
     }
 
-    public void setId_jornada(int id_jornada) {
-        this.id_jornada = id_jornada;
+    public void setIdJornada(int id_jornada) {
+        this.idJornada = idJornada;
     }
 
     public ArrayList<Partido> getListapartidos() {
@@ -39,7 +39,7 @@ public class Jornada {
 
     @Override
     public String toString() {
-        return "Jornada{" + "id_jornada=" + id_jornada + ", listapartidos=" + listapartidos + '}';
+        return "Jornada{" + "id_jornada=" + idJornada + ", listapartidos=" + listapartidos + '}';
     }
     
     

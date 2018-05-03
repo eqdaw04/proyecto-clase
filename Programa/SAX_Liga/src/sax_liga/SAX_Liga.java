@@ -82,13 +82,13 @@ public void startElement(String uri, String localName, String qName, Attributes 
         caracteres="";
         if (qName.equalsIgnoreCase("jornada")){
             jorn = new Jornada();
-            jorn.setId_jornada(Integer.parseInt(attributes.getValue("id_jornada")));
+            jorn.setIdJornada(Integer.parseInt(attributes.getValue("id_jornada")));
         }else if (qName.equalsIgnoreCase("partido")){
              part = new Partido(); 
-             part.setId_partido(Integer.parseInt(attributes.getValue("id_partido")));
+             part.setIdPartido(Integer.parseInt(attributes.getValue("id_partido")));
         }else if (qName.equalsIgnoreCase("equipo")){
             eq = new Equipo();
-            eq.setId_equipo(Integer.parseInt(attributes.getValue("id_equipo")));
+            eq.setIdEquipo(Integer.parseInt(attributes.getValue("id_equipo")));
         }
     }
     
@@ -104,7 +104,6 @@ public void startElement(String uri, String localName, String qName, Attributes 
          if (qName.equalsIgnoreCase("jornada")){
             jornada.add(jorn);
        }
-        
         if (qName.equalsIgnoreCase("partido")){
             jorn.setListapartidos(part);
     } else if (qName.equalsIgnoreCase("fecha")){
