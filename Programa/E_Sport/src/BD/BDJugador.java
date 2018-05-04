@@ -30,14 +30,13 @@ public class BDJugador {
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Dni = ?");
         sentencia.setString(1,dni);
         sentencia.executeUpdate();
-        rs = sentencia.executeQuery();
+        ResultSet rs = sentencia.executeQuery();
         a= recorrer (rs,a);
         con.desconectar();
         } catch (SQLException ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         }
         return a ;
-        con.desconectar();
     }
     
     public static Jugador BuscarJugador(String dni) throws Exception {
@@ -114,7 +113,6 @@ public class BDJugador {
 
     public static ArrayList<Jugador> BuscarJugadoresDisponibles() throws Exception {
         ResultSet rs = null;
-        a =  new ArrayList();
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a= new ArrayList();
         try {

@@ -157,9 +157,6 @@ public class Main {
                 new VUsuario(tipo);
                 break;
                 
-            case 4:
-                new VAltasBajas();
-                break;
             case 5:
                 new ModificarEquipo(tipo);
                 break;
