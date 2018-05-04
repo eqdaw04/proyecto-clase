@@ -337,7 +337,7 @@ public class Main {
         jugador.setApellido1(apellido1);
         jugador.setApellido2(apellido2);
         jugador.setNickname(nickname);
-        jugador.setSueldo(Float.parseFloat(sueldo));
+        jugador.setSueldo(Float.parseFloat(sueldo.replace(",", ".")));
         jugador.setFechaAlta(fechaAlta);
         jugador.setComentario(comentario);
         BDJugador.insertarJugador(jugador);
@@ -360,7 +360,7 @@ public class Main {
         jugador.setApellido1(apellido1);
         jugador.setApellido2(apellido2);
         jugador.setNickname(nickname);
-        jugador.setSueldo(Float.parseFloat(sueldo));
+        jugador.setSueldo(Float.parseFloat(sueldo.replace(",", ".")));
         jugador.setComentario(comentario);
         BDJugador.modificarJugador(jugador);
     }
