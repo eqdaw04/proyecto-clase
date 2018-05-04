@@ -125,10 +125,7 @@ public class Main {
             case 3:
                 new VUsuario(tipo);
                 break;
-                
-            case 4:
-                new VAltasBajas();
-                break;
+
             case 5:
                 new ModificarEquipo(tipo);
                 break;
@@ -345,8 +342,8 @@ public class Main {
        return BDJugador.BuscarDni(dni);
     }
     //------------Mikel
-    public static ArrayList<Jugador> obtenerJugEqui(String nomEqui) throws Exception{
-        return BDJugador.BuscarEqui(nomEqui);
+    public static ArrayList<Jugador> obtenerJugEqui(String id) throws Exception{
+        return BDJugador.BuscarEqui(id);
     }
 
     //------------Mikel
