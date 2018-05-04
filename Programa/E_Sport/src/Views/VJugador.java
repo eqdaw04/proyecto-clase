@@ -10,6 +10,9 @@ import java.util.ArrayList;
 public class VJugador extends javax.swing.JDialog {
     
     private boolean alta, baja, modificacion, listado;
+    private ArrayList<Jugador> listaJugadores;
+    private Jugador j;
+    private int posicion;
 
     /**
      * Creates new form VJugador
@@ -24,6 +27,7 @@ public class VJugador extends javax.swing.JDialog {
         baja=false;
         modificacion=false;
         listado=false;
+        posicion=0;
         switch(tipo)
         {
             case "alta":
@@ -263,9 +267,11 @@ public class VJugador extends javax.swing.JDialog {
                 ValidacionDeDatosDeEntrada.validar(3, tfDNI);
                 ValidacionDeDatosDeEntrada.validar(4, tfNombre);
                 ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
-                if(tfApellido2.getText()!= null){
-                   ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
-                }                
+                ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
+                if(tfNickname.getText().isEmpty())
+                {
+                    throw new Excepcion(26);
+                }
                 if(ftfSueldo.getText().equals("Unparseable number: \"\""))
                 {
                     throw new Excepcion(10);
@@ -289,12 +295,10 @@ public class VJugador extends javax.swing.JDialog {
                    //valida los datos y si es correcto, modifica el jugador
                     ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
                     ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
-                    if(tfApellido2.getText()!= null){
-                        ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
-                    }                
-                    if(ftfSueldo.getText().equals("Unparseable number: \"\""))
+                    ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
+                    if(tfNickname.getText().isEmpty())
                     {
-                        throw new Excepcion(10);
+                        throw new Excepcion(26);
                     }
                    Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
                }
@@ -306,7 +310,7 @@ public class VJugador extends javax.swing.JDialog {
        }
        catch (Exception e)
        {
-           JOptionPane.showMessageDialog(this, e.getClass() + " - " + e.getMessage(), "Error", 0);
+           JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
        }
        
     }//GEN-LAST:event_bAceptarActionPerformed
@@ -327,23 +331,32 @@ public class VJugador extends javax.swing.JDialog {
                 // si dni está vacío, se crea una lista interna, permitiendo recorrerla con los botones direccionales, en caso contrario, muestra únicamente el jugador con ese dni
                 if(tfDNI.getText().isEmpty())
                 {
-                    bPrimero.setEnabled(true);
-                    bAnterior.setEnabled(true);
-                    bSiguiente.setEnabled(true);
-                    bUltimo.setEnabled(true);
-                    mostrarDatos();
+                    listaJugadores = Main.buscarJugador();
+                    if(listaJugadores.size()>1)
+                    {
+                        bSiguiente.setEnabled(true);
+                        bUltimo.setEnabled(true);
+                    }
+                    else
+                    {
+                        if(listaJugadores.size()==0)
+                        {
+                            throw new Excepcion(27);
+                        }
+                    }
+                    seleccionarJugador();
                 }
                 else
                 {
                     ValidacionDeDatosDeEntrada.validar(3, tfDNI);
-                    mostrarDatos(tfDNI.getText());                   
+                    buscarJugador(tfDNI.getText());                   
                 }
             }
             else
             {
                 // localiza un jugador en exclusiva para su edición
                 ValidacionDeDatosDeEntrada.validar(3, tfDNI);
-                mostrarDatos(tfDNI.getText());
+                buscarJugador(tfDNI.getText());
                 if(modificacion)
                 {
                     tfNombre.setEnabled(true);
@@ -363,24 +376,91 @@ public class VJugador extends javax.swing.JDialog {
        }
        catch (Exception e)
        {
-           JOptionPane.showMessageDialog(this, e.getClass() + " - " + e.getMessage(), "Error", 0);
+           JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
        }
     }//GEN-LAST:event_bBuscarActionPerformed
 
     private void bPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrimeroActionPerformed
         // TODO add your handling code here:
+        try
+        {
+            listaJugadores = Main.buscarJugador();
+            posicion=0;
+            seleccionarJugador();
+            bPrimero.setEnabled(false);
+            bAnterior.setEnabled(false);
+        }
+        catch (Excepcion e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
+        }
     }//GEN-LAST:event_bPrimeroActionPerformed
 
     private void bAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnteriorActionPerformed
         // TODO add your handling code here:
+        try
+        {
+            posicion=posicion-1;
+            seleccionarJugador();
+            if(posicion==0)
+            {
+                bPrimero.setEnabled(false);
+                bAnterior.setEnabled(false);
+            }
+        }
+        catch (Excepcion e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
+        }
     }//GEN-LAST:event_bAnteriorActionPerformed
 
     private void bSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSiguienteActionPerformed
         // TODO add your handling code here:
+        try
+        {
+            posicion=posicion+1;
+            seleccionarJugador();
+            if(posicion==(listaJugadores.size()-1))
+            {
+                bSiguiente.setEnabled(false);
+                bUltimo.setEnabled(false);
+            }
+        }
+        catch (Excepcion e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
+        }
     }//GEN-LAST:event_bSiguienteActionPerformed
 
     private void bUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUltimoActionPerformed
         // TODO add your handling code here:
+        try
+        {
+            posicion=listaJugadores.size()-1;     
+            seleccionarJugador();
+            bSiguiente.setEnabled(false);
+            bUltimo.setEnabled(false);
+        }
+        catch (Excepcion e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
+        }
     }//GEN-LAST:event_bUltimoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -410,21 +490,24 @@ public class VJugador extends javax.swing.JDialog {
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 
-    private void mostrarDatos(String dni) throws Exception {
+    private void buscarJugador(String dni) throws Exception {
         Jugador j = Main.buscarJugador(dni);
-        tfDNI.setText(j.getDni());
-        tfNombre.setText(j.getNombre());
-        tfApellido1.setText(j.getApellido1());
-        tfApellido2.setText(j.getApellido2());
-        tfNickname.setText(j.getNickname());
-        ftfSueldo.setText(String.valueOf(j.getSueldo()));        
-        cFechaAlta.setDate(j.getFechaAlta());
-        taComentario.setText(j.getComentario());
-        
+        mostrarDatos();
     }
+    
+    private void seleccionarJugador() throws Exception {
+        if(listaJugadores.size()>1)
+        {
+            j=listaJugadores.get(posicion);
+        }
+        else
+        {
+            j=listaJugadores.get(0);
+        }
+        mostrarDatos();
+    }
+    
     private void mostrarDatos() throws Exception {
-        ArrayList<Jugador> listaJugadores = Main.buscarJugador();
-        Jugador j=listaJugadores.get(0);
         tfDNI.setText(j.getDni());
         tfNombre.setText(j.getNombre());
         tfApellido1.setText(j.getApellido1());
@@ -433,6 +516,5 @@ public class VJugador extends javax.swing.JDialog {
         ftfSueldo.setText(String.valueOf(j.getSueldo()));        
         cFechaAlta.setDate(j.getFechaAlta());
         taComentario.setText(j.getComentario());
-        
     }
 }

@@ -112,11 +112,11 @@ public class Excepcion extends Exception {
                 break;
                 
             case 21:
-                dato = "Has excedido el límite salario.";
+                dato = "Has excedido el límite salarial.";
                 break;
                 
             case 22:
-                dato = "Ya tienes 6 jugaodres.";
+                dato = "Ya tienes 6 jugadores.";
                 break;
                 
             case 23:
@@ -132,6 +132,14 @@ public class Excepcion extends Exception {
                 break;
                 
             case 26:
+                dato = "El nicname no puede estar vacío.";
+                break;
+                
+            case 27:
+                dato = "No hay jugadores en la base de datos.";
+                break;
+                
+            case 28:
                 dato = "";
                 break;
         }

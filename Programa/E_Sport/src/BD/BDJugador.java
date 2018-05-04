@@ -64,7 +64,6 @@ public class BDJugador {
         try
         {
             PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador");
-            sentencia.executeUpdate();
             ResultSet rs = sentencia.executeQuery();
             a = recorrer(rs,a);
         }
