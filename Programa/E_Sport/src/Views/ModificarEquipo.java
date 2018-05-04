@@ -25,6 +25,10 @@ public class ModificarEquipo extends javax.swing.JFrame {
      * Creates new form ModificarEquipo
      */
     private static Equipo e;
+    //array de jugadores integrantes del equipo
+    private static ArrayList<Jugador> jEquipo;
+    //array de jugadores disponibles
+    private static ArrayList<Jugador> jDisp;
             
     public ModificarEquipo(String usu) throws Exception {
         initComponents();
@@ -54,10 +58,12 @@ public class ModificarEquipo extends javax.swing.JFrame {
         bEliminar = new javax.swing.JButton();
         bAnnadir = new javax.swing.JButton();
         bConsultar = new javax.swing.JButton();
+        tfSueldo = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
-        setMinimumSize(new java.awt.Dimension(853, 503));
+        setMinimumSize(new java.awt.Dimension(843, 547));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
@@ -101,9 +107,9 @@ public class ModificarEquipo extends javax.swing.JFrame {
         jScrollPane2.setBounds(509, 170, 259, 214);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel3.setText("Jugadores Disponibles:");
+        jLabel3.setText("Sueldo del jugador:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(510, 140, 132, 16);
+        jLabel3.setBounds(290, 430, 132, 16);
 
         bEliminar.setText("Eliminar Jugador");
         bEliminar.setEnabled(false);
@@ -113,7 +119,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bEliminar);
-        bEliminar.setBounds(100, 430, 150, 25);
+        bEliminar.setBounds(100, 460, 150, 25);
 
         bAnnadir.setText("Añadir Jugador");
         bAnnadir.setEnabled(false);
@@ -123,24 +129,37 @@ public class ModificarEquipo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bAnnadir);
-        bAnnadir.setBounds(570, 430, 150, 25);
+        bAnnadir.setBounds(580, 460, 150, 25);
 
         bConsultar.setText("Consultar");
         bConsultar.setEnabled(false);
         getContentPane().add(bConsultar);
         bConsultar.setBounds(360, 250, 110, 25);
 
+        tfSueldo.setText("Sueldo");
+        getContentPane().add(tfSueldo);
+        tfSueldo.setBounds(410, 420, 110, 30);
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel4.setText("Jugadores Disponibles:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(510, 140, 132, 16);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bAnnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnnadirActionPerformed
+
         if(Main.AnnadirJugadorEquipo(liJugDisp.getSelectedValue(),String.valueOf(e.getIdEquipo()))){
             JOptionPane.showMessageDialog(this, "Jugador añadido exitosamente");
             try {
                 rellenar();
             } catch (Exception ex) {
                 Logger.getLogger(ModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("AÑADIR");
             }
+        }else{
+            JOptionPane.showMessageDialog(this, "Error");
         }
     }//GEN-LAST:event_bAnnadirActionPerformed
 
@@ -151,7 +170,10 @@ public class ModificarEquipo extends javax.swing.JFrame {
                 rellenar();
             } catch (Exception ex) {
                 Logger.getLogger(ModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("ELIMINAR");
             }
+        }else{
+            JOptionPane.showMessageDialog(this, "Error2");
         }
     }//GEN-LAST:event_bEliminarActionPerformed
 
@@ -160,6 +182,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
         bConsultar.setEnabled(true);
         bAnnadir.setEnabled(false);
         liJugDisp.clearSelection();
+        tfSueldo.setText(String.valueOf(jEquipo.get(liJugEqui.getSelectedIndex()).getSueldo()));
     }//GEN-LAST:event_liJugEquiValueChanged
 
     private void liJugDispValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_liJugDispValueChanged
@@ -167,6 +190,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
         bConsultar.setEnabled(true);
         bAnnadir.setEnabled(true);
         liJugEqui.clearSelection();
+        tfSueldo.setText(String.valueOf(jDisp.get(liJugDisp.getSelectedIndex()).getSueldo()));
     }//GEN-LAST:event_liJugDispValueChanged
 
     /**
@@ -174,18 +198,19 @@ public class ModificarEquipo extends javax.swing.JFrame {
      */
     private void rellenar() throws Exception{
         // Buscamos todos los jugadores que forman el equipo y rellenamos la lista con ellos
-        
-        ArrayList<Jugador> j=Main.obtenerJugEqui(String.valueOf(e.getIdEquipo()));
+        jEquipo=new ArrayList();
+        jEquipo=Main.obtenerJugEqui(String.valueOf(e.getIdEquipo()));
         DefaultListModel<String> model = new DefaultListModel();
-        for (int x=0;x < j.size();x++){
-            model.addElement(j.get(x).getNickname());
+        for (int x=0;x < jEquipo.size();x++){
+            model.addElement(jEquipo.get(x).getNickname());
         }
         liJugEqui.setModel(model);
         // Buscamos todos los jugadores que no tengan equipo  (id_equipo is null) y rellenamos la lista con ellos
-        ArrayList<Jugador> jug=Main.consultarJugadoresDisponibles();
+        jDisp=new ArrayList();
+        jDisp=Main.consultarJugadoresDisponibles();
         DefaultListModel<String> modelo = new DefaultListModel();
-        for (int x=0;x< jug.size();x++){
-            modelo.addElement(jug.get(x).getNickname());
+        for (int x=0;x< jDisp.size();x++){
+            modelo.addElement(jDisp.get(x).getNickname());
         }
         liJugDisp.setModel(modelo);
         }
@@ -196,10 +221,12 @@ public class ModificarEquipo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<String> liJugDisp;
     private javax.swing.JList<String> liJugEqui;
     private javax.swing.JLabel nombeEquipo;
+    private javax.swing.JTextField tfSueldo;
     // End of variables declaration//GEN-END:variables
 }

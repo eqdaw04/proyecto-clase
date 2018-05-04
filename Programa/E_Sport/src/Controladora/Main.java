@@ -397,14 +397,13 @@ public class Main {
     //------------Mikel
     // Busca a un jugador por su nickname y pone su id_equipo a null (no pertenece a ningún equipo)
     public static boolean EliminarJugadorEquipo (String nickname){
-        BDJugador.QuitarJugadorEquipo(nickname);
-        return true;
+       
+        return BDJugador.QuitarJugadorEquipo(nickname);
     }
     //------------Mikel
     // Busca a un jugador por su nickname yle añade el id_equipo del equipo al que se le quiere añadir
     public static boolean AnnadirJugadorEquipo(String nickname, String id) {
-        BDJugador.PonerJugadorEquipo(nickname,id);
-        return true;
+        return BDJugador.PonerJugadorEquipo(nickname,id);
     }
     public static void altaEquipo(String nombre, Date fechaCreacion, String comentario) {
         // Insertar equipo en la BD

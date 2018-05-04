@@ -159,19 +159,24 @@ public class BDJugador {
         con.desconectar();
     }
 
-    public static void QuitarJugadorEquipo(String nickname) {
+    public static boolean QuitarJugadorEquipo(String nickname) {
+        boolean correcto=false;
         try {
             BDConexion con = new BDConexion();
             PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET Id_equipo = null WHERE UPPER(Nickname) = UPPER(?)");
             sentencia.setString(1, nickname);
             sentencia.executeUpdate();
             con.desconectar();
+            correcto =true;
         } catch (Exception ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        return correcto;
     }
 
-    public static void PonerJugadorEquipo(String nickname, String id) {
+    public static boolean PonerJugadorEquipo(String nickname, String id) {
+        boolean correcto=false;
         try {
             BDConexion con = new BDConexion();
             PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET Id_equipo = ? WHERE UPPER(Nickname) = UPPER(?)");
@@ -179,9 +184,15 @@ public class BDJugador {
             sentencia.setString(2, nickname);
             sentencia.executeUpdate();
             con.desconectar();
-        } catch (Exception ex) {
+            correcto =true;
+        } catch (SQLException e){
+            System.out.println("ASEES");
+        }
+        catch (Exception ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        return correcto;
     }
     
     public static void modificarJugador(Jugador j) throws Exception {
