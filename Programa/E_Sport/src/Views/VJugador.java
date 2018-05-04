@@ -18,7 +18,6 @@ public class VJugador extends javax.swing.JDialog {
         initComponents();
         setModal(true);
         this.setLocationRelativeTo(null);
-        setVisible(true);   
         //anular todas las vistas y mostrar únicamente según tipo de operaciones CRUD que se quiera realizar
         alta=false;
         baja=false;
@@ -46,7 +45,8 @@ public class VJugador extends javax.swing.JDialog {
             case "listado":
                 listado=true;
                 break;
-        }
+        }        
+        setVisible(true);
     }
 
     /**
@@ -311,7 +311,7 @@ public class VJugador extends javax.swing.JDialog {
        }
        catch (Exception e)
        {
-           JOptionPane.showMessageDialog(this, e.getClass());
+           JOptionPane.showMessageDialog(this, e.getClass() + " - " + e.getMessage(), "Error", 0);
        }
        
     }//GEN-LAST:event_bAceptarActionPerformed
@@ -366,7 +366,7 @@ public class VJugador extends javax.swing.JDialog {
        }
        catch (Exception e)
        {
-           JOptionPane.showMessageDialog(this, e.getClass());
+           JOptionPane.showMessageDialog(this, e.getClass() + " - " + e.getMessage(), "Error", 0);
        }
     }//GEN-LAST:event_bBuscarActionPerformed
 
@@ -414,7 +414,7 @@ public class VJugador extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void mostrarDatos() throws Exception {
-        /*Jugador j =Main.buscarJugador();
+        Jugador j = Main.buscarJugador();
         tfDNI.setText(j.getDni());
         tfNombre.setText(j.getNombre());
         tfApellido1.setText(j.getApellido1());
@@ -422,6 +422,7 @@ public class VJugador extends javax.swing.JDialog {
         tfNickname.setText(j.getNickname());
         ftfSueldo.setText(String.valueOf(j.getSueldo()));        
         cFechaAlta.setDate(j.getFechaAlta());
-        taComentario.setText(j.getComentario());*/
+        taComentario.setText(j.getComentario());
+        
     }
 }

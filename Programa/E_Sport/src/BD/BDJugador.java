@@ -21,16 +21,19 @@ import java.util.logging.Logger;
  */
 public class BDJugador {
     
-    public static ArrayList<Jugador> BuscarDni (String dni) throws Exception {
+    public static ArrayList<Jugador> BuscarDni(String dni) throws Exception {
         BDConexion con = new BDConexion();
-        ArrayList<Jugador> a= new ArrayList();
-        try {
-        PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Dni = ?");
-        sentencia.setString(1,dni);
-        sentencia.executeUpdate();
-        rs = sentencia.executeQuery();
-        a= recorrer (rs,a);
-        } catch (SQLException ex) {
+        ArrayList<Jugador> a = new ArrayList();
+        try
+        {
+            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Dni = ?");
+            sentencia.setString(1,dni);
+            sentencia.executeUpdate();
+            ResultSet rs = sentencia.executeQuery();
+            a = recorrer(rs,a);
+        }
+        catch (SQLException ex)
+        {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         }
         con.desconectar();
@@ -38,23 +41,25 @@ public class BDJugador {
     }
     
     public static ArrayList<Jugador> BuscarEqui(String id) throws Exception {
-       ResultSet rs = null;
-       BDConexion con = new BDConexion();
-       ArrayList<Jugador> a= new ArrayList();
-        try {
-        PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo = ?");
-        sentencia.setString(1,id);
-        sentencia.executeUpdate();
-        rs = sentencia.executeQuery();
-        a= recorrer (rs,a);
-        } catch (SQLException ex) {
+        BDConexion con = new BDConexion();
+        ArrayList<Jugador> a = new ArrayList();
+        try
+        {
+            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo = ?");
+            sentencia.setString(1,id);
+            sentencia.executeUpdate();
+            ResultSet rs = sentencia.executeQuery();
+            a = recorrer(rs,a);
+        }
+        catch (SQLException ex)
+        {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         }
         con.desconectar();
         return a;
     }
     
-    public static ArrayList recorrer (ResultSet rs, ArrayList <Jugador> a) throws SQLException{
+    public static ArrayList<Jugador> recorrer(ResultSet rs, ArrayList <Jugador> a) throws SQLException {
         while (rs.next()){
             Jugador j= new Jugador();
             j.setIdJugador(Integer.parseInt(rs.getString(1)));
@@ -66,7 +71,7 @@ public class BDJugador {
             j.setSueldo(Float.parseFloat(rs.getString(7)));
             j.setFechaAlta(rs.getDate(8));
             j.setComentario(rs.getString(9));      
-            a.add(j);       
+            a.add(j);
         }
         return a;
     }
@@ -74,31 +79,21 @@ public class BDJugador {
     public static ArrayList<Jugador> BuscarJugadoresDisponibles() throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a= new ArrayList();
-        try {
-        PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo is null");
-        sentencia.executeUpdate();
-        rs = sentencia.executeQuery();
-        a= recorrer (rs,a);
-        } catch (SQLException ex) {
-            Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
-        return a ;
-    }
-    public static boolean insertarJugador(Jugador j) throws Exception {
         try
         {
             PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo is null");
             sentencia.executeUpdate();
             ResultSet rs = sentencia.executeQuery();
-            a = recorrer(rs);
+            a = recorrer(rs, a);
         }
         catch (SQLException ex)
         {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
-        }         
+        } 
+        con.desconectar();
         return a;
     }
+    
     public static void insertarJugador(Jugador j) throws Exception {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia = con.getConnection().prepareStatement("INSERT INTO Jugador (DNI, NOMBRE, APELLIDO1, APELLIDO2, NICKNAME, SUELDO, FECHA_ALTA, COMENTARIO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");

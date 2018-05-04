@@ -339,8 +339,15 @@ public class Main {
         BDJugador.modificarJugador(jugador);
     }
     
+    // Imanol Luis   
+    public static Jugador buscarJugador() throws Exception {        
+       return jugador;
+    }
+    
     public static ArrayList<Jugador> buscarDNI(String dni) throws Exception {
-       return BDJugador.BuscarDni(dni);
+       ArrayList<Jugador> listaJugadores=BDJugador.BuscarDni(dni);       
+       jugador=listaJugadores.get(0);       
+       return listaJugadores;
     }
     //------------Mikel
     public static ArrayList<Jugador> obtenerJugEqui(String id) throws Exception{
