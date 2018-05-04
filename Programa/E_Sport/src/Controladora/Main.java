@@ -36,7 +36,6 @@ public class Main {
     private static BDPerfil bdPerfil;
     private static BDPersona bdPersona;
     private static Persona persona;
-    private static Jugador jugador;
     private static int perfil;
     private static Login login;
     private static String driver, url, usuario, contrasenna;
@@ -308,6 +307,7 @@ public class Main {
     // Imanol Luis
     public static void altaJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String sueldo, Date fechaAlta, String comentario) throws Exception {
         // Insertar jugador en la BD
+        Jugador jugador=new Jugador();
         jugador.setDni(dni);
         jugador.setNombre(nombre);
         jugador.setApellido1(apellido1);
@@ -322,6 +322,7 @@ public class Main {
     // Imanol Luis
     public static void bajaJugador(String dni) throws Exception {
         // Eliminar jugador en la BD
+        Jugador jugador=new Jugador();
         jugador.setDni(dni);
         BDJugador.eliminarJugador(jugador);
     }
@@ -329,6 +330,7 @@ public class Main {
     // Imanol Luis
     public static void modificarJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String comentario, String sueldo) throws Exception {
         // Modificar jugador en la BD
+        Jugador jugador=new Jugador();
         jugador.setDni(dni);
         jugador.setNombre(nombre);
         jugador.setApellido1(apellido1);
@@ -340,14 +342,17 @@ public class Main {
     }
     
     // Imanol Luis   
-    public static Jugador buscarJugador() throws Exception {        
-       return jugador;
+    public static Jugador buscarJugador(String dni) throws Exception {        
+       return BDJugador.BuscarJugador(dni);
     }
     
-    public static ArrayList<Jugador> buscarDNI(String dni) throws Exception {
-       ArrayList<Jugador> listaJugadores=BDJugador.BuscarDni(dni);       
-       jugador=listaJugadores.get(0);       
-       return listaJugadores;
+    // Imanol Luis   
+    public static ArrayList<Jugador> buscarJugador() throws Exception {        
+       return BDJugador.BuscarJugador();
+    }
+    
+    public static ArrayList<Jugador> buscarDNI(String dni) throws Exception {      
+       return BDJugador.BuscarDni(dni);
     }
     //------------Mikel
     public static ArrayList<Jugador> obtenerJugEqui(String id) throws Exception{

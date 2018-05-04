@@ -5,10 +5,11 @@ import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
 import Recurso.ValidacionDeDatosDeEntrada;
 import UML.Jugador;
+import java.util.ArrayList;
 
 public class VJugador extends javax.swing.JDialog {
     
-    private boolean alta, baja, modificacion, listado;    
+    private boolean alta, baja, modificacion, listado;
 
     /**
      * Creates new form VJugador
@@ -278,12 +279,6 @@ public class VJugador extends javax.swing.JDialog {
            }
            else
            {
-               ValidacionDeDatosDeEntrada.validar(3, tfDNI);
-               //comprueba dni, en caso positivo, procede la operación.
-               if(Main.buscarDNI(tfDNI.getText()).isEmpty())
-                {
-                    throw new Excepcion(17);
-                }
                if(baja)
                {
                    //baja del jugador
@@ -336,18 +331,19 @@ public class VJugador extends javax.swing.JDialog {
                     bAnterior.setEnabled(true);
                     bSiguiente.setEnabled(true);
                     bUltimo.setEnabled(true);
+                    mostrarDatos();
                 }
                 else
                 {
-                    ValidacionDeDatosDeEntrada.validar(3, tfDNI);                    
+                    ValidacionDeDatosDeEntrada.validar(3, tfDNI);
+                    mostrarDatos(tfDNI.getText());                   
                 }
-                mostrarDatos();
             }
             else
             {
                 // localiza un jugador en exclusiva para su edición
-                ValidacionDeDatosDeEntrada.validar(3, tfDNI);  
-                mostrarDatos();
+                ValidacionDeDatosDeEntrada.validar(3, tfDNI);
+                mostrarDatos(tfDNI.getText());
                 if(modificacion)
                 {
                     tfNombre.setEnabled(true);
@@ -359,6 +355,7 @@ public class VJugador extends javax.swing.JDialog {
                 }
                 bAceptar.setEnabled(true);
             }
+            tfDNI.setEnabled(false);
         }
        catch (Excepcion e)
        {
@@ -413,8 +410,21 @@ public class VJugador extends javax.swing.JDialog {
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 
+    private void mostrarDatos(String dni) throws Exception {
+        Jugador j = Main.buscarJugador(dni);
+        tfDNI.setText(j.getDni());
+        tfNombre.setText(j.getNombre());
+        tfApellido1.setText(j.getApellido1());
+        tfApellido2.setText(j.getApellido2());
+        tfNickname.setText(j.getNickname());
+        ftfSueldo.setText(String.valueOf(j.getSueldo()));        
+        cFechaAlta.setDate(j.getFechaAlta());
+        taComentario.setText(j.getComentario());
+        
+    }
     private void mostrarDatos() throws Exception {
-        Jugador j = Main.buscarJugador();
+        ArrayList<Jugador> listaJugadores = Main.buscarJugador();
+        Jugador j=listaJugadores.get(0);
         tfDNI.setText(j.getDni());
         tfNombre.setText(j.getNombre());
         tfApellido1.setText(j.getApellido1());

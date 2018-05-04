@@ -42,6 +42,43 @@ public class BDJugador {
         return a;
     }
     
+    public static Jugador BuscarJugador(String dni) throws Exception {
+        BDConexion con = new BDConexion();
+        ArrayList<Jugador> a = new ArrayList();
+        try
+        {
+            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Dni = ?");
+            sentencia.setString(1,dni);
+            sentencia.executeUpdate();
+            ResultSet rs = sentencia.executeQuery();
+            a = recorrer(rs,a);
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        con.desconectar();
+        return a.get(0);
+    }
+    
+    public static ArrayList<Jugador> BuscarJugador() throws Exception {
+        BDConexion con = new BDConexion();
+        ArrayList<Jugador> a = new ArrayList();
+        try
+        {
+            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador");
+            sentencia.executeUpdate();
+            ResultSet rs = sentencia.executeQuery();
+            a = recorrer(rs,a);
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        con.desconectar();
+        return a;
+    }
+    
     public static ArrayList<Jugador> BuscarEqui(String id) throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a = new ArrayList();
@@ -106,7 +143,8 @@ public class BDJugador {
         sentencia.setString(5, j.getNickname());
         sentencia.setFloat(6, j.getSueldo());
         sentencia.setDate(7, formatearFecha(j.getFechaAlta()));
-        sentencia.setString(8, j.getComentario());                        
+        sentencia.setString(8, j.getComentario());
+                                
         if(sentencia.executeUpdate()!=1)
         {
             throw new Excepcion(25);
