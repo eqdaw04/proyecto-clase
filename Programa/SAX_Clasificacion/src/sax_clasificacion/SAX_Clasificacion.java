@@ -7,6 +7,7 @@ package sax_clasificacion;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class SAX_Clasificacion extends DefaultHandler {
             
             SAXParser sp = spf.newSAXParser();
             
-            sp.parse("../../../Clasificacion/XML-Clasificacion.xml", this);
+            sp.parse("../../xml/clasificacion/XML-Clasificacion.xml", this);
             
         } catch (SAXException se) {
             se.printStackTrace();

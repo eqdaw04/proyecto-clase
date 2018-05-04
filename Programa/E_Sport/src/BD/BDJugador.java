@@ -38,8 +38,8 @@ public class BDJugador {
         {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return a ;
         con.desconectar();
-        return a;
     }
     
     public static Jugador BuscarJugador(String dni) throws Exception {
@@ -116,6 +116,8 @@ public class BDJugador {
     }
 
     public static ArrayList<Jugador> BuscarJugadoresDisponibles() throws Exception {
+        ResultSet rs = null;
+        a =  new ArrayList();
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a= new ArrayList();
         try

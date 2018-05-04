@@ -6,7 +6,6 @@
 package sax_jornada.en.curso;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -56,7 +55,7 @@ public class SAX_JornadaEnCurso extends DefaultHandler{
             
             SAXParser sp = spf.newSAXParser();
             
-            sp.parse("../../../JornadaEnCurso/XML-Jornada-en-curso.xml", this);
+            sp.parse("../../xml/clasificacion/XML-Jornada-en-curso.xml", this);
             
          } catch (SAXException se) {
             se.printStackTrace();
@@ -110,7 +109,7 @@ public class SAX_JornadaEnCurso extends DefaultHandler{
           }
           
         if (qName.equalsIgnoreCase("equipo")){
-            partido.add(eq);
+            part.setListaequipos(eq);
         
         } else if (qName.equalsIgnoreCase("nombre")){
             eq.setNombre(caracteres);

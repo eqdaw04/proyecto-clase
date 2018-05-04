@@ -141,6 +141,33 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
+    public static void reabrir(JDialog v, String tipo, int n) throws Exception {
+        // Cierra la ventana abierta
+        v.dispose();
+        switch(n){
+            case 1:
+                new VJugador(tipo);
+                break;
+                
+            case 2:
+                new VEquipo(tipo);
+                break;
+                
+            case 3:
+                new VUsuario(tipo);
+                break;
+                
+            case 4:
+                new VAltasBajas();
+                break;
+            case 5:
+                new ModificarEquipo(tipo);
+                break;
+        }
+    }
+    
+    //---------- JON XU JIN ----------
+    
     public static void salir(JFrame v){
         //salir del programa
         v.dispose();

@@ -80,7 +80,7 @@ public class DOMClasificacion {
         try {
             DocumentBuilder db = dbf.newDocumentBuilder();
             
-            dom = db.parse("../../../Clasificacion/XML-Clasificacion.xml");
+            dom = db.parse("../../xml/Clasificacion/XML-Clasificacion.xml");
             
         } catch (ParserConfigurationException pce) {
              System.out.println("Error while trying to instantiate DocumentBuilder " + pce);
@@ -153,7 +153,7 @@ public class DOMClasificacion {
             format.setIndenting(true);
 
             XMLSerializer serializer = new XMLSerializer(
-                    new FileOutputStream(new File("../../../Clasificacion/XML-Clasificacion.xml")), format);
+                    new FileOutputStream(new File("../../xml/Clasificacion/XML-Clasificacion.xml")), format);
 
             serializer.serialize(dom);
         } catch (IOException ie) {

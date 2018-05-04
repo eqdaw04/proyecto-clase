@@ -39,10 +39,10 @@ public class SAX_Liga extends DefaultHandler {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        System.out.println("SAX_Liga");
-          System.out.println("---");
+    System.out.println("SAX_Liga");
+    System.out.println("---");
           
-SAX_Liga ligasax = new SAX_Liga();
+    SAX_Liga ligasax = new SAX_Liga();
     ligasax.metodoraiz();
     }
     
@@ -58,7 +58,7 @@ private void parsearliga(){
 
             SAXParser sp = spf.newSAXParser();
 
-            sp.parse("../../../liga/XML-Liga.xml", this);
+            sp.parse("../../xml/clasificacion/XML-Liga.xml", this);
 
         } catch (SAXException se) {
             se.printStackTrace();

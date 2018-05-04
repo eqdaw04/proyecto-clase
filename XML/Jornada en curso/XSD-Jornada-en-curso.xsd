@@ -5,25 +5,27 @@
 <xs:complexType name="tipo_jornada">
     <xs:sequence>
         <xs:element name="fecha_expiracion" type="xs:date"/>
-        <xs:element name="partido" type="tipo_partido"/>
+        <xs:element name="partido" type="tipo_partido"  maxOccurs="8"/>
     </xs:sequence>
-  <xs:attribute name="id_jornada" type="xs:int"/>
+    <xs:attribute name="id_jornada" type="xs:int"/>
 </xs:complexType>
 
-<xs:complexType name="tipo_partido">
-    <xs:sequence>
-        <xs:element name="fecha_partido" type="xs:date"/>
-        <xs:element name="hora_inicio" type="xs:string"/>
-        <xs:element name="hora_fin" type="xs:string"/>
-        <xs:element name="equipo" type="tipo_equipo" maxOccurs="unbounded"/>
-    </xs:sequence>
-  <xs:attribute name="id_partido" type="xs:int"/>
-</xs:complexType>
+    <xs:complexType name="tipo_partido">
+        <xs:sequence>
+            <xs:element name="fecha" type="xs:date"/>
+            <xs:element name="hora" minOccurs="0"/>
+            <xs:element name="lugar" type="xs:string"/>
+            <xs:element name="equipo" type="tipo_equipo"  maxOccurs="2"/>
+        </xs:sequence>
+        <xs:attribute name="id_partido" type="xs:int"/>
+    </xs:complexType>
 
-<xs:complexType name="tipo_equipo">
-    <xs:sequence>
-        <xs:element name="nombre" type="xs:string"/>
-    </xs:sequence>
-  <xs:attribute name="id_equipo"/>
-</xs:complexType>
-</xs:schema>
+    <xs:complexType name="tipo_equipo">
+        <xs:sequence>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="comentario" type="xs:string" minOccurs="0"/>
+            <xs:element name="puntuacion" type="xs:int"/>
+            <xs:element name="visitante" type="xs:boolean"/>
+        </xs:sequence>
+        <xs:attribute name="id_equipo" type="xs:int"/>
+    </xs:complexType>

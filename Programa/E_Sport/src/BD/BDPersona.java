@@ -157,6 +157,7 @@ public class BDPersona {
     }
 
     private Date formatearFecha(java.util.Date fechaE){
+        // Dar formato a fechas
         SimpleDateFormat formar = new SimpleDateFormat("yyyy-MM-dd");
         String fecha = formar.format(fechaE);
         return Date.valueOf(fecha);
