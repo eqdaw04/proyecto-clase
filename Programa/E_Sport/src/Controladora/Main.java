@@ -134,21 +134,12 @@ public class Main {
                 break;
         }
     }
-    
-    //---------- JON XU JIN ----------
-    
-    public static void cerrar(JDialog v){
-        //cierra una ventana abierta por ventana principal
-        v.dispose();
-        
-    }
 
     //---------- JON XU JIN ----------
     
-    public static void cerrarAbrir(JDialog v) {
-        // Cierra la ventana abierta y abre la ventana principal
+    public static void cerrar(JDialog v) {
+        // Cierra la ventana abierta
         v.dispose();
-        new Principal();
     }
     
     //---------- JON XU JIN ----------
@@ -156,6 +147,14 @@ public class Main {
     public static void salir(JFrame v){
         //salir del programa
         v.dispose();
+    }
+    
+    //---------- JON XU JIN ----------
+    
+    public static void cerrarSesion(JFrame v){
+        //salir del programa
+        v.dispose();
+        login = new Login();
     }
     
     //---------- JON XU JIN ----------
@@ -176,57 +175,49 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static void altaPersona( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Date fecha, String perfil){
+    public static void altaPersona( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Date fecha, String perfil) throws Exception{
         // Insertar usuario en la BD
         Persona p = new Persona(nombre, ape1, ape2, fecha, usuario, contrasenna, email);
-        //p.setPerfil(buscarPerfil(perfil));
-        if(equipo != null){
-            //p.setEquipo(buscarEquipo(equipo));
-        }
-        
+        p.setPerfil(bdPerfil.buscarPorNombre(perfil));
+        bdPersona.altaPersona(p);
     }
     
     //---------- JON XU JIN ----------
 
-    public static void bajaPersona(String usuario) {
+    public static void bajaPersona(String usuario) throws Exception {
         // Eliminar usuario en la BD
         Persona p = new Persona();
         p.setUsuario(usuario);
+        bdPersona.bajaPersona(p);
     }
     
     //---------- JON XU JIN ----------
     
-    public static void modificarPersona(String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil) {
+    public static void modificarPersona(String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil) throws Exception {
         // Modificar usuario en la BD
-        Persona p = new Persona();
-        p.setNombre(nombre);
-        p.setApellido1(ape1);
-        p.setApellido2(ape2);
-        p.setUsuario(usuario);
-        p.setContrasenna(contrasenna);
-        p.setEmail(email);
-        //p.setPerfil(buscarPerfil(perfil));
-        if(equipo != null){
-            //p.setEquipo(buscarEquipo(equipo));
-        }       
-        
+        persona.setNombre(nombre);
+        persona.setApellido1(ape1);
+        persona.setApellido2(ape2);
+        persona.setUsuario(usuario);
+        persona.setContrasenna(contrasenna);
+        persona.setEmail(email);
+        persona.setPerfil(bdPerfil.buscarPorNombre(perfil));
+        bdPersona.modificarPersona(persona);
     }
     
     //---------- JON XU JIN ----------
     
-    public static Persona buscarPersona(String usuario) throws Exception{
+    public static Persona consultarPersona(String usuario) throws Exception{
         // Localizar a una persona con su usuario
         persona = null;
-        persona = bdPersona.buscarPersonaPorUsuario(usuario);
-        if(persona.getPerfil().getNombre().equals("Dueño")){
-            Equipo eq = null;
-            eq = consultarEquipoPorUsuario(persona.getUsuario());
-            if(eq != null){
-                persona.setEquipo(eq);
-            }
-        }
+        persona = bdPersona.buscarPersonaPorUsuario(usuario); 
         return persona;
-        
+    }
+    
+    public static ArrayList <Persona> consultarTodasLasPersonas() throws Exception{
+        ArrayList <Persona> listadoPersona = new ArrayList();
+        listadoPersona = bdPersona.buscarTodasLasPersona();
+        return listadoPersona;
     }
     
     public static void probando(){

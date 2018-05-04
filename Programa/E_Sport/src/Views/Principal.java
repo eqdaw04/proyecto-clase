@@ -8,6 +8,7 @@ package Views;
 import Controladora.Main;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -18,17 +19,11 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    public Principal() {
-        
-        initComponents();
-        setLocationRelativeTo(null);
-        setVisible(true);
-        
-    }
     
     public Principal(int tipo,String usuario) {
         initComponents();
         setLocationRelativeTo(null);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
         NombreUsu.setText(usuario);
         switch(tipo)
@@ -419,7 +414,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_verResultClasiActionPerformed
 
     private void bCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCerrarSesionActionPerformed
-        Main.salir(this);
+        Main.cerrarSesion(this);
     }//GEN-LAST:event_bCerrarSesionActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed

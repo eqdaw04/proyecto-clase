@@ -126,6 +126,14 @@ public class Excepcion extends Exception {
             case 24:
                 dato = "Ese jugador no pertenece a tu equipo.";
                 break;
+                
+            case 25:
+                dato = "No se ha realizado cambios en la BBDD.";
+                break;
+                
+            case 26:
+                dato = "";
+                break;
         }
         return dato;
     }

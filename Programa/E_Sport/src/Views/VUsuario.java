@@ -4,56 +4,32 @@ import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
 import Recurso.ValidacionDeDatosDeEntrada;
+import UML.Equipo;
 import UML.Perfil;
 import UML.Persona;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class VUsuario extends javax.swing.JDialog {
-    
-    private boolean alta, baja, modificacion, listado;
 
+    private int tipo, contador;
     /**
      * Creates new form VUsuario
      */
 
+    ArrayList <Persona> lPersona;
+    
     public VUsuario(String tipo) {
         initComponents();
         setModal(true);
         setLocationRelativeTo(null);
-        setVisible(true);
         //mostrar opciones según tipo de operaciones CRUD que se quiera realizar
         cargarDatos(tipo);
+        setVisible(true);
+        
     }
     
     private void cargarDatos(String tipo){
-        alta=false;
-        baja=false;
-        modificacion=false;
-        listado=false;
-        
-        switch(tipo)
-        {
-            case "alta":
-                alta=true;
-                tfNombre.setEnabled(true);
-                tfApellido1.setEnabled(true);
-                tfApellido2.setEnabled(true);
-                tfEmail.setEnabled(true);
-                cbPerfil.setEnabled(true);
-                bAceptar.setEnabled(true);
-                bBuscar.setEnabled(false);
-                break;
-            case "baja":
-                baja=true;
-                break;
-            case "modificacion":
-                modificacion=true;
-                break;
-            case "listado":
-                listado=true;
-                break;
-        }
-        
         try{
             cbPerfil.removeAllItems();
             ArrayList <Perfil> listaPerfil = new ArrayList();
@@ -64,6 +40,32 @@ public class VUsuario extends javax.swing.JDialog {
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getClass());
+        }
+        cbPerfil.setSelectedIndex(-1);
+        lPersona = new ArrayList();
+        switch(tipo)
+        {
+            case "alta":
+                this.tipo = 1;
+                tfNombre.setEnabled(true);
+                pfContrasenna.setEnabled(true);
+                tfApellido1.setEnabled(true);
+                tfApellido2.setEnabled(true);
+                tfEmail.setEnabled(true);
+                cbPerfil.setEnabled(true);
+                bAceptar.setEnabled(true);
+                bBuscar.setEnabled(false);
+                break;
+            case "baja":
+                this.tipo = 3;
+                break;
+            case "modificacion":
+                this.tipo = 2;
+                break;
+                
+            case "listado":
+                this.tipo = 4;
+                break;
         }
     }
 
@@ -316,70 +318,37 @@ public class VUsuario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-        // TODO add your handling code here:
         try
         {
             Persona p = null;
-            p = Main.buscarPersona(tfUsuario.getText());
-            if(alta)
-            {
-                // comprobar todos los campos si cumple con las condiciones, si cumple, procede el alta
-                ValidacionDeDatosDeEntrada.validar(7, tfUsuario);
-                ValidacionDeDatosDeEntrada.validar(8, pfContrasenna);
-                ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
-                ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
-                if(tfApellido2.getText()!= null){
-                   ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
-                }
-                ValidacionDeDatosDeEntrada.validar(6, tfEmail);
-                if(cbPerfil.getSelectedIndex() == -1){
-                    throw new Excepcion(9);
-                }
-                
-                if(p !=  null)
-                {
-                    throw new Excepcion(15);
+            /*
+            p = Main.buscarPersona(tfUsuario.getText()) y comprobacion()
+            se ha insertado en cada case por lo siguiente:
+            1. en la baja no precisa validar datos.
+            2. para evitar el acceso constante a la bbdd, ya que lo primero es validar los datos en java
+            */
+            switch(tipo){
+                case 1:
+                    // comprobar todos los campos si los datos introducidos cumple con las validaciones 
+                    comprobacion();
+                    p = Main.consultarPersona(tfUsuario.getText());
+                    // proceder al alta de la persona
+                    alta(p);
+                    break;
                     
-                }
-                Main.altaPersona(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), ccFechaAlta.getDate(), String.valueOf(cbPerfil.getSelectedItem()));
-            }
-            else
-            {
-                // 
-                if(baja)
-                {
-                    //proceso de baja, sólo si existe el dni de la persona.
-                    if(p != null)
-                    {
-                        throw new Excepcion(18);
-                    }
-                    Main.bajaPersona(tfUsuario.getText());
-                }
-                else
-                {
-                    if(modificacion)
-                    {
-                        // comprobar todos los campos si cumple con las condiciones, si cumple, procede la modificación.
-                        ValidacionDeDatosDeEntrada.validar(7, tfUsuario);
-                        ValidacionDeDatosDeEntrada.validar(8, pfContrasenna);
-                        ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
-                        ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
-                        if(tfApellido2.getText()!= null){
-                           ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
-                        }
-                        ValidacionDeDatosDeEntrada.validar(6, tfEmail);
-                        if(cbPerfil.getSelectedIndex() == -1){
-                            throw new Excepcion(9);
-                        }
-                        //comprobar si existe el usuario
-                        if(p == null)
-                        {
-                            throw new Excepcion(18);
-                        }
-                        //mandar al main para modificar el usuario con los nuevos datos
-                        Main.modificarPersona(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), String.valueOf(cbPerfil.getSelectedItem()));
-                    }
-                }
+                case 2:
+                    // comprobar todos los campos si los datos introducidos cumple con las validaciones
+                    comprobacion();
+                    p = Main.consultarPersona(tfUsuario.getText());
+                    // proceder a la modificacion de la persona
+                    modificacion(p);
+                    break;
+                    
+                case 3:
+                    // proceder a la eliminación de la persona
+                    p = Main.consultarPersona(tfUsuario.getText());
+                    baja(p);
+                    break;
             }
         }
         catch (Excepcion e){
@@ -392,79 +361,168 @@ public class VUsuario extends javax.swing.JDialog {
 
     }//GEN-LAST:event_bAceptarActionPerformed
 
+    private void comprobacion()throws Exception{
+        
+        ValidacionDeDatosDeEntrada.validar(7, tfUsuario);
+        ValidacionDeDatosDeEntrada.validar(8, pfContrasenna);
+        ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
+        ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
+        if(!tfApellido2.getText().equals("")){
+            ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
+        }
+        if(!tfEmail.getText().equals("")){
+            ValidacionDeDatosDeEntrada.validar(6, tfEmail);
+        }
+        if(cbPerfil.getSelectedIndex() == -1){
+            throw new Excepcion(9);
+        }
+    }
+    
+    private void alta(Persona p)throws Exception{
+        //comprobar que no exista la persona
+        if(p !=  null)
+        {
+            throw new Excepcion(15);
+        }
+        // mandar al main para proceder al alta
+        Main.altaPersona(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), ccFechaAlta.getDate(), String.valueOf(cbPerfil.getSelectedItem()));
+        JOptionPane.showMessageDialog(this, "El usuario se ha dado de alta correctamente.");
+        Main.cerrar(this);
+    }
+    
+    private void modificacion(Persona p) throws Exception{
+        //comprobar si existe la persona
+        if(p == null)
+        {
+            throw new Excepcion(18);
+        }
+        //mandar al main para modificar el usuario con los nuevos datos
+        Main.modificarPersona(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), String.valueOf(cbPerfil.getSelectedItem()));
+        JOptionPane.showMessageDialog(this, "El usuario se ha dado modificado correctamente.");
+        Main.cerrar(this);
+    }
+    
+    private void baja(Persona p) throws Exception{
+        try{
+            // comprobar si existe la persona
+            if(p == null)
+            {
+                throw new Excepcion(18);
+            }
+            // mandar al main para proceder a la baja
+            Main.bajaPersona(tfUsuario.getText());
+            JOptionPane.showMessageDialog(this, "El usuario se ha dado de baja correctamente.");
+            Main.cerrar(this);
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            //JOptionPane.showMessageDialog(this, e.getMessage(), "No se ha podido eliminar el registro, la persona tiene vinculado otro registro.", 0);
+        }
+    }
+
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         // TODO add your handling code here:
         Main.cerrar(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrimeroActionPerformed
-        // TODO add your handling code here:
+        // cargar el primer registro
+        JOptionPane.showMessageDialog(this, "Este es el primer registro");
+        contador = 0;
+        mostrarDatos(lPersona.get(contador));
     }//GEN-LAST:event_bPrimeroActionPerformed
 
     private void bAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnteriorActionPerformed
-        // TODO add your handling code here:
+        // retroceder un registro
+        if(contador == 0){
+            JOptionPane.showMessageDialog(this, "Este es el primer registro");
+        }
+        else{
+            contador--;
+            mostrarDatos(lPersona.get(contador));
+        }
     }//GEN-LAST:event_bAnteriorActionPerformed
 
     private void bSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSiguienteActionPerformed
-        // TODO add your handling code here:
+        // avanzar un registro
+        if(contador == lPersona.size()-1){
+            JOptionPane.showMessageDialog(this, "Este es el último registro");
+        }
+        else{
+            contador++;
+            mostrarDatos(lPersona.get(contador));
+        }
     }//GEN-LAST:event_bSiguienteActionPerformed
 
     private void bUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUltimoActionPerformed
-        // TODO add your handling code here:
+        // cargar el último registro
+        JOptionPane.showMessageDialog(this, "Este es el último registro");
+        contador = lPersona.size()-1;
+        mostrarDatos(lPersona.get(contador));
     }//GEN-LAST:event_bUltimoActionPerformed
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
-        // TODO add your handling code here:
-        //búsqueda por nombre de usuario
+        //buscar persona
         try
         {
-            if(listado)
-            {
-                //si ha entrado con opción de listado y no introduce el usuario a buscar, se carga una tabla interna de usuarios para poder recorrerla mediante los botones direccionales.
-                //si rellena campo usuario, se carga únicamente el usuario introducido
-                if(tfUsuario.getText().isEmpty())
-                {
-                    bPrimero.setEnabled(true);
-                    bAnterior.setEnabled(true);
-                    bSiguiente.setEnabled(true);
-                    bUltimo.setEnabled(true);
-                }
-                else
-                {
-                    if(Main.buscarPersona(tfUsuario.getText()) == null)
-                    {
-                        throw new Excepcion(14);
-                    }
-                }
-                mostrarDatos();
+            // comprobar si el administrador ha rellenado el campo Usuario y cargar únicamente ese usuario, en caso contrario, array de todos los usuarios.
+            if(tfUsuario.getText().equals("")){
+                bPrimero.setEnabled(true);
+                bAnterior.setEnabled(true);
+                bSiguiente.setEnabled(true);
+                bUltimo.setEnabled(true);
+                lPersona = Main.consultarTodasLasPersonas();
+                contador = 0;
+                mostrarDatos(lPersona.get(0));
             }
-            else
-            {
-                // consulta el usuario, si existe, carga los datos para modificarlo.
-                if(Main.buscarPersona(tfUsuario.getText()) == null)
+            else{
+                Persona p = Main.consultarPersona(tfUsuario.getText());
+                if(p == null)
                 {
                     throw new Excepcion(14);
                 }
-                mostrarDatos();
+                // mostrar datos de la persona
+                mostrarDatos(p);
+            }
+            // habilitar los campos si se ha accedido como modificación
+            if(tipo == 2){
                 tfNombre.setEnabled(true);
                 tfApellido1.setEnabled(true);
                 tfApellido2.setEnabled(true);
+                pfContrasenna.setEnabled(true);
                 tfEmail.setEnabled(true);
                 cbPerfil.setEnabled(true);
-                if(cbPerfil.getSelectedItem().equals("Dueño"))
-                {
-                    tfEquipo.setVisible(true);
-                }
-                
-                bAceptar.setEnabled(true);
             }
+            bAceptar.setEnabled(true);
         }
-        catch (Exception e)
-        {
+        catch (Excepcion e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getClass());
         }
     }//GEN-LAST:event_bBuscarActionPerformed
 
+    private void mostrarDatos(Persona p) {
+        tfUsuario.setText(p.getUsuario());
+        pfContrasenna.setText(p.getContrasenna());
+        tfNombre.setText(p.getNombre());
+        tfApellido1.setText(p.getApellido1());
+        tfApellido2.setText(p.getApellido2());
+        tfEmail.setText(p.getEmail());
+        ccFechaAlta.setDate(p.getFechaAlta());
+        cbPerfil.setSelectedItem(p.getPerfil().getNombre());
+        // comrpobar si es dueño, en caso afirmativo, mostrar su equipo
+        if(cbPerfil.getSelectedItem().equals("Dueño"))
+        {
+            tfEquipo.setVisible(true);
+        }
+        Equipo eq = null;
+        //eq = Main.consultarEquipoPorUsuario(p.getUsuario());
+        if(p.getEquipo() != null){
+            tfEquipo.setText(p.getEquipo().getNombre());
+        }      
+    }
     /**
      * @param args the command line arguments
      */
@@ -498,20 +556,4 @@ public class VUsuario extends javax.swing.JDialog {
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
 
-    
-    private void mostrarDatos() throws Exception {
-        Persona p = Main.getPersona();
-        tfUsuario.setText(p.getUsuario());
-        pfContrasenna.setText(p.getContrasenna());
-        tfNombre.setText(p.getNombre());
-        tfApellido1.setText(p.getApellido1());
-        tfApellido2.setText(p.getApellido2());
-        tfEmail.setText(p.getEmail());        
-        ccFechaAlta.setDate(p.getFechaAlta());
-        cbPerfil.setSelectedItem(p.getPerfil().getNombre());
-        if(!p.getEquipo().getNombre().isEmpty()){
-            tfEquipo.setText(p.getEquipo().getNombre());
-        }
-        
-    }
 }

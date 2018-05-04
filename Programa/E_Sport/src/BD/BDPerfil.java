@@ -59,7 +59,7 @@ public class BDPerfil {
         ResultSet rs;
         rs = sentencia.executeQuery();
        // buscar si existe datos en rs
-        if(rs.next()){
+        while(rs.next()){
             // crear objeto con base, cargar datos y añadir a la lista
             Perfil p = new Perfil();
             p.setIdPerfil(rs.getInt(1));
@@ -75,4 +75,32 @@ public class BDPerfil {
         return listaPerfil;
     }
     
+    public Perfil buscarPorNombre(String nombre) throws Exception{
+        // crear perfil vacio
+        Perfil p = null;
+        // preparar conexion y sentencia sql
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia;
+        
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM perfil WHERE nombre = ?");
+        
+        sentencia.setString(1, nombre);
+        // crear rs para cargar los resultados
+        ResultSet rs;
+        rs = sentencia.executeQuery();
+       // buscar si existe datos en rs
+        if(rs.next()){
+            // crear objeto con base y cargar datos.
+            p = new Perfil();
+            p.setIdPerfil(rs.getInt(1));
+            p.setNombre(rs.getString(2));
+        }
+        
+        //cerrar conexion y devolver objeto
+        rs.close();
+        sentencia.close();
+        con.desconectar();
+        
+        return p;
+    }
 }
