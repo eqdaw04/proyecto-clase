@@ -5,11 +5,13 @@
  */
 package BD;
 
+import Excepciones.Excepcion;
 import UML.Jugador;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -103,10 +105,13 @@ public class BDJugador {
         sentencia.setString(4, j.getApellido2());
         sentencia.setString(5, j.getNickname());
         sentencia.setFloat(6, j.getSueldo());
-        sentencia.setDate(7, (Date)j.getFechaAlta());
+        sentencia.setDate(7, formatearFecha(j.getFechaAlta()));
         sentencia.setString(8, j.getComentario());                        
-        sentencia.executeUpdate();
-        ResultSet rs = sentencia.executeQuery();
+        if(sentencia.executeUpdate()!=1)
+        {
+            throw new Excepcion(25);
+        }
+        sentencia.close();
         con.desconectar();
     }
     
@@ -114,8 +119,11 @@ public class BDJugador {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia = con.getConnection().prepareStatement("DELETE FROM Jugador WHERE DNI = ?");
         sentencia.setString(1, j.getDni());                   
-        sentencia.executeUpdate();
-        ResultSet rs = sentencia.executeQuery();
+        if(sentencia.executeUpdate()!=1)
+        {
+            throw new Excepcion(25);
+        }
+        sentencia.close();
         con.desconectar();
     }
     
@@ -128,11 +136,20 @@ public class BDJugador {
         sentencia.setString(4, j.getApellido2());
         sentencia.setString(5, j.getNickname());
         sentencia.setFloat(6, j.getSueldo());
-        sentencia.setDate(7, (Date)j.getFechaAlta());
+        sentencia.setDate(7, formatearFecha(j.getFechaAlta()));
         sentencia.setString(8, j.getComentario());                    
-        sentencia.executeUpdate();
-        ResultSet rs = sentencia.executeQuery();
+        if(sentencia.executeUpdate()!=1)
+        {
+            throw new Excepcion(25);
+        }
+        sentencia.close();
         con.desconectar();
+    }
+
+    private static Date formatearFecha(java.util.Date fechaE){
+        SimpleDateFormat formar = new SimpleDateFormat("yyyy-MM-dd");
+        String fecha = formar.format(fechaE);
+        return Date.valueOf(fecha);
     }
     
 }
