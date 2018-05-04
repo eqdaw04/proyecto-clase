@@ -20,17 +20,17 @@ import java.util.logging.Logger;
  * @author 1gdaw06
  */
 public class BDJugador {
-    private static ArrayList<Jugador> a= new ArrayList();
     
     public static ArrayList <Jugador> BuscarDni (String dni) throws Exception{
         ResultSet rs = null;
         BDConexion con = new BDConexion();
+        ArrayList<Jugador> a= new ArrayList();
         try {
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Dni = ?");
         sentencia.setString(1,dni);
         sentencia.executeUpdate();
         rs = sentencia.executeQuery();
-        a= recorrer (rs);
+        a= recorrer (rs,a);
         } catch (SQLException ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         } 
@@ -41,19 +41,20 @@ public class BDJugador {
     public static ArrayList<Jugador> BuscarEqui(String id) throws Exception {
        ResultSet rs = null;
        BDConexion con = new BDConexion();
+       ArrayList<Jugador> a= new ArrayList();
         try {
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo = ?");
         sentencia.setString(1,id);
         sentencia.executeUpdate();
         rs = sentencia.executeQuery();
-        a= recorrer (rs);
+        a= recorrer (rs,a);
         } catch (SQLException ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         } 
         return a;
     }
     
-    public static ArrayList recorrer (ResultSet rs) throws SQLException{
+    public static ArrayList recorrer (ResultSet rs, ArrayList <Jugador> a) throws SQLException{
         while (rs.next()){
             Jugador j= new Jugador();
             j.setIdJugador(Integer.parseInt(rs.getString(1)));
@@ -73,11 +74,12 @@ public class BDJugador {
     public static ArrayList<Jugador> BuscarJugadoresDisponibles() throws Exception {
         ResultSet rs = null;
         BDConexion con = new BDConexion();
+        ArrayList<Jugador> a= new ArrayList();
         try {
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo is null");
         sentencia.executeUpdate();
         rs = sentencia.executeQuery();
-        a= recorrer (rs);
+        a= recorrer (rs,a);
         } catch (SQLException ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         } 
