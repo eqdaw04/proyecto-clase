@@ -199,30 +199,45 @@ public class ModificarEquipo extends javax.swing.JFrame {
     }//GEN-LAST:event_liJugDispValueChanged
 
     private void bConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarActionPerformed
-        
+        //sacar datos en vjugador
     }//GEN-LAST:event_bConsultarActionPerformed
 
     /**
      * @param args the command line arguments
      */
     private void rellenar() throws Exception{
-        // Buscamos todos los jugadores que forman el equipo y rellenamos la lista con ellos
-        jEquipo=new ArrayList();
-        jEquipo=Main.obtenerJugEqui(String.valueOf(e.getIdEquipo()));
-        DefaultListModel<String> model = new DefaultListModel();
-        for (int x=0;x < jEquipo.size();x++){
-            model.addElement(jEquipo.get(x).getNickname());
+        //No entiendo muy bien porque, pero sipongo directamente el codigo el segundo modelo (sea cual sea) no funciona correctamente
+        rellenar1();
+        rellenar2();    
+    }
+    private void rellenar1(){
+        try {
+            // Buscamos todos los jugadores que forman el equipo y rellenamos la lista con ellos
+            jEquipo=new ArrayList();
+            jEquipo=Main.obtenerJugEqui(String.valueOf(e.getIdEquipo()));
+            DefaultListModel<String> model = new DefaultListModel();
+            for (int x=0;x < jEquipo.size();x++){
+                model.addElement(jEquipo.get(x).getNickname());
+            }
+            liJugEqui.setModel(model);
+        } catch (Exception ex) {
+            Logger.getLogger(ModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        liJugEqui.setModel(model);
-        // Buscamos todos los jugadores que no tengan equipo  (id_equipo is null) y rellenamos la lista con ellos
-        jDisp=new ArrayList();
-        jDisp=Main.consultarJugadoresDisponibles();
-        DefaultListModel<String> modelo = new DefaultListModel();
-        for (int x=0;x< jDisp.size();x++){
-            modelo.addElement(jDisp.get(x).getNickname());
+    }
+    private void rellenar2(){
+        try {
+            // Buscamos todos los jugadores que no tengan equipo  (id_equipo is null) y rellenamos la lista con ellos
+            jDisp=new ArrayList();
+            jDisp=Main.consultarJugadoresDisponibles();
+            DefaultListModel<String> modelo = new DefaultListModel();
+            for (int y=0;y< jDisp.size();y++){
+                modelo.addElement(jDisp.get(y).getNickname());
+            }
+            liJugDisp.setModel(modelo);
+        } catch (Exception ex) {
+            Logger.getLogger(ModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        liJugDisp.setModel(modelo);
-        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAnnadir;
     private javax.swing.JButton bConsultar;
