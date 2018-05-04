@@ -69,13 +69,13 @@ public class ModificarEquipo extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setText("Modificar Equipo");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(275, 31, 179, 32);
+        jLabel1.setBounds(230, 30, 179, 32);
 
         nombeEquipo.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         nombeEquipo.setForeground(new java.awt.Color(0, 153, 0));
         nombeEquipo.setText("NOMBREEQUIPO");
         getContentPane().add(nombeEquipo);
-        nombeEquipo.setBounds(472, 31, 197, 32);
+        nombeEquipo.setBounds(420, 30, 197, 32);
 
         liJugEqui.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         liJugEqui.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -133,6 +133,11 @@ public class ModificarEquipo extends javax.swing.JFrame {
 
         bConsultar.setText("Consultar");
         bConsultar.setEnabled(false);
+        bConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConsultarActionPerformed(evt);
+            }
+        });
         getContentPane().add(bConsultar);
         bConsultar.setBounds(360, 250, 110, 25);
 
@@ -192,6 +197,10 @@ public class ModificarEquipo extends javax.swing.JFrame {
         liJugEqui.clearSelection();
         tfSueldo.setText(String.valueOf(jDisp.get(liJugDisp.getSelectedIndex()).getSueldo()));
     }//GEN-LAST:event_liJugDispValueChanged
+
+    private void bConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarActionPerformed
+        
+    }//GEN-LAST:event_bConsultarActionPerformed
 
     /**
      * @param args the command line arguments
