@@ -36,6 +36,7 @@ public class Main {
     private static BDPerfil bdPerfil;
     private static BDPersona bdPersona;
     private static Persona persona;
+    private static Jugador jugador;
     private static int perfil;
     private static Login login;
     private static String driver, url, usuario, contrasenna;
@@ -305,40 +306,40 @@ public class Main {
     
     
     // Imanol Luis
-    public static void altaJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String sueldo, Date fechaAlta, String comentario) {
+    public static void altaJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String sueldo, Date fechaAlta, String comentario) throws Exception {
         // Insertar jugador en la BD
-        Jugador j = new Jugador();
-        j.setDni(dni);
-        j.setNombre(nombre);
-        j.setApellido1(apellido1);
-        j.setApellido2(apellido2);
-        j.setNickname(nickname);
-        j.setSueldo(Float.parseFloat(sueldo));
-        j.setFechaAlta(fechaAlta);
-        j.setComentario(comentario);
+        jugador.setDni(dni);
+        jugador.setNombre(nombre);
+        jugador.setApellido1(apellido1);
+        jugador.setApellido2(apellido2);
+        jugador.setNickname(nickname);
+        jugador.setSueldo(Float.parseFloat(sueldo));
+        jugador.setFechaAlta(fechaAlta);
+        jugador.setComentario(comentario);
+        BDJugador.insertarJugador(jugador);
     }
 
     // Imanol Luis
-    public static void bajaJugador(String dni) {
+    public static void bajaJugador(String dni) throws Exception {
         // Eliminar jugador en la BD
-        Jugador j = new Jugador();
-        j.setDni(dni);
+        jugador.setDni(dni);
+        BDJugador.eliminarJugador(jugador);
     }
     
     // Imanol Luis
-    public static void modificarJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String comentario, String sueldo) {
+    public static void modificarJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String comentario, String sueldo) throws Exception {
         // Modificar jugador en la BD
-        Jugador j = new Jugador();
-        j.setDni(dni);
-        j.setNombre(nombre);
-        j.setApellido1(apellido1);
-        j.setApellido2(apellido2);
-        j.setNickname(nickname);
-        j.setSueldo(Float.parseFloat(sueldo));
-        j.setComentario(comentario);
+        jugador.setDni(dni);
+        jugador.setNombre(nombre);
+        jugador.setApellido1(apellido1);
+        jugador.setApellido2(apellido2);
+        jugador.setNickname(nickname);
+        jugador.setSueldo(Float.parseFloat(sueldo));
+        jugador.setComentario(comentario);
+        BDJugador.modificarJugador(jugador);
     }
     
-    public static ArrayList buscarDNI(String dni) throws Exception {
+    public static ArrayList<Jugador> buscarDNI(String dni) throws Exception {
        return BDJugador.BuscarDni(dni);
     }
     //------------Mikel

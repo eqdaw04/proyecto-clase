@@ -5,7 +5,7 @@
  */
 package BD;
 
-import UML.*;
+import UML.Jugador;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,8 +21,7 @@ import java.util.logging.Logger;
  */
 public class BDJugador {
     
-    public static ArrayList <Jugador> BuscarDni (String dni) throws Exception{
-        ResultSet rs = null;
+    public static ArrayList<Jugador> BuscarDni (String dni) throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a= new ArrayList();
         try {
@@ -33,9 +32,9 @@ public class BDJugador {
         a= recorrer (rs,a);
         } catch (SQLException ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
-        return a ;
+        }
+        con.desconectar();
+        return a;
     }
     
     public static ArrayList<Jugador> BuscarEqui(String id) throws Exception {
@@ -50,7 +49,8 @@ public class BDJugador {
         a= recorrer (rs,a);
         } catch (SQLException ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
+        con.desconectar();
         return a;
     }
     
@@ -72,7 +72,6 @@ public class BDJugador {
     }
 
     public static ArrayList<Jugador> BuscarJugadoresDisponibles() throws Exception {
-        ResultSet rs = null;
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a= new ArrayList();
         try {
@@ -89,26 +88,56 @@ public class BDJugador {
     public static boolean insertarJugador(Jugador j) throws Exception {
         try
         {
-            ResultSet rs = null;
-            BDConexion con = new BDConexion();
-            PreparedStatement sentencia = con.getConnection().prepareStatement("SINSERT INTO Jugador (DNI, NOMBRE, APELLIDO1, APELLIDO2, NICKNAME, SUELDO, FECHA_ALTA, COMENTARIO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            sentencia.setString(1, j.getDni());
-            sentencia.setString(2, j.getNombre());
-            sentencia.setString(3, j.getApellido1());
-            sentencia.setString(4, j.getApellido2());
-            sentencia.setString(5, j.getNickname());
-            sentencia.setFloat(6, j.getSueldo());
-            sentencia.setDate(7, (Date)j.getFechaAlta());
-            sentencia.setString(8, j.getComentario());            
+            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo is null");
             sentencia.executeUpdate();
-            rs = sentencia.executeQuery();
-            con.desconectar();
-            return true;
+            ResultSet rs = sentencia.executeQuery();
+            a = recorrer(rs);
         }
-        catch (Exception e)
+        catch (SQLException ex)
         {
-            return false;
-        }
+            Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
+        }         
+        return a;
+    }
+    public static void insertarJugador(Jugador j) throws Exception {
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia = con.getConnection().prepareStatement("INSERT INTO Jugador (DNI, NOMBRE, APELLIDO1, APELLIDO2, NICKNAME, SUELDO, FECHA_ALTA, COMENTARIO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        sentencia.setString(1, j.getDni());
+        sentencia.setString(2, j.getNombre());
+        sentencia.setString(3, j.getApellido1());
+        sentencia.setString(4, j.getApellido2());
+        sentencia.setString(5, j.getNickname());
+        sentencia.setFloat(6, j.getSueldo());
+        sentencia.setDate(7, (Date)j.getFechaAlta());
+        sentencia.setString(8, j.getComentario());                        
+        sentencia.executeUpdate();
+        ResultSet rs = sentencia.executeQuery();
+        con.desconectar();
+    }
+    
+    public static void eliminarJugador(Jugador j) throws Exception {
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia = con.getConnection().prepareStatement("DELETE FROM Jugador WHERE DNI = ?");
+        sentencia.setString(1, j.getDni());                   
+        sentencia.executeUpdate();
+        ResultSet rs = sentencia.executeQuery();
+        con.desconectar();
+    }
+    
+    public static void modificarJugador(Jugador j) throws Exception {
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET NOMBRE=?, APELLIDO1=?, APELLIDO2=?, NICKNAME=?, SUELDO=?, FECHA_ALTA=?, COMENTARIO=? WHERE DNI=?");
+        sentencia.setString(1, j.getDni());
+        sentencia.setString(2, j.getNombre());
+        sentencia.setString(3, j.getApellido1());
+        sentencia.setString(4, j.getApellido2());
+        sentencia.setString(5, j.getNickname());
+        sentencia.setFloat(6, j.getSueldo());
+        sentencia.setDate(7, (Date)j.getFechaAlta());
+        sentencia.setString(8, j.getComentario());                    
+        sentencia.executeUpdate();
+        ResultSet rs = sentencia.executeQuery();
+        con.desconectar();
     }
     
 }
