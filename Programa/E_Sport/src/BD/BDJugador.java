@@ -84,6 +84,29 @@ public class BDJugador {
         
         return a ;
     }
-
+    public static boolean insertarJugador(Jugador j) throws Exception {
+        try
+        {
+            ResultSet rs = null;
+            BDConexion con = new BDConexion();
+            PreparedStatement sentencia = con.getConnection().prepareStatement("SINSERT INTO Jugador (DNI, NOMBRE, APELLIDO1, APELLIDO2, NICKNAME, SUELDO, FECHA_ALTA, COMENTARIO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            sentencia.setString(1, j.getDni());
+            sentencia.setString(2, j.getNombre());
+            sentencia.setString(3, j.getApellido1());
+            sentencia.setString(4, j.getApellido2());
+            sentencia.setString(5, j.getNickname());
+            sentencia.setFloat(6, j.getSueldo());
+            sentencia.setDate(7, (Date)j.getFechaAlta());
+            sentencia.setString(8, j.getComentario());            
+            sentencia.executeUpdate();
+            rs = sentencia.executeQuery();
+            con.desconectar();
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+    }
     
 }
