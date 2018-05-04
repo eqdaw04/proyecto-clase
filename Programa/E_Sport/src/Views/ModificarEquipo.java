@@ -5,12 +5,15 @@
  */
 package Views;
 
-import static Controladora.Main.*;
+import Controladora.Main;
 import UML.Equipo;
 import UML.Jugador;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,7 +30,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
         initComponents();
         setVisible(true);
         this.setLocationRelativeTo(null);
-        e= ConsultarEquipoPorUsuario(usu);
+        e= Main.ConsultarEquipoPorUsuario(usu);
         nombeEquipo.setText(e.getNombre());
         rellenar();
     }
@@ -48,9 +51,9 @@ public class ModificarEquipo extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         liJugDisp = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bEliminar = new javax.swing.JButton();
+        bAnnadir = new javax.swing.JButton();
+        bConsultar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -69,6 +72,12 @@ public class ModificarEquipo extends javax.swing.JFrame {
         nombeEquipo.setBounds(472, 31, 197, 32);
 
         liJugEqui.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        liJugEqui.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        liJugEqui.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                liJugEquiValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(liJugEqui);
 
         getContentPane().add(jScrollPane1);
@@ -77,10 +86,15 @@ public class ModificarEquipo extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setText("Jugadores en el equipo:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(62, 142, 133, 16);
+        jLabel2.setBounds(60, 140, 133, 16);
 
         liJugDisp.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         liJugDisp.setToolTipText("");
+        liJugDisp.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                liJugDispValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(liJugDisp);
 
         getContentPane().add(jScrollPane2);
@@ -89,51 +103,96 @@ public class ModificarEquipo extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setText("Jugadores Disponibles:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(502, 142, 132, 16);
+        jLabel3.setBounds(510, 140, 132, 16);
 
-        jButton1.setText("Eliminar Jugador");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(100, 430, 150, 25);
-
-        jButton2.setText("Añadir Jugador");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bEliminar.setText("Eliminar Jugador");
+        bEliminar.setEnabled(false);
+        bEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(570, 430, 150, 25);
+        getContentPane().add(bEliminar);
+        bEliminar.setBounds(100, 430, 150, 25);
 
-        jButton3.setText("Consultar");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(360, 250, 110, 25);
+        bAnnadir.setText("Añadir Jugador");
+        bAnnadir.setEnabled(false);
+        bAnnadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAnnadirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bAnnadir);
+        bAnnadir.setBounds(570, 430, 150, 25);
+
+        bConsultar.setText("Consultar");
+        bConsultar.setEnabled(false);
+        getContentPane().add(bConsultar);
+        bConsultar.setBounds(360, 250, 110, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void bAnnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnnadirActionPerformed
+        if(Main.AnnadirJugadorEquipo(liJugDisp.getSelectedValue(),String.valueOf(e.getIdEquipo()))){
+            JOptionPane.showMessageDialog(this, "Jugador añadido exitosamente");
+            try {
+                rellenar();
+            } catch (Exception ex) {
+                Logger.getLogger(ModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_bAnnadirActionPerformed
 
+    private void bEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarActionPerformed
+        if(Main.EliminarJugadorEquipo(liJugEqui.getSelectedValue())){
+            JOptionPane.showMessageDialog(this, "Jugador eliminado exitosamente");
+            try {
+                rellenar();
+            } catch (Exception ex) {
+                Logger.getLogger(ModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_bEliminarActionPerformed
+
+    private void liJugEquiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_liJugEquiValueChanged
+        bEliminar.setEnabled(true);
+        bConsultar.setEnabled(true);
+        bAnnadir.setEnabled(false);
+        liJugDisp.clearSelection();
+    }//GEN-LAST:event_liJugEquiValueChanged
+
+    private void liJugDispValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_liJugDispValueChanged
+        bEliminar.setEnabled(false);
+        bConsultar.setEnabled(true);
+        bAnnadir.setEnabled(true);
+        liJugEqui.clearSelection();
+    }//GEN-LAST:event_liJugDispValueChanged
+
+    /**
+     * @param args the command line arguments
+     */
     private void rellenar() throws Exception{
-        ArrayList<Jugador> j=obtenerJugEqui(String.valueOf(e.getIdEquipo()));
-        DefaultListModel<String> model = new DefaultListModel<>();
+        // Buscamos todos los jugadores que forman el equipo y rellenamos la lista con ellos
+        
+        ArrayList<Jugador> j=Main.obtenerJugEqui(String.valueOf(e.getIdEquipo()));
+        DefaultListModel<String> model = new DefaultListModel();
         for (int x=0;x < j.size();x++){
             model.addElement(j.get(x).getNickname());
         }
         liJugEqui.setModel(model);
-
-        ArrayList<Jugador> jug=consultarJugadoresDisponibles();
-        DefaultListModel<String> modelo = new DefaultListModel<>();
+        // Buscamos todos los jugadores que no tengan equipo  (id_equipo is null) y rellenamos la lista con ellos
+        ArrayList<Jugador> jug=Main.consultarJugadoresDisponibles();
+        DefaultListModel<String> modelo = new DefaultListModel();
         for (int x=0;x< jug.size();x++){
             modelo.addElement(jug.get(x).getNickname());
         }
         liJugDisp.setModel(modelo);
         }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton bAnnadir;
+    private javax.swing.JButton bConsultar;
+    private javax.swing.JButton bEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -382,17 +382,32 @@ public class Main {
        return BDJugador.BuscarDni(dni);
     }
     //------------Mikel
+    // Busca Jugadores pertenecientes a un equipo
     public static ArrayList<Jugador> obtenerJugEqui(String id) throws Exception{
         return BDJugador.BuscarEqui(id);
     }
 
     //------------Mikel
+    // consulta el equipo de un dueño mediante su usuario
     public static Equipo ConsultarEquipoPorUsuario(String usu) throws Exception{
         return BDEquipo.BuscarEquipoPorUsuario(usu);
     }
     //------------Mikel
+    // Devuelve todos los jugadoers que no pertenezcan a ningún equipo
     public static ArrayList <Jugador> consultarJugadoresDisponibles () throws Exception{
         return BDJugador.BuscarJugadoresDisponibles();
+    }
+    //------------Mikel
+    // Busca a un jugador por su nickname y pone su id_equipo a null (no pertenece a ningún equipo)
+    public static boolean EliminarJugadorEquipo (String nickname){
+        BDJugador.QuitarJugadorEquipo(nickname);
+        return true;
+    }
+    //------------Mikel
+    // Busca a un jugador por su nickname yle añade el id_equipo del equipo al que se le quiere añadir
+    public static boolean AnnadirJugadorEquipo(String nickname, String id) {
+        BDJugador.PonerJugadorEquipo(nickname,id);
+        return true;
     }
     public static void altaEquipo(String nombre, Date fechaCreacion, String comentario) {
         // Insertar equipo en la BD
@@ -468,5 +483,7 @@ public class Main {
     public static String buscarEquipoDuenno() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
 
 }

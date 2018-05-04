@@ -25,17 +25,15 @@ public class BDJugador {
     
     public static ArrayList<Jugador> BuscarDni(String dni) throws Exception {
         BDConexion con = new BDConexion();
-        ArrayList<Jugador> a = new ArrayList();
-        try
-        {
-            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Dni = ?");
-            sentencia.setString(1,dni);
-            sentencia.executeUpdate();
-            ResultSet rs = sentencia.executeQuery();
-            a = recorrer(rs,a);
-        }
-        catch (SQLException ex)
-        {
+        ArrayList<Jugador> a= new ArrayList();
+        try {
+        PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Dni = ?");
+        sentencia.setString(1,dni);
+        sentencia.executeUpdate();
+        rs = sentencia.executeQuery();
+        a= recorrer (rs,a);
+        con.desconectar();
+        } catch (SQLException ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         }
         return a ;
@@ -80,18 +78,17 @@ public class BDJugador {
     }
     
     public static ArrayList<Jugador> BuscarEqui(String id) throws Exception {
-        BDConexion con = new BDConexion();
-        ArrayList<Jugador> a = new ArrayList();
-        try
-        {
-            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo = ?");
-            sentencia.setString(1,id);
-            sentencia.executeUpdate();
-            ResultSet rs = sentencia.executeQuery();
-            a = recorrer(rs,a);
-        }
-        catch (SQLException ex)
-        {
+       ResultSet rs = null;
+       BDConexion con = new BDConexion();
+       ArrayList<Jugador> a= new ArrayList();
+        try {
+        PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo = ?");
+        sentencia.setString(1,id);
+        sentencia.executeUpdate();
+        rs = sentencia.executeQuery();
+        a= recorrer (rs,a);
+        con.desconectar();
+        } catch (SQLException ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         }
         con.desconectar();
@@ -120,15 +117,13 @@ public class BDJugador {
         a =  new ArrayList();
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a= new ArrayList();
-        try
-        {
-            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo is null");
-            sentencia.executeUpdate();
-            ResultSet rs = sentencia.executeQuery();
-            a = recorrer(rs, a);
-        }
-        catch (SQLException ex)
-        {
+        try {
+        PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo is null");
+        sentencia.executeUpdate();
+        rs = sentencia.executeQuery();
+        a= recorrer (rs,a);
+        con.desconectar();
+        } catch (SQLException ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         } 
         con.desconectar();
@@ -165,6 +160,31 @@ public class BDJugador {
         }
         sentencia.close();
         con.desconectar();
+    }
+
+    public static void QuitarJugadorEquipo(String nickname) {
+        try {
+            BDConexion con = new BDConexion();
+            PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET Id_equipo = null WHERE UPPER(Nickname) = UPPER(?)");
+            sentencia.setString(1, nickname);
+            sentencia.executeUpdate();
+            con.desconectar();
+        } catch (Exception ex) {
+            Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void PonerJugadorEquipo(String nickname, String id) {
+        try {
+            BDConexion con = new BDConexion();
+            PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET Id_equipo = ? WHERE UPPER(Nickname) = UPPER(?)");
+            sentencia.setString(1, id);
+            sentencia.setString(2, nickname);
+            sentencia.executeUpdate();
+            con.desconectar();
+        } catch (Exception ex) {
+            Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public static void modificarJugador(Jugador j) throws Exception {
