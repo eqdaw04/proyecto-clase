@@ -251,6 +251,14 @@ public class Main {
         return listadoPersona;
     }
     
+    //---------- JON XU JIN ----------
+    
+    public static ArrayList <Persona> consultarTodosLosPartidos() throws Exception{
+        ArrayList <Persona> listadoPersona = new ArrayList();
+        listadoPersona = bdPersona.buscarTodasLasPersona();
+        return listadoPersona;
+    }
+    
     public static void probando(){
         ArrayList <Equipo> lEquipo = new ArrayList();
         Equipo e1 = new Equipo();

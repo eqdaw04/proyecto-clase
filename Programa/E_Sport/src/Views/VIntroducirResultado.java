@@ -25,12 +25,13 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         this.n = n;
         setModal(true);
         setLocationRelativeTo(null);
+        // Cargar los partidos del día de hoy, si existe
         cargarPartido();
         setVisible(true);
     }
 
     private void cargarPartido(){
-        
+        Main.consultarTodosLosPartidos(ccFecha.getDate());
     }
     
     /**
