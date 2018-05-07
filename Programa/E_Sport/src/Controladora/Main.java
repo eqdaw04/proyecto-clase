@@ -350,7 +350,7 @@ public class Main {
         jugador.setSueldo(Float.parseFloat(sueldo.replace(",", ".")));
         jugador.setFechaAlta(fechaAlta);
         jugador.setComentario(comentario);
-        BDJugador.insertarJugador(jugador);
+        bdJugador.insertarJugador(jugador);
     }
 
     // Imanol Luis
@@ -454,12 +454,16 @@ public class Main {
 
     public static String buscarPlantilla(Equipo equipo) throws Exception {
         String plantilla="";
+        String dni, nombre, apellido1, apellido2, nickname;
         
         ArrayList<Jugador> listaJugadores=BDJugador.BuscarEqui(String.valueOf(equipo.getIdEquipo()));
         
         for(int x=0;x<listaJugadores.size();x++)
         {
-            String dni, nombre, apellido1, apellido2, nickname;
+            if(x>0)
+            {
+                plantilla = plantilla + "\n";
+            }
             
             dni=listaJugadores.get(x).getDni();
             nombre=listaJugadores.get(x).getNombre();
@@ -467,7 +471,7 @@ public class Main {
             apellido2=listaJugadores.get(x).getApellido2();
             nickname=listaJugadores.get(x).getNickname();
             
-            plantilla=plantilla + dni + " – " + nombre + " " + apellido1 + " " + apellido2 + " – " + nickname + "\n";
+            plantilla=plantilla + dni + " – " + nombre + " " + apellido1 + " " + apellido2 + " – " + nickname;
         }
         
         return plantilla;
