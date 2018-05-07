@@ -1,0 +1,14 @@
+<!ELEMENT jornada-en-curso (fecha_expiracion, partido*)>
+    <!ATTLIST jornada-en-curso
+                id_jornada CDATA #REQUIRED>
+<!ELEMENT fecha_expiracion (#PCDATA)>
+<!ELEMENT partido (fecha_partido, hora_inicio, hora_fin, equipo)*>
+    <!ATTLIST partido
+                id_partido CDATA #REQUIRED>
+<!ELEMENT fecha_partido (#PCDATA)>
+<!ELEMENT hora_inicio (#PCDATA)>
+<!ELEMENT hora_fin (#PCDATA)>
+<!ELEMENT equipo (nombre)*>
+    <!ATTLIST equipo
+                id_equipo CDATA #REQUIRED>
+<!ELEMENT nombre (#PCDATA)>

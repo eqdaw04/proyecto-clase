@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clasificacion>
+    <equipo>HOOOOOOOOOOLLLLLLLLLAAAAAAAAAAAAAAAAAAAAAAAAAA</equipo>
+    <equipo id_equipo="1">
+        <Nombre>Equipo1</Nombre>
+        <comentario>blablabla</comentario>
+        <puntuacion>5</puntuacion>
+        <visitante>false</visitante>
+    </equipo>
+    <equipo id_equipo="2">
+        <Nombre>Equipo1</Nombre>
+        <comentario>blablabla</comentario>
+        <puntuacion>5</puntuacion>
+        <visitante>true</visitante>
+    </equipo>
+    <equipo id_equipo="3">
+        <Nombre>Equipo1</Nombre>
+        <comentario/>
+        <puntuacion>5</puntuacion>
+        <visitante>false</visitante>
+    </equipo>
+    <equipo id_equipo="4">
+        <Nombre>Equipo1</Nombre>
+        <comentario/>
+        <puntuacion>5</puntuacion>
+        <visitante>true</visitante>
+    </equipo>
+    <equipo id_equipo="5">
+        <Nombre>Equipo1</Nombre>
+        <comentario/>
+        <puntuacion>5</puntuacion>
+        <visitante>false</visitante>
+    </equipo>
+    <equipo id_equipo="6">
+        <Nombre>Equipo1</Nombre>
+        <comentario/>
+        <puntuacion>5</puntuacion>
+        <visitante>true</visitante>
+    </equipo>
+    <equipo id_equipo="2">
+        <Nombre>Equipo1</Nombre>
+        <comentario/>
+        <puntuacion>5</puntuacion>
+        <visitante>false</visitante>
+    </equipo>
+    <equipo id_equipo="3">
+        <Nombre>Equipo1</Nombre>
+        <comentario/>
+        <puntuacion>5</puntuacion>
+        <visitante>true</visitante>
+    </equipo>
+    <equipo id_equipo="4">
+        <Nombre>Equipo1</Nombre>
+        <comentario/>
+        <puntuacion>5</puntuacion>
+        <visitante>false</visitante>
+    </equipo>
+    <equipo id_equipo="5">
+        <Nombre>Equipo1</Nombre>
+        <comentario/>
+        <puntuacion>5</puntuacion>
+        <visitante>true</visitante>
+    </equipo>
+    <equipo id_equipo="6">
+        <Nombre>Equipo1</Nombre>
+        <comentario/>
+        <puntuacion>5</puntuacion>
+        <visitante>false</visitante>
+    </equipo>
+    <equipo id_equipo="1">
+        <Nombre>Equipo1</Nombre>
+        <comentario/>
+        <puntuacion>5</puntuacion>
+        <visitante>true</visitante>
+    </equipo>
+    <equipo id_equipo="3">
+        <Nombre>Equipo1</Nombre>
+        <comentario/>
+        <puntuacion>5</puntuacion>
+        <visitante>false</visitante>
+    </equipo>
+    <equipo id_equipo="4">
+        <Nombre>Equipo1</Nombre>
+        <comentario/>
+        <puntuacion>5</puntuacion>
+        <visitante>true</visitante>
+    </equipo>
+    <equipo id_equipo="5">
+        <Nombre>Equipo1</Nombre>
+        <comentario/>
+        <puntuacion>5</puntuacion>
+        <visitante>false</visitante>
+    </equipo>
+    <equipo id_equipo="6">
+        <Nombre>Equipo1</Nombre>
+        <comentario/>
+        <puntuacion>5</puntuacion>
+        <visitante>true</visitante>
+    </equipo>
+    <equipo id_equipo="1">
+        <Nombre>Equipo1</Nombre>
+        <comentario>dsfszfSzfv</comentario>
+        <puntuacion>5</puntuacion>
+        <visitante>false</visitante>
+    </equipo>
+    <equipo id_equipo="2">
+        <Nombre>Equipo1</Nombre>
+        <comentario>SFSVrSzrvzr</comentario>
+        <puntuacion>5</puntuacion>
+        <visitante>true</visitante>
+    </equipo>
+</clasificacion>

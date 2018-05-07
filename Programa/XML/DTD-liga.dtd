@@ -1,0 +1,22 @@
+
+<!ELEMENT liga (fecha_expiracion,jornada+)>
+        <!ELEMENT fecha_expiracion (#PCDATA)>
+        <!ELEMENT jornada (partido)+>
+        <!ATTLIST jornada
+                id_jornada CDATA #REQUIRED>
+
+        <!ELEMENT partido (fecha, hora, lugar ,equipo+)>
+        <!ATTLIST partido
+                id_partido CDATA #REQUIRED>
+        <!ELEMENT fecha (#PCDATA)>
+        <!ELEMENT hora (#PCDATA)>
+        <!ELEMENT lugar (#PCDATA)>
+
+        <!ELEMENT equipo (nombre, comentario?, puntuacion, visitante)*>
+        <!ATTLIST equipo
+                id_equipo CDATA #REQUIRED>
+        <!ELEMENT nombre (#PCDATA)>
+        <!ELEMENT comentario (#PCDATA)>
+        <!ELEMENT puntuacion (#PCDATA)>
+        <!ELEMENT visitante (#PCDATA)>
+

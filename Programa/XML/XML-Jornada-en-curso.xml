@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE jornada-en-curso SYSTEM "DTD-Jornada-en-curso.dtd">
+<jornada-en-curso id_jornada="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:noNamespaceSchemaLocation="XSD-Jornada-en-curso.xsd">
+    <fecha_expiracion> 2018-04-26 </fecha_expiracion>
+    <partido id_partido="1">
+        <fecha_partido> 2018-04-25 </fecha_partido>
+        <hora_inicio> 18:00 </hora_inicio>
+        <hora_fin> 20:00 </hora_fin>
+		<equipo id_equipo="5">
+			<nombre> Equipo5 </nombre>
+		</equipo>
+		<equipo id_equipo="2">
+			<nombre> Equipo2 </nombre>
+		</equipo>
+    </partido>
+	
+	<partido id_partido="2">
+        <fecha_partido> 2018-04-25 </fecha_partido>
+        <hora_inicio> 18:00 </hora_inicio>
+        <hora_fin> 20:00 </hora_fin>
+		<equipo id_equipo="5">
+			<nombre> Equipo5 </nombre>
+		</equipo>
+		<equipo id_equipo="2">
+			<nombre> Equipo2 </nombre>
+		</equipo>
+    </partido>
+</jornada-en-curso>

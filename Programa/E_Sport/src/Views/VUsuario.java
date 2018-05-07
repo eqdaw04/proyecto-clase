@@ -8,7 +8,10 @@ import UML.Equipo;
 import UML.Perfil;
 import UML.Persona;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class VUsuario extends javax.swing.JDialog {
 
@@ -505,7 +508,13 @@ public class VUsuario extends javax.swing.JDialog {
         tfApellido1.setText(p.getApellido1());
         tfApellido2.setText(p.getApellido2());
         tfEmail.setText(p.getEmail());
+/*      REVISAR LA FECHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA      
+        SimpleDateFormat formar = new SimpleDateFormat("dd-MM-yy");
+        String fechas = formar.format(p.getFechaAlta());
+        JOptionPane.showMessageDialog(this, p.getFechaAlta());
+*/
         ccFechaAlta.setDate(p.getFechaAlta());
+    
         cbPerfil.setSelectedItem(p.getPerfil().getNombre());
         // comrpobar si es dueño, en caso afirmativo, mostrar su equipo
         if(cbPerfil.getSelectedItem().equals("Dueño"))
@@ -513,7 +522,7 @@ public class VUsuario extends javax.swing.JDialog {
             tfEquipo.setVisible(true);
         }
         Equipo eq = null;
-        //eq = Main.consultarEquipoPorUsuario(p.getUsuario());
+        //eq = Main.consultarEquipoPorUsuario(p.getUsuario());          REVISARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
         if(p.getEquipo() != null){
             tfEquipo.setText(p.getEquipo().getNombre());
         }      

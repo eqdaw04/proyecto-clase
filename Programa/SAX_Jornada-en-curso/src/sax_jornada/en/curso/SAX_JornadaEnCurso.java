@@ -55,7 +55,7 @@ public class SAX_JornadaEnCurso extends DefaultHandler{
             
             SAXParser sp = spf.newSAXParser();
             
-            sp.parse("../../xml/clasificacion/XML-Jornada-en-curso.xml", this);
+            sp.parse("../XML/XML-Jornada-en-curso.xml", this);
             
          } catch (SAXException se) {
             se.printStackTrace();

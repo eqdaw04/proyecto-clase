@@ -11,15 +11,17 @@ package dom.clasificacion;
  */
 public class Equipo {
     private int idEquipo, puntuacion;
-    private String nombre;
-
+    private String nombre, comentario, visitante;
+    
     public Equipo() {
     }
 
-    public Equipo(int idEquipo, int puntuacion, String nombre) {
+    public Equipo(int idEquipo, String nombre, String comentario,int puntuacion, String visitante) {
         this.idEquipo = idEquipo;
         this.puntuacion = puntuacion;
         this.nombre = nombre;
+        this.comentario = comentario;
+        this.visitante = visitante;
     }
 
     public int getIdEquipo() {
@@ -45,6 +47,26 @@ public class Equipo {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public String getVisitante() {
+        return visitante;
+    }
+
+    public void setVisitante(String visitante) {
+        this.visitante = visitante;
+    }
+
+    
+
+    
 
     @Override
     public String toString() {

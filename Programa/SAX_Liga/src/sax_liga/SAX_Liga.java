@@ -58,7 +58,7 @@ private void parsearliga(){
 
             SAXParser sp = spf.newSAXParser();
 
-            sp.parse("../../xml/clasificacion/XML-Liga.xml", this);
+            sp.parse("../XML/XML-Liga.xml", this);
 
         } catch (SAXException se) {
             se.printStackTrace();

@@ -235,6 +235,8 @@ public class Main {
         return persona;
     }
     
+    //---------- JON XU JIN ----------
+    
     public static ArrayList <Persona> consultarTodasLasPersonas() throws Exception{
         ArrayList <Persona> listadoPersona = new ArrayList();
         listadoPersona = bdPersona.buscarTodasLasPersona();

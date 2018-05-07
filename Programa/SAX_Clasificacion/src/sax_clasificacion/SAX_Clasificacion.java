@@ -52,7 +52,7 @@ public class SAX_Clasificacion extends DefaultHandler {
             
             SAXParser sp = spf.newSAXParser();
             
-            sp.parse("../../xml/clasificacion/XML-Clasificacion.xml", this);
+            sp.parse("../XML/XML-Clasificacion.xml", this);
             
         } catch (SAXException se) {
             se.printStackTrace();

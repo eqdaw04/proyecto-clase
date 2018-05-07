@@ -5,36 +5,38 @@
  */
 package dom.clasificacion;
 
+import com.sun.org.apache.xml.internal.serialize.OutputFormat;
+import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Text;
-
-import com.sun.org.apache.xml.internal.serialize.OutputFormat;
-import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
-import java.util.Scanner;
 import org.w3c.dom.NodeList;
+import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
 
 public class DOMClasificacion {
-
-    List equipos;
-        Document dom;
-        
-        public DOMClasificacion(){
-            parsearXML();
-        }
+    
+    List lEquipo;
+    Document dom;
+    
+    
+    public DOMClasificacion(){
+        lEquipo = new ArrayList();
+        crearDocumento();
+    }
     
     public static void main(String[] args) {
         // TODO code application logic here
@@ -45,81 +47,133 @@ public class DOMClasificacion {
     }
     
     public void ejecutar(){
-        String opcion = "0";
-        Scanner sc = new Scanner(System.in);
-        
-         do {                
-                
-             System.out.println("Elige la opcion que quieres realizar");
-             System.out.println ("1- Leer el fichero Clasificacion.xml");
-             System.out.println("2- Salir");
-             
-             opcion = sc.nextLine();
-             
-             switch (opcion){
-                 case "1":
-                     
-                    equipos = new ArrayList();
-                     leerDocumento();
-                     mostrarDocumento();
-                     break;
-                     
-                 case "2":
-                     System.out.println("Has salido del archivo 'Clasificacion'");
-                     break;
-             }
-             
-            } while (!opcion.equals("4"));
-               printToFile();
-               System.out.println("Fichero generado correctamente.");
+        cargarXML();
+        parsearDOM();
+        crearDocumento();
+        crearDOM();
+        crearXML();
     }
     
-    private void parsearXML(){
-        
+    private void crearDocumento() {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder db = dbf.newDocumentBuilder();
-            
-            dom = db.parse("../../xml/Clasificacion/XML-Clasificacion.xml");
-            
+
+            dom = db.newDocument();
+
         } catch (ParserConfigurationException pce) {
-             System.out.println("Error while trying to instantiate DocumentBuilder " + pce);
+            System.out.println("Hay un problema  " + pce);
             System.exit(1);
-        } catch (SAXException se) {
-            se.printStackTrace();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        }
+
+    }
+    
+    private void cargarXML(){
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        
+        try {
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            dom = db.parse("../XML/XML-Liga.xml");
+        } catch (ParserConfigurationException | SAXException | IOException ex) {
+            Logger.getLogger(DOMClasificacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    private void parsearDOM(){
+        
+        Element docEle = dom.getDocumentElement();
+
+        NodeList nl = docEle.getElementsByTagName("equipo");
+        if (nl != null && nl.getLength() > 0) {
+            for (int i = 0; i < nl.getLength(); i++) {
+                Element el = (Element) nl.item(i);
+                Equipo eq = getlEquipo(el);
+                lEquipo.add(eq);
+            }
         }
     }
     
-    private void leerDocumento(){
-        
-        Element docEle = dom.getDocumentElement();
-        NodeList nl = docEle.getElementsByTagName("equipo");
-        
-        if (nl != null && nl.getLength() > 0) {
-            for (int i = 0; i < nl.getLength(); i++) {
-                
-                Element el = (Element) nl.item(i);
-                
-                Equipo e = getEquipo(el);
-                
-                equipos.add(e);
-            }
-    }
-}
+    private void crearDOM(){
     
-    private Equipo getEquipo (Element elem){
+        Element rootEle = dom.createElement("clasificacion");
+        dom.appendChild(rootEle);
         
-        int idEquipo = Integer.parseInt(elem.getAttribute("id_equipo")); 
-        String nombre = getTextValue(elem, "nombre");
-        int puntuacion = getIntValue(elem, "puntuacion");
+        Element fechaExp = dom.createElement("equipo");
+        Text fe = dom.createTextNode("HOOOOOOOOOOLLLLLLLLLAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        fechaExp.appendChild(fe);
+        rootEle.appendChild(fechaExp);
         
-        Equipo e = new Equipo(idEquipo, puntuacion, nombre);
-        
-        return e;
+        Iterator it = lEquipo.iterator();
+        while (it.hasNext()) {
+            Equipo b = (Equipo) it.next();
+            Element aEle = crearEquipo(b);
+            rootEle.appendChild(aEle);
+        }
     }
     
+    private Element crearEquipo(Equipo eq) {
+
+        Element aEle = dom.createElement("equipo");
+        aEle.setAttribute("id_equipo", String.valueOf(eq.getIdEquipo()));
+
+        
+        /*
+        Element idEq = dom.createElement("idEquipo");
+        Text ide = dom.createTextNode(eq.getNombre());
+        idEq.appendChild(ide);
+        aEle.appendChild(idEq);
+        */
+        
+        Element nomEle = dom.createElement("Nombre");
+        Text nomT = dom.createTextNode(eq.getNombre());
+        nomEle.appendChild(nomT);
+        aEle.appendChild(nomEle);
+
+        Element comEle = dom.createElement("comentario");
+        Text ae = dom.createTextNode(eq.getComentario());
+        comEle.appendChild(ae);
+        aEle.appendChild(comEle);
+        
+        Element pEle = dom.createElement("puntuacion");
+        Text pe = dom.createTextNode(String.valueOf(eq.getPuntuacion()));
+        pEle.appendChild(pe);
+        aEle.appendChild(pEle);
+        
+        Element vEle = dom.createElement("visitante");
+        Text ve = dom.createTextNode(eq.getVisitante());
+        vEle.appendChild(ve);
+        aEle.appendChild(vEle);
+
+        return aEle;
+
+    }
+
+    private void crearXML(){
+        OutputFormat format = new OutputFormat(dom);
+        format.setIndenting(true);
+        XMLSerializer serializer;
+        try {
+            serializer = new XMLSerializer(new FileOutputStream(new File("../XML/XML-Clasificacion.xml")), format);
+            serializer.serialize(dom);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DOMClasificacion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(DOMClasificacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public Equipo getlEquipo(Element e1) {
+        int idEquipo = Integer.parseInt(e1.getAttribute("id_equipo"));
+        String nombre = getTextValue(e1, "nombre");
+        String comentario = getTextValue(e1, "comentario");
+        int puntuacion = getIntValue(e1, "puntuacion");
+        String visitante = getTextValue(e1, "visitante");
+        Equipo eq = new Equipo(idEquipo, nombre, comentario, puntuacion, visitante);
+
+        return eq;
+    }
+
     private String getTextValue(Element ele, String tagName) {
         String textVal = null;
         NodeList nl = ele.getElementsByTagName(tagName);
@@ -130,35 +184,10 @@ public class DOMClasificacion {
 
         return textVal;
     }
-
+    
     private int getIntValue(Element ele, String tagName) {
-
+        //in production application you would catch the exception
         return Integer.parseInt(getTextValue(ele, tagName));
-        
     }
-    
-    private void mostrarDocumento(){
-        
-        System.out.println("Equipos de la clasificacion"+ equipos.size());
-        
-        Iterator it = equipos.iterator();
-        while(it.hasNext()){
-            System.out.println(it.next().toString());
-        }
-    }
-    
-    private void printToFile(){
-        try {
-             OutputFormat format = new OutputFormat(dom);
-            format.setIndenting(true);
 
-            XMLSerializer serializer = new XMLSerializer(
-                    new FileOutputStream(new File("../../xml/Clasificacion/XML-Clasificacion.xml")), format);
-
-            serializer.serialize(dom);
-        } catch (IOException ie) {
-             ie.printStackTrace();
-        }
-    }
-    
 }
