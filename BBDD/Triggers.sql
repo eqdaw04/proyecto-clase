@@ -14,7 +14,7 @@ INSERT OR UPDATE OF Id_equipo, Sueldo ON JUGADOR FOR EACH ROW
  Pkg_triggers.New_jug.Id_equipo := :new.Id_equipo;
  Pkg_triggers.New_jug.Sueldo := :new.Id_equipo; 
  END;
-
+/
 ------------TRIGGER 1
 --Declaramos el trigger para que se ejecute depués de una sentencia insert o update que afecte a la columna Id_equipo en la tabla Jugador
 CREATE OR REPLACE TRIGGER Ins_jug AFTER
@@ -31,7 +31,7 @@ BEGIN
       END IF;
 
 END;
-
+/
 ------------TRIGGER 2
 --Declaramos el trigger para que se ejecute depués de una sentencia insert o update que afecte a las columnas Id_equipo o Sueldo en la tabla Jugador
 CREATE OR REPLACE TRIGGER Salario_max AFTER
