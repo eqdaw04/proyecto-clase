@@ -159,14 +159,8 @@ public class VModificarEquipo extends javax.swing.JFrame {
             if(Main.AnnadirJugadorEquipo(liJugDisp.getSelectedValue(),String.valueOf(e.getIdEquipo()))){
                 JOptionPane.showMessageDialog(this, "Jugador añadido exitosamente");
                 rellenar();
-<<<<<<< Updated upstream:Programa/E_Sport/src/Views/VModificarEquipo.java
-            } catch (Exception ex) {
-                Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("AÑADIR");
-=======
->>>>>>> Stashed changes:Programa/E_Sport/src/Views/ModificarEquipo.java
             }
-        } catch (SQLException e){
+        }  catch (SQLException e){
                switch(e.getErrorCode()){
                    case 20001:
                     JOptionPane.showMessageDialog(this, new Excepcion(28).getMessage());
@@ -175,8 +169,10 @@ public class VModificarEquipo extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, new Excepcion(29).getMessage());
                        break;
                }
-        } catch (Exception ex) {
-            Logger.getLogger(ModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
+        }catch (Exception ex) {
+                Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("AÑADIR");
+
         }
         bAnnadir.setEnabled(false);
     }//GEN-LAST:event_bAnnadirActionPerformed
