@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author usuario
  */
-public class ModificarEquipo extends javax.swing.JFrame {
+public class VModificarEquipo extends javax.swing.JFrame {
 
     /**
      * Creates new form ModificarEquipo
@@ -30,7 +30,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
     //array de jugadores disponibles
     private static ArrayList<Jugador> jDisp;
             
-    public ModificarEquipo(String usu) throws Exception {
+    public VModificarEquipo(String usu) throws Exception {
         initComponents();
         setVisible(true);
         this.setLocationRelativeTo(null);
@@ -39,7 +39,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
         rellenar();
     }
 
-    private ModificarEquipo() {
+    private VModificarEquipo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -87,7 +87,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
         jScrollPane1.setViewportView(liJugEqui);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(62, 170, 259, 214);
+        jScrollPane1.setBounds(62, 170, 258, 214);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setText("Jugadores en el equipo:");
@@ -104,7 +104,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
         jScrollPane2.setViewportView(liJugDisp);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(509, 170, 259, 214);
+        jScrollPane2.setBounds(509, 170, 258, 214);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setText("Sueldo del jugador:");
@@ -160,7 +160,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
             try {
                 rellenar();
             } catch (Exception ex) {
-                Logger.getLogger(ModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("AÑADIR");
             }
         }else{
@@ -174,7 +174,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
             try {
                 rellenar();
             } catch (Exception ex) {
-                Logger.getLogger(ModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("ELIMINAR");
             }
         }else{
@@ -221,7 +221,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
             }
             liJugEqui.setModel(model);
         } catch (Exception ex) {
-            Logger.getLogger(ModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     private void rellenar2(){
@@ -235,7 +235,7 @@ public class ModificarEquipo extends javax.swing.JFrame {
             }
             liJugDisp.setModel(modelo);
         } catch (Exception ex) {
-            Logger.getLogger(ModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

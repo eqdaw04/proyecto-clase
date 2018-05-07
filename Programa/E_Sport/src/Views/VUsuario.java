@@ -14,25 +14,25 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class VUsuario extends javax.swing.JDialog {
-
-    private int tipo, contador;
+    private String tipo;
+    private int n, contador;
     /**
      * Creates new form VUsuario
      */
 
     ArrayList <Persona> lPersona;
     
-    public VUsuario(String tipo) {
+    public VUsuario(String tipo, int n) {
         initComponents();
-        setModal(true);
-        setLocationRelativeTo(null);
         //mostrar opciones según tipo de operaciones CRUD que se quiera realizar
-        cargarDatos(tipo);
-        setVisible(true);
-        
+        cargarDatos(tipo, n);
     }
     
-    private void cargarDatos(String tipo){
+    private void cargarDatos(String tipo, int n){
+        this.n = n;
+        this.tipo = tipo;
+        setModal(true);
+        setLocationRelativeTo(null);
         try{
             cbPerfil.removeAllItems();
             ArrayList <Perfil> listaPerfil = new ArrayList();
@@ -46,30 +46,17 @@ public class VUsuario extends javax.swing.JDialog {
         }
         cbPerfil.setSelectedIndex(-1);
         lPersona = new ArrayList();
-        switch(tipo)
-        {
-            case "alta":
-                this.tipo = 1;
-                tfNombre.setEnabled(true);
-                pfContrasenna.setEnabled(true);
-                tfApellido1.setEnabled(true);
-                tfApellido2.setEnabled(true);
-                tfEmail.setEnabled(true);
-                cbPerfil.setEnabled(true);
-                bAceptar.setEnabled(true);
-                bBuscar.setEnabled(false);
-                break;
-            case "baja":
-                this.tipo = 3;
-                break;
-            case "modificacion":
-                this.tipo = 2;
-                break;
-                
-            case "listado":
-                this.tipo = 4;
-                break;
+        if(tipo.equals("alta")){
+            tfNombre.setEnabled(true);
+            pfContrasenna.setEnabled(true);
+            tfApellido1.setEnabled(true);
+            tfApellido2.setEnabled(true);
+            tfEmail.setEnabled(true);
+            cbPerfil.setEnabled(true);
+            bAceptar.setEnabled(true);
+            bBuscar.setEnabled(false);
         }
+        setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -326,7 +313,7 @@ public class VUsuario extends javax.swing.JDialog {
             2. para evitar el acceso constante a la bbdd, ya que lo primero es validar los datos en java
             */
             switch(tipo){
-                case 1:
+                case "alta":
                     // comprobar todos los campos si los datos introducidos cumple con las validaciones 
                     comprobacion();
                     p = Main.consultarPersona(tfUsuario.getText());
@@ -334,7 +321,7 @@ public class VUsuario extends javax.swing.JDialog {
                     alta(p);
                     break;
                     
-                case 2:
+                case "modificacion":
                     // comprobar todos los campos si los datos introducidos cumple con las validaciones
                     comprobacion();
                     p = Main.consultarPersona(tfUsuario.getText());
@@ -342,7 +329,7 @@ public class VUsuario extends javax.swing.JDialog {
                     modificacion(p);
                     break;
                     
-                case 3:
+                case "baja":
                     // proceder a la eliminación de la persona
                     p = Main.consultarPersona(tfUsuario.getText());
                     baja(p);
@@ -350,7 +337,7 @@ public class VUsuario extends javax.swing.JDialog {
             }
         }
         catch (Excepcion e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
         }
         catch (Exception e)
         {
@@ -385,7 +372,7 @@ public class VUsuario extends javax.swing.JDialog {
         // mandar al main para proceder al alta
         Main.altaPersona(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), ccFechaAlta.getDate(), String.valueOf(cbPerfil.getSelectedItem()));
         JOptionPane.showMessageDialog(this, "El usuario se ha dado de alta correctamente.");
-        Main.cerrar(this);
+        Main.reabrir(this, tipo, n);
     }
     
     private void modificacion(Persona p) throws Exception{
@@ -397,7 +384,7 @@ public class VUsuario extends javax.swing.JDialog {
         //mandar al main para modificar el usuario con los nuevos datos
         Main.modificarPersona(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), String.valueOf(cbPerfil.getSelectedItem()));
         JOptionPane.showMessageDialog(this, "El usuario se ha dado modificado correctamente.");
-        Main.cerrar(this);
+        Main.reabrir(this, tipo, n);
     }
     
     private void baja(Persona p) throws Exception{
@@ -410,7 +397,7 @@ public class VUsuario extends javax.swing.JDialog {
             // mandar al main para proceder a la baja
             Main.bajaPersona(tfUsuario.getText());
             JOptionPane.showMessageDialog(this, "El usuario se ha dado de baja correctamente.");
-            Main.cerrar(this);
+            Main.reabrir(this, tipo, n);
         }
         catch(SQLException e){
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -425,38 +412,49 @@ public class VUsuario extends javax.swing.JDialog {
 
     private void bPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrimeroActionPerformed
         // cargar el primer registro
-        JOptionPane.showMessageDialog(this, "Este es el primer registro");
         contador = 0;
         mostrarDatos(lPersona.get(contador));
+        bSiguiente.setEnabled(true);
+        bUltimo.setEnabled(true);
+        bPrimero.setEnabled(false);
+        bAnterior.setEnabled(false);
+        
+        
     }//GEN-LAST:event_bPrimeroActionPerformed
 
     private void bAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnteriorActionPerformed
         // retroceder un registro
+        contador--;
+        mostrarDatos(lPersona.get(contador));
         if(contador == 0){
-            JOptionPane.showMessageDialog(this, "Este es el primer registro");
+            bSiguiente.setEnabled(true);
+            bUltimo.setEnabled(true);
+            bPrimero.setEnabled(false);
+            bAnterior.setEnabled(false);
         }
-        else{
-            contador--;
-            mostrarDatos(lPersona.get(contador));
-        }
+        
     }//GEN-LAST:event_bAnteriorActionPerformed
 
     private void bSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSiguienteActionPerformed
         // avanzar un registro
+        contador++;
+        mostrarDatos(lPersona.get(contador));
         if(contador == lPersona.size()-1){
-            JOptionPane.showMessageDialog(this, "Este es el último registro");
-        }
-        else{
-            contador++;
-            mostrarDatos(lPersona.get(contador));
+            bSiguiente.setEnabled(false);
+            bUltimo.setEnabled(false);
+            bPrimero.setEnabled(true);
+            bAnterior.setEnabled(true);
         }
     }//GEN-LAST:event_bSiguienteActionPerformed
 
     private void bUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUltimoActionPerformed
         // cargar el último registro
-        JOptionPane.showMessageDialog(this, "Este es el último registro");
         contador = lPersona.size()-1;
         mostrarDatos(lPersona.get(contador));
+        bSiguiente.setEnabled(false);
+        bUltimo.setEnabled(false);
+        bPrimero.setEnabled(true);
+        bAnterior.setEnabled(true);
     }//GEN-LAST:event_bUltimoActionPerformed
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
@@ -465,8 +463,6 @@ public class VUsuario extends javax.swing.JDialog {
         {
             // comprobar si el administrador ha rellenado el campo Usuario y cargar únicamente ese usuario, en caso contrario, array de todos los usuarios.
             if(tfUsuario.getText().equals("")){
-                bPrimero.setEnabled(true);
-                bAnterior.setEnabled(true);
                 bSiguiente.setEnabled(true);
                 bUltimo.setEnabled(true);
                 lPersona = Main.consultarTodasLasPersonas();
@@ -483,7 +479,7 @@ public class VUsuario extends javax.swing.JDialog {
                 mostrarDatos(p);
             }
             // habilitar los campos si se ha accedido como modificación
-            if(tipo == 2){
+            if(tipo.equals("modificacion")){
                 tfNombre.setEnabled(true);
                 tfApellido1.setEnabled(true);
                 tfApellido2.setEnabled(true);
@@ -494,7 +490,7 @@ public class VUsuario extends javax.swing.JDialog {
             bAceptar.setEnabled(true);
         }
         catch (Excepcion e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getClass());
@@ -521,8 +517,6 @@ public class VUsuario extends javax.swing.JDialog {
         {
             tfEquipo.setVisible(true);
         }
-        Equipo eq = null;
-        //eq = Main.consultarEquipoPorUsuario(p.getUsuario());          REVISARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
         if(p.getEquipo() != null){
             tfEquipo.setText(p.getEquipo().getNombre());
         }      

@@ -14,14 +14,15 @@ import javax.swing.JTextField;
  *
  * @author v6222
  */
-public class Login extends javax.swing.JFrame {
+public class VLogin extends javax.swing.JFrame {
 
     int error, cont = 0;
     
-    public Login() {
+    public VLogin() {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
+        jTextField1.grabFocus();
     }
 
     /**
@@ -50,6 +51,8 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setText("Usuario:");
 
+        tfUsuario.setText("usu");
+
         jLabel3.setText("Contraseña:");
 
         bAcceder.setText("Acceder");
@@ -66,9 +69,21 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        pfContrasenna.setText("sus");
+
+        jTextField1.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextField1CaretUpdate(evt);
+            }
+        });
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
             }
         });
 
@@ -152,7 +167,7 @@ public class Login extends javax.swing.JFrame {
         {
             pfContrasenna.setText("");
             pfContrasenna.grabFocus();
-            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)");
+            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
         }
         catch (Exception e)
         {
@@ -194,8 +209,46 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_bSalirActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            if (tfUsuario.getText().isEmpty())
+            {
+                throw new Excepcion(1);
+            }
+            else if (String.copyValueOf(pfContrasenna.getPassword()).isEmpty())
+            {
+                throw new Excepcion(2);
+            }
+            else{
+                
+                Main.accederPrincipal(tfUsuario.getText(), pfContrasenna.getPassword(), Integer.parseInt(jTextField1.getText()) );
+            }
+        }
+        catch (Excepcion e)
+        {
+            pfContrasenna.setText("");
+            pfContrasenna.grabFocus();
+            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
+        }
+        catch (Exception e)
+        {
+            javax.swing.JOptionPane.showMessageDialog(this, e.getClass());
+        }
+        finally{
+            if(error == 13){
+                Main.salir(this);
+            }
+        }
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1CaretUpdate
+        
+    }//GEN-LAST:event_jTextField1CaretUpdate
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1KeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAcceder;

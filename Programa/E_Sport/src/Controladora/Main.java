@@ -37,7 +37,7 @@ public class Main {
     private static BDPersona bdPersona;
     private static Persona persona;
     private static int perfil;
-    private static Login login;
+    private static VLogin login;
     private static String driver, url, usuario, contrasenna;
     
     
@@ -49,7 +49,7 @@ public class Main {
         //construccion de la ruta completa.
         inicializarValores();
         
-        login = new Login();
+        login = new VLogin();
         //new Principal();
     }
     
@@ -64,8 +64,8 @@ public class Main {
     }
     
     //---------- JON XU JIN ----------
-    
-    public static void accederPrincipal(String usuario, char[] contrasenna, int numero) throws Exception{
+
+        public static void accederPrincipal(String usuario, char[] contrasenna, int numero) throws Exception{
         //datos del usuario y servidor
         String tipo = "oracle",
         servidor = "10.10.10.9",//"localhost"
@@ -99,7 +99,7 @@ public class Main {
         else if(Arrays.equals(persona.getContrasenna().toCharArray(), contrasenna)){
             perfil = persona.getPerfil().getIdPerfil();
             login.dispose();
-            new Principal(perfil,persona.getUsuario());
+            new VPrincipal(perfil,persona.getUsuario());
         }
         else if(cont <3){
             throw new Excepcion(12);
@@ -107,8 +107,8 @@ public class Main {
             login.setError(13);
             throw new Excepcion(13);
         }
-    }
-    
+}
+        
     //---------- JON XU JIN ----------
     
     public static void abrirVentana(int n, String tipo) throws Exception{
@@ -123,11 +123,15 @@ public class Main {
                 break;
                 
             case 3:
-                new VUsuario(tipo);
+                new VUsuario(tipo, n);
                 break;
 
             case 5:
-                new ModificarEquipo(tipo);
+                new VModificarEquipo(tipo);
+                break;
+                
+            case 6:
+                new VIntroducirResultado(n);
                 break;
         }
     }
@@ -142,23 +146,27 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static void reabrir(JDialog v, String tipo, int n) throws Exception {
-        // Cierra la ventana abierta
+        // Cierra la ventana abierta para volver a abrir según tipo de ventana cerrada
         v.dispose();
         switch(n){
             case 1:
-                new VJugador(tipo);
+                new VJugador(tipo, n);
                 break;
                 
             case 2:
-                new VEquipo(tipo);
+                new VEquipo(tipo, n);
                 break;
                 
             case 3:
-                new VUsuario(tipo);
+                new VUsuario(tipo, n);
                 break;
                 
             case 5:
-                new ModificarEquipo(tipo);
+                new VModificarEquipo(tipo, n);
+                break;
+                
+            case 6:
+                new VIntroducirResultado(n);
                 break;
         }
     }
@@ -175,7 +183,7 @@ public class Main {
     public static void cerrarSesion(JFrame v){
         //salir del programa
         v.dispose();
-        login = new Login();
+        login = new VLogin();
     }
     
     //---------- JON XU JIN ----------
@@ -280,11 +288,11 @@ public class Main {
         Main.perfil = perfil;
     }
 
-    public static Login getLogin() {
+    public static VLogin getLogin() {
         return login;
     }
 
-    public static void setLogin(Login login) {
+    public static void setLogin(VLogin login) {
         Main.login = login;
     }
 
@@ -500,7 +508,4 @@ public class Main {
     public static String buscarEquipoDuenno() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    
-
 }

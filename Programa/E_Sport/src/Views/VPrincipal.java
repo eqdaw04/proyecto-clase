@@ -14,13 +14,13 @@ import javax.swing.JFrame;
  *
  * @author v6222
  */
-public class Principal extends javax.swing.JFrame {
+public class VPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form Principal
      */
     
-    public Principal(int tipo,String usuario) {
+    public VPrincipal(int tipo,String usuario) {
         initComponents();
         setLocationRelativeTo(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -297,7 +297,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(1, "alta");
         } catch (Exception ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_crearJugadorActionPerformed
 
@@ -305,7 +305,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(2, "alta");
         } catch (Exception ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_crearEquipoActionPerformed
 
@@ -313,7 +313,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(3, "alta");
         } catch (Exception ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_crearUsuarioActionPerformed
 
@@ -321,7 +321,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(1, "modificacion");
         } catch (Exception ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_modificarJugadorActionPerformed
 
@@ -329,7 +329,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(2, "modificacion");
         } catch (Exception ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_modificarEquipoActionPerformed
 
@@ -337,7 +337,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(3, "modificacion");
         } catch (Exception ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_modificarUsuarioActionPerformed
 
@@ -345,7 +345,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(1, "baja");
         } catch (Exception ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_eliminarJugadorActionPerformed
 
@@ -353,7 +353,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(2, "baja");
         } catch (Exception ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_eliminarEquipoActionPerformed
 
@@ -361,7 +361,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(3, "baja");
         } catch (Exception ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_eliminarUsuarioActionPerformed
 
@@ -369,7 +369,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(1, "listado");
         } catch (Exception ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_verJugadorActionPerformed
 
@@ -377,7 +377,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(2, "listado");
         } catch (Exception ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_verEquipoActionPerformed
 
@@ -385,21 +385,25 @@ public class Principal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(3, "listado");
         } catch (Exception ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_verUsuarioActionPerformed
 
     private void introducirResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_introducirResultadosActionPerformed
-        // TODO add your handling code here:
-        // Método para comprobar si se ha generado el calendario.
-        // Abrir ventana
+        // Abrir la ventana para la introduccion de los resultados de los partidos
+        
+        try {
+            Main.abrirVentana(6, "resultado");
+        } catch (Exception ex) {
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_introducirResultadosActionPerformed
 
     private void altasBajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altasBajasActionPerformed
         try {
             Main.abrirVentana(4, "");
         } catch (Exception ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_altasBajasActionPerformed
 
@@ -421,7 +425,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(5, NombreUsu.getText());
         } catch (Exception ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 

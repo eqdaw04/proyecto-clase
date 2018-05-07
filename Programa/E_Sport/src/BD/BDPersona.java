@@ -50,6 +50,7 @@ public class BDPersona {
             p.setContrasenna(rs.getString(7));
             p.setEmail(rs.getString(8));
             p.setPerfil(Main.consultarPerfil(rs.getInt(9)));
+            p.setEquipo(Main.ConsultarEquipoPorUsuario(p.getUsuario()));
         }
         // cerrar conexiones y retornar objeto obtenido mediante consulta
         rs.close();

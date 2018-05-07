@@ -326,6 +326,7 @@ public class VJugador extends javax.swing.JDialog {
                    Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
                }
            }
+           JOptionPane.showMessageDialog(this, "Proceso realizado correctamente.");
        }
        catch (Excepcion e)
        {

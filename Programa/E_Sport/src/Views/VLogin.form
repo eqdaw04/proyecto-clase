@@ -106,6 +106,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfUsuario">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="usu"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -129,10 +132,15 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="pfContrasenna">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="sus"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField1">
       <Events>
+        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="jTextField1CaretUpdate"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField1KeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
