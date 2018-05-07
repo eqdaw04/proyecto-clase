@@ -352,7 +352,7 @@ public class Main {
     }
     
     // Imanol Luis
-    public static void modificarJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String comentario, String sueldo) throws Exception {
+    public static void modificarJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String sueldo, String comentario) throws Exception {
         // Modificar jugador en la BD
         Jugador jugador=new Jugador();
         jugador.setDni(dni);
