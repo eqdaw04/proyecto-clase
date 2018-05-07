@@ -3,7 +3,6 @@ package Views;
 import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
-import Recurso.ValidacionDeDatosDeEntrada;
 import UML.Equipo;
 import java.util.ArrayList;
 
@@ -212,10 +211,10 @@ public class VEquipo extends javax.swing.JDialog {
         // TODO add your handling code here:
         try
         {
-            // comprobar si se ha accedido con la opción de lsiatado, en caso afirmativo, cargar un list interno para poder recorrer con los botones de dirección
+            // Comprobar si se ha accedido con la opción de lsiatado, en caso afirmativo, cargar un list interno para poder recorrer con los botones de dirección
             if(tipo.equals("listado"))
             {
-                // habilitar botones de recorrer si el nombre está vacío, en caso contrario, localizar el equipo en concreto.
+                // Habilitar botones de recorrer si el nombre está vacío, en caso contrario, localizar el equipo en concreto.
                 if(tfNombre.getText().isEmpty())
                 {
                     listaEquipos = Main.buscarEquipo();
@@ -235,14 +234,14 @@ public class VEquipo extends javax.swing.JDialog {
                 }
                 else
                 {
-                    // validar si el nombre escrito es correcto y si existe en la bbdd
+                    // Validar si el nombre escrito es correcto y si existe en la bbdd
                     validarNombre();
                     buscarEquipo(tfNombre.getText());
                 }
             }
             else
             {
-                // validar si el nombre escrito es correcto y si existe en la bbdd, si existe, mostrar datos y permitir su modificación
+                // Validar si el nombre escrito es correcto y si existe en la bbdd, si existe, mostrar datos y permitir su modificación
                 validarNombre();
                 buscarEquipo(tfNombre.getText());
                 if(tipo.equals("modificacion"))
@@ -250,7 +249,6 @@ public class VEquipo extends javax.swing.JDialog {
                     taComentario.setEnabled(true);
                 }
                 bAceptar.setEnabled(true);
-                tfNombre.setEnabled(false);
             }
         }
         catch (Excepcion e)
@@ -437,20 +435,22 @@ public class VEquipo extends javax.swing.JDialog {
     
     private void validarNombre() throws Exception {
         // Validar nombre para ver si existe algún equipo con ese nombre
-        ValidacionDeDatosDeEntrada.validar(4, tfNombre);
-        
+        if(tfNombre.getText().isEmpty())
+        {
+            throw new Excepcion(50);
+        }
         if(tipo.equals("alta"))
         {
-            //comprobar si existe nombre, en caso contrario, no generar error
+            // Comprobar si existe un equipo con ese nombre
             if(Main.buscarEquipo(tfNombre.getText()).getNombre().isEmpty())
             {
                 throw new Excepcion(19);
             }
         }
-        // Validar nombre para ver si no existe algún nombre con ese número
+        // Validar nombre para ver si no existe algún equipo con ese nombre
         else
         {
-            //comprobar si existe nombre, en caso afirmativo no generar error
+            // Comprobar si no existe un equipo con ese nombre
             if(!Main.buscarEquipo(tfNombre.getText()).getNombre().isEmpty())
             {
                 throw new Excepcion(20);

@@ -149,6 +149,9 @@ public class Excepcion extends Exception {
             case 31:
                 dato = "Has alcanzado el límite de 6 jugadores. Por favor retira un jugador antes de añadir uno nuevo";
                 break;
+            case 50:
+                dato = "El nombre del equipo es obligatorio.";
+                break;
         }
         return dato;
     }
