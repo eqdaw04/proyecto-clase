@@ -150,9 +150,9 @@ public class VEquipo extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(bPrimero)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bAnterior)
-                                .addGap(24, 24, 24)
+                                .addGap(28, 28, 28)
                                 .addComponent(bSiguiente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bUltimo))
@@ -428,7 +428,6 @@ public class VEquipo extends javax.swing.JDialog {
         listaEquipos = new ArrayList();
         if(tipo.equals("alta"))
         {
-            tfNombre.setEnabled(true);
             taComentario.setEnabled(true);
             bAceptar.setEnabled(true);
             bBuscar.setEnabled(false);
