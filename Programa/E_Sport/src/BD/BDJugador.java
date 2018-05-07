@@ -46,7 +46,6 @@ public class BDJugador {
         {
             PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Dni = ?");
             sentencia.setString(1,dni);
-            sentencia.executeUpdate();
             ResultSet rs = sentencia.executeQuery();
             a = recorrer(rs,a);
         }
@@ -197,15 +196,14 @@ public class BDJugador {
     
     public static void modificarJugador(Jugador j) throws Exception {
         BDConexion con = new BDConexion();
-        PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET NOMBRE=?, APELLIDO1=?, APELLIDO2=?, NICKNAME=?, SUELDO=?, FECHA_ALTA=?, COMENTARIO=? WHERE DNI=?");
-        sentencia.setString(1, j.getDni());
-        sentencia.setString(2, j.getNombre());
-        sentencia.setString(3, j.getApellido1());
-        sentencia.setString(4, j.getApellido2());
-        sentencia.setString(5, j.getNickname());
-        sentencia.setFloat(6, j.getSueldo());
-        sentencia.setDate(7, formatearFecha(j.getFechaAlta()));
-        sentencia.setString(8, j.getComentario());                    
+        PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET NOMBRE=?, APELLIDO1=?, APELLIDO2=?, NICKNAME=?, SUELDO=?, COMENTARIO=? WHERE DNI=?");
+        sentencia.setString(1, j.getNombre());
+        sentencia.setString(2, j.getApellido1());
+        sentencia.setString(3, j.getApellido2());
+        sentencia.setString(4, j.getNickname());
+        sentencia.setFloat(5, j.getSueldo());
+        sentencia.setString(6, j.getComentario());
+        sentencia.setString(7, j.getDni());                          
         if(sentencia.executeUpdate()!=1)
         {
             throw new Excepcion(25);

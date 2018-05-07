@@ -140,7 +140,7 @@ public class Excepcion extends Exception {
                 break;
                 
             case 28:
-                dato = "";
+                dato = "No hay equipos en la base de datos";
                 break;
         }
         return dato;

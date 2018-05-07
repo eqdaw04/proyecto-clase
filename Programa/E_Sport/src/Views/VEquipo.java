@@ -4,19 +4,19 @@ import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
 import Recurso.ValidacionDeDatosDeEntrada;
-import java.util.Calendar;
 import UML.Equipo;
-import java.util.Date;
+import java.util.ArrayList;
 
 public class VEquipo extends javax.swing.JDialog {
     
-    private boolean alta, baja, modificacion, listado; 
+    private boolean alta, baja, modificacion, listado;
+    private ArrayList<Equipo> listaEquipos;    
+    private int posicion;
 
     public VEquipo(String tipo) {
         initComponents();
         setModal(true);
         setLocationRelativeTo(null);
-        setVisible(true);
         //anular todas las ventanas y activar únicamente una según opción de entrada
         alta=false;
         baja=false;
@@ -39,8 +39,10 @@ public class VEquipo extends javax.swing.JDialog {
                 break;
             case "listado":
                 listado=true;
+                posicion=0;
                 break;
         }
+        setVisible(true);
     }
 
     /**
@@ -242,29 +244,40 @@ public class VEquipo extends javax.swing.JDialog {
                 // habilitar botones de recorrer si el nombre está vacío, en caso contrario, localizar el equipo en concreto.
                 if(tfNombre.getText().isEmpty())
                 {
-                    bPrimero.setEnabled(true);
-                    bAnterior.setEnabled(true);
-                    bSiguiente.setEnabled(true);
-                    bUltimo.setEnabled(true);
+                    listaEquipos = Main.buscarEquipo();
+                    if(listaEquipos.size()>1)
+                    {
+                        bSiguiente.setEnabled(true);
+                        bUltimo.setEnabled(true);
+                    }
+                    else
+                    {
+                        if(listaEquipos.size()==0)
+                        {
+                            throw new Excepcion(28);
+                        }
+                    }
+                    seleccionarEquipo();
                 }
                 else
                 {
                     // validar si el nombre escrito es correcto y si existe en la bbdd
                     validarNombre();
+                    buscarEquipo(tfNombre.getText());
                 }
-                mostrarDatos();
             }
             else
             {
                 // validar si el nombre escrito es correcto y si existe en la bbdd, si existe, mostrar datos y permitir su modificación
                 validarNombre();
-                mostrarDatos();
+                buscarEquipo(tfNombre.getText());
                 if(modificacion)
                 {
                     taComentario.setEnabled(true);
                 }
                 bAceptar.setEnabled(true);
             }
+            tfNombre.setEnabled(false);
         }
         catch (Excepcion e)
         {
@@ -272,7 +285,7 @@ public class VEquipo extends javax.swing.JDialog {
         }
         catch (Exception e)
         {
-            JOptionPane.showMessageDialog(this, e.getClass());
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_bBuscarActionPerformed
 
@@ -296,10 +309,7 @@ public class VEquipo extends javax.swing.JDialog {
                 }
                 else
                 {
-                    if(modificacion)
-                    {
-                        Main.modificarEquipo(tfNombre.getText(), taComentario.getText());
-                    }
+                    Main.modificarEquipo(tfNombre.getText(), taComentario.getText());
                 }
             }
         }
@@ -309,7 +319,7 @@ public class VEquipo extends javax.swing.JDialog {
         }
         catch (Exception e)
         {
-            JOptionPane.showMessageDialog(this, e.getClass());
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         }
 
     }//GEN-LAST:event_bAceptarActionPerformed
@@ -321,18 +331,92 @@ public class VEquipo extends javax.swing.JDialog {
 
     private void bPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrimeroActionPerformed
         // TODO add your handling code here:
+        try
+        {
+            posicion=0;
+            seleccionarEquipo();
+            bSiguiente.setEnabled(true);
+            bUltimo.setEnabled(true);
+            bPrimero.setEnabled(false);
+            bAnterior.setEnabled(false);
+        }
+        catch (Excepcion e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
+        }
     }//GEN-LAST:event_bPrimeroActionPerformed
 
     private void bAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnteriorActionPerformed
         // TODO add your handling code here:
+        try
+        {
+            posicion=posicion-1;
+            seleccionarEquipo();
+            bSiguiente.setEnabled(true);
+            bUltimo.setEnabled(true);
+            if(posicion==0)
+            {
+                bPrimero.setEnabled(false);
+                bAnterior.setEnabled(false);
+            }
+        }
+        catch (Excepcion e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
+        }
     }//GEN-LAST:event_bAnteriorActionPerformed
 
     private void bSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSiguienteActionPerformed
         // TODO add your handling code here:
+        try
+        {
+            posicion=posicion+1;
+            seleccionarEquipo();
+            bAnterior.setEnabled(true);
+            bPrimero.setEnabled(true);
+            if(posicion==(listaEquipos.size()-1))
+            {
+                bSiguiente.setEnabled(false);
+                bUltimo.setEnabled(false);
+            }
+        }
+        catch (Excepcion e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
+        }
     }//GEN-LAST:event_bSiguienteActionPerformed
 
     private void bUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUltimoActionPerformed
         // TODO add your handling code here:
+        try
+        {
+            posicion=listaEquipos.size()-1;     
+            seleccionarEquipo();
+            bAnterior.setEnabled(true);
+            bPrimero.setEnabled(true);
+            bSiguiente.setEnabled(false);
+            bUltimo.setEnabled(false);
+        }
+        catch (Excepcion e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
+        }
     }//GEN-LAST:event_bUltimoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -363,7 +447,7 @@ public class VEquipo extends javax.swing.JDialog {
         if(alta)
         {
             //comprobar si existe nombre, en caso contrario, no generar error
-            if(Main.buscarNombreEquipo(tfNombre.getText()))
+            if(Main.buscarEquipo(tfNombre.getText()).getNombre().isEmpty())
             {
                 throw new Excepcion(19);
             }
@@ -372,17 +456,34 @@ public class VEquipo extends javax.swing.JDialog {
         else
         {
             //comprobar si existe nombre, en caso afirmativo no generar error
-            if(!Main.buscarNombreEquipo(tfNombre.getText()))
+            if(!Main.buscarEquipo(tfNombre.getText()).getNombre().isEmpty())
             {
                 throw new Excepcion(20);
             }
         }
     }
     
-    private void mostrarDatos() throws Exception {
-        Equipo e =Main.buscarEquipo();
+    private void buscarEquipo(String equipo) throws Exception {
+        Equipo e = Main.buscarEquipo(equipo);
+        mostrarDatos(e);
+    }
+    
+    private void seleccionarEquipo() throws Exception {
+        Equipo e;
+        if(listaEquipos.size()>1)
+        {
+            e=listaEquipos.get(posicion);
+        }
+        else
+        {
+            e=listaEquipos.get(0);
+        }
+        mostrarDatos(e);
+    }
+    
+    private void mostrarDatos(Equipo e) throws Exception {
+        tfNombre.setText(e.getNombre());  
         cFechaCreacion.setDate(e.getFechaCreacion());
-        taPlantilla.setText(Main.buscarPlantilla());
         taComentario.setText(e.getComentario());
     }
 }

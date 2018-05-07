@@ -405,37 +405,41 @@ public class Main {
     public static boolean AnnadirJugadorEquipo(String nickname, String id) {
         return BDJugador.PonerJugadorEquipo(nickname,id);
     }
-    public static void altaEquipo(String nombre, Date fechaCreacion, String comentario) {
+    // Imanol Luis
+    public static void altaEquipo(String nombre, Date fechaCreacion, String comentario) throws Exception {
         // Insertar equipo en la BD
-        Equipo e = new Equipo();
-        e.setNombre(nombre);
-        e.setFechaCreacion(fechaCreacion);
-        e.setComentario(comentario);
+        Equipo equipo = new Equipo();
+        equipo.setNombre(nombre);
+        equipo.setFechaCreacion(fechaCreacion);
+        equipo.setComentario(comentario);
+        BDEquipo.insertarEquipo(equipo);
     }
 
-    public static void bajaEquipo(String nombre) {
+    // Imanol Luis
+    public static void bajaEquipo(String nombre) throws Exception {
         // Eliminar equipo en la BD
-        Equipo e = new Equipo();
-        e.setNombre(nombre);
+        Equipo equipo = new Equipo();
+        equipo.setNombre(nombre);
+        BDEquipo.eliminarEquipo(equipo);
     }
 
-    public static void modificarEquipo(String nombre, String comentario) {
+    // Imanol Luis
+    public static void modificarEquipo(String nombre, String comentario) throws Exception {
         // Modificar equipo en la BD
-        Equipo e = new Equipo();
-        e.setNombre(nombre);
-        e.setComentario(comentario);
+        Equipo equipo = new Equipo();
+        equipo.setNombre(nombre);
+        equipo.setComentario(comentario);
+        BDEquipo.modificarEquipo(equipo);
     }
 
-    public static boolean buscarNombreEquipo(String nombre) {
-        boolean existe = false;
-        // Buscar el nombre de equipo en la BD y retornar si existe
-        return existe;
+    // Imanol Luis
+    public static Equipo buscarEquipo(String equipo) throws Exception {
+        return BDEquipo.BuscarEquipo(equipo);
     }
 
-    public static Equipo buscarEquipo() {
-        Equipo e = null; // Variable global
-        // Buscar equipo y devolver datos para mostrarlos
-        return e;
+    // Imanol Luis
+    public static ArrayList<Equipo> buscarEquipo() throws Exception {
+        return BDEquipo.BuscarEquipo();
     }
 
     public static String buscarPlantilla() {
