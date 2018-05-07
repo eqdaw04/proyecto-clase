@@ -250,8 +250,8 @@ public class VEquipo extends javax.swing.JDialog {
                     taComentario.setEnabled(true);
                 }
                 bAceptar.setEnabled(true);
+                tfNombre.setEnabled(false);
             }
-            tfNombre.setEnabled(false);
         }
         catch (Excepcion e)
         {

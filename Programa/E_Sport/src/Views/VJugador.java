@@ -362,8 +362,8 @@ public class VJugador extends javax.swing.JDialog {
                     taComentario.setEnabled(true);
                 }
                 bAceptar.setEnabled(true);
+                tfDNI.setEnabled(false);
             }
-            tfDNI.setEnabled(false);
         }
        catch (Excepcion e)
        {
