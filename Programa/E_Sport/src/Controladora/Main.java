@@ -444,9 +444,24 @@ public class Main {
         return BDEquipo.BuscarEquipo();
     }
 
-    public static String buscarPlantilla() {
+    public static String buscarPlantilla(Equipo equipo) throws Exception {
         String plantilla="";
-        // Buscar todos los jugadores de un equipo y devolverlos en un String
+        
+        ArrayList<Jugador> listaJugadores=BDJugador.BuscarEqui(String.valueOf(equipo.getIdEquipo()));
+        
+        for(int x=0;x<listaJugadores.size();x++)
+        {
+            String dni, nombre, apellido1, apellido2, nickname;
+            
+            dni=listaJugadores.get(x).getDni();
+            nombre=listaJugadores.get(x).getNombre();
+            apellido1=listaJugadores.get(x).getApellido1();
+            apellido2=listaJugadores.get(x).getApellido2();
+            nickname=listaJugadores.get(x).getNickname();
+            
+            plantilla=plantilla + dni + " – " + nombre + " " + apellido1 + " " + apellido2 + " – " + nickname + "\n";
+        }
+        
         return plantilla;
     }
 

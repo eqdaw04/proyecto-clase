@@ -75,14 +75,13 @@ public class BDJugador {
     }
     
     public static ArrayList<Jugador> BuscarEqui(String id) throws Exception {
-       ResultSet rs = null;
        BDConexion con = new BDConexion();
        ArrayList<Jugador> a= new ArrayList();
         try {
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo = ?");
         sentencia.setString(1,id);
         sentencia.executeUpdate();
-        rs = sentencia.executeQuery();
+        ResultSet rs = sentencia.executeQuery();
         a= recorrer (rs,a);
         con.desconectar();
         } catch (SQLException ex) {
