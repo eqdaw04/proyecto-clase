@@ -142,6 +142,12 @@ public class Main {
         // Cierra la ventana abierta
         v.dispose();
     }
+    //-----Mikel
+    public static void cerrar2(JFrame v) {
+        // Cierra la ventana abierta
+        v.dispose();
+    }
+    
     
     //---------- JON XU JIN ----------
     
@@ -162,7 +168,7 @@ public class Main {
                 break;
                 
             case 5:
-                new VModificarEquipo(tipo, n);
+                new VModificarEquipo(tipo);
                 break;
                 
             case 6:
@@ -520,4 +526,6 @@ public class Main {
     public static String buscarEquipoDuenno() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
 }

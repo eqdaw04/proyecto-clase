@@ -61,6 +61,7 @@ public class VModificarEquipo extends javax.swing.JFrame {
         bConsultar = new javax.swing.JButton();
         tfSueldo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        bSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -88,7 +89,7 @@ public class VModificarEquipo extends javax.swing.JFrame {
         jScrollPane1.setViewportView(liJugEqui);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(62, 170, 258, 214);
+        jScrollPane1.setBounds(62, 170, 259, 214);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setText("Jugadores en el equipo:");
@@ -105,7 +106,7 @@ public class VModificarEquipo extends javax.swing.JFrame {
         jScrollPane2.setViewportView(liJugDisp);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(509, 170, 258, 214);
+        jScrollPane2.setBounds(509, 170, 259, 214);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setText("Sueldo del jugador:");
@@ -150,6 +151,15 @@ public class VModificarEquipo extends javax.swing.JFrame {
         jLabel4.setText("Jugadores Disponibles:");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(510, 140, 132, 16);
+
+        bSalir.setText("Salir");
+        bSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bSalir);
+        bSalir.setBounds(380, 500, 73, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -212,6 +222,11 @@ public class VModificarEquipo extends javax.swing.JFrame {
         //sacar datos en vjugador
     }//GEN-LAST:event_bConsultarActionPerformed
 
+    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+        Main.cerrar2(this);
+        
+    }//GEN-LAST:event_bSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -252,6 +267,7 @@ public class VModificarEquipo extends javax.swing.JFrame {
     private javax.swing.JButton bAnnadir;
     private javax.swing.JButton bConsultar;
     private javax.swing.JButton bEliminar;
+    private javax.swing.JButton bSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
