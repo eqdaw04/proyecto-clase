@@ -40,8 +40,8 @@ public class BDEquipo {
     
     public static void eliminarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
-        PreparedStatement sentencia = con.getConnection().prepareStatement("DELETE FROM Equipo WHERE NOMBRE = ?");
-        sentencia.setString(1, e.getNombre());                   
+        PreparedStatement sentencia = con.getConnection().prepareStatement("DELETE FROM Equipo WHERE ID_EQUIPO = ?");
+        sentencia.setInt(1, e.getIdEquipo());                 
         if(sentencia.executeUpdate()!=1)
         {
             throw new Excepcion(25);
@@ -52,9 +52,9 @@ public class BDEquipo {
     
     public static void modificarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
-        PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Equipo SET COMENTARIO=? WHERE NOMBRE=?");
+        PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Equipo SET COMENTARIO=? WHERE ID_EQUIPO = ?");
         sentencia.setString(1, e.getComentario());
-        sentencia.setString(2, e.getNombre());
+        sentencia.setInt(2, e.getIdEquipo());
         if(sentencia.executeUpdate()!=1)
         {
             throw new Excepcion(25);
@@ -88,8 +88,8 @@ public class BDEquipo {
         ArrayList<Equipo> a = new ArrayList();
         try
         {
-            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo WHERE NOMBRE = ?");
-            sentencia.setString(1,nombre);
+            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo WHERE ID_EQUIPO = ?");
+            sentencia.setString(1, String.valueOf(e.getIdEquipo()));
             ResultSet rs = sentencia.executeQuery();
             a = recorrer(rs,a);
         }

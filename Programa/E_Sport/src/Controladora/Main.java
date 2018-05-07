@@ -372,7 +372,6 @@ public class Main {
     // Imanol Luis
     public static void bajaJugador(String dni) throws Exception {
         // Eliminar jugador en la BD
-        jugador=new Jugador();
         jugador.setDni(dni);
         BDJugador.eliminarJugador(jugador);
     }
@@ -380,7 +379,6 @@ public class Main {
     // Imanol Luis
     public static void modificarJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String sueldo, String comentario) throws Exception {
         // Modificar jugador en la BD
-        jugador=new Jugador();
         jugador.setDni(dni);
         jugador.setNombre(nombre);
         jugador.setApellido1(apellido1);
@@ -446,7 +444,6 @@ public class Main {
     // Imanol Luis
     public static void bajaEquipo(String nombre) throws Exception {
         // Eliminar equipo en la BD
-        equipo = new Equipo();
         equipo.setNombre(nombre);
         BDEquipo.eliminarEquipo(equipo);
     }
@@ -454,7 +451,6 @@ public class Main {
     // Imanol Luis
     public static void modificarEquipo(String nombre, String comentario) throws Exception {
         // Modificar equipo en la BD
-        equipo = new Equipo();
         equipo.setNombre(nombre);
         equipo.setComentario(comentario);
         BDEquipo.modificarEquipo(equipo);
