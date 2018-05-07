@@ -237,24 +237,36 @@
         <Property name="text" type="java.lang.String" value="|&lt;"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bPrimeroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bAnterior">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAnteriorActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bSiguiente">
       <Properties>
         <Property name="text" type="java.lang.String" value="&gt;"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bSiguienteActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bUltimo">
       <Properties>
         <Property name="text" type="java.lang.String" value="&gt;|"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bUltimoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="ftfSueldo">
       <Properties>

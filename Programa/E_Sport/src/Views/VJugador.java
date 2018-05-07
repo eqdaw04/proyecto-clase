@@ -10,8 +10,7 @@ import java.util.ArrayList;
 public class VJugador extends javax.swing.JDialog {
     
     private boolean alta, baja, modificacion, listado;
-    private ArrayList<Jugador> listaJugadores;
-    private Jugador j;
+    private ArrayList<Jugador> listaJugadores;    
     private int posicion;
 
     /**
@@ -27,7 +26,6 @@ public class VJugador extends javax.swing.JDialog {
         baja=false;
         modificacion=false;
         listado=false;
-        posicion=0;
         switch(tipo)
         {
             case "alta":
@@ -49,9 +47,10 @@ public class VJugador extends javax.swing.JDialog {
                 break;
             case "listado":
                 listado=true;
+                posicion=0;
                 break;
         }        
-        setVisible(true);
+        setVisible(true);        
     }
 
     /**
@@ -137,15 +136,35 @@ public class VJugador extends javax.swing.JDialog {
 
         bPrimero.setText("|<");
         bPrimero.setEnabled(false);
+        bPrimero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bPrimeroActionPerformed(evt);
+            }
+        });
 
         bAnterior.setText("<");
         bAnterior.setEnabled(false);
+        bAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAnteriorActionPerformed(evt);
+            }
+        });
 
         bSiguiente.setText(">");
         bSiguiente.setEnabled(false);
+        bSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSiguienteActionPerformed(evt);
+            }
+        });
 
         bUltimo.setText(">|");
         bUltimo.setEnabled(false);
+        bUltimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bUltimoActionPerformed(evt);
+            }
+        });
 
         ftfSueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         ftfSueldo.setEnabled(false);
@@ -300,6 +319,10 @@ public class VJugador extends javax.swing.JDialog {
                     {
                         throw new Excepcion(26);
                     }
+                    if(ftfSueldo.getText().equals("Unparseable number: \"\""))
+                    {
+                        throw new Excepcion(10);
+                    }
                    Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
                }
            }
@@ -349,7 +372,7 @@ public class VJugador extends javax.swing.JDialog {
                 else
                 {
                     ValidacionDeDatosDeEntrada.validar(3, tfDNI);
-                    buscarJugador(tfDNI.getText());                   
+                    buscarJugador(tfDNI.getText());
                 }
             }
             else
@@ -384,9 +407,10 @@ public class VJugador extends javax.swing.JDialog {
         // TODO add your handling code here:
         try
         {
-            listaJugadores = Main.buscarJugador();
             posicion=0;
             seleccionarJugador();
+            bSiguiente.setEnabled(true);
+            bUltimo.setEnabled(true);
             bPrimero.setEnabled(false);
             bAnterior.setEnabled(false);
         }
@@ -406,6 +430,8 @@ public class VJugador extends javax.swing.JDialog {
         {
             posicion=posicion-1;
             seleccionarJugador();
+            bSiguiente.setEnabled(true);
+            bUltimo.setEnabled(true);
             if(posicion==0)
             {
                 bPrimero.setEnabled(false);
@@ -428,6 +454,8 @@ public class VJugador extends javax.swing.JDialog {
         {
             posicion=posicion+1;
             seleccionarJugador();
+            bAnterior.setEnabled(true);
+            bPrimero.setEnabled(true);
             if(posicion==(listaJugadores.size()-1))
             {
                 bSiguiente.setEnabled(false);
@@ -450,6 +478,8 @@ public class VJugador extends javax.swing.JDialog {
         {
             posicion=listaJugadores.size()-1;     
             seleccionarJugador();
+            bAnterior.setEnabled(true);
+            bPrimero.setEnabled(true);
             bSiguiente.setEnabled(false);
             bUltimo.setEnabled(false);
         }
@@ -492,10 +522,11 @@ public class VJugador extends javax.swing.JDialog {
 
     private void buscarJugador(String dni) throws Exception {
         Jugador j = Main.buscarJugador(dni);
-        mostrarDatos();
+        mostrarDatos(j);
     }
     
     private void seleccionarJugador() throws Exception {
+        Jugador j;
         if(listaJugadores.size()>1)
         {
             j=listaJugadores.get(posicion);
@@ -504,10 +535,10 @@ public class VJugador extends javax.swing.JDialog {
         {
             j=listaJugadores.get(0);
         }
-        mostrarDatos();
+        mostrarDatos(j);
     }
     
-    private void mostrarDatos() throws Exception {
+    private void mostrarDatos(Jugador j) throws Exception {
         tfDNI.setText(j.getDni());
         tfNombre.setText(j.getNombre());
         tfApellido1.setText(j.getApellido1());
