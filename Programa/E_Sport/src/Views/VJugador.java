@@ -9,20 +9,18 @@ import java.util.ArrayList;
 
 public class VJugador extends javax.swing.JDialog {
     
-    private ArrayList<Jugador> listaJugadores;    
-    private int posicion, tipo;
+    private ArrayList<Jugador> listaJugadores;
+    private String tipo;
+    private int posicion, n;
 
     /**
      * Creates new form VJugador
      */
 
-    public VJugador(String tipo) {
+    public VJugador(String tipo, int n) {
         initComponents();
-        setModal(true);
-        this.setLocationRelativeTo(null);
         // Mostrar opciones según tipo de operaciones CRUD que se quiera realizar
-        cargarDatos(tipo);
-        setVisible(true);        
+        cargarDatos(tipo, n);        
     }
 
     /**
@@ -254,7 +252,7 @@ public class VJugador extends javax.swing.JDialog {
        {
            switch(tipo)
            {
-               case 1:
+               case "alta":
                    // Validación de datos
                     ValidacionDeDatosDeEntrada.validar(3, tfDNI);
                     ValidacionDeDatosDeEntrada.validar(4, tfNombre);
@@ -277,12 +275,12 @@ public class VJugador extends javax.swing.JDialog {
                    Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), cFechaAlta.getDate(), taComentario.getText());
                    JOptionPane.showMessageDialog(this, "El jugador se ha dado de alta correctamente.");
                    break;
-               case 3:
+               case "baja":
                    // Eliminar el jugador
                    Main.bajaJugador(tfDNI.getText());
                    JOptionPane.showMessageDialog(this, "El jugador se dado de baja correctamente.");
                    break;
-               case 2:
+               case "modificacion":
                    // Valida los datos y si es correcto, modifica el jugador
                     ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
                     ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
@@ -299,7 +297,7 @@ public class VJugador extends javax.swing.JDialog {
                    JOptionPane.showMessageDialog(this, "El jugador se ha modificado correctamente.");
                    break;
            }
-           Main.cerrar(this);
+           Main.reabrir(this, tipo, n);
        }
        catch (Excepcion e)
        {
@@ -322,7 +320,7 @@ public class VJugador extends javax.swing.JDialog {
         try
         {
             // Si entra como opción listado, no se permite ninguna modificación y se crea un listado para recorrer por el listado
-            if(tipo==4)
+            if(tipo.equals("listado"))
             {
                 // Si el DNI está vacío, se crea una lista interna, permitiendo recorrerla con los botones direccionales, en caso contrario, muestra únicamente el jugador con ese DNI
                 if(tfDNI.getText().isEmpty())
@@ -354,7 +352,7 @@ public class VJugador extends javax.swing.JDialog {
                 // Localiza un jugador en exclusiva para su modificación o borrado
                 ValidacionDeDatosDeEntrada.validar(3, tfDNI);
                 buscarJugador(tfDNI.getText());
-                if(tipo==2)
+                if(tipo.equals("modificacion"))
                 {
                     tfNombre.setEnabled(true);
                     tfApellido1.setEnabled(true);
@@ -498,31 +496,24 @@ public class VJugador extends javax.swing.JDialog {
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarDatos(String tipo) {
+    private void cargarDatos(String tipo, int n) {
+        this.n=n;
+        this.tipo=tipo;
+        setModal(true);
+        this.setLocationRelativeTo(null);
         listaJugadores = new ArrayList();
-        switch(tipo)
+        if(tipo.equals("alta"))
         {
-            case "alta":
-                this.tipo=1;
-                tfNombre.setEnabled(true);
-                tfApellido1.setEnabled(true);
-                tfApellido2.setEnabled(true);
-                tfNickname.setEnabled(true);
-                ftfSueldo.setEnabled(true);
-                taComentario.setEnabled(true);
-                bAceptar.setEnabled(true);
-                bBuscar.setEnabled(false);
-                break;
-            case "baja":
-                this.tipo=3;
-                break;
-            case "modificacion":
-                this.tipo=2;
-                break;
-            case "listado":
-                this.tipo=4;
-                break;
-        }
+            tfNombre.setEnabled(true);
+            tfApellido1.setEnabled(true);
+            tfApellido2.setEnabled(true);
+            tfNickname.setEnabled(true);
+            ftfSueldo.setEnabled(true);
+            taComentario.setEnabled(true);
+            bAceptar.setEnabled(true);
+            bBuscar.setEnabled(false);
+        }        
+        setVisible(true);
     }
     
     private void buscarJugador(String dni) throws Exception {

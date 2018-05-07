@@ -115,11 +115,11 @@ public class Main {
         //abrir ventana según selección del usuario en la pantalla principal
         switch(n){
             case 1:
-                new VJugador(tipo);
+                new VJugador(tipo, n);
                 break;
                 
             case 2:
-                new VEquipo(tipo);
+                new VEquipo(tipo, n);
                 break;
                 
             case 3:

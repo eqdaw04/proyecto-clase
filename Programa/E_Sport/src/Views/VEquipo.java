@@ -9,16 +9,14 @@ import java.util.ArrayList;
 
 public class VEquipo extends javax.swing.JDialog {
     
-    private ArrayList<Equipo> listaEquipos;    
-    private int posicion, tipo;
+    private ArrayList<Equipo> listaEquipos;
+    private String tipo;
+    private int posicion, n;
 
-    public VEquipo(String tipo) {
+    public VEquipo(String tipo, int n) {
         initComponents();
-        setModal(true);
-        setLocationRelativeTo(null);
         // Mostrar opciones según tipo de operaciones CRUD que se quiera realizar
-        cargarDatos(tipo);    
-        setVisible(true);
+        cargarDatos(tipo, n);
     }
 
     /**
@@ -215,7 +213,7 @@ public class VEquipo extends javax.swing.JDialog {
         try
         {
             // comprobar si se ha accedido con la opción de lsiatado, en caso afirmativo, cargar un list interno para poder recorrer con los botones de dirección
-            if(tipo==4)
+            if(tipo.equals("listado"))
             {
                 // habilitar botones de recorrer si el nombre está vacío, en caso contrario, localizar el equipo en concreto.
                 if(tfNombre.getText().isEmpty())
@@ -247,7 +245,7 @@ public class VEquipo extends javax.swing.JDialog {
                 // validar si el nombre escrito es correcto y si existe en la bbdd, si existe, mostrar datos y permitir su modificación
                 validarNombre();
                 buscarEquipo(tfNombre.getText());
-                if(tipo==2)
+                if(tipo.equals("modificacion"))
                 {
                     taComentario.setEnabled(true);
                 }
@@ -271,21 +269,21 @@ public class VEquipo extends javax.swing.JDialog {
         {
             switch(tipo)
             {
-                case 1:
+                case "alta":
                     // Validar nombre y si no existe en la BD, proceder al alta
                     validarNombre();
                     // Insertar el equipo         
                     Main.altaEquipo(tfNombre.getText(), cFechaCreacion.getDate(), taComentario.getText());
                     JOptionPane.showMessageDialog(this, "El equipo se ha dado de alta correctamente.");
                     break;
-                case 3:
+                case "baja":
                     // Validar nombre y si no existe en la BD, proceder a la eliminación
                     validarNombre();
                     // Eliminar el equipo
                     Main.bajaEquipo(tfNombre.getText());
                     JOptionPane.showMessageDialog(this, "El equipo se dado de baja correctamente.");
                     break;
-                case 2:
+                case "modificacion":
                     // Validar nombre y si no existe en la BD, proceder a la modificación
                     validarNombre();
                     // Modificar el equipo
@@ -293,7 +291,7 @@ public class VEquipo extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(this, "El equipo se ha modificado correctamente.");
                     break;
             }
-            Main.cerrar(this);
+            Main.reabrir(this, tipo, n);
         }
         catch (Excepcion e)
         {
@@ -422,35 +420,27 @@ public class VEquipo extends javax.swing.JDialog {
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
     
-    private void cargarDatos(String tipo) {
+    private void cargarDatos(String tipo, int n) {
+        this.n=n;
+        this.tipo=tipo;
+        setModal(true);
+        this.setLocationRelativeTo(null);
         listaEquipos = new ArrayList();
-        switch(tipo)
+        if(tipo.equals("alta"))
         {
-            case "alta":
-                this.tipo=1;
-                tfNombre.setEnabled(true);
-                taComentario.setEnabled(true);
-                bAceptar.setEnabled(true);
-                bBuscar.setEnabled(false);
-                break;
-            case "baja":
-                this.tipo=3;
-                break;
-            case "modificacion":
-                this.tipo=2;
-                break;
-            case "listado":
-                this.tipo=4;
-                posicion=0;
-                break;
+            tfNombre.setEnabled(true);
+            taComentario.setEnabled(true);
+            bAceptar.setEnabled(true);
+            bBuscar.setEnabled(false);
         }
+        setVisible(true);
     }
     
     private void validarNombre() throws Exception {
         // Validar nombre para ver si existe algún equipo con ese nombre
         ValidacionDeDatosDeEntrada.validar(4, tfNombre);
         
-        if(tipo==1)
+        if(tipo.equals("alta"))
         {
             //comprobar si existe nombre, en caso contrario, no generar error
             if(Main.buscarEquipo(tfNombre.getText()).getNombre().isEmpty())
