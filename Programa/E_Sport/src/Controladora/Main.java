@@ -420,7 +420,7 @@ public class Main {
     }
     //------------Mikel
     // Busca a un jugador por su nickname yle añade el id_equipo del equipo al que se le quiere añadir
-    public static boolean AnnadirJugadorEquipo(String nickname, String id) {
+    public static boolean AnnadirJugadorEquipo(String nickname, String id) throws Exception {
         return BDJugador.PonerJugadorEquipo(nickname,id);
     }
     // Imanol Luis

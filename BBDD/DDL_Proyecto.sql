@@ -9,6 +9,7 @@ CONSTRAINT Perf_nom_ck Check (Nombre = INITCAP(Nombre))
 );
 INSERT INTO Perfil (Nombre) VALUES ('Admin');
 INSERT INTO Perfil (Nombre) VALUES ('Dueño');
+INSERT INTO Perfil VALUES (DEFAULT,'Usuario');
 
    DROP TABLE Persona CASCADE CONSTRAINTS;
 
@@ -26,8 +27,10 @@ CONSTRAINT Pers_persid_pk PRIMARY KEY (Id_persona),
 CONSTRAINT Pers_perfid_fk FOREIGN KEY (Id_perfil) REFERENCES Perfil (Id_perfil)
 );
 
-INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('dueño1','ape1',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'SuperDueño1','sd1',2);
-INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('dueño2','ape12',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'usu','sus',2);
+INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('dueño1','ape1',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'dueño1','d1',2);
+INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('dueño2','ape12',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'dueño2','d2',2);
+INSERT INTO Persona VALUES (DEFAULT,'Admin1','ApellidoRandom',null,TO_DATE(SYSDATE,'DD/MM/YYYY'),'admin','root',null,1);
+INSERT INTO Persona VALUES (DEFAULT,'Usuario1','ApellidoRandom2',null,TO_DATE(SYSDATE,'DD/MM/YYYY'),'usu','sus',null,3);
 
     DROP TABLE Equipo CASCADE CONSTRAINTS;
 
@@ -67,6 +70,9 @@ INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,C
 INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,Comentario) VALUES ('42898256A','Imanol','fgh','Guridi','ima',30000,TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son azules');
 INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,Comentario,ID_EQUIPO) VALUES ('35842556A','Mikel2','Ferreiro2','Guridi2','Joylife2',30000,TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son rosas2',2);
 INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,Comentario,ID_EQUIPO) VALUES ('25842553A','Mikel3','Ferreiro3','Guridi3','Joylife3',30000,TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son rosas3',2);
+INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,Comentario) VALUES ('62348256A','Yaiza','dasfo','Guridi','jaaaaaz',10000,TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son rojas');
+INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,Comentario) VALUES ('56878256A','JonXu','asd','Guridi','luffie',10000,TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son amarillas');
+INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,Comentario) VALUES ('42898256A','Imanol','fgh','Guridi','asd',30000,TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son azules');
 
     DROP TABLE Jornada CASCADE CONSTRAINTS;
 
@@ -74,6 +80,9 @@ CREATE TABLE Jornada(
 Id_jornada NUMBER (2)GENERATED ALWAYS AS IDENTITY,
 CONSTRAINT Jorn_jornid_pk PRIMARY KEY (Id_jornada)
 );
+
+INSERT INTO Jornada (Id_jornada) VALUES (DEFAULT);
+INSERT INTO Jornada (Id_jornada) VALUES (DEFAULT);
 
     DROP TABLE Partido CASCADE CONSTRAINTS;
 
@@ -85,6 +94,14 @@ Id_jornada INTEGER NOT NULL,
 CONSTRAINT Part_partid_fk PRIMARY KEY (Id_partido),
 CONSTRAINT Part_jornid_fk FOREIGN KEY (Id_jornada) REFERENCES Jornada (Id_jornada)
 );
+INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY'),'Madrid',1);
+INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY'),'Bilbao',1);
+INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY'),'Barcelona',1);
+INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY'),'Vitoria',1);
+INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY'),'Bilbao',2);
+INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY'),'Madrid',2);
+INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY'),'Vitoria',2);
+INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY'),'Barcelona',2);
 
     DROP TABLE Marcador CASCADE CONSTRAINTS;
 
@@ -97,7 +114,16 @@ Id_equipo INTEGER NOT NULL,
 CONSTRAINT Marc_marcid_pk PRIMARY KEY (Id_marcador),
 CONSTRAINT Marc_partid_fk FOREIGN KEY (Id_partido) REFERENCES Partido (Id_partido),
 CONSTRAINT Marc_equi_fk FOREIGN KEY (Id_equipo) REFERENCES Equipo (Id_equipo),
+-- Cuando visitante es = 0 , el equipo al que hace referenia el marcador (Foreign Key de Id_equipo) juega como Local
 CONSTRAINT Marc_vis_ck CHECK (Visitante = 0 or Visitante = 1)
 );
 
+INSERT INTO MARCADOR VALUES (DEFAULT,10,0,1,1);
+INSERT INTO MARCADOR VALUES (DEFAULT,30,1,1,2);
+INSERT INTO MARCADOR VALUES (DEFAULT,22,0,2,2);
+INSERT INTO MARCADOR VALUES (DEFAULT,15,1,2,1);
+INSERT INTO MARCADOR VALUES (DEFAULT,20,0,3,1);
+INSERT INTO MARCADOR VALUES (DEFAULT,40,1,3,2);
+INSERT INTO MARCADOR VALUES (DEFAULT,14,0,4,2);
+INSERT INTO MARCADOR VALUES (DEFAULT,12,1,4,1);
 

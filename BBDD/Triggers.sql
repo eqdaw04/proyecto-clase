@@ -27,7 +27,7 @@ BEGIN
             WHERE Id_equipo = Pkg_triggers.New_jug.Id_equipo;
 --Si el valor de la variable (que contiene la cantidad de jugadores del equipo) es mayor a 5 se lanza una excepcion
       IF V_cant_jug >6 THEN
-          RAISE_APPLICATION_ERROR(-20001,'Límite de jugadores alcanzado');
+          RAISE_APPLICATION_ERROR(-20002,'Límite de jugadores alcanzado');
       END IF;
 
 END;
@@ -52,9 +52,4 @@ BEGIN
             EQUIPO ES SUPERIOR A 200.000 €');
       END IF;    
 END;    
-
---Comprobaciones
-select * from Jugador;
-INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,Comentario,ID_EQUIPO) VALUES ('12348256A','dsfkel','sdfro','Gusdfdi','Joylife',60000,TO_DATE(SYSDATE,'DD/MM/YYYY'),'AAAAAaaaaaaaa',2);
-update Jugador set Id_equipo = 1 where ID_JUGADOR =10;
-update Jugador set Id_equipo = 2 where ID_JUGADOR =3;
+/

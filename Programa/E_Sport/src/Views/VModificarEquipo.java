@@ -6,10 +6,11 @@
 package Views;
 
 import Controladora.Main;
+import Excepciones.*;
 import UML.Equipo;
 import UML.Jugador;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -154,18 +155,30 @@ public class VModificarEquipo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bAnnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnnadirActionPerformed
-
-        if(Main.AnnadirJugadorEquipo(liJugDisp.getSelectedValue(),String.valueOf(e.getIdEquipo()))){
-            JOptionPane.showMessageDialog(this, "Jugador añadido exitosamente");
-            try {
+        try{
+            if(Main.AnnadirJugadorEquipo(liJugDisp.getSelectedValue(),String.valueOf(e.getIdEquipo()))){
+                JOptionPane.showMessageDialog(this, "Jugador añadido exitosamente");
                 rellenar();
+<<<<<<< Updated upstream:Programa/E_Sport/src/Views/VModificarEquipo.java
             } catch (Exception ex) {
                 Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("AÑADIR");
+=======
+>>>>>>> Stashed changes:Programa/E_Sport/src/Views/ModificarEquipo.java
             }
-        }else{
-            JOptionPane.showMessageDialog(this, "Error");
+        } catch (SQLException e){
+               switch(e.getErrorCode()){
+                   case 20001:
+                    JOptionPane.showMessageDialog(this, new Excepcion(28).getMessage());
+                       break;
+                    case 20002:
+                    JOptionPane.showMessageDialog(this, new Excepcion(29).getMessage());
+                       break;
+               }
+        } catch (Exception ex) {
+            Logger.getLogger(ModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
         }
+        bAnnadir.setEnabled(false);
     }//GEN-LAST:event_bAnnadirActionPerformed
 
     private void bEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarActionPerformed
@@ -177,6 +190,7 @@ public class VModificarEquipo extends javax.swing.JFrame {
                 Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("ELIMINAR");
             }
+            bEliminar.setEnabled(false);
         }else{
             JOptionPane.showMessageDialog(this, "Error2");
         }

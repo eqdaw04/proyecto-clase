@@ -142,6 +142,13 @@ public class Excepcion extends Exception {
             case 28:
                 dato = "No hay equipos en la base de datos";
                 break;
+                
+            case 30:
+                dato = "El salario del equipo es superior a 200.000 €. \n Escoge un jugador con un salario menor o retira uno de los jugadores";
+                break;
+            case 31:
+                dato = "Has alcanzado el límite de 6 jugadores. Por favor retira un jugador antes de añadir uno nuevo";
+                break;
         }
         return dato;
     }

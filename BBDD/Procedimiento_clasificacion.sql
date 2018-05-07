@@ -58,9 +58,9 @@ CREATE OR REPLACE PACKAGE BODY Pkg_Clasificacion IS
     END IF;
 END;
 END Pkg_Clasificacion;
-  
+ / 
 
-execute Pkg_Clasificacion.Clasif();
+execute Pkg_Clasificacion.Clasif;
 
 
 

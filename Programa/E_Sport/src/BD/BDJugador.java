@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -173,9 +174,8 @@ public class BDJugador {
         return correcto;
     }
 
-    public static boolean PonerJugadorEquipo(String nickname, String id) {
+    public static boolean PonerJugadorEquipo(String nickname, String id) throws Exception{
         boolean correcto=false;
-        try {
             BDConexion con = new BDConexion();
             PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET Id_equipo = ? WHERE UPPER(Nickname) = UPPER(?)");
             sentencia.setString(1, id);
@@ -183,13 +183,6 @@ public class BDJugador {
             sentencia.executeUpdate();
             con.desconectar();
             correcto =true;
-        } catch (SQLException e){
-            System.out.println("ASEES");
-        }
-        catch (Exception ex) {
-            Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
         return correcto;
     }
     
