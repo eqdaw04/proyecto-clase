@@ -15,13 +15,22 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- *
- * @author 1gdaw06
+ * Clase en la que controlaremos e introduciremos personas a la base de datos.
+ * Fecha de creación de la clase: 03/05/2018
+ * @author eqdaw04
  */
+
 public class BDPersona {
 
     public BDPersona() {
     }
+    
+     /**
+     * Metodo para buscar una persona por su nombre de usuario.
+     * @param usuario String
+     * @return devuelve un objeto persona
+     * @throws Exception 
+     */
     
     public Persona buscarPersonaPorUsuario(String usuario) throws Exception{
         // abre la conexion
@@ -59,6 +68,12 @@ public class BDPersona {
         return p;
     }
     
+        /**
+     * Metodo para buscar una lista de todas las personas de la base de datos.
+     * @return devuelve una lista de personas
+     * @throws Exception 
+     */
+    
     public ArrayList<Persona> buscarTodasLasPersona() throws Exception{
         // crear array de personas
         ArrayList <Persona> lPersona = new ArrayList();
@@ -93,6 +108,12 @@ public class BDPersona {
         return lPersona;
     }
     
+        /**
+     * Metodo para dar de alta una persona.
+     * @param p Persona
+     * @throws Exception 
+     */
+    
     public void altaPersona(Persona p) throws Exception{
         // abre la conexion
         BDConexion con = new BDConexion();
@@ -117,6 +138,12 @@ public class BDPersona {
         con.desconectar();
     }
     
+        /**
+     * Metodo para dar de baja una persona.
+     * @param p Persona
+     * @throws Exception 
+     */
+    
     public void bajaPersona(Persona p) throws Exception{
         // abre la conexion
         BDConexion con = new BDConexion();
@@ -133,6 +160,12 @@ public class BDPersona {
         sentencia.close();
         con.desconectar();
     }
+    
+        /**
+     * Metodo para modificar los datos de una persona.
+     * @param p Persona
+     * @throws Exception 
+     */
     
     public void modificarPersona(Persona p) throws Exception{
         // abre la conexion
@@ -156,6 +189,12 @@ public class BDPersona {
         sentencia.close();
         con.desconectar();
     }
+    
+        /**
+     * Metodo para formatear la fecha de alta.
+     * @param fechaE Date
+     * @return fecha
+     */
 
     private Date formatearFecha(java.util.Date fechaE){
         // Dar formato a fechas

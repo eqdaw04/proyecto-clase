@@ -31,7 +31,6 @@ public class Emparejamiento {
     
     /**
      * Constructor para emparejar los equipos.
-     * @param diaInicio int
      * @param lEquipo ArrayList de equipo
      */
 

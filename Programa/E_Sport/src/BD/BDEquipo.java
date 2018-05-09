@@ -17,10 +17,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author 1gdaw06
+ *Clase en la que introduciremos y controlaremos los equipos a la base de datos.
+ * Fecha de creación de la clase: 09/05/2018
+ * @author eqdaw04
  */
+
 public class BDEquipo {
+    
+    /**
+     * Metodo para insertar un equipo.
+     * @param e Equipo
+     * @throws Exception 
+     */
     
     public static void insertarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
@@ -37,6 +45,12 @@ public class BDEquipo {
         con.desconectar();
     }
     
+    /**
+     * Metodo para eliminar un equipo.
+     * @param e Equipo
+     * @throws Exception 
+     */
+    
     public static void eliminarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia = con.getConnection().prepareStatement("DELETE FROM Equipo WHERE ID_EQUIPO = ?");
@@ -48,6 +62,12 @@ public class BDEquipo {
         sentencia.close();
         con.desconectar();
     }
+    
+    /**
+     * Metodo para modificar un equipo.
+     * @param e Equipo
+     * @throws Exception 
+     */
     
     public static void modificarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
@@ -61,6 +81,13 @@ public class BDEquipo {
         sentencia.close();
         con.desconectar();
     }
+    
+    /**
+     * Metodo para buscar un equipo por nombre de un usuario integrante.
+     * @param usu String
+     * @return devuelve un objeto equipo
+     * @throws Exception 
+     */
     
     public static Equipo BuscarEquipoPorUsuario(String usu) throws Exception {
         BDConexion con = new BDConexion();
@@ -82,6 +109,13 @@ public class BDEquipo {
         return e;
     }
     
+    /**
+     * Metodo para buscar una lista de equipos por nombre.
+     * @param nombre String
+     * @return devuelve el nombre del equipo encontrado
+     * @throws Exception 
+     */
+    
     public static Equipo BuscarEquipo(String nombre) throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Equipo> a = new ArrayList();
@@ -100,6 +134,12 @@ public class BDEquipo {
         return a.get(0);
     }
     
+    /**
+     * Metodo para buscar una lista de todos los equipos.
+     * @return devuelve una lista de equipos
+     * @throws Exception 
+     */
+    
     public static ArrayList<Equipo> BuscarEquipo() throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Equipo> a = new ArrayList();
@@ -117,6 +157,14 @@ public class BDEquipo {
         return a;
     }
     
+    /**
+     * Metodo para recorrer los datos de un equipo.
+     * @param rs ResultSet
+     * @param a ArrayList de equipo
+     * @return devuelve una lista de equipos
+     * @throws SQLException 
+     */
+    
     public static ArrayList<Equipo> recorrer(ResultSet rs, ArrayList <Equipo> a) throws SQLException {
         while (rs.next()){
             Equipo e= new Equipo();
@@ -128,6 +176,12 @@ public class BDEquipo {
         }
         return a;
     }
+    
+           /**
+     * Metodo para formatear la fecha de alta.
+     * @param fechaE Date
+     * @return fecha
+     */ 
 
     private static Date formatearFecha(java.util.Date fechaE){
         SimpleDateFormat formar = new SimpleDateFormat("yyyy-MM-dd");
