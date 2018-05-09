@@ -63,6 +63,13 @@ public class Emparejamiento {
         llenarArray(j, p, e);
     }
     
+    /**
+     * Metodo en el que llenamos los arrays de los equipos locales y visitantes.
+     * @param j int
+     * @param p int
+     * @param e int
+     */
+    
     public void llenarArray(int j, int p, int e){
         //Algoritmo de construccion de equipos
         for(int x = 0; x<j; x++){
