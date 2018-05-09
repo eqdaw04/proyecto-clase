@@ -15,6 +15,8 @@ public class VJugador extends javax.swing.JDialog {
 
     /**
      * Creates new form VJugador
+     * @param tipo
+     * @param n
      */
 
     public VJugador(String tipo, int n) {
@@ -56,6 +58,7 @@ public class VJugador extends javax.swing.JDialog {
         ftfSueldo = new javax.swing.JFormattedTextField();
         bBuscar = new javax.swing.JButton();
         cFechaAlta = new org.freixas.jcalendar.JCalendarCombo();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -68,7 +71,7 @@ public class VJugador extends javax.swing.JDialog {
 
         tfNombre.setEnabled(false);
 
-        jLabel4.setText("Apellidos:");
+        jLabel4.setText("Apellido 1:");
 
         tfApellido1.setEnabled(false);
 
@@ -148,6 +151,8 @@ public class VJugador extends javax.swing.JDialog {
 
         cFechaAlta.setEnabled(false);
 
+        jLabel9.setText("Apellido 2:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,7 +171,8 @@ public class VJugador extends javax.swing.JDialog {
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel6))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfNickname)
@@ -212,7 +218,9 @@ public class VJugador extends javax.swing.JDialog {
                     .addComponent(tfApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfNickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -281,7 +289,8 @@ public class VJugador extends javax.swing.JDialog {
                    JOptionPane.showMessageDialog(this, "El jugador se dado de baja correctamente.");
                    break;
                case "modificacion":
-                   // Valida los datos y si es correcto, modifica el jugador
+                   // Validación de datos
+                    ValidacionDeDatosDeEntrada.validar(3, tfDNI);
                     ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
                     ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
                     ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
@@ -330,7 +339,7 @@ public class VJugador extends javax.swing.JDialog {
                     else
                     {
                         // Si no hay jugadores en la BD
-                        if(listaJugadores.size()==0)
+                        if(listaJugadores.isEmpty())
                         {
                             throw new Excepcion(27);
                         }
@@ -482,6 +491,7 @@ public class VJugador extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea taComentario;
     private javax.swing.JTextField tfApellido1;
