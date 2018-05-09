@@ -3,7 +3,7 @@ package UML;
 import java.util.ArrayList;
 
 public class Jornada {
-    private int idJornada;
+    private int idJornada, nJornada;
     
     private ArrayList<Partido> listaPartidos;
 
@@ -26,4 +26,13 @@ public class Jornada {
     public void setListaPartidos(ArrayList<Partido> listaPartidos) {
         this.listaPartidos = listaPartidos;
     }
+
+    public int getnJornada() {
+        return nJornada;
+    }
+
+    public void setnJornada(int nJornada) {
+        this.nJornada = nJornada;
+    }
+    
 }

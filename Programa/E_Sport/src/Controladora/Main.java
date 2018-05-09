@@ -267,6 +267,22 @@ public class Main {
         return listadoPersona;
     }
     
+    //---------- JON XU JIN ----------
+    
+    public static ArrayList <Partido> consultarPartidosPorJornada(int n) throws Exception{
+        ArrayList<Partido> lPartido = new ArrayList();
+        lPartido = bdPartido.consultarPartidosPorJornada(n);
+        return lPartido;
+    }
+    
+    //---------- JON XU JIN ----------
+    
+    public static ArrayList <Partido> consultarMarcadorPorPartido(int n) throws Exception{
+        ArrayList<Partido> lPartido = new ArrayList();
+        lPartido = bdPartido.consultarPartidosPorJornada(n);
+        return lPartido;
+    }
+    
     public static void probando(){
         ArrayList <Equipo> lEquipo = new ArrayList();
         Equipo e1 = new Equipo();
