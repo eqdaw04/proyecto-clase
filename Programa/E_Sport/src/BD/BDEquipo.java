@@ -5,7 +5,6 @@
  */
 package BD;
 
-import static BD.BDJugador.recorrer;
 import Excepciones.Excepcion;
 import UML.Equipo;
 import java.sql.Date;
@@ -88,8 +87,8 @@ public class BDEquipo {
         ArrayList<Equipo> a = new ArrayList();
         try
         {
-            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo WHERE ID_EQUIPO = ?");
-            sentencia.setString(1, String.valueOf(e.getIdEquipo()));
+            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo WHERE Nombre = ?");
+            sentencia.setString(1, nombre);
             ResultSet rs = sentencia.executeQuery();
             a = recorrer(rs,a);
         }

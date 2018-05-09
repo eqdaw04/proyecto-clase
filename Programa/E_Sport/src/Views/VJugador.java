@@ -267,7 +267,7 @@ public class VJugador extends javax.swing.JDialog {
                         throw new Excepcion(10);
                     }
                     // Comprobar si existe, en caso contrario se procede el alta.
-                   if(!Main.buscarDNI(tfDNI.getText()).isEmpty())
+                   if(!Main.buscarJugador(tfDNI.getText()).getNombre().isEmpty())
                    {
                        throw new Excepcion(23);
                    }
@@ -277,7 +277,7 @@ public class VJugador extends javax.swing.JDialog {
                    break;
                case "baja":
                    // Eliminar el jugador
-                   Main.bajaJugador(tfDNI.getText());
+                   Main.bajaJugador();
                    JOptionPane.showMessageDialog(this, "El jugador se dado de baja correctamente.");
                    break;
                case "modificacion":
@@ -288,10 +288,6 @@ public class VJugador extends javax.swing.JDialog {
                     if(tfNickname.getText().isEmpty())
                     {
                         throw new Excepcion(26);
-                    }
-                    if(ftfSueldo.getText().equals("Unparseable number: \"\""))
-                    {
-                        throw new Excepcion(10);
                     }
                    Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
                    JOptionPane.showMessageDialog(this, "El jugador se ha modificado correctamente.");
@@ -517,6 +513,10 @@ public class VJugador extends javax.swing.JDialog {
     
     private void buscarJugador(String dni) throws Exception {
         Jugador j = Main.buscarJugador(dni);
+        if(j==null)
+        {
+            throw new Excepcion(17);
+        }
         mostrarDatos(j);
     }
     

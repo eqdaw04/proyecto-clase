@@ -522,13 +522,11 @@ public class Main {
     
     /**
      * Metodo para dar de baja a un jugador de la base de datos.
-     * @param dni String
      * @throws Exception 
      */
 
     // Imanol Luis
-    public static void bajaJugador(String dni) throws Exception {
-        jugador.setDni(dni);
+    public static void bajaJugador() throws Exception {
         BDJugador.eliminarJugador(jugador);
     }
     
@@ -557,7 +555,7 @@ public class Main {
     }
     
     /**
-     * Metodo para buscar a un jugador.
+     * Metodo para buscar a un jugador a traves del DNI.
      * @param dni String
      * @return objeto jugador
      * @throws Exception 
@@ -571,7 +569,7 @@ public class Main {
     }
     
     /**
-     * Metodo para buscar a un jugador.
+     * Metodo para buscar todos los jugadores de la base de datos.
      * @return devuelve los jugadores introducidos en la clase BDJugador
      * @throws Exception 
      */
@@ -579,17 +577,6 @@ public class Main {
     // Imanol Luis   
     public static ArrayList<Jugador> buscarJugador() throws Exception {        
        return BDJugador.BuscarJugador();
-    }
-    
-    /**
-     * Metodo para buscar un dni.
-     * @param dni String
-     * @return devuelve los dnis introducidos en la clase BDJugador
-     * @throws Exception 
-     */
-    
-    public static ArrayList<Jugador> buscarDNI(String dni) throws Exception {      
-       return BDJugador.BuscarDni(dni);
     }
     
     /**
@@ -671,13 +658,11 @@ public class Main {
     
     /**
      * Metodo para dar de baja un equipo de la base de datos.
-     * @param nombre String
      * @throws Exception 
      */
 
     // Imanol Luis
-    public static void bajaEquipo(String nombre) throws Exception {
-        equipo.setNombre(nombre);
+    public static void bajaEquipo() throws Exception {
         BDEquipo.eliminarEquipo(equipo);
     }
     
@@ -696,7 +681,7 @@ public class Main {
     }
     
     /**
-     * Metodo para buscar un equipo de la base de datos
+     * Metodo para buscar un equipo de la base de datos a traves del nombre
      * @param nombre String
      * @return objeto equipo
      * @throws Exception 
@@ -710,8 +695,8 @@ public class Main {
     }
     
     /**
-     * Metodo para buscar un equipo de la base de datos
-     * @return devuelve el resultado de la busqueda de equipos de la clase BDEquipo
+     * Metodo para buscar todos los equipos de la base de datos
+     * @return todos los equipos de la base de datos
      * @throws Exception 
      */
 
@@ -721,9 +706,9 @@ public class Main {
     }
     
     /**
-     * Metodo que crea la plantilla para sacar los datos del jugador
+     * Metodo para obtener todos los datos de todos los jugadores de un equipo
      * @param equipo Equipo
-     * @return plantilla
+     * @return String
      * @throws Exception 
      */
 
