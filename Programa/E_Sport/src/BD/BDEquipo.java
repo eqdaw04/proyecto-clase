@@ -109,6 +109,13 @@ public class BDEquipo {
         return e;
     }
     
+    /**
+     * Metodo para buscar una lista de equipos por nombre.
+     * @param nombre String
+     * @return devuelve el nombre del equipo encontrado
+     * @throws Exception 
+     */
+    
     public static Equipo BuscarEquipo(String nombre) throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Equipo> a = new ArrayList();
@@ -127,6 +134,12 @@ public class BDEquipo {
         return a.get(0);
     }
     
+    /**
+     * Metodo para buscar una lista de todos los equipos.
+     * @return devuelve una lista de equipos
+     * @throws Exception 
+     */
+    
     public static ArrayList<Equipo> BuscarEquipo() throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Equipo> a = new ArrayList();
@@ -144,6 +157,14 @@ public class BDEquipo {
         return a;
     }
     
+    /**
+     * Metodo para recorrer los datos de un equipo.
+     * @param rs ResultSet
+     * @param a ArrayList de equipo
+     * @return devuelve una lista de equipos
+     * @throws SQLException 
+     */
+    
     public static ArrayList<Equipo> recorrer(ResultSet rs, ArrayList <Equipo> a) throws SQLException {
         while (rs.next()){
             Equipo e= new Equipo();
@@ -155,6 +176,12 @@ public class BDEquipo {
         }
         return a;
     }
+    
+           /**
+     * Metodo para formatear la fecha de alta.
+     * @param fechaE Date
+     * @return fecha
+     */ 
 
     private static Date formatearFecha(java.util.Date fechaE){
         SimpleDateFormat formar = new SimpleDateFormat("yyyy-MM-dd");
