@@ -64,7 +64,6 @@ public class VModificarEquipo extends javax.swing.JFrame {
         bSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(843, 547));
         getContentPane().setLayout(null);
 
@@ -81,6 +80,11 @@ public class VModificarEquipo extends javax.swing.JFrame {
 
         liJugEqui.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         liJugEqui.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        liJugEqui.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                liJugEquiFocusGained(evt);
+            }
+        });
         liJugEqui.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 liJugEquiValueChanged(evt);
@@ -98,6 +102,11 @@ public class VModificarEquipo extends javax.swing.JFrame {
 
         liJugDisp.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         liJugDisp.setToolTipText("");
+        liJugDisp.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                liJugDispFocusGained(evt);
+            }
+        });
         liJugDisp.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 liJugDispValueChanged(evt);
@@ -219,18 +228,20 @@ public class VModificarEquipo extends javax.swing.JFrame {
     }//GEN-LAST:event_liJugDispValueChanged
 
     private void bConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarActionPerformed
+        System.out.println(liJugEqui.getSelectedValue()+liJugDisp.getSelectedValue());
         if(liJugEqui.isSelectionEmpty()){
-        
-        }else{
- 
-            try {
- 
-                Main.abrirVJugador(Main.consultarJugadorNickname(liJugEqui.getSelectedValue()));
- 
+            try { 
+                liJugEqui.clearSelection();
+                Main.abrirVJugador(Main.consultarJugadorNickname(liJugDisp.getSelectedValue()));
             } catch (Exception ex) {
- 
                 Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
- 
+            }
+        }else{ 
+            try {
+                liJugDisp.clearSelection();
+                Main.abrirVJugador(Main.consultarJugadorNickname(liJugEqui.getSelectedValue())); 
+            } catch (Exception ex) {
+                Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex); 
             }
         }
  
@@ -240,6 +251,14 @@ public class VModificarEquipo extends javax.swing.JFrame {
         Main.cerrar2(this);
         
     }//GEN-LAST:event_bSalirActionPerformed
+
+    private void liJugEquiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_liJugEquiFocusGained
+
+    }//GEN-LAST:event_liJugEquiFocusGained
+
+    private void liJugDispFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_liJugDispFocusGained
+
+    }//GEN-LAST:event_liJugDispFocusGained
 
     /**
      * @param args the command line arguments

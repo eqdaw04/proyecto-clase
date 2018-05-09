@@ -25,15 +25,9 @@ public class VJugador extends javax.swing.JDialog {
         cargarDatos(tipo, n);        
     }
     public VJugador(String tipo, int n, Jugador j) {
- 
         initComponents();
- 
-        // Mostrar opciones según tipo de operaciones CRUD que se quiera realizar
- 
         this.j=j;
- 
         cargarDatos(tipo, n);        
- 
     }
  
     /**
@@ -532,7 +526,9 @@ public class VJugador extends javax.swing.JDialog {
             taComentario.setEnabled(true);
             bAceptar.setEnabled(true);
             bBuscar.setEnabled(false);
+            
         }  else if(tipo.equals("consulta")){
+            tfDNI.setText(j.getDni());
             tfNombre.setText(j.getNombre());
             tfApellido1.setText(j.getApellido1());
             tfApellido2.setText(j.getApellido2()); 
@@ -541,6 +537,7 @@ public class VJugador extends javax.swing.JDialog {
             ftfSueldo.setText(String.valueOf(j.getSueldo())); 
             taComentario.setText(j.getComentario());
             bBuscar.setVisible(false);
+            bAceptar.setEnabled(true);
         }
         setVisible(true);
     }
