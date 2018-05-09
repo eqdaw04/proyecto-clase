@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 /**
  * Clase en la que definimos los emparejamientos de los equipos por partido.
  * Fecha de creación de la clase: 25/04/2018
- * @author v6222
+ * @author eqdaw04
  */
 
 /**
