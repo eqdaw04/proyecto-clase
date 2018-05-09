@@ -6,6 +6,12 @@ import Excepciones.Excepcion;
 import UML.Equipo;
 import java.util.ArrayList;
 
+/**
+ * Ventana equipo.
+ * Fecha de creación de la vista: 24/04/2018
+ * @author eqdaw04
+ */
+
 public class VEquipo extends javax.swing.JDialog {
     
     private ArrayList<Equipo> listaEquipos;
@@ -424,6 +430,12 @@ public class VEquipo extends javax.swing.JDialog {
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
     
+       /**
+     * Metodo para cargar datos de la ventana.
+     * @param tipo String
+     * @param n int
+     */ 
+    
     private void cargarDatos(String tipo, int n) {
         this.n=n;
         this.tipo=tipo;
@@ -438,6 +450,11 @@ public class VEquipo extends javax.swing.JDialog {
         }
         setVisible(true);
     }
+    
+        /**
+     * Metodo para validar el nombre.
+     * @throws Exception 
+     */
     
     private void validarNombre() throws Exception {
         // Validar nombre para ver si existe algún equipo con ese nombre
@@ -455,6 +472,12 @@ public class VEquipo extends javax.swing.JDialog {
         }
     }
     
+       /**
+     * Metodo para buscar equipo por nombre.
+     * @param equipo String
+     * @throws Exception 
+     */ 
+    
     private void buscarEquipo(String equipo) throws Exception {
         Equipo e = Main.buscarEquipo(equipo);
         if(e==null)
@@ -463,6 +486,11 @@ public class VEquipo extends javax.swing.JDialog {
         }
         mostrarDatos(e);
     }
+    
+       /**
+     * Metodo para seleccionar un equipo de toda la lista.
+     * @throws Exception 
+     */ 
     
     private void seleccionarEquipo() throws Exception {
         Equipo e;
@@ -476,6 +504,12 @@ public class VEquipo extends javax.swing.JDialog {
         }
         mostrarDatos(e);
     }
+    
+        /**
+     * Metodo para mostrar los datos de un equipo.
+     * @param e Equipo
+     * @throws Exception 
+     */
     
     private void mostrarDatos(Equipo e) throws Exception {
         tfNombre.setText(e.getNombre());  
