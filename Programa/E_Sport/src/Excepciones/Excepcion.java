@@ -35,6 +35,7 @@ public class Excepcion extends Exception {
                 dato = "El usuario no puede estar vacío.";
                 break;
                 
+                
             case 2:
                 dato = "La contraseña no puede estar vacío.";
                 break;
