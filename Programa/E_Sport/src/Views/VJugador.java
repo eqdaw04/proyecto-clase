@@ -260,7 +260,7 @@ public class VJugador extends javax.swing.JDialog {
            switch(tipo)
            {
                case "alta":
-                   // Validación de datos
+                    // Validación de datos
                     ValidacionDeDatosDeEntrada.validar(3, tfDNI);
                     ValidacionDeDatosDeEntrada.validar(4, tfNombre);
                     ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
@@ -274,21 +274,22 @@ public class VJugador extends javax.swing.JDialog {
                         throw new Excepcion(10);
                     }
                     // Comprobar si existe, en caso contrario se procede el alta.
-                   if(!Main.buscarDNI(tfDNI.getText()).isEmpty())
-                   {
-                       throw new Excepcion(23);
-                   }
-                   // Insertar el jugador
-                   Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), cFechaAlta.getDate(), taComentario.getText());
-                   JOptionPane.showMessageDialog(this, "El jugador se ha dado de alta correctamente.");
-                   break;
+                    if(!Main.buscarDNI(tfDNI.getText()).isEmpty())
+                    {
+                        throw new Excepcion(23);
+                    }
+                    // Insertar el jugador
+                    Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), cFechaAlta.getDate(), taComentario.getText());
+                    JOptionPane.showMessageDialog(this, "El jugador se ha dado de alta correctamente.");
+                    break;
                case "baja":
-                   // Eliminar el jugador
-                   Main.bajaJugador(tfDNI.getText());
-                   JOptionPane.showMessageDialog(this, "El jugador se dado de baja correctamente.");
-                   break;
+                    // Eliminar el jugador
+                    Main.bajaJugador();
+                    JOptionPane.showMessageDialog(this, "El jugador se dado de baja correctamente.");
+                    break;
                case "modificacion":
-                   // Valida los datos y si es correcto, modifica el jugador
+                    // Valida los datos y si es correcto, modifica el jugador
+                    ValidacionDeDatosDeEntrada.validar(3, tfDNI);
                     ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
                     ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
                     ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
@@ -296,21 +297,14 @@ public class VJugador extends javax.swing.JDialog {
                     {
                         throw new Excepcion(26);
                     }
-                    if(ftfSueldo.getText().equals("Unparseable number: \"\""))
-                    {
-                        throw new Excepcion(10);
-                    }
-                   Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
-                   JOptionPane.showMessageDialog(this, "El jugador se ha modificado correctamente.");
-                   break;
-               case "consulta":
-                    Main.cerrar(this);
+                    Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
+                    JOptionPane.showMessageDialog(this, "El jugador se ha modificado correctamente.");
                     break;
            }
            Main.reabrir(this, tipo, n);
        }
        catch (Excepcion e)
-       {
+       {           
            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
        }
        catch (Exception e)

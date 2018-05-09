@@ -275,15 +275,11 @@ public class VEquipo extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(this, "El equipo se ha dado de alta correctamente.");
                     break;
                 case "baja":
-                    // Validar nombre y si no existe en la BD, proceder a la eliminación
-                    validarNombre();
                     // Eliminar el equipo
-                    Main.bajaEquipo(tfNombre.getText());
+                    Main.bajaEquipo();
                     JOptionPane.showMessageDialog(this, "El equipo se dado de baja correctamente.");
                     break;
                 case "modificacion":
-                    // Validar nombre y si no existe en la BD, proceder a la modificación
-                    validarNombre();
                     // Modificar el equipo
                     Main.modificarEquipo(tfNombre.getText(), taComentario.getText());
                     JOptionPane.showMessageDialog(this, "El equipo se ha modificado correctamente.");
