@@ -8,16 +8,22 @@ package BD;
 import Controladora.Main;
 import java.sql.*;
 import javax.swing.*;
-/**
- *
- * @author 1gdaw06
- */
 
+/**
+ * Clase para crear la conexión a la base de datos.
+ * Fecha de la creación de la clase: 02/05/2018
+ * @author eqdaw04
+ */
 
 
 public class BDConexion {
     
     Connection connection;
+    
+    /**
+     * Metodo en el que controlamos si la conexión se ha establecido correctamente o no.
+     * @throws Exception 
+     */
 
     public BDConexion() throws Exception{
        try{
@@ -35,9 +41,19 @@ public class BDConexion {
         }
     }
     
+    /**
+     * Metodo en el que realizamos la conexión.
+     * @return objeto conexion
+     */
+    
     public Connection getConnection(){
         return connection;
     }
+    
+        /**
+     * Metodo para desconectarnos de la base de datos.
+     * @throws Exception 
+     */
  
     public void desconectar() throws Exception{
         connection.close();
