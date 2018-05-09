@@ -13,10 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author 1gdaw06
+ * Clase en la que controlaremos e introduciremos perfiles a la base de datos.
+ * Fecha de creación de la clase: 03/05/2018
+ * @author eqdaw04
  */
+
 public class BDPerfil {
+    
+     /**
+     * Metodo para buscar un perfil por código.
+     * @param cod int
+     * @return devuelve un objeto perfil
+     * @throws Exception 
+     */   
     
     public Perfil buscarPorCodigo(int cod) throws Exception{
         // crear perfil vacio
@@ -47,6 +56,12 @@ public class BDPerfil {
         return p;
     }
     
+     /**
+     * Metodo para buscar una lista de perfiles.
+     * @return devuelve una lista de perfiles.
+     * @throws Exception 
+     */   
+    
     public ArrayList <Perfil> buscarPerfiles() throws Exception{
         // preparar lista para guardar los objetos de perfil
         ArrayList <Perfil> listaPerfil = new ArrayList();
@@ -74,6 +89,13 @@ public class BDPerfil {
         
         return listaPerfil;
     }
+    
+        /**
+     * Metodo para buscar un perfil por nombre.
+     * @param nombre String
+     * @return objeto perfil
+     * @throws Exception 
+     */
     
     public Perfil buscarPorNombre(String nombre) throws Exception{
         // crear perfil vacio

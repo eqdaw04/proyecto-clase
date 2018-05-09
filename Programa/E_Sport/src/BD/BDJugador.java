@@ -17,10 +17,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author 1gdaw06
+ * Clase en la que controlaremos e introduciremos los jugadores a la base de datos.
+ * Fecha de creación de la clase: 02/05/2018
+ * @author eqdaw04
  */
+
 public class BDJugador {
+    
+     /**
+     * Metodo para buscar una lista de jugadores por dni.
+     * @param dni String
+     * @return Devuelve una lista de jugadores 
+     * @throws Exception 
+     */   
     
     public static Jugador BuscarJugador(String dni) throws Exception {
         BDConexion con = new BDConexion();
@@ -40,6 +49,12 @@ public class BDJugador {
         return a.get(0);
     }
     
+    /**
+     * Metodo para buscar una lista de todos los jugadores.
+     * @return Devuelve una lista de jugadores 
+     * @throws Exception 
+     */    
+    
     public static ArrayList<Jugador> BuscarJugador() throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a = new ArrayList();
@@ -56,6 +71,13 @@ public class BDJugador {
         con.desconectar();
         return a;
     }
+    
+        /**
+     * Metodo para buscar la lista de jugadores de un equipo. 
+     * @param id String
+     * @return Devuelve una lista de jugadores
+     * @throws Exception 
+     */
     
     public static ArrayList<Jugador> BuscarEqui(String id) throws Exception {
        BDConexion con = new BDConexion();
@@ -74,6 +96,14 @@ public class BDJugador {
         return a;
     }
     
+        /**
+     * Metodo para recorrer los datos de un jugador.
+     * @param rs ResultSet
+     * @param a ArrayList de jugador
+     * @return devuelve los datos del jugador introducido en la lista
+     * @throws SQLException 
+     */
+    
     public static ArrayList<Jugador> recorrer(ResultSet rs, ArrayList <Jugador> a) throws SQLException {
         while (rs.next()){
             Jugador j= new Jugador();
@@ -90,6 +120,12 @@ public class BDJugador {
         }
         return a;
     }
+    
+        /**
+     * Metodo para buscar jugadores que no estén en ningún equipo.
+     * @return devuelve una lista de jugadores
+     * @throws Exception 
+     */
 
     public static ArrayList<Jugador> BuscarJugadoresDisponibles() throws Exception {
         ResultSet rs = null;
@@ -107,6 +143,14 @@ public class BDJugador {
         con.desconectar();
         return a;
     }
+    
+    /**
+     * Metodo para buscar un jugador por su nickname.
+     * @param nickname String
+     * @return devuelve una lista de jugadores
+     * @throws Exception 
+     */
+    
     public static Jugador buscarJugadorNickname(String nickname) throws Exception{ 
         BDConexion con = new BDConexion(); 
         ArrayList<Jugador> a = new ArrayList(); 
@@ -124,6 +168,13 @@ public class BDJugador {
         con.desconectar(); 
         return a.get(0); 
     } 
+    
+    /**
+     * Metodo para insertar jugadores.
+     * @param j Jugador
+     * @throws Exception 
+     */    
+    
     public static void insertarJugador(Jugador j) throws Exception {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia = con.getConnection().prepareStatement("INSERT INTO Jugador (DNI, NOMBRE, APELLIDO1, APELLIDO2, NICKNAME, SUELDO, FECHA_ALTA, COMENTARIO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
@@ -144,6 +195,12 @@ public class BDJugador {
         con.desconectar();
     }
     
+        /**
+     * Metodo para eliminar jugadores.
+     * @param j Jugador
+     * @throws Exception 
+     */
+    
     public static void eliminarJugador(Jugador j) throws Exception {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia = con.getConnection().prepareStatement("DELETE FROM Jugador WHERE Id_jugador = ?"); 
@@ -155,6 +212,12 @@ public class BDJugador {
         sentencia.close();
         con.desconectar();
     }
+    
+        /**
+     * Metodo para borrar jugadores de un equipo.
+     * @param nickname String
+     * @return devuelve correcto si el UPDATE se hace bien
+     */
 
     public static boolean QuitarJugadorEquipo(String nickname) {
         boolean correcto=false;
@@ -171,6 +234,14 @@ public class BDJugador {
         
         return correcto;
     }
+    
+     /**
+     * Metodo para insertar un jugador en un equipo.
+     * @param nickname String
+     * @param id String
+     * @return devuelve correcto si el UPDATE se hace bien
+     * @throws Exception 
+     */  
 
     public static boolean PonerJugadorEquipo(String nickname, String id) throws Exception{
         boolean correcto=false;
@@ -183,6 +254,12 @@ public class BDJugador {
             correcto =true;
         return correcto;
     }
+    
+     /**
+     * Metodo para modificar datos de un jugador.
+     * @param j Jugador
+     * @throws Exception 
+     */   
     
     public static void modificarJugador(Jugador j) throws Exception {
         BDConexion con = new BDConexion();
@@ -202,6 +279,12 @@ public class BDJugador {
         sentencia.close();
         con.desconectar();
     }
+    
+       /**
+     * Metodo para formatear la fecha de alta.
+     * @param fechaE Date
+     * @return fecha
+     */ 
 
     private static Date formatearFecha(java.util.Date fechaE){
         SimpleDateFormat formar = new SimpleDateFormat("yyyy-MM-dd");
