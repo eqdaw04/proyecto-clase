@@ -222,7 +222,14 @@ public class Main {
                 new VGenerarLiga(n);
         }
     }
-    
+      //-------Mikel
+ 
+    public static void abrirVJugador (Jugador j){
+ 
+        new VJugador("consulta",1,j);
+ 
+    }
+ 
     //---------- JON XU JIN ----------
     
     public static void salir(JFrame v){
@@ -733,7 +740,16 @@ public class Main {
     public static boolean AnnadirJugadorEquipo(String nickname, String id) throws Exception {
         return BDJugador.PonerJugadorEquipo(nickname,id);
     }
-    
+    //------------Mikel
+ 
+    // Busca a un jugador por su nickname yle añade el id_equipo del equipo al que se le quiere añadir
+ 
+    public static Jugador consultarJugadorNickname(String nickname) throws Exception {
+ 
+        return BDJugador.buscarJugadorNickname(nickname);
+ 
+    }
+ 
     /**
      * Metodo para dar de alta un equipo en la base de datos.
      * @param nombre String

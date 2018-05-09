@@ -107,7 +107,23 @@ public class BDJugador {
         con.desconectar();
         return a;
     }
-    
+    public static Jugador buscarJugadorNickname(String nickname) throws Exception{ 
+        BDConexion con = new BDConexion(); 
+        ArrayList<Jugador> a = new ArrayList(); 
+        try 
+        { 
+            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Nickname = ?"); 
+            sentencia.setString(1,nickname); 
+            ResultSet rs = sentencia.executeQuery(); 
+            a = recorrer(rs,a); 
+        } 
+        catch (SQLException ex) 
+        { 
+            Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex); 
+        } 
+        con.desconectar(); 
+        return a.get(0); 
+    } 
     public static void insertarJugador(Jugador j) throws Exception {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia = con.getConnection().prepareStatement("INSERT INTO Jugador (DNI, NOMBRE, APELLIDO1, APELLIDO2, NICKNAME, SUELDO, FECHA_ALTA, COMENTARIO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");

@@ -12,7 +12,7 @@ public class VJugador extends javax.swing.JDialog {
     private ArrayList<Jugador> listaJugadores;
     private String tipo;
     private int posicion, n;
-
+    private Jugador j;
     /**
      * Creates new form VJugador
      * @param tipo
@@ -24,7 +24,18 @@ public class VJugador extends javax.swing.JDialog {
         // Mostrar opciones según tipo de operaciones CRUD que se quiera realizar
         cargarDatos(tipo, n);        
     }
-
+    public VJugador(String tipo, int n, Jugador j) {
+ 
+        initComponents();
+ 
+        // Mostrar opciones según tipo de operaciones CRUD que se quiera realizar
+ 
+        this.j=j;
+ 
+        cargarDatos(tipo, n);        
+ 
+    }
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -301,6 +312,9 @@ public class VJugador extends javax.swing.JDialog {
                    Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
                    JOptionPane.showMessageDialog(this, "El jugador se ha modificado correctamente.");
                    break;
+                case "consulta":
+                    Main.cerrar(this);
+                    break;
            }
            Main.reabrir(this, tipo, n);
        }
@@ -507,6 +521,7 @@ public class VJugador extends javax.swing.JDialog {
         setModal(true);
         this.setLocationRelativeTo(null);
         listaJugadores = new ArrayList();
+        //en algún punto seguramente sea mejor un switch
         if(tipo.equals("alta"))
         {
             tfNombre.setEnabled(true);
@@ -517,7 +532,16 @@ public class VJugador extends javax.swing.JDialog {
             taComentario.setEnabled(true);
             bAceptar.setEnabled(true);
             bBuscar.setEnabled(false);
-        }        
+        }  else if(tipo.equals("consulta")){
+            tfNombre.setText(j.getNombre());
+            tfApellido1.setText(j.getApellido1());
+            tfApellido2.setText(j.getApellido2()); 
+            tfNickname.setText(j.getNickname());
+            cFechaAlta.setDate(j.getFechaAlta());
+            ftfSueldo.setText(String.valueOf(j.getSueldo())); 
+            taComentario.setText(j.getComentario());
+            bBuscar.setVisible(false);
+        }
         setVisible(true);
     }
     
