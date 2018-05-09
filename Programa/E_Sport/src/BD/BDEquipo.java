@@ -88,8 +88,8 @@ public class BDEquipo {
         ArrayList<Equipo> a = new ArrayList();
         try
         {
-            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo WHERE ID_EQUIPO = ?");
-            sentencia.setString(1, String.valueOf(e.getIdEquipo()));
+            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo WHERE NOMBRE = ?");
+            sentencia.setString(1, nombre);
             ResultSet rs = sentencia.executeQuery();
             a = recorrer(rs,a);
         }
