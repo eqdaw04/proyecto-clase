@@ -17,10 +17,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author 1gdaw06
+ *Clase en la que introduciremos y controlaremos los equipos a la base de datos.
+ * Fecha de creación de la clase: 09/05/2018
+ * @author eqdaw04
  */
+
 public class BDEquipo {
+    
+    /**
+     * Metodo para insertar un equipo.
+     * @param e Equipo
+     * @throws Exception 
+     */
     
     public static void insertarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
@@ -37,6 +45,12 @@ public class BDEquipo {
         con.desconectar();
     }
     
+    /**
+     * Metodo para eliminar un equipo.
+     * @param e Equipo
+     * @throws Exception 
+     */
+    
     public static void eliminarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia = con.getConnection().prepareStatement("DELETE FROM Equipo WHERE ID_EQUIPO = ?");
@@ -48,6 +62,12 @@ public class BDEquipo {
         sentencia.close();
         con.desconectar();
     }
+    
+    /**
+     * Metodo para modificar un equipo.
+     * @param e Equipo
+     * @throws Exception 
+     */
     
     public static void modificarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
@@ -61,6 +81,13 @@ public class BDEquipo {
         sentencia.close();
         con.desconectar();
     }
+    
+    /**
+     * Metodo para buscar un equipo por nombre de un usuario integrante.
+     * @param usu String
+     * @return devuelve un objeto equipo
+     * @throws Exception 
+     */
     
     public static Equipo BuscarEquipoPorUsuario(String usu) throws Exception {
         BDConexion con = new BDConexion();

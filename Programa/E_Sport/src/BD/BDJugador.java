@@ -27,7 +27,7 @@ public class BDJugador {
      /**
      * Metodo para buscar una lista de jugadores por dni.
      * @param dni String
-     * @return Devuelve una lista de jugadores 
+     * @return devuelve una lista de jugadores 
      * @throws Exception 
      */   
     
@@ -51,7 +51,7 @@ public class BDJugador {
     
     /**
      * Metodo para buscar una lista de todos los jugadores.
-     * @return Devuelve una lista de jugadores 
+     * @return devuelve una lista de jugadores 
      * @throws Exception 
      */    
     
@@ -75,7 +75,7 @@ public class BDJugador {
         /**
      * Metodo para buscar la lista de jugadores de un equipo. 
      * @param id String
-     * @return Devuelve una lista de jugadores
+     * @return devuelve una lista de jugadores
      * @throws Exception 
      */
     
