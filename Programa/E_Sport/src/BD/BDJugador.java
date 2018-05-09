@@ -39,7 +39,7 @@ public class BDJugador {
         }
         return a ;
     }
-    
+    //Exactamente igual al de arriba????
     public static Jugador BuscarJugador(String dni) throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a = new ArrayList();
@@ -110,13 +110,12 @@ public class BDJugador {
     }
 
     public static ArrayList<Jugador> BuscarJugadoresDisponibles() throws Exception {
-        ResultSet rs = null;
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a= new ArrayList();
         try {
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo is null");
         sentencia.executeUpdate();
-        rs = sentencia.executeQuery();
+        ResultSet rs = sentencia.executeQuery();
         a= recorrer (rs,a);
         con.desconectar();
         } catch (SQLException ex) {
@@ -186,6 +185,23 @@ public class BDJugador {
         return correcto;
     }
     
+    public static Jugador buscarJugadorNickname(String nickname) throws Exception{
+        BDConexion con = new BDConexion();
+        ArrayList<Jugador> a = new ArrayList();
+        try
+        {
+            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Nickname = ?");
+            sentencia.setString(1,nickname);
+            ResultSet rs = sentencia.executeQuery();
+            a = recorrer(rs,a);
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        con.desconectar();
+        return a.get(0);
+    }
     public static void modificarJugador(Jugador j) throws Exception {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET DNI=?, NOMBRE=?, APELLIDO1=?, APELLIDO2=?, NICKNAME=?, SUELDO=?, COMENTARIO=? WHERE ID_EQUIPO=?");

@@ -137,6 +137,10 @@ public class Main {
                 break;
         }
     }
+    //-------Mikel
+    public static void abrirVJugador (Jugador j){
+        new VJugador("consulta",1,j);
+    }
 
     //---------- JON XU JIN ----------
     
@@ -271,7 +275,7 @@ public class Main {
     
     public static ArrayList <Partido> consultarPartidosPorJornada(int n) throws Exception{
         ArrayList<Partido> lPartido = new ArrayList();
-        lPartido = bdPartido.consultarPartidosPorJornada(n);
+       lPartido = bdPartido.consultarPartidosPorJornada(n);
         return lPartido;
     }
     
@@ -446,6 +450,11 @@ public class Main {
     // Busca a un jugador por su nickname yle añade el id_equipo del equipo al que se le quiere añadir
     public static boolean AnnadirJugadorEquipo(String nickname, String id) throws Exception {
         return BDJugador.PonerJugadorEquipo(nickname,id);
+    }
+    //------------Mikel
+    // Busca a un jugador por su nickname yle añade el id_equipo del equipo al que se le quiere añadir
+    public static Jugador consultarJugadorNickname(String nickname) throws Exception {
+        return BDJugador.buscarJugadorNickname(nickname);
     }
     // Imanol Luis
     public static void altaEquipo(String nombre, Date fechaCreacion, String comentario) throws Exception {
