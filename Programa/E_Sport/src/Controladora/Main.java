@@ -366,9 +366,7 @@ public class Main {
 
     public static void setPersona(Persona persona) {
         Main.persona = persona;
-    }
-
-    
+    }    
     
     // Imanol Luis
     public static void altaJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String sueldo, Date fechaAlta, String comentario) throws Exception {
@@ -386,9 +384,8 @@ public class Main {
     }
 
     // Imanol Luis
-    public static void bajaJugador(String dni) throws Exception {
+    public static void bajaJugador() throws Exception {
         // Eliminar jugador en la BD
-        jugador.setDni(dni);
         BDJugador.eliminarJugador(jugador);
     }
     
@@ -458,9 +455,8 @@ public class Main {
     }
 
     // Imanol Luis
-    public static void bajaEquipo(String nombre) throws Exception {
+    public static void bajaEquipo() throws Exception {
         // Eliminar equipo en la BD
-        equipo.setNombre(nombre);
         BDEquipo.eliminarEquipo(equipo);
     }
 
@@ -484,6 +480,7 @@ public class Main {
         return BDEquipo.BuscarEquipo();
     }
 
+    // Imanol Luis
     public static String buscarPlantilla(Equipo equipo) throws Exception {
         String plantilla="";
         String dni, nombre, apellido1, apellido2, nickname;
