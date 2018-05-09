@@ -2,6 +2,12 @@ package UML;
 
 import java.util.Date;
 
+/**
+ * Clase en la que definiremos los datos personales de cada jugador, la fecha en la que se dió de alta y el salario de este.
+ * Fecha de creación de la clase: 23/04/2018
+ * @author eqdaw04
+ */
+
 public class Jugador {
     private int idJugador;
     private String dni, nombre, apellido1, apellido2, nickname;

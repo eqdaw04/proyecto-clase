@@ -2,8 +2,15 @@ package UML;
 
 import java.util.ArrayList;
 
+/**
+ * Clase en la que definiremos la lista de partidos que se jugarán en una jornada.
+ * Fecha de creación de la clase: 23/04/2018
+ * @author eqdaw04
+ */
+
+
 public class Jornada {
-    private int idJornada, nJornada;
+    private int idJornada;
     
     private ArrayList<Partido> listaPartidos;
 
@@ -26,13 +33,4 @@ public class Jornada {
     public void setListaPartidos(ArrayList<Partido> listaPartidos) {
         this.listaPartidos = listaPartidos;
     }
-
-    public int getnJornada() {
-        return nJornada;
-    }
-
-    public void setnJornada(int nJornada) {
-        this.nJornada = nJornada;
-    }
-    
 }

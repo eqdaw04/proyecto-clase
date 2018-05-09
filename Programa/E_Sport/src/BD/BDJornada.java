@@ -16,7 +16,6 @@ import java.util.ArrayList;
  * @author 1gdaw06
  */
 public class BDJornada {
-    int idJornada, nJornada;
     
     public boolean insertarJornada(int nJornada, BDConexion con) throws Exception{
         boolean estado = false;        

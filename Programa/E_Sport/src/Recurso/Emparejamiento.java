@@ -10,25 +10,41 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author v6222
+ * Clase en la que definimos los emparejamientos de los equipos por partido.
+ * Fecha de creación de la clase: 25/04/2018
+ * @author eqdaw04
+ */
+
+/**
+ * Metodo para emparejar equipos.
+ * Obtenemos el día en el que se jugará el partido y los arrays de equipos locales y visitantes.
  */
 public class Emparejamiento {
     ArrayList <Equipo> lEquipo;
-    //array local y visitante 
     Equipo[][] lJPEquipoL;
     Equipo[][] lJPEquipoV;
     
     public Emparejamiento() {
     }
+    
+    /**
+     * Constructor para emparejar los equipos.
+     * @param diaInicio int
+     * @param lEquipo ArrayList de equipo
+     */
 
     public Emparejamiento(ArrayList<Equipo> lEquipo) {
         this.lEquipo = lEquipo;
     }
     
+    /**
+     * Metodo para calcular el partido.
+     * Obtenemos el número de jornadas y partidos.
+     */
+    
     public void calcularPartido(){
         int e = lEquipo.size();
-        // obtener numero de jornadas, partidos, si es impar añadir 1 numero equipo fantasma y crear Array
+        // Si es impar añadir 1 numero equipo fantasma y crear Array
         if(e%2!=0){
             // si el equipo es impar, se añade un equipo fantasma
             Equipo f = new Equipo();
@@ -43,6 +59,13 @@ public class Emparejamiento {
         // rellenar array con los equipos
         llenarArray(j, p, e);
     }
+    
+    /**
+     * Metodo en el que llenamos los arrays de los equipos locales y visitantes.
+     * @param j int
+     * @param p int
+     * @param e int
+     */
     
     public void llenarArray(int j, int p, int e){
         //Algoritmo de construccion de equipos

@@ -18,7 +18,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.Timer;
-
+import UML.Equipo;
+import UML.Partido;
 /**
  *
  * @author 1gdaw06
