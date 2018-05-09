@@ -14,8 +14,6 @@ import javax.swing.JOptionPane;
  * @author v6222
  */
 public class Emparejamiento {
-    
-    int diaInicio;
     ArrayList <Equipo> lEquipo;
     //array local y visitante 
     Equipo[][] lJPEquipoL;
@@ -24,8 +22,7 @@ public class Emparejamiento {
     public Emparejamiento() {
     }
 
-    public Emparejamiento(int diaInicio,ArrayList<Equipo> lEquipo) {
-        this.diaInicio = diaInicio;
+    public Emparejamiento(ArrayList<Equipo> lEquipo) {
         this.lEquipo = lEquipo;
     }
     
@@ -91,16 +88,14 @@ public class Emparejamiento {
                 }
             }
         }
-        //Prueba de combinación
-        JOptionPane.showMessageDialog(null, "El último día de partido es el " + prueba(e, horizontal));
-        
+        insertarBBDD(e, horizontal);
     }
     
-    public int prueba(int e, int horizontal){
+    public int insertarBBDD(int e, int horizontal){
         //emplear este código para combinar los equipos en bbdd
         String dato = "Jornadas 1-" + (e-1) + " Equipos:\n";
         boolean sumar = true;
-        int dia = diaInicio;
+        int dia = 1;
         int jornada = 1;
         // comienza a asignar la primera mitad de la liga
         for(int x = 0; x<e-1; x++){

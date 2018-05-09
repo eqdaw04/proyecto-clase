@@ -149,6 +149,19 @@ public class Excepcion extends Exception {
             case 31:
                 dato = "Has alcanzado el límite de 6 jugadores. Por favor retira un jugador antes de añadir uno nuevo";
                 break;
+                
+            case 40:
+                dato = "Error al insertar la Jornada.";
+                break;
+                
+            case 41:
+                dato = "Error al insertar el Partido.";
+                break;
+                
+            case 42:
+                dato = "Error al insertar el Equipo";
+                break;
+                
             case 50:
                 dato = "El nombre del equipo es obligatorio.";
                 break;

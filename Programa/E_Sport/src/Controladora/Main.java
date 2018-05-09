@@ -8,6 +8,7 @@ package Controladora;
 import Recurso.Emparejamiento;
 import UML.*;
 import BD.*;
+import Recurso.*;
 import static BD.BDConexion.*;
 import Excepciones.Excepcion;
 import Views.*;
@@ -135,6 +136,9 @@ public class Main {
             case 6:
                 new VIntroducirResultado(n);
                 break;
+                
+            case 7:
+                new VGenerarLiga(n);
         }
     }
 
@@ -176,6 +180,9 @@ public class Main {
             case 6:
                 new VIntroducirResultado(n);
                 break;
+                
+            case 7:
+                new VGenerarLiga(n);
         }
     }
     
@@ -281,6 +288,54 @@ public class Main {
         ArrayList<Partido> lPartido = new ArrayList();
         lPartido = bdPartido.consultarPartidosPorJornada(n);
         return lPartido;
+    }
+    
+    
+    //---------- JON XU JIN ----------
+    
+    public static ArrayList<Jornada> consultarTodasLasJornadas() throws Exception{
+        ArrayList <Jornada> lJornada = new ArrayList();
+        lJornada = bdJornada.consultarTodasLasJornadas();
+        return lJornada;
+    }
+    
+    //---------- JON XU JIN ----------
+    
+    public static void generarCalendario() throws Exception{
+        // extraer de la bbdd los equipos disponibles
+        ArrayList <Equipo> lEquipo = new ArrayList();
+        lEquipo = buscarEquipo();
+        // instanciar el algoritmo de emparejamiento
+        Emparejamiento emp = new Emparejamiento(lEquipo);
+        // ejecutar el algoritmo para los equipos aleatorios
+        emp.calcularPartido();
+    }
+    
+    //---------- JON XU JIN ----------
+    
+    public static void insertarJornada(int nJornada, BDConexion con) throws Exception{
+        // insertar la jornada según calendario y devolver si se ha insertado, en caso contrario, saltar excepcion
+        if(!bdJornada.insertarJornada(nJornada, con)){
+            throw new Excepcion(40);
+        }
+    }
+    
+    //---------- JON XU JIN ----------
+    
+    public static void insertarPartido(){
+        // insertar la partido según calendario y devolver si se ha insertado, en caso contrario, saltar excepcion
+        if(!bdPartido.insertarPartido(nJornada, con)){
+            throw new Excepcion(41);
+        }
+    }
+    
+    //---------- JON XU JIN ----------
+    
+    public static void insertarEquipo(){
+        // insertar la equipo según calendario y devolver si se ha insertado, en caso contrario, saltar excepcion
+        if(!bdEquipo.insertarEquipo(nJornada, con)){
+            throw new Excepcion(42);
+        }
     }
     
     public static void probando(){

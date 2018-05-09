@@ -9,14 +9,23 @@ public class Partido {
     private Time hora;
     private String lugar;
     
-    private Equipo[] listaEquipos;
-    private Marcador[] listaMarcadores;
-    private Jornada jornada;
-    
+    private Equipo eLocal, eVisitante;
+    int mLocal, mVisitante;
+
     public Partido() {
-        listaEquipos = new Equipo[2];
     }
-    
+
+    public Partido(int idPartido, Date fecha, Time hora, String lugar, Equipo eLocal, Equipo eVisitante, int mLocal, int mVisitante) {
+        this.idPartido = idPartido;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.lugar = lugar;
+        this.eLocal = eLocal;
+        this.eVisitante = eVisitante;
+        this.mLocal = mLocal;
+        this.mVisitante = mVisitante;
+    }
+
     public int getIdPartido() {
         return idPartido;
     }
@@ -49,27 +58,37 @@ public class Partido {
         this.lugar = lugar;
     }
 
-    public Equipo[] getListaEquipos() {
-        return listaEquipos;
+    public Equipo geteLocal() {
+        return eLocal;
     }
 
-    public void setListaEquipos(Equipo[] listaEquipos) {
-        this.listaEquipos = listaEquipos;
+    public void seteLocal(Equipo eLocal) {
+        this.eLocal = eLocal;
     }
 
-    public Jornada getJornada() {
-        return jornada;
+    public Equipo geteVisitante() {
+        return eVisitante;
     }
 
-    public void setJornada(Jornada jornada) {
-        this.jornada = jornada;
+    public void seteVisitante(Equipo eVisitante) {
+        this.eVisitante = eVisitante;
     }
 
-    public Marcador[] getListaMarcadores() {
-        return listaMarcadores;
+    public int getmLocal() {
+        return mLocal;
     }
 
-    public void setListaMarcadores(Marcador[] listaMarcadores) {
-        this.listaMarcadores = listaMarcadores;
+    public void setmLocal(int mLocal) {
+        this.mLocal = mLocal;
     }
+
+    public int getmVisitante() {
+        return mVisitante;
+    }
+
+    public void setmVisitante(int mVisitante) {
+        this.mVisitante = mVisitante;
+    }
+    
+    
 }

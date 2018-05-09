@@ -72,6 +72,7 @@ public class VPrincipal extends javax.swing.JFrame {
         verEquipo = new javax.swing.JMenuItem();
         verUsuario = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        generarCalendario = new javax.swing.JMenuItem();
         introducirResultados = new javax.swing.JMenuItem();
         equipos = new javax.swing.JMenu();
         altasBajas = new javax.swing.JMenuItem();
@@ -210,6 +211,14 @@ public class VPrincipal extends javax.swing.JFrame {
 
         administracion.add(jMenu7);
         administracion.add(jSeparator1);
+
+        generarCalendario.setText("Generar Liga");
+        generarCalendario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generarCalendarioActionPerformed(evt);
+            }
+        });
+        administracion.add(generarCalendario);
 
         introducirResultados.setText("Introducir resultados");
         introducirResultados.addActionListener(new java.awt.event.ActionListener() {
@@ -429,6 +438,14 @@ public class VPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void generarCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarCalendarioActionPerformed
+        try {
+            Main.abrirVentana(0, "");
+        } catch (Exception ex) {
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generarCalendarioActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel NombreUsu;
     private javax.swing.JMenu administracion;
@@ -441,6 +458,7 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem eliminarJugador;
     private javax.swing.JMenuItem eliminarUsuario;
     private javax.swing.JMenu equipos;
+    private javax.swing.JMenuItem generarCalendario;
     private javax.swing.JMenuItem introducirResultados;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu4;

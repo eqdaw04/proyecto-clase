@@ -9,6 +9,7 @@ import Controladora.Main;
 import UML.Jornada;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,6 +17,49 @@ import java.sql.ResultSet;
  */
 public class BDJornada {
     int idJornada, nJornada;
+    
+    public boolean insertarJornada(int nJornada, BDConexion con) throws Exception{
+        boolean estado = false;        
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("INSERT INTO jornada VALUES(?)");
+        sentencia.setInt(1, nJornada);
+        int n = sentencia.executeUpdate();
+        if(n==1){
+            estado = true;
+        }
+        sentencia.close();
+        return estado;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public ArrayList <Jornada> consultarTodasLasJornadas() throws Exception{
+        ArrayList <Jornada> lJornada = new ArrayList();
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM jornada");
+        ResultSet rs;
+        rs = sentencia.executeQuery();
+        while(rs.next()){
+            Jornada j = new Jornada();
+            j.setIdJornada(rs.getInt("id_jornada"));
+            j.setnJornada(rs.getInt("njornada"));
+            j.setListaPartidos(Main.consultarPartidosPorJornada(j.getnJornada()));
+            lJornada.add(j);
+        }
+        
+        rs.close();
+        sentencia.close();
+        con.desconectar();
+        return lJornada;
+    }
     
     public Jornada consultarJornadaPorNumeroDeJornada(int n) throws Exception{
         // abre la conexion
