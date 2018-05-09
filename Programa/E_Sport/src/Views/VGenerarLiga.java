@@ -85,6 +85,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
         cbHora = new javax.swing.JComboBox<>();
         cbMinuto = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
+        jCalendarCombo1 = new org.freixas.jcalendar.JCalendarCombo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -106,7 +107,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
 
-        jLabel5.setText("Generar Calendario de manera aleatoria:");
+        jLabel5.setText("Seleccione fecha inicial de la Jornada:");
 
         jButton4.setText("Borrar Todo");
         jButton4.setEnabled(false);
@@ -211,6 +212,8 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         jLabel10.setText("Borrar la LIGA actual");
 
+        jCalendarCombo1.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -244,9 +247,11 @@ public class VGenerarLiga extends javax.swing.JDialog {
                         .addGap(0, 13, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCalendarCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,7 +259,8 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(jCalendarCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -312,6 +318,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private org.freixas.jcalendar.JCalendarCombo jCalendarCombo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

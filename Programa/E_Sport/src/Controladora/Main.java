@@ -415,7 +415,9 @@ public class Main {
         // instanciar el algoritmo de emparejamiento
         Emparejamiento emp = new Emparejamiento(lEquipo);
         // ejecutar el algoritmo para los equipos aleatorios
-        emp.calcularPartido();
+        BDConexion con = new BDConexion();
+        emp.calcularPartido(con);
+        con.desconectar();
     }
     
     //---------- JON XU JIN ----------

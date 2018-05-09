@@ -5,6 +5,8 @@
  */
 package Recurso;
 
+import BD.BDConexion;
+import Controladora.Main;
 import UML.Equipo;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -42,7 +44,7 @@ public class Emparejamiento {
      * Obtenemos el número de jornadas y partidos.
      */
     
-    public void calcularPartido(){
+    public void calcularPartido(BDConexion con) throws Exception{
         int e = lEquipo.size();
         // Si es impar añadir 1 numero equipo fantasma y crear Array
         if(e%2!=0){
@@ -57,7 +59,7 @@ public class Emparejamiento {
         lJPEquipoL = new Equipo[j][p];
         lJPEquipoV = new Equipo[j][p];
         // rellenar array con los equipos
-        llenarArray(j, p, e);
+        llenarArray(j, p, e, con);
     }
     
     /**
@@ -67,7 +69,7 @@ public class Emparejamiento {
      * @param e int
      */
     
-    public void llenarArray(int j, int p, int e){
+    public void llenarArray(int j, int p, int e, BDConexion con) throws Exception{
         //Algoritmo de construccion de equipos
         for(int x = 0; x<j; x++){
             if(x%2==0){
@@ -111,10 +113,10 @@ public class Emparejamiento {
                 }
             }
         }
-        insertarBBDD(e, horizontal);
+        insertarBBDD(e, horizontal, con);
     }
     
-    public int insertarBBDD(int e, int horizontal){
+    public int insertarBBDD(int e, int horizontal, BDConexion con) throws Exception{
         //emplear este código para combinar los equipos en bbdd
         String dato = "Jornadas 1-" + (e-1) + " Equipos:\n";
         boolean sumar = true;
@@ -122,11 +124,14 @@ public class Emparejamiento {
         int jornada = 1;
         // comienza a asignar la primera mitad de la liga
         for(int x = 0; x<e-1; x++){
-            dato += "Jornada " + jornada + " compiten: ";
+            //dato += "Jornada " + jornada + " compiten: ";
+            // insertar la jornada a la BBDD
+            Main.insertarJornada(jornada, con);
             sumar = true;
             int d = 1;
             for(int y = 0; y< horizontal; y++){
                 dato += "Día " + dia + "(" + d + ")" + " ";
+                Main.insertarPartido();
                 dato += lJPEquipoL[x][y].getIdEquipo() + "x" + lJPEquipoV[x][y].getIdEquipo() + "   ";
                 if(d==7){
                     d=0;
