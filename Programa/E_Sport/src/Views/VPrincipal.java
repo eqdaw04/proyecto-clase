@@ -440,7 +440,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
     private void generarCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarCalendarioActionPerformed
         try {
-            Main.abrirVentana(0, "");
+            Main.abrirVentana(7, "");
         } catch (Exception ex) {
             Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -12,7 +12,6 @@ import java.util.Date;
 public class Partido {
     private int idPartido;
     private Date fecha;
-    private Time hora;
     private String lugar;
     
     private Equipo eLocal, eVisitante;
@@ -21,10 +20,9 @@ public class Partido {
     public Partido() {
     }
 
-    public Partido(int idPartido, Date fecha, Time hora, String lugar, Equipo eLocal, Equipo eVisitante, int mLocal, int mVisitante) {
+    public Partido(int idPartido, Date fecha, String lugar, Equipo eLocal, Equipo eVisitante, int mLocal, int mVisitante) {
         this.idPartido = idPartido;
         this.fecha = fecha;
-        this.hora = hora;
         this.lugar = lugar;
         this.eLocal = eLocal;
         this.eVisitante = eVisitante;
@@ -46,14 +44,6 @@ public class Partido {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    public Time getHora() {
-        return hora;
-    }
-
-    public void setHora(Time hora) {
-        this.hora = hora;
     }
 
     public String getLugar() {

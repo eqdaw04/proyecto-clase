@@ -36,14 +36,14 @@ public class BDPartido {
         lEquipo = new ArrayList();
     }
     
-    public boolean insertarPartido(Date fecha, String hora, String lugar, int idJornada, BDConexion con) throws Exception{
-        boolean estado = false;        
+    public boolean insertarPartido(Partido p, Jornada jornada, BDConexion con) throws Exception{
+        boolean estado = false;
         PreparedStatement sentencia;
         sentencia = con.getConnection().prepareStatement("INSERT INTO partido (fecha, lugar, ID_JORNADA, hora) values( to_timestamp('10/05/18 12:26:52,000000000','DD/MM/RR HH24:MI:SSXFF'), ?, ?);");
         
-        sentencia.setTimestamp(1, convertirTimeStamp(fecha, hora));
-        sentencia.setString(2, lugar);
-        sentencia.setInt(3, idJornada);
+        sentencia.setTimestamp(1, (Timestamp) p.getFecha());
+        sentencia.setString(2, p.getLugar());
+        sentencia.setInt(3, jornada.getIdJornada());
         int n = sentencia.executeUpdate();
         if(n==1){
             estado = true;
@@ -52,14 +52,7 @@ public class BDPartido {
         return estado;
     }
     
-    private Timestamp convertirTimeStamp(Date fecha, String hora) throws Exception{
-        SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat ffh = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        String fechas = ff.format(fecha) + " " + hora;
-        Date dato = ffh.parse(fechas);
-        Timestamp datoFinal = new Timestamp(dato.getTime());        
-        return datoFinal;
-    }
+    
     
     
     

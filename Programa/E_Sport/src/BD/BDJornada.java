@@ -17,27 +17,19 @@ import java.util.ArrayList;
  */
 public class BDJornada {
     
-    public boolean insertarJornada(int nJornada, BDConexion con) throws Exception{
-        boolean estado = false;        
+    public Jornada insertarJornada(int nJornada, BDConexion con) throws Exception{
+        Jornada j = null;        
         PreparedStatement sentencia;
         sentencia = con.getConnection().prepareStatement("INSERT INTO jornada VALUES(?)");
         sentencia.setInt(1, nJornada);
         int n = sentencia.executeUpdate();
         if(n==1){
-            estado = true;
+            j = new Jornada();
+            j.setIdJornada(nJornada);
         }
         sentencia.close();
-        return estado;
+        return j;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     public ArrayList <Jornada> consultarTodasLasJornadas() throws Exception{
         ArrayList <Jornada> lJornada = new ArrayList();
@@ -49,8 +41,7 @@ public class BDJornada {
         while(rs.next()){
             Jornada j = new Jornada();
             j.setIdJornada(rs.getInt("id_jornada"));
-            j.setnJornada(rs.getInt("njornada"));
-            j.setListaPartidos(Main.consultarPartidosPorJornada(j.getnJornada()));
+            j.setListaPartidos(Main.consultarPartidosPorJornada(j.getIdJornada()));
             lJornada.add(j);
         }
         
@@ -79,8 +70,7 @@ public class BDJornada {
             // crear la persona con base Persona y llenar los datos
             j = new Jornada();
             j.setIdJornada(rs.getInt("id_jornada"));
-            j.setnJornada(rs.getInt("njornada"));
-            j.setListaPartidos(Main.consultarPartidosPorJornada(j.getnJornada()));
+            j.setListaPartidos(Main.consultarPartidosPorJornada(j.getIdJornada()));
         }
         // cerrar conexiones y retornar objeto obtenido mediante consulta
         rs.close();

@@ -7,8 +7,14 @@ package Recurso;
 
 import BD.BDConexion;
 import Controladora.Main;
+import Excepciones.Excepcion;
 import UML.Equipo;
+import UML.Jornada;
+import UML.Partido;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -43,7 +49,7 @@ public class Emparejamiento {
      * Obtenemos el número de jornadas y partidos.
      */
     
-    public void calcularPartido(BDConexion con) throws Exception{
+    public void calcularPartido(BDConexion con, Date fecha, String lugar) throws Exception{
         int e = lEquipo.size();
         // Si es impar añadir 1 numero equipo fantasma y crear Array
         if(e%2!=0){
@@ -58,7 +64,7 @@ public class Emparejamiento {
         lJPEquipoL = new Equipo[j][p];
         lJPEquipoV = new Equipo[j][p];
         // rellenar array con los equipos
-        llenarArray(j, p, e, con);
+        llenarArray(j, p, e, con, fecha, lugar);
     }
     
     /**
@@ -68,7 +74,7 @@ public class Emparejamiento {
      * @param e int
      */
     
-    public void llenarArray(int j, int p, int e, BDConexion con) throws Exception{
+    public void llenarArray(int j, int p, int e, BDConexion con, Date fecha, String lugar) throws Exception{
         //Algoritmo de construccion de equipos
         for(int x = 0; x<j; x++){
             if(x%2==0){
@@ -112,10 +118,10 @@ public class Emparejamiento {
                 }
             }
         }
-        insertarBBDD(e, horizontal, con);
+        insertarBBDD(e, horizontal, con, fecha, lugar);
     }
     
-    public int insertarBBDD(int e, int horizontal, BDConexion con) throws Exception{
+    public int insertarBBDD(int e, int horizontal, BDConexion con, Date fecha, String lugar) throws Exception{
         //emplear este código para combinar los equipos en bbdd
         String dato = "Jornadas 1-" + (e-1) + " Equipos:\n";
         boolean sumar = true;
@@ -123,15 +129,24 @@ public class Emparejamiento {
         int jornada = 1;
         // comienza a asignar la primera mitad de la liga
         for(int x = 0; x<e-1; x++){
-            //dato += "Jornada " + jornada + " compiten: ";
+            dato += "Jornada " + jornada + " compiten: ";
             // insertar la jornada a la BBDD
-            Main.insertarJornada(jornada, con);
+            Jornada j = Main.insertarJornada(jornada, con);
             sumar = true;
             int d = 1;
             for(int y = 0; y< horizontal; y++){
                 dato += "Día " + dia + "(" + d + ")" + " ";
-                Main.insertarPartido();
+                
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(fecha);
+                calendar.add(Calendar.DAY_OF_YEAR, dia);
+                Partido p = Main.insertarPartido(calendar.getTime(), lugar, j, con);
                 dato += lJPEquipoL[x][y].getIdEquipo() + "x" + lJPEquipoV[x][y].getIdEquipo() + "   ";
+                p.seteLocal(lJPEquipoL[x][y]);
+                p.seteVisitante(lJPEquipoV[x][y]);
+                if(!Main.insertarEquiposAPartido(p, con)){
+                    throw new Excepcion(42);
+                }
                 if(d==7){
                     d=0;
                     sumar=false;
@@ -149,11 +164,22 @@ public class Emparejamiento {
         dato += "\nJornadas " + e + "-" + ((e-1)*2) + " Equipos:\n";
         for(int x = 0; x<e-1; x++){
             dato += "Jornada " + jornada + " compiten: ";
+            // insertar la jornada a la BBDD
+            Jornada j = Main.insertarJornada(jornada, con);
             sumar = true;
             int d = 1;
             for(int y = 0; y< horizontal; y++){
                 dato += "Día " + dia + "(" + d + ")" + " ";
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(fecha);
+                calendar.add(Calendar.DAY_OF_YEAR, dia);
+                Partido p = Main.insertarPartido(calendar.getTime(), lugar, j, con);
                 dato += lJPEquipoV[x][y].getIdEquipo() + "x" + lJPEquipoL[x][y].getIdEquipo() + "   ";
+                p.seteLocal(lJPEquipoV[x][y]);
+                p.seteVisitante(lJPEquipoL[x][y]);
+                if(!Main.insertarEquiposAPartido(p, con)){
+                    throw new Excepcion(42);
+                }
                 if(d==7){
                     d=0;
                     sumar=false;

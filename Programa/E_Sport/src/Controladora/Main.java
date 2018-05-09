@@ -13,6 +13,7 @@ import static BD.BDConexion.*;
 import Excepciones.Excepcion;
 import Views.*;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -408,73 +409,53 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static void generarCalendario() throws Exception{
+    public static void generarCalendario(Date fecha, String lugar) throws Exception{
         // extraer de la bbdd los equipos disponibles
         ArrayList <Equipo> lEquipo = new ArrayList();
         lEquipo = buscarEquipo();
         // instanciar el algoritmo de emparejamiento
         Emparejamiento emp = new Emparejamiento(lEquipo);
         // ejecutar el algoritmo para los equipos aleatorios
+        // Abrir conexion y mantenerlo abierto hasta que acabe que introducir las partidas para no tener que abrir y cerrar constantemente hasta introducir los X partidos
         BDConexion con = new BDConexion();
-        emp.calcularPartido(con);
+        emp.calcularPartido(con, fecha, lugar);
         con.desconectar();
     }
     
     //---------- JON XU JIN ----------
     
-    public static void insertarJornada(int nJornada, BDConexion con) throws Exception{
+    public static Jornada insertarJornada(int nJornada, BDConexion con) throws Exception{
         // insertar la jornada según calendario y devolver si se ha insertado, en caso contrario, saltar excepcion
-        if(!bdJornada.insertarJornada(nJornada, con)){
+        Jornada j = bdJornada.insertarJornada(nJornada, con);
+        if(j != null){
             throw new Excepcion(40);
         }
+        return j;
     }
     
     //---------- JON XU JIN ----------
     
-    public static void insertarPartido(){
+    public static Partido insertarPartido(Date fecha, String lugar, Jornada jornada, BDConexion con) throws Exception{
         // insertar la partido según calendario y devolver si se ha insertado, en caso contrario, saltar excepcion
-        if(!bdPartido.insertarPartido(nJornada, con)){
+        Partido p = new Partido();
+        p.setFecha(fecha);
+        p.setLugar(lugar);
+        if(!bdPartido.insertarPartido(p, jornada, con)){
             throw new Excepcion(41);
         }
+        return p;
     }
     
     //---------- JON XU JIN ----------
     
-    public static void insertarEquipo(){
-        // insertar la equipo según calendario y devolver si se ha insertado, en caso contrario, saltar excepcion
-        if(!bdEquipo.insertarEquipo(nJornada, con)){
-            throw new Excepcion(42);
+    public static boolean insertarEquiposAPartido(Partido partido, BDConexion con) throws SQLException{
+        boolean estado = false;
+        if(bdMarcador.insertarEquiposAPartido(partido, con) == 1){
+            estado = true;
         }
+        return estado;
     }
-    
-    public static void probando(){
-        ArrayList <Equipo> lEquipo = new ArrayList();
-        Equipo e1 = new Equipo();
-        e1.setIdEquipo(1);
-        lEquipo.add(e1);
-        Equipo e2 = new Equipo();
-        e2.setIdEquipo(2);
-        lEquipo.add(e2);
-        Equipo e3 = new Equipo();
-        e3.setIdEquipo(3);
-        lEquipo.add(e3);
-        Equipo e4 = new Equipo();
-        e4.setIdEquipo(4);
-        lEquipo.add(e4);
-        
-        Equipo e5 = new Equipo();
-        e5.setIdEquipo(5);
-        lEquipo.add(e5);
-        Equipo e6 = new Equipo();
-        e6.setIdEquipo(6);
-        lEquipo.add(e6);
-        Equipo e7 = new Equipo();
-        e7.setIdEquipo(7);
-        lEquipo.add(e7);
-        Emparejamiento e = new Emparejamiento(12, lEquipo);
-        e.calcularPartido();
-        
-    }
+  
 
     public static int getPerfil() {
         return perfil;
