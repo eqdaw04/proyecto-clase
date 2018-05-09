@@ -83,6 +83,24 @@ public class BDEquipo {
         return e;
     }
     
+    public static ArrayList<Equipo> BuscarEquipos(String nombre) throws Exception {
+        BDConexion con = new BDConexion();
+        ArrayList<Equipo> a = new ArrayList();
+        try
+        {
+            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo WHERE NOMBRE = ?");
+            sentencia.setString(1, nombre);
+            ResultSet rs = sentencia.executeQuery();
+            a = recorrer(rs,a);
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        con.desconectar();
+        return a;
+    }
+    
     public static Equipo BuscarEquipo(String nombre) throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Equipo> a = new ArrayList();

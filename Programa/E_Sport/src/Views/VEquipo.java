@@ -438,7 +438,7 @@ public class VEquipo extends javax.swing.JDialog {
         if(tipo.equals("alta"))
         {
             // Comprobar si existe un equipo con ese nombre
-            if(Main.buscarEquipo(tfNombre.getText()).getNombre().isEmpty())
+            if(!Main.buscarEquipos(tfNombre.getText()).isEmpty())
             {
                 throw new Excepcion(19);
             }
@@ -447,7 +447,7 @@ public class VEquipo extends javax.swing.JDialog {
         else
         {
             // Comprobar si no existe un equipo con ese nombre
-            if(!Main.buscarEquipo(tfNombre.getText()).getNombre().isEmpty())
+            if(Main.buscarEquipos(tfNombre.getText()).isEmpty())
             {
                 throw new Excepcion(20);
             }
