@@ -418,8 +418,9 @@ public class Main {
        return BDJugador.BuscarJugador();
     }
     
-    public static ArrayList<Jugador> buscarDNI(String dni) throws Exception {      
-       return BDJugador.BuscarDni(dni);
+    // Imanol Luis
+    public static ArrayList<Jugador> buscarJugadores(String dni) throws Exception {      
+       return BDJugador.BuscarJugadores(dni);
     }
     //------------Mikel
     // Busca Jugadores pertenecientes a un equipo
@@ -487,6 +488,11 @@ public class Main {
     // Imanol Luis
     public static ArrayList<Equipo> buscarEquipo() throws Exception {
         return BDEquipo.BuscarEquipo();
+    }
+
+    // Imanol Luis
+    public static ArrayList<Equipo> buscarEquipos(String nombre) throws Exception {
+        return BDEquipo.BuscarEquipos(nombre);
     }
 
     // Imanol Luis

@@ -12,11 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,7 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class BDJugador {
     
-    public static ArrayList<Jugador> BuscarDni(String dni) throws Exception {
+    public static ArrayList<Jugador> BuscarJugadores(String dni) throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a= new ArrayList();
         try {
@@ -37,7 +35,7 @@ public class BDJugador {
         } catch (SQLException ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return a ;
+        return a;
     }
     //Exactamente igual al de arriba????
     public static Jugador BuscarJugador(String dni) throws Exception {
