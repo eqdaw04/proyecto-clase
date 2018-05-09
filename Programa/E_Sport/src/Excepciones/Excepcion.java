@@ -6,9 +6,11 @@
 package Excepciones;
 
 /**
- *
- * @author v6222
+ * Clase en la que controlamos todas las excepciones que puedan aparecer en el programa.
+ * Fecha de creación de la clase: 25/04/2018
+ * @author eqdaw04
  */
+
 public class Excepcion extends Exception {
     
     int codigo;
