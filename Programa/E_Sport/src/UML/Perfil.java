@@ -2,6 +2,12 @@ package UML;
 
 import java.util.ArrayList;
 
+/**
+ * Clase en la que definiremos el nombre de perfil de la persona a registrar.
+ * Fecha de creación de la clase: 23/04/2018
+ * @author eqdaw04
+ */
+
 public class Perfil {
     private int idPerfil;
     private String nombre;

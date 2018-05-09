@@ -3,6 +3,14 @@ package UML;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+* Clase en la que definiremos el nombre, la fecha de creación y os integrantes del equipo.
+* Fecha de creación de la clase: 23/04/2018
+* @author eqdaw04
+* 
+*
+*/
+
 public class Equipo {
     private int idEquipo;
     private String nombre;

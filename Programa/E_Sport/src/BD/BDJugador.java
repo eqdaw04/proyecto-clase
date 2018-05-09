@@ -12,9 +12,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,7 +24,7 @@ import java.util.logging.Logger;
  */
 public class BDJugador {
     
-    public static ArrayList<Jugador> BuscarJugadores(String dni) throws Exception {
+    public static ArrayList<Jugador> BuscarDni(String dni) throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a= new ArrayList();
         try {
@@ -35,9 +37,9 @@ public class BDJugador {
         } catch (SQLException ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return a;
+        return a ;
     }
-    //Exactamente igual al de arriba????
+    
     public static Jugador BuscarJugador(String dni) throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a = new ArrayList();
@@ -108,12 +110,13 @@ public class BDJugador {
     }
 
     public static ArrayList<Jugador> BuscarJugadoresDisponibles() throws Exception {
+        ResultSet rs = null;
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a= new ArrayList();
         try {
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo is null");
         sentencia.executeUpdate();
-        ResultSet rs = sentencia.executeQuery();
+        rs = sentencia.executeQuery();
         a= recorrer (rs,a);
         con.desconectar();
         } catch (SQLException ex) {
@@ -145,8 +148,8 @@ public class BDJugador {
     
     public static void eliminarJugador(Jugador j) throws Exception {
         BDConexion con = new BDConexion();
-        PreparedStatement sentencia = con.getConnection().prepareStatement("DELETE FROM Jugador WHERE Id_jugador = ?");
-        sentencia.setInt(1, j.getIdJugador());                   
+        PreparedStatement sentencia = con.getConnection().prepareStatement("DELETE FROM Jugador WHERE DNI = ?");
+        sentencia.setString(1, j.getDni());                   
         if(sentencia.executeUpdate()!=1)
         {
             throw new Excepcion(25);
@@ -183,34 +186,16 @@ public class BDJugador {
         return correcto;
     }
     
-    public static Jugador buscarJugadorNickname(String nickname) throws Exception{
-        BDConexion con = new BDConexion();
-        ArrayList<Jugador> a = new ArrayList();
-        try
-        {
-            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Nickname = ?");
-            sentencia.setString(1,nickname);
-            ResultSet rs = sentencia.executeQuery();
-            a = recorrer(rs,a);
-        }
-        catch (SQLException ex)
-        {
-            Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        con.desconectar();
-        return a.get(0);
-    }
     public static void modificarJugador(Jugador j) throws Exception {
         BDConexion con = new BDConexion();
-        PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET DNI=?, NOMBRE=?, APELLIDO1=?, APELLIDO2=?, NICKNAME=?, SUELDO=?, COMENTARIO=? WHERE ID_EQUIPO=?");
-        sentencia.setString(1, j.getDni());
-        sentencia.setString(2, j.getNombre());
-        sentencia.setString(3, j.getApellido1());
-        sentencia.setString(4, j.getApellido2());
-        sentencia.setString(5, j.getNickname());
-        sentencia.setFloat(6, j.getSueldo());
-        sentencia.setString(7, j.getComentario());
-        sentencia.setInt(8, j.getIdJugador());                        
+        PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET NOMBRE=?, APELLIDO1=?, APELLIDO2=?, NICKNAME=?, SUELDO=?, COMENTARIO=? WHERE DNI=?");
+        sentencia.setString(1, j.getNombre());
+        sentencia.setString(2, j.getApellido1());
+        sentencia.setString(3, j.getApellido2());
+        sentencia.setString(4, j.getNickname());
+        sentencia.setFloat(5, j.getSueldo());
+        sentencia.setString(6, j.getComentario());
+        sentencia.setString(7, j.getDni());                          
         if(sentencia.executeUpdate()!=1)
         {
             throw new Excepcion(25);

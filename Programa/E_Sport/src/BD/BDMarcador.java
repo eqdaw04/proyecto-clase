@@ -11,6 +11,4 @@ package BD;
  */
 public class BDMarcador {
     
-    
-    
 }

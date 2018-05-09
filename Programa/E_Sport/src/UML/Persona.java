@@ -2,6 +2,12 @@ package UML;
 
 import java.util.Date;
 
+/**
+ * Clase en la que definiremos los datos personales, la fecha de alta y el usuario, contraseña y email de la persona.
+ * Fecha de la creación de la clase: 23/04/2018
+ * @author eqdaw04
+ */
+
 public class Persona {
     private int idPersona;
     private String nombre, apellido1, apellido2;
@@ -23,6 +29,7 @@ public class Persona {
         this.contrasenna = contrasenna;
         this.email = email;
     }
+
     
     public int getIdPersona() {
         return idPersona;
@@ -31,7 +38,7 @@ public class Persona {
     public void setIdPersona(int idPersona) {
         this.idPersona = idPersona;
     }
-
+    
     public String getNombre() {
         return nombre;
     }
@@ -47,7 +54,7 @@ public class Persona {
     public void setApellido1(String apellido1) {
         this.apellido1 = apellido1;
     }
-
+ 
     public String getApellido2() {
         return apellido2;
     }

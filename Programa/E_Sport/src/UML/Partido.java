@@ -3,6 +3,12 @@ package UML;
 import java.sql.Time;
 import java.util.Date;
 
+/**
+ * Clase en la que definiremos el día, lugar y hora de un partido.
+ * Fecha de creación de la clase: 23/04/2018
+ * @author eqdaw04
+ */
+
 public class Partido {
     private int idPartido;
     private Date fecha;

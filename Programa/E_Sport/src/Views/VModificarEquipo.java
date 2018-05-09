@@ -220,15 +220,6 @@ public class VModificarEquipo extends javax.swing.JFrame {
 
     private void bConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarActionPerformed
         //sacar datos en vjugador
-        if(liJugEqui.isSelectionEmpty()){
-            
-        }else{
-            try {
-                Main.abrirVJugador(Main.consultarJugadorNickname(liJugEqui.getSelectedValue()));
-            } catch (Exception ex) {
-                Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
     }//GEN-LAST:event_bConsultarActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
@@ -240,7 +231,7 @@ public class VModificarEquipo extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     private void rellenar() throws Exception{
-        //No entiendo muy bien porque, pero si pongo directamente el codigo el segundo modelo (sea cual sea) no funciona correctamente
+        //No entiendo muy bien porque, pero sipongo directamente el codigo el segundo modelo (sea cual sea) no funciona correctamente
         rellenar1();
         rellenar2();    
     }

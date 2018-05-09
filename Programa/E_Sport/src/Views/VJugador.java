@@ -12,7 +12,6 @@ public class VJugador extends javax.swing.JDialog {
     private ArrayList<Jugador> listaJugadores;
     private String tipo;
     private int posicion, n;
-    private Jugador j;
 
     /**
      * Creates new form VJugador
@@ -21,12 +20,6 @@ public class VJugador extends javax.swing.JDialog {
     public VJugador(String tipo, int n) {
         initComponents();
         // Mostrar opciones según tipo de operaciones CRUD que se quiera realizar
-        cargarDatos(tipo, n);        
-    }
-    public VJugador(String tipo, int n, Jugador j) {
-        initComponents();
-        // Mostrar opciones según tipo de operaciones CRUD que se quiera realizar
-        this.j=j;
         cargarDatos(tipo, n);        
     }
 
@@ -260,7 +253,7 @@ public class VJugador extends javax.swing.JDialog {
            switch(tipo)
            {
                case "alta":
-                    // Validación de datos
+                   // Validación de datos
                     ValidacionDeDatosDeEntrada.validar(3, tfDNI);
                     ValidacionDeDatosDeEntrada.validar(4, tfNombre);
                     ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
@@ -274,22 +267,21 @@ public class VJugador extends javax.swing.JDialog {
                         throw new Excepcion(10);
                     }
                     // Comprobar si existe, en caso contrario se procede el alta.
-                    if(!Main.buscarJugadores(tfDNI.getText()).isEmpty())
-                    {
-                        throw new Excepcion(23);
-                    }
-                    // Insertar el jugador
-                    Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), cFechaAlta.getDate(), taComentario.getText());
-                    JOptionPane.showMessageDialog(this, "El jugador se ha dado de alta correctamente.");
-                    break;
+                   if(!Main.buscarDNI(tfDNI.getText()).isEmpty())
+                   {
+                       throw new Excepcion(23);
+                   }
+                   // Insertar el jugador
+                   Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), cFechaAlta.getDate(), taComentario.getText());
+                   JOptionPane.showMessageDialog(this, "El jugador se ha dado de alta correctamente.");
+                   break;
                case "baja":
-                    // Eliminar el jugador
-                    Main.bajaJugador();
-                    JOptionPane.showMessageDialog(this, "El jugador se dado de baja correctamente.");
-                    break;
+                   // Eliminar el jugador
+                   Main.bajaJugador(tfDNI.getText());
+                   JOptionPane.showMessageDialog(this, "El jugador se dado de baja correctamente.");
+                   break;
                case "modificacion":
-                    // Valida los datos y si es correcto, modifica el jugador
-                    ValidacionDeDatosDeEntrada.validar(3, tfDNI);
+                   // Valida los datos y si es correcto, modifica el jugador
                     ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
                     ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
                     ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
@@ -297,19 +289,18 @@ public class VJugador extends javax.swing.JDialog {
                     {
                         throw new Excepcion(26);
                     }
-                    Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
-                    JOptionPane.showMessageDialog(this, "El jugador se ha modificado correctamente.");
-                    break;
-                case "consulta":
-                    Main.cerrar(this);
-                    Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
-                    JOptionPane.showMessageDialog(this, "El jugador se ha modificado correctamente.");
-                    break;
+                    if(ftfSueldo.getText().equals("Unparseable number: \"\""))
+                    {
+                        throw new Excepcion(10);
+                    }
+                   Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
+                   JOptionPane.showMessageDialog(this, "El jugador se ha modificado correctamente.");
+                   break;
            }
            Main.reabrir(this, tipo, n);
        }
        catch (Excepcion e)
-       {           
+       {
            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
        }
        catch (Exception e)
@@ -510,7 +501,6 @@ public class VJugador extends javax.swing.JDialog {
         setModal(true);
         this.setLocationRelativeTo(null);
         listaJugadores = new ArrayList();
-        //en algún punto seguramente sea mejor un switch
         if(tipo.equals("alta"))
         {
             tfNombre.setEnabled(true);
@@ -521,15 +511,6 @@ public class VJugador extends javax.swing.JDialog {
             taComentario.setEnabled(true);
             bAceptar.setEnabled(true);
             bBuscar.setEnabled(false);
-        }else if(tipo.equals("consulta")){
-            tfNombre.setText(j.getNombre());
-            tfApellido1.setText(j.getApellido1());
-            tfApellido2.setText(j.getApellido2());
-            tfNickname.setText(j.getNickname());
-            cFechaAlta.setDate(j.getFechaAlta());
-            ftfSueldo.setText(String.valueOf(j.getSueldo()));
-            taComentario.setText(j.getComentario());
-            bBuscar.setVisible(false);
         }        
         setVisible(true);
     }

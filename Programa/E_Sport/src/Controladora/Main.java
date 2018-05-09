@@ -18,10 +18,13 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+
 /**
- *
- * @author v6222
+ * Clase controladora.
+ * Fecha de creación de la clase: 24/04/2018
+ * @author eqdaw04
  */
+
 public class Main {
 
     /**
@@ -55,6 +58,11 @@ public class Main {
         //new Principal();
     }
     
+    /**
+     * Metodo para crear objetos de la base de datos.
+     * @throws Exception 
+     */
+    
     public static void inicializarValores() throws Exception{
         bdEquipo = new BDEquipo();
         bdJornada = new BDJornada();
@@ -65,10 +73,17 @@ public class Main {
         bdPersona = new BDPersona();
     }
     
+    /**
+     * Metodo para introducir los datos del usuario y servidor.
+     * @param usuario String
+     * @param contrasenna char
+     * @param numero int
+     * @throws Exception 
+     */
+    
     //---------- JON XU JIN ----------
 
         public static void accederPrincipal(String usuario, char[] contrasenna, int numero) throws Exception{
-        //datos del usuario y servidor
         String tipo = "oracle",
         servidor = "10.10.10.9",//"localhost"
         puerto = "1521",
@@ -110,11 +125,15 @@ public class Main {
             throw new Excepcion(13);
         }
 }
-        
+        /**
+         * Metodo para seleccionar la ventana que se desea abrir.
+         * @param n int
+         * @param tipo String
+         * @throws Exception 
+         */
     //---------- JON XU JIN ----------
     
     public static void abrirVentana(int n, String tipo) throws Exception{
-        //abrir ventana según selección del usuario en la pantalla principal
         switch(n){
             case 1:
                 new VJugador(tipo, n);
@@ -137,28 +156,42 @@ public class Main {
                 break;
         }
     }
-    //-------Mikel
-    public static void abrirVJugador (Jugador j){
-        new VJugador("consulta",1,j);
-    }
 
+    
+    /**
+     * Metodo para cerrar la ventana abierta
+     * @param v JDialog
+     */
+    
     //---------- JON XU JIN ----------
     
     public static void cerrar(JDialog v) {
         // Cierra la ventana abierta
         v.dispose();
     }
+    
+      /**
+     * Metodo para cerrar la ventana abierta
+     * @param v JFrame
+     */
+    
     //-----Mikel
     public static void cerrar2(JFrame v) {
         // Cierra la ventana abierta
         v.dispose();
     }
     
+    /**
+     * Metodo para cerrar la ventana abierta y volver a abrir según la ventana cerrada.
+     * @param v JDialog
+     * @param tipo String
+     * @param n int
+     * @throws Exception 
+     */
     
     //---------- JON XU JIN ----------
     
     public static void reabrir(JDialog v, String tipo, int n) throws Exception {
-        // Cierra la ventana abierta para volver a abrir según tipo de ventana cerrada
         v.dispose();
         switch(n){
             case 1:
@@ -190,13 +223,23 @@ public class Main {
         v.dispose();
     }
     
+    /**
+     * Metodo para salir del programa
+     * @param v JFrame
+     */
+    
     //---------- JON XU JIN ----------
     
     public static void cerrarSesion(JFrame v){
-        //salir del programa
         v.dispose();
         login = new VLogin();
     }
+    
+    /**
+     * Metodo que devuelve una lista de todos los perfiles insertados en la base de datos.
+     * @return lista de perfiles
+     * @throws Exception 
+     */
     
     //---------- JON XU JIN ----------
     
@@ -206,6 +249,13 @@ public class Main {
         return listaPerfil;
     }
     
+    /**
+     * Metodo para consultar un perfil de la base de datos.
+     * @param cod int
+     * @return un perfil
+     * @throws Exception 
+     */
+    
     //---------- JON XU JIN ----------
     
     public static Perfil consultarPerfil(int cod) throws Exception{
@@ -214,28 +264,56 @@ public class Main {
         return p;
     }
     
+    /**
+     * Metodo que inserta un usuario en la base de datos.
+     * @param usuario String
+     * @param contrasenna String
+     * @param nombre String
+     * @param ape1 String
+     * @param ape2 String
+     * @param email String
+     * @param fecha Date
+     * @param perfil String
+     * @throws Exception 
+     */
+    
     //---------- JON XU JIN ----------
     
     public static void altaPersona( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Date fecha, String perfil) throws Exception{
-        // Insertar usuario en la BD
         Persona p = new Persona(nombre, ape1, ape2, fecha, usuario, contrasenna, email);
         p.setPerfil(bdPerfil.buscarPorNombre(perfil));
         bdPersona.altaPersona(p);
     }
     
+    /**
+     * Metodo para eliminar un usuario de la base de datos.
+     * @param usuario String
+     * @throws Exception 
+     */
+    
     //---------- JON XU JIN ----------
 
     public static void bajaPersona(String usuario) throws Exception {
-        // Eliminar usuario en la BD
         Persona p = new Persona();
         p.setUsuario(usuario);
         bdPersona.bajaPersona(p);
     }
     
+    /**
+     * Metodo para modificar el usuario de la base de datos.
+     * @param usuario String
+     * @param contrasenna String
+     * @param nombre String
+     * @param ape1 String
+     * @param ape2 String
+     * @param email String
+     * @param perfil String
+     * @throws Exception 
+     */
+    
     //---------- JON XU JIN ----------
     
     public static void modificarPersona(String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil) throws Exception {
-        // Modificar usuario en la BD
         persona.setNombre(nombre);
         persona.setApellido1(ape1);
         persona.setApellido2(ape2);
@@ -246,14 +324,26 @@ public class Main {
         bdPersona.modificarPersona(persona);
     }
     
+    /**
+     * Metodo para localizar a una persona por su usuario.
+     * @param usuario String
+     * @return una persona ya insertada en la base de datos
+     * @throws Exception 
+     */
+    
     //---------- JON XU JIN ----------
     
     public static Persona consultarPersona(String usuario) throws Exception{
-        // Localizar a una persona con su usuario
         persona = null;
         persona = bdPersona.buscarPersonaPorUsuario(usuario); 
         return persona;
     }
+    
+    /**
+     * Metodo que devuelve todas las personas guardadas en la base de datos.
+     * @return lista de personas
+     * @throws Exception 
+     */
     
     //---------- JON XU JIN ----------
     
@@ -263,6 +353,12 @@ public class Main {
         return listadoPersona;
     }
     
+    /**
+     * Metodo que devuelve todos los partidos 
+     * @return
+     * @throws Exception 
+     */
+    
     //---------- JON XU JIN ----------
     
     public static ArrayList <Persona> consultarTodosLosPartidos() throws Exception{
@@ -271,110 +367,147 @@ public class Main {
         return listadoPersona;
     }
     
-    //---------- JON XU JIN ----------
-    
-    public static ArrayList <Partido> consultarPartidosPorJornada(int n) throws Exception{
-        ArrayList<Partido> lPartido = new ArrayList();
-       lPartido = bdPartido.consultarPartidosPorJornada(n);
-        return lPartido;
-    }
-    
-    //---------- JON XU JIN ----------
-    
-    public static ArrayList <Partido> consultarMarcadorPorPartido(int n) throws Exception{
-        ArrayList<Partido> lPartido = new ArrayList();
-        lPartido = bdPartido.consultarPartidosPorJornada(n);
-        return lPartido;
-    }
-    
-    public static void probando(){
-        ArrayList <Equipo> lEquipo = new ArrayList();
-        Equipo e1 = new Equipo();
-        e1.setIdEquipo(1);
-        lEquipo.add(e1);
-        Equipo e2 = new Equipo();
-        e2.setIdEquipo(2);
-        lEquipo.add(e2);
-        Equipo e3 = new Equipo();
-        e3.setIdEquipo(3);
-        lEquipo.add(e3);
-        Equipo e4 = new Equipo();
-        e4.setIdEquipo(4);
-        lEquipo.add(e4);
-        
-        Equipo e5 = new Equipo();
-        e5.setIdEquipo(5);
-        lEquipo.add(e5);
-        Equipo e6 = new Equipo();
-        e6.setIdEquipo(6);
-        lEquipo.add(e6);
-        Equipo e7 = new Equipo();
-        e7.setIdEquipo(7);
-        lEquipo.add(e7);
-        Emparejamiento e = new Emparejamiento(12, lEquipo);
-        e.calcularPartido();
-        
-    }
+/**
+ * Metodo para obtener el perfil.
+ * @return objeto perfil
+ */
 
     public static int getPerfil() {
         return perfil;
     }
 
+    /**
+     * Metodo para establecer el perfil.
+     * @param perfil  int
+     */
+    
     public static void setPerfil(int perfil) {
         Main.perfil = perfil;
     }
+    
+    /**
+     * Metodo para obtener el login.
+     * @return objeto login
+     */
 
     public static VLogin getLogin() {
         return login;
     }
+    
+    /**
+     *  Metodo para establecer el login.
+     * @param login VLogin
+     */
 
     public static void setLogin(VLogin login) {
         Main.login = login;
     }
+    
+    /**
+     *  Metodo para obtener el driver de la conexion.
+     * @return driver
+     */
 
     public static String getDriver() {
         return driver;
     }
+    
+    /**
+     *  Metodo para establecer el driver de la conexión.
+     * @param driver String
+     */
 
     public static void setDriver(String driver) {
         Main.driver = driver;
     }
+    
+    /**
+     *  Metodo para obtener la url de la conexión.
+     * @return url
+     */
 
     public static String getUrl() {
         return url;
     }
+    
+    /**
+     *  Metodo para establecer la url de la conexión.
+     * @param url String
+     */
 
     public static void setUrl(String url) {
         Main.url = url;
     }
+    
+    /**
+     *  Metodo para obtener el usuario con el que se inicia sesión en la conexión.
+     * @return usuario
+     */
 
     public static String getUsuario() {
         return usuario;
     }
+    
+    /**
+     *  Metodo para establecer el usuario con el que se inicia sesión en la conexión.
+     * @param usuario String
+     */
 
     public static void setUsuario(String usuario) {
         Main.usuario = usuario;
     }
+    
+    /**
+     * Metodo para obtener la contraseña con la que se inicia sesión en la conexión.
+     * @return 
+     */
 
     public static String getContrasenna() {
         return contrasenna;
     }
+    
+    /**
+     * Metodo para establecer la contraseña con ka que se inicia sesión en la conexión.
+     * @param contrasenna 
+     */
 
     public static void setContrasenna(String contrasenna) {
         Main.contrasenna = contrasenna;
     }
+    
+    /**
+     * Metodo para obtener una persona.
+     * @return objeto persona
+     */
 
     public static Persona getPersona() {
         return persona;
     }
+    
+    /**
+     * Metodo para establecer una persona.
+     * @param persona Persona
+     */
 
     public static void setPersona(Persona persona) {
         Main.persona = persona;
-    }    
+    }
+
+    /**
+     * Metodo para dar de alta a un jugador en la base de datos.
+     * @param dni String
+     * @param nombre String
+     * @param apellido1 String
+     * @param apellido2 String
+     * @param nickname String
+     * @param sueldo String
+     * @param fechaAlta Date
+     * @param comentario String
+     * @throws Exception 
+     */
     
     // Imanol Luis
     public static void altaJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String sueldo, Date fechaAlta, String comentario) throws Exception {
-        // Insertar jugador en la BD
         jugador=new Jugador();
         jugador.setDni(dni);
         jugador.setNombre(nombre);
@@ -384,18 +517,35 @@ public class Main {
         jugador.setSueldo(Float.parseFloat(sueldo.replace(",", ".")));
         jugador.setFechaAlta(fechaAlta);
         jugador.setComentario(comentario);
-        BDJugador.insertarJugador(jugador);
+        bdJugador.insertarJugador(jugador);
     }
+    
+    /**
+     * Metodo para dar de baja a un jugador de la base de datos.
+     * @param dni String
+     * @throws Exception 
+     */
 
     // Imanol Luis
-    public static void bajaJugador() throws Exception {
-        // Eliminar jugador en la BD
+    public static void bajaJugador(String dni) throws Exception {
+        jugador.setDni(dni);
         BDJugador.eliminarJugador(jugador);
     }
     
+    /**
+     * Metodo para modificar a un jugador de la base de datos.
+     * @param dni String
+     * @param nombre String
+     * @param apellido1 String
+     * @param apellido2 String
+     * @param nickname String
+     * @param sueldo String
+     * @param comentario String
+     * @throws Exception 
+     */
+    
     // Imanol Luis
     public static void modificarJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String sueldo, String comentario) throws Exception {
-        // Modificar jugador en la BD
         jugador.setDni(dni);
         jugador.setNombre(nombre);
         jugador.setApellido1(apellido1);
@@ -406,6 +556,13 @@ public class Main {
         BDJugador.modificarJugador(jugador);
     }
     
+    /**
+     * Metodo para buscar a un jugador.
+     * @param dni String
+     * @return objeto jugador
+     * @throws Exception 
+     */
+    
     // Imanol Luis   
     public static Jugador buscarJugador(String dni) throws Exception {   
        jugador = new Jugador();
@@ -413,70 +570,137 @@ public class Main {
        return jugador;
     }
     
+    /**
+     * Metodo para buscar a un jugador.
+     * @return devuelve los jugadores introducidos en la clase BDJugador
+     * @throws Exception 
+     */
+    
     // Imanol Luis   
     public static ArrayList<Jugador> buscarJugador() throws Exception {        
        return BDJugador.BuscarJugador();
     }
     
-    // Imanol Luis
-    public static ArrayList<Jugador> buscarJugadores(String dni) throws Exception {      
-       return BDJugador.BuscarJugadores(dni);
+    /**
+     * Metodo para buscar un dni.
+     * @param dni String
+     * @return devuelve los dnis introducidos en la clase BDJugador
+     * @throws Exception 
+     */
+    
+    public static ArrayList<Jugador> buscarDNI(String dni) throws Exception {      
+       return BDJugador.BuscarDni(dni);
     }
+    
+    /**
+     * Metodo para buscar jugadores pertenecientes a un equipo.
+     * @param id String
+     * @return devuelve los ids introducidos en la clase BDJugador
+     * @throws Exception 
+     */
+    
     //------------Mikel
-    // Busca Jugadores pertenecientes a un equipo
     public static ArrayList<Jugador> obtenerJugEqui(String id) throws Exception{
         return BDJugador.BuscarEqui(id);
     }
+    
+    /**
+     * Metodo para consultar el equipo de un dueño mediante su usuario
+     * @param usu String
+     * @return devuelve el equipo que dirige el dueño
+     * @throws Exception 
+     */
 
     //------------Mikel
-    // consulta el equipo de un dueño mediante su usuario
     public static Equipo ConsultarEquipoPorUsuario(String usu) throws Exception{
         return BDEquipo.BuscarEquipoPorUsuario(usu);
     }
+    
+    /**
+     * Metodo que consulta los jugadores que no pertenecen a ningún equipo.
+     * @return devuelve jugadores sin equipo
+     * @throws Exception 
+     */
+    
     //------------Mikel
-    // Devuelve todos los jugadoers que no pertenezcan a ningún equipo
     public static ArrayList <Jugador> consultarJugadoresDisponibles () throws Exception{
         return BDJugador.BuscarJugadoresDisponibles();
     }
+    
+    /**
+     * Metodo para eliminar de un equipo a un jugador.
+     * @param nickname String
+     * @return devuelve el nickname del jugador y al eliminarlo pone el id del equipo al que pertenecía a null
+     */
+    
     //------------Mikel
-    // Busca a un jugador por su nickname y pone su id_equipo a null (no pertenece a ningún equipo)
     public static boolean EliminarJugadorEquipo (String nickname){
        
         return BDJugador.QuitarJugadorEquipo(nickname);
     }
+    
+    /**
+     * Metodo para añadir un jugador a un equipo.
+     * @param nickname String
+     * @param id String
+     * @return devuelve el nickname del jugador y le añade el id del equipo al que se le va a añadir.
+     * @throws Exception 
+     */
+    
     //------------Mikel
-    // Busca a un jugador por su nickname yle añade el id_equipo del equipo al que se le quiere añadir
     public static boolean AnnadirJugadorEquipo(String nickname, String id) throws Exception {
         return BDJugador.PonerJugadorEquipo(nickname,id);
     }
-    //------------Mikel
-    // Busca a un jugador por su nickname yle añade el id_equipo del equipo al que se le quiere añadir
-    public static Jugador consultarJugadorNickname(String nickname) throws Exception {
-        return BDJugador.buscarJugadorNickname(nickname);
-    }
+    
+    /**
+     * Metodo para dar de alta un equipo en la base de datos.
+     * @param nombre String
+     * @param fechaCreacion Date
+     * @param comentario String
+     * @throws Exception 
+     */
+    
     // Imanol Luis
     public static void altaEquipo(String nombre, Date fechaCreacion, String comentario) throws Exception {
-        // Insertar equipo en la BD
         equipo = new Equipo();
         equipo.setNombre(nombre);
         equipo.setFechaCreacion(fechaCreacion);
         equipo.setComentario(comentario);
         BDEquipo.insertarEquipo(equipo);
     }
+    
+    /**
+     * Metodo para dar de baja un equipo de la base de datos.
+     * @param nombre String
+     * @throws Exception 
+     */
 
     // Imanol Luis
-    public static void bajaEquipo() throws Exception {
-        // Eliminar equipo en la BD
+    public static void bajaEquipo(String nombre) throws Exception {
+        equipo.setNombre(nombre);
         BDEquipo.eliminarEquipo(equipo);
     }
+    
+    /**
+     * Metodo para modificar un equipo de la base de datos.
+     * @param nombre String
+     * @param comentario String
+     * @throws Exception 
+     */
 
     // Imanol Luis
     public static void modificarEquipo(String nombre, String comentario) throws Exception {
-        // Modificar equipo en la BD
         equipo.setNombre(nombre);
         equipo.setComentario(comentario);
         BDEquipo.modificarEquipo(equipo);
     }
+    
+    /**
+     * Metodo para buscar un equipo de la base de datos
+     * @param nombre String
+     * @return objeto equipo
+     * @throws Exception 
+     */
 
     // Imanol Luis
     public static Equipo buscarEquipo(String nombre) throws Exception {
@@ -484,18 +708,25 @@ public class Main {
        equipo = BDEquipo.BuscarEquipo(nombre);
        return equipo;
     }
+    
+    /**
+     * Metodo para buscar un equipo de la base de datos
+     * @return devuelve el resultado de la busqueda de equipos de la clase BDEquipo
+     * @throws Exception 
+     */
 
     // Imanol Luis
     public static ArrayList<Equipo> buscarEquipo() throws Exception {
         return BDEquipo.BuscarEquipo();
     }
+    
+    /**
+     * Metodo que crea la plantilla para sacar los datos del jugador
+     * @param equipo Equipo
+     * @return plantilla
+     * @throws Exception 
+     */
 
-    // Imanol Luis
-    public static ArrayList<Equipo> buscarEquipos(String nombre) throws Exception {
-        return BDEquipo.BuscarEquipos(nombre);
-    }
-
-    // Imanol Luis
     public static String buscarPlantilla(Equipo equipo) throws Exception {
         String plantilla="";
         String dni, nombre, apellido1, apellido2, nickname;
@@ -520,7 +751,8 @@ public class Main {
         
         return plantilla;
     }
-
+    
+ 
     public static boolean comprobarSueldo(String sueldo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -529,21 +761,6 @@ public class Main {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public static void tramitarAlta(String dni, String sueldo) {
-        // Modificar jugador en la BD
-        Jugador j = new Jugador();
-        j.setDni(dni);
-        j.setSueldo(Float.parseFloat(sueldo));
-        j.setEquipo(persona.getEquipo());
-    }
-
-    public static void tramitarBaja(String dni) {
-        // Modificar jugador en la BD
-        Jugador j = new Jugador();
-        j.setDni(dni);
-        j.setSueldo((float)(0));
-        j.setEquipo(null);
-    }
 
     public static boolean esAgenteLibre(String dni) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

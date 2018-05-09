@@ -275,11 +275,15 @@ public class VEquipo extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(this, "El equipo se ha dado de alta correctamente.");
                     break;
                 case "baja":
+                    // Validar nombre y si no existe en la BD, proceder a la eliminación
+                    validarNombre();
                     // Eliminar el equipo
-                    Main.bajaEquipo();
+                    Main.bajaEquipo(tfNombre.getText());
                     JOptionPane.showMessageDialog(this, "El equipo se dado de baja correctamente.");
                     break;
                 case "modificacion":
+                    // Validar nombre y si no existe en la BD, proceder a la modificación
+                    validarNombre();
                     // Modificar el equipo
                     Main.modificarEquipo(tfNombre.getText(), taComentario.getText());
                     JOptionPane.showMessageDialog(this, "El equipo se ha modificado correctamente.");
@@ -438,7 +442,7 @@ public class VEquipo extends javax.swing.JDialog {
         if(tipo.equals("alta"))
         {
             // Comprobar si existe un equipo con ese nombre
-            if(!Main.buscarEquipos(tfNombre.getText()).isEmpty())
+            if(Main.buscarEquipo(tfNombre.getText()).getNombre().isEmpty())
             {
                 throw new Excepcion(19);
             }
@@ -447,7 +451,7 @@ public class VEquipo extends javax.swing.JDialog {
         else
         {
             // Comprobar si no existe un equipo con ese nombre
-            if(Main.buscarEquipos(tfNombre.getText()).isEmpty())
+            if(!Main.buscarEquipo(tfNombre.getText()).getNombre().isEmpty())
             {
                 throw new Excepcion(20);
             }

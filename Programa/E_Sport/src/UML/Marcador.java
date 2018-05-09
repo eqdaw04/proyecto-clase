@@ -1,5 +1,11 @@
 package UML;
 
+/**
+ * Clase en la que definiremos los equipos que se enfrentan en un partido, la puntuación final de cada uno, y el equipo local/visitante.
+ * Fecha de creación de la clase: 23/04/2018
+ * @author eqdaw04
+ */
+
 public class Marcador {
     private int idMarcador;
     private Partido partido;
