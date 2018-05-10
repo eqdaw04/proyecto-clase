@@ -121,8 +121,18 @@ public class Emparejamiento {
         insertarBBDD(e, horizontal, con, fecha, lugar);
     }
     
+    /**
+     * Metodo para combinar los equipos en la base de datos.
+     * @param e int
+     * @param horizontal int
+     * @param con BDConexion
+     * @param fecha Date
+     * @param lugar String
+     * @return devuelve el día que termina la jornada 
+     * @throws Exception 
+     */
+    
     public int insertarBBDD(int e, int horizontal, BDConexion con, Date fecha, String lugar) throws Exception{
-        //emplear este código para combinar los equipos en bbdd
         String dato = "Jornadas 1-" + (e-1) + " Equipos:\n";
         boolean sumar = true;
         int dia = 1;

@@ -12,8 +12,9 @@ import java.util.regex.Pattern;
 import javax.swing.JTextField;
 
 /**
- *
- * @author v6222
+ * Clase para validar todos los datos de entrada.
+ * Fecha de creación de la clase: 25/04/2018
+ * @author eqdaw04
  */
 public class ValidacionDeDatosDeEntrada{
 

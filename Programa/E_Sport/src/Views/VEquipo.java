@@ -19,14 +19,13 @@ public class VEquipo extends javax.swing.JDialog {
     private int posicion, n;
 
     /**
-     * Creates new form VEquipo
+     * Metodo para mostrar las opciones según el CRUD que se quiera realizar.
      * @param tipo
      * @param n
      */
 
     public VEquipo(String tipo, int n) {
         initComponents();
-        // Mostrar opciones según tipo de operaciones CRUD que se quiera realizar
         cargarDatos(tipo, n);
     }
 
