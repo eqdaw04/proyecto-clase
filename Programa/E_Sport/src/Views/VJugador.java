@@ -342,6 +342,7 @@ public class VJugador extends javax.swing.JDialog {
                 // Si el DNI está vacío, se crea una lista interna, permitiendo recorrerla con los botones direccionales, en caso contrario, muestra únicamente el jugador con ese DNI
                 if(tfDNI.getText().isEmpty())
                 {
+                    posicion=0;
                     listaJugadores = Main.buscarJugador();
                     if(listaJugadores.size()>1)
                     {
@@ -362,6 +363,10 @@ public class VJugador extends javax.swing.JDialog {
                 {
                     ValidacionDeDatosDeEntrada.validar(3, tfDNI);
                     buscarJugador(tfDNI.getText());
+                    bPrimero.setEnabled(false);
+                    bAnterior.setEnabled(false);
+                    bSiguiente.setEnabled(false);
+                    bUltimo.setEnabled(false);
                 }
             }
             else
@@ -586,13 +591,12 @@ public class VJugador extends javax.swing.JDialog {
      */
     
     private void buscarJugador(String dni) throws Exception {
-        j = new Jugador();
-        j = Main.buscarJugador(dni);
+        Jugador j = Main.buscarJugador(dni);
         if(j==null)
         {
             throw new Excepcion(17);
         }
-        mostrarDatos();
+        mostrarDatos(j);
     }
     
     /**
@@ -601,7 +605,7 @@ public class VJugador extends javax.swing.JDialog {
      */
     
     private void seleccionarJugador() throws Exception {
-        j = new Jugador();
+        Jugador j;
         if(listaJugadores.size()>1)
         {
             j=listaJugadores.get(posicion);
@@ -610,7 +614,7 @@ public class VJugador extends javax.swing.JDialog {
         {
             j=listaJugadores.get(0);
         }
-        mostrarDatos();
+        mostrarDatos(j);
     }
     
     /**
@@ -619,7 +623,7 @@ public class VJugador extends javax.swing.JDialog {
      * @throws Exception 
      */
     
-    private void mostrarDatos() throws Exception {
+    private void mostrarDatos(Jugador j) throws Exception {
         tfDNI.setText(j.getDni());
         tfNombre.setText(j.getNombre());
         tfApellido1.setText(j.getApellido1());

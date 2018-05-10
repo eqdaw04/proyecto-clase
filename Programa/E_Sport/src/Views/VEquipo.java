@@ -228,6 +228,7 @@ public class VEquipo extends javax.swing.JDialog {
                 // Habilitar botones de recorrer si el nombre está vacío, en caso contrario, localizar el equipo en concreto.
                 if(tfNombre.getText().isEmpty())
                 {
+                    posicion=0;
                     listaEquipos = Main.buscarEquipo();
                     if(listaEquipos.size()>1)
                     {
@@ -248,6 +249,10 @@ public class VEquipo extends javax.swing.JDialog {
                     // Validar si el nombre escrito es correcto y si existe en la bbdd
                     validarNombre();
                     buscarEquipo(tfNombre.getText());
+                    bPrimero.setEnabled(false);
+                    bAnterior.setEnabled(false);
+                    bSiguiente.setEnabled(false);
+                    bUltimo.setEnabled(false);
                 }
             }
             else
@@ -257,7 +262,7 @@ public class VEquipo extends javax.swing.JDialog {
                 buscarEquipo(tfNombre.getText());
                 if(tipo.equals("modificacion"))
                 {
-                    taComentario.setEnabled(true);
+                    taComentario.setEditable(true);
                 }
                 bAceptar.setEnabled(true);
             }
@@ -441,11 +446,33 @@ public class VEquipo extends javax.swing.JDialog {
         setModal(true);
         this.setLocationRelativeTo(null);
         listaEquipos = new ArrayList();
-        if(tipo.equals("alta"))
+        switch(tipo)
         {
-            taComentario.setEnabled(true);
-            bAceptar.setEnabled(true);
-            bBuscar.setEnabled(false);
+            case "alta":
+                taComentario.setEditable(true);
+                bAceptar.setEnabled(true);
+                bBuscar.setVisible(false);
+                bPrimero.setVisible(false);
+                bAnterior.setVisible(false);
+                bSiguiente.setVisible(false);
+                bUltimo.setVisible(false);
+                break;
+            case "baja":
+                bPrimero.setVisible(false);
+                bAnterior.setVisible(false);
+                bSiguiente.setVisible(false);
+                bUltimo.setVisible(false);
+                break;
+            case "modificacion":
+                bPrimero.setVisible(false);
+                bAnterior.setVisible(false);
+                bSiguiente.setVisible(false);
+                bUltimo.setVisible(false);
+                break;
+            case "listado":
+                bAceptar.setVisible(false);
+                bCancelar.setVisible(false);
+                break;
         }
         setVisible(true);
     }
