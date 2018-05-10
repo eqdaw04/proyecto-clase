@@ -12,10 +12,19 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
- *
- * @author 1gdaw06
+ * Clase en la que controlaremos e introduciremos datos de la jornada actual a la base de datos.
+ * Fecha de creación de la clase: 24/04/2018
+ * @author eqdaw04
  */
 public class BDJornada {
+    
+    /**
+     * Metodo para insertar una jornada.
+     * @param nJornada int
+     * @param con BDConexion
+     * @return devuelve un objeto jornada
+     * @throws Exception 
+     */
     
     public Jornada insertarJornada(int nJornada, BDConexion con) throws Exception{
         Jornada j = null;        
@@ -30,6 +39,12 @@ public class BDJornada {
         sentencia.close();
         return j;
     }
+    
+    /**
+     * Metodo para consultar una lista de las jornadas.
+     * @return devuelve una lista de jornadas
+     * @throws Exception 
+     */
     
     public ArrayList <Jornada> consultarTodasLasJornadas() throws Exception{
         ArrayList <Jornada> lJornada = new ArrayList();
@@ -50,6 +65,13 @@ public class BDJornada {
         con.desconectar();
         return lJornada;
     }
+    
+    /**
+     * Metodo para consultar una jornada por su número.
+     * @param n int
+     * @return devuelve un objeto jornada
+     * @throws Exception 
+     */
     
     public Jornada consultarJornadaPorNumeroDeJornada(int n) throws Exception{
         // abre la conexion
