@@ -17,8 +17,6 @@ INSERT INTO Perfil (Nombre) VALUES ('Admin');
 INSERT INTO Perfil (Nombre) VALUES ('Dueño');
 INSERT INTO Perfil VALUES (DEFAULT,'Usuario');
 
-
-
 CREATE TABLE Persona(
 Id_persona NUMBER (4) GENERATED ALWAYS AS IDENTITY, --Autoincremental
 Nombre VARCHAR2 (45) NOT NULL,
@@ -38,8 +36,6 @@ INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_per
 INSERT INTO Persona VALUES (DEFAULT,'Admin1','ApellidoRandom',null,TO_DATE(SYSDATE,'DD/MM/YYYY'),'admin','root',null,1);
 INSERT INTO Persona VALUES (DEFAULT,'Usuario1','ApellidoRandom2',null,TO_DATE(SYSDATE,'DD/MM/YYYY'),'usu','sus',null,3);
 
-
-
 CREATE TABLE Equipo(
 Id_equipo NUMBER (2)GENERATED ALWAYS AS IDENTITY,
 Nombre VARCHAR2 (45) NOT NULL,
@@ -52,8 +48,6 @@ CONSTRAINT Equi_persid_fk FOREIGN KEY (Id_persona) REFERENCES Persona (Id_person
 
 INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Id_persona) VALUES ('Equipo1',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son rosas',1);
 INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Id_persona) VALUES ('Equipo2',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son muy azules',2);
-
-
 
 CREATE TABLE Jugador(
 Id_jugador NUMBER (3)GENERATED ALWAYS AS IDENTITY,
@@ -80,8 +74,6 @@ INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,C
 INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,Comentario) VALUES ('56878256A','JonXu','asd','Guridi','luffie',10000,TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son amarillas');
 INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,Comentario) VALUES ('42898256A','Imanol','fgh','Guridi','asd',30000,TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son azules');
 
-
-
 CREATE TABLE Jornada(
 Id_jornada NUMBER (2)GENERATED ALWAYS AS IDENTITY,
 Fecha_inicio DATE NOT NULL,
@@ -91,8 +83,6 @@ CONSTRAINT Jorn_jornid_pk PRIMARY KEY (Id_jornada)
 
 INSERT INTO Jornada (Id_jornada) VALUES (DEFAULT);
 INSERT INTO Jornada (Id_jornada) VALUES (DEFAULT);
-
-
 
 CREATE TABLE Partido(
 Id_partido NUMBER (4) GENERATED ALWAYS AS IDENTITY,
@@ -110,8 +100,6 @@ INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY
 INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY'),'Madrid',2);
 INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY'),'Vitoria',2);
 INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY'),'Barcelona',2);
-
-
 
 CREATE TABLE Marcador(
 Id_marcador NUMBER (3) GENERATED ALWAYS AS IDENTITY,
