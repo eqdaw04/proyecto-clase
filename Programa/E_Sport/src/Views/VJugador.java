@@ -7,23 +7,30 @@ import Recurso.ValidacionDeDatosDeEntrada;
 import UML.Jugador;
 import java.util.ArrayList;
 
+/**
+ * Vista jugadores.
+ * Fecha de la creación de la vista: 23/04/2018
+ * @author eqdaw04
+ */
+
 public class VJugador extends javax.swing.JDialog {
     
     private ArrayList<Jugador> listaJugadores;
     private String tipo;
     private int posicion, n;
     private Jugador j;
+    
     /**
-     * Creates new form VJugador
-     * @param tipo
-     * @param n
+     * Metodo para mostrar las opciones según el CRUD que se quiera realizar.
+     * @param tipo String
+     * @param n int
      */
-
+    
     public VJugador(String tipo, int n) {
         initComponents();
-        // Mostrar opciones según tipo de operaciones CRUD que se quiera realizar
         cargarDatos(tipo, n);        
     }
+    
     public VJugador(String tipo, int n, Jugador j) {
         initComponents();
         this.j=j;
@@ -509,6 +516,12 @@ public class VJugador extends javax.swing.JDialog {
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metodo para la carga de datos de la vista.
+     * @param tipo String
+     * @param n int
+     */
+    
     private void cargarDatos(String tipo, int n) {
         this.n=n;
         this.tipo=tipo;
@@ -542,6 +555,12 @@ public class VJugador extends javax.swing.JDialog {
         setVisible(true);
     }
     
+    /**
+     * Metodo para buscar un jugador por su dni.
+     * @param dni String
+     * @throws Exception 
+     */
+    
     private void buscarJugador(String dni) throws Exception {
         Jugador j = Main.buscarJugador(dni);
         if(j==null)
@@ -550,6 +569,11 @@ public class VJugador extends javax.swing.JDialog {
         }
         mostrarDatos(j);
     }
+    
+    /**
+     * Metodo para seleccionar un jugador guardado en la base de datos.
+     * @throws Exception 
+     */
     
     private void seleccionarJugador() throws Exception {
         Jugador j;
@@ -563,6 +587,12 @@ public class VJugador extends javax.swing.JDialog {
         }
         mostrarDatos(j);
     }
+    
+    /**
+     * Metodo para mostrar los datos de un jugador encontrado.
+     * @param j Jugador
+     * @throws Exception 
+     */
     
     private void mostrarDatos(Jugador j) throws Exception {
         tfDNI.setText(j.getDni());
