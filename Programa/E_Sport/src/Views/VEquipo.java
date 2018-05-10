@@ -4,6 +4,7 @@ import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
 import UML.Equipo;
+import UML.Persona;
 import java.util.ArrayList;
 
 /**
@@ -56,6 +57,8 @@ public class VEquipo extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         taPlantilla = new javax.swing.JTextArea();
         cFechaCreacion = new org.freixas.jcalendar.JCalendarCombo();
+        jLabel5 = new javax.swing.JLabel();
+        cbDuenno = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -136,16 +139,15 @@ public class VEquipo extends javax.swing.JDialog {
 
         cFechaCreacion.setEnabled(false);
 
+        jLabel5.setText("Dueño:");
+
+        cbDuenno.setSelectedIndex(-1);
+        cbDuenno.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -155,9 +157,10 @@ public class VEquipo extends javax.swing.JDialog {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel6))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))
                         .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(bPrimero)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -166,18 +169,24 @@ public class VEquipo extends javax.swing.JDialog {
                                 .addComponent(bSiguiente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bUltimo))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(bAceptar)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bCancelar))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                                .addComponent(tfNombre)
-                                .addComponent(cFechaCreacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane2)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(bAceptar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bCancelar))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cFechaCreacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbDuenno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bBuscar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,6 +207,10 @@ public class VEquipo extends javax.swing.JDialog {
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbDuenno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
@@ -212,7 +225,7 @@ public class VEquipo extends javax.swing.JDialog {
                             .addComponent(bSiguiente)
                             .addComponent(bUltimo)))
                     .addComponent(bCancelar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -422,10 +435,12 @@ public class VEquipo extends javax.swing.JDialog {
     private javax.swing.JButton bSiguiente;
     private javax.swing.JButton bUltimo;
     private org.freixas.jcalendar.JCalendarCombo cFechaCreacion;
+    private javax.swing.JComboBox<String> cbDuenno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -445,10 +460,12 @@ public class VEquipo extends javax.swing.JDialog {
         this.tipo=tipo;
         setModal(true);
         this.setLocationRelativeTo(null);
+        relllenarListaDespegable();
         listaEquipos = new ArrayList();
         switch(tipo)
         {
             case "alta":
+                cbDuenno.setEnabled(true);
                 taComentario.setEditable(true);
                 bAceptar.setEnabled(true);
                 bBuscar.setVisible(false);
@@ -541,6 +558,17 @@ public class VEquipo extends javax.swing.JDialog {
         tfNombre.setText(e.getNombre());  
         cFechaCreacion.setDate(e.getFechaCreacion());
         taPlantilla.setText(Main.buscarPlantilla(e));
+        cbDuenno.setSelectedItem(e.getPersona().getUsuario());
         taComentario.setText(e.getComentario());
+    }
+    
+    private void relllenarListaDespegable() {
+        ArrayList<Persona> listaDuennos=Main.buscarUsuariosDuennos();
+        
+        for(int x=0;x<listaDuennos.size();x++)
+        {
+            cbDuenno.addItem(listaDuennos.get(x).getUsuario());
+        }
+        cbDuenno.setSelectedIndex(-1);
     }
 }
