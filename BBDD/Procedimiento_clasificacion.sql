@@ -49,7 +49,7 @@ CREATE OR REPLACE PACKAGE BODY Pkg_Clasificacion IS
           SELECT Nombre INTO V_nom_equ(V_x) FROM Equipo WHERE Id_equipo = V_idequipo;
         V_x := V_x + 1;
     END LOOP;
-  IF V_nes_punt.COUNT > 0 THEN
+IF V_nes_punt.COUNT > 0 THEN
     IF V_nom_equ.COUNT > 0 THEN
         FOR i IN V_nes_punt.FIRST..V_nes_punt.LAST LOOP
         DBMS_OUTPUT.PUT_LINE(V_nom_equ(i)||' '||V_nes_punt(i));   

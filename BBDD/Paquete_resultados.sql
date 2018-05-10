@@ -9,7 +9,7 @@ CREATE OR REPLACE PACKAGE BODY Pkg_resultados IS
   PROCEDURE Resul (C_partjor OUT TCURSOR) AS
   CURSOR C_partjor  IS
     SELECT P.Id_jornada, P.Id_partido,M.Id_equipo,M.Puntuacion FROM Partido P, MARCADOR M
-    WHERE P.Id_partido = M.ID_PARTIDO
+    WHERE P.Id_partido = M.Id_partido
     ORDER BY P.Id_jornada, P.Id_partido,M.Id_equipo;
    V_c_partjor C_partjor%ROWTYPE;
   BEGIN
@@ -42,6 +42,7 @@ CREATE OR REPLACE PROCEDURE resul AS
 END;
 
 EXECUTE RESUL;
-SELECT P.Id_jornada, P.Id_partido,M.Id_equipo,M.Puntuacion FROM Partido P, MARCADOR M
+SELECT P.Id_jornada, P.Id_partido,M.Id_equipo,M.Puntuacion 
+      FROM Partido P, MARCADOR M
     WHERE P.Id_partido = M.Id_partido
     ORDER BY P.Id_jornada, P.Id_partido,M.Id_equipo;
