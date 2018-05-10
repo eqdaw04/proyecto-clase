@@ -602,7 +602,7 @@ public class Main {
         jugador.setSueldo(Float.parseFloat(sueldo.replace(",", ".")));
         jugador.setFechaAlta(fechaAlta);
         jugador.setComentario(comentario);
-        bdJugador.insertarJugador(jugador);
+        BDJugador.insertarJugador(jugador);
     }
     
     /**

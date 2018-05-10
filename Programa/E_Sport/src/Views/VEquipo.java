@@ -69,9 +69,9 @@ public class VEquipo extends javax.swing.JDialog {
 
         jLabel6.setText("Comentarios:");
 
+        taComentario.setEditable(false);
         taComentario.setColumns(20);
         taComentario.setRows(5);
-        taComentario.setEnabled(false);
         jScrollPane1.setViewportView(taComentario);
 
         bBuscar.setText("Buscar");
@@ -129,9 +129,9 @@ public class VEquipo extends javax.swing.JDialog {
 
         jLabel3.setText("Plantilla:");
 
+        taPlantilla.setEditable(false);
         taPlantilla.setColumns(20);
         taPlantilla.setRows(5);
-        taPlantilla.setEnabled(false);
         jScrollPane2.setViewportView(taPlantilla);
 
         cFechaCreacion.setEnabled(false);

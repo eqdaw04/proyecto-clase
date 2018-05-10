@@ -46,7 +46,14 @@ public class BDJugador {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         }
         con.desconectar();
-        return a.get(0);
+        if(a.isEmpty())
+        {
+            return null;
+        }
+        else
+        {
+            return a.get(0);
+        }        
     }
     
     /**
@@ -263,7 +270,7 @@ public class BDJugador {
     
     public static void modificarJugador(Jugador j) throws Exception {
         BDConexion con = new BDConexion();
-        PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET DNI=?, NOMBRE=?, APELLIDO1=?, APELLIDO2=?, NICKNAME=?, SUELDO=?, COMENTARIO=? WHERE ID_EQUIPO=?"); 
+        PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET DNI=?, NOMBRE=?, APELLIDO1=?, APELLIDO2=?, NICKNAME=?, SUELDO=?, COMENTARIO=? WHERE ID_JUGADOR=?"); 
         sentencia.setString(1, j.getDni()); 
         sentencia.setString(2, j.getNombre()); 
         sentencia.setString(3, j.getApellido1()); 
