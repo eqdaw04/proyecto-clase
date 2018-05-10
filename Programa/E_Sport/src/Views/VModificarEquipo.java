@@ -17,8 +17,9 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author usuario
+ * Vista para la modificacion de equipos.
+ * Fecha de creación de la vista: 24/04/2018
+ * @author eqdaw04
  */
 public class VModificarEquipo extends javax.swing.JFrame {
 
@@ -30,6 +31,12 @@ public class VModificarEquipo extends javax.swing.JFrame {
     private static ArrayList<Jugador> jEquipo;
     //array de jugadores disponibles
     private static ArrayList<Jugador> jDisp;
+    
+    /**
+     * Metodo para modificar equipo.
+     * @param usu String
+     * @throws Exception 
+     */
             
     public VModificarEquipo(String usu) throws Exception {
         initComponents();
@@ -268,9 +275,12 @@ public class VModificarEquipo extends javax.swing.JFrame {
         rellenar1();
         rellenar2();    
     }
+    
+    /**
+     * Metodo para buscar los jugadores que forman el equipo y rellenar una lista con ellos. 
+     */
     private void rellenar1(){
         try {
-            // Buscamos todos los jugadores que forman el equipo y rellenamos la lista con ellos
             jEquipo=new ArrayList();
             jEquipo=Main.obtenerJugEqui(String.valueOf(e.getIdEquipo()));
             DefaultListModel<String> model = new DefaultListModel();
@@ -282,9 +292,13 @@ public class VModificarEquipo extends javax.swing.JFrame {
             Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    /**
+     * Metodo para buscar jugadores sin equipo y rellenar una lista con ellos.
+     */
+    
     private void rellenar2(){
         try {
-            // Buscamos todos los jugadores que no tengan equipo  (id_equipo is null) y rellenamos la lista con ellos
             jDisp=new ArrayList();
             jDisp=Main.consultarJugadoresDisponibles();
             DefaultListModel<String> modelo = new DefaultListModel();

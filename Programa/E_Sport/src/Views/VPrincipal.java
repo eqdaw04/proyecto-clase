@@ -11,14 +11,12 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
- *
- * @author v6222
+ * Ventana principal.
+ * Fecha de creación de la vista: 24/04/2018
+ * @author eqdaw04
  */
 public class VPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Principal
-     */
     
     public VPrincipal(int tipo,String usuario) {
         initComponents();

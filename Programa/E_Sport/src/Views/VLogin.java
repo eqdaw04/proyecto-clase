@@ -11,8 +11,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
- *
- * @author v6222
+ * Vista para la carga del login.
+ * Fecha de creación de la vista: 23/04/2018
+ * @author eqdaw04
  */
 public class VLogin extends javax.swing.JFrame {
 
@@ -180,13 +181,28 @@ public class VLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bAccederActionPerformed
 
+    /**
+     * Metodo para obtener la contraseña.
+     * @return devuelve la contraseña 
+     */
+    
     public JPasswordField getPfContrasenna() {
         return pfContrasenna;
     }
+    
+    /**
+     * Metodo para obtener el usuario.
+     * @return devuelve el usuario
+     */
 
     public JTextField getTfUsuario() {
         return tfUsuario;
     }
+    
+    /**
+     * Metodo para obtener errores.
+     * @return devuelve un error
+     */
 
     public int getError() {
         return error;
