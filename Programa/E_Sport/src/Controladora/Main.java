@@ -830,6 +830,10 @@ public class Main {
         
         return plantilla;
     }
+
+    public static ArrayList<Persona> buscarUsuariosDuennos() {
+        // Devuelve todos los usuarios que sean dueños.
+    }
     
  
     public static boolean comprobarSueldo(String sueldo) {
@@ -846,10 +850,6 @@ public class Main {
     }
 
     public static boolean perteneceEquipo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static String buscarEquipoDuenno() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
