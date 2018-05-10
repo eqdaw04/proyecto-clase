@@ -7,6 +7,7 @@ package Views;
 
 import Controladora.Main;
 import Excepciones.Excepcion;
+import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -22,7 +23,9 @@ public class VLogin extends javax.swing.JFrame {
     public VLogin() {
         initComponents();
         setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(70, 130, 180));
         setVisible(true);
+
         jTextField1.grabFocus();
     }
 
@@ -46,31 +49,55 @@ public class VLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 66, 255));
+        setMinimumSize(new java.awt.Dimension(562, 496));
+        setPreferredSize(new java.awt.Dimension(562, 496));
+        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Bienvenidos a E-Sport");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
+        jLabel1.setText("¡Bienvenidos a E-Sport!");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(50, 40, 450, 70);
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setText("Usuario:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(230, 120, 70, 24);
 
+        tfUsuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tfUsuario.setText("usu");
+        getContentPane().add(tfUsuario);
+        tfUsuario.setBounds(190, 150, 150, 30);
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel3.setText("Contraseña:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(220, 200, 98, 24);
 
+        bAcceder.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         bAcceder.setText("Acceder");
         bAcceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAccederActionPerformed(evt);
             }
         });
+        getContentPane().add(bAcceder);
+        bAcceder.setBounds(120, 300, 120, 40);
 
+        bSalir.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         bSalir.setText("Salir");
         bSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(bSalir);
+        bSalir.setBounds(290, 300, 120, 40);
 
+        pfContrasenna.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         pfContrasenna.setText("sus");
+        getContentPane().add(pfContrasenna);
+        pfContrasenna.setBounds(190, 230, 150, 30);
 
         jTextField1.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
@@ -87,63 +114,12 @@ public class VLogin extends javax.swing.JFrame {
                 jTextField1KeyPressed(evt);
             }
         });
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(20, 410, 69, 19);
 
         jLabel4.setText("1. Clase; 2. Jon; 3. Mikel");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pfContrasenna, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bAcceder)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bSalir)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(pfContrasenna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAcceder)
-                    .addComponent(bSalir))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(20, 380, 160, 15);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
