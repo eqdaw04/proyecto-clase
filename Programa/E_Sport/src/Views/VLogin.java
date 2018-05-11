@@ -115,11 +115,11 @@ public class VLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(20, 410, 69, 19);
+        jTextField1.setBounds(20, 410, 69, 22);
 
         jLabel4.setText("1. Clase; 2. Jon; 3. Mikel");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 380, 160, 15);
+        jLabel4.setBounds(20, 380, 160, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
