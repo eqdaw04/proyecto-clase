@@ -121,21 +121,19 @@ public class BDEquipo {
     
     public static Equipo BuscarEquipo(String nombre) throws Exception {
         BDConexion con = new BDConexion();
-        ArrayList<Equipo> a = new ArrayList();
+        Equipo e = null;
         try
         {
             PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo WHERE Nombre = ?");
             sentencia.setString(1, nombre);
             ResultSet rs = sentencia.executeQuery();
             while (rs.next()){
-            Equipo e= new Equipo();
+            e= new Equipo();
             e.setIdEquipo(Integer.parseInt(rs.getString(1)));
             e.setNombre(rs.getString(2));
             e.setFechaCreacion(rs.getDate(3));
             e.setComentario(rs.getString(4));
             e.setPersona(Main.obtenerPersona(Integer.parseInt(rs.getString(5))));
-            
-            a.add(e);
         }
         }
         catch (SQLException ex)
@@ -143,7 +141,7 @@ public class BDEquipo {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         }
         con.desconectar();
-        return a.get(0);
+        return e;
     }
     
     /**
