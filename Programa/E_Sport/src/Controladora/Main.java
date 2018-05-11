@@ -602,7 +602,7 @@ public class Main {
         jugador.setSueldo(Float.parseFloat(sueldo.replace(",", ".")));
         jugador.setFechaAlta(fechaAlta);
         jugador.setComentario(comentario);
-        BDJugador.insertarJugador(jugador);
+        bdJugador.insertarJugador(jugador);
     }
     
     /**
@@ -612,7 +612,7 @@ public class Main {
 
     // Imanol Luis
     public static void bajaJugador() throws Exception {
-        BDJugador.eliminarJugador(jugador);
+        bdJugador.eliminarJugador(jugador);
     }
     
     /**
@@ -636,7 +636,7 @@ public class Main {
         jugador.setNickname(nickname);
         jugador.setSueldo(Float.parseFloat(sueldo.replace(",", ".")));
         jugador.setComentario(comentario);
-        BDJugador.modificarJugador(jugador);
+        bdJugador.modificarJugador(jugador);
     }
     
     /**
@@ -649,7 +649,7 @@ public class Main {
     // Imanol Luis   
     public static Jugador buscarJugador(String dni) throws Exception {   
        jugador = new Jugador();
-       jugador = BDJugador.BuscarJugador(dni);
+       jugador = bdJugador.BuscarJugador(dni);
        return jugador;
     }
     
@@ -661,7 +661,7 @@ public class Main {
     
     // Imanol Luis   
     public static ArrayList<Jugador> buscarJugador() throws Exception {        
-       return BDJugador.BuscarJugador();
+       return bdJugador.BuscarJugador();
     }
     
     /**
@@ -673,7 +673,7 @@ public class Main {
     
     //------------Mikel
     public static ArrayList<Jugador> obtenerJugEqui(String id) throws Exception{
-        return BDJugador.BuscarEqui(id);
+        return bdJugador.BuscarEqui(id);
     }
     
     /**
@@ -685,7 +685,7 @@ public class Main {
 
     //------------Mikel
     public static Equipo ConsultarEquipoPorUsuario(String usu) throws Exception{
-        return BDEquipo.BuscarEquipoPorUsuario(usu);
+        return bdEquipo.BuscarEquipoPorUsuario(usu);
     }
     
     /**
@@ -696,7 +696,7 @@ public class Main {
     
     //------------Mikel
     public static ArrayList <Jugador> consultarJugadoresDisponibles () throws Exception{
-        return BDJugador.BuscarJugadoresDisponibles();
+        return bdJugador.BuscarJugadoresDisponibles();
     }
     
     /**
@@ -708,7 +708,7 @@ public class Main {
     //------------Mikel
     public static boolean EliminarJugadorEquipo (String nickname){
        
-        return BDJugador.QuitarJugadorEquipo(nickname);
+        return bdJugador.QuitarJugadorEquipo(nickname);
     }
     
     /**
@@ -721,7 +721,7 @@ public class Main {
     
     //------------Mikel
     public static boolean AnnadirJugadorEquipo(String nickname, String id) throws Exception {
-        return BDJugador.PonerJugadorEquipo(nickname,id);
+        return bdJugador.PonerJugadorEquipo(nickname,id);
     }
     //------------Mikel
  
@@ -729,7 +729,7 @@ public class Main {
  
     public static Jugador consultarJugadorNickname(String nickname) throws Exception {
  
-        return BDJugador.buscarJugadorNickname(nickname);
+        return bdJugador.buscarJugadorNickname(nickname);
  
     }
  
@@ -749,7 +749,7 @@ public class Main {
         equipo.setPersona(bdPersona.buscarPersonaPorUsuario(usuario));
         equipo.setFechaCreacion(fechaCreacion);
         equipo.setComentario(comentario);
-        BDEquipo.insertarEquipo(equipo);
+        bdEquipo.insertarEquipo(equipo);
     }
     
     /**
@@ -759,7 +759,7 @@ public class Main {
 
     // Imanol Luis
     public static void bajaEquipo() throws Exception {
-        BDEquipo.eliminarEquipo(equipo);
+        bdEquipo.eliminarEquipo(equipo);
     }
     
     /**
@@ -773,7 +773,7 @@ public class Main {
     public static void modificarEquipo(String nombre, String comentario) throws Exception {
         equipo.setNombre(nombre);
         equipo.setComentario(comentario);
-        BDEquipo.modificarEquipo(equipo);
+        bdEquipo.modificarEquipo(equipo);
     }
     
     /**
@@ -786,7 +786,7 @@ public class Main {
     // Imanol Luis
     public static Equipo buscarEquipo(String nombre) throws Exception {
        equipo = new Equipo();
-       equipo = BDEquipo.BuscarEquipo(nombre);
+       equipo = bdEquipo.BuscarEquipo(nombre);
        return equipo;
     }
     
@@ -798,7 +798,7 @@ public class Main {
 
     // Imanol Luis
     public static ArrayList<Equipo> buscarEquipo() throws Exception {
-        return BDEquipo.BuscarEquipo();
+        return bdEquipo.BuscarEquipo();
     }
     
     /**
@@ -812,7 +812,7 @@ public class Main {
         String plantilla="";
         String dni, nombre, apellido1, apellido2, nickname;
         
-        ArrayList<Jugador> listaJugadores=BDJugador.BuscarEqui(String.valueOf(equipo.getIdEquipo()));
+        ArrayList<Jugador> listaJugadores=bdJugador.BuscarEqui(String.valueOf(equipo.getIdEquipo()));
         
         for(int x=0;x<listaJugadores.size();x++)
         {
@@ -842,7 +842,7 @@ public class Main {
     // Imanol Luis
     public static boolean duennoTieneEquipo(String usuario) throws Exception {
         // Comprobar que el dueño pertenece a algún equipo
-        Equipo e=BDEquipo.BuscarEquipoPorUsuario(usuario);
+        Equipo e=bdEquipo.BuscarEquipoPorUsuario(usuario);
         if(e==null)
         {
             return false;
