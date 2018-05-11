@@ -68,6 +68,42 @@ public class BDPersona {
         return p;
     }
     
+    public Persona buscarPersona(int id) throws Exception{
+        // abre la conexion
+        BDConexion con = new BDConexion();
+        // Crear objeto persona nulo
+        Persona p = null;
+        // preparar la conexion y sentencia
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM persona WHERE id_persona = ?");
+        // dato de la condicion
+        sentencia.setInt(1, id);
+        // crear objeto para el resultado de la consulta
+        ResultSet rs;
+        // cargar objeto sentencia al objeto rs
+        rs = sentencia.executeQuery();
+       // buscar si existe datos en la rs
+        if(rs.next()){
+            // crear la persona con base Persona y llenar los datos
+            p = new Persona();
+            p.setIdPersona(rs.getInt(1));
+            p.setNombre(rs.getString(2));
+            p.setApellido1(rs.getString(3));
+            p.setApellido2(rs.getString(4));
+            p.setFechaAlta(rs.getDate(5));
+            p.setUsuario(rs.getString(6));
+            p.setContrasenna(rs.getString(7));
+            p.setEmail(rs.getString(8));
+            p.setPerfil(Main.consultarPerfil(rs.getInt(9)));
+            p.setEquipo(Main.ConsultarEquipoPorUsuario(p.getUsuario()));
+        }
+        // cerrar conexiones y retornar objeto obtenido mediante consulta
+        rs.close();
+        sentencia.close();
+        con.desconectar();
+        return p;
+    }
+    
         /**
      * Metodo para buscar una lista de todas las personas de la base de datos.
      * @return devuelve una lista de personas
@@ -188,6 +224,38 @@ public class BDPersona {
         // cerrar conexiones y retornar objeto obtenido mediante consulta
         sentencia.close();
         con.desconectar();
+    }
+    
+    
+    public ArrayList<Persona> buscarUsuariosDuennos() throws Exception {
+        // crear array de personas
+        ArrayList <Persona> lPersona = new ArrayList();
+        // abre la conexion
+        BDConexion con = new BDConexion();
+        // preparar la conexion y sentencia
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM persona WHERE Id_perfil = (SELECT Id_perfil FROM Perfil WHERE Nombre = ?)");
+        sentencia.setString(1, "Dueño");
+        ResultSet rs = sentencia.executeQuery();
+       // buscar si existe datos en la rs
+        while(rs.next()){
+            // crear la persona con base Persona y llenar los datos
+            Persona p = new Persona();
+            p.setIdPersona(rs.getInt(1));
+            p.setNombre(rs.getString(2));
+            p.setApellido1(rs.getString(3));
+            p.setApellido2(rs.getString(4));
+            p.setFechaAlta(rs.getDate(5));
+            p.setUsuario(rs.getString(6));
+            p.setContrasenna(rs.getString(7));
+            p.setEmail(rs.getString(8));
+            p.setPerfil(Main.consultarPerfil(rs.getInt(9)));
+            lPersona.add(p);
+        }
+        // cerrar conexiones y retornar objeto obtenido mediante consulta
+        rs.close();
+        sentencia.close();
+        return lPersona;
     }
     
         /**

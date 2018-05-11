@@ -13,6 +13,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Vista de datos del usuario.
+ * Fecha de creación de la vista: 24/04/2018
+ * @author eqdaw04
+ */
+
 public class VUsuario extends javax.swing.JDialog {
     private String tipo;
     private int n, contador;
@@ -27,6 +33,12 @@ public class VUsuario extends javax.swing.JDialog {
         //mostrar opciones según tipo de operaciones CRUD que se quiera realizar
         cargarDatos(tipo, n);
     }
+    
+    /**
+     * Metodo para poder introducir datos de usuario.
+     * @param tipo String
+     * @param n int
+     */
     
     private void cargarDatos(String tipo, int n){
         this.n = n;
@@ -346,6 +358,11 @@ public class VUsuario extends javax.swing.JDialog {
 
     }//GEN-LAST:event_bAceptarActionPerformed
 
+    /**
+     * Metodo para comprobar todos los datos válidos.
+     * @throws Exception 
+     */
+    
     private void comprobacion()throws Exception{
         
         ValidacionDeDatosDeEntrada.validar(7, tfUsuario);
@@ -363,8 +380,13 @@ public class VUsuario extends javax.swing.JDialog {
         }
     }
     
+    /**
+     * Metodo para dar de alta una persona, comprobando que no exista.
+     * @param p Persona
+     * @throws Exception 
+     */
+    
     private void alta(Persona p)throws Exception{
-        //comprobar que no exista la persona
         if(p !=  null)
         {
             throw new Excepcion(15);
@@ -374,6 +396,12 @@ public class VUsuario extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(this, "El usuario se ha dado de alta correctamente.");
         Main.reabrir(this, tipo, n);
     }
+    
+    /**
+     * Metodo para modificar una persona.
+     * @param p Persona
+     * @throws Exception 
+     */
     
     private void modificacion(Persona p) throws Exception{
         //comprobar si existe la persona
@@ -386,6 +414,12 @@ public class VUsuario extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(this, "El usuario se ha dado modificado correctamente.");
         Main.reabrir(this, tipo, n);
     }
+    
+    /**
+     * Metodo para dar de baja una persona.
+     * @param p Persona
+     * @throws Exception 
+     */
     
     private void baja(Persona p) throws Exception{
         try{
@@ -497,6 +531,11 @@ public class VUsuario extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_bBuscarActionPerformed
 
+    /**
+     * Metodo para mostrar todos los datos de una persona. 
+     * @param p Persona
+     */
+    
     private void mostrarDatos(Persona p) {
         tfUsuario.setText(p.getUsuario());
         pfContrasenna.setText(p.getContrasenna());

@@ -7,23 +7,30 @@ import Recurso.ValidacionDeDatosDeEntrada;
 import UML.Jugador;
 import java.util.ArrayList;
 
+/**
+ * Vista jugadores.
+ * Fecha de la creación de la vista: 23/04/2018
+ * @author eqdaw04
+ */
+
 public class VJugador extends javax.swing.JDialog {
     
     private ArrayList<Jugador> listaJugadores;
     private String tipo;
     private int posicion, n;
     private Jugador j;
+    
     /**
-     * Creates new form VJugador
-     * @param tipo
-     * @param n
+     * Metodo para mostrar las opciones según el CRUD que se quiera realizar.
+     * @param tipo String
+     * @param n int
      */
-
+    
     public VJugador(String tipo, int n) {
         initComponents();
-        // Mostrar opciones según tipo de operaciones CRUD que se quiera realizar
         cargarDatos(tipo, n);        
     }
+    
     public VJugador(String tipo, int n, Jugador j) {
         initComponents();
         this.j=j;
@@ -74,23 +81,23 @@ public class VJugador extends javax.swing.JDialog {
 
         jLabel3.setText("Nombre:");
 
-        tfNombre.setEnabled(false);
+        tfNombre.setEditable(false);
 
         jLabel4.setText("Apellido 1:");
 
-        tfApellido1.setEnabled(false);
+        tfApellido1.setEditable(false);
 
-        tfApellido2.setEnabled(false);
+        tfApellido2.setEditable(false);
 
         jLabel5.setText("Nickname:");
 
-        tfNickname.setEnabled(false);
+        tfNickname.setEditable(false);
 
         jLabel6.setText("Comentario:");
 
+        taComentario.setEditable(false);
         taComentario.setColumns(20);
         taComentario.setRows(5);
-        taComentario.setEnabled(false);
         jScrollPane1.setViewportView(taComentario);
 
         bAceptar.setText("Aceptar");
@@ -144,8 +151,8 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
 
+        ftfSueldo.setEditable(false);
         ftfSueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        ftfSueldo.setEnabled(false);
 
         bBuscar.setText("Buscar");
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -306,9 +313,6 @@ public class VJugador extends javax.swing.JDialog {
                    Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
                    JOptionPane.showMessageDialog(this, "El jugador se ha modificado correctamente.");
                    break;
-                case "consulta":
-                    Main.cerrar(this);
-                    break;
            }
            Main.reabrir(this, tipo, n);
        }
@@ -338,6 +342,7 @@ public class VJugador extends javax.swing.JDialog {
                 // Si el DNI está vacío, se crea una lista interna, permitiendo recorrerla con los botones direccionales, en caso contrario, muestra únicamente el jugador con ese DNI
                 if(tfDNI.getText().isEmpty())
                 {
+                    posicion=0;
                     listaJugadores = Main.buscarJugador();
                     if(listaJugadores.size()>1)
                     {
@@ -358,6 +363,10 @@ public class VJugador extends javax.swing.JDialog {
                 {
                     ValidacionDeDatosDeEntrada.validar(3, tfDNI);
                     buscarJugador(tfDNI.getText());
+                    bPrimero.setEnabled(false);
+                    bAnterior.setEnabled(false);
+                    bSiguiente.setEnabled(false);
+                    bUltimo.setEnabled(false);
                 }
             }
             else
@@ -367,12 +376,12 @@ public class VJugador extends javax.swing.JDialog {
                 buscarJugador(tfDNI.getText());
                 if(tipo.equals("modificacion"))
                 {
-                    tfNombre.setEnabled(true);
-                    tfApellido1.setEnabled(true);
-                    tfApellido2.setEnabled(true);
-                    tfNickname.setEnabled(true);
-                    ftfSueldo.setEnabled(true);
-                    taComentario.setEnabled(true);
+                    tfNombre.setEditable(true);
+                    tfApellido1.setEditable(true);
+                    tfApellido2.setEditable(true);
+                    tfNickname.setEditable(true);
+                    ftfSueldo.setEditable(true);
+                    taComentario.setEditable(true);
                 }
                 bAceptar.setEnabled(true);
             }
@@ -509,38 +518,77 @@ public class VJugador extends javax.swing.JDialog {
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metodo para la carga de datos de la vista.
+     * @param tipo String
+     * @param n int
+     */
+    
     private void cargarDatos(String tipo, int n) {
         this.n=n;
         this.tipo=tipo;
         setModal(true);
         this.setLocationRelativeTo(null);
         listaJugadores = new ArrayList();
-        //en algún punto seguramente sea mejor un switch
-        if(tipo.equals("alta"))
+        switch(tipo)
         {
-            tfNombre.setEnabled(true);
-            tfApellido1.setEnabled(true);
-            tfApellido2.setEnabled(true);
-            tfNickname.setEnabled(true);
-            ftfSueldo.setEnabled(true);
-            taComentario.setEnabled(true);
-            bAceptar.setEnabled(true);
-            bBuscar.setEnabled(false);
-            
-        }  else if(tipo.equals("consulta")){
-            tfDNI.setText(j.getDni());
-            tfNombre.setText(j.getNombre());
-            tfApellido1.setText(j.getApellido1());
-            tfApellido2.setText(j.getApellido2()); 
-            tfNickname.setText(j.getNickname());
-            cFechaAlta.setDate(j.getFechaAlta());
-            ftfSueldo.setText(String.valueOf(j.getSueldo())); 
-            taComentario.setText(j.getComentario());
-            bBuscar.setVisible(false);
-            bAceptar.setEnabled(true);
+            case "alta":
+                tfNombre.setEditable(true);
+                tfApellido1.setEditable(true);
+                tfApellido2.setEditable(true);
+                tfNickname.setEditable(true);
+                ftfSueldo.setEditable(true);
+                taComentario.setEditable(true);
+                bAceptar.setEnabled(true);
+                bBuscar.setVisible(false);
+                bPrimero.setVisible(false);
+                bAnterior.setVisible(false);
+                bSiguiente.setVisible(false);
+                bUltimo.setVisible(false);
+                break;
+            case "baja":
+                bPrimero.setVisible(false);
+                bAnterior.setVisible(false);
+                bSiguiente.setVisible(false);
+                bUltimo.setVisible(false);
+                break;
+            case "modificacion":
+                bPrimero.setVisible(false);
+                bAnterior.setVisible(false);
+                bSiguiente.setVisible(false);
+                bUltimo.setVisible(false);
+                break;
+            case "listado":
+                bAceptar.setVisible(false);
+                bCancelar.setVisible(false);
+                break;
+            case "consulta":
+                tfDNI.setText(j.getDni());
+                tfDNI.setEditable(false);
+                tfNombre.setText(j.getNombre());
+                tfApellido1.setText(j.getApellido1());
+                tfApellido2.setText(j.getApellido2()); 
+                tfNickname.setText(j.getNickname());
+                cFechaAlta.setDate(j.getFechaAlta());
+                ftfSueldo.setText(String.valueOf(j.getSueldo())); 
+                taComentario.setText(j.getComentario());
+                bBuscar.setVisible(false);
+                bAceptar.setVisible(false);
+                bCancelar.setVisible(false);
+                bPrimero.setVisible(false);
+                bAnterior.setVisible(false);
+                bSiguiente.setVisible(false);
+                bUltimo.setVisible(false);
+                break;
         }
         setVisible(true);
     }
+    
+    /**
+     * Metodo para buscar un jugador por su dni.
+     * @param dni String
+     * @throws Exception 
+     */
     
     private void buscarJugador(String dni) throws Exception {
         Jugador j = Main.buscarJugador(dni);
@@ -550,6 +598,11 @@ public class VJugador extends javax.swing.JDialog {
         }
         mostrarDatos(j);
     }
+    
+    /**
+     * Metodo para seleccionar un jugador guardado en la base de datos.
+     * @throws Exception 
+     */
     
     private void seleccionarJugador() throws Exception {
         Jugador j;
@@ -563,6 +616,12 @@ public class VJugador extends javax.swing.JDialog {
         }
         mostrarDatos(j);
     }
+    
+    /**
+     * Metodo para mostrar los datos de un jugador encontrado.
+     * @param j Jugador
+     * @throws Exception 
+     */
     
     private void mostrarDatos(Jugador j) throws Exception {
         tfDNI.setText(j.getDni());

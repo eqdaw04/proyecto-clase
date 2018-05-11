@@ -16,8 +16,9 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author v6222
+ * Ventana para generar la liga.
+ * Fecha de creación de la vista: 23/04/2018
+ * @author eqdaw04
  */
 public class VGenerarLiga extends javax.swing.JDialog {
 
@@ -29,6 +30,11 @@ public class VGenerarLiga extends javax.swing.JDialog {
         initComponents();
         cargarComponente(n);
     }
+    
+    /**
+     * Metodo para la carga de componentes.
+     * @param n int
+     */
 
     private void cargarComponente(int n){
         this.n = n;

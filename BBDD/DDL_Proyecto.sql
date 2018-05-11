@@ -1,4 +1,10 @@
-    DROP TABLE Perfil CASCADE CONSTRAINTS;
+DROP TABLE Marcador CASCADE CONSTRAINTS;
+DROP TABLE Partido CASCADE CONSTRAINTS;
+DROP TABLE Jornada CASCADE CONSTRAINTS;
+DROP TABLE Jugador CASCADE CONSTRAINTS;
+DROP TABLE Equipo CASCADE CONSTRAINTS;
+DROP TABLE Persona CASCADE CONSTRAINTS;
+DROP TABLE Perfil CASCADE CONSTRAINTS;
 
 CREATE TABLE Perfil(
 Id_perfil NUMBER (1) GENERATED ALWAYS AS IDENTITY, 
@@ -10,8 +16,6 @@ CONSTRAINT Perf_nom_ck Check (Nombre = INITCAP(Nombre))
 INSERT INTO Perfil (Nombre) VALUES ('Admin');
 INSERT INTO Perfil (Nombre) VALUES ('Dueño');
 INSERT INTO Perfil VALUES (DEFAULT,'Usuario');
-
-   DROP TABLE Persona CASCADE CONSTRAINTS;
 
 CREATE TABLE Persona(
 Id_persona NUMBER (4) GENERATED ALWAYS AS IDENTITY, --Autoincremental
@@ -32,8 +36,6 @@ INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_per
 INSERT INTO Persona VALUES (DEFAULT,'Admin1','ApellidoRandom',null,TO_DATE(SYSDATE,'DD/MM/YYYY'),'admin','root',null,1);
 INSERT INTO Persona VALUES (DEFAULT,'Usuario1','ApellidoRandom2',null,TO_DATE(SYSDATE,'DD/MM/YYYY'),'usu','sus',null,3);
 
-    DROP TABLE Equipo CASCADE CONSTRAINTS;
-
 CREATE TABLE Equipo(
 Id_equipo NUMBER (2)GENERATED ALWAYS AS IDENTITY,
 Nombre VARCHAR2 (45) NOT NULL,
@@ -46,8 +48,6 @@ CONSTRAINT Equi_persid_fk FOREIGN KEY (Id_persona) REFERENCES Persona (Id_person
 
 INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Id_persona) VALUES ('Equipo1',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son rosas',1);
 INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Id_persona) VALUES ('Equipo2',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son muy azules',2);
-
-    DROP TABLE Jugador CASCADE CONSTRAINTS;
 
 CREATE TABLE Jugador(
 Id_jugador NUMBER (3)GENERATED ALWAYS AS IDENTITY,
@@ -74,22 +74,19 @@ INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,C
 INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,Comentario) VALUES ('56878256A','JonXu','asd','Guridi','luffie',10000,TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son amarillas');
 INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,Comentario) VALUES ('42898256A','Imanol','fgh','Guridi','asd',30000,TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son azules');
 
-    DROP TABLE Jornada CASCADE CONSTRAINTS;
-
 CREATE TABLE Jornada(
 Id_jornada NUMBER (2)GENERATED ALWAYS AS IDENTITY,
+Fecha_inicio DATE NOT NULL,
+Fecha_fin DATE NOT NULL,
 CONSTRAINT Jorn_jornid_pk PRIMARY KEY (Id_jornada)
 );
 
 INSERT INTO Jornada (Id_jornada) VALUES (DEFAULT);
 INSERT INTO Jornada (Id_jornada) VALUES (DEFAULT);
 
-    DROP TABLE Partido CASCADE CONSTRAINTS;
-
 CREATE TABLE Partido(
 Id_partido NUMBER (4) GENERATED ALWAYS AS IDENTITY,
 Fecha DATE NOT NULL,
-Lugar VARCHAR2 (30) NOT NULL,
 Id_jornada INTEGER NOT NULL,
 CONSTRAINT Part_partid_fk PRIMARY KEY (Id_partido),
 CONSTRAINT Part_jornid_fk FOREIGN KEY (Id_jornada) REFERENCES Jornada (Id_jornada)
@@ -102,8 +99,6 @@ INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY
 INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY'),'Madrid',2);
 INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY'),'Vitoria',2);
 INSERT INTO Partido( FECHA,Lugar,Id_jornada) VALUES (TO_DATE(SYSDATE,'DD/MM/YYYY'),'Barcelona',2);
-
-    DROP TABLE Marcador CASCADE CONSTRAINTS;
 
 CREATE TABLE Marcador(
 Id_marcador NUMBER (3) GENERATED ALWAYS AS IDENTITY,

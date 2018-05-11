@@ -18,8 +18,9 @@ import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author 1gdaw06
+ * Clase en la que controlaremos e introduciremos datos de la jornada actual a la base de datos.
+ * Fecha de creación de la clase: 24/04/2018
+ * @author eqdaw04
  */
 public class BDJornada {
     
@@ -82,6 +83,13 @@ public class BDJornada {
         con.desconectar();
         return lJornada;
     }
+    
+    /**
+     * Metodo para consultar una jornada por su número.
+     * @param n int
+     * @return devuelve un objeto jornada
+     * @throws Exception 
+     */
     
     public Jornada consultarJornadaPorNumeroDeJornada(int n) throws Exception{
         // abre la conexion
