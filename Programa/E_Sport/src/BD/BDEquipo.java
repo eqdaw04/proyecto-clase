@@ -30,6 +30,7 @@ public class BDEquipo {
      * @throws Exception 
      */
     
+
     public static void insertarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia = con.getConnection().prepareStatement("INSERT INTO Equipo (NOMBRE, FECHA_CREACION, COMENTARIO) VALUES (?, ?, ?)");

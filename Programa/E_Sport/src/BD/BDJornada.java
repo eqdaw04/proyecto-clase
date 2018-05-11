@@ -6,10 +6,16 @@
 package BD;
 
 import Controladora.Main;
+import Excepciones.Excepcion;
 import UML.Jornada;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,18 +23,40 @@ import java.util.ArrayList;
  */
 public class BDJornada {
     
-    public Jornada insertarJornada(int nJornada, BDConexion con) throws Exception{
+    public Jornada insertarJornada(int nJornada, Calendar fecha, BDConexion con) throws Exception{
         Jornada j = null;        
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("INSERT INTO jornada VALUES(?)");
+        sentencia = con.getConnection().prepareStatement("INSERT INTO jornada VALUES(?, TO_DATE(?,'DD/MM/YYYY'), null)");
         sentencia.setInt(1, nJornada);
+        sentencia.setDate(2, convertirFechaASql(fecha.getTime()));
         int n = sentencia.executeUpdate();
         if(n==1){
             j = new Jornada();
             j.setIdJornada(nJornada);
+            j.setFechaInicio(fecha.getTime());
         }
         sentencia.close();
         return j;
+    }
+    
+    private Date convertirFechaASql(java.util.Date fecha) throws Exception{
+        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+        String ff = f.format(fecha);
+        java.util.Date parsed = f.parse(ff);
+        Date fSQL = new Date(parsed.getTime());
+        return fSQL;
+    }
+    
+    public void modificarJornada(Jornada jornada, BDConexion con) throws Exception{
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("UPDATE jornada SET fecha_final = TO_DATE(?,'DD/MM/YYYY') WHERE id_jornada = ?");
+        sentencia.setDate(1, convertirFechaASql(jornada.getFechaFinal()));
+        sentencia.setInt(2, jornada.getIdJornada());
+        int n = sentencia.executeUpdate();
+        if(n!=1){
+            throw new Excepcion(43);
+        }
+        sentencia.close();
     }
     
     public ArrayList <Jornada> consultarTodasLasJornadas() throws Exception{
@@ -41,7 +69,11 @@ public class BDJornada {
         while(rs.next()){
             Jornada j = new Jornada();
             j.setIdJornada(rs.getInt("id_jornada"));
-            j.setListaPartidos(Main.consultarPartidosPorJornada(j.getIdJornada()));
+            j.setFechaInicio(rs.getDate("fecha_inicio"));
+            j.setFechaFinal(rs.getDate("fecha_final"));
+            // Se ha cargará los datos a la memoria según demanda, para así no cargar en excesiva con datos que no se va ha utilizar y precisa que esté 
+            // actualizado en todo momento con la bbdd
+            //j.setListaPartidos(Main.consultarPartidosPorJornada(j.getIdJornada()));
             lJornada.add(j);
         }
         

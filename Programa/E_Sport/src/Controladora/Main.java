@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JDialog;
@@ -57,7 +58,7 @@ public class Main {
         inicializarValores();
         
         login = new VLogin();
-        //new Principal();
+        //new VPrincipal(1,"Jon");
     }
     
     /**
@@ -409,7 +410,7 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static void generarCalendario(Date fecha, String lugar) throws Exception{
+    public static String generarCalendario(Calendar fecha, int horaF) throws Exception{
         // extraer de la bbdd los equipos disponibles
         ArrayList <Equipo> lEquipo = new ArrayList();
         lEquipo = buscarEquipo();
@@ -417,17 +418,17 @@ public class Main {
         Emparejamiento emp = new Emparejamiento(lEquipo);
         // ejecutar el algoritmo para los equipos aleatorios
         // Abrir conexion y mantenerlo abierto hasta que acabe que introducir las partidas para no tener que abrir y cerrar constantemente hasta introducir los X partidos
-        BDConexion con = new BDConexion();
-        emp.calcularPartido(con, fecha, lugar);
-        con.desconectar();
+        
+        emp.calcularPartido(fecha, horaF);
+        return emp.getDato();
     }
     
     //---------- JON XU JIN ----------
     
-    public static Jornada insertarJornada(int nJornada, BDConexion con) throws Exception{
+    public static Jornada insertarJornada(int nJornada, Calendar fecha, BDConexion con) throws Exception{
         // insertar la jornada según calendario y devolver si se ha insertado, en caso contrario, saltar excepcion
-        Jornada j = bdJornada.insertarJornada(nJornada, con);
-        if(j != null){
+        Jornada j = bdJornada.insertarJornada(nJornada, fecha, con);
+        if(j == null){
             throw new Excepcion(40);
         }
         return j;
@@ -435,27 +436,32 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static Partido insertarPartido(Date fecha, String lugar, Jornada jornada, BDConexion con) throws Exception{
-        // insertar la partido según calendario y devolver si se ha insertado, en caso contrario, saltar excepcion
-        Partido p = new Partido();
-        p.setFecha(fecha);
-        p.setLugar(lugar);
-        if(!bdPartido.insertarPartido(p, jornada, con)){
-            throw new Excepcion(41);
-        }
-        return p;
+    public static void modificarJornada(Jornada jornada, BDConexion con) throws Exception{
+        // modificar la fecha final de la jornada
+        bdJornada.modificarJornada(jornada, con);
+        
     }
     
     //---------- JON XU JIN ----------
     
-    public static boolean insertarEquiposAPartido(Partido partido, BDConexion con) throws SQLException{
+    public static boolean insertarPartido(Partido partido, Jornada jornada, BDConexion con) throws Exception{
         boolean estado = false;
-        if(bdMarcador.insertarEquiposAPartido(partido, con) == 1){
+        if(bdPartido.insertarPartido(partido, jornada, con)){
             estado = true;
         }
         return estado;
     }
   
+    //---------- JON XU JIN ----------
+    
+    public static boolean consultarEquipoPorNumero(int n) throws Exception{
+        boolean estado = false;
+        bdEquipo.
+        if(bdEquipo.){
+            estado = true;
+        }
+        return estado;
+    }
 
     public static int getPerfil() {
         return perfil;

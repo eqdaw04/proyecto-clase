@@ -1,6 +1,7 @@
 package UML;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Clase en la que definiremos la lista de partidos que se jugarán en una jornada.
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 
 public class Jornada {
     private int idJornada;
+    private Date fechaInicio, fechaFinal;
     
     private ArrayList<Partido> listaPartidos;
 
@@ -33,4 +35,22 @@ public class Jornada {
     public void setListaPartidos(ArrayList<Partido> listaPartidos) {
         this.listaPartidos = listaPartidos;
     }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFinal() {
+        return fechaFinal;
+    }
+
+    public void setFechaFinal(Date fechaFinal) {
+        this.fechaFinal = fechaFinal;
+    }
+    
+    
 }

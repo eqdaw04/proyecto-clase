@@ -1,7 +1,6 @@
 package UML;
 
-import java.sql.Time;
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * Clase en la que definiremos el día, lugar y hora de un partido.
@@ -11,8 +10,7 @@ import java.util.Date;
 
 public class Partido {
     private int idPartido;
-    private Date fecha;
-    private String lugar;
+    private Calendar fecha;
     
     private Equipo eLocal, eVisitante;
     int mLocal, mVisitante;
@@ -20,10 +18,9 @@ public class Partido {
     public Partido() {
     }
 
-    public Partido(int idPartido, Date fecha, String lugar, Equipo eLocal, Equipo eVisitante, int mLocal, int mVisitante) {
+    public Partido(int idPartido, Calendar fecha, Equipo eLocal, Equipo eVisitante, int mLocal, int mVisitante) {
         this.idPartido = idPartido;
         this.fecha = fecha;
-        this.lugar = lugar;
         this.eLocal = eLocal;
         this.eVisitante = eVisitante;
         this.mLocal = mLocal;
@@ -38,20 +35,12 @@ public class Partido {
         this.idPartido = idPartido;
     }
 
-    public Date getFecha() {
+    public Calendar getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(Calendar fecha) {
         this.fecha = fecha;
-    }
-
-    public String getLugar() {
-        return lugar;
-    }
-
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
     }
 
     public Equipo geteLocal() {
@@ -85,6 +74,5 @@ public class Partido {
     public void setmVisitante(int mVisitante) {
         this.mVisitante = mVisitante;
     }
-    
     
 }

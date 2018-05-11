@@ -6,20 +6,18 @@
 package BD;
 
 import Controladora.Main;
-import UML.Equipo;
 import UML.Jornada;
 import UML.Marcador;
-import UML.Partido;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.Timer;
 import UML.Equipo;
 import UML.Partido;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
 /**
  *
  * @author 1gdaw06
@@ -31,6 +29,7 @@ public class BDPartido {
     String lugar;
     ArrayList <Equipo> lEquipo;
     Jornada jornada;
+    Integer local, pLocal, visitante, pVisitante;
 
     public BDPartido() {
         lEquipo = new ArrayList();
@@ -39,122 +38,97 @@ public class BDPartido {
     public boolean insertarPartido(Partido p, Jornada jornada, BDConexion con) throws Exception{
         boolean estado = false;
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("INSERT INTO partido (fecha, lugar, ID_JORNADA, hora) values( to_timestamp('10/05/18 12:26:52,000000000','DD/MM/RR HH24:MI:SSXFF'), ?, ?);");
-        
-        sentencia.setTimestamp(1, (Timestamp) p.getFecha());
-        sentencia.setString(2, p.getLugar());
+        sentencia = con.getConnection().prepareStatement("INSERT INTO partido (id_partido, fecha, ID_JORNADA) values(?, to_timestamp(?,'YYYY-MM-DD HH24:MI:SS.FF'), ?)");
+        sentencia.setInt(1, p.getIdPartido());
+        // IMPORTANTE se ha decidido convertir el date long a String porque no habia manera de que java reconozca el long con la máscara
+        // java.sql.SQLDataException: ORA-01830: la máscara de formato de fecha termina antes de convertir toda la cadena de entrada
+        // sentencia.setTimestamp(2, new java.sql.Timestamp(p.getFecha().getTimeInMillis()));
+        sentencia.setString(2, String.valueOf(new java.sql.Timestamp(p.getFecha().getTimeInMillis())));
         sentencia.setInt(3, jornada.getIdJornada());
         int n = sentencia.executeUpdate();
         if(n==1){
-            estado = true;
+            if(insertarEquipoAPartido(p, con)){
+                estado = true;
+            }
         }
         sentencia.close();
         return estado;
     }
     
-    
-    
-    
-    
-    
-    public ArrayList<Partido> consultarPartidosPorJornada(int n) throws Exception{
-        ArrayList<Partido> lPartido = new ArrayList();
-        // abre la conexion
-        BDConexion con = new BDConexion();
-        // preparar la conexion y sentencia
-        PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM partido WHERE id_jornada = ?");
-        // formatear fecha a fecha para sql como condicion
-        sentencia.setInt(1, n);
-        // crear objeto para el resultado de la consulta
-        ResultSet rs;
-        // cargar objeto sentencia al objeto rs
-        rs = sentencia.executeQuery();
-       // buscar si existe datos en la rs
-        while(rs.next()){
-            Partido p = new Partido();
-            p.setIdPartido(rs.getInt("idPartido"));
-                        
-            //p.setFecha(fecha); REVISARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
-            //p.setHora(); REVISARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
-            p.setLugar(rs.getString("lugar"));
-            p.seteLocal(Main.ConsultarEquipoPorPartido(p.getIdPartido(), true));
-            p.setmLocal(Main.ConsultarPuntoPorPartido(p.getIdPartido(), true));
-            p.seteVisitante(Main.ConsultarEquipoPorPartido(p.getIdPartido(), false));
-            p.setmVisitante(Main.ConsultarPuntoPorPartido(p.getIdPartido(), false));
-            lPartido.add(p);
+    public boolean insertarEquipoAPartido(Partido p, BDConexion con) throws Exception{
+        boolean estado = false;
+        PreparedStatement sentencia = null;
+        int n = 0;
+        // insertar en el marcador el primer equipo
+        // 1 es visitante y 0 es local; 1 false 0 true
+        if(p.geteLocal().getIdEquipo()!=0){
+            sentencia = con.getConnection().prepareStatement("INSERT INTO marcador VALUES (DEFAULT, '0', '1', ?, ?)");
+            sentencia.setInt(1, p.getIdPartido());
+            sentencia.setInt(2, p.geteLocal().getIdEquipo());
+            n = sentencia.executeUpdate();
         }
-        // cerrar conexiones y retornar objeto obtenido mediante consulta
-        rs.close();
-        sentencia.close();
-        con.desconectar();
-        return lPartido;
-        
-    }
-    
-    public ArrayList<Partido> insertarPartido() throws Exception{
-        ArrayList<Partido> lPartido = new ArrayList();
-        // abre la conexion
-        BDConexion con = new BDConexion();
-        // preparar la conexion y sentencia
-        PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM partido WHERE id_jornada = ?");
-        // formatear fecha a fecha para sql como condicion
-        sentencia.setInt(1, n);
-        // crear objeto para el resultado de la consulta
-        ResultSet rs;
-        // cargar objeto sentencia al objeto rs
-        rs = sentencia.executeQuery();
-       // buscar si existe datos en la rs
-        while(rs.next()){
-            Partido p = new Partido();
-            p.setIdPartido(rs.getInt("idPartido"));
-                        
-            //p.setFecha(fecha); REVISARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
-            //p.setHora(); REVISARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
-            p.setLugar(rs.getString("lugar"));
-            p.seteLocal(Main.ConsultarEquipoPorPartido(p.getIdPartido(), true));
-            p.setmLocal(Main.ConsultarPuntoPorPartido(p.getIdPartido(), true));
-            p.seteVisitante(Main.ConsultarEquipoPorPartido(p.getIdPartido(), false));
-            p.setmVisitante(Main.ConsultarPuntoPorPartido(p.getIdPartido(), false));
-            lPartido.add(p);
-        }
-        // cerrar conexiones y retornar objeto obtenido mediante consulta
-        rs.close();
-        sentencia.close();
-        con.desconectar();
-        return lPartido;
-        
-    }
-    
-    public ArrayList <Marcador> marcadores(BDConexion con, int n) throws Exception{
-        // Crear objeto persona nulo
-        Marcador m = null;
-        // preparar la conexion y sentencia
-        PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM marcador WHERE partido = ?");
-        // condicion de la sentencia
-        sentencia.setInt(1, n);
-        // crear objeto para el resultado de la consulta
-        ResultSet rs;
-        // cargar objeto sentencia al objeto rs
-        rs = sentencia.executeQuery();
-       // buscar si existe datos en la rs
-        if(rs.next()){
-            // crear marcador y llenar los datos
-            m = new Marcador();
-            m.setIdMarcador(rs.getInt("id_marcador"));
-            m.setPartido(partido);
-            m.setEquipo(equipo);
-            m.setPuntos(n);
-            m.setVisitante(true);
+        // insertar en el marcador el segundo equipo
+        if(p.geteVisitante().getIdEquipo()!=0){
+            sentencia = con.getConnection().prepareStatement("INSERT INTO marcador VALUES (DEFAULT, '0', '0', ?, ?)");
+            sentencia.setInt(1, p.getIdPartido());
+            sentencia.setInt(2, p.geteVisitante().getIdEquipo());
+            n += sentencia.executeUpdate();
             
         }
-        // cerrar conexiones y retornar objeto obtenido mediante consulta
-        rs.close();
+        
+        if(n==2 || n ==1){
+            estado = true;
+        }
+            
         sentencia.close();
-        con.desconectar();
-
+        return estado;
+        
     }
+    
+    public ArrayList<Partido> consultarPartidosPorJornada (int jornada) throws Exception{
+        ArrayList<Partido> lPartido = new ArrayList();
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM partido WHERE id_jornada = ?");
+        sentencia.setInt(1, jornada);
+        ResultSet rs;
+        rs = sentencia.executeQuery();
+        while(rs.next()){
+            Partido p = new Partido();
+            p.setIdPartido(rs.getInt("id_partido"));
+            SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy HH:MM:SS");
+            Calendar c = Calendar.getInstance();
+            c.setTime(f.parse(rs.getString("fecha")));
+            p.setFecha(c);
+            marcadores(p.getIdPartido());
+            p.seteLocal(Main.consultarEquipoPorNumero());
+            p.setmLocal(pLocal);
+            p.seteVisitante(eVisitante);
+            p.setmVisitante(pVisitante);
+            
+        }
+        return lPartido;
+    } 
 
+    public int marcadores(int partido) throws Exception{
+        int puntos = 0;
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM marcador WHERE id_partido = ?");
+        sentencia.setInt(1, partido);
+        ResultSet rs;
+        rs = sentencia.executeQuery();
+        while(rs.next()){
+            // 1 visitante 0 local; 1 = false y 0 = true
+            if(rs.getInt("visitante")==1){
+                local = rs.getInt("id_equipo");
+                pLocal = rs.getInt("puntuacion");
+            }
+            else{
+                visitante = rs.getInt("id_equipo");
+                pVisitante = rs.getInt("puntuacion");
+            }
+        }
+        return puntos;
+    }
 }

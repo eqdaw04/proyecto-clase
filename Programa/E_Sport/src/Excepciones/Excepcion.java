@@ -157,6 +157,10 @@ public class Excepcion extends Exception {
                 dato = "Error al insertar el Equipo";
                 break;
                 
+            case 43:
+                dato = "Error al insertar fecha fin de la jornada.";
+                break;
+                
             case 50:
                 dato = dato + "El nombre del equipo es obligatorio.";
                 break;

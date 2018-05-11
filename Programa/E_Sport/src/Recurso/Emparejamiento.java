@@ -11,11 +11,9 @@ import Excepciones.Excepcion;
 import UML.Equipo;
 import UML.Jornada;
 import UML.Partido;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import javax.swing.JOptionPane;
+import java.util.Random;
 
 /**
  * Clase en la que definimos los emparejamientos de los equipos por partido.
@@ -31,7 +29,9 @@ public class Emparejamiento {
     ArrayList <Equipo> lEquipo;
     Equipo[][] lJPEquipoL;
     Equipo[][] lJPEquipoV;
-    
+    Calendar fecha;
+    String dato;
+    int horaI, horaF;
     public Emparejamiento() {
     }
     
@@ -49,8 +49,11 @@ public class Emparejamiento {
      * Obtenemos el número de jornadas y partidos.
      */
     
-    public void calcularPartido(BDConexion con, Date fecha, String lugar) throws Exception{
+    public void calcularPartido(Calendar fecha, int horaF) throws Exception{
         int e = lEquipo.size();
+        this.fecha = fecha;
+        horaI = fecha.get(Calendar.HOUR_OF_DAY);
+        this.horaF = horaF;
         // Si es impar añadir 1 numero equipo fantasma y crear Array
         if(e%2!=0){
             // si el equipo es impar, se añade un equipo fantasma
@@ -64,7 +67,7 @@ public class Emparejamiento {
         lJPEquipoL = new Equipo[j][p];
         lJPEquipoV = new Equipo[j][p];
         // rellenar array con los equipos
-        llenarArray(j, p, e, con, fecha, lugar);
+        llenarArray(j, p, e);
     }
     
     /**
@@ -72,9 +75,10 @@ public class Emparejamiento {
      * @param j int
      * @param p int
      * @param e int
+     * @throws java.lang.Exception
      */
     
-    public void llenarArray(int j, int p, int e, BDConexion con, Date fecha, String lugar) throws Exception{
+    public void llenarArray(int j, int p, int e) throws Exception{
         //Algoritmo de construccion de equipos
         for(int x = 0; x<j; x++){
             if(x%2==0){
@@ -118,35 +122,45 @@ public class Emparejamiento {
                 }
             }
         }
-        insertarBBDD(e, horizontal, con, fecha, lugar);
+        insertarBBDD(e, horizontal);
     }
     
-    public int insertarBBDD(int e, int horizontal, BDConexion con, Date fecha, String lugar) throws Exception{
+    public void insertarBBDD(int e, int horizontal) throws Exception{
         //emplear este código para combinar los equipos en bbdd
-        String dato = "Jornadas 1-" + (e-1) + " Equipos:\n";
+        // guardo los datos en un String para mostrarlo al final, para comprobar que sí que se ha hecho seún algoritmo
+        dato = "Jornadas 1-" + (e-1) + " Equipos:\n";
+        
         boolean sumar = true;
-        int dia = 1;
-        int jornada = 1;
+        int dia = 1,
+            jornada = 1,
+            partido = 1;
         // comienza a asignar la primera mitad de la liga
         for(int x = 0; x<e-1; x++){
+            // Se abre conexion con la BBDD para insertar una jornada con sus partidos y marcadores
+            // para evitar sobrecarga de datos, se ha decidido dividir la inserción de datos por jornada en vez de toda la liga
+            BDConexion con = new BDConexion();
             dato += "Jornada " + jornada + " compiten: ";
             // insertar la jornada a la BBDD
-            Jornada j = Main.insertarJornada(jornada, con);
+            Jornada j = Main.insertarJornada(jornada, fecha, con);
             sumar = true;
             int d = 1;
             for(int y = 0; y< horizontal; y++){
                 dato += "Día " + dia + "(" + d + ")" + " ";
-                
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(fecha);
-                calendar.add(Calendar.DAY_OF_YEAR, dia);
-                Partido p = Main.insertarPartido(calendar.getTime(), lugar, j, con);
-                dato += lJPEquipoL[x][y].getIdEquipo() + "x" + lJPEquipoV[x][y].getIdEquipo() + "   ";
+                fecha.add(Calendar.DAY_OF_YEAR, dia-1);
+                dato += lJPEquipoL[x][y].getNombre() + "x" + lJPEquipoV[x][y].getNombre() + "   ";
+                Partido p = new Partido();
+                p.setIdPartido(partido);
+                cambiarHora();
+                p.setFecha(fecha);
+                p.setmLocal(0);
+                p.setmVisitante(0);
                 p.seteLocal(lJPEquipoL[x][y]);
                 p.seteVisitante(lJPEquipoV[x][y]);
-                if(!Main.insertarEquiposAPartido(p, con)){
+                
+                if(!Main.insertarPartido(p, j, con)){
                     throw new Excepcion(42);
                 }
+                
                 if(d==7){
                     d=0;
                     sumar=false;
@@ -155,31 +169,43 @@ public class Emparejamiento {
                     dia++;
                 } 
                 d++;
+                partido ++;
             }
+            j.setFechaFinal(fecha.getTime());
+            Main.modificarJornada(j, con);
             dato += "\n";
             dia = dia + 8 - d;
             jornada++;
+            con.desconectar();
         }    
+        
         // comienza a asignar la segunda mitad de la liga
         dato += "\nJornadas " + e + "-" + ((e-1)*2) + " Equipos:\n";
         for(int x = 0; x<e-1; x++){
+            // Se abre conexion con la BBDD para insertar una jornada con sus partidos y marcadores
+            // para evitar sobrecarga de datos, se ha decidido dividir la inserción de datos por jornada en vez de toda la liga
+            BDConexion con = new BDConexion();
             dato += "Jornada " + jornada + " compiten: ";
             // insertar la jornada a la BBDD
-            Jornada j = Main.insertarJornada(jornada, con);
+            Jornada j = Main.insertarJornada(jornada, fecha, con);
             sumar = true;
             int d = 1;
             for(int y = 0; y< horizontal; y++){
                 dato += "Día " + dia + "(" + d + ")" + " ";
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(fecha);
-                calendar.add(Calendar.DAY_OF_YEAR, dia);
-                Partido p = Main.insertarPartido(calendar.getTime(), lugar, j, con);
-                dato += lJPEquipoV[x][y].getIdEquipo() + "x" + lJPEquipoL[x][y].getIdEquipo() + "   ";
+                fecha.add(Calendar.DAY_OF_YEAR, dia-1);
+                dato += lJPEquipoV[x][y].getNombre() + "x" + lJPEquipoL[x][y].getNombre() + "   ";
+                Partido p = new Partido();
+                p.setIdPartido(partido);
+                p.setFecha(fecha);
+                p.setmLocal(0);
+                p.setmVisitante(0);
                 p.seteLocal(lJPEquipoV[x][y]);
                 p.seteVisitante(lJPEquipoL[x][y]);
-                if(!Main.insertarEquiposAPartido(p, con)){
+                
+                if(!Main.insertarPartido(p, j, con)){
                     throw new Excepcion(42);
                 }
+                
                 if(d==7){
                     d=0;
                     sumar=false;
@@ -188,16 +214,28 @@ public class Emparejamiento {
                     dia++;
                 } 
                 d++;
+                partido++;
             }
+            j.setFechaFinal(fecha.getTime());
+            Main.modificarJornada(j, con);
             dato += "\n";
             if(x!=e-2){
                 dia = dia + 8 - d;
             }
             jornada++;
+            con.desconectar();
+        }        
+    }
+    
+    private void cambiarHora(){
+        if(horaI != horaF){
+            Random aleatorio = new Random();
+            int ale = 0, 
+                rango = horaF - horaI;
+            ale = horaI + 1+aleatorio.nextInt(rango);
+            fecha.set(Calendar.HOUR_OF_DAY, ale);
         }
-        JOptionPane.showMessageDialog(null, dato);
-        dia--;
-        return dia;
+        
     }
 
     public Equipo[][] getlJPEquipoL() {
@@ -214,6 +252,14 @@ public class Emparejamiento {
 
     public void setlJPEquipoV(Equipo[][] lJPEquipoV) {
         this.lJPEquipoV = lJPEquipoV;
+    }
+
+    public String getDato() {
+        return dato;
+    }
+
+    public void setDato(String dato) {
+        this.dato = dato;
     }
     
     
