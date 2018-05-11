@@ -101,7 +101,6 @@ public class BDEquipo {
         try {
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo WHERE Id_persona = (SELECT Id_persona FROM Persona WHERE Usuario = ?)");
         sentencia.setString(1,usu);
-        sentencia.executeUpdate();
         ResultSet rs = sentencia.executeQuery();
         while (rs.next()){
             e.setIdEquipo(Integer.parseInt(rs.getString(1)));
@@ -137,7 +136,7 @@ public class BDEquipo {
             e.setNombre(rs.getString(2));
             e.setFechaCreacion(rs.getDate(3));
             e.setComentario(rs.getString(4));
-            e.setPersona(Main.obtenerPersona(Integer.parseInt(rs.getString(5))));
+            e.setPersona(Main.obtenerPersona(rs.getInt(5)));
         }
         }
         catch (SQLException ex)

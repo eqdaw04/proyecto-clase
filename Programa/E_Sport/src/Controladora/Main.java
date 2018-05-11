@@ -854,6 +854,8 @@ public class Main {
     }    
 
     public static Persona obtenerPersona(int idPersona) throws Exception {
-        return bdPersona.buscarPersona(idPersona);
+        Persona p = null;
+        p = bdPersona.buscarPersona(idPersona);
+        return p;
     }
 }
