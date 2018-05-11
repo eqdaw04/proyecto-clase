@@ -87,7 +87,6 @@ INSERT INTO Jornada (Id_jornada) VALUES (DEFAULT);
 CREATE TABLE Partido(
 Id_partido NUMBER (4) GENERATED ALWAYS AS IDENTITY,
 Fecha DATE NOT NULL,
-Lugar VARCHAR2 (30) NOT NULL,
 Id_jornada INTEGER NOT NULL,
 CONSTRAINT Part_partid_fk PRIMARY KEY (Id_partido),
 CONSTRAINT Part_jornid_fk FOREIGN KEY (Id_jornada) REFERENCES Jornada (Id_jornada)
