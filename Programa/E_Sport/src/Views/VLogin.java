@@ -39,7 +39,7 @@ public class VLogin extends javax.swing.JFrame {
         imgpassw.setIcon(icono2);
         this.repaint();
         
-        ImageIcon fondo = new ImageIcon("../../../imagenes/Fondo_java.jpg");
+        ImageIcon fondo = new ImageIcon("../../../imagenes/fondo2.jpg");
         Icon icono3 = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
         imgfondo.setIcon(icono3);
         this.repaint();
