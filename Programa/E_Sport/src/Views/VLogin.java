@@ -50,6 +50,7 @@ public class VLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 66, 255));
+        setFocusCycleRoot(false);
         setMinimumSize(new java.awt.Dimension(562, 496));
         setPreferredSize(new java.awt.Dimension(562, 496));
         getContentPane().setLayout(null);
