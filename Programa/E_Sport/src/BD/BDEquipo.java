@@ -5,6 +5,7 @@
  */
 package BD;
 
+import Controladora.Main;
 import Excepciones.Excepcion;
 import UML.Equipo;
 import java.sql.Date;
@@ -32,10 +33,11 @@ public class BDEquipo {
     
     public static void insertarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
-        PreparedStatement sentencia = con.getConnection().prepareStatement("INSERT INTO Equipo (NOMBRE, FECHA_CREACION, COMENTARIO) VALUES (?, ?, ?)");
-        sentencia.setString(2, e.getNombre());
-        sentencia.setDate(7, formatearFecha(e.getFechaCreacion()));
-        sentencia.setString(8, e.getComentario());
+        PreparedStatement sentencia = con.getConnection().prepareStatement("INSERT INTO Equipo (NOMBRE, FECHA_CREACION, COMENTARIO, ID_PERSONA) VALUES (?, ?, ?, ?)");
+        sentencia.setString(1, e.getNombre());
+        sentencia.setDate(2, formatearFecha(e.getFechaCreacion()));
+        sentencia.setString(3, e.getComentario());
+        sentencia.setInt(4, e.getPersona().getIdPersona());
                                 
         if(sentencia.executeUpdate()!=1)
         {
@@ -102,6 +104,7 @@ public class BDEquipo {
             e.setNombre(rs.getString(2));
             e.setFechaCreacion(rs.getDate(3));
             e.setComentario(rs.getString(4));
+            e.setPersona(Main.obtenerPersona(Integer.parseInt(rs.getString(5))));
         }
         } catch (SQLException ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
@@ -124,7 +127,16 @@ public class BDEquipo {
             PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo WHERE Nombre = ?");
             sentencia.setString(1, nombre);
             ResultSet rs = sentencia.executeQuery();
-            a = recorrer(rs,a);
+            while (rs.next()){
+            Equipo e= new Equipo();
+            e.setIdEquipo(Integer.parseInt(rs.getString(1)));
+            e.setNombre(rs.getString(2));
+            e.setFechaCreacion(rs.getDate(3));
+            e.setComentario(rs.getString(4));
+            e.setPersona(Main.obtenerPersona(Integer.parseInt(rs.getString(5))));
+            
+            a.add(e);
+        }
         }
         catch (SQLException ex)
         {
@@ -147,33 +159,22 @@ public class BDEquipo {
         {
             PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo");
             ResultSet rs = sentencia.executeQuery();
-            a = recorrer(rs,a);
+            while (rs.next()){
+            Equipo e= new Equipo();
+            e.setIdEquipo(Integer.parseInt(rs.getString(1)));
+            e.setNombre(rs.getString(2));
+            e.setFechaCreacion(rs.getDate(3));
+            e.setComentario(rs.getString(4));
+            e.setPersona(Main.obtenerPersona(Integer.parseInt(rs.getString(5))));
+            
+            a.add(e);
+        }
         }
         catch (SQLException ex)
         {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
         }
         con.desconectar();
-        return a;
-    }
-    
-    /**
-     * Metodo para recorrer los datos de un equipo.
-     * @param rs ResultSet
-     * @param a ArrayList de equipo
-     * @return devuelve una lista de equipos
-     * @throws SQLException 
-     */
-    
-    public static ArrayList<Equipo> recorrer(ResultSet rs, ArrayList <Equipo> a) throws SQLException {
-        while (rs.next()){
-            Equipo e= new Equipo();
-            e.setIdEquipo(Integer.parseInt(rs.getString(1)));
-            e.setNombre(rs.getString(2));
-            e.setFechaCreacion(rs.getDate(3));
-            e.setComentario(rs.getString(4));      
-            a.add(e);
-        }
         return a;
     }
     

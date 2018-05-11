@@ -736,15 +736,17 @@ public class Main {
     /**
      * Metodo para dar de alta un equipo en la base de datos.
      * @param nombre String
+     * @param usuario String
      * @param fechaCreacion Date
      * @param comentario String
      * @throws Exception 
      */
     
     // Imanol Luis
-    public static void altaEquipo(String nombre, Date fechaCreacion, String comentario) throws Exception {
+    public static void altaEquipo(String nombre, String usuario, Date fechaCreacion, String comentario) throws Exception {
         equipo = new Equipo();
-        equipo.setNombre(nombre);
+        equipo.setNombre(nombre);        
+        equipo.setPersona(bdPersona.buscarPersonaPorUsuario(usuario));
         equipo.setFechaCreacion(fechaCreacion);
         equipo.setComentario(comentario);
         BDEquipo.insertarEquipo(equipo);
@@ -831,27 +833,27 @@ public class Main {
         return plantilla;
     }
 
-    public static ArrayList<Persona> buscarUsuariosDuennos() {
+    // Imanol Luis
+    public static ArrayList<Persona> buscarUsuariosDuennos() throws Exception {
         // Devuelve todos los usuarios que sean dueños.
-    }
-    
- 
-    public static boolean comprobarSueldo(String sueldo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         return bdPersona.buscarUsuariosDuennos();
     }
 
-    public static boolean comprobarJugadores() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    // Imanol Luis
+    public static boolean duennoTieneEquipo(String usuario) throws Exception {
+        // Comprobar que el dueño pertenece a algún equipo
+        Equipo e=BDEquipo.BuscarEquipoPorUsuario(usuario);
+        if(e==null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }    
+
+    public static Persona obtenerPersona(int idPersona) throws Exception {
+        return bdPersona.buscarPersona(idPersona);
     }
-
-
-    public static boolean esAgenteLibre(String dni) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static boolean perteneceEquipo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
 }

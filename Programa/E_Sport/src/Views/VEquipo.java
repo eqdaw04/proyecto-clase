@@ -141,7 +141,6 @@ public class VEquipo extends javax.swing.JDialog {
 
         jLabel5.setText("Dueño:");
 
-        cbDuenno.setSelectedIndex(-1);
         cbDuenno.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -210,7 +209,7 @@ public class VEquipo extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbDuenno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
@@ -225,7 +224,7 @@ public class VEquipo extends javax.swing.JDialog {
                             .addComponent(bSiguiente)
                             .addComponent(bUltimo)))
                     .addComponent(bCancelar))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -299,8 +298,10 @@ public class VEquipo extends javax.swing.JDialog {
                 case "alta":
                     // Validar nombre y si no existe en la BD, proceder al alta
                     validarNombre();
+                    // Validar el dueño del equipo
+                    validarDuenno();
                     // Insertar el equipo         
-                    Main.altaEquipo(tfNombre.getText(), cFechaCreacion.getDate(), taComentario.getText());
+                    Main.altaEquipo(tfNombre.getText(),String.valueOf(cbDuenno.getSelectedItem()), cFechaCreacion.getDate(), taComentario.getText());
                     JOptionPane.showMessageDialog(this, "El equipo se ha dado de alta correctamente.");
                     break;
                 case "baja":
@@ -460,8 +461,19 @@ public class VEquipo extends javax.swing.JDialog {
         this.tipo=tipo;
         setModal(true);
         this.setLocationRelativeTo(null);
-        relllenarListaDespegable();
         listaEquipos = new ArrayList();
+        try
+        {
+            relllenarLista();
+        }
+        catch (Excepcion e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
+        }
         switch(tipo)
         {
             case "alta":
@@ -562,7 +574,7 @@ public class VEquipo extends javax.swing.JDialog {
         taComentario.setText(e.getComentario());
     }
     
-    private void relllenarListaDespegable() {
+    private void relllenarLista() throws Exception {
         ArrayList<Persona> listaDuennos=Main.buscarUsuariosDuennos();
         
         for(int x=0;x<listaDuennos.size();x++)
@@ -570,5 +582,16 @@ public class VEquipo extends javax.swing.JDialog {
             cbDuenno.addItem(listaDuennos.get(x).getUsuario());
         }
         cbDuenno.setSelectedIndex(-1);
+    }
+    
+    private void validarDuenno() throws Exception {
+        if(cbDuenno.getSelectedIndex()==-1)
+        {
+            throw new Excepcion(51);
+        }
+        if(Main.duennoTieneEquipo(String.valueOf(cbDuenno.getSelectedItem())))
+        {
+            throw new Excepcion(52);
+        }
     }
 }

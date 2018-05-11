@@ -160,6 +160,14 @@ public class Excepcion extends Exception {
             case 50:
                 dato = dato + "El nombre del equipo es obligatorio.";
                 break;
+                
+            case 51:
+                dato = dato + "No has seleccionado el dueño del equipo";
+                break;
+                
+            case 52:
+                dato = dato + "Ese dueño ya tiene un equipo.";
+                break;
         }
         return dato;
     }
