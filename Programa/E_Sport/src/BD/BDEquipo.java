@@ -107,7 +107,7 @@ public class BDEquipo {
             e.setNombre(rs.getString(2));
             e.setFechaCreacion(rs.getDate(3));
             e.setComentario(rs.getString(4));
-            e.setPersona(Main.obtenerPersona(Integer.parseInt(rs.getString(5))));
+            e.setPersona(Main.obtenerPersona(rs.getInt(5)));
         }
         } catch (SQLException ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
@@ -166,7 +166,7 @@ public class BDEquipo {
             e.setNombre(rs.getString(2));
             e.setFechaCreacion(rs.getDate(3));
             e.setComentario(rs.getString(4));
-            e.setPersona(Main.obtenerPersona(Integer.parseInt(rs.getString(5))));
+            e.setPersona(Main.obtenerPersona(rs.getInt(5)));
             
             a.add(e);
         }
