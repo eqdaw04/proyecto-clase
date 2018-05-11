@@ -8,6 +8,9 @@ package Views;
 import Controladora.Main;
 import Excepciones.Excepcion;
 import java.awt.Color;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -25,6 +28,21 @@ public class VLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(70, 130, 180));
         setVisible(true);
+        
+        ImageIcon usuario = new ImageIcon("../../../imagenes/user.png");
+        Icon icono = new ImageIcon (usuario.getImage().getScaledInstance(imgusu.getWidth(), imgusu.getHeight(), Image.SCALE_DEFAULT));
+        imgusu.setIcon(icono);
+        this.repaint();
+        
+        ImageIcon passw = new ImageIcon("../../../imagenes/contrasenna.png");
+        Icon icono2 = new ImageIcon (passw.getImage().getScaledInstance(imgpassw.getWidth(), imgpassw.getHeight(), Image.SCALE_DEFAULT));
+        imgpassw.setIcon(icono2);
+        this.repaint();
+        
+        ImageIcon fondo = new ImageIcon("../../../imagenes/Fondo_java.jpg");
+        Icon icono3 = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
+        imgfondo.setIcon(icono3);
+        this.repaint();
 
         jTextField1.grabFocus();
     }
@@ -39,14 +57,15 @@ public class VLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         tfUsuario = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         bAcceder = new javax.swing.JButton();
         bSalir = new javax.swing.JButton();
         pfContrasenna = new javax.swing.JPasswordField();
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        imgusu = new javax.swing.JLabel();
+        imgpassw = new javax.swing.JLabel();
+        imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 66, 255));
@@ -60,20 +79,10 @@ public class VLogin extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(50, 40, 450, 70);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setText("Usuario:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(230, 120, 70, 24);
-
         tfUsuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tfUsuario.setText("usu");
         getContentPane().add(tfUsuario);
         tfUsuario.setBounds(190, 150, 150, 30);
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel3.setText("Contraseña:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(220, 200, 98, 24);
 
         bAcceder.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         bAcceder.setText("Acceder");
@@ -121,6 +130,12 @@ public class VLogin extends javax.swing.JFrame {
         jLabel4.setText("1. Clase; 2. Jon; 3. Mikel");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(20, 380, 160, 16);
+        getContentPane().add(imgusu);
+        imgusu.setBounds(130, 150, 40, 40);
+        getContentPane().add(imgpassw);
+        imgpassw.setBounds(130, 220, 40, 40);
+        getContentPane().add(imgfondo);
+        imgfondo.setBounds(0, 0, 560, 500);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -246,9 +261,10 @@ public class VLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAcceder;
     private javax.swing.JButton bSalir;
+    private javax.swing.JLabel imgfondo;
+    private javax.swing.JLabel imgpassw;
+    private javax.swing.JLabel imgusu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPasswordField pfContrasenna;
