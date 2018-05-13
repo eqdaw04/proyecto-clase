@@ -39,7 +39,7 @@ public class VLogin extends javax.swing.JFrame {
         imgpassw.setIcon(icono2);
         this.repaint();
         
-        ImageIcon fondo = new ImageIcon("../../../imagenes/Fondo_java.jpg");
+        ImageIcon fondo = new ImageIcon("../../../imagenes/fondo2.jpg");
         Icon icono3 = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
         imgfondo.setIcon(icono3);
         this.repaint();
@@ -125,11 +125,11 @@ public class VLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(20, 410, 69, 22);
+        jTextField1.setBounds(20, 410, 69, 19);
 
         jLabel4.setText("1. Clase; 2. Jon; 3. Mikel");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 380, 160, 16);
+        jLabel4.setBounds(20, 380, 160, 15);
         getContentPane().add(imgusu);
         imgusu.setBounds(130, 150, 40, 40);
         getContentPane().add(imgpassw);

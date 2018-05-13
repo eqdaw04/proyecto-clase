@@ -24,6 +24,9 @@ import java.util.logging.Logger;
  */
 
 public class BDEquipo {
+
+    public BDEquipo() {
+    }
     
     /**
      * Metodo para insertar un equipo.
@@ -31,8 +34,7 @@ public class BDEquipo {
      * @throws Exception 
      */
     
-
-    public static void insertarEquipo(Equipo e) throws Exception {
+    public void insertarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia = con.getConnection().prepareStatement("INSERT INTO Equipo (NOMBRE, FECHA_CREACION, COMENTARIO, ID_PERSONA) VALUES (?, ?, ?, ?)");
         sentencia.setString(1, e.getNombre());
@@ -54,10 +56,11 @@ public class BDEquipo {
      * @throws Exception 
      */
     
-    public static void eliminarEquipo(Equipo e) throws Exception {
+    public void eliminarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia = con.getConnection().prepareStatement("DELETE FROM Equipo WHERE ID_EQUIPO = ?");
-        sentencia.setInt(1, e.getIdEquipo());                 
+        sentencia.setInt(1, e.getIdEquipo());
+        
         if(sentencia.executeUpdate()!=1)
         {
             throw new Excepcion(25);
@@ -72,7 +75,7 @@ public class BDEquipo {
      * @throws Exception 
      */
     
-    public static void modificarEquipo(Equipo e) throws Exception {
+    public void modificarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Equipo SET COMENTARIO=? WHERE ID_EQUIPO = ?");
         sentencia.setString(1, e.getComentario());
@@ -92,7 +95,7 @@ public class BDEquipo {
      * @throws Exception 
      */
     
-    public static Equipo BuscarEquipoPorUsuario(String usu) throws Exception {
+    public Equipo BuscarEquipoPorUsuario(String usu) throws Exception {
         BDConexion con = new BDConexion();
         Equipo e = new Equipo();
         try {
@@ -104,7 +107,7 @@ public class BDEquipo {
             e.setNombre(rs.getString(2));
             e.setFechaCreacion(rs.getDate(3));
             e.setComentario(rs.getString(4));
-            e.setPersona(Main.obtenerPersona(Integer.parseInt(rs.getString(5))));
+            e.setPersona(Main.obtenerPersona(rs.getInt(5)));
         }
         } catch (SQLException ex) {
             Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
@@ -119,7 +122,7 @@ public class BDEquipo {
      * @throws Exception 
      */
     
-    public static Equipo BuscarEquipo(String nombre) throws Exception {
+    public Equipo BuscarEquipo(String nombre) throws Exception {
         BDConexion con = new BDConexion();
         Equipo e = null;
         try
@@ -133,7 +136,7 @@ public class BDEquipo {
             e.setNombre(rs.getString(2));
             e.setFechaCreacion(rs.getDate(3));
             e.setComentario(rs.getString(4));
-            e.setPersona(Main.obtenerPersona(Integer.parseInt(rs.getString(5))));
+            e.setPersona(Main.obtenerPersona(rs.getInt(5)));
         }
         }
         catch (SQLException ex)
@@ -150,7 +153,7 @@ public class BDEquipo {
      * @throws Exception 
      */
     
-    public static ArrayList<Equipo> BuscarEquipo() throws Exception {
+    public ArrayList<Equipo> BuscarEquipo() throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Equipo> a = new ArrayList();
         try
@@ -163,7 +166,7 @@ public class BDEquipo {
             e.setNombre(rs.getString(2));
             e.setFechaCreacion(rs.getDate(3));
             e.setComentario(rs.getString(4));
-            e.setPersona(Main.obtenerPersona(Integer.parseInt(rs.getString(5))));
+            e.setPersona(Main.obtenerPersona(rs.getInt(5)));
             
             a.add(e);
         }
@@ -182,7 +185,7 @@ public class BDEquipo {
      * @return fecha
      */ 
 
-    private static Date formatearFecha(java.util.Date fechaE){
+    private Date formatearFecha(java.util.Date fechaE){
         SimpleDateFormat formar = new SimpleDateFormat("yyyy-MM-dd");
         String fecha = formar.format(fechaE);
         return Date.valueOf(fecha);
