@@ -8,10 +8,7 @@ import UML.Equipo;
 import UML.Perfil;
 import UML.Persona;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Vista de datos del usuario.
@@ -58,6 +55,8 @@ public class VUsuario extends javax.swing.JDialog {
         }
         cbPerfil.setSelectedIndex(-1);
         lPersona = new ArrayList();
+        tfEquipo.setVisible(false);
+        lEquipo.setVisible(false);
         if(tipo.equals("alta")){
             tfNombre.setEnabled(true);
             pfContrasenna.setEnabled(true);
@@ -88,7 +87,7 @@ public class VUsuario extends javax.swing.JDialog {
         bBuscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         tfUsuario = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        lEquipo = new javax.swing.JLabel();
         ccFechaAlta = new org.freixas.jcalendar.JCalendarCombo();
         jLabel3 = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
@@ -169,7 +168,7 @@ public class VUsuario extends javax.swing.JDialog {
 
         jLabel2.setText("Usuario:");
 
-        jLabel9.setText("Equipo:");
+        lEquipo.setText("Equipo:");
 
         ccFechaAlta.setEnabled(false);
 
@@ -214,7 +213,7 @@ public class VUsuario extends javax.swing.JDialog {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel8)
                                         .addComponent(jLabel7)
-                                        .addComponent(jLabel9))
+                                        .addComponent(lEquipo))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,7 +295,7 @@ public class VUsuario extends javax.swing.JDialog {
                     .addComponent(cbPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                    .addComponent(lEquipo)
                     .addComponent(tfEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -537,28 +536,36 @@ public class VUsuario extends javax.swing.JDialog {
      */
     
     private void mostrarDatos(Persona p) {
-        tfUsuario.setText(p.getUsuario());
-        pfContrasenna.setText(p.getContrasenna());
-        tfNombre.setText(p.getNombre());
-        tfApellido1.setText(p.getApellido1());
-        tfApellido2.setText(p.getApellido2());
-        tfEmail.setText(p.getEmail());
-/*      REVISAR LA FECHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA      
-        SimpleDateFormat formar = new SimpleDateFormat("dd-MM-yy");
-        String fechas = formar.format(p.getFechaAlta());
-        JOptionPane.showMessageDialog(this, p.getFechaAlta());
-*/
-        ccFechaAlta.setDate(p.getFechaAlta());
-    
-        cbPerfil.setSelectedItem(p.getPerfil().getNombre());
-        // comrpobar si es dueño, en caso afirmativo, mostrar su equipo
-        if(cbPerfil.getSelectedItem().equals("Dueño"))
-        {
-            tfEquipo.setVisible(true);
+        try{
+            tfUsuario.setText(p.getUsuario());
+            pfContrasenna.setText(p.getContrasenna());
+            tfNombre.setText(p.getNombre());
+            tfApellido1.setText(p.getApellido1());
+            tfApellido2.setText(p.getApellido2());
+            tfEmail.setText(p.getEmail());
+    /*      REVISAR LA FECHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA      
+            SimpleDateFormat formar = new SimpleDateFormat("dd-MM-yy");
+            String fechas = formar.format(p.getFechaAlta());
+            JOptionPane.showMessageDialog(this, p.getFechaAlta());
+    */
+            ccFechaAlta.setDate(p.getFechaAlta());
+
+            cbPerfil.setSelectedItem(p.getPerfil().getNombre());
+            // comrpobar si es dueño, en caso afirmativo, mostrar su equipo
+            if(cbPerfil.getSelectedItem().equals("Dueño"))
+            {
+                tfEquipo.setVisible(true);
+            }
+            Equipo e = null;
+            e = Main.ConsultarEquipoPorUsuario(tfUsuario.getText());
+            if(e != null){
+                lEquipo.setVisible(true);
+                tfEquipo.setText(e.getNombre());
+            } 
+        }    
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getClass(), "Error", 0);
         }
-        if(p.getEquipo() != null){
-            tfEquipo.setText(p.getEquipo().getNombre());
-        }      
     }
     /**
      * @param args the command line arguments
@@ -583,7 +590,7 @@ public class VUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lEquipo;
     private javax.swing.JPasswordField pfContrasenna;
     private javax.swing.JTextField tfApellido1;
     private javax.swing.JTextField tfApellido2;

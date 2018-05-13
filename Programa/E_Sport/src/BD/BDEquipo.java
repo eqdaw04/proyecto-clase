@@ -95,10 +95,9 @@ public class BDEquipo {
      * @throws Exception 
      */
     
-    public Equipo BuscarEquipoPorUsuario(String usu) throws Exception {
+    public Equipo BuscarEquipoPorUsuario(String usu) throws Exception  {
         BDConexion con = new BDConexion();
-        Equipo e = new Equipo();
-        try {
+        Equipo e = null;
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo WHERE Id_persona = (SELECT Id_persona FROM Persona WHERE Usuario = ?)");
         sentencia.setString(1,usu);
         ResultSet rs = sentencia.executeQuery();
@@ -109,9 +108,6 @@ public class BDEquipo {
             e.setComentario(rs.getString(4));
             e.setPersona(Main.obtenerPersona(rs.getInt(5)));
         }
-        } catch (SQLException ex) {
-            Logger.getLogger(BDJugador.class.getName()).log(Level.SEVERE, null, ex);
-        } 
         return e;
     }
     
@@ -147,6 +143,28 @@ public class BDEquipo {
         return e;
     }
     
+    public Equipo consultarEquipoPorNumero(int n) throws Exception{
+        BDConexion con = new BDConexion();
+        Equipo e = null;
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM equipo WHERE id_equipo = ?");
+        sentencia.setInt(1, n);
+        ResultSet rs;
+        rs = sentencia.executeQuery();
+        if(rs.next()){
+            e = new Equipo();
+            e.setIdEquipo(n);
+            e.setNombre(rs.getString("nombre"));
+            // no se cargará estos datos al considerar innecesario
+            // e.setPersona(persona);
+            // e.setListaMarcadores(listaMarcadores);
+            // e.setListaJugadores(listaJugadores);
+            // e.setComentario(comentario);
+            // e.setFechaCreacion(fechaCreacion);
+            
+        }
+        return e;
+    }
     /**
      * Metodo para buscar una lista de todos los equipos.
      * @return devuelve una lista de equipos
@@ -158,18 +176,19 @@ public class BDEquipo {
         ArrayList<Equipo> a = new ArrayList();
         try
         {
-            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo");
+            PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM equipo");
+            
             ResultSet rs = sentencia.executeQuery();
             while (rs.next()){
-            Equipo e= new Equipo();
-            e.setIdEquipo(Integer.parseInt(rs.getString(1)));
-            e.setNombre(rs.getString(2));
-            e.setFechaCreacion(rs.getDate(3));
-            e.setComentario(rs.getString(4));
-            e.setPersona(Main.obtenerPersona(rs.getInt(5)));
-            
-            a.add(e);
-        }
+                Equipo e= new Equipo();
+                e.setIdEquipo(Integer.parseInt(rs.getString(1)));
+                e.setNombre(rs.getString(2));
+                e.setFechaCreacion(rs.getDate(3));
+                e.setComentario(rs.getString(4));
+                e.setPersona(Main.obtenerPersona(rs.getInt(5)));
+
+                a.add(e);
+            }
         }
         catch (SQLException ex)
         {

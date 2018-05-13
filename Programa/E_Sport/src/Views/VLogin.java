@@ -109,27 +109,22 @@ public class VLogin extends javax.swing.JFrame {
         getContentPane().add(pfContrasenna);
         pfContrasenna.setBounds(190, 230, 150, 30);
 
-        jTextField1.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextField1CaretUpdate(evt);
-            }
-        });
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField1KeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
             }
         });
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(20, 410, 69, 19);
+        jTextField1.setBounds(20, 410, 69, 22);
 
         jLabel4.setText("1. Clase; 2. Jon; 3. Mikel");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 380, 160, 15);
+        jLabel4.setBounds(20, 380, 160, 16);
         getContentPane().add(imgusu);
         imgusu.setBounds(130, 150, 40, 40);
         getContentPane().add(imgpassw);
@@ -250,13 +245,38 @@ public class VLogin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jTextField1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1CaretUpdate
-        
-    }//GEN-LAST:event_jTextField1CaretUpdate
-
-    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1KeyPressed
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        try
+        {
+            if (tfUsuario.getText().isEmpty())
+            {
+                throw new Excepcion(1);
+            }
+            else if (String.copyValueOf(pfContrasenna.getPassword()).isEmpty())
+            {
+                throw new Excepcion(2);
+            }
+            else{
+                
+                Main.accederPrincipal(tfUsuario.getText(), pfContrasenna.getPassword(), Integer.parseInt(jTextField1.getText()) );
+            }
+        }
+        catch (Excepcion e)
+        {
+            pfContrasenna.setText("");
+            pfContrasenna.grabFocus();
+            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
+        }
+        catch (Exception e)
+        {
+            javax.swing.JOptionPane.showMessageDialog(this, e.getClass());
+        }
+        finally{
+            if(error == 13){
+                Main.salir(this);
+            }
+        }
+    }//GEN-LAST:event_jTextField1KeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAcceder;

@@ -15,7 +15,6 @@ public class Persona {
     private String usuario, contrasenna, email;
     
     private Perfil perfil;
-    private Equipo equipo;
 
     public Persona() {
     }
@@ -101,13 +100,5 @@ public class Persona {
 
     public void setPerfil(Perfil perfil) {
         this.perfil = perfil;
-    }
-
-    public Equipo getEquipo() {
-        return equipo;
-    }
-
-    public void setEquipo(Equipo equipo) {
-        this.equipo = equipo;
     }
 }

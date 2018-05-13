@@ -50,7 +50,7 @@ public class BDJornada {
     
     public void modificarJornada(Jornada jornada, BDConexion con) throws Exception{
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("UPDATE jornada SET fecha_final = TO_DATE(?,'DD/MM/YYYY') WHERE id_jornada = ?");
+        sentencia = con.getConnection().prepareStatement("UPDATE jornada SET fecha_fin = TO_DATE(?,'DD/MM/YYYY') WHERE id_jornada = ?");
         sentencia.setDate(1, convertirFechaASql(jornada.getFechaFinal()));
         sentencia.setInt(2, jornada.getIdJornada());
         int n = sentencia.executeUpdate();
@@ -71,7 +71,7 @@ public class BDJornada {
             Jornada j = new Jornada();
             j.setIdJornada(rs.getInt("id_jornada"));
             j.setFechaInicio(rs.getDate("fecha_inicio"));
-            j.setFechaFinal(rs.getDate("fecha_final"));
+            j.setFechaFinal(rs.getDate("fecha_fin"));
             // Se ha cargará los datos a la memoria según demanda, para así no cargar en excesiva con datos que no se va ha utilizar y precisa que esté 
             // actualizado en todo momento con la bbdd
             //j.setListaPartidos(Main.consultarPartidosPorJornada(j.getIdJornada()));

@@ -71,11 +71,6 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 cbMinuto.addItem(String.valueOf(x));
             }
         }
-        cbHoraI.setSelectedIndex(-1);
-        if(cbHoraI.getSelectedIndex() == -1){
-            bGenerarCalendario.setEnabled(false);
-            cbHoraF.setEnabled(false);
-        }
         habilitarCampos();
         
     }
@@ -87,8 +82,11 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 cbHoraI.setEnabled(true);
                 bGenerarCalendario.setEnabled(true);
                 ccCalendarioInicial.setEnabled(true);
+                cbHoraI.setEnabled(true);
+                cbHoraF.setEnabled(true);
             }
             else{
+                cbHoraF.setEnabled(false);
                 lJornada.setEnabled(true);
                 cargarJornada(listaJornada);
             }
@@ -111,8 +109,8 @@ public class VGenerarLiga extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bAceptar = new javax.swing.JButton();
+        bCancelar = new javax.swing.JButton();
         bGenerarCalendario = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         bBorrar = new javax.swing.JButton();
@@ -122,8 +120,6 @@ public class VGenerarLiga extends javax.swing.JDialog {
         lPartido = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
         lJornada = new javax.swing.JList<>();
-        jButton5 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tfLocal = new javax.swing.JTextField();
@@ -140,21 +136,23 @@ public class VGenerarLiga extends javax.swing.JDialog {
         cbHoraI = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         cbHoraF = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButton1.setText("Aceptar");
-        jButton1.setEnabled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bAceptar.setText("Aceptar");
+        bAceptar.setEnabled(false);
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bAceptarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bCancelar.setText("Cancelar");
+        bCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bCancelarActionPerformed(evt);
             }
         });
 
@@ -166,7 +164,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
 
-        jLabel5.setText("Seleccione fecha para el primer Partido:");
+        jLabel5.setText("Seleccione fecha para el primer Partido: (Recuerde que 1 jornada consta de 7 Días)");
 
         bBorrar.setText("Borrar Todo");
         bBorrar.setEnabled(false);
@@ -181,9 +179,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jLabel8.setText("Número del Partido");
 
         lPartido.setEnabled(false);
-        lPartido.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lPartidoValueChanged(evt);
+        lPartido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lPartidoMouseClicked(evt);
             }
         });
         jScrollPane3.setViewportView(lPartido);
@@ -195,16 +193,6 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         jScrollPane4.setViewportView(lJornada);
-
-        jButton5.setText("Vista Global");
-        jButton5.setEnabled(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setText("Vista General de todo");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Compiten"));
 
@@ -274,12 +262,13 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel10.setText("Borrar la LIGA actual");
+        jLabel10.setText("Borrar la LIGA actual: (Se borrará la liga actual)");
 
         ccCalendarioInicial.setEnabled(false);
 
         jLabel6.setText("Seleccione Hora último partido:");
 
+        cbHoraI.setEnabled(false);
         cbHoraI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbHoraIActionPerformed(evt);
@@ -288,6 +277,12 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         jLabel11.setText("Seleccione Hora primer partido:");
 
+        cbHoraF.setEnabled(false);
+
+        jLabel12.setText("Si La jornada comienza el lunes, acabará el domingo.");
+
+        jLabel13.setText("Fecha y Hora del Partido");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -295,6 +290,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -305,36 +301,35 @@ public class VGenerarLiga extends javax.swing.JDialog {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                            .addComponent(jLabel5)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbHoraI, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(ccCalendarioInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cbHoraI, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jButton1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton2))
-                                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel9)
-                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel10)
-                                        .addComponent(bBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbHoraF, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49))))
+                                .addGap(49, 49, 49))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel13)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(bAceptar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(bCancelar))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(bGenerarCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bGenerarCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ccCalendarioInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -343,7 +338,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ccCalendarioInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ccCalendarioInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -351,28 +348,28 @@ public class VGenerarLiga extends javax.swing.JDialog {
                     .addComponent(cbHoraI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbHoraF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(bGenerarCalendario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                    .addComponent(bGenerarCalendario)
                     .addComponent(jLabel10)
+                    .addComponent(bBorrar))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton5)
-                                .addComponent(bBorrar))
-                            .addGap(18, 18, 18)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton1)
-                                .addComponent(jButton2)))
-                        .addComponent(jScrollPane4))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(bAceptar)
+                                    .addComponent(bCancelar)))))
+                    .addComponent(jScrollPane4))
                 .addContainerGap())
         );
 
@@ -383,9 +380,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_bBorrarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         Main.cerrar(this);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bGenerarCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGenerarCalendarioActionPerformed
         try {
@@ -397,6 +394,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             fecha.set(Calendar.SECOND, 0);
             fecha.set(Calendar.MILLISECOND, 0);
             JOptionPane.showMessageDialog(this, Main.generarCalendario(fecha, Integer.parseInt(cbHoraF.getSelectedItem().toString())));
+            Main.reabrir(this, "", 7);
         } 
         /*
         catch (Excepcion e){
@@ -408,28 +406,27 @@ public class VGenerarLiga extends javax.swing.JDialog {
     }//GEN-LAST:event_bGenerarCalendarioActionPerformed
 
     private void cbHoraIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHoraIActionPerformed
-        if(cbHoraI.getSelectedIndex() != -1){
-            bGenerarCalendario.setEnabled(true);
-            cbHoraF.setEnabled(true);
-            cbHoraF.removeAllItems();
-            for(int x = Integer.parseInt(cbHoraI.getSelectedItem().toString()); x<24; x++){
-                if(x<10){
-                    cbHoraF.addItem("0" + x);
-                }
-                else{
-                    cbHoraF.addItem(String.valueOf(x));
-                }
+
+        bGenerarCalendario.setEnabled(true);
+        cbHoraF.setEnabled(true);
+        cbHoraF.removeAllItems();
+        for(int x = Integer.parseInt(cbHoraI.getSelectedItem().toString()); x<24; x++){
+            if(x<10){
+                cbHoraF.addItem("0" + x);
+            }
+            else{
+                cbHoraF.addItem(String.valueOf(x));
             }
         }
-        
+              
     }//GEN-LAST:event_cbHoraIActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void lJornadaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lJornadaValueChanged
         try {
+            bAceptar.setEnabled(false);
+            ccCalendario.setEnabled(false);
+            cbHora.setEnabled(false);
+            cbMinuto.setEnabled(false);
             listaPartido = Main.consultarPartidosPorJornada(lJornada.getSelectedValue());
             cargarPartido(listaPartido);
         } catch (Exception ex) {
@@ -438,31 +435,16 @@ public class VGenerarLiga extends javax.swing.JDialog {
         
     }//GEN-LAST:event_lJornadaValueChanged
 
-    private void lPartidoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lPartidoValueChanged
-        for(int x = 0 ; x<listaPartido.size(); x++){
-            if(listaPartido.get(x).getIdPartido() == lPartido.getSelectedValue()){
-                x=listaPartido.size();
-                p = null;
-                try {
-                    p = Main.consultarMarcadorPorPartido(listaPartido.get(x));
-                } catch (Exception ex) {
-                    Logger.getLogger(VGenerarLiga.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                cargarMarcador();
-            }
-        }
-        
-    }//GEN-LAST:event_lPartidoValueChanged
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try {
             Calendar fecha = Calendar.getInstance();
             fecha.setTime(ccCalendario.getDate());
-            fecha.set(Calendar.HOUR_OF_DAY, (int) cbHora.getSelectedItem());
-            fecha.set(Calendar.MINUTE, (int) cbMinuto.getSelectedItem());
+            fecha.set(Calendar.HOUR_OF_DAY, Integer.parseInt(cbHora.getSelectedItem().toString()));
+            fecha.set(Calendar.MINUTE, Integer.parseInt(cbMinuto.getSelectedItem().toString()));
             p.setFecha(fecha);
             if(Main.modificarPartido(p)){
                 JOptionPane.showMessageDialog(this, "Partido modificado correctamente.");
+                Main.reabrir(this, "", 7);
             }
             else{
                 throw new Excepcion(44);
@@ -473,7 +455,22 @@ public class VGenerarLiga extends javax.swing.JDialog {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getClass(), "Error", 0);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bAceptarActionPerformed
+
+    private void lPartidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lPartidoMouseClicked
+        for(int x = 0 ; x<listaPartido.size(); x++){
+            if(listaPartido.get(x).getIdPartido() == lPartido.getSelectedValue()){
+                p = null;
+                try {
+                    p = Main.consultarMarcadorPorPartido(listaPartido.get(x));
+                    x=listaPartido.size();
+                } catch (Exception ex) {
+                    Logger.getLogger(VGenerarLiga.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                cargarMarcador();
+            }
+        }
+    }//GEN-LAST:event_lPartidoMouseClicked
     
     private void cargarPartido(ArrayList <Partido> listaPartido){
         lPartido.removeAll();
@@ -481,19 +478,37 @@ public class VGenerarLiga extends javax.swing.JDialog {
         for(Partido p : listaPartido){
             modelo.addElement(p.getIdPartido());
         }
-        lJornada.setModel(modelo);
+        lPartido.setModel(modelo);
+        lPartido.setEnabled(true);
     }
     
     private void cargarMarcador(){
         ccCalendario.setDate(p.getFecha().getTime());
-        tfLocal.setText(p.geteLocal().getNombre());
-        tfVisitante.setText(p.geteVisitante().getNombre());
-        cbHora.setSelectedItem(p.getFecha().get(Calendar.HOUR_OF_DAY));
-        cbMinuto.setSelectedItem(p.getFecha().get(Calendar.MINUTE));
+        if(p.geteLocal() == null){
+            tfLocal.setText("DESCANSO");
+        }
+        else{
+            tfLocal.setText(p.geteLocal().getNombre());
+        }
+        if(p.geteVisitante() == null){
+            tfVisitante.setText("DESCANSO");
+        }
+        else{
+            tfVisitante.setText(p.geteVisitante().getNombre());
+        }
+        
+        bAceptar.setEnabled(true);
+        cbHora.setSelectedIndex(p.getFecha().get(Calendar.HOUR_OF_DAY));
+        cbMinuto.setSelectedIndex(p.getFecha().get(Calendar.MINUTE));
+        ccCalendario.setEnabled(true);
+        cbHora.setEnabled(true);
+        cbMinuto.setEnabled(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bAceptar;
     private javax.swing.JButton bBorrar;
+    private javax.swing.JButton bCancelar;
     private javax.swing.JButton bGenerarCalendario;
     private javax.swing.JComboBox<String> cbHora;
     private javax.swing.JComboBox<String> cbHoraF;
@@ -501,12 +516,11 @@ public class VGenerarLiga extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cbMinuto;
     private org.freixas.jcalendar.JCalendarCombo ccCalendario;
     private org.freixas.jcalendar.JCalendarCombo ccCalendarioInicial;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -514,7 +528,6 @@ public class VGenerarLiga extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;

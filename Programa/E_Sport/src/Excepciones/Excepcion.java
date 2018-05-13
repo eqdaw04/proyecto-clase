@@ -165,6 +165,10 @@ public class Excepcion extends Exception {
                 dato = "Error al modificar el partido.";
                 break;
                 
+            case 45:
+                dato = "Ha habido un error al consultar los datos del Equipo en relación con la Persona.";
+                break;
+                
             case 50:
                 dato = dato + "El nombre del equipo es obligatorio.";
                 break;

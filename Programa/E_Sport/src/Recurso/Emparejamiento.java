@@ -11,9 +11,11 @@ import Excepciones.Excepcion;
 import UML.Equipo;
 import UML.Jornada;
 import UML.Partido;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  * Clase en la que definimos los emparejamientos de los equipos por partido.
@@ -128,10 +130,10 @@ public class Emparejamiento {
     public void insertarBBDD(int e, int horizontal) throws Exception{
         //emplear este código para combinar los equipos en bbdd
         // guardo los datos en un String para mostrarlo al final, para comprobar que sí que se ha hecho seún algoritmo
-        dato = "Jornadas 1-" + (e-1) + " Equipos:\n";
+        dato = "Los Partidos se quedarán de la siguiente manera:\nJornadas 1-" + (e-1) + " Equipos:\n";
         
         boolean sumar = true;
-        int dia = 1,
+        int dia = 0,
             jornada = 1,
             partido = 1;
         // comienza a asignar la primera mitad de la liga
@@ -143,11 +145,11 @@ public class Emparejamiento {
             // insertar la jornada a la BBDD
             Jornada j = Main.insertarJornada(jornada, fecha, con);
             sumar = true;
-            int d = 1;
+            int d = 0;
             for(int y = 0; y< horizontal; y++){
-                dato += "Día " + dia + "(" + d + ")" + " ";
-                fecha.add(Calendar.DAY_OF_YEAR, dia-1);
-                dato += lJPEquipoL[x][y].getNombre() + "x" + lJPEquipoV[x][y].getNombre() + "   ";
+                dato += nombreSemana(fecha.get(Calendar.DAY_OF_WEEK)) + " día " + formatearFecha(fecha) + ", " ;
+                fecha.add(Calendar.DAY_OF_YEAR, 1);
+                dato += lJPEquipoL[x][y].getNombre() + " vs " + lJPEquipoV[x][y].getNombre() + "   ";
                 Partido p = new Partido();
                 p.setIdPartido(partido);
                 cambiarHora();
@@ -160,21 +162,24 @@ public class Emparejamiento {
                 if(!Main.insertarPartido(p, j, con)){
                     throw new Excepcion(42);
                 }
-                
+                d++;
+                // si supera la semana antes de acabar la jornada, se volverá al primer día del inicio de la jornada y así sucesivamente
                 if(d==7){
+                    fecha.add(Calendar.DAY_OF_YEAR, -7);
                     d=0;
                     sumar=false;
                 }
                 if(sumar){
                     dia++;
                 } 
-                d++;
-                partido ++;
+                
+                partido++;
             }
+            fecha.add(Calendar.DAY_OF_YEAR, 7-d);
             j.setFechaFinal(fecha.getTime());
             Main.modificarJornada(j, con);
             dato += "\n";
-            dia = dia + 8 - d;
+            dia = dia + 7 - d;
             jornada++;
             con.desconectar();
         }    
@@ -182,6 +187,7 @@ public class Emparejamiento {
         // comienza a asignar la segunda mitad de la liga
         dato += "\nJornadas " + e + "-" + ((e-1)*2) + " Equipos:\n";
         for(int x = 0; x<e-1; x++){
+            
             // Se abre conexion con la BBDD para insertar una jornada con sus partidos y marcadores
             // para evitar sobrecarga de datos, se ha decidido dividir la inserción de datos por jornada en vez de toda la liga
             BDConexion con = new BDConexion();
@@ -189,13 +195,15 @@ public class Emparejamiento {
             // insertar la jornada a la BBDD
             Jornada j = Main.insertarJornada(jornada, fecha, con);
             sumar = true;
-            int d = 1;
+            int d = 0;
             for(int y = 0; y< horizontal; y++){
-                dato += "Día " + dia + "(" + d + ")" + " ";
-                fecha.add(Calendar.DAY_OF_YEAR, dia-1);
-                dato += lJPEquipoV[x][y].getNombre() + "x" + lJPEquipoL[x][y].getNombre() + "   ";
+                
+                dato += nombreSemana(fecha.get(Calendar.DAY_OF_WEEK)) + " día " + formatearFecha(fecha) + ", " ;
+                fecha.add(Calendar.DAY_OF_YEAR, 1);
+                dato += lJPEquipoV[x][y].getNombre() + " vs " + lJPEquipoL[x][y].getNombre() + "   ";
                 Partido p = new Partido();
                 p.setIdPartido(partido);
+                cambiarHora();
                 p.setFecha(fecha);
                 p.setmLocal(0);
                 p.setmVisitante(0);
@@ -205,23 +213,24 @@ public class Emparejamiento {
                 if(!Main.insertarPartido(p, j, con)){
                     throw new Excepcion(42);
                 }
-                
+                d++;
                 if(d==7){
+                    fecha.add(Calendar.DAY_OF_YEAR, -7);
                     d=0;
                     sumar=false;
                 }
                 if(sumar){
                     dia++;
                 } 
-                d++;
+                
                 partido++;
             }
+            fecha.add(Calendar.DAY_OF_YEAR, 7-d);
             j.setFechaFinal(fecha.getTime());
             Main.modificarJornada(j, con);
             dato += "\n";
-            if(x!=e-2){
-                dia = dia + 8 - d;
-            }
+            dia = dia + 7 - d;
+            
             jornada++;
             con.desconectar();
         }        
@@ -236,6 +245,48 @@ public class Emparejamiento {
             fecha.set(Calendar.HOUR_OF_DAY, ale);
         }
         
+    }
+    
+    private String formatearFecha(Calendar fecha){
+        SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+        String dato = "";
+        dato = f.format(fecha.getTime());
+        return dato;
+    }
+    
+    private String nombreSemana(int n){
+        String dato = ""; 
+        switch(n){
+            case 1:
+                dato = "Domingo";
+                break;
+                
+            case 2:
+                dato = "Lunes";
+                break;
+                
+            case 3:
+                dato = "Martes";
+                break;
+                
+            case 4:
+                dato = "Miércoles";
+                break;
+                      
+            case 5:
+                dato = "Jueves";
+                break;
+                
+            case 6:
+                dato = "Viernes";
+                break;
+                
+            case 7:
+                dato = "Sábado";
+                break;
+                        
+        }
+        return dato;
     }
 
     public Equipo[][] getlJPEquipoL() {

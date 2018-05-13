@@ -16,6 +16,7 @@ import UML.Equipo;
 import UML.Partido;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 /**
  *
  * @author 1gdaw06
@@ -94,9 +95,14 @@ public class BDPartido {
         while(rs.next()){
             Partido p = new Partido();
             p.setIdPartido(rs.getInt("id_partido"));
-            SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy HH:MM:SS");
+            
+            long as = rs.getTimestamp("fecha").getTime();
+            
+            //SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy HH:MM:SS");
+            
             Calendar c = Calendar.getInstance();
-            c.setTime(f.parse(rs.getString("fecha")));
+            //c.setTime(f.parse(rs.getString("fecha")));
+            c.setTimeInMillis(as);
             p.setFecha(c);
             lPartido.add(p);
         }
@@ -132,7 +138,7 @@ public class BDPartido {
         boolean estado = false;
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("UPDATE partido SET fecha = ? WHERE id_partido = ?" );
+        sentencia = con.getConnection().prepareStatement("UPDATE partido SET fecha = to_timestamp(?,'YYYY-MM-DD HH24:MI:SS.FF') WHERE id_partido = ?" );
         sentencia.setString(1, String.valueOf(new java.sql.Timestamp(p.getFecha().getTimeInMillis())));
         sentencia.setInt(2, p.getIdPartido());
         if(sentencia.executeUpdate()==1){

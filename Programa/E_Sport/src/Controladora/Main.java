@@ -37,7 +37,6 @@ public class Main {
     private static BDEquipo bdEquipo;
     private static BDJornada bdJornada;
     private static BDJugador bdJugador;
-    private static BDMarcador bdMarcador;
     private static BDPartido bdPartido;
     private static BDPerfil bdPerfil;
     private static BDPersona bdPersona;
@@ -70,7 +69,6 @@ public class Main {
         bdEquipo = new BDEquipo();
         bdJornada = new BDJornada();
         bdJugador = new BDJugador();
-        bdMarcador = new BDMarcador();
         bdPartido = new BDPartido();
         bdPerfil = new BDPerfil();
         bdPersona = new BDPersona();
@@ -86,7 +84,7 @@ public class Main {
     
     //---------- JON XU JIN ----------
 
-        public static void accederPrincipal(String usuario, char[] contrasenna, int numero) throws Exception{
+    public static void accederPrincipal(String usuario, char[] contrasenna, int numero) throws Exception{
         String tipo = "oracle",
         servidor = "10.10.10.9",//"localhost"
         puerto = "1521",
@@ -127,7 +125,7 @@ public class Main {
             login.setError(13);
             throw new Excepcion(13);
         }
-}
+    }
         /**
          * Metodo para seleccionar la ventana que se desea abrir.
          * @param n int
@@ -231,7 +229,7 @@ public class Main {
         new VJugador("consulta",1,j);
  
     }
- 
+
     //---------- JON XU JIN ----------
     
     public static void salir(JFrame v){
