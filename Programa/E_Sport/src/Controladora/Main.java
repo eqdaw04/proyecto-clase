@@ -393,10 +393,9 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static ArrayList <Partido> consultarMarcadorPorPartido(int n) throws Exception{
-        ArrayList<Partido> lPartido = new ArrayList();
-        lPartido = bdPartido.consultarPartidosPorJornada(n);
-        return lPartido;
+    public static Partido consultarMarcadorPorPartido(Partido p) throws Exception{
+        p = bdPartido.ConsultarMarcadores(p);
+        return p;
     }
     
     
@@ -454,13 +453,20 @@ public class Main {
   
     //---------- JON XU JIN ----------
     
-    public static boolean consultarEquipoPorNumero(int n) throws Exception{
+    public static boolean modificarPartido(Partido partido) throws Exception{
         boolean estado = false;
-        bdEquipo.
-        if(bdEquipo.){
+        if(bdPartido.modificarPartido(partido)){
             estado = true;
         }
         return estado;
+    }
+    
+    //---------- JON XU JIN ----------
+    
+    public static Equipo consultarEquipoPorNumero(int n) throws Exception{
+        Equipo e = null;
+        e = bdEquipo.consultarEquipoPorNumero(n);
+        return e;
     }
 
     public static int getPerfil() {

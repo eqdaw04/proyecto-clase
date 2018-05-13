@@ -98,7 +98,6 @@ public class BDEquipo {
         try {
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo WHERE Id_persona = (SELECT Id_persona FROM Persona WHERE Usuario = ?)");
         sentencia.setString(1,usu);
-        sentencia.executeUpdate();
         ResultSet rs = sentencia.executeQuery();
         while (rs.next()){
             e.setIdEquipo(Integer.parseInt(rs.getString(1)));

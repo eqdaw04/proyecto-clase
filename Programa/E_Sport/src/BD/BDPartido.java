@@ -7,7 +7,6 @@ package BD;
 
 import Controladora.Main;
 import UML.Jornada;
-import UML.Marcador;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -17,7 +16,6 @@ import UML.Equipo;
 import UML.Partido;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import javax.swing.JOptionPane;
 /**
  *
  * @author 1gdaw06
@@ -100,35 +98,46 @@ public class BDPartido {
             Calendar c = Calendar.getInstance();
             c.setTime(f.parse(rs.getString("fecha")));
             p.setFecha(c);
-            marcadores(p.getIdPartido());
-            p.seteLocal(Main.consultarEquipoPorNumero());
-            p.setmLocal(pLocal);
-            p.seteVisitante(eVisitante);
-            p.setmVisitante(pVisitante);
-            
+            lPartido.add(p);
         }
+        rs.close();
+        sentencia.close();
+        con.desconectar();
         return lPartido;
     } 
 
-    public int marcadores(int partido) throws Exception{
-        int puntos = 0;
+    public Partido ConsultarMarcadores(Partido p) throws Exception{
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
         sentencia = con.getConnection().prepareStatement("SELECT * FROM marcador WHERE id_partido = ?");
-        sentencia.setInt(1, partido);
+        sentencia.setInt(1, p.getIdPartido());
         ResultSet rs;
         rs = sentencia.executeQuery();
         while(rs.next()){
             // 1 visitante 0 local; 1 = false y 0 = true
             if(rs.getInt("visitante")==1){
-                local = rs.getInt("id_equipo");
-                pLocal = rs.getInt("puntuacion");
+                p.seteLocal(Main.consultarEquipoPorNumero(rs.getInt("id_equipo")));
             }
             else{
-                visitante = rs.getInt("id_equipo");
-                pVisitante = rs.getInt("puntuacion");
+                p.seteVisitante(Main.consultarEquipoPorNumero(rs.getInt("id_equipo")));
             }
         }
-        return puntos;
+        rs.close();
+        sentencia.close();
+        con.desconectar();
+        return p;
+    }
+    
+    public boolean modificarPartido(Partido p) throws Exception{
+        boolean estado = false;
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("UPDATE partido SET fecha = ? WHERE id_partido = ?" );
+        sentencia.setString(1, String.valueOf(new java.sql.Timestamp(p.getFecha().getTimeInMillis())));
+        sentencia.setInt(2, p.getIdPartido());
+        if(sentencia.executeUpdate()==1){
+            estado = true;
+        }
+        return estado;
     }
 }

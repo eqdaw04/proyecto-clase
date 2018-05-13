@@ -6,6 +6,7 @@
 package Views;
 
 import Controladora.Main;
+import Excepciones.Excepcion;
 import UML.Jornada;
 import UML.Partido;
 import java.util.ArrayList;
@@ -23,6 +24,9 @@ import javax.swing.JOptionPane;
 public class VGenerarLiga extends javax.swing.JDialog {
 
     int n;
+    Partido p;
+    ArrayList<Jornada> listaJornada;
+    ArrayList<Partido> listaPartido;
     /**
      * Creates new form VGenerarLiga
      */
@@ -40,6 +44,8 @@ public class VGenerarLiga extends javax.swing.JDialog {
         this.n = n;
         setModal(true);
         setLocationRelativeTo(null);
+        listaJornada = new ArrayList();
+        listaPartido = new ArrayList();
         cargarDatos();
         setVisible(true);
     }
@@ -76,8 +82,8 @@ public class VGenerarLiga extends javax.swing.JDialog {
     
     private void habilitarCampos(){
         try {
-            ArrayList <Jornada> listaJornada = Main.consultarTodasLasJornadas();
-            if(listaJornada.size()==0){
+            listaJornada = Main.consultarTodasLasJornadas();
+            if(listaJornada.isEmpty()){
                 cbHoraI.setEnabled(true);
                 bGenerarCalendario.setEnabled(true);
                 ccCalendarioInicial.setEnabled(true);
@@ -120,9 +126,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tfLocal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        tfVisitante = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         ccCalendario = new org.freixas.jcalendar.JCalendarCombo();
         jLabel4 = new javax.swing.JLabel();
@@ -139,6 +145,11 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         jButton1.setText("Aceptar");
         jButton1.setEnabled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +181,11 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jLabel8.setText("Número del Partido");
 
         lPartido.setEnabled(false);
+        lPartido.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lPartidoValueChanged(evt);
+            }
+        });
         jScrollPane3.setViewportView(lPartido);
 
         lJornada.setEnabled(false);
@@ -194,11 +210,11 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         jLabel1.setText("Equipo Local");
 
-        jTextField1.setEditable(false);
+        tfLocal.setEditable(false);
 
         jLabel2.setText("Equipo Visitante");
 
-        jTextField2.setEditable(false);
+        tfVisitante.setEditable(false);
 
         jLabel3.setText("Fecha celebración");
 
@@ -221,7 +237,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
                         .addGap(148, 148, 148)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField2)))
+                            .addComponent(tfVisitante)))
                     .addComponent(jLabel3)
                     .addComponent(ccCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
@@ -231,7 +247,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
                             .addComponent(cbHora, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(cbMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tfLocal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -253,8 +269,8 @@ public class VGenerarLiga extends javax.swing.JDialog {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -414,13 +430,50 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
     private void lJornadaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lJornadaValueChanged
         try {
-            ArrayList <Partido> listaPartido = Main.consultarPartidosPorJornada(lJornada.getSelectedValue());
+            listaPartido = Main.consultarPartidosPorJornada(lJornada.getSelectedValue());
             cargarPartido(listaPartido);
         } catch (Exception ex) {
             Logger.getLogger(VGenerarLiga.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_lJornadaValueChanged
+
+    private void lPartidoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lPartidoValueChanged
+        for(int x = 0 ; x<listaPartido.size(); x++){
+            if(listaPartido.get(x).getIdPartido() == lPartido.getSelectedValue()){
+                x=listaPartido.size();
+                p = null;
+                try {
+                    p = Main.consultarMarcadorPorPartido(listaPartido.get(x));
+                } catch (Exception ex) {
+                    Logger.getLogger(VGenerarLiga.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                cargarMarcador();
+            }
+        }
+        
+    }//GEN-LAST:event_lPartidoValueChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            Calendar fecha = Calendar.getInstance();
+            fecha.setTime(ccCalendario.getDate());
+            fecha.set(Calendar.HOUR_OF_DAY, (int) cbHora.getSelectedItem());
+            fecha.set(Calendar.MINUTE, (int) cbMinuto.getSelectedItem());
+            p.setFecha(fecha);
+            if(Main.modificarPartido(p)){
+                JOptionPane.showMessageDialog(this, "Partido modificado correctamente.");
+            }
+            else{
+                throw new Excepcion(44);
+            }
+        } catch (Excepcion e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
+        
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getClass(), "Error", 0);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     private void cargarPartido(ArrayList <Partido> listaPartido){
         lPartido.removeAll();
@@ -429,6 +482,14 @@ public class VGenerarLiga extends javax.swing.JDialog {
             modelo.addElement(p.getIdPartido());
         }
         lJornada.setModel(modelo);
+    }
+    
+    private void cargarMarcador(){
+        ccCalendario.setDate(p.getFecha().getTime());
+        tfLocal.setText(p.geteLocal().getNombre());
+        tfVisitante.setText(p.geteVisitante().getNombre());
+        cbHora.setSelectedItem(p.getFecha().get(Calendar.HOUR_OF_DAY));
+        cbMinuto.setSelectedItem(p.getFecha().get(Calendar.MINUTE));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -457,9 +518,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JList<Integer> lJornada;
     private javax.swing.JList<Integer> lPartido;
+    private javax.swing.JTextField tfLocal;
+    private javax.swing.JTextField tfVisitante;
     // End of variables declaration//GEN-END:variables
 }
