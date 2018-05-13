@@ -49,7 +49,6 @@ public class BDPersona {
        // buscar si existe datos en la rs
         if(rs.next()){
             // crear la persona con base Persona y llenar los datos
-            //FALTA CONTROLAR LOS NULOS (se meten datos en campos que no es)
             p = new Persona();
             p.setIdPersona(rs.getInt(1));
             p.setNombre(rs.getString(2));
@@ -60,6 +59,7 @@ public class BDPersona {
             p.setContrasenna(rs.getString(7));
             p.setEmail(rs.getString(8));
             p.setPerfil(Main.consultarPerfil(rs.getInt(9)));
+            p.setEquipo(Main.ConsultarEquipoPorUsuario(p.getUsuario()));
         }
         // cerrar conexiones y retornar objeto obtenido mediante consulta
         rs.close();
