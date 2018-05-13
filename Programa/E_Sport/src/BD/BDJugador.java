@@ -23,6 +23,9 @@ import java.util.logging.Logger;
  */
 
 public class BDJugador {
+
+    public BDJugador() {
+    }
     
      /**
      * Metodo para buscar una lista de jugadores por dni.
@@ -31,7 +34,7 @@ public class BDJugador {
      * @throws Exception 
      */   
     
-    public static Jugador BuscarJugador(String dni) throws Exception {
+    public Jugador BuscarJugador(String dni) throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a = new ArrayList();
         try
@@ -62,7 +65,7 @@ public class BDJugador {
      * @throws Exception 
      */    
     
-    public static ArrayList<Jugador> BuscarJugador() throws Exception {
+    public ArrayList<Jugador> BuscarJugador() throws Exception {
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a = new ArrayList();
         try
@@ -86,7 +89,7 @@ public class BDJugador {
      * @throws Exception 
      */
     
-    public static ArrayList<Jugador> BuscarEqui(String id) throws Exception {
+    public ArrayList<Jugador> BuscarEqui(String id) throws Exception {
        BDConexion con = new BDConexion();
        ArrayList<Jugador> a= new ArrayList();
         try {
@@ -111,7 +114,7 @@ public class BDJugador {
      * @throws SQLException 
      */
     
-    public static ArrayList<Jugador> recorrer(ResultSet rs, ArrayList <Jugador> a) throws SQLException {
+    public ArrayList<Jugador> recorrer(ResultSet rs, ArrayList <Jugador> a) throws SQLException {
         while (rs.next()){
             Jugador j= new Jugador();
             j.setIdJugador(Integer.parseInt(rs.getString(1)));
@@ -134,7 +137,7 @@ public class BDJugador {
      * @throws Exception 
      */
 
-    public static ArrayList<Jugador> BuscarJugadoresDisponibles() throws Exception {
+    public ArrayList<Jugador> BuscarJugadoresDisponibles() throws Exception {
         ResultSet rs = null;
         BDConexion con = new BDConexion();
         ArrayList<Jugador> a= new ArrayList();
@@ -158,7 +161,7 @@ public class BDJugador {
      * @throws Exception 
      */
     
-    public static Jugador buscarJugadorNickname(String nickname) throws Exception{ 
+    public Jugador buscarJugadorNickname(String nickname) throws Exception{ 
         BDConexion con = new BDConexion(); 
         ArrayList<Jugador> a = new ArrayList(); 
         try 
@@ -182,7 +185,7 @@ public class BDJugador {
      * @throws Exception 
      */    
     
-    public static void insertarJugador(Jugador j) throws Exception {
+    public void insertarJugador(Jugador j) throws Exception {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia = con.getConnection().prepareStatement("INSERT INTO Jugador (DNI, NOMBRE, APELLIDO1, APELLIDO2, NICKNAME, SUELDO, FECHA_ALTA, COMENTARIO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         sentencia.setString(1, j.getDni());
@@ -208,7 +211,7 @@ public class BDJugador {
      * @throws Exception 
      */
     
-    public static void eliminarJugador(Jugador j) throws Exception {
+    public void eliminarJugador(Jugador j) throws Exception {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia = con.getConnection().prepareStatement("DELETE FROM Jugador WHERE Id_jugador = ?"); 
         sentencia.setInt(1, j.getIdJugador());                
@@ -226,7 +229,7 @@ public class BDJugador {
      * @return devuelve correcto si el UPDATE se hace bien
      */
 
-    public static boolean QuitarJugadorEquipo(String nickname) {
+    public boolean QuitarJugadorEquipo(String nickname) {
         boolean correcto=false;
         try {
             BDConexion con = new BDConexion();
@@ -250,7 +253,7 @@ public class BDJugador {
      * @throws Exception 
      */  
 
-    public static boolean PonerJugadorEquipo(String nickname, String id) throws Exception{
+    public boolean PonerJugadorEquipo(String nickname, String id) throws Exception{
         boolean correcto=false;
             BDConexion con = new BDConexion();
             PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET Id_equipo = ? WHERE UPPER(Nickname) = UPPER(?)");
@@ -268,7 +271,7 @@ public class BDJugador {
      * @throws Exception 
      */   
     
-    public static void modificarJugador(Jugador j) throws Exception {
+    public void modificarJugador(Jugador j) throws Exception {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET DNI=?, NOMBRE=?, APELLIDO1=?, APELLIDO2=?, NICKNAME=?, SUELDO=?, COMENTARIO=? WHERE ID_JUGADOR=?"); 
         sentencia.setString(1, j.getDni()); 
@@ -293,7 +296,7 @@ public class BDJugador {
      * @return fecha
      */ 
 
-    private static Date formatearFecha(java.util.Date fechaE){
+    private Date formatearFecha(java.util.Date fechaE){
         SimpleDateFormat formar = new SimpleDateFormat("yyyy-MM-dd");
         String fecha = formar.format(fechaE);
         return Date.valueOf(fecha);
