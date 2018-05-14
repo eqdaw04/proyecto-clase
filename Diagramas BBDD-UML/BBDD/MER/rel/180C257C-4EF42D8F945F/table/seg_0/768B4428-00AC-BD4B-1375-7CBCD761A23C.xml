@@ -19,6 +19,29 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="Fecha_Inicio" id="958406B0-E7F0-03E9-568B-F276C9ADA754">
+<createdBy>v6222</createdBy>
+<createdTime>2018-05-14 08:43:08 UTC</createdTime>
+<generatorID>5C863FD4-5B9B-EC80-67F3-AD31A31A891D</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Fecha_Fin" id="6990761C-40A9-0BC5-1E86-37846EF2ED33">
+<createdBy>v6222</createdBy>
+<createdTime>2018-05-14 08:43:08 UTC</createdTime>
+<generatorID>9595ADFB-5089-6E6E-A604-8DB019D8267A</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="FA2FEFCC-425D-DFBB-E1E2-340B661CFBCF" name="Jornada_PK">

@@ -70,6 +70,18 @@
 <colAssociation fkAssociation="E0D8410D-F4F4-2427-0D54-E14A77977E47" referredColumn="FF1FAA34-AD99-B989-3287-E879FD9C3EEC"/>
 </associations>
 </Column>
+<Column name="lugar" id="19313F6B-F6D3-F0F6-2E69-22CB5544B077">
+<createdBy>v6222</createdBy>
+<createdTime>2018-05-14 08:43:08 UTC</createdTime>
+<generatorID>394F36CB-1AF1-6E18-A69D-6D786AA7C684</generatorID>
+<ownerDesignName>MER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="CE533B3D-1B2B-EDAC-BCDB-ECC0C4A3D596" name="Equipo_PK">
