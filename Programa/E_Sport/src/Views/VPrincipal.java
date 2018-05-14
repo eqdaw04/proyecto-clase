@@ -93,6 +93,8 @@ public class VPrincipal extends javax.swing.JFrame {
         NombreUsu.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         NombreUsu.setForeground(new java.awt.Color(51, 153, 0));
         NombreUsu.setText("Nombre");
+        getContentPane().add(NombreUsu);
+        NombreUsu.setBounds(230, 220, 120, 39);
 
         administracion.setText("Administración");
 
