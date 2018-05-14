@@ -103,8 +103,6 @@ public class VIntroducirResultado extends javax.swing.JDialog {
 
         jLabel8.setText("Lugar del Partido:");
 
-        ccFecha.setEditable(true);
-
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
 

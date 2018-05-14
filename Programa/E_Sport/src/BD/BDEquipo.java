@@ -156,7 +156,7 @@ public class BDEquipo {
         BDConexion con = new BDConexion();
         Equipo e = null;
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM equipo WHERE id_equipo = ?");
+        sentencia = con.getConnection().prepareStatement("SELECT id_equipo, nombre, lugar FROM equipo WHERE id_equipo = ?");
         sentencia.setInt(1, n);
         ResultSet rs;
         rs = sentencia.executeQuery();
@@ -164,12 +164,9 @@ public class BDEquipo {
             e = new Equipo();
             e.setIdEquipo(n);
             e.setNombre(rs.getString("nombre"));
+            e.setLugar(rs.getString("lugar"));
             // no se cargará estos datos al considerar innecesario
-            // e.setPersona(persona);
-            // e.setListaMarcadores(listaMarcadores);
-            // e.setListaJugadores(listaJugadores);
-            // e.setComentario(comentario);
-            // e.setFechaCreacion(fechaCreacion);
+            
             
         }
         return e;
