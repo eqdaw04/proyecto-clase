@@ -11,11 +11,9 @@ import UML.Jornada;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import javax.swing.JOptionPane;
 
 /**
  * Clase en la que controlaremos e introduciremos datos de la jornada actual a la base de datos.
@@ -118,7 +116,7 @@ public class BDJornada {
         Jornada j = null;
         // preparar la conexion y sentencia
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM jornada WHERE njornada = ?");
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM jornada WHERE id_jornada = ?");
         // formatear fecha a fecha para sql como condicion
         sentencia.setInt(1, n);
         // crear objeto para el resultado de la consulta

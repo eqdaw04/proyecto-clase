@@ -174,17 +174,6 @@ public class Main {
         v.dispose();
     }
     
-      /**
-     * Metodo para cerrar la ventana abierta
-     * @param v JFrame
-     */
-    
-    //-----Mikel
-    public static void cerrar2(JFrame v) {
-        // Cierra la ventana abierta
-        v.dispose();
-    }
-    
     /**
      * Metodo para cerrar la ventana abierta y volver a abrir según la ventana cerrada.
      * @param v JDialog
@@ -384,10 +373,8 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static ArrayList <Persona> consultarTodosLosPartidos() throws Exception{
-        ArrayList <Persona> listadoPersona = new ArrayList();
-        listadoPersona = bdPersona.buscarTodasLasPersona();
-        return listadoPersona;
+    public static ArrayList <Partido> consultarLosPartidosPorFecha(Date fecha) throws Exception{
+        return bdPartido.consultarPartidoPorFecha(fecha);
     }
     
     /**
@@ -415,7 +402,7 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static Partido consultarMarcadorPorPartido(Partido p) throws Exception{
-        p = bdPartido.ConsultarMarcadores(p);
+        p = bdPartido.consultarMarcadores(p);
         return p;
     }
     
