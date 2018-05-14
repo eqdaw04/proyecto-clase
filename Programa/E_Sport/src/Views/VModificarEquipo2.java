@@ -77,11 +77,6 @@ public class VModificarEquipo2 extends javax.swing.JDialog {
 
         liJugEqui.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         liJugEqui.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        liJugEqui.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                liJugEquiFocusGained(evt);
-            }
-        });
         liJugEqui.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 liJugEquiValueChanged(evt);
@@ -94,11 +89,6 @@ public class VModificarEquipo2 extends javax.swing.JDialog {
 
         liJugDisp.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         liJugDisp.setToolTipText("");
-        liJugDisp.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                liJugDispFocusGained(evt);
-            }
-        });
         liJugDisp.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 liJugDispValueChanged(evt);
@@ -225,10 +215,6 @@ public class VModificarEquipo2 extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void liJugEquiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_liJugEquiFocusGained
-
-    }//GEN-LAST:event_liJugEquiFocusGained
-
     private void liJugEquiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_liJugEquiValueChanged
         bEliminar.setEnabled(true);
         bConsultar.setEnabled(true);
@@ -236,10 +222,6 @@ public class VModificarEquipo2 extends javax.swing.JDialog {
         liJugDisp.clearSelection();
         tfSueldo.setText(String.valueOf(jEquipo.get(liJugEqui.getSelectedIndex()).getSueldo()));
     }//GEN-LAST:event_liJugEquiValueChanged
-
-    private void liJugDispFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_liJugDispFocusGained
-
-    }//GEN-LAST:event_liJugDispFocusGained
 
     private void liJugDispValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_liJugDispValueChanged
         bEliminar.setEnabled(false);
