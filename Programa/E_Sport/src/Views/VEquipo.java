@@ -575,6 +575,7 @@ public class VEquipo extends javax.swing.JDialog {
     }
     
     private void relllenarLista() throws Exception {
+        cbDuenno.removeAllItems();
         ArrayList<Persona> listaDuennos=Main.buscarUsuariosDuennos();
         
         for(int x=0;x<listaDuennos.size();x++)

@@ -4,7 +4,6 @@ import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
 import Recurso.ValidacionDeDatosDeEntrada;
-import UML.Equipo;
 import UML.Perfil;
 import UML.Persona;
 import java.sql.SQLException;
@@ -55,17 +54,38 @@ public class VUsuario extends javax.swing.JDialog {
         }
         cbPerfil.setSelectedIndex(-1);
         lPersona = new ArrayList();
-        tfEquipo.setVisible(false);
-        lEquipo.setVisible(false);
-        if(tipo.equals("alta")){
-            tfNombre.setEnabled(true);
-            pfContrasenna.setEnabled(true);
-            tfApellido1.setEnabled(true);
-            tfApellido2.setEnabled(true);
-            tfEmail.setEnabled(true);
-            cbPerfil.setEnabled(true);
-            bAceptar.setEnabled(true);
-            bBuscar.setEnabled(false);
+        switch(tipo)
+        {
+            case "alta":
+                tfNombre.setEditable(true);
+                pfContrasenna.setEditable(true);
+                tfApellido1.setEditable(true);
+                tfApellido2.setEditable(true);
+                tfEmail.setEditable(true);
+                cbPerfil.setEditable(true);
+                bAceptar.setEnabled(true);
+                bBuscar.setEnabled(false);
+                bPrimero.setVisible(false);
+                bAnterior.setVisible(false);
+                bSiguiente.setVisible(false);
+                bUltimo.setVisible(false);
+                break;
+            case "baja":
+                bPrimero.setVisible(false);
+                bAnterior.setVisible(false);
+                bSiguiente.setVisible(false);
+                bUltimo.setVisible(false);
+                break;
+            case "modificacion":
+                bPrimero.setVisible(false);
+                bAnterior.setVisible(false);
+                bSiguiente.setVisible(false);
+                bUltimo.setVisible(false);
+                break;
+            case "listado":
+                bAceptar.setVisible(false);
+                bCancelar.setVisible(false);
+                break;
         }
         setVisible(true);
     }
@@ -87,7 +107,6 @@ public class VUsuario extends javax.swing.JDialog {
         bBuscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         tfUsuario = new javax.swing.JTextField();
-        lEquipo = new javax.swing.JLabel();
         ccFechaAlta = new org.freixas.jcalendar.JCalendarCombo();
         jLabel3 = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
@@ -99,13 +118,12 @@ public class VUsuario extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         cbPerfil = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        tfEquipo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel5.setText("E-mail:");
 
-        tfEmail.setEnabled(false);
+        tfEmail.setEditable(false);
 
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
@@ -168,23 +186,21 @@ public class VUsuario extends javax.swing.JDialog {
 
         jLabel2.setText("Usuario:");
 
-        lEquipo.setText("Equipo:");
-
         ccFechaAlta.setEnabled(false);
 
         jLabel3.setText("Nombre:");
 
-        tfNombre.setEnabled(false);
+        tfNombre.setEditable(false);
 
         jLabel4.setText("Apellido 1:");
 
-        tfApellido1.setEnabled(false);
+        tfApellido1.setEditable(false);
 
-        tfApellido2.setEnabled(false);
+        tfApellido2.setEditable(false);
 
         jLabel6.setText("Contraseña:");
 
-        pfContrasenna.setEnabled(false);
+        pfContrasenna.setEditable(false);
 
         jLabel7.setText("Perfil:");
 
@@ -193,8 +209,6 @@ public class VUsuario extends javax.swing.JDialog {
         cbPerfil.setEnabled(false);
 
         jLabel10.setText("Apellido 2:");
-
-        tfEquipo.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -212,8 +226,7 @@ public class VUsuario extends javax.swing.JDialog {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel8)
-                                        .addComponent(jLabel7)
-                                        .addComponent(lEquipo))
+                                        .addComponent(jLabel7))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +252,6 @@ public class VUsuario extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bBuscar))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(tfEquipo, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(bPrimero)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -293,10 +305,6 @@ public class VUsuario extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cbPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lEquipo)
-                    .addComponent(tfEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAceptar)
@@ -513,11 +521,11 @@ public class VUsuario extends javax.swing.JDialog {
             }
             // habilitar los campos si se ha accedido como modificación
             if(tipo.equals("modificacion")){
-                tfNombre.setEnabled(true);
-                tfApellido1.setEnabled(true);
-                tfApellido2.setEnabled(true);
-                pfContrasenna.setEnabled(true);
-                tfEmail.setEnabled(true);
+                tfNombre.setEditable(true);
+                tfApellido1.setEditable(true);
+                tfApellido2.setEditable(true);
+                pfContrasenna.setEditable(true);
+                tfEmail.setEditable(true);
                 cbPerfil.setEnabled(true);
             }
             bAceptar.setEnabled(true);
@@ -551,17 +559,6 @@ public class VUsuario extends javax.swing.JDialog {
             ccFechaAlta.setDate(p.getFechaAlta());
 
             cbPerfil.setSelectedItem(p.getPerfil().getNombre());
-            // comrpobar si es dueño, en caso afirmativo, mostrar su equipo
-            if(cbPerfil.getSelectedItem().equals("Dueño"))
-            {
-                tfEquipo.setVisible(true);
-            }
-            Equipo e = null;
-            e = Main.ConsultarEquipoPorUsuario(tfUsuario.getText());
-            if(e != null){
-                lEquipo.setVisible(true);
-                tfEquipo.setText(e.getNombre());
-            } 
         }    
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getClass(), "Error", 0);
@@ -590,12 +587,10 @@ public class VUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel lEquipo;
     private javax.swing.JPasswordField pfContrasenna;
     private javax.swing.JTextField tfApellido1;
     private javax.swing.JTextField tfApellido2;
     private javax.swing.JTextField tfEmail;
-    private javax.swing.JTextField tfEquipo;
     private javax.swing.JTextField tfNombre;
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables

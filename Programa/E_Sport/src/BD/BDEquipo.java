@@ -77,9 +77,10 @@ public class BDEquipo {
     
     public void modificarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
-        PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Equipo SET COMENTARIO=? WHERE ID_EQUIPO = ?");
-        sentencia.setString(1, e.getComentario());
-        sentencia.setInt(2, e.getIdEquipo());
+        PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Equipo SET NOMBRE=?, COMENTARIO=? WHERE ID_EQUIPO = ?");
+        sentencia.setString(1, e.getNombre());
+        sentencia.setString(2, e.getComentario());
+        sentencia.setInt(3, e.getIdEquipo());
         if(sentencia.executeUpdate()!=1)
         {
             throw new Excepcion(25);
