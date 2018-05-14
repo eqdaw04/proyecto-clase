@@ -316,7 +316,10 @@ public class VEquipo extends javax.swing.JDialog {
                     // Validación de datos
                     validarNombre();
                     validarDuenno();
-                    ValidacionDeDatosDeEntrada.validar(2, tfLugar);
+                    if(tfLugar.getText().isEmpty())
+                    {
+                        throw new Excepcion(53);
+                    }
                     // Insertar el equipo         
                     Main.altaEquipo(tfNombre.getText(), tfLugar.getText(), String.valueOf(cbDuenno.getSelectedItem()), cFechaCreacion.getDate(), taComentario.getText());
                     JOptionPane.showMessageDialog(this, "El equipo se ha dado de alta correctamente.");
@@ -331,7 +334,10 @@ public class VEquipo extends javax.swing.JDialog {
                 case "modificacion":
                     // Validación de datos
                     validarNombre();
-                    ValidacionDeDatosDeEntrada.validar(2, tfLugar);
+                    if(tfLugar.getText().isEmpty())
+                    {
+                        throw new Excepcion(53);
+                    }
                     // Modificar el equipo
                     Main.modificarEquipo(tfNombre.getText(), tfLugar.getText(), taComentario.getText());
                     JOptionPane.showMessageDialog(this, "El equipo se ha modificado correctamente.");

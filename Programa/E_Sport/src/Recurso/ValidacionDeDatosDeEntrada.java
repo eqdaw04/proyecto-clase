@@ -45,10 +45,6 @@ public class ValidacionDeDatosDeEntrada{
     private static String datoPatron(int cod){
         String dato = "";
         switch(cod){
-                
-            case 2:
-                dato = "^[A-Z][a-z]{2,}$";
-                break;
 
             case 3:
                 dato = "^[A-Z0-9][0-9]{7}[A-Z]$";
