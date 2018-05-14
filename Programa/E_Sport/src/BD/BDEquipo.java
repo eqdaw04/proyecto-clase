@@ -100,12 +100,13 @@ public class BDEquipo {
     
     public Equipo BuscarEquipoPorUsuario(String usu) throws Exception  {
         BDConexion con = new BDConexion();
-        Equipo e = null;
+        Equipo e = new Equipo();
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo WHERE Id_persona = (SELECT Id_persona FROM Persona WHERE Usuario = ?)");
         sentencia.setString(1,usu);
         ResultSet rs = sentencia.executeQuery();
         while (rs.next()){
-            e.setIdEquipo(Integer.parseInt(rs.getString("id_equipo")));
+            
+            e.setIdEquipo(rs.getInt("id_equipo"));
             e.setNombre(rs.getString("nombre"));
             e.setFechaCreacion(rs.getDate("fecha_creacion"));            
             e.setComentario(rs.getString("comentario"));
@@ -159,7 +160,7 @@ public class BDEquipo {
         BDConexion con = new BDConexion();
         Equipo e = null;
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM equipo WHERE id_equipo = ?");
+        sentencia = con.getConnection().prepareStatement("SELECT id_equipo, nombre, lugar FROM equipo WHERE id_equipo = ?");
         sentencia.setInt(1, n);
         ResultSet rs;
         rs = sentencia.executeQuery();
@@ -167,13 +168,9 @@ public class BDEquipo {
             e = new Equipo();
             e.setIdEquipo(n);
             e.setNombre(rs.getString("nombre"));
+            e.setLugar(rs.getString("lugar"));
             // no se cargará estos datos al considerar innecesario
-            // e.setPersona(persona);
-            // e.setListaMarcadores(listaMarcadores);
-            // e.setListaJugadores(listaJugadores);
-            // e.setComentario(comentario);
-            // e.setLugar(rs.getString("lugar"));
-            // e.setFechaCreacion(fechaCreacion);
+            
             
         }
         return e;

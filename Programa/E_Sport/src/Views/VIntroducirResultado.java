@@ -5,6 +5,12 @@
  */
 package Views;
 
+import Controladora.Main;
+import UML.Partido;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author v6222
@@ -12,6 +18,7 @@ package Views;
 public class VIntroducirResultado extends javax.swing.JDialog {
 
     int n;
+    ArrayList<Partido> listaPartido;
     /**
      * Creates new form VIntroducirResultado
      */
@@ -31,7 +38,17 @@ public class VIntroducirResultado extends javax.swing.JDialog {
     }
 
     private void cargarPartido(){
-        Main.consultarTodosLosPartidos(ccFecha.getDate());
+        try{
+            listaPartido = new ArrayList();
+            listaPartido = Main.consultarLosPartidosPorFecha(ccFecha.getDate());
+            cbPartido.removeAllItems();
+            for(Partido p : listaPartido){
+                cbPartido.addItem(String.valueOf(p.getIdPartido()));
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
+        }
     }
     
     /**
@@ -103,8 +120,6 @@ public class VIntroducirResultado extends javax.swing.JDialog {
 
         jLabel8.setText("Lugar del Partido:");
 
-        ccFecha.setEditable(true);
-
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
 
@@ -121,6 +136,11 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         cbPartido.setEditable(true);
         cbPartido.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbPartido.setEnabled(false);
+        cbPartido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbPartidoActionPerformed(evt);
+            }
+        });
 
         bModificar.setText("Modificar Partido");
         bModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -239,6 +259,20 @@ public class VIntroducirResultado extends javax.swing.JDialog {
     private void bModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bModificarActionPerformed
+
+    private void cbPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPartidoActionPerformed
+        Partido p = null;
+        for(int x = 0 ; x < listaPartido.size() ; x++){
+            p = listaPartido.get(x);
+            if(p.getIdPartido() == Integer.valueOf(cbPartido.getSelectedItem().toString())){
+                SimpleDateFormat f = new SimpleDateFormat("hh:mm");
+                tfHora.setText(f.format(p.getFecha()));
+                tfLugar.setText(p.geteLocal().getLugar());
+                tfPuntosLocal.setText(p.geteLocal().getListaMarcadores().get(x).getPuntos());
+                x = listaPartido.size();
+            }
+        }
+    }//GEN-LAST:event_cbPartidoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
