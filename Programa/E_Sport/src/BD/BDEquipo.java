@@ -196,7 +196,7 @@ public class BDEquipo {
                 e.setFechaCreacion(rs.getDate("fecha_creacion"));
                 e.setComentario(rs.getString("comentario"));
                 e.setLugar(rs.getString("lugar"));
-                e.setPersona(Main.obtenerPersona(rs.getInt(5)));
+                e.setPersona(Main.obtenerPersona(rs.getInt("id_persona")));
 
                 a.add(e);
             }

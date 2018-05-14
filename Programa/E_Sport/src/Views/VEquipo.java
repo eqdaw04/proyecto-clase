@@ -38,11 +38,10 @@ public class VEquipo extends javax.swing.JDialog {
         initComponents();
         cargarDatos(tipo, n);
         
-        ImageIcon fondojava = new ImageIcon("../../../imagenes/fondo2.jpg");
-        Icon icono3 = new ImageIcon (fondojava.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
-        imgfondo.setIcon(icono3);
+        ImageIcon fondo = new ImageIcon("../../../imagenes/fondo2.jpg");
+        Icon icono = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
+        imgfondo.setIcon(icono);
         this.repaint();
-        
     }
 
     /**
@@ -73,14 +72,10 @@ public class VEquipo extends javax.swing.JDialog {
         taPlantilla = new javax.swing.JTextArea();
         cFechaCreacion = new org.freixas.jcalendar.JCalendarCombo();
         jLabel5 = new javax.swing.JLabel();
-<<<<<<< Updated upstream
-        cbDuenno = new javax.swing.JComboBox<>();
+        cbDuenno = new javax.swing.JComboBox<String>();
         jLabel7 = new javax.swing.JLabel();
         tfLugar = new javax.swing.JTextField();
-=======
-        cbDuenno = new javax.swing.JComboBox<String>();
         imgfondo = new javax.swing.JLabel();
->>>>>>> Stashed changes
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -93,12 +88,12 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bUltimo);
-        bUltimo.setBounds(313, 601, 47, 25);
+        bUltimo.setBounds(420, 517, 47, 25);
 
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel6.setText("Comentarios:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(12, 444, 117, 21);
+        jLabel6.setBounds(59, 382, 117, 21);
 
         taComentario.setEditable(false);
         taComentario.setColumns(20);
@@ -106,7 +101,7 @@ public class VEquipo extends javax.swing.JDialog {
         jScrollPane1.setViewportView(taComentario);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(147, 444, 218, 96);
+        jScrollPane1.setBounds(249, 382, 218, 96);
 
         bBuscar.setText("Buscar");
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +110,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bBuscar);
-        bBuscar.setBounds(429, 97, 71, 25);
+        bBuscar.setBounds(474, 115, 71, 25);
 
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
@@ -125,7 +120,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAceptar);
-        bAceptar.setBounds(142, 558, 77, 25);
+        bAceptar.setBounds(249, 485, 77, 25);
 
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +129,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bCancelar);
-        bCancelar.setBounds(277, 558, 83, 25);
+        bCancelar.setBounds(384, 485, 83, 25);
 
         bPrimero.setText("|<");
         bPrimero.setEnabled(false);
@@ -144,24 +139,24 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bPrimero);
-        bPrimero.setBounds(142, 601, 47, 25);
+        bPrimero.setBounds(249, 517, 47, 25);
 
         jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 36)); // NOI18N
         jLabel1.setText("EQUIPO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(246, 13, 176, 77);
+        jLabel1.setBounds(239, 25, 124, 54);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("Nombre:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(12, 97, 76, 21);
+        jLabel2.setBounds(59, 115, 76, 21);
         getContentPane().add(tfNombre);
-        tfNombre.setBounds(193, 98, 218, 22);
+        tfNombre.setBounds(249, 116, 218, 22);
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel4.setText("Fecha de creación:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(12, 152, 164, 21);
+        jLabel4.setBounds(59, 147, 164, 21);
 
         bAnterior.setText("<");
         bAnterior.setEnabled(false);
@@ -171,7 +166,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnterior);
-        bAnterior.setBounds(196, 601, 41, 25);
+        bAnterior.setBounds(303, 517, 41, 25);
 
         bSiguiente.setText(">");
         bSiguiente.setEnabled(false);
@@ -181,12 +176,12 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(265, 601, 41, 25);
+        bSiguiente.setBounds(372, 517, 41, 25);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel3.setText("Plantilla:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(12, 211, 74, 21);
+        jLabel3.setBounds(59, 183, 74, 21);
 
         taPlantilla.setEditable(false);
         taPlantilla.setColumns(20);
@@ -194,120 +189,37 @@ public class VEquipo extends javax.swing.JDialog {
         jScrollPane2.setViewportView(taPlantilla);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(142, 211, 218, 133);
+        jScrollPane2.setBounds(249, 183, 218, 133);
 
         cFechaCreacion.setEnabled(false);
         getContentPane().add(cFechaCreacion);
-        cFechaCreacion.setBounds(194, 153, 218, 22);
+        cFechaCreacion.setBounds(249, 148, 218, 22);
 
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel5.setText("Dueño:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(12, 381, 63, 21);
+        jLabel5.setBounds(59, 352, 63, 21);
 
         cbDuenno.setEnabled(false);
-<<<<<<< Updated upstream
+        getContentPane().add(cbDuenno);
+        cbDuenno.setBounds(249, 353, 218, 22);
 
+        jLabel7.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel7.setText("Lugar:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(59, 324, 57, 21);
 
         tfLugar.setEditable(false);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel7))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bPrimero)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bAnterior)
-                                .addGap(28, 28, 28)
-                                .addComponent(bSiguiente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bUltimo))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(bAceptar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bCancelar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cFechaCreacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbDuenno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfLugar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bBuscar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(bBuscar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(cFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbDuenno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bAceptar)
-                    .addComponent(bCancelar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(bSiguiente)
-                        .addComponent(bUltimo))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(bPrimero)
-                        .addComponent(bAnterior)))
-                .addContainerGap(85, Short.MAX_VALUE))
-        );
-=======
-        getContentPane().add(cbDuenno);
-        cbDuenno.setBounds(142, 382, 151, 22);
+        getContentPane().add(tfLugar);
+        tfLugar.setBounds(249, 323, 218, 22);
         getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 690, 640);
->>>>>>> Stashed changes
+        imgfondo.setBounds(0, 0, 600, 610);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
+        // TODO add your handling code here:
         try
         {
             // Comprobar si se ha accedido con la opción de lsiatado, en caso afirmativo, cargar un list interno para poder recorrer con los botones de dirección
@@ -350,7 +262,7 @@ public class VEquipo extends javax.swing.JDialog {
                 buscarEquipo(tfNombre.getText());
                 if(tipo.equals("modificacion"))
                 {
-                    tfLugar.setEditable(true);
+                    tfLugar.setEditable(true); 
                     taComentario.setEditable(true);
                 }
                 bAceptar.setEnabled(true);
@@ -376,7 +288,10 @@ public class VEquipo extends javax.swing.JDialog {
                     // Validación de datos
                     validarNombre();
                     validarDuenno();
-                    ValidacionDeDatosDeEntrada.validar(2, tfLugar);
+                    if(tfLugar.getText().isEmpty())
+                    {
+                        throw new Excepcion(53);
+                    }
                     // Insertar el equipo         
                     Main.altaEquipo(tfNombre.getText(), tfLugar.getText(), String.valueOf(cbDuenno.getSelectedItem()), cFechaCreacion.getDate(), taComentario.getText());
                     JOptionPane.showMessageDialog(this, "El equipo se ha dado de alta correctamente.");
@@ -390,8 +305,11 @@ public class VEquipo extends javax.swing.JDialog {
                     break;
                 case "modificacion":
                     // Validación de datos
-                    validarNombre();                    
-                    ValidacionDeDatosDeEntrada.validar(2, tfLugar);
+                    validarNombre();
+                    if(tfLugar.getText().isEmpty())
+                    {
+                        throw new Excepcion(53);
+                    }
                     // Modificar el equipo
                     Main.modificarEquipo(tfNombre.getText(), tfLugar.getText(), taComentario.getText());
                     JOptionPane.showMessageDialog(this, "El equipo se ha modificado correctamente.");

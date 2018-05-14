@@ -180,6 +180,10 @@ public class Excepcion extends Exception {
             case 52:
                 dato = dato + "Ese dueño ya tiene un equipo.";
                 break;
+                
+            case 53:
+                dato = dato + "El lugar del equipo es obligatorio.";
+                break;
         }
         return dato;
     }

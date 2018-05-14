@@ -9,11 +9,14 @@ import Controladora.Main;
 import Excepciones.*;
 import UML.Equipo;
 import UML.Jugador;
+import java.awt.Image;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -39,7 +42,11 @@ public class VModificarEquipo extends javax.swing.JDialog {
         e= Main.ConsultarEquipoPorUsuario(usu);
         nombeEquipo.setText(e.getNombre());
         rellenar();
-        setVisible(true);
+        
+        ImageIcon fondo = new ImageIcon("../../../imagenes/fondo2.jpg");
+        Icon icono = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
+        imgfondo.setIcon(icono);
+        this.repaint();
     }
 
     /**
@@ -54,10 +61,10 @@ public class VModificarEquipo extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         nombeEquipo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        liJugEqui = new javax.swing.JList<>();
+        liJugEqui = new javax.swing.JList<String>();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        liJugDisp = new javax.swing.JList<>();
+        liJugDisp = new javax.swing.JList<String>();
         jLabel3 = new javax.swing.JLabel();
         bEliminar = new javax.swing.JButton();
         bAnnadir = new javax.swing.JButton();
@@ -65,15 +72,20 @@ public class VModificarEquipo extends javax.swing.JDialog {
         tfSueldo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         bSalir = new javax.swing.JButton();
+        imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 30)); // NOI18N
         jLabel1.setText("Modificar Equipo");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(140, 30, 270, 40);
 
-        nombeEquipo.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        nombeEquipo.setForeground(new java.awt.Color(0, 153, 0));
+        nombeEquipo.setFont(new java.awt.Font("Bauhaus 93", 0, 30)); // NOI18N
+        nombeEquipo.setForeground(new java.awt.Color(51, 102, 255));
         nombeEquipo.setText("NOMBREEQUIPO");
+        getContentPane().add(nombeEquipo);
+        nombeEquipo.setBounds(420, 30, 230, 44);
 
         liJugEqui.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         liJugEqui.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -84,8 +96,13 @@ public class VModificarEquipo extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(liJugEqui);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(62, 170, 258, 214);
+
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("Jugadores en el equipo:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(80, 140, 220, 21);
 
         liJugDisp.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         liJugDisp.setToolTipText("");
@@ -96,8 +113,13 @@ public class VModificarEquipo extends javax.swing.JDialog {
         });
         jScrollPane2.setViewportView(liJugDisp);
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(509, 170, 258, 214);
+
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel3.setText("Sueldo del jugador:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(230, 420, 190, 21);
 
         bEliminar.setText("Eliminar Jugador");
         bEliminar.setEnabled(false);
@@ -126,8 +148,10 @@ public class VModificarEquipo extends javax.swing.JDialog {
         tfSueldo.setEditable(false);
         tfSueldo.setText("Sueldo");
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel4.setText("Jugadores Disponibles:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(530, 140, 220, 21);
 
         bSalir.setText("Salir");
         bSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +159,10 @@ public class VModificarEquipo extends javax.swing.JDialog {
                 bSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(bSalir);
+        bSalir.setBounds(380, 500, 73, 25);
+        getContentPane().add(imgfondo);
+        imgfondo.setBounds(0, 0, 840, 550);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -342,6 +370,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
     private javax.swing.JButton bConsultar;
     private javax.swing.JButton bEliminar;
     private javax.swing.JButton bSalir;
+    private javax.swing.JLabel imgfondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
