@@ -99,7 +99,8 @@ public class VLogin extends javax.swing.JFrame {
 
         bAcceder.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         bAcceder.setText("Acceder");
-        bAcceder.setBorder(null);
+        bAcceder.setAutoscrolls(true);
+        bAcceder.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         bAcceder.setPreferredSize(new java.awt.Dimension(67, 31));
         bAcceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
