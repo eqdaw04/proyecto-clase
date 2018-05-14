@@ -15,7 +15,7 @@ public class Equipo {
     private int idEquipo;
     private String nombre;
     private Date fechaCreacion;
-    private String comentario;
+    private String lugar, comentario;
     
     private Persona persona;
     private ArrayList<Jugador> listaJugadores;
@@ -46,6 +46,14 @@ public class Equipo {
 
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
     }
 
     public String getComentario() {
