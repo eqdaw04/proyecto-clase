@@ -566,7 +566,7 @@ public class Main {
         String dato = "";
         switch(cod){
 
-            case 46:
+            case 46: // marcador
                 dato = "^[0-9]{1,}$";
                 break;
                 
@@ -592,6 +592,10 @@ public class Main {
                 
             case 8: // Contraseña
                 dato = "^[A-Za-z0-9]{3,}$";
+                break;
+                
+            case 29: // lugar
+                dato = "^[A-Z][a-zñ]{2,}$";
                 break;
         }
         return dato;

@@ -137,6 +137,10 @@ public class Excepcion extends Exception {
                 dato += "No hay equipos en la base de datos";
                 break;
                 
+            case 29:
+                dato += "El formato del lugar ha de ser Xxx, primero mayúscula seguido de minúsculas";
+                break;
+                
             case 30:
                 dato += "El salario del equipo es superior a 200.000 €. \n Escoge un jugador con un salario menor o retira uno de los jugadores";
                 break;
@@ -152,39 +156,43 @@ public class Excepcion extends Exception {
                 dato += "El dueño no tiene asignado un equipo.";
                 
             case 40:
-                dato +="Error al insertar la Jornada.";
+                dato += "Error al insertar la Jornada.";
                 break;
                 
             case 41:
-                dato +="Error al insertar el Partido.";
+                dato += "Error al insertar el Partido.";
                 break;
                 
             case 42:
-                dato +="Error al insertar el Equipo";
+                dato += "Error al insertar el Equipo";
                 break;
                 
             case 43:
-                dato +="Error al insertar fecha fin de la jornada.";
+                dato += "Error al insertar fecha fin de la jornada.";
                 break;
                 
             case 44:
-                dato +="Error al modificar el partido.";
+                dato += "Error al modificar el partido.";
                 break;
                 
             case 45:
-                dato +="Ha habido un error al consultar los datos del Equipo en relación con la Persona.";
+                dato += "Ha habido un error al consultar los datos del Equipo en relación con la Persona.";
                 break;
                 
             case 46:
-                dato +="Los puntos ha de ser numéricos.";
+                dato += "Los puntos ha de ser numéricos.";
                 break;
                 
             case 47:
-                dato +="Error al modificar el Marcador.";
+                dato += "Error al modificar el Marcador.";
                 break;
                 
             case 48:
-                dato +="Ha habido un problema con la conexión, la bbdd no está conectado.";
+                dato += "Ha habido un problema con la conexión, la bbdd no está conectado.";
+                break;
+                
+            case 49:
+                dato += "El lugar del equipo es obligatorio.";
                 break;
                 
             case 50:

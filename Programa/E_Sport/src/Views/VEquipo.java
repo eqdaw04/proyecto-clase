@@ -289,6 +289,7 @@ public class VEquipo extends javax.swing.JDialog {
                 case "alta":
                     // Validación de datos
                     validarNombre();
+                    validarLugar();
                     validarDuenno();
                     if(tfLugar.getText().isEmpty())
                     {
@@ -484,6 +485,7 @@ public class VEquipo extends javax.swing.JDialog {
             case "alta":
                 cbDuenno.setEnabled(true);
                 taComentario.setEditable(true);
+                tfLugar.setEditable(true);
                 bAceptar.setEnabled(true);
                 bBuscar.setVisible(false);
                 break;
@@ -493,10 +495,21 @@ public class VEquipo extends javax.swing.JDialog {
                 bSiguiente.setVisible(true);
                 bUltimo.setVisible(true);
                 bAceptar.setVisible(false);
-                bCancelar.setVisible(false);
+                bCancelar.setVisible(true);
                 break;
         }
         setVisible(true);
+    }
+    
+    private void validarLugar() throws Exception {
+        // Validar nombre para ver si existe algún equipo con ese nombre
+        if(tfLugar.getText().isEmpty())
+        {
+            throw new Excepcion(49);
+        }
+        else{
+            Main.validar(n, tfLugar);
+        }
     }
     
      /**
@@ -512,6 +525,7 @@ public class VEquipo extends javax.swing.JDialog {
         }
         if(tipo.equals("alta"))
         {
+            Main.validar(4, tfNombre);
             // Comprobar si existe un equipo con ese nombre
             if(Main.buscarEquipo(tfNombre.getText()) != null)
             {

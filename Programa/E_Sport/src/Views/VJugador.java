@@ -527,7 +527,7 @@ public class VJugador extends javax.swing.JDialog {
                 break;
             case "listado":
                 bAceptar.setVisible(false);
-                bCancelar.setVisible(false);       
+                bCancelar.setVisible(true);       
                 bPrimero.setVisible(true);
                 bAnterior.setVisible(true);
                 bSiguiente.setVisible(true);
@@ -545,7 +545,7 @@ public class VJugador extends javax.swing.JDialog {
                 taComentario.setText(j.getComentario());
                 bBuscar.setVisible(false);
                 bAceptar.setVisible(false);
-                bCancelar.setVisible(false);
+                bCancelar.setVisible(true);
                 break;
         }
         setVisible(true);
