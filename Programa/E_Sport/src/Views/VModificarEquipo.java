@@ -76,7 +76,6 @@ public class VModificarEquipo extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
-        setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 30)); // NOI18N
@@ -173,7 +172,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
         getContentPane().add(bSalir);
         bSalir.setBounds(717, 523, 73, 25);
         getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 900, 660);
+        imgfondo.setBounds(0, 0, 860, 570);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
