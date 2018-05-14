@@ -467,9 +467,9 @@ public class VUsuario extends javax.swing.JDialog {
         // retroceder un registro
         contador--;
         mostrarDatos(lPersona.get(contador));
+        bSiguiente.setEnabled(true);
+        bUltimo.setEnabled(true);
         if(contador == 0){
-            bSiguiente.setEnabled(true);
-            bUltimo.setEnabled(true);
             bPrimero.setEnabled(false);
             bAnterior.setEnabled(false);
         }
@@ -480,11 +480,11 @@ public class VUsuario extends javax.swing.JDialog {
         // avanzar un registro
         contador++;
         mostrarDatos(lPersona.get(contador));
+        bPrimero.setEnabled(true);
+        bAnterior.setEnabled(true);
         if(contador == lPersona.size()-1){
             bSiguiente.setEnabled(false);
             bUltimo.setEnabled(false);
-            bPrimero.setEnabled(true);
-            bAnterior.setEnabled(true);
         }
     }//GEN-LAST:event_bSiguienteActionPerformed
 
