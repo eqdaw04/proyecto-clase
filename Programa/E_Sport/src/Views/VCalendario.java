@@ -5,6 +5,12 @@
  */
 package Views;
 
+import Controladora.Main;
+import UML.Jornada;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author usuario
@@ -16,6 +22,7 @@ public class VCalendario extends java.awt.Dialog {
      */
     public VCalendario() {
         initComponents();
+        abrirPaneles();
     }
 
     /**
@@ -58,6 +65,17 @@ public class VCalendario extends java.awt.Dialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    private void abrirPaneles() {
+        ArrayList <Jornada> j= new ArrayList();
+        try {
+            j= Main.consultarTodasLasJornadas();
+        } catch (Exception ex) {
+            Logger.getLogger(VCalendario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (int x=1; x<j.size();x++){
+            Main
+        }
     }
 
 
