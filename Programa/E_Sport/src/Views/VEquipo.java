@@ -78,6 +78,7 @@ public class VEquipo extends javax.swing.JDialog {
         imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
         getContentPane().setLayout(null);
 
         bUltimo.setText(">|");
@@ -212,6 +213,8 @@ public class VEquipo extends javax.swing.JDialog {
         tfLugar.setEditable(false);
         getContentPane().add(tfLugar);
         tfLugar.setBounds(249, 323, 218, 22);
+
+        imgfondo.setName(""); // NOI18N
         getContentPane().add(imgfondo);
         imgfondo.setBounds(0, 0, 600, 610);
 
