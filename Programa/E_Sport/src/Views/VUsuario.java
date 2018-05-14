@@ -520,6 +520,10 @@ public class VUsuario extends javax.swing.JDialog {
                     }
                     // mostrar datos de la persona
                     mostrarDatos(p);
+                    bPrimero.setEnabled(false);
+                    bAnterior.setEnabled(false);
+                    bSiguiente.setEnabled(false);
+                    bUltimo.setEnabled(false);
                 }
             }
             else
