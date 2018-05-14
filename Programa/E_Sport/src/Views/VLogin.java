@@ -46,10 +46,7 @@ public class VLogin extends javax.swing.JFrame {
 
         jTextField1.grabFocus();
         
-        /*ImageIcon accederimg = new ImageIcon("../../../imagenes/BAcceder.png");
-        Icon icono4 = new ImageIcon (accederimg.getImage().getScaledInstance(labelacceder.getWidth(), labelacceder.getHeight(), Image.SCALE_DEFAULT));
-        labelacceder.setIcon(icono4);
-        this.repaint();*/
+        
         
     }
 
