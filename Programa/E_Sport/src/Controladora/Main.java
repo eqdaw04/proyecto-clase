@@ -159,6 +159,9 @@ public class Main {
                 
             case 7:
                 new VGenerarLiga(n);
+            case 8:
+                new VCalendario();
+                break;
         }
     }
 
@@ -210,6 +213,11 @@ public class Main {
                 
             case 7:
                 new VGenerarLiga(n);
+                break;
+            case 8:
+                new VCalendario();
+                break;
+                
         }
     }
     
@@ -220,9 +228,12 @@ public class Main {
       //-------Mikel
  
     public static void abrirVJugador (Jugador j){
- 
         new VJugador("consulta",1,j);
+    }
+    //-------Mikel
  
+    public static void abrirVJornada (int n){
+        new VJornada(n);
     }
     
     /**
@@ -816,10 +827,15 @@ public class Main {
         return bdJugador.buscarJugadorNickname(nickname);
  
     }
- 
+    //-------------Mikel
+    
+    public static Jornada consultarJornadaPorNumeroDeJornada(int n) throws Exception{
+        return bdJornada.consultarJornadaPorNumeroDeJornada(n);
+    } 
     /**
      * Metodo para dar de alta un equipo en la base de datos.
      * @param nombre String
+     * @param lugar String
      * @param usuario String
      * @param fechaCreacion Date
      * @param comentario String
@@ -850,6 +866,7 @@ public class Main {
     /**
      * Metodo para modificar un equipo de la base de datos.
      * @param nombre String
+     * @param lugar String
      * @param comentario String
      * @throws Exception 
      */
@@ -958,8 +975,6 @@ public class Main {
      */
 
     public static Persona obtenerPersona(int idPersona) throws Exception {
-        Persona p = null;
-        p = bdPersona.buscarPersona(idPersona);
-        return p;
+        return bdPersona.buscarPersona(idPersona);
     }
 }
