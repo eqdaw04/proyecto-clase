@@ -50,7 +50,7 @@ public class VUsuario extends javax.swing.JDialog {
             }
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getClass());
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         }
         cbPerfil.setSelectedIndex(-1);
         lPersona = new ArrayList();
@@ -355,12 +355,13 @@ public class VUsuario extends javax.swing.JDialog {
                     break;
             }
         }
-        catch (Excepcion e){
+        catch (Excepcion e)
+        {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
         }
         catch (Exception e)
         {
-            JOptionPane.showMessageDialog(this, e.getClass());
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         }
 
     }//GEN-LAST:event_bAceptarActionPerformed
@@ -502,15 +503,28 @@ public class VUsuario extends javax.swing.JDialog {
         //buscar persona
         try
         {
-            // comprobar si el administrador ha rellenado el campo Usuario y cargar únicamente ese usuario, en caso contrario, array de todos los usuarios.
-            if(tfUsuario.getText().equals("")){
-                bSiguiente.setEnabled(true);
-                bUltimo.setEnabled(true);
-                lPersona = Main.consultarTodasLasPersonas();
-                contador = 0;
-                mostrarDatos(lPersona.get(0));
+            if(tipo.equals("listado"))
+            {
+                // comprobar si el administrador ha rellenado el campo Usuario y cargar únicamente ese usuario, en caso contrario, array de todos los usuarios.
+                if(tfUsuario.getText().equals("")){
+                    bSiguiente.setEnabled(true);
+                    bUltimo.setEnabled(true);
+                    lPersona = Main.consultarTodasLasPersonas();
+                    contador = 0;
+                    mostrarDatos(lPersona.get(0));
+                }
+                else{
+                    Persona p = Main.consultarPersona(tfUsuario.getText());
+                    if(p == null)
+                    {
+                        throw new Excepcion(14);
+                    }
+                    // mostrar datos de la persona
+                    mostrarDatos(p);
+                }
             }
-            else{
+            else
+            {
                 Persona p = Main.consultarPersona(tfUsuario.getText());
                 if(p == null)
                 {
@@ -518,23 +532,25 @@ public class VUsuario extends javax.swing.JDialog {
                 }
                 // mostrar datos de la persona
                 mostrarDatos(p);
+                // habilitar los campos si se ha accedido como modificación
+                if(tipo.equals("modificacion")){
+                    tfNombre.setEditable(true);
+                    tfApellido1.setEditable(true);
+                    tfApellido2.setEditable(true);
+                    pfContrasenna.setEditable(true);
+                    tfEmail.setEditable(true);
+                    cbPerfil.setEnabled(true);
+                }
+                bAceptar.setEnabled(true);
             }
-            // habilitar los campos si se ha accedido como modificación
-            if(tipo.equals("modificacion")){
-                tfNombre.setEditable(true);
-                tfApellido1.setEditable(true);
-                tfApellido2.setEditable(true);
-                pfContrasenna.setEditable(true);
-                tfEmail.setEditable(true);
-                cbPerfil.setEnabled(true);
-            }
-            bAceptar.setEnabled(true);
         }
-        catch (Excepcion e){
+        catch (Excepcion e)
+        {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
         }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getClass());
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_bBuscarActionPerformed
 
