@@ -28,7 +28,7 @@ public class BDJugador {
     }
     
      /**
-     * Metodo para buscar una lista de jugadores por dni.
+     * Metodo para buscar un jugador por dni.
      * @param dni String
      * @return devuelve una lista de jugadores 
      * @throws Exception 

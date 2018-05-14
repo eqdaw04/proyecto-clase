@@ -40,6 +40,13 @@ public class BDJornada {
         return j;
     }
     
+    /**
+     * Metodo para convertir la fecha.
+     * @param fecha Java util date
+     * @return devuelve la fecha en el tipo de dato date
+     * @throws Exception 
+     */
+    
     private Date convertirFechaASql(java.util.Date fecha) throws Exception{
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
         String ff = f.format(fecha);
@@ -47,6 +54,13 @@ public class BDJornada {
         Date fSQL = new Date(parsed.getTime());
         return fSQL;
     }
+    
+    /**
+     * Metodo para modificar la jornada
+     * @param jornada Jornada
+     * @param con BDConexion
+     * @throws Exception 
+     */
     
     public void modificarJornada(Jornada jornada, BDConexion con) throws Exception{
         PreparedStatement sentencia;
@@ -59,6 +73,12 @@ public class BDJornada {
         }
         sentencia.close();
     }
+    
+    /**
+     * Metodo para consultar una lista de todas las jornadas 
+     * @return devuelve la lista de jornadas
+     * @throws Exception 
+     */
     
     public ArrayList <Jornada> consultarTodasLasJornadas() throws Exception{
         ArrayList <Jornada> lJornada = new ArrayList();

@@ -143,6 +143,13 @@ public class BDEquipo {
         return e;
     }
     
+    /**
+     * Metodo para consultar un equipo por su número de id
+     * @param n int
+     * @return devuelve un objeto equipo
+     * @throws Exception 
+     */
+    
     public Equipo consultarEquipoPorNumero(int n) throws Exception{
         BDConexion con = new BDConexion();
         Equipo e = null;

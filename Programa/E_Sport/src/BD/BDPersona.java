@@ -68,6 +68,13 @@ public class BDPersona {
         return p;
     }
     
+    /**
+     * Metodo para buscar una persona.
+     * @param id int
+     * @return devuelve un objeto persona
+     * @throws Exception 
+     */
+    
     public Persona buscarPersona(int id) throws Exception{
         // abre la conexion
         BDConexion con = new BDConexion();
@@ -103,7 +110,7 @@ public class BDPersona {
         return p;
     }
     
-        /**
+      /**
      * Metodo para buscar una lista de todas las personas de la base de datos.
      * @return devuelve una lista de personas
      * @throws Exception 
@@ -143,7 +150,7 @@ public class BDPersona {
         return lPersona;
     }
     
-        /**
+     /**
      * Metodo para dar de alta una persona.
      * @param p Persona
      * @throws Exception 
@@ -173,7 +180,7 @@ public class BDPersona {
         con.desconectar();
     }
     
-        /**
+     /**
      * Metodo para dar de baja una persona.
      * @param p Persona
      * @throws Exception 
@@ -196,7 +203,7 @@ public class BDPersona {
         con.desconectar();
     }
     
-        /**
+     /**
      * Metodo para modificar los datos de una persona.
      * @param p Persona
      * @throws Exception 
@@ -224,6 +231,12 @@ public class BDPersona {
         sentencia.close();
         con.desconectar();
     }
+    
+    /**
+     * Metodo para buscar a los dueños de los equipos.
+     * @return devuelve un objeto persona
+     * @throws Exception 
+     */
     
     
     public ArrayList<Persona> buscarUsuariosDuennos() throws Exception {

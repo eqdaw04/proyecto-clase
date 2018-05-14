@@ -17,10 +17,13 @@ import UML.Partido;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
+
 /**
- *
- * @author 1gdaw06
+ * Clase en la que controlaremos e introduciremos los partidos a la base de datos.
+ * Fecha de creación de la clase: 10/05/2018
+ * @author eqdaw04
  */
+
 public class BDPartido {
     int idPartido;
     Date fecha;
@@ -33,6 +36,15 @@ public class BDPartido {
     public BDPartido() {
         lEquipo = new ArrayList();
     }
+    
+    /**
+     * Metodo para insertar un partido a la base de datos.
+     * @param p Partido
+     * @param jornada Jornada
+     * @param con BDConexion
+     * @return devuelve el estado "correcto" de la inserción.
+     * @throws Exception 
+     */
     
     public boolean insertarPartido(Partido p, Jornada jornada, BDConexion con) throws Exception{
         boolean estado = false;
@@ -53,6 +65,14 @@ public class BDPartido {
         sentencia.close();
         return estado;
     }
+    
+    /**
+     * Metodo para indicar el equipo que va a jugar en un partido.
+     * @param p Partido
+     * @param con BDConexion
+     * @return devuelve el estado "correcto" si se ha realizado bien la inserción.
+     * @throws Exception 
+     */
     
     public boolean insertarEquipoAPartido(Partido p, BDConexion con) throws Exception{
         boolean estado = false;
@@ -84,6 +104,13 @@ public class BDPartido {
         
     }
     
+    /**
+     * Metodo para consultar los partido de una jornada.
+     * @param jornada int
+     * @return devuelve una lista de partidos.
+     * @throws Exception 
+     */
+    
     public ArrayList<Partido> consultarPartidosPorJornada (int jornada) throws Exception{
         ArrayList<Partido> lPartido = new ArrayList();
         BDConexion con = new BDConexion();
@@ -111,6 +138,13 @@ public class BDPartido {
         con.desconectar();
         return lPartido;
     } 
+    
+    /**
+     * Metodo para consultar el marcador de un partido.
+     * @param p Partido
+     * @return devuelve un objeto Partido
+     * @throws Exception 
+     */
 
     public Partido ConsultarMarcadores(Partido p) throws Exception{
         BDConexion con = new BDConexion();
@@ -133,6 +167,13 @@ public class BDPartido {
         con.desconectar();
         return p;
     }
+    
+    /**
+     * Metodo para modificar un partido. 
+     * @param p Partido
+     * @return devuelve el estado "correcto" si se ha realizado bien la inserción.
+     * @throws Exception 
+     */
     
     public boolean modificarPartido(Partido p) throws Exception{
         boolean estado = false;
