@@ -186,7 +186,6 @@
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Equipo1&#xa;blablabla"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -244,12 +243,23 @@
       </Properties>
     </Component>
     <Component class="org.freixas.jcalendar.JCalendarCombo" name="ccFecha">
+      <Properties>
+        <Property name="editable" type="boolean" value="true"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="dateChanged" listener="org.freixas.jcalendar.DateListener" parameters="org.freixas.jcalendar.DateEvent" handler="ccFechaDateChanged"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ccFechaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bAceptar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Aceptar"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAceptarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bCancelar">
       <Properties>
@@ -267,7 +277,6 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="cbPartido">
       <Properties>
-        <Property name="editable" type="boolean" value="true"/>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
             <StringItem index="0" value="Item 1"/>
@@ -276,7 +285,6 @@
             <StringItem index="3" value="Item 4"/>
           </StringArray>
         </Property>
-        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbPartidoActionPerformed"/>

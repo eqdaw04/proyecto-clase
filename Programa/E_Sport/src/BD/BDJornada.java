@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 /**
  * Clase en la que controlaremos e introduciremos datos de la jornada actual a la base de datos.
@@ -25,7 +26,7 @@ public class BDJornada {
     public Jornada insertarJornada(int nJornada, Calendar fecha, BDConexion con) throws Exception{
         Jornada j = null;        
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("INSERT INTO jornada VALUES(?, TO_DATE(?,'DD/MM/YYYY'), null)");
+        sentencia = con.getConnection().prepareStatement("INSERT INTO jornada VALUES(?, TO_DATE(?,'DD/MM/RRRR'), null)");
         sentencia.setInt(1, nJornada);
         sentencia.setDate(2, convertirFechaASql(fecha.getTime()));
         int n = sentencia.executeUpdate();
@@ -62,7 +63,7 @@ public class BDJornada {
     
     public void modificarJornada(Jornada jornada, BDConexion con) throws Exception{
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("UPDATE jornada SET fecha_fin = TO_DATE(?,'DD/MM/YYYY') WHERE id_jornada = ?");
+        sentencia = con.getConnection().prepareStatement("UPDATE jornada SET fecha_fin = TO_DATE(?,'DD/MM/RRRR') WHERE id_jornada = ?");
         sentencia.setDate(1, convertirFechaASql(jornada.getFechaFinal()));
         sentencia.setInt(2, jornada.getIdJornada());
         int n = sentencia.executeUpdate();

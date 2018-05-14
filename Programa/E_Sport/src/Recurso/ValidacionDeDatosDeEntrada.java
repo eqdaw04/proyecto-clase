@@ -46,6 +46,10 @@ public class ValidacionDeDatosDeEntrada{
         String dato = "";
         switch(cod){
 
+            case 46:
+                dato = "^[0-9]{1,}$";
+                break;
+                
             case 3: // NIF
                 dato = "^[A-Z0-9][0-9]{7}[A-Z]$";
                 break;

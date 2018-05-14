@@ -129,9 +129,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        lPartido = new javax.swing.JList<Integer>();
+        lPartido = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
-        lJornada = new javax.swing.JList<Integer>();
+        lJornada = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tfLocal = new javax.swing.JTextField();
@@ -147,9 +147,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         ccCalendarioInicial = new org.freixas.jcalendar.JCalendarCombo();
         jLabel6 = new javax.swing.JLabel();
-        cbHoraI = new javax.swing.JComboBox<String>();
+        cbHoraI = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        cbHoraF = new javax.swing.JComboBox<String>();
+        cbHoraF = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
@@ -387,17 +387,17 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel7))
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAceptar)
-                    .addComponent(bCancelar))
-                .addGap(207, 207, 207))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bAceptar)
+                            .addComponent(bCancelar)))
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
 
         pack();
@@ -434,7 +434,6 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
     private void cbHoraIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHoraIActionPerformed
 
-        bGenerarCalendario.setEnabled(true);
         cbHoraF.setEnabled(true);
         cbHoraF.removeAllItems();
         for(int x = Integer.parseInt(cbHoraI.getSelectedItem().toString()); x<24; x++){

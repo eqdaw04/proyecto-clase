@@ -19,7 +19,6 @@ public class Equipo {
     
     private Persona persona;
     private ArrayList<Jugador> listaJugadores;
-    private ArrayList<Marcador> listaMarcadores;
 
     public Equipo() {
     }
@@ -80,11 +79,4 @@ public class Equipo {
         this.listaJugadores = listaJugadores;
     }
 
-    public ArrayList<Marcador> getListaMarcadores() {
-        return listaMarcadores;
-    }
-
-    public void setListaMarcadores(ArrayList<Marcador> listaMarcadores) {
-        this.listaMarcadores = listaMarcadores;
-    }
 }

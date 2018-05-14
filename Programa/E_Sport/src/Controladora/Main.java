@@ -21,6 +21,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  * Clase controladora.
@@ -475,6 +476,7 @@ public class Main {
     
     public static void modificarJornada(Jornada jornada, BDConexion con) throws Exception{
         // modificar la fecha final de la jornada
+        
         bdJornada.modificarJornada(jornada, con);
         
     }
@@ -525,9 +527,13 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static Equipo consultarEquipoPorNumero(int n) throws Exception{
-        Equipo e = null;
-        e = bdEquipo.consultarEquipoPorNumero(n);
-        return e;
+        return bdEquipo.consultarEquipoPorNumero(n);
+    }
+    
+    //---------- JON XU JIN ----------
+    
+    public static boolean modificarMarcador(Partido p) throws Exception{
+        return bdPartido.modificarMarcador(p);
     }
     
     /**

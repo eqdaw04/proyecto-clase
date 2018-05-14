@@ -6,6 +6,8 @@
 package Views;
 
 import Controladora.Main;
+import Excepciones.Excepcion;
+import Recurso.ValidacionDeDatosDeEntrada;
 import UML.Partido;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
 
     int n;
     ArrayList<Partido> listaPartido;
+    Partido p;
     /**
      * Creates new form VIntroducirResultado
      */
@@ -34,6 +37,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         // Cargar los partidos del día de hoy, si existe
         cargarPartido();
+        ccFecha.setEnabled(false);
         setVisible(true);
     }
 
@@ -95,7 +99,6 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         taVisitante.setEditable(false);
         taVisitante.setColumns(20);
         taVisitante.setRows(5);
-        taVisitante.setText("Equipo1\nblablabla");
         jScrollPane2.setViewportView(taVisitante);
 
         tfPuntosLocal.setEditable(false);
@@ -120,8 +123,26 @@ public class VIntroducirResultado extends javax.swing.JDialog {
 
         jLabel8.setText("Lugar del Partido:");
 
+        ccFecha.setEditable(true);
+        ccFecha.setEnabled(false);
+        ccFecha.addDateListener(new org.freixas.jcalendar.DateListener() {
+            public void dateChanged(org.freixas.jcalendar.DateEvent evt) {
+                ccFechaDateChanged(evt);
+            }
+        });
+        ccFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ccFechaActionPerformed(evt);
+            }
+        });
+
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAceptarActionPerformed(evt);
+            }
+        });
 
         bCancelar.setText("Cancelar");
         bCancelar.setEnabled(false);
@@ -133,9 +154,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
 
         jLabel11.setText("Partido número: ");
 
-        cbPartido.setEditable(true);
         cbPartido.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbPartido.setEnabled(false);
         cbPartido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbPartidoActionPerformed(evt);
@@ -257,22 +276,63 @@ public class VIntroducirResultado extends javax.swing.JDialog {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarActionPerformed
-        // TODO add your handling code here:
+        ccFecha.setEnabled(true);
     }//GEN-LAST:event_bModificarActionPerformed
 
     private void cbPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPartidoActionPerformed
-        Partido p = null;
+        p = null;
         for(int x = 0 ; x < listaPartido.size() ; x++){
             p = listaPartido.get(x);
             if(p.getIdPartido() == Integer.valueOf(cbPartido.getSelectedItem().toString())){
                 SimpleDateFormat f = new SimpleDateFormat("hh:mm");
-                tfHora.setText(f.format(p.getFecha()));
+                tfHora.setText(f.format(p.getFecha().getTime()));
                 tfLugar.setText(p.geteLocal().getLugar());
-                tfPuntosLocal.setText(p.geteLocal().getListaMarcadores().get(x).getPuntos());
+                tfPuntosLocal.setText(String.valueOf(p.getmLocal()));
+                tfPuntosVisitante.setText(String.valueOf(p.getmLocal()));
+                String dato = "";
+                if(!p.geteLocal().getComentario().equals("")){
+                    dato = p.geteLocal().getComentario();
+                }
+                taLocal.setText(p.geteLocal().getNombre() + "\n" + dato);
+                if(p.geteVisitante().getComentario().equals("")){
+                    dato = p.geteVisitante().getComentario();
+                }
+                taVisitante.setText(p.geteVisitante().getNombre() + "\n" + p.geteVisitante().getComentario());
+                tfPuntosLocal.setEditable(true);
+                tfPuntosVisitante.setEditable(true);
                 x = listaPartido.size();
             }
         }
     }//GEN-LAST:event_cbPartidoActionPerformed
+
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+            
+        try{
+            p.setmLocal(Integer.valueOf(tfPuntosLocal.getText()));
+            p.setmVisitante(Integer.parseInt(tfPuntosVisitante.getText()));
+            ValidacionDeDatosDeEntrada.validar(46, tfPuntosLocal);
+            ValidacionDeDatosDeEntrada.validar(46, tfPuntosVisitante);
+            if(!Main.modificarMarcador(p)){
+                throw new Excepcion(47);
+            }
+            
+        }
+        catch(Excepcion e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
+        }
+            
+    }//GEN-LAST:event_bAceptarActionPerformed
+
+    private void ccFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccFechaActionPerformed
+        
+    }//GEN-LAST:event_ccFechaActionPerformed
+
+    private void ccFechaDateChanged(org.freixas.jcalendar.DateEvent evt) {//GEN-FIRST:event_ccFechaDateChanged
+        cargarPartido();
+    }//GEN-LAST:event_ccFechaDateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;

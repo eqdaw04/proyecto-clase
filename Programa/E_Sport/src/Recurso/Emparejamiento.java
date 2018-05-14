@@ -154,7 +154,6 @@ public class Emparejamiento {
             int d = 0;
             for(int y = 0; y< horizontal; y++){
                 dato += nombreSemana(fecha.get(Calendar.DAY_OF_WEEK)) + " día " + formatearFecha(fecha) + ", " ;
-                fecha.add(Calendar.DAY_OF_YEAR, 1);
                 dato += lJPEquipoL[x][y].getNombre() + " vs " + lJPEquipoV[x][y].getNombre() + "   ";
                 Partido p = new Partido();
                 p.setIdPartido(partido);
@@ -168,6 +167,7 @@ public class Emparejamiento {
                 if(!Main.insertarPartido(p, j, con)){
                     throw new Excepcion(42);
                 }
+                fecha.add(Calendar.DAY_OF_YEAR, 1);
                 d++;
                 // si supera la semana antes de acabar la jornada, se volverá al primer día del inicio de la jornada y así sucesivamente
                 if(d==7){
@@ -182,7 +182,10 @@ public class Emparejamiento {
                 partido++;
             }
             fecha.add(Calendar.DAY_OF_YEAR, 7-d);
-            j.setFechaFinal(fecha.getTime());
+            Calendar ff = Calendar.getInstance();
+            ff.setTime(fecha.getTime());
+            ff.add(Calendar.DAY_OF_YEAR, -1);
+            j.setFechaFinal(ff.getTime());
             Main.modificarJornada(j, con);
             dato += "\n";
             dia = dia + 7 - d;
@@ -203,9 +206,7 @@ public class Emparejamiento {
             sumar = true;
             int d = 0;
             for(int y = 0; y< horizontal; y++){
-                
                 dato += nombreSemana(fecha.get(Calendar.DAY_OF_WEEK)) + " día " + formatearFecha(fecha) + ", " ;
-                fecha.add(Calendar.DAY_OF_YEAR, 1);
                 dato += lJPEquipoV[x][y].getNombre() + " vs " + lJPEquipoL[x][y].getNombre() + "   ";
                 Partido p = new Partido();
                 p.setIdPartido(partido);
@@ -219,6 +220,7 @@ public class Emparejamiento {
                 if(!Main.insertarPartido(p, j, con)){
                     throw new Excepcion(42);
                 }
+                fecha.add(Calendar.DAY_OF_YEAR, 1);
                 d++;
                 if(d==7){
                     fecha.add(Calendar.DAY_OF_YEAR, -7);
@@ -232,7 +234,10 @@ public class Emparejamiento {
                 partido++;
             }
             fecha.add(Calendar.DAY_OF_YEAR, 7-d);
-            j.setFechaFinal(fecha.getTime());
+            Calendar ff = Calendar.getInstance();
+            ff.setTime(fecha.getTime());
+            ff.add(Calendar.DAY_OF_YEAR, -1);
+            j.setFechaFinal(ff.getTime());
             Main.modificarJornada(j, con);
             dato += "\n";
             dia = dia + 7 - d;

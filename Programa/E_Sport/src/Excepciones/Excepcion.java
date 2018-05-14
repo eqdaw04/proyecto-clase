@@ -169,6 +169,14 @@ public class Excepcion extends Exception {
                 dato = "Ha habido un error al consultar los datos del Equipo en relación con la Persona.";
                 break;
                 
+            case 46:
+                dato = "Los puntos ha de ser numéricos.";
+                break;
+                
+            case 47:
+                dato = "Error al modificar el Marcador.";
+                break;
+                
             case 50:
                 dato = dato + "El nombre del equipo es obligatorio.";
                 break;

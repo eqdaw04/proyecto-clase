@@ -149,8 +149,8 @@ public class BDPartido {
          ArrayList <Partido> listaPartido = new ArrayList();
          BDConexion con = new BDConexion();
          PreparedStatement sentencia;
-         sentencia = con.getConnection().prepareStatement("SELECT * FROM partido WHERE fecha = ?");
-         sentencia.setString(1, fechaAString(fecha));
+         sentencia = con.getConnection().prepareStatement("SELECT * FROM partido WHERE fecha = to_timestamp(?,'YYYY-MM-DD HH24:MI:SS.FF')");
+         sentencia.setString(1, String.valueOf(new java.sql.Timestamp(fecha.getTime())));
          ResultSet rs;
          rs = sentencia.executeQuery();
          while(rs.next()){
@@ -161,6 +161,7 @@ public class BDPartido {
             Calendar c = Calendar.getInstance();
             c.setTimeInMillis(as);
             p.setFecha(c);
+            listaPartido.add(p);
          }
          return listaPartido;
      }
@@ -209,6 +210,27 @@ public class BDPartido {
         sentencia.setInt(2, p.getIdPartido());
         if(sentencia.executeUpdate()==1){
             estado = true;
+        }
+        return estado;
+    }
+    
+    public boolean modificarMarcador(Partido p) throws Exception{
+        boolean estado = false;
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("UPDATE marcador SET puntuacion = ? WHERE id_partido = ? and id_equipo = ?" );
+        sentencia.setInt(1, p.getmLocal());
+        sentencia.setInt(2, p.getIdPartido());
+        sentencia.setInt(3, p.geteLocal().getIdEquipo());
+                
+        if(sentencia.executeUpdate()==1){
+            sentencia = con.getConnection().prepareStatement("UPDATE marcador SET puntuacion = ? WHERE id_partido = ? and id_equipo = ?" );
+            sentencia.setInt(1, p.getmVisitante());
+            sentencia.setInt(2, p.getIdPartido());
+            sentencia.setInt(3, p.geteVisitante().getIdEquipo());
+            if(sentencia.executeUpdate()==1){
+                estado = true;
+            }
         }
         return estado;
     }
