@@ -277,7 +277,7 @@ public class VUsuario extends javax.swing.JDialog {
         getContentPane().add(jLabel10);
         jLabel10.setBounds(96, 260, 90, 21);
         getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 590, 490);
+        imgfondo.setBounds(0, 0, 640, 500);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
