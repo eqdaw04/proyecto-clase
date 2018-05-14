@@ -103,11 +103,11 @@ public class BDEquipo {
         sentencia.setString(1,usu);
         ResultSet rs = sentencia.executeQuery();
         while (rs.next()){
-            e.setIdEquipo(Integer.parseInt(rs.getString(1)));
-            e.setNombre(rs.getString(2));
-            e.setFechaCreacion(rs.getDate(3));
-            e.setComentario(rs.getString(4));
-            e.setPersona(Main.obtenerPersona(rs.getInt(5)));
+            e.setIdEquipo(Integer.parseInt(rs.getString("id_equipo")));
+            e.setNombre(rs.getString("nombre"));
+            e.setFechaCreacion(rs.getDate("fecha_creacion"));
+            e.setComentario(rs.getString("comentario"));
+            e.setPersona(Main.obtenerPersona(rs.getInt("id_persona")));
         }
         return e;
     }
@@ -129,11 +129,11 @@ public class BDEquipo {
             ResultSet rs = sentencia.executeQuery();
             while (rs.next()){
             e= new Equipo();
-            e.setIdEquipo(Integer.parseInt(rs.getString(1)));
-            e.setNombre(rs.getString(2));
-            e.setFechaCreacion(rs.getDate(3));
-            e.setComentario(rs.getString(4));
-            e.setPersona(Main.obtenerPersona(rs.getInt(5)));
+            e.setIdEquipo(Integer.parseInt(rs.getString("id_equipo")));
+            e.setNombre(rs.getString("nombre"));
+            e.setFechaCreacion(rs.getDate("fecha_creacion"));
+            e.setComentario(rs.getString("comentario"));
+            e.setPersona(Main.obtenerPersona(rs.getInt("id_persona")));
         }
         }
         catch (SQLException ex)
@@ -189,10 +189,10 @@ public class BDEquipo {
             ResultSet rs = sentencia.executeQuery();
             while (rs.next()){
                 Equipo e= new Equipo();
-                e.setIdEquipo(Integer.parseInt(rs.getString(1)));
-                e.setNombre(rs.getString(2));
-                e.setFechaCreacion(rs.getDate(3));
-                e.setComentario(rs.getString(4));
+                e.setIdEquipo(Integer.parseInt(rs.getString("id_equipo")));
+                e.setNombre(rs.getString("nombre"));
+                e.setFechaCreacion(rs.getDate("fecha_creacion"));
+                e.setComentario(rs.getString("comentario"));
                 e.setPersona(Main.obtenerPersona(rs.getInt(5)));
 
                 a.add(e);
