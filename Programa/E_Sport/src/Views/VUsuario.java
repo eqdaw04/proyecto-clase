@@ -64,7 +64,7 @@ public class VUsuario extends javax.swing.JDialog {
                 tfEmail.setEditable(true);
                 cbPerfil.setEditable(true);
                 bAceptar.setEnabled(true);
-                bBuscar.setEnabled(false);
+                bBuscar.setVisible(false);
                 bPrimero.setVisible(false);
                 bAnterior.setVisible(false);
                 bSiguiente.setVisible(false);
