@@ -123,7 +123,7 @@ public class BDJugador {
             j.setApellido1(rs.getString("apellido1"));
             j.setApellido2(rs.getString("apellido2"));
             j.setNickname(rs.getString("nickname"));
-            j.setSueldo(Float.parseFloat(rs.getString("nickname")));
+            j.setSueldo(Float.parseFloat(rs.getString("sueldo")));
             j.setFechaAlta(rs.getDate("fecha_alta"));
             j.setComentario(rs.getString("comentario"));      
             a.add(j);
