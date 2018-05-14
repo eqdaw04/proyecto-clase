@@ -280,6 +280,9 @@
           <AbsoluteConstraints x="230" y="220" width="120" height="-1"/>
         </Constraint>
       </Constraints>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     </Component>
   </SubComponents>
