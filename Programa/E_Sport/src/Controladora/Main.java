@@ -227,9 +227,12 @@ public class Main {
       //-------Mikel
  
     public static void abrirVJugador (Jugador j){
- 
         new VJugador("consulta",1,j);
+    }
+    //-------Mikel
  
+    public static void abrirVJornada (int n){
+        new VJornada(n);
     }
     
     /**
