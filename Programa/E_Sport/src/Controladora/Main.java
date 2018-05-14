@@ -158,6 +158,9 @@ public class Main {
                 
             case 7:
                 new VGenerarLiga(n);
+            case 8:
+                new VCalendario();
+                break;
         }
     }
 
@@ -209,6 +212,11 @@ public class Main {
                 
             case 7:
                 new VGenerarLiga(n);
+                break;
+            case 8:
+                new VCalendario();
+                break;
+                
         }
     }
     
@@ -810,7 +818,11 @@ public class Main {
         return bdJugador.buscarJugadorNickname(nickname);
  
     }
- 
+    //-------------Mikel
+    
+    public static Jornada consultarJornadaPorNumeroDeJornada(int n) throws Exception{
+        return bdJornada.consultarJornadaPorNumeroDeJornada(n);
+    } 
     /**
      * Metodo para dar de alta un equipo en la base de datos.
      * @param nombre String
