@@ -5,7 +5,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <engineerTo>
-<item key="58024A3C-2090-87BE-41F5-D877032373D5" value="true"/>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -22,11 +22,36 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>MER</ownerDesignName>
 <engineerTo>
-<item key="58024A3C-2090-87BE-41F5-D877032373D5" value="true"/>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Fecha_Inicio" id="5C863FD4-5B9B-EC80-67F3-AD31A31A891D">
+<createdBy>v6222</createdBy>
+<createdTime>2018-05-14 08:30:15 UTC</createdTime>
+<ownerDesignName>MER</ownerDesignName>
+<engineerTo>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Fecha_Fin" id="9595ADFB-5089-6E6E-A604-8DB019D8267A">
+<createdBy>v6222</createdBy>
+<createdTime>2018-05-14 08:30:34 UTC</createdTime>
+<ownerDesignName>MER</ownerDesignName>
+<engineerTo>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -36,8 +61,9 @@
 <createdTime>2018-04-19 10:04:00 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>MER</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="58024A3C-2090-87BE-41F5-D877032373D5" value="true"/>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
