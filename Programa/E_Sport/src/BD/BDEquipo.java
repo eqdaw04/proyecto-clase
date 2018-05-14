@@ -98,12 +98,13 @@ public class BDEquipo {
     
     public Equipo BuscarEquipoPorUsuario(String usu) throws Exception  {
         BDConexion con = new BDConexion();
-        Equipo e = null;
+        Equipo e = new Equipo();
         PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Equipo WHERE Id_persona = (SELECT Id_persona FROM Persona WHERE Usuario = ?)");
         sentencia.setString(1,usu);
         ResultSet rs = sentencia.executeQuery();
         while (rs.next()){
-            e.setIdEquipo(Integer.parseInt(rs.getString("id_equipo")));
+            
+            e.setIdEquipo(rs.getInt("id_equipo"));
             e.setNombre(rs.getString("nombre"));
             e.setFechaCreacion(rs.getDate("fecha_creacion"));
             e.setComentario(rs.getString("comentario"));
