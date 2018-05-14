@@ -43,6 +43,7 @@ public class VLogin extends javax.swing.JFrame {
         Icon icono3 = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
         imgfondo.setIcon(icono3);
         this.repaint();
+        
 
         jTextField1.grabFocus();
         
