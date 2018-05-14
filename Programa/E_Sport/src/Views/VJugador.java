@@ -89,6 +89,7 @@ public class VJugador extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 36)); // NOI18N
@@ -239,7 +240,7 @@ public class VJugador extends javax.swing.JDialog {
         getContentPane().add(jLabel9);
         jLabel9.setBounds(118, 234, 90, 21);
         getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 680, 500);
+        imgfondo.setBounds(0, 0, 710, 600);
 
         pack();
         setLocationRelativeTo(null);
