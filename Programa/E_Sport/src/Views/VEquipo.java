@@ -11,7 +11,10 @@ import Excepciones.Excepcion;
 import Recurso.ValidacionDeDatosDeEntrada;
 import UML.Equipo;
 import UML.Persona;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  * Ventana equipo.
@@ -34,6 +37,12 @@ public class VEquipo extends javax.swing.JDialog {
     public VEquipo(String tipo, int n) {
         initComponents();
         cargarDatos(tipo, n);
+        
+        ImageIcon fondojava = new ImageIcon("../../../imagenes/fondo2.jpg");
+        Icon icono3 = new ImageIcon (fondojava.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
+        imgfondo.setIcon(icono3);
+        this.repaint();
+        
     }
 
     /**
@@ -64,11 +73,17 @@ public class VEquipo extends javax.swing.JDialog {
         taPlantilla = new javax.swing.JTextArea();
         cFechaCreacion = new org.freixas.jcalendar.JCalendarCombo();
         jLabel5 = new javax.swing.JLabel();
+<<<<<<< Updated upstream
         cbDuenno = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         tfLugar = new javax.swing.JTextField();
+=======
+        cbDuenno = new javax.swing.JComboBox<String>();
+        imgfondo = new javax.swing.JLabel();
+>>>>>>> Stashed changes
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         bUltimo.setText(">|");
         bUltimo.setEnabled(false);
@@ -77,13 +92,21 @@ public class VEquipo extends javax.swing.JDialog {
                 bUltimoActionPerformed(evt);
             }
         });
+        getContentPane().add(bUltimo);
+        bUltimo.setBounds(313, 601, 47, 25);
 
+        jLabel6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel6.setText("Comentarios:");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(12, 444, 117, 21);
 
         taComentario.setEditable(false);
         taComentario.setColumns(20);
         taComentario.setRows(5);
         jScrollPane1.setViewportView(taComentario);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(147, 444, 218, 96);
 
         bBuscar.setText("Buscar");
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +114,8 @@ public class VEquipo extends javax.swing.JDialog {
                 bBuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(bBuscar);
+        bBuscar.setBounds(429, 97, 71, 25);
 
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
@@ -99,6 +124,8 @@ public class VEquipo extends javax.swing.JDialog {
                 bAceptarActionPerformed(evt);
             }
         });
+        getContentPane().add(bAceptar);
+        bAceptar.setBounds(142, 558, 77, 25);
 
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +133,8 @@ public class VEquipo extends javax.swing.JDialog {
                 bCancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(bCancelar);
+        bCancelar.setBounds(277, 558, 83, 25);
 
         bPrimero.setText("|<");
         bPrimero.setEnabled(false);
@@ -114,13 +143,25 @@ public class VEquipo extends javax.swing.JDialog {
                 bPrimeroActionPerformed(evt);
             }
         });
+        getContentPane().add(bPrimero);
+        bPrimero.setBounds(142, 601, 47, 25);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 36)); // NOI18N
         jLabel1.setText("EQUIPO");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(246, 13, 176, 77);
 
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("Nombre:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(12, 97, 76, 21);
+        getContentPane().add(tfNombre);
+        tfNombre.setBounds(193, 98, 218, 22);
 
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel4.setText("Fecha de creación:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(12, 152, 164, 21);
 
         bAnterior.setText("<");
         bAnterior.setEnabled(false);
@@ -129,6 +170,8 @@ public class VEquipo extends javax.swing.JDialog {
                 bAnteriorActionPerformed(evt);
             }
         });
+        getContentPane().add(bAnterior);
+        bAnterior.setBounds(196, 601, 41, 25);
 
         bSiguiente.setText(">");
         bSiguiente.setEnabled(false);
@@ -137,19 +180,33 @@ public class VEquipo extends javax.swing.JDialog {
                 bSiguienteActionPerformed(evt);
             }
         });
+        getContentPane().add(bSiguiente);
+        bSiguiente.setBounds(265, 601, 41, 25);
 
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel3.setText("Plantilla:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(12, 211, 74, 21);
 
         taPlantilla.setEditable(false);
         taPlantilla.setColumns(20);
         taPlantilla.setRows(5);
         jScrollPane2.setViewportView(taPlantilla);
 
-        cFechaCreacion.setEnabled(false);
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(142, 211, 218, 133);
 
+        cFechaCreacion.setEnabled(false);
+        getContentPane().add(cFechaCreacion);
+        cFechaCreacion.setBounds(194, 153, 218, 22);
+
+        jLabel5.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel5.setText("Dueño:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(12, 381, 63, 21);
 
         cbDuenno.setEnabled(false);
+<<<<<<< Updated upstream
 
         jLabel7.setText("Lugar:");
 
@@ -241,6 +298,12 @@ public class VEquipo extends javax.swing.JDialog {
                         .addComponent(bUltimo)))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
+=======
+        getContentPane().add(cbDuenno);
+        cbDuenno.setBounds(142, 382, 151, 22);
+        getContentPane().add(imgfondo);
+        imgfondo.setBounds(0, 0, 690, 640);
+>>>>>>> Stashed changes
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -453,6 +516,7 @@ public class VEquipo extends javax.swing.JDialog {
     private javax.swing.JButton bUltimo;
     private org.freixas.jcalendar.JCalendarCombo cFechaCreacion;
     private javax.swing.JComboBox<String> cbDuenno;
+    private javax.swing.JLabel imgfondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
