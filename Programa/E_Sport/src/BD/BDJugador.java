@@ -117,15 +117,15 @@ public class BDJugador {
     public ArrayList<Jugador> recorrer(ResultSet rs, ArrayList <Jugador> a) throws SQLException {
         while (rs.next()){
             Jugador j= new Jugador();
-            j.setIdJugador(Integer.parseInt(rs.getString(1)));
-            j.setDni(rs.getString(2));
-            j.setNombre(rs.getString(3));
-            j.setApellido1(rs.getString(4));
-            j.setApellido2(rs.getString(5));
-            j.setNickname(rs.getString(6));
-            j.setSueldo(Float.parseFloat(rs.getString(7)));
-            j.setFechaAlta(rs.getDate(8));
-            j.setComentario(rs.getString(9));      
+            j.setIdJugador(Integer.parseInt(rs.getString("id_jugador")));
+            j.setDni(rs.getString("dni"));
+            j.setNombre(rs.getString("nombre"));
+            j.setApellido1(rs.getString("apellido1"));
+            j.setApellido2(rs.getString("apellido2"));
+            j.setNickname(rs.getString("nickname"));
+            j.setSueldo(Float.parseFloat(rs.getString("nickname")));
+            j.setFechaAlta(rs.getDate("fecha_alta"));
+            j.setComentario(rs.getString("comentario"));      
             a.add(j);
         }
         return a;

@@ -56,6 +56,19 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="lugar" id="394F36CB-1AF1-6E18-A69D-6D786AA7C684">
+<createdBy>v6222</createdBy>
+<createdTime>2018-05-14 08:36:51 UTC</createdTime>
+<ownerDesignName>MER</ownerDesignName>
+<engineerTo>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="comentario" id="C2B338B4-94ED-911E-49CB-C41704CCC2C3">
 <createdBy>1gdaw11</createdBy>
 <createdTime>2018-04-19 10:41:46 UTC</createdTime>
@@ -92,8 +105,9 @@
 <createdTime>2018-04-19 10:40:13 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>MER</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

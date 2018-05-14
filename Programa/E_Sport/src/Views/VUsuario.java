@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Views;
 
 import Controladora.Main;
@@ -54,6 +59,10 @@ public class VUsuario extends javax.swing.JDialog {
         }
         cbPerfil.setSelectedIndex(-1);
         lPersona = new ArrayList();
+        bPrimero.setVisible(false);
+        bAnterior.setVisible(false);
+        bSiguiente.setVisible(false);
+        bUltimo.setVisible(false);
         switch(tipo)
         {
             case "alta":
@@ -65,24 +74,14 @@ public class VUsuario extends javax.swing.JDialog {
                 cbPerfil.setEditable(true);
                 bAceptar.setEnabled(true);
                 bBuscar.setVisible(false);
-                bPrimero.setVisible(false);
-                bAnterior.setVisible(false);
-                bSiguiente.setVisible(false);
-                bUltimo.setVisible(false);
+                
                 break;
-            case "baja":
-                bPrimero.setVisible(false);
-                bAnterior.setVisible(false);
-                bSiguiente.setVisible(false);
-                bUltimo.setVisible(false);
-                break;
-            case "modificacion":
-                bPrimero.setVisible(false);
-                bAnterior.setVisible(false);
-                bSiguiente.setVisible(false);
-                bUltimo.setVisible(false);
-                break;
+            
             case "listado":
+                bPrimero.setVisible(true);
+                bAnterior.setVisible(true);
+                bSiguiente.setVisible(true);
+                bUltimo.setVisible(true);
                 bAceptar.setVisible(false);
                 bCancelar.setVisible(false);
                 break;

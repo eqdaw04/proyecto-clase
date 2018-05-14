@@ -42,33 +42,6 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="hora" id="191958F3-A749-A149-51E4-2919412D4552">
-<createdBy>1gdaw11</createdBy>
-<createdTime>2018-04-19 10:09:10 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
-<ownerDesignName>MER</ownerDesignName>
-<engineerTo>
-<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT046</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="lugar" id="FA8AD114-7AF5-AFE2-E9B7-506927DDA878">
-<createdBy>1gdaw11</createdBy>
-<createdTime>2018-04-19 10:09:23 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
-<ownerDesignName>MER</ownerDesignName>
-<engineerTo>
-<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>45</dataTypeSize>
-<ownDataTypeParameters>45,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Id_jornada" id="B1ADBDD5-578B-A804-92F6-4C7A61418F47">
 <createdBy>v6222</createdBy>
 <createdTime>2018-04-20 07:06:33 UTC</createdTime>
@@ -90,8 +63,9 @@
 <createdTime>2018-04-19 10:06:51 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>MER</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="true"/>
+<item key="180C257C-C33D-B7B6-B1CD-4EF42D8F945F" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

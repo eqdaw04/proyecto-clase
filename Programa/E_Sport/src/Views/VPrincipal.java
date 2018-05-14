@@ -73,7 +73,6 @@ public class VPrincipal extends javax.swing.JFrame {
         generarCalendario = new javax.swing.JMenuItem();
         introducirResultados = new javax.swing.JMenuItem();
         equipos = new javax.swing.JMenu();
-        altasBajas = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         ver = new javax.swing.JMenu();
         verCalendario = new javax.swing.JMenuItem();
@@ -229,14 +228,6 @@ public class VPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(administracion);
 
         equipos.setText("Equipos");
-
-        altasBajas.setText("Altas y bajas");
-        altasBajas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                altasBajasActionPerformed(evt);
-            }
-        });
-        equipos.add(altasBajas);
 
         jMenuItem1.setText("Modificar Equipo");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -406,14 +397,6 @@ public class VPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_introducirResultadosActionPerformed
 
-    private void altasBajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altasBajasActionPerformed
-        try {
-            Main.abrirVentana(4, "");
-        } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_altasBajasActionPerformed
-
     private void verCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCalendarioActionPerformed
         // TODO add your handling code here:
         // Abrir ventana
@@ -447,7 +430,6 @@ public class VPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel NombreUsu;
     private javax.swing.JMenu administracion;
-    private javax.swing.JMenuItem altasBajas;
     private javax.swing.JButton bCerrarSesion;
     private javax.swing.JMenuItem crearEquipo;
     private javax.swing.JMenuItem crearJugador;

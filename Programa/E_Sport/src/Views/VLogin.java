@@ -45,6 +45,12 @@ public class VLogin extends javax.swing.JFrame {
         this.repaint();
 
         jTextField1.grabFocus();
+        
+        /*ImageIcon accederimg = new ImageIcon("../../../imagenes/BAcceder.png");
+        Icon icono4 = new ImageIcon (accederimg.getImage().getScaledInstance(labelacceder.getWidth(), labelacceder.getHeight(), Image.SCALE_DEFAULT));
+        labelacceder.setIcon(icono4);
+        this.repaint();*/
+        
     }
 
     /**
@@ -76,7 +82,7 @@ public class VLogin extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Bauhaus 93", 1, 36)); // NOI18N
         jLabel1.setText("¡Bienvenidos a E-Sport!");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(50, 40, 450, 70);
@@ -86,17 +92,19 @@ public class VLogin extends javax.swing.JFrame {
         getContentPane().add(tfUsuario);
         tfUsuario.setBounds(190, 150, 150, 30);
 
-        bAcceder.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        bAcceder.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         bAcceder.setText("Acceder");
+        bAcceder.setBorder(null);
+        bAcceder.setPreferredSize(new java.awt.Dimension(67, 31));
         bAcceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAccederActionPerformed(evt);
             }
         });
         getContentPane().add(bAcceder);
-        bAcceder.setBounds(120, 300, 120, 40);
+        bAcceder.setBounds(110, 300, 120, 40);
 
-        bSalir.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        bSalir.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         bSalir.setText("Salir");
         bSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,39 +144,6 @@ public class VLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAccederActionPerformed
-        try
-        {
-            if (tfUsuario.getText().isEmpty())
-            {
-                throw new Excepcion(1);
-            }
-            else if (String.copyValueOf(pfContrasenna.getPassword()).isEmpty())
-            {
-                throw new Excepcion(2);
-            }
-            else{
-                
-                Main.accederPrincipal(tfUsuario.getText(), pfContrasenna.getPassword(), Integer.parseInt(jTextField1.getText()) );
-            }
-        }
-        catch (Excepcion e)
-        {
-            pfContrasenna.setText("");
-            pfContrasenna.grabFocus();
-            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
-        }
-        catch (Exception e)
-        {
-            javax.swing.JOptionPane.showMessageDialog(this, e.getClass());
-        }
-        finally{
-            if(error == 13){
-                Main.salir(this);
-            }
-        }
-    }//GEN-LAST:event_bAccederActionPerformed
 
     /**
      * Metodo para obtener la contraseña.
@@ -279,6 +254,39 @@ public class VLogin extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void bAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAccederActionPerformed
+        try
+        {
+            if (tfUsuario.getText().isEmpty())
+            {
+                throw new Excepcion(1);
+            }
+            else if (String.copyValueOf(pfContrasenna.getPassword()).isEmpty())
+            {
+                throw new Excepcion(2);
+            }
+            else{
+
+                Main.accederPrincipal(tfUsuario.getText(), pfContrasenna.getPassword(), Integer.parseInt(jTextField1.getText()) );
+            }
+        }
+        catch (Excepcion e)
+        {
+            pfContrasenna.setText("");
+            pfContrasenna.grabFocus();
+            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
+        }
+        catch (Exception e)
+        {
+            javax.swing.JOptionPane.showMessageDialog(this, e.getClass());
+        }
+        finally{
+            if(error == 13){
+                Main.salir(this);
+            }
+        }
+    }//GEN-LAST:event_bAccederActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAcceder;

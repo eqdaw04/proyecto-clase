@@ -158,14 +158,6 @@
             <Property name="text" type="java.lang.String" value="Equipos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="altasBajas">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Altas y bajas"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="altasBajasActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modificar Equipo"/>
