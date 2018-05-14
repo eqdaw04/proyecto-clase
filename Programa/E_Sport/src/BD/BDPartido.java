@@ -139,6 +139,31 @@ public class BDPartido {
         return lPartido;
     } 
     
+    private String fechaAString (Date fecha){
+        SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+        String dato = f.format(fecha);
+        return dato;
+    }
+    
+    public ArrayList <Partido> consultarPartidoPorFecha(Date fecha) throws Exception{
+         ArrayList <Partido> listaPartido = new ArrayList();
+         BDConexion con = new BDConexion();
+         PreparedStatement sentencia;
+         sentencia = con.getConnection().prepareStatement("SELECT * FROM partido WHERE fecha = ?");
+         sentencia.setString(1, fechaAString(fecha));
+         ResultSet rs;
+         rs = sentencia.executeQuery();
+         while(rs.next()){
+            Partido p = new Partido();
+            p.setIdPartido(rs.getInt("id_partido"));
+            long as = rs.getTimestamp("fecha").getTime();
+            consultarMarcadores(p);
+            Calendar c = Calendar.getInstance();
+            c.setTimeInMillis(as);
+            p.setFecha(c);
+         }
+         return listaPartido;
+     }
     /**
      * Metodo para consultar el marcador de un partido.
      * @param p Partido
@@ -146,7 +171,7 @@ public class BDPartido {
      * @throws Exception 
      */
 
-    public Partido ConsultarMarcadores(Partido p) throws Exception{
+    public Partido consultarMarcadores(Partido p) throws Exception{
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
         sentencia = con.getConnection().prepareStatement("SELECT * FROM marcador WHERE id_partido = ?");
