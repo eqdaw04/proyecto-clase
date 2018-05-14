@@ -46,27 +46,27 @@ public class ValidacionDeDatosDeEntrada{
         String dato = "";
         switch(cod){
 
-            case 3:
+            case 3: // NIF
                 dato = "^[A-Z0-9][0-9]{7}[A-Z]$";
                 break;
                 
-            case 4:
-                dato = "^[A-Z][a-z]{2,}$";
+            case 4: // Nombre
+                dato = "^[A-Z][a-zñ]{2,}$";
                 break;
                 
-            case 5:
-                dato = "^[A-Z][a-z]{2,}$";
+            case 5: // Apellidos
+                dato = "^[A-Z][a-zñ]{2,}$";
                 break;
                 
-            case 6:
+            case 6: // e-mail
                 dato = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,})$";
                 break;
                 
-            case 7:
+            case 7: // Usuario
                 dato = "^[A-Za-z]{3,}$";
                 break;
                 
-            case 8:
+            case 8: // Contraseña
                 dato = "^[A-Za-z0-9]{3,}$";
                 break;
         }
