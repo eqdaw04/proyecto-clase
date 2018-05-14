@@ -199,7 +199,7 @@ public class BDEquipo {
         Equipo e = null;
         PreparedStatement sentencia;
         // preparar sentencia
-        sentencia = con.getConnection().prepareStatement("SELECT id_equipo, nombre, lugar FROM equipo WHERE id_equipo = ?");
+        sentencia = con.getConnection().prepareStatement("SELECT id_equipo, nombre, comentario, lugar FROM equipo WHERE id_equipo = ?");
         // cargar datos al ?
         sentencia.setInt(1, n);
         // instanciar rs, ejecutar sentencia y cargarlo al rs
@@ -211,7 +211,8 @@ public class BDEquipo {
             e = new Equipo();
             e.setIdEquipo(n);
             e.setNombre(rs.getString("nombre"));
-            e.setLugar(rs.getString("lugar"));           
+            e.setLugar(rs.getString("lugar"));    
+            e.setComentario(rs.getString("comentario"));
         }
         // cerrar lo abierto
         rs.close();

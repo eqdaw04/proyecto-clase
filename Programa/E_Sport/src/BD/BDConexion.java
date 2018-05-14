@@ -33,13 +33,15 @@ public class BDConexion {
             // establecer la conexión
             connection = DriverManager.getConnection(Main.getUrl(), Main.getUsuario(), Main.getContrasenna());
             // comprueba si está conectado, en caso contrario, mostrar error
-            if(connection == null){
-                throw new Excepcion(48);
+            if(connection != null){
+                System.out.println("conexion establecida");
+                //throw new Excepcion(48);
             }
         }
+       /*
         catch(Excepcion e){
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
-        }
+        }*/
         catch(ClassNotFoundException e){
             JOptionPane.showMessageDialog(null, "El driver de la base de datos no esta disponible!" +e.getMessage());
         }

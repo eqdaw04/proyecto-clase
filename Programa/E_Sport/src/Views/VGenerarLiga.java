@@ -99,7 +99,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 cargarJornada(listaJornada);
             }
         } catch (Exception ex) {
-            Logger.getLogger(VGenerarLiga.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }
     
@@ -429,7 +429,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
         }*/
         catch (Exception ex) {
-            Logger.getLogger(VGenerarLiga.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_bGenerarCalendarioActionPerformed
 
@@ -457,7 +457,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             listaPartido = Main.consultarPartidosPorJornada(lJornada.getSelectedValue());
             cargarPartido(listaPartido);
         } catch (Exception ex) {
-            Logger.getLogger(VGenerarLiga.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
         
     }//GEN-LAST:event_lJornadaValueChanged
@@ -480,7 +480,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
         
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getClass(), "Error", 0);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_bAceptarActionPerformed
 
@@ -492,7 +492,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
                     p = Main.consultarMarcadorPorPartido(listaPartido.get(x));
                     x=listaPartido.size();
                 } catch (Exception ex) {
-                    Logger.getLogger(VGenerarLiga.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
                 }
                 cargarMarcador();
             }
@@ -522,12 +522,15 @@ public class VGenerarLiga extends javax.swing.JDialog {
         ccCalendario.setDate(p.getFecha().getTime());
         if(p.geteLocal() == null){
             tfLocal.setText("DESCANSO");
+            tfLugar.setText("SE ENCUENTRA EN DESCANSO");
         }
         else{
             tfLocal.setText(p.geteLocal().getNombre());
+            tfLugar.setText(p.geteLocal().getLugar());
         }
         if(p.geteVisitante() == null){
             tfVisitante.setText("DESCANSO");
+            tfLugar.setText("SE ENCUENTRA EN DESCANSO");
         }
         else{
             tfVisitante.setText(p.geteVisitante().getNombre());
@@ -539,7 +542,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
         ccCalendario.setEnabled(true);
         cbHora.setEnabled(true);
         cbMinuto.setEnabled(true);
-        tfLugar.setText(p.geteLocal().getLugar());
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -378,7 +378,11 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static ArrayList <Partido> consultarLosPartidosPorFecha(Date fecha) throws Exception{
+    public static ArrayList <Partido> consultarLosPartidosPorFecha(Calendar fecha) throws Exception{
+        fecha.set(Calendar.HOUR_OF_DAY, 00);
+        fecha.set(Calendar.MINUTE, 00);
+        fecha.set(Calendar.SECOND, 00);
+        fecha.set(Calendar.MILLISECOND, 00);
         return bdPartido.consultarPartidoPorFecha(fecha);
     }
     

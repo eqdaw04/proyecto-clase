@@ -392,7 +392,7 @@ public class VPrincipal extends javax.swing.JFrame {
         // Abrir la ventana para la introduccion de los resultados de los partidos
         
         try {
-            Main.abrirVentana(6, "resultado");
+            Main.abrirVentana(6, "");
         } catch (Exception ex) {
             //Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);

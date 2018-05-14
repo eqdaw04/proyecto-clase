@@ -44,11 +44,14 @@ public class VIntroducirResultado extends javax.swing.JDialog {
     private void cargarPartido(){
         try{
             listaPartido = new ArrayList();
-            listaPartido = Main.consultarLosPartidosPorFecha(ccFecha.getDate());
+            listaPartido = Main.consultarLosPartidosPorFecha(ccFecha.getCalendar());
             cbPartido.removeAllItems();
-            listaPartido.forEach((pa) -> {
+            for(Partido pa:listaPartido) {
                 cbPartido.addItem(String.valueOf(pa.getIdPartido()));
-            });
+            }
+            if(cbPartido.getItemCount() !=0){
+                cbPartido.setSelectedIndex(0);
+            }
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
@@ -130,11 +133,6 @@ public class VIntroducirResultado extends javax.swing.JDialog {
                 ccFechaDateChanged(evt);
             }
         });
-        ccFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ccFechaActionPerformed(evt);
-            }
-        });
 
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
@@ -145,7 +143,6 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         });
 
         bCancelar.setText("Cancelar");
-        bCancelar.setEnabled(false);
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bCancelarActionPerformed(evt);
@@ -154,7 +151,6 @@ public class VIntroducirResultado extends javax.swing.JDialog {
 
         jLabel11.setText("Partido número: ");
 
-        cbPartido.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbPartido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbPartidoActionPerformed(evt);
@@ -283,25 +279,46 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         p = null;
         for(int x = 0 ; x < listaPartido.size() ; x++){
             p = listaPartido.get(x);
-            if(p.getIdPartido() == Integer.valueOf(cbPartido.getSelectedItem().toString())){
-                SimpleDateFormat f = new SimpleDateFormat("hh:mm");
-                tfHora.setText(f.format(p.getFecha().getTime()));
-                tfLugar.setText(p.geteLocal().getLugar());
-                tfPuntosLocal.setText(String.valueOf(p.getmLocal()));
-                tfPuntosVisitante.setText(String.valueOf(p.getmLocal()));
-                String dato;
-                dato = "";
-                if(!p.geteLocal().getComentario().equals("")){
-                    dato = p.geteLocal().getComentario();
+            if(cbPartido.getSelectedIndex()>=0){
+                if(p.getIdPartido() == Integer.valueOf(cbPartido.getSelectedItem().toString())){
+                    SimpleDateFormat f = new SimpleDateFormat("hh:mm");
+                    tfHora.setText(f.format(p.getFecha().getTime()));
+                    tfLugar.setText(p.geteLocal().getLugar());
+                    tfPuntosLocal.setText(String.valueOf(p.getmLocal()));
+                    tfPuntosVisitante.setText(String.valueOf(p.getmLocal()));
+                    tfPuntosLocal.setEditable(true);
+                    tfPuntosVisitante.setEditable(true);
+                    bAceptar.setEnabled(true);
+                    String dato;
+                    dato = "";
+                    if(p.geteLocal() != null){
+                        if(!p.geteLocal().getComentario().equals("")){
+                            dato = p.geteLocal().getComentario();
+                        }
+                        taLocal.setText(p.geteLocal().getNombre() + "\n" + dato);
+                    }
+                    else{
+                        taLocal.setText("EN DESCANSO");
+                    }
+
+                    if(p.geteVisitante() != null){
+                        if(p.geteVisitante().getComentario().equals("")){
+                            dato = p.geteVisitante().getComentario();
+                        }
+                        taVisitante.setText(p.geteVisitante().getNombre() + "\n" + dato);
+                    }
+                    else{
+                        taVisitante.setText("EN DESCANSO");
+                    }
+
+                    if(p.geteLocal() == null || p.geteVisitante() == null){
+                        tfPuntosLocal.setEditable(false);
+                        tfPuntosVisitante.setEditable(false);
+                        bAceptar.setEnabled(false);
+                    }
+
+                    x = listaPartido.size();
                 }
-                taLocal.setText(p.geteLocal().getNombre() + "\n" + dato);
-                if(p.geteVisitante().getComentario().equals("")){
-                    dato = p.geteVisitante().getComentario();
-                }
-                taVisitante.setText(p.geteVisitante().getNombre() + "\n" + dato);
-                tfPuntosLocal.setEditable(true);
-                tfPuntosVisitante.setEditable(true);
-                x = listaPartido.size();
             }
         }
     }//GEN-LAST:event_cbPartidoActionPerformed
@@ -313,7 +330,11 @@ public class VIntroducirResultado extends javax.swing.JDialog {
             p.setmVisitante(Integer.parseInt(tfPuntosVisitante.getText()));
             Main.validar(46, tfPuntosLocal);
             Main.validar(46, tfPuntosVisitante);
-            if(!Main.modificarMarcador(p)){
+            if(Main.modificarMarcador(p)){
+                JOptionPane.showMessageDialog(this, "Marcador modificado correctamente.");
+                Main.reabrir(this, "", 6);
+            }
+            else{
                 throw new Excepcion(47);
             }
             
@@ -326,10 +347,6 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         }
             
     }//GEN-LAST:event_bAceptarActionPerformed
-
-    private void ccFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccFechaActionPerformed
-        
-    }//GEN-LAST:event_ccFechaActionPerformed
 
     private void ccFechaDateChanged(org.freixas.jcalendar.DateEvent evt) {//GEN-FIRST:event_ccFechaDateChanged
         cargarPartido();
