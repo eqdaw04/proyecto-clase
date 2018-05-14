@@ -391,8 +391,12 @@ public class VPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_introducirResultadosActionPerformed
 
     private void verCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCalendarioActionPerformed
-        // TODO add your handling code here:
-        // Abrir ventana
+        try {
+            // Abrir ventana
+            Main.abrirVentana(8, "asd");
+        } catch (Exception ex) {
+            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_verCalendarioActionPerformed
 
     private void verResultClasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verResultClasiActionPerformed
