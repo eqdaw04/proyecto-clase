@@ -88,7 +88,12 @@ public class VLogin extends javax.swing.JFrame {
         jLabel1.setBounds(50, 40, 450, 70);
 
         tfUsuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        tfUsuario.setText("usu");
+        tfUsuario.setText("admin");
+        tfUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfUsuarioActionPerformed(evt);
+            }
+        });
         getContentPane().add(tfUsuario);
         tfUsuario.setBounds(190, 150, 150, 30);
 
@@ -116,7 +121,7 @@ public class VLogin extends javax.swing.JFrame {
         bSalir.setBounds(290, 300, 120, 40);
 
         pfContrasenna.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        pfContrasenna.setText("sus");
+        pfContrasenna.setText("root");
         getContentPane().add(pfContrasenna);
         pfContrasenna.setBounds(190, 230, 150, 30);
 
@@ -288,6 +293,10 @@ public class VLogin extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_bAccederActionPerformed
+
+    private void tfUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfUsuarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAcceder;

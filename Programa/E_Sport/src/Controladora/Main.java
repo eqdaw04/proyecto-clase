@@ -149,7 +149,7 @@ public class Main {
                 break;
 
             case 5:
-                new VModificarEquipo2(tipo);
+                new VModificarEquipo(tipo);
                 break;
                 
             case 6:
