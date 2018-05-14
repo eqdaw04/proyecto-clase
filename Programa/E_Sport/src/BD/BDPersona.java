@@ -233,7 +233,7 @@ public class BDPersona {
     }
     
     /**
-     * Metodo para buscar a los dueños de los equipos.
+     * Metodo para buscar a usuarios que sean dueños.
      * @return devuelve un objeto persona
      * @throws Exception 
      */

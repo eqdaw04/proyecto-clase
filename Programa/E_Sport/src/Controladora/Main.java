@@ -222,6 +222,11 @@ public class Main {
                 new VGenerarLiga(n);
         }
     }
+    
+    /**
+     * Metodo para abrir ventana jugador.
+     * @param j Jugador
+     */
       //-------Mikel
  
     public static void abrirVJugador (Jugador j){
@@ -229,8 +234,12 @@ public class Main {
         new VJugador("consulta",1,j);
  
     }
+    
+    /**
+     * Metodo para salir del programa
+     * @param v  JFrame
+     */
 
-    //---------- JON XU JIN ----------
     
     public static void salir(JFrame v){
         //salir del programa
@@ -238,7 +247,7 @@ public class Main {
     }
     
     /**
-     * Metodo para salir del programa
+     * Metodo para cerrar sesión y volver al login
      * @param v JFrame
      */
     
@@ -314,7 +323,7 @@ public class Main {
     }
     
     /**
-     * Metodo para modificar el usuario de la base de datos.
+     * Metodo para modificar una persona de la base de datos.
      * @param usuario String
      * @param contrasenna String
      * @param nombre String
@@ -369,7 +378,7 @@ public class Main {
     
     /**
      * Metodo que devuelve todos los partidos 
-     * @return
+     * @return 
      * @throws Exception 
      */
     
@@ -381,6 +390,13 @@ public class Main {
         return listadoPersona;
     }
     
+    /**
+     * Metodo para consultar los partidos de la jornada.
+     * @param n int
+     * @return una lista de partidos
+     * @throws Exception 
+     */
+    
     //---------- JON XU JIN ----------
     
     public static ArrayList <Partido> consultarPartidosPorJornada(int n) throws Exception{
@@ -389,12 +405,25 @@ public class Main {
         return lPartido;
     }
     
+    /**
+     * Metodo para consultar el marcador por partido. 
+     * @param p Partido
+     * @return objeto partido
+     * @throws Exception 
+     */
+    
     //---------- JON XU JIN ----------
     
     public static Partido consultarMarcadorPorPartido(Partido p) throws Exception{
         p = bdPartido.ConsultarMarcadores(p);
         return p;
     }
+    
+    /**
+     * Metodo para consultar todas las jornadas.
+     * @return lista de jornadas
+     * @throws Exception 
+     */
     
     
     //---------- JON XU JIN ----------
@@ -404,6 +433,14 @@ public class Main {
         lJornada = bdJornada.consultarTodasLasJornadas();
         return lJornada;
     }
+    
+    /**
+     * Metodo para generar calendario de la liga.
+     * @param fecha Calendar
+     * @param horaF int
+     * @return el dato obtenido de un objeto emparejamiento
+     * @throws Exception 
+     */
     
     //---------- JON XU JIN ----------
     
@@ -420,6 +457,15 @@ public class Main {
         return emp.getDato();
     }
     
+    /**
+     * Metodo para insertar una jornada.
+     * @param nJornada int
+     * @param fecha Calendar
+     * @param con BDConexion
+     * @return objeto jornada
+     * @throws Exception 
+     */
+    
     //---------- JON XU JIN ----------
     
     public static Jornada insertarJornada(int nJornada, Calendar fecha, BDConexion con) throws Exception{
@@ -431,6 +477,13 @@ public class Main {
         return j;
     }
     
+    /**
+     * Metodo para modificar una jornada.
+     * @param jornada Jornada
+     * @param con BDConexion
+     * @throws Exception 
+     */
+    
     //---------- JON XU JIN ----------
     
     public static void modificarJornada(Jornada jornada, BDConexion con) throws Exception{
@@ -438,6 +491,15 @@ public class Main {
         bdJornada.modificarJornada(jornada, con);
         
     }
+    
+    /**
+     * Metodo para insertar un partido.
+     * @param partido Partido
+     * @param jornada Jornada
+     * @param con BDConexion
+     * @return el estado "correcto" si se ha insertado sin problemas
+     * @throws Exception 
+     */
     
     //---------- JON XU JIN ----------
     
@@ -448,6 +510,13 @@ public class Main {
         }
         return estado;
     }
+    
+    /**
+     * Metodo para modificar un partido.
+     * @param partido Partido
+     * @return el estado "correcto" si se ha insertado sin problemas
+     * @throws Exception 
+     */
   
     //---------- JON XU JIN ----------
     
@@ -459,6 +528,13 @@ public class Main {
         return estado;
     }
     
+    /**
+     * Metodo para consultar un equipo por su id.
+     * @param n int
+     * @return objeto equipo
+     * @throws Exception 
+     */
+    
     //---------- JON XU JIN ----------
     
     public static Equipo consultarEquipoPorNumero(int n) throws Exception{
@@ -466,6 +542,11 @@ public class Main {
         e = bdEquipo.consultarEquipoPorNumero(n);
         return e;
     }
+    
+    /**
+     * Metodo para obtener un perfil.
+     * @return perfil
+     */
 
     public static int getPerfil() {
         return perfil;
@@ -842,16 +923,27 @@ public class Main {
         
         return plantilla;
     }
+    
+    /**
+     * Metodo para buscar los usuarios que sean dueños.
+     * @return Devuelve todos los usuarios que sean dueños.
+     * @throws Exception 
+     */
 
     // Imanol Luis
     public static ArrayList<Persona> buscarUsuariosDuennos() throws Exception {
-        // Devuelve todos los usuarios que sean dueños.
          return bdPersona.buscarUsuariosDuennos();
     }
+    
+    /**
+     * Metodo para comprobar que el dueño pertenece a un equipo.
+     * @param usuario String
+     * @return objeto equipo cuando todo está correcto.
+     * @throws Exception 
+     */
 
     // Imanol Luis
     public static boolean duennoTieneEquipo(String usuario) throws Exception {
-        // Comprobar que el dueño pertenece a algún equipo
         Equipo e=bdEquipo.BuscarEquipoPorUsuario(usuario);
         if(e==null)
         {
@@ -862,6 +954,13 @@ public class Main {
             return true;
         }
     }    
+    
+    /**
+     * Metodo para obtener persona por su id.
+     * @param idPersona int
+     * @return objeto persona
+     * @throws Exception 
+     */
 
     public static Persona obtenerPersona(int idPersona) throws Exception {
         Persona p = null;

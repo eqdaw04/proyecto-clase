@@ -127,8 +127,14 @@ public class Emparejamiento {
         insertarBBDD(e, horizontal);
     }
     
+    /**
+     * Metodo para emplearlo en la combinación de equipos en la base de datos.
+     * @param e int
+     * @param horizontal int
+     * @throws Exception 
+     */
+    
     public void insertarBBDD(int e, int horizontal) throws Exception{
-        //emplear este código para combinar los equipos en bbdd
         // guardo los datos en un String para mostrarlo al final, para comprobar que sí que se ha hecho seún algoritmo
         dato = "Los Partidos se quedarán de la siguiente manera:\nJornadas 1-" + (e-1) + " Equipos:\n";
         
@@ -236,6 +242,10 @@ public class Emparejamiento {
         }        
     }
     
+    /**
+     * Metodo para cambiar la hora.
+     */
+    
     private void cambiarHora(){
         if(horaI != horaF){
             Random aleatorio = new Random();
@@ -247,12 +257,24 @@ public class Emparejamiento {
         
     }
     
+    /**
+     * Metodo para formatear la fecha.
+     * @param fecha Calendar
+     * @return 
+     */
+    
     private String formatearFecha(Calendar fecha){
         SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
         String dato = "";
         dato = f.format(fecha.getTime());
         return dato;
     }
+    
+    /**
+     * Metodo que guarda los nombres de los días de la semana.
+     * @param n int
+     * @return 
+     */
     
     private String nombreSemana(int n){
         String dato = ""; 

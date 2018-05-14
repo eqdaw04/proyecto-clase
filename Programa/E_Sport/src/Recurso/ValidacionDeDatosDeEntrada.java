@@ -36,6 +36,12 @@ public class ValidacionDeDatosDeEntrada{
         }
     }
     
+    /**
+     * Metodo que guarda los patterns que utilizaremos en el programa.
+     * @param cod int
+     * @return devuelve el patrón a utilizar.
+     */
+    
     private static String datoPatron(int cod){
         String dato = "";
         switch(cod){
