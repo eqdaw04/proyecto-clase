@@ -8,6 +8,7 @@ package Views;
 import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
+import Recurso.ValidacionDeDatosDeEntrada;
 import UML.Equipo;
 import UML.Persona;
 import java.util.ArrayList;
@@ -245,7 +246,6 @@ public class VEquipo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
-        // TODO add your handling code here:
         try
         {
             // Comprobar si se ha accedido con la opción de lsiatado, en caso afirmativo, cargar un list interno para poder recorrer con los botones de dirección
@@ -288,6 +288,7 @@ public class VEquipo extends javax.swing.JDialog {
                 buscarEquipo(tfNombre.getText());
                 if(tipo.equals("modificacion"))
                 {
+                    tfLugar.setEditable(true);
                     taComentario.setEditable(true);
                 }
                 bAceptar.setEnabled(true);
@@ -310,12 +311,12 @@ public class VEquipo extends javax.swing.JDialog {
             switch(tipo)
             {
                 case "alta":
-                    // Validar nombre y si no existe en la BD, proceder al alta
+                    // Validación de datos
                     validarNombre();
-                    // Validar el dueño del equipo
                     validarDuenno();
+                    ValidacionDeDatosDeEntrada.validar(2, tfLugar);
                     // Insertar el equipo         
-                    Main.altaEquipo(tfNombre.getText(),String.valueOf(cbDuenno.getSelectedItem()), cFechaCreacion.getDate(), taComentario.getText());
+                    Main.altaEquipo(tfNombre.getText(), tfLugar.getText(), String.valueOf(cbDuenno.getSelectedItem()), cFechaCreacion.getDate(), taComentario.getText());
                     JOptionPane.showMessageDialog(this, "El equipo se ha dado de alta correctamente.");
                     break;
                 case "baja":
@@ -326,10 +327,11 @@ public class VEquipo extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(this, "El equipo se dado de baja correctamente.");
                     break;
                 case "modificacion":
-                    // Validar nombre y si no existe en la BD, proceder a la modificación
-                    validarNombre();
+                    // Validación de datos
+                    validarNombre();                    
+                    ValidacionDeDatosDeEntrada.validar(2, tfLugar);
                     // Modificar el equipo
-                    Main.modificarEquipo(tfNombre.getText(), taComentario.getText());
+                    Main.modificarEquipo(tfNombre.getText(), tfLugar.getText(), taComentario.getText());
                     JOptionPane.showMessageDialog(this, "El equipo se ha modificado correctamente.");
                     break;
             }
@@ -578,6 +580,7 @@ public class VEquipo extends javax.swing.JDialog {
         tfNombre.setText(e.getNombre());  
         cFechaCreacion.setDate(e.getFechaCreacion());
         taPlantilla.setText(Main.buscarPlantilla(e));
+        tfLugar.setText(e.getLugar());
         cbDuenno.setSelectedItem(e.getPersona().getUsuario());
         taComentario.setText(e.getComentario());
     }

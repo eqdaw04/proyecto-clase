@@ -36,11 +36,12 @@ public class BDEquipo {
     
     public void insertarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
-        PreparedStatement sentencia = con.getConnection().prepareStatement("INSERT INTO Equipo (NOMBRE, FECHA_CREACION, COMENTARIO, ID_PERSONA) VALUES (?, ?, ?, ?)");
+        PreparedStatement sentencia = con.getConnection().prepareStatement("INSERT INTO Equipo (NOMBRE, FECHA_CREACION, COMENTARIO, LUGAR, ID_PERSONA) VALUES (?, ?, ?, ?, ?)");
         sentencia.setString(1, e.getNombre());
         sentencia.setDate(2, formatearFecha(e.getFechaCreacion()));
         sentencia.setString(3, e.getComentario());
-        sentencia.setInt(4, e.getPersona().getIdPersona());
+        sentencia.setString(4, e.getLugar());
+        sentencia.setInt(5, e.getPersona().getIdPersona());
                                 
         if(sentencia.executeUpdate()!=1)
         {
@@ -77,10 +78,11 @@ public class BDEquipo {
     
     public void modificarEquipo(Equipo e) throws Exception {
         BDConexion con = new BDConexion();
-        PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Equipo SET NOMBRE=?, COMENTARIO=? WHERE ID_EQUIPO = ?");
+        PreparedStatement sentencia = con.getConnection().prepareStatement("UPDATE Equipo SET NOMBRE=?, COMENTARIO=?, LUGAR=? WHERE ID_EQUIPO = ?");
         sentencia.setString(1, e.getNombre());
         sentencia.setString(2, e.getComentario());
-        sentencia.setInt(3, e.getIdEquipo());
+        sentencia.setString(3, e.getLugar());
+        sentencia.setInt(4, e.getIdEquipo());
         if(sentencia.executeUpdate()!=1)
         {
             throw new Excepcion(25);
@@ -105,8 +107,9 @@ public class BDEquipo {
         while (rs.next()){
             e.setIdEquipo(Integer.parseInt(rs.getString("id_equipo")));
             e.setNombre(rs.getString("nombre"));
-            e.setFechaCreacion(rs.getDate("fecha_creacion"));
+            e.setFechaCreacion(rs.getDate("fecha_creacion"));            
             e.setComentario(rs.getString("comentario"));
+            e.setLugar(rs.getString("lugar"));
             e.setPersona(Main.obtenerPersona(rs.getInt("id_persona")));
         }
         return e;
@@ -133,6 +136,7 @@ public class BDEquipo {
             e.setNombre(rs.getString("nombre"));
             e.setFechaCreacion(rs.getDate("fecha_creacion"));
             e.setComentario(rs.getString("comentario"));
+            e.setLugar(rs.getString("lugar"));
             e.setPersona(Main.obtenerPersona(rs.getInt("id_persona")));
         }
         }
@@ -168,6 +172,7 @@ public class BDEquipo {
             // e.setListaMarcadores(listaMarcadores);
             // e.setListaJugadores(listaJugadores);
             // e.setComentario(comentario);
+            // e.setLugar(rs.getString("lugar"));
             // e.setFechaCreacion(fechaCreacion);
             
         }
@@ -193,6 +198,7 @@ public class BDEquipo {
                 e.setNombre(rs.getString("nombre"));
                 e.setFechaCreacion(rs.getDate("fecha_creacion"));
                 e.setComentario(rs.getString("comentario"));
+                e.setLugar(rs.getString("lugar"));
                 e.setPersona(Main.obtenerPersona(rs.getInt(5)));
 
                 a.add(e);

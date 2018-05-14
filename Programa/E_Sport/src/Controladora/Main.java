@@ -834,9 +834,10 @@ public class Main {
      */
     
     // Imanol Luis
-    public static void altaEquipo(String nombre, String usuario, Date fechaCreacion, String comentario) throws Exception {
+    public static void altaEquipo(String nombre, String lugar, String usuario, Date fechaCreacion, String comentario) throws Exception {
         equipo = new Equipo();
-        equipo.setNombre(nombre);        
+        equipo.setNombre(nombre);     
+        equipo.setLugar(lugar);
         equipo.setPersona(bdPersona.buscarPersonaPorUsuario(usuario));
         equipo.setFechaCreacion(fechaCreacion);
         equipo.setComentario(comentario);
@@ -861,8 +862,9 @@ public class Main {
      */
 
     // Imanol Luis
-    public static void modificarEquipo(String nombre, String comentario) throws Exception {
+    public static void modificarEquipo(String nombre, String lugar, String comentario) throws Exception {
         equipo.setNombre(nombre);
+        equipo.setLugar(lugar);
         equipo.setComentario(comentario);
         bdEquipo.modificarEquipo(equipo);
     }
