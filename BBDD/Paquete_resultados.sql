@@ -1,8 +1,9 @@
 SET SERVEROUTPUT ON
 
---Privilegios
+--Privilegios???
 --GRANT EXECUTE ON Pkg_resultados to public;
 
+DROP PACKAGE Pkg_resultados;
 CREATE OR REPLACE PACKAGE Pkg_resultados IS
       TYPE TCURSOR IS REF CURSOR;
       PROCEDURE Resul (C_partjor OUT TCURSOR);
@@ -16,13 +17,12 @@ CREATE OR REPLACE PACKAGE BODY Pkg_resultados IS
       FROM Partido P, MARCADOR M
       WHERE P.Id_partido = M.Id_partido
       ORDER BY P.Id_jornada, P.Id_partido,M.Id_equipo;
-  close C_partjor;
   END;
 END Pkg_resultados;
 /
 --Procedimiento anónimo de llamada
 DECLARE
-      TYPE V_Cur  Pkg_resultados.TCURSOR;
+      V_Cur  Pkg_resultados.TCURSOR;
       V_Id_jornada Partido.Id_jornada%TYPE;
       V_Id_partido Partido.Id_partido%TYPE;
       V_Id_equipo Marcador.Id_equipo%TYPE;
@@ -35,10 +35,12 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE(V_Id_jornada || ' ' || V_Id_partido || ' ' || V_Id_equipo || ' ' || V_Puntuacion);
     END LOOP;
 END;
+
+
+
+
+
 ----PRUEBAS
-
-
-
 drop procedure resul;
 CREATE OR REPLACE PROCEDURE resul AS
   CURSOR C_partjor  IS
