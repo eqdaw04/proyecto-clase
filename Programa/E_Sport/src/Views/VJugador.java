@@ -8,7 +8,6 @@ package Views;
 import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
-import Recurso.ValidacionDeDatosDeEntrada;
 import UML.Jugador;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -253,10 +252,10 @@ public class VJugador extends javax.swing.JDialog {
            {
                case "alta":
                    // Validación de datos
-                    ValidacionDeDatosDeEntrada.validar(3, tfDNI);
-                    ValidacionDeDatosDeEntrada.validar(4, tfNombre);
-                    ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
-                    ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
+                    Main.validar(3, tfDNI);
+                    Main.validar(4, tfNombre);
+                    Main.validar(5, tfApellido1);
+                    Main.validar(5, tfApellido2);
                     if(tfNickname.getText().isEmpty())
                     {
                         throw new Excepcion(26);
@@ -281,10 +280,10 @@ public class VJugador extends javax.swing.JDialog {
                    break;
                case "modificacion":
                    // Validación de datos
-                    ValidacionDeDatosDeEntrada.validar(3, tfDNI);
-                    ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
-                    ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
-                    ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
+                    Main.validar(3, tfDNI);
+                    Main.validar(4, tfNombre);  
+                    Main.validar(5, tfApellido1);
+                    Main.validar(5, tfApellido2);
                     if(tfNickname.getText().isEmpty())
                     {
                         throw new Excepcion(26);
@@ -340,7 +339,7 @@ public class VJugador extends javax.swing.JDialog {
                 }
                 else
                 {
-                    ValidacionDeDatosDeEntrada.validar(3, tfDNI);
+                    Main.validar(3, tfDNI);
                     buscarJugador(tfDNI.getText());
                     bPrimero.setEnabled(false);
                     bAnterior.setEnabled(false);
@@ -351,7 +350,7 @@ public class VJugador extends javax.swing.JDialog {
             else
             {
                 // Localiza un jugador en exclusiva para su modificación o borrado
-                ValidacionDeDatosDeEntrada.validar(3, tfDNI);
+                Main.validar(3, tfDNI);
                 buscarJugador(tfDNI.getText());
                 if(tipo.equals("modificacion"))
                 {
@@ -559,7 +558,7 @@ public class VJugador extends javax.swing.JDialog {
      */
     
     private void buscarJugador(String dni) throws Exception {
-        Jugador j = Main.buscarJugador(dni);
+        j = Main.buscarJugador(dni);
         if(j==null)
         {
             throw new Excepcion(17);
@@ -573,7 +572,7 @@ public class VJugador extends javax.swing.JDialog {
      */
     
     private void seleccionarJugador() throws Exception {
-        Jugador j;
+        j = null;
         if(listaJugadores.size()>1)
         {
             j=listaJugadores.get(posicion);

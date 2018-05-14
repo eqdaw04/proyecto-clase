@@ -1,5 +1,6 @@
 package UML;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Date;
 public class Persona {
     private int idPersona;
     private String nombre, apellido1, apellido2;
-    private Date fechaAlta;
+    private Calendar fechaAlta;
     private String usuario, contrasenna, email;
     
     private Perfil perfil;
@@ -19,7 +20,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(String nombre, String apellido1, String apellido2, Date fechaAlta, String usuario, String contrasenna, String email) {
+    public Persona(String nombre, String apellido1, String apellido2, Calendar fechaAlta, String usuario, String contrasenna, String email) {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
@@ -62,13 +63,14 @@ public class Persona {
         this.apellido2 = apellido2;
     }
 
-    public Date getFechaAlta() {
+    public Calendar getFechaAlta() {
         return fechaAlta;
     }
 
-    public void setFechaAlta(Date fechaAlta) {
+    public void setFechaAlta(Calendar fechaAlta) {
         this.fechaAlta = fechaAlta;
     }
+
 
     public String getUsuario() {
         return usuario;

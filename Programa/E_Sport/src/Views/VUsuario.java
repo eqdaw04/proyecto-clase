@@ -8,7 +8,6 @@ package Views;
 import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
-import Recurso.ValidacionDeDatosDeEntrada;
 import UML.Perfil;
 import UML.Persona;
 import java.sql.SQLException;
@@ -48,11 +47,11 @@ public class VUsuario extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         try{
             cbPerfil.removeAllItems();
-            ArrayList <Perfil> listaPerfil = new ArrayList();
+            ArrayList <Perfil> listaPerfil;
             listaPerfil = Main.consultarTodosLosPerfiles();
-            for(Perfil p : listaPerfil){
-                cbPerfil.addItem(p.getNombre());
-            }
+            listaPerfil.forEach((pa) -> {
+                cbPerfil.addItem(pa.getNombre());
+            });
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
@@ -323,13 +322,7 @@ public class VUsuario extends javax.swing.JDialog {
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try
         {
-            Persona p = null;
-            /*
-            p = Main.buscarPersona(tfUsuario.getText()) y comprobacion()
-            se ha insertado en cada case por lo siguiente:
-            1. en la baja no precisa validar datos.
-            2. para evitar el acceso constante a la bbdd, ya que lo primero es validar los datos en java
-            */
+            Persona p;
             switch(tipo){
                 case "alta":
                     // comprobar todos los campos si los datos introducidos cumple con las validaciones 
@@ -372,15 +365,15 @@ public class VUsuario extends javax.swing.JDialog {
     
     private void comprobacion()throws Exception{
         
-        ValidacionDeDatosDeEntrada.validar(7, tfUsuario);
-        ValidacionDeDatosDeEntrada.validar(8, pfContrasenna);
-        ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
-        ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
+        Main.validar(7, tfUsuario);
+        Main.validar(8, pfContrasenna);
+        Main.validar(4, tfNombre);  
+        Main.validar(5, tfApellido1);
         if(!tfApellido2.getText().equals("")){
-            ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
+            Main.validar(5, tfApellido2);
         }
         if(!tfEmail.getText().equals("")){
-            ValidacionDeDatosDeEntrada.validar(6, tfEmail);
+            Main.validar(6, tfEmail);
         }
         if(cbPerfil.getSelectedIndex() == -1){
             throw new Excepcion(9);
@@ -399,7 +392,7 @@ public class VUsuario extends javax.swing.JDialog {
             throw new Excepcion(15);
         }
         // mandar al main para proceder al alta
-        Main.altaPersona(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), ccFechaAlta.getDate(), String.valueOf(cbPerfil.getSelectedItem()));
+        Main.altaPersona(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), ccFechaAlta.getCalendar(), String.valueOf(cbPerfil.getSelectedItem()));
         JOptionPane.showMessageDialog(this, "El usuario se ha dado de alta correctamente.");
         Main.reabrir(this, tipo, n);
     }
@@ -441,7 +434,7 @@ public class VUsuario extends javax.swing.JDialog {
             Main.reabrir(this, tipo, n);
         }
         catch(SQLException e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
             //JOptionPane.showMessageDialog(this, e.getMessage(), "No se ha podido eliminar el registro, la persona tiene vinculado otro registro.", 0);
         }
     }
@@ -570,17 +563,12 @@ public class VUsuario extends javax.swing.JDialog {
             tfApellido1.setText(p.getApellido1());
             tfApellido2.setText(p.getApellido2());
             tfEmail.setText(p.getEmail());
-    /*      REVISAR LA FECHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA      
-            SimpleDateFormat formar = new SimpleDateFormat("dd-MM-yy");
-            String fechas = formar.format(p.getFechaAlta());
-            JOptionPane.showMessageDialog(this, p.getFechaAlta());
-    */
-            ccFechaAlta.setDate(p.getFechaAlta());
+            ccFechaAlta.setDate(p.getFechaAlta().getTime());
 
             cbPerfil.setSelectedItem(p.getPerfil().getNombre());
         }    
-        catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getClass(), "Error", 0);
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }
     /**

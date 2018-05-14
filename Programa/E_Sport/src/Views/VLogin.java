@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -214,11 +215,11 @@ public class VLogin extends javax.swing.JFrame {
         {
             pfContrasenna.setText("");
             pfContrasenna.grabFocus();
-            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
+            JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
         }
         catch (Exception e)
         {
-            javax.swing.JOptionPane.showMessageDialog(this, e.getClass());
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         }
         finally{
             if(error == 13){
@@ -248,11 +249,11 @@ public class VLogin extends javax.swing.JFrame {
         {
             pfContrasenna.setText("");
             pfContrasenna.grabFocus();
-            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
+            JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
         }
         catch (Exception e)
         {
-            javax.swing.JOptionPane.showMessageDialog(this, e.getClass());
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         }
         finally{
             if(error == 13){
@@ -281,11 +282,11 @@ public class VLogin extends javax.swing.JFrame {
         {
             pfContrasenna.setText("");
             pfContrasenna.grabFocus();
-            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
+            JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
         }
         catch (Exception e)
         {
-            javax.swing.JOptionPane.showMessageDialog(this, e.getClass());
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         }
         finally{
             if(error == 13){

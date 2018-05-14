@@ -29,6 +29,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
     ArrayList<Partido> listaPartido;
     /**
      * Creates new form VGenerarLiga
+     * @param n
      */
     public VGenerarLiga(int n) {
         initComponents();
@@ -111,9 +112,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
         // Rellenar el list con las jornadas existentes
         lJornada.removeAll();
         DefaultListModel <Integer> modelo = new DefaultListModel();
-        for(Jornada j : listaJornada){
+        listaJornada.forEach((j) -> {
             modelo.addElement(j.getIdJornada());
-        }
+        });
         lJornada.setModel(modelo);
     }
     
@@ -506,9 +507,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
     private void cargarPartido(ArrayList <Partido> listaPartido){
         lPartido.removeAll();
         DefaultListModel <Integer> modelo = new DefaultListModel();
-        for(Partido p : listaPartido){
-            modelo.addElement(p.getIdPartido());
-        }
+        listaPartido.forEach((pa) -> {
+            modelo.addElement(pa.getIdPartido());
+        });
         lPartido.setModel(modelo);
         lPartido.setEnabled(true);
     }

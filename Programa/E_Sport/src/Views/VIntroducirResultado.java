@@ -7,7 +7,6 @@ package Views;
 
 import Controladora.Main;
 import Excepciones.Excepcion;
-import Recurso.ValidacionDeDatosDeEntrada;
 import UML.Partido;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -24,6 +23,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
     Partido p;
     /**
      * Creates new form VIntroducirResultado
+     * @param n
      */
     public VIntroducirResultado(int n) {
         initComponents();
@@ -46,9 +46,9 @@ public class VIntroducirResultado extends javax.swing.JDialog {
             listaPartido = new ArrayList();
             listaPartido = Main.consultarLosPartidosPorFecha(ccFecha.getDate());
             cbPartido.removeAllItems();
-            for(Partido p : listaPartido){
-                cbPartido.addItem(String.valueOf(p.getIdPartido()));
-            }
+            listaPartido.forEach((pa) -> {
+                cbPartido.addItem(String.valueOf(pa.getIdPartido()));
+            });
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
@@ -289,7 +289,8 @@ public class VIntroducirResultado extends javax.swing.JDialog {
                 tfLugar.setText(p.geteLocal().getLugar());
                 tfPuntosLocal.setText(String.valueOf(p.getmLocal()));
                 tfPuntosVisitante.setText(String.valueOf(p.getmLocal()));
-                String dato = "";
+                String dato;
+                dato = "";
                 if(!p.geteLocal().getComentario().equals("")){
                     dato = p.geteLocal().getComentario();
                 }
@@ -297,7 +298,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
                 if(p.geteVisitante().getComentario().equals("")){
                     dato = p.geteVisitante().getComentario();
                 }
-                taVisitante.setText(p.geteVisitante().getNombre() + "\n" + p.geteVisitante().getComentario());
+                taVisitante.setText(p.geteVisitante().getNombre() + "\n" + dato);
                 tfPuntosLocal.setEditable(true);
                 tfPuntosVisitante.setEditable(true);
                 x = listaPartido.size();
@@ -310,8 +311,8 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         try{
             p.setmLocal(Integer.valueOf(tfPuntosLocal.getText()));
             p.setmVisitante(Integer.parseInt(tfPuntosVisitante.getText()));
-            ValidacionDeDatosDeEntrada.validar(46, tfPuntosLocal);
-            ValidacionDeDatosDeEntrada.validar(46, tfPuntosVisitante);
+            Main.validar(46, tfPuntosLocal);
+            Main.validar(46, tfPuntosVisitante);
             if(!Main.modificarMarcador(p)){
                 throw new Excepcion(47);
             }

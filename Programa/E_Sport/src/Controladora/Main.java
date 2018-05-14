@@ -12,6 +12,7 @@ import Recurso.*;
 import static BD.BDConexion.*;
 import Excepciones.Excepcion;
 import Views.*;
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,9 +20,12 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  * Clase controladora.
@@ -292,7 +296,7 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static void altaPersona( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Date fecha, String perfil) throws Exception{
+    public static void altaPersona( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Calendar fecha, String perfil) throws Exception{
         Persona p = new Persona(nombre, ape1, ape2, fecha, usuario, contrasenna, email);
         p.setPerfil(bdPerfil.buscarPorNombre(perfil));
         bdPersona.altaPersona(p);
@@ -534,6 +538,63 @@ public class Main {
     
     public static boolean modificarMarcador(Partido p) throws Exception{
         return bdPartido.modificarMarcador(p);
+    }
+    
+    //----------JON XU JIN ----------
+    public static void validar(int cod, JTextField campo) throws Exception{
+        
+        Pattern p=Pattern.compile(datoPatron(cod));
+        Matcher m=p.matcher(campo.getText());
+        if(!m.matches())
+        {
+            campo.setBackground(Color.red);
+            campo.grabFocus();
+            throw new Excepcion(cod);
+        }
+        else{
+            campo.setBackground(Color.white);
+        }
+    }
+    
+    /**
+     * Metodo que guarda los patterns que utilizaremos en el programa.
+     * @param cod int
+     * @return devuelve el patrón a utilizar.
+     */
+    
+    public static String datoPatron(int cod){
+        String dato = "";
+        switch(cod){
+
+            case 46:
+                dato = "^[0-9]{1,}$";
+                break;
+                
+            case 3: // NIF
+                dato = "^[A-Z0-9][0-9]{7}[A-Z]$";
+                break;
+                
+            case 4: // Nombre
+                dato = "^[A-Z][a-zñ]{2,}$";
+                break;
+                
+            case 5: // Apellidos
+                dato = "^[A-Z][a-zñ]{2,}$";
+                break;
+                
+            case 6: // e-mail
+                dato = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,})$";
+                break;
+                
+            case 7: // Usuario
+                dato = "^[A-Za-z]{3,}$";
+                break;
+                
+            case 8: // Contraseña
+                dato = "^[A-Za-z0-9]{3,}$";
+                break;
+        }
+        return dato;
     }
     
     /**
@@ -790,7 +851,7 @@ public class Main {
      */
     
     //------------Mikel
-    public static boolean EliminarJugadorEquipo (String nickname){
+    public static boolean EliminarJugadorEquipo (String nickname) throws Exception{
        
         return bdJugador.QuitarJugadorEquipo(nickname);
     }

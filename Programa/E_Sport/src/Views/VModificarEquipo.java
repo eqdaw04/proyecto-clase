@@ -12,8 +12,6 @@ import UML.Jugador;
 import java.awt.Image;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -39,14 +37,19 @@ public class VModificarEquipo extends javax.swing.JDialog {
         initComponents();
         setModal(true);
         setLocationRelativeTo(null);
-        e= Main.ConsultarEquipoPorUsuario(usu);
-        nombeEquipo.setText(e.getNombre());
-        rellenar();
-        
         ImageIcon fondo = new ImageIcon("../../../imagenes/fondo2.jpg");
         Icon icono = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
         imgfondo.setIcon(icono);
         this.repaint();
+        
+        e = Main.ConsultarEquipoPorUsuario(usu);
+        if(e != null){
+            nombeEquipo.setText(e.getNombre());
+            rellenar();
+        }
+        else{
+            throw new Excepcion(33);
+        }
     }
 
     /**
@@ -194,17 +197,20 @@ public class VModificarEquipo extends javax.swing.JDialog {
     }//GEN-LAST:event_liJugDispValueChanged
 
     private void bEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarActionPerformed
-        if(Main.EliminarJugadorEquipo(liJugEqui.getSelectedValue())){
-            JOptionPane.showMessageDialog(this, "Jugador eliminado exitosamente");
-            try {
+        try{
+            if(Main.EliminarJugadorEquipo(liJugEqui.getSelectedValue())){
+                JOptionPane.showMessageDialog(this, "Jugador eliminado exitosamente");
                 rellenar();
-            } catch (Exception ex) {
-                Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("ELIMINAR");
+                bEliminar.setEnabled(false);
+            }else{
+                throw new Excepcion(32);
             }
-            bEliminar.setEnabled(false);
-        }else{
-            JOptionPane.showMessageDialog(this, "Error2");
+        }
+        catch(Excepcion ex){
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", 0);
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_bEliminarActionPerformed
 
@@ -213,9 +219,10 @@ public class VModificarEquipo extends javax.swing.JDialog {
             if(Main.AnnadirJugadorEquipo(liJugDisp.getSelectedValue(),String.valueOf(e.getIdEquipo()))){
                 JOptionPane.showMessageDialog(this, "Jugador añadido exitosamente");
                 rellenar();
+                bAnnadir.setEnabled(false);
             }
-        }  catch (SQLException e){
-            switch(e.getErrorCode()){
+        }  catch (SQLException ex){
+            switch(ex.getErrorCode()){
                 case 20001:
                 JOptionPane.showMessageDialog(this, new Excepcion(28).getMessage());
                 break;
@@ -224,31 +231,25 @@ public class VModificarEquipo extends javax.swing.JDialog {
                 break;
             }
         }catch (Exception ex) {
-            Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("AÑADIR");
-
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
-        bAnnadir.setEnabled(false);
+        
     }//GEN-LAST:event_bAnnadirActionPerformed
 
     private void bConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarActionPerformed
-        System.out.println(liJugEqui.getSelectedValue()+liJugDisp.getSelectedValue());
-        if(liJugEqui.isSelectionEmpty()){
-            try {
+        try{
+            if(liJugEqui.isSelectionEmpty()){
                 liJugEqui.clearSelection();
                 Main.abrirVJugador(Main.consultarJugadorNickname(liJugDisp.getSelectedValue()));
-            } catch (Exception ex) {
-                Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }else{
-            try {
+
+            }else{
                 liJugDisp.clearSelection();
-                Main.abrirVJugador(Main.consultarJugadorNickname(liJugEqui.getSelectedValue()));
-            } catch (Exception ex) {
-                Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
+                Main.abrirVJugador(Main.consultarJugadorNickname(liJugEqui.getSelectedValue()));  
             }
         }
-
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + ex.getMessage(), "Error", 0);
+        }
     }//GEN-LAST:event_bConsultarActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
@@ -265,36 +266,28 @@ public class VModificarEquipo extends javax.swing.JDialog {
     /**
      * Metodo para buscar los jugadores que forman el equipo y rellenar una lista con ellos. 
      */
-    private void rellenar1(){
-        try {
-            jEquipo=new ArrayList();
-            jEquipo=Main.obtenerJugEqui(String.valueOf(e.getIdEquipo()));
-            DefaultListModel<String> model = new DefaultListModel();
-            for (int x=0;x < jEquipo.size();x++){
-                model.addElement(jEquipo.get(x).getNickname());
-            }
-            liJugEqui.setModel(model);
-        } catch (Exception ex) {
-            Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
+    private void rellenar1() throws Exception{
+        jEquipo=new ArrayList();
+        jEquipo=Main.obtenerJugEqui(String.valueOf(e.getIdEquipo()));
+        DefaultListModel<String> model = new DefaultListModel();
+        for (int x=0;x < jEquipo.size();x++){
+            model.addElement(jEquipo.get(x).getNickname());
         }
+        liJugEqui.setModel(model);
     }
     
     /**
      * Metodo para buscar jugadores sin equipo y rellenar una lista con ellos.
      */
     
-    private void rellenar2(){
-        try {
-            jDisp=new ArrayList();
-            jDisp=Main.consultarJugadoresDisponibles();
-            DefaultListModel<String> modelo = new DefaultListModel();
-            for (int y=0;y< jDisp.size();y++){
-                modelo.addElement(jDisp.get(y).getNickname());
-            }
-            liJugDisp.setModel(modelo);
-        } catch (Exception ex) {
-            Logger.getLogger(VModificarEquipo.class.getName()).log(Level.SEVERE, null, ex);
+    private void rellenar2() throws Exception{
+        jDisp=new ArrayList();
+        jDisp=Main.consultarJugadoresDisponibles();
+        DefaultListModel<String> modelo = new DefaultListModel();
+        for (int y=0;y< jDisp.size();y++){
+            modelo.addElement(jDisp.get(y).getNickname());
         }
+        liJugDisp.setModel(modelo);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

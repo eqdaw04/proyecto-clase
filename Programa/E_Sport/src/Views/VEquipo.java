@@ -8,7 +8,6 @@ package Views;
 import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
-import Recurso.ValidacionDeDatosDeEntrada;
 import UML.Equipo;
 import UML.Persona;
 import java.awt.Image;

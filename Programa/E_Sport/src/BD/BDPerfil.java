@@ -5,12 +5,10 @@
  */
 package BD;
 
-import Controladora.Main;
 import UML.Perfil;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Clase en la que controlaremos e introduciremos perfiles a la base de datos.
@@ -43,9 +41,7 @@ public class BDPerfil {
        // buscar si existe datos en rs
         if(rs.next()){
             // crear objeto con base y cargar datos.
-            p = new Perfil();
-            p.setIdPerfil(rs.getInt(1));
-            p.setNombre(rs.getString(2));
+            p = recorrer(rs);
         }
         
         //cerrar conexion y devolver objeto
@@ -56,6 +52,12 @@ public class BDPerfil {
         return p;
     }
     
+    private Perfil recorrer(ResultSet rs) throws Exception{
+        Perfil p = new Perfil();
+        p.setIdPerfil(rs.getInt("id_perfil"));
+        p.setNombre(rs.getString("nombre"));
+        return p;
+    }
      /**
      * Metodo para buscar una lista de perfiles.
      * @return devuelve una lista de perfiles.
@@ -76,9 +78,7 @@ public class BDPerfil {
        // buscar si existe datos en rs
         while(rs.next()){
             // crear objeto con base, cargar datos y añadir a la lista
-            Perfil p = new Perfil();
-            p.setIdPerfil(rs.getInt(1));
-            p.setNombre(rs.getString(2));
+            Perfil p = recorrer(rs);
             listaPerfil.add(p);
         }
         
@@ -113,9 +113,7 @@ public class BDPerfil {
        // buscar si existe datos en rs
         if(rs.next()){
             // crear objeto con base y cargar datos.
-            p = new Perfil();
-            p.setIdPerfil(rs.getInt(1));
-            p.setNombre(rs.getString(2));
+            p = recorrer(rs);
         }
         
         //cerrar conexion y devolver objeto

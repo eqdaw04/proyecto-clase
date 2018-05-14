@@ -14,9 +14,7 @@ import java.util.Date;
 import javax.swing.Timer;
 import UML.Equipo;
 import UML.Partido;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import javax.swing.JOptionPane;
 
 /**
  * Clase en la que controlaremos e introduciremos los partidos a la base de datos.
@@ -49,7 +47,7 @@ public class BDPartido {
     public boolean insertarPartido(Partido p, Jornada jornada, BDConexion con) throws Exception{
         boolean estado = false;
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("INSERT INTO partido (id_partido, fecha, ID_JORNADA) values(?, to_timestamp(?,'YYYY-MM-DD HH24:MI:SS.FF'), ?)");
+        sentencia = con.getConnection().prepareStatement("INSERT INTO partido (id_partido, fecha, ID_JORNADA) values(?, to_timestamp(?,'DD-MM-RRRR HH24:MI:SS.FF'), ?)");
         sentencia.setInt(1, p.getIdPartido());
         // IMPORTANTE se ha decidido convertir el date long a String porque no habia manera de que java reconozca el long con la máscara
         // java.sql.SQLDataException: ORA-01830: la máscara de formato de fecha termina antes de convertir toda la cadena de entrada
@@ -76,7 +74,8 @@ public class BDPartido {
     
     public boolean insertarEquipoAPartido(Partido p, BDConexion con) throws Exception{
         boolean estado = false;
-        PreparedStatement sentencia = null;
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("");
         int n = 0;
         // insertar en el marcador el primer equipo
         // 1 es visitante y 0 es local; 1 false 0 true
@@ -122,13 +121,8 @@ public class BDPartido {
         while(rs.next()){
             Partido p = new Partido();
             p.setIdPartido(rs.getInt("id_partido"));
-            
             long as = rs.getTimestamp("fecha").getTime();
-            
-            //SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy HH:MM:SS");
-            
             Calendar c = Calendar.getInstance();
-            //c.setTime(f.parse(rs.getString("fecha")));
             c.setTimeInMillis(as);
             p.setFecha(c);
             lPartido.add(p);
@@ -139,17 +133,11 @@ public class BDPartido {
         return lPartido;
     } 
     
-    private String fechaAString (Date fecha){
-        SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
-        String dato = f.format(fecha);
-        return dato;
-    }
-    
     public ArrayList <Partido> consultarPartidoPorFecha(Date fecha) throws Exception{
          ArrayList <Partido> listaPartido = new ArrayList();
          BDConexion con = new BDConexion();
          PreparedStatement sentencia;
-         sentencia = con.getConnection().prepareStatement("SELECT * FROM partido WHERE fecha = to_timestamp(?,'YYYY-MM-DD HH24:MI:SS.FF')");
+         sentencia = con.getConnection().prepareStatement("SELECT * FROM partido WHERE fecha = to_timestamp(?,'DD-MM-RRRR HH24:MI:SS.FF')");
          sentencia.setString(1, String.valueOf(new java.sql.Timestamp(fecha.getTime())));
          ResultSet rs;
          rs = sentencia.executeQuery();
@@ -163,6 +151,9 @@ public class BDPartido {
             p.setFecha(c);
             listaPartido.add(p);
          }
+         rs.close();
+         sentencia.close();
+         con.desconectar();
          return listaPartido;
      }
     /**
@@ -205,12 +196,14 @@ public class BDPartido {
         boolean estado = false;
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("UPDATE partido SET fecha = to_timestamp(?,'YYYY-MM-DD HH24:MI:SS.FF') WHERE id_partido = ?" );
+        sentencia = con.getConnection().prepareStatement("UPDATE partido SET fecha = to_timestamp(?,'DD-MM-RRRR HH24:MI:SS.FF') WHERE id_partido = ?" );
         sentencia.setString(1, String.valueOf(new java.sql.Timestamp(p.getFecha().getTimeInMillis())));
         sentencia.setInt(2, p.getIdPartido());
         if(sentencia.executeUpdate()==1){
             estado = true;
         }
+        sentencia.close();
+        con.desconectar();
         return estado;
     }
     
@@ -232,6 +225,8 @@ public class BDPartido {
                 estado = true;
             }
         }
+        sentencia.close();
+        con.desconectar();
         return estado;
     }
 }
