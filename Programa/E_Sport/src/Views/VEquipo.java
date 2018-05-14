@@ -21,8 +21,8 @@ public class VEquipo extends javax.swing.JDialog {
 
     /**
      * Metodo para mostrar las opciones según el CRUD que se quiera realizar.
-     * @param tipo
-     * @param n
+     * @param tipo String
+     * @param n int
      */
 
     public VEquipo(String tipo, int n) {
@@ -506,7 +506,7 @@ public class VEquipo extends javax.swing.JDialog {
         setVisible(true);
     }
     
-        /**
+     /**
      * Metodo para validar el nombre.
      * @throws Exception 
      */
@@ -574,6 +574,11 @@ public class VEquipo extends javax.swing.JDialog {
         taComentario.setText(e.getComentario());
     }
     
+    /**
+     * Metodo para rellenar la lista de dueños.
+     * @throws Exception 
+     */
+    
     private void relllenarLista() throws Exception {
         cbDuenno.removeAllItems();
         ArrayList<Persona> listaDuennos=Main.buscarUsuariosDuennos();
@@ -584,6 +589,11 @@ public class VEquipo extends javax.swing.JDialog {
         }
         cbDuenno.setSelectedIndex(-1);
     }
+    
+    /**
+     * Metodo para validar el dueño.
+     * @throws Exception 
+     */
     
     private void validarDuenno() throws Exception {
         if(cbDuenno.getSelectedIndex()==-1)

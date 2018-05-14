@@ -50,8 +50,11 @@ public class VGenerarLiga extends javax.swing.JDialog {
         setVisible(true);
     }
     
+    /**
+     * Metodo para rellenar las horas y minutos (carga de datos).
+     */
+    
     private void cargarDatos(){
-        // rellenar las horas y minutos
         for(int x = 0; x<60; x++){
             if(x<24){
                 if(x<10){
@@ -75,6 +78,10 @@ public class VGenerarLiga extends javax.swing.JDialog {
         
     }
     
+    /**
+     * Metodo para habilitar los campos deshabilitados.
+     */
+    
     private void habilitarCampos(){
         try {
             listaJornada = Main.consultarTodasLasJornadas();
@@ -94,6 +101,11 @@ public class VGenerarLiga extends javax.swing.JDialog {
             Logger.getLogger(VGenerarLiga.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    /**
+     * Metodo para cargar las jornadas existentes.
+     * @param listaJornada ArrayList de Jornada
+     */
     
     private void cargarJornada(ArrayList <Jornada> listaJornada){
         // Rellenar el list con las jornadas existentes
@@ -472,6 +484,11 @@ public class VGenerarLiga extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_lPartidoMouseClicked
     
+    /**
+     * Metodo para cargar el partido.
+     * @param listaPartido ArrayList de Partido.
+     */
+    
     private void cargarPartido(ArrayList <Partido> listaPartido){
         lPartido.removeAll();
         DefaultListModel <Integer> modelo = new DefaultListModel();
@@ -481,6 +498,10 @@ public class VGenerarLiga extends javax.swing.JDialog {
         lPartido.setModel(modelo);
         lPartido.setEnabled(true);
     }
+    
+    /**
+     * Metodo para cargar el marcador.
+     */
     
     private void cargarMarcador(){
         ccCalendario.setDate(p.getFecha().getTime());
