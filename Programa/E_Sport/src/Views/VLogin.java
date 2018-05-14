@@ -70,8 +70,10 @@ public class VLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 66, 255));
         setFocusCycleRoot(false);
+        setMaximumSize(new java.awt.Dimension(562, 496));
         setMinimumSize(new java.awt.Dimension(562, 496));
         setPreferredSize(new java.awt.Dimension(562, 496));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
