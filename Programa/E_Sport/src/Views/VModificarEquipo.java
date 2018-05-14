@@ -75,13 +75,19 @@ public class VModificarEquipo extends javax.swing.JDialog {
         imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 30)); // NOI18N
         jLabel1.setText("Modificar Equipo");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(236, 27, 229, 44);
 
         nombeEquipo.setFont(new java.awt.Font("Bauhaus 93", 0, 30)); // NOI18N
         nombeEquipo.setForeground(new java.awt.Color(51, 102, 255));
         nombeEquipo.setText("NOMBREEQUIPO");
+        getContentPane().add(nombeEquipo);
+        nombeEquipo.setBounds(483, 27, 219, 44);
 
         liJugEqui.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         liJugEqui.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -92,8 +98,13 @@ public class VModificarEquipo extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(liJugEqui);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(70, 185, 280, 214);
+
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("Jugadores en el equipo:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(70, 147, 209, 21);
 
         liJugDisp.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         liJugDisp.setToolTipText("");
@@ -104,8 +115,13 @@ public class VModificarEquipo extends javax.swing.JDialog {
         });
         jScrollPane2.setViewportView(liJugDisp);
 
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(520, 185, 270, 214);
+
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel3.setText("Sueldo del jugador:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(241, 437, 170, 21);
 
         bEliminar.setText("Eliminar Jugador");
         bEliminar.setEnabled(false);
@@ -114,6 +130,8 @@ public class VModificarEquipo extends javax.swing.JDialog {
                 bEliminarActionPerformed(evt);
             }
         });
+        getContentPane().add(bEliminar);
+        bEliminar.setBounds(70, 466, 150, 25);
 
         bAnnadir.setText("Añadir Jugador");
         bAnnadir.setEnabled(false);
@@ -122,6 +140,8 @@ public class VModificarEquipo extends javax.swing.JDialog {
                 bAnnadirActionPerformed(evt);
             }
         });
+        getContentPane().add(bAnnadir);
+        bAnnadir.setBounds(640, 480, 150, 25);
 
         bConsultar.setText("Consultar");
         bConsultar.setEnabled(false);
@@ -130,12 +150,18 @@ public class VModificarEquipo extends javax.swing.JDialog {
                 bConsultarActionPerformed(evt);
             }
         });
+        getContentPane().add(bConsultar);
+        bConsultar.setBounds(368, 280, 110, 25);
 
         tfSueldo.setEditable(false);
         tfSueldo.setText("Sueldo");
+        getContentPane().add(tfSueldo);
+        tfSueldo.setBounds(416, 434, 110, 30);
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel4.setText("Jugadores Disponibles:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(520, 151, 201, 21);
 
         bSalir.setText("Salir");
         bSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -143,84 +169,10 @@ public class VModificarEquipo extends javax.swing.JDialog {
                 bSalirActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(241, 241, 241)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(bSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(nombeEquipo)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(bConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(bEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bAnnadir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(nombeEquipo))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jLabel2)
-                        .addGap(17, 17, 17))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(bConsultar)))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(tfSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(bEliminar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addComponent(bAnnadir)
-                        .addGap(18, 18, 18)
-                        .addComponent(bSalir)
-                        .addGap(26, 26, 26))))
-        );
+        getContentPane().add(bSalir);
+        bSalir.setBounds(717, 523, 73, 25);
+        getContentPane().add(imgfondo);
+        imgfondo.setBounds(0, 0, 860, 570);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
