@@ -85,7 +85,7 @@ INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,C
 CREATE TABLE Jornada(
 Id_jornada NUMBER (2)  NOT NULL,
 Fecha_inicio DATE NOT NULL,
-Fecha_fin DATE NOT NULL,
+Fecha_fin DATE,
 CONSTRAINT Jorn_jornid_pk PRIMARY KEY (Id_jornada),
 CONSTRAINT Jorn_fech_ck CHECK (Fecha_fin > Fecha_inicio)
 );
