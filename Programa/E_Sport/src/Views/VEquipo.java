@@ -479,6 +479,10 @@ public class VEquipo extends javax.swing.JDialog {
         {
             JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         }
+        bPrimero.setVisible(false);
+        bAnterior.setVisible(false);
+        bSiguiente.setVisible(false);
+        bUltimo.setVisible(false);
         switch(tipo)
         {
             case "alta":
@@ -486,24 +490,12 @@ public class VEquipo extends javax.swing.JDialog {
                 taComentario.setEditable(true);
                 bAceptar.setEnabled(true);
                 bBuscar.setVisible(false);
-                bPrimero.setVisible(false);
-                bAnterior.setVisible(false);
-                bSiguiente.setVisible(false);
-                bUltimo.setVisible(false);
-                break;
-            case "baja":
-                bPrimero.setVisible(false);
-                bAnterior.setVisible(false);
-                bSiguiente.setVisible(false);
-                bUltimo.setVisible(false);
-                break;
-            case "modificacion":
-                bPrimero.setVisible(false);
-                bAnterior.setVisible(false);
-                bSiguiente.setVisible(false);
-                bUltimo.setVisible(false);
                 break;
             case "listado":
+                bPrimero.setVisible(true);
+                bAnterior.setVisible(true);
+                bSiguiente.setVisible(true);
+                bUltimo.setVisible(true);
                 bAceptar.setVisible(false);
                 bCancelar.setVisible(false);
                 break;

@@ -534,7 +534,11 @@ public class VJugador extends javax.swing.JDialog {
         this.tipo=tipo;
         setModal(true);
         this.setLocationRelativeTo(null);
-        listaJugadores = new ArrayList();
+        listaJugadores = new ArrayList();        
+        bPrimero.setVisible(false);
+        bAnterior.setVisible(false);
+        bSiguiente.setVisible(false);
+        bUltimo.setVisible(false);
         switch(tipo)
         {
             case "alta":
@@ -546,26 +550,14 @@ public class VJugador extends javax.swing.JDialog {
                 taComentario.setEditable(true);
                 bAceptar.setEnabled(true);
                 bBuscar.setVisible(false);
-                bPrimero.setVisible(false);
-                bAnterior.setVisible(false);
-                bSiguiente.setVisible(false);
-                bUltimo.setVisible(false);
-                break;
-            case "baja":
-                bPrimero.setVisible(false);
-                bAnterior.setVisible(false);
-                bSiguiente.setVisible(false);
-                bUltimo.setVisible(false);
-                break;
-            case "modificacion":
-                bPrimero.setVisible(false);
-                bAnterior.setVisible(false);
-                bSiguiente.setVisible(false);
-                bUltimo.setVisible(false);
                 break;
             case "listado":
                 bAceptar.setVisible(false);
-                bCancelar.setVisible(false);
+                bCancelar.setVisible(false);       
+                bPrimero.setVisible(true);
+                bAnterior.setVisible(true);
+                bSiguiente.setVisible(true);
+                bUltimo.setVisible(true);
                 break;
             case "consulta":
                 tfDNI.setText(j.getDni());
@@ -580,10 +572,6 @@ public class VJugador extends javax.swing.JDialog {
                 bBuscar.setVisible(false);
                 bAceptar.setVisible(false);
                 bCancelar.setVisible(false);
-                bPrimero.setVisible(false);
-                bAnterior.setVisible(false);
-                bSiguiente.setVisible(false);
-                bUltimo.setVisible(false);
                 break;
         }
         setVisible(true);
