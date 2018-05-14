@@ -829,6 +829,7 @@ public class Main {
     /**
      * Metodo para dar de alta un equipo en la base de datos.
      * @param nombre String
+     * @param lugar String
      * @param usuario String
      * @param fechaCreacion Date
      * @param comentario String
@@ -859,6 +860,7 @@ public class Main {
     /**
      * Metodo para modificar un equipo de la base de datos.
      * @param nombre String
+     * @param lugar String
      * @param comentario String
      * @throws Exception 
      */
@@ -967,8 +969,6 @@ public class Main {
      */
 
     public static Persona obtenerPersona(int idPersona) throws Exception {
-        Persona p = null;
-        p = bdPersona.buscarPersona(idPersona);
-        return p;
+        return bdPersona.buscarPersona(idPersona);
     }
 }
