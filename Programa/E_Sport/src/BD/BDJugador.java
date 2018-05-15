@@ -142,7 +142,7 @@ public class BDJugador {
             long as = rs.getTimestamp("fecha_alta").getTime();
             Calendar c = Calendar.getInstance();
             c.setTimeInMillis(as);
-            j.setFechaAlta(c);
+            j.setFechaAlta(c.getTime());
             j.setComentario(rs.getString("comentario"));      
             // añadir el objeto a la lista
             a.add(j);
@@ -244,7 +244,7 @@ public class BDJugador {
         sentencia.setString(4, j.getApellido2());
         sentencia.setString(5, j.getNickname());
         sentencia.setFloat(6, j.getSueldo());
-        sentencia.setDate(7, formatearFecha(j.getFechaAlta().getTime()));
+        sentencia.setDate(7, formatearFecha(j.getFechaAlta()));
         sentencia.setString(8, j.getComentario());
                                 
         if(sentencia.executeUpdate()!=1)

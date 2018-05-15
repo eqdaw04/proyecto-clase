@@ -73,6 +73,7 @@ public class VUsuario extends javax.swing.JDialog {
                 cbPerfil.setEnabled(true);
                 bAceptar.setEnabled(true);
                 bBuscar.setVisible(false);
+                ccFechaAlta.setEditable(true);
                 break;
             
             case "listado":
@@ -81,6 +82,7 @@ public class VUsuario extends javax.swing.JDialog {
                 bSiguiente.setVisible(true);
                 bUltimo.setVisible(true);
                 bAceptar.setVisible(false);
+                bCancelar.setVisible(true);
                 break;
         }
         setVisible(true);
@@ -182,8 +184,6 @@ public class VUsuario extends javax.swing.JDialog {
 
         jLabel2.setText("Usuario:");
 
-        ccFechaAlta.setEnabled(false);
-
         jLabel3.setText("Nombre:");
 
         tfNombre.setEditable(false);
@@ -202,7 +202,6 @@ public class VUsuario extends javax.swing.JDialog {
 
         cbPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Dueño", "Usuario" }));
         cbPerfil.setSelectedIndex(-1);
-        cbPerfil.setEnabled(false);
 
         jLabel10.setText("Apellido 2:");
 
@@ -534,7 +533,7 @@ public class VUsuario extends javax.swing.JDialog {
                     pfContrasenna.setEditable(true);
                     tfEmail.setEditable(true);
                     cbPerfil.setEnabled(true);
-                    ccFechaAlta.setEnabled(true);
+                    ccFechaAlta.setEditable(true);
                 }
                 bAceptar.setEnabled(true);
             }
