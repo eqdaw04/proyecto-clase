@@ -87,13 +87,15 @@ public class VJugador extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
-        setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
+        setMaximumSize(new java.awt.Dimension(719, 612));
+        setMinimumSize(new java.awt.Dimension(719, 612));
+        setModal(true);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 36)); // NOI18N
         jLabel1.setText("JUGADOR");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(280, 40, 150, 54);
+        jLabel1.setBounds(280, 40, 175, 47);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("DNI:");
