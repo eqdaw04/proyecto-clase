@@ -16,7 +16,7 @@ public class VCalendario extends javax.swing.JDialog {
      */
     public VCalendario() {
         initComponents();
-        tPartidos.add
+        initComopnents2();
     }
 
     /**
@@ -30,7 +30,7 @@ public class VCalendario extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         Njornada = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        pPartido1 = new javax.swing.JPanel();
         lbE1 = new javax.swing.JLabel();
         lbE2 = new javax.swing.JLabel();
         VS = new javax.swing.JLabel();
@@ -44,7 +44,7 @@ public class VCalendario extends javax.swing.JDialog {
         Njornada.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         Njornada.setText("X");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pPartido1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lbE1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lbE1.setText("Equipo1");
@@ -56,13 +56,13 @@ public class VCalendario extends javax.swing.JDialog {
         VS.setText("VS");
 
         lbFecha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        lbFecha.setText("jLabel2");
+        lbFecha.setText("Fechaaaaaaa");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pPartido1Layout = new javax.swing.GroupLayout(pPartido1);
+        pPartido1.setLayout(pPartido1Layout);
+        pPartido1Layout.setHorizontalGroup(
+            pPartido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPartido1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbE1)
                 .addGap(32, 32, 32)
@@ -71,13 +71,13 @@ public class VCalendario extends javax.swing.JDialog {
                 .addComponent(lbE2)
                 .addGap(70, 70, 70)
                 .addComponent(lbFecha)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pPartido1Layout.setVerticalGroup(
+            pPartido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPartido1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pPartido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbE1)
                     .addComponent(lbE2)
                     .addComponent(VS)
@@ -97,9 +97,9 @@ public class VCalendario extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(Njornada))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(116, Short.MAX_VALUE))
+                        .addGap(101, 101, 101)
+                        .addComponent(pPartido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,9 +108,9 @@ public class VCalendario extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Njornada))
-                .addGap(91, 91, 91)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(pPartido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(293, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,9 +125,55 @@ public class VCalendario extends javax.swing.JDialog {
     private javax.swing.JLabel Njornada;
     private javax.swing.JLabel VS;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbE1;
     private javax.swing.JLabel lbE2;
     private javax.swing.JLabel lbFecha;
+    private javax.swing.JPanel pPartido1;
     // End of variables declaration//GEN-END:variables
+
+    private void initComopnents2() {
+        javax.swing.GroupLayout pPartido1Layout = new javax.swing.GroupLayout(pPartido1);
+        pPartido1.setLayout(pPartido1Layout);
+        pPartido1Layout.setHorizontalGroup(
+            pPartido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPartido1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbE1)
+                .addGap(32, 32, 32)
+                .addComponent(VS)
+                .addGap(32, 32, 32)
+                .addComponent(lbE2)
+                .addGap(70, 70, 70)
+                .addComponent(lbFecha)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pPartido1Layout.setVerticalGroup(
+            pPartido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPartido1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pPartido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbE1)
+                    .addComponent(lbE2)
+                    .addComponent(VS)
+                    .addComponent(lbFecha))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(233, 233, 233)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(Njornada))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(pPartido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(130, Short.MAX_VALUE))
+        );
+    }
 }
