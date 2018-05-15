@@ -70,7 +70,7 @@ public class VUsuario extends javax.swing.JDialog {
                 tfApellido1.setEditable(true);
                 tfApellido2.setEditable(true);
                 tfEmail.setEditable(true);
-                cbPerfil.setEditable(true);
+                cbPerfil.setEnabled(true);
                 bAceptar.setEnabled(true);
                 bBuscar.setVisible(false);
                 ccFechaAlta.setEditable(true);
