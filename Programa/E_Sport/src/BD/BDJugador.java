@@ -32,7 +32,6 @@ public class BDJugador {
      */    
     
     public void insertarJugador(Jugador j) throws Exception {
-        
         BDConexion con = new BDConexion();
         
         PreparedStatement sentencia;
