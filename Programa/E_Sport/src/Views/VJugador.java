@@ -78,6 +78,10 @@ public class VJugador extends javax.swing.JDialog {
         imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocationByPlatform(true);
+        setMaximumSize(new java.awt.Dimension(719, 612));
+        setMinimumSize(new java.awt.Dimension(719, 612));
+        setModal(true);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("JUGADOR");
@@ -166,14 +170,7 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel9.setText("Apellido 2:");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(118, 234, 90, 21);
-        getContentPane().add(cFechaAlta);
-        cFechaAlta.setBounds(250, 320, 220, 22);
-        getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 680, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -511,6 +508,7 @@ public class VJugador extends javax.swing.JDialog {
     private javax.swing.JButton bUltimo;
     private org.freixas.jcalendar.JCalendarCombo cFechaAlta;
     private javax.swing.JFormattedTextField ftfSueldo;
+    private javax.swing.JLabel imgfondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
