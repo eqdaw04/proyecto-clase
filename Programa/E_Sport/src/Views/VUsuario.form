@@ -250,9 +250,6 @@
     <Component class="javax.swing.JTextField" name="tfUsuario">
     </Component>
     <Component class="org.freixas.jcalendar.JCalendarCombo" name="ccFechaAlta">
-      <Properties>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -304,7 +301,6 @@
           </StringArray>
         </Property>
         <Property name="selectedIndex" type="int" value="-1"/>
-        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
