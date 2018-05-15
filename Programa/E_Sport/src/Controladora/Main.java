@@ -448,7 +448,7 @@ public class Main {
         Emparejamiento emp = new Emparejamiento(lEquipo);
         // ejecutar el algoritmo para los equipos aleatorios
         // Abrir conexion y mantenerlo abierto hasta que acabe que introducir las partidas para no tener que abrir y cerrar constantemente hasta introducir los X partidos
-        
+        new espera();
         emp.calcularPartido(fecha, horaF);
         return emp.getDato();
     }

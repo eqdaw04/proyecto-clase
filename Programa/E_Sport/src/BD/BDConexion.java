@@ -33,9 +33,9 @@ public class BDConexion {
             // establecer la conexión
             connection = DriverManager.getConnection(Main.getUrl(), Main.getUsuario(), Main.getContrasenna());
             // comprueba si está conectado, en caso contrario, mostrar error
-            if(connection != null){
-                System.out.println("conexion establecida");
-                //throw new Excepcion(48);
+            if(connection == null){
+                //System.out.println("conexion establecida");
+                throw new Excepcion(48);
             }
         }
        /*

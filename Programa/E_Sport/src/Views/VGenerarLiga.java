@@ -232,6 +232,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jLabel9.setText("Lugar del partido:");
 
         tfLugar.setEditable(false);
+        tfLugar.setText("MIKEL ES MUY LISTO");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
