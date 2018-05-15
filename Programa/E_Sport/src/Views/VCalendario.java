@@ -6,7 +6,7 @@
 package Views;
 
 import Controladora.Main;
-import UML.Partido;
+import UML.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,12 +20,13 @@ public class VCalendario extends javax.swing.JDialog {
     /**
      * Creates new form VCalendario
      */
-    private ArrayList<Partido> partidos;
+    private ArrayList<Jornada> jornadas;
     
     public VCalendario() {
         initComponents();
         setVisible(true);
-        obtenerPartidos();
+        obtenerDatos();
+        
     }
 
     /**
@@ -97,13 +98,18 @@ public class VCalendario extends javax.swing.JDialog {
     private javax.swing.JTextArea taPartidos;
     // End of variables declaration//GEN-END:variables
 
-    private void obtenerPartidos() {
+    private void obtenerDatos() {
         try {
-            Main.consultarTodasLasJornadas();
+        jornadas= Main.consultarTodasLasJornadas();
         } catch (Exception ex) {
             Logger.getLogger(VCalendario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        partidos=Main.BuscarPartidosPorJornada(j); 
+        for (int x=0;x<jornadas.size();x++){
+            try {
+                jornadas.get(x).setListaPartidos(Main.BuscarPartidosPorJornada(jornadas.get(x).getIdJornada()));
+            } catch (Exception ex) {
+                Logger.getLogger(VCalendario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
-
 }
