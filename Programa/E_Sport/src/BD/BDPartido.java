@@ -231,4 +231,35 @@ public class BDPartido {
         con.desconectar();
         return estado;
     }
+    public ArrayList<Partido> BuscarPartidosPorJornada (int j) throws Exception{
+        ArrayList<Partido> partidos = new ArrayList();
+        // abrir conexión
+        BDConexion con = new BDConexion();
+        // instanciar un array de tipo objeto equipo
+        ArrayList a = new ArrayList();
+        PreparedStatement sentencia;
+        // preparar sentencia
+        sentencia = con.getConnection().prepareStatement("{call Pkg_Jornada.PartidosPorJornada(?)}");
+        sentencia.setInt(1,j);        
+        // instanciar rs, ejecutar sentencia y cargar los datos al rs
+        ResultSet rs;
+        rs = sentencia.executeQuery();
+        
+        while(rs.next()){
+            Equipo e=new Equipo();
+            Partido p=new Partido();
+            e.setIdEquipo(rs.getInt("Id_equipo"));
+            e.setNombre(rs.getString("Nombre"));
+            e.setLugar("Lugar");
+            p.setIdPartido(rs.getInt("Id_partido"));
+            if(rs.getInt("visitante")==1){
+                p.seteLocal(e);
+            }
+            else{
+                p.seteVisitante(e);
+            }  
+            partidos.add(p);
+        }
+        return partidos;
+    }
 }

@@ -136,6 +136,7 @@ public class VCalendario extends javax.swing.JDialog {
 
     private void obtenerPartidos() {
         
+        Main.BuscarPartidosPorJornada(); 
     }
 
 }

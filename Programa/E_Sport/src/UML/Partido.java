@@ -10,8 +10,7 @@ import java.util.Calendar;
 
 public class Partido {
     private int idPartido;
-    private Calendar fecha;
-    
+    private Calendar fecha;    
     private Equipo eLocal, eVisitante;
     int mLocal, mVisitante;
 

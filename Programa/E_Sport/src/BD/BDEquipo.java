@@ -8,6 +8,7 @@ package BD;
 import Controladora.Main;
 import Excepciones.Excepcion;
 import UML.Equipo;
+import UML.Jornada;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -262,7 +263,8 @@ public class BDEquipo {
      * @param fechaE Date
      * @return fecha
      */ 
-
+    
+    
     private Date formatearFecha(java.util.Date fechaE){
         // instanciar y formatear la fecha para ser reconocido con el formato establecido
         SimpleDateFormat formar = new SimpleDateFormat("yyyy-MM-dd");
