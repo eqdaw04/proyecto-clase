@@ -348,7 +348,9 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static void modificarPersona(String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil, Calendar fecha) throws Exception {
+    public static void modificarPersona(int id,String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil, Calendar fecha) throws Exception {
+        persona.setIdPersona(id);
+        persona.setUsuario(usuario);
         persona.setNombre(nombre);
         persona.setApellido1(ape1);
         persona.setApellido2(ape2);
@@ -606,11 +608,11 @@ public class Main {
                 break;
                 
             case 4: // Nombre
-                dato = "^[A-Z][a-zñ]{2,}$";
+                dato = "^[A-ZÑ][a-zñ]{2,}$";
                 break;
                 
             case 5: // Apellidos
-                dato = "^[A-Z][a-zñ]{2,}$";
+                dato = "^[A-ZÑ][a-zñ]{2,}$";
                 break;
                 
             case 6: // e-mail
@@ -618,15 +620,15 @@ public class Main {
                 break;
                 
             case 7: // Usuario
-                dato = "^[A-Za-z0-9]{3,}$";
+                dato = "^[A-ZÑña-z0-9]{3,}$";
                 break;
                 
             case 8: // Contraseña
-                dato = "^[A-Za-z0-9]{3,}$";
+                dato = "^[A-ZñÑa-z0-9]{3,}$";
                 break;
                 
             case 29: // lugar
-                dato = "^[A-Z][a-zñ]{2,}$";
+                dato = "^[A-ZÑ][a-zñ]{2,}$";
                 break;
         }
         return dato;

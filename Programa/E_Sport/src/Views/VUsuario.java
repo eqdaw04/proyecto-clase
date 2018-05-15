@@ -407,7 +407,7 @@ public class VUsuario extends javax.swing.JDialog {
             throw new Excepcion(18);
         }
         //mandar al main para modificar el usuario con los nuevos datos
-        Main.modificarPersona(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), String.valueOf(cbPerfil.getSelectedItem()), ccFechaAlta.getCalendar());
+        Main.modificarPersona(p.getIdPersona(),tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), String.valueOf(cbPerfil.getSelectedItem()), ccFechaAlta.getCalendar());
         JOptionPane.showMessageDialog(this, "El usuario se ha dado modificado correctamente.");
         Main.reabrir(this, tipo, n);
     }
@@ -539,6 +539,7 @@ public class VUsuario extends javax.swing.JDialog {
                     tfEmail.setEditable(true);
                     cbPerfil.setEnabled(true);
                     ccFechaAlta.setEditable(true);
+                    tfUsuario.setEditable(false);
                 }
                 bAceptar.setEnabled(true);
             }

@@ -506,7 +506,7 @@ public class VEquipo extends javax.swing.JDialog {
             throw new Excepcion(49);
         }
         else{
-            Main.validar(n, tfLugar);
+            Main.validar(29, tfLugar);
         }
     }
     

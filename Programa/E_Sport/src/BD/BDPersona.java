@@ -206,7 +206,7 @@ public class BDPersona {
         BDConexion con = new BDConexion();
         // preparar la conexion y sentencia
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("UPDATE Persona SET Nombre = ?, Apellido1 = ?, Apellido2 = ?, Contrasenna = ?, Email = ?, Id_perfil = ?, fecha_alta = TO_DATE(?,'DD/MM/RRRR') WHERE usuario = ?");
+        sentencia = con.getConnection().prepareStatement("UPDATE Persona SET Nombre = ?, Apellido1 = ?, Apellido2 = ?, Contrasenna = ?, Email = ?, Id_perfil = ?, fecha_alta = TO_DATE(?,'DD/MM/RRRR'), usuario = ? WHERE id_persona = ?");
         // datos a insertar
         sentencia.setString(1, p.getNombre());        
         sentencia.setString(2, p.getApellido1());
@@ -216,6 +216,7 @@ public class BDPersona {
         sentencia.setInt(6, p.getPerfil().getIdPerfil());
         sentencia.setDate(7, formatearFecha(p.getFechaAlta().getTime()));
         sentencia.setString(8, p.getUsuario());
+        sentencia.setInt(9, p.getIdPersona());
         // ejecutar la sentencia
         if(sentencia.executeUpdate() != 1){
             throw new Excepcion(25);
