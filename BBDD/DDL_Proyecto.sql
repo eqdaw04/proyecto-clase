@@ -67,9 +67,10 @@ Comentario VARCHAR2 (150),
 Id_equipo INTEGER,
 CONSTRAINT Jug_jugid_pk PRIMARY KEY (Id_jugador),
 CONSTRAINT Jug_equid_fk FOREIGN KEY (Id_equipo) REFERENCES Equipo (Id_equipo),
-CONSTRAINT Jug_nom_ck  CHECK (Nombre = INITCAP(Nombre)),
-CONSTRAINT Jug_ape1_ck  CHECK (Apellido1 = INITCAP(Apellido1)),
-CONSTRAINT Jug_ape2_ck  CHECK (Apellido2 = INITCAP(Apellido2))
+CONSTRAINT Jug_suel_ck CHECK (Sueldo > 735.90),
+CONSTRAINT Jug_nom_ck CHECK (Nombre = INITCAP(Nombre)),
+CONSTRAINT Jug_ape1_ck CHECK (Apellido1 = INITCAP(Apellido1)),
+CONSTRAINT Jug_ape2_ck CHECK (Apellido2 = INITCAP(Apellido2))
 );
 
 INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,Comentario,ID_EQUIPO) VALUES ('72848256A','Mikel','Ferreiro','Guridi','Joylife',30000,TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son rosas',1);
