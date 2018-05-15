@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *Clase en la que introduciremos y controlaremos los equipos a la base de datos.
@@ -40,7 +41,7 @@ public class BDEquipo {
         // enviar los datos a los ? 
         sentencia.setString(1, e.getNombre());
         // formatear la fecha
-        sentencia.setDate(2, formatearFecha(e.getFechaCreacion()));
+        sentencia.setDate(2, formatearFecha(e.getFechaCreacion().getTime()));
         sentencia.setString(3, e.getComentario());
         sentencia.setString(4, e.getLugar());
         sentencia.setInt(5, e.getPersona().getIdPersona());
@@ -144,8 +145,11 @@ public class BDEquipo {
         // instanciar el objeto equipo y llenarlo con los datos del rs
         Equipo e = new Equipo();
         e.setIdEquipo(rs.getInt("id_equipo"));
-        e.setNombre(rs.getString("nombre"));
-        e.setFechaCreacion(rs.getDate("fecha_creacion"));            
+        e.setNombre(rs.getString("nombre"));        
+        long as = rs.getTimestamp("fecha_creacion").getTime();
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(as);
+        e.setFechaCreacion(c);            
         e.setComentario(rs.getString("comentario"));
         e.setLugar(rs.getString("lugar"));
         e.setPersona(Main.obtenerPersona(rs.getInt("id_persona")));

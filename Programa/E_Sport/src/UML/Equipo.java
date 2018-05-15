@@ -1,7 +1,7 @@
 package UML;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 
 /**
 * Clase en la que definiremos el nombre, la fecha de creación y os integrantes del equipo.
@@ -14,7 +14,7 @@ import java.util.Date;
 public class Equipo {
     private int idEquipo;
     private String nombre;
-    private Date fechaCreacion;
+    private Calendar fechaCreacion;
     private String lugar, comentario;
     
     private Persona persona;
@@ -39,11 +39,11 @@ public class Equipo {
         this.nombre = nombre;
     }
 
-    public Date getFechaCreacion() {
+    public Calendar getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
+    public void setFechaCreacion(Calendar fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
