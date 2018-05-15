@@ -591,7 +591,7 @@ public class Main {
                 break;
                 
             case 7: // Usuario
-                dato = "^[A-Za-z]{3,}$";
+                dato = "^[A-Za-z0-9]{3,}$";
                 break;
                 
             case 8: // Contraseña

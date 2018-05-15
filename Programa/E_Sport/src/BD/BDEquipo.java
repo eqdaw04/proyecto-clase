@@ -41,7 +41,7 @@ public class BDEquipo {
         // enviar los datos a los ? 
         sentencia.setString(1, e.getNombre());
         // formatear la fecha
-        sentencia.setDate(2, formatearFecha(e.getFechaCreacion().getTime()));
+        sentencia.setDate(2, formatearFecha(e.getFechaCreacion()));
         sentencia.setString(3, e.getComentario());
         sentencia.setString(4, e.getLugar());
         sentencia.setInt(5, e.getPersona().getIdPersona());
@@ -149,7 +149,7 @@ public class BDEquipo {
         long as = rs.getTimestamp("fecha_creacion").getTime();
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(as);
-        e.setFechaCreacion(c);            
+        e.setFechaCreacion(c.getTime());            
         e.setComentario(rs.getString("comentario"));
         e.setLugar(rs.getString("lugar"));
         e.setPersona(Main.obtenerPersona(rs.getInt("id_persona")));
