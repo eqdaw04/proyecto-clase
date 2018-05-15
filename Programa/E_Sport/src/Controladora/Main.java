@@ -159,10 +159,13 @@ public class Main {
                 
             case 6:
                 new VIntroducirResultado(n);
-                break;
-                
+                break;                
             case 7:
                 new VGenerarLiga(n);
+                break;
+            case 8:
+                new VCalendario();
+                break;
         }
     }
 
@@ -214,6 +217,10 @@ public class Main {
                 
             case 7:
                 new VGenerarLiga(n);
+                break;
+            case 8:
+                new VCalendario();
+                break;
         }
     }
     
