@@ -1,6 +1,6 @@
 package UML;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * Clase en la que definiremos los datos personales de cada jugador, la fecha en la que se dió de alta y el salario de este.
@@ -12,7 +12,7 @@ public class Jugador {
     private int idJugador;
     private String dni, nombre, apellido1, apellido2, nickname;
     private float sueldo;
-    private Date fechaAlta;
+    private Calendar fechaAlta;
     private String comentario;
     
     private Equipo equipo;
@@ -76,11 +76,11 @@ public class Jugador {
         this.sueldo = sueldo;
     }
 
-    public Date getFechaAlta() {
+    public Calendar getFechaAlta() {
         return fechaAlta;
     }
 
-    public void setFechaAlta(Date fechaAlta) {
+    public void setFechaAlta(Calendar fechaAlta) {
         this.fechaAlta = fechaAlta;
     }
 
