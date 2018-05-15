@@ -10,6 +10,8 @@ import UML.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,6 +27,7 @@ public class VCalendario extends javax.swing.JDialog {
     public VCalendario() {
         initComponents();
         setVisible(true);
+        setLocationRelativeTo(null);
         obtenerDatos();
         rellenar(pos);
     }
@@ -40,9 +43,10 @@ public class VCalendario extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         Njornada = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        taPartidos = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
+        lbFechaIni = new javax.swing.JLabel();
+        lbFechaFin = new javax.swing.JLabel();
+        Label2 = new javax.swing.JLabel();
+        spPartidos = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -52,45 +56,53 @@ public class VCalendario extends javax.swing.JDialog {
         Njornada.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         Njornada.setText("X");
 
-        taPartidos.setColumns(20);
-        taPartidos.setRows(5);
-        jScrollPane1.setViewportView(taPartidos);
+        lbFechaIni.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        lbFechaIni.setText("FechaIni");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel2.setText("jLabel2");
+        lbFechaFin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        lbFechaFin.setText("FechaFin");
+
+        Label2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        Label2.setText("-");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(233, 233, 233)
+                        .addGap(189, 189, 189)
+                        .addComponent(lbFechaIni)
+                        .addGap(28, 28, 28)
+                        .addComponent(Label2)
+                        .addGap(27, 27, 27)
+                        .addComponent(lbFechaFin))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(227, 227, 227)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(Njornada))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(jLabel2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(79, 79, 79)
+                        .addComponent(spPartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Njornada))
-                .addGap(26, 26, 26)
-                .addComponent(jLabel2)
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbFechaIni)
+                    .addComponent(lbFechaFin)
+                    .addComponent(Label2))
+                .addGap(50, 50, 50)
+                .addComponent(spPartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         pack();
@@ -102,11 +114,12 @@ public class VCalendario extends javax.swing.JDialog {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Label2;
     private javax.swing.JLabel Njornada;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea taPartidos;
+    private javax.swing.JLabel lbFechaFin;
+    private javax.swing.JLabel lbFechaIni;
+    private javax.swing.JScrollPane spPartidos;
     // End of variables declaration//GEN-END:variables
 
     private void obtenerDatos() {
@@ -126,5 +139,20 @@ public class VCalendario extends javax.swing.JDialog {
 
     private void rellenar(int pos) {
         Njornada.setText(String.valueOf(jornadas.get(pos).getIdJornada()));
+        lbFechaIni.setText(String.valueOf(jornadas.get(pos).getFechaInicio()));
+        lbFechaFin.setText(String.valueOf(jornadas.get(pos).getFechaFinal()));
+        String titulos[] ={"Equipos","Fecha","Lugar"};
+        String datos [] []= new String[jornadas.get(pos).getListaPartidos().size()] [3];
+        for (int x=0; x < datos.length;x++){
+            datos [x][0] = jornadas.get(pos).getListaPartidos().get(x).geteLocal().getNombre()+"  VS  "+jornadas.get(pos).getListaPartidos().get(x).geteVisitante().getNombre();
+            datos [x][1] = String.valueOf(jornadas.get(pos).getListaPartidos().get(x).getFecha());
+            datos [x][2] = jornadas.get(pos).getListaPartidos().get(x).geteLocal().getLugar();
+        }
+        JTable tPartidos = new JTable (datos,titulos);
+        tPartidos.setEnabled(false);
+        tPartidos.setShowGrid(false);
+        spPartidos.setViewportView(tPartidos);
+        
+        
     }
 }

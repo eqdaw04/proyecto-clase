@@ -14,7 +14,11 @@ import java.util.Date;
 import javax.swing.Timer;
 import UML.Equipo;
 import UML.Partido;
+import java.sql.CallableStatement;
 import java.util.Calendar;
+import oracle.jdbc.OracleCallableStatement;
+import oracle.jdbc.OracleTypes;
+import sun.awt.AWTAccessor;
 
 /**
  * Clase en la que controlaremos e introduciremos los partidos a la base de datos.
@@ -30,6 +34,7 @@ public class BDPartido {
     ArrayList <Equipo> lEquipo;
     Jornada jornada;
     Integer local, pLocal, visitante, pVisitante;
+    private Partido p;
 
     public BDPartido() {
         lEquipo = new ArrayList();
@@ -237,27 +242,48 @@ public class BDPartido {
         BDConexion con = new BDConexion();
         // instanciar un array de tipo objeto equipo
         ArrayList a = new ArrayList();
-        PreparedStatement sentencia;
+        CallableStatement sentencia;
         // preparar sentencia
-        sentencia = con.getConnection().prepareStatement("{call Pkg_Jornada.PartidosPorJornada(?)}");
+        sentencia = con.getConnection().prepareCall("{call Pkg_Jornada.PartidosPorJornada(?,?)}");
         sentencia.setInt(1,j);        
+        sentencia.registerOutParameter(2, OracleTypes.CURSOR);
+        sentencia.execute();
         // instanciar rs, ejecutar sentencia y cargar los datos al rs
-        ResultSet rs;
-        rs = sentencia.executeQuery();
+        ResultSet rs = ((OracleCallableStatement)sentencia).getCursor(2);
         
         while(rs.next()){
             Equipo e=new Equipo();
-            Partido p=new Partido();
             e.setIdEquipo(rs.getInt("Id_equipo"));
             e.setNombre(rs.getString("Nombre"));
-            e.setLugar("Lugar");
-            p.setIdPartido(rs.getInt("Id_partido"));
-            if(rs.getInt("visitante")==1){
-                p.seteLocal(e);
+            e.setLugar(rs.getString("Lugar"));
+            if(partidos.isEmpty()){
+                p=new Partido();
+                p.setIdPartido(rs.getInt("Id_partido"));
+                if(rs.getInt("visitante")==1){
+                    p.seteLocal(e);
+                }
+                else{
+                    p.seteVisitante(e);
+                } 
+            }else{
+            if(rs.getInt("Id_partido")==partidos.get(partidos.size()-1).getIdPartido()){
+                if(rs.getInt("visitante")==1){
+                    partidos.get(partidos.size()-1).seteLocal(e);
+                }
+                else{
+                    partidos.get(partidos.size()-1).seteVisitante(e);
+                }
+            }else{
+                p=new Partido();
+                p.setIdPartido(rs.getInt("Id_partido"));
+                if(rs.getInt("visitante")==1){
+                    p.seteLocal(e);
+                }
+                else{
+                    p.seteVisitante(e);
+                } 
             }
-            else{
-                p.seteVisitante(e);
-            }  
+            }        
             partidos.add(p);
         }
         return partidos;
