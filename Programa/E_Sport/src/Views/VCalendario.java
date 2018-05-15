@@ -21,12 +21,12 @@ public class VCalendario extends javax.swing.JDialog {
      * Creates new form VCalendario
      */
     private ArrayList<Jornada> jornadas;
-    
+    private int pos=0;
     public VCalendario() {
         initComponents();
         setVisible(true);
         obtenerDatos();
-        
+        rellenar(pos);
     }
 
     /**
@@ -42,6 +42,7 @@ public class VCalendario extends javax.swing.JDialog {
         Njornada = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         taPartidos = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -55,10 +56,17 @@ public class VCalendario extends javax.swing.JDialog {
         taPartidos.setRows(5);
         jScrollPane1.setViewportView(taPartidos);
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel2.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(102, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -67,9 +75,9 @@ public class VCalendario extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(Njornada))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(100, Short.MAX_VALUE))
+                        .addGap(175, 175, 175)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,9 +86,11 @@ public class VCalendario extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Njornada))
-                .addGap(38, 38, 38)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel2)
+                .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         pack();
@@ -94,6 +104,7 @@ public class VCalendario extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Njornada;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea taPartidos;
     // End of variables declaration//GEN-END:variables
@@ -111,5 +122,9 @@ public class VCalendario extends javax.swing.JDialog {
                 Logger.getLogger(VCalendario.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    private void rellenar(int pos) {
+        Njornada.setText(String.valueOf(jornadas.get(pos).getIdJornada()));
     }
 }
