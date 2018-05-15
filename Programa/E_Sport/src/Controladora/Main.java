@@ -1039,4 +1039,8 @@ public class Main {
         p = bdPersona.buscarPersona(idPersona);
         return p;
     }
+    //----------------MIKEL
+    public static ArrayList <Partido> BuscarPartidosPorJornada (int j) throws Exception{
+        return bdPartido.BuscarPartidosPorJornada (j);
+    }
 }

@@ -120,10 +120,12 @@ public class BDJornada {
     
     /**
      * Metodo para consultar una jornada por su número.
+     * @param j Id Jornada
      * @param n int
      * @return devuelve un objeto jornada
      * @throws Exception 
      */
+    
     
     public Jornada consultarJornadaPorNumeroDeJornada(int n) throws Exception{
         // abre la conexion

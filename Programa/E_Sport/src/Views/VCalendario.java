@@ -5,6 +5,8 @@
  */
 package Views;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author usuario
@@ -16,7 +18,8 @@ public class VCalendario extends javax.swing.JDialog {
      */
     public VCalendario() {
         initComponents();
-        initComopnents2();
+        setVisible(true);
+        obtenerPartidos();
     }
 
     /**
@@ -131,49 +134,9 @@ public class VCalendario extends javax.swing.JDialog {
     private javax.swing.JPanel pPartido1;
     // End of variables declaration//GEN-END:variables
 
-    private void initComopnents2() {
-        javax.swing.GroupLayout pPartido1Layout = new javax.swing.GroupLayout(pPartido1);
-        pPartido1.setLayout(pPartido1Layout);
-        pPartido1Layout.setHorizontalGroup(
-            pPartido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pPartido1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbE1)
-                .addGap(32, 32, 32)
-                .addComponent(VS)
-                .addGap(32, 32, 32)
-                .addComponent(lbE2)
-                .addGap(70, 70, 70)
-                .addComponent(lbFecha)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pPartido1Layout.setVerticalGroup(
-            pPartido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pPartido1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pPartido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbE1)
-                    .addComponent(lbE2)
-                    .addComponent(VS)
-                    .addComponent(lbFecha))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(233, 233, 233)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(Njornada))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(pPartido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(130, Short.MAX_VALUE))
-        );
+    private void obtenerPartidos() {
+        
+        Main.BuscarPartidosPorJornada(); 
     }
+
 }
