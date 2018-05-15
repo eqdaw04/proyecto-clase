@@ -591,7 +591,7 @@ public class VEquipo extends javax.swing.JDialog {
     
     private void mostrarDatos(Equipo e) throws Exception {
         tfNombre.setText(e.getNombre());  
-        cFechaCreacion.setDate(e.getFechaCreacion());
+        cFechaCreacion.setDate(e.getFechaCreacion().getTime());
         taPlantilla.setText(Main.buscarPlantilla(e));
         tfLugar.setText(e.getLugar());
         cbDuenno.setSelectedItem(e.getPersona().getUsuario());

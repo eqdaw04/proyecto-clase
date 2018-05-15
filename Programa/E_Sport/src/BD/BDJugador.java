@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Clase en la que controlaremos e introduciremos los jugadores a la base de datos.
@@ -138,7 +139,10 @@ public class BDJugador {
             j.setApellido2(rs.getString("apellido2"));
             j.setNickname(rs.getString("nickname"));
             j.setSueldo(Float.parseFloat(rs.getString("sueldo")));
-            j.setFechaAlta(rs.getDate("fecha_alta"));
+            long as = rs.getTimestamp("fecha_alta").getTime();
+            Calendar c = Calendar.getInstance();
+            c.setTimeInMillis(as);
+            j.setFechaAlta(c);
             j.setComentario(rs.getString("comentario"));      
             // añadir el objeto a la lista
             a.add(j);
@@ -240,7 +244,7 @@ public class BDJugador {
         sentencia.setString(4, j.getApellido2());
         sentencia.setString(5, j.getNickname());
         sentencia.setFloat(6, j.getSueldo());
-        sentencia.setDate(7, formatearFecha(j.getFechaAlta()));
+        sentencia.setDate(7, formatearFecha(j.getFechaAlta().getTime()));
         sentencia.setString(8, j.getComentario());
                                 
         if(sentencia.executeUpdate()!=1)

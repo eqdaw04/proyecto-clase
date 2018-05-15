@@ -564,7 +564,7 @@ public class VJugador extends javax.swing.JDialog {
                 tfApellido1.setText(j.getApellido1());
                 tfApellido2.setText(j.getApellido2()); 
                 tfNickname.setText(j.getNickname());
-                cFechaAlta.setDate(j.getFechaAlta());
+                cFechaAlta.setDate(j.getFechaAlta().getTime());
                 ftfSueldo.setText(String.valueOf(j.getSueldo())); 
                 taComentario.setText(j.getComentario());
                 bBuscar.setVisible(false);
@@ -620,7 +620,7 @@ public class VJugador extends javax.swing.JDialog {
         tfApellido2.setText(j.getApellido2());
         tfNickname.setText(j.getNickname());
         ftfSueldo.setText(String.valueOf(j.getSueldo()));
-        cFechaAlta.setDate(j.getFechaAlta());
+        cFechaAlta.setDate(j.getFechaAlta().getTime());
         taComentario.setText(j.getComentario());
     }
 }
