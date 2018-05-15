@@ -3,11 +3,11 @@ SET SERVEROUTPUT ON
 DROP PACKAGE Pkg_Jornada;
 CREATE OR REPLACE PACKAGE Pkg_Jornada IS
       TYPE TCURSOR IS REF CURSOR;
-      PROCEDURE PartidosPorJornada (P_id_jor Partido.Id_jornada%TYPE,C_partidos OUT TCURSOR);
+      PROCEDURE PartidosPorJornada (P_id_jor integer,C_partidos OUT TCURSOR);
 END Pkg_Jornada;
 /
 CREATE OR REPLACE PACKAGE BODY Pkg_Jornada IS
-  PROCEDURE PartidosPorJornada (P_id_jor Partido.Id_jornada%TYPE,C_partidos OUT TCURSOR) AS
+  PROCEDURE PartidosPorJornada (P_id_jor integer,C_partidos OUT TCURSOR) AS
   BEGIN
   OPEN C_partidos for
       SELECT  M.Id_partido,E.Id_equipo,E.Nombre,M.Visitante,E.Lugar 

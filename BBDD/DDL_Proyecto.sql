@@ -34,10 +34,16 @@ CONSTRAINT Pers_ape1_ck  CHECK (Apellido1 = INITCAP(Apellido1)),
 CONSTRAINT Pers_ape2_ck  CHECK (Apellido2 = INITCAP(Apellido2))
 );
 
-INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Dueño1','Ape1',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'dueño1','d1',2);
-INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Dueño2','Ape12',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'dueño2','d2',2);
 INSERT INTO Persona VALUES (DEFAULT,'Admin1','Apellidorandom',null,TO_DATE(SYSDATE,'DD/MM/YYYY'),'admin','root',null,1);
 INSERT INTO Persona VALUES (DEFAULT,'Usuario1','Apellidorandom2',null,TO_DATE(SYSDATE,'DD/MM/YYYY'),'usu','sus',null,3);
+INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Dueño1','Ape1',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'dueño1','d1',2);
+INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Dueño2','Ape12',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'dueño2','d2',2);
+INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Dueño3','Apellido',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'd3','d3',2);
+INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Dueño4','Apellido',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'd4','d4',2);
+INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Dueño5','Apellido',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'd5','d5',2);
+INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Dueño6','Apellido',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'd6','d6',2);
+INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Dueño7','Apellido',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'd7','d7',2);
+INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Dueño8','Apellido',TO_DATE(SYSDATE,'DD/MM/YYYY'), 'd8','d8',2);
 
 CREATE TABLE Equipo(
 Id_equipo NUMBER (3)GENERATED ALWAYS AS IDENTITY,
@@ -51,8 +57,15 @@ CONSTRAINT Equi_persid_fk FOREIGN KEY (Id_persona) REFERENCES Persona (Id_person
 CONSTRAINT Equi_nom_ck  CHECK (Nombre = INITCAP(Nombre))
 );
 
-INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Lugar,Id_persona) VALUES ('Equipo1',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son rosas','Vitoria',1);
-INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Lugar,Id_persona) VALUES ('Equipo2',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son muy azules','Bilbao',2);
+INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Lugar,Id_persona) VALUES ('Equipo1',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son rosas','Vitoria',3);
+INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Lugar,Id_persona) VALUES ('Equipo2',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son muy azules','Bilbao',4);
+INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Lugar,Id_persona) VALUES ('Equipo3',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son muy azules','Jerez',5);
+INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Lugar,Id_persona) VALUES ('Equipo4',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son muy azules','Madrid',6);
+INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Lugar,Id_persona) VALUES ('Equipo5',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son muy azules','Tenerife',7);
+INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Lugar,Id_persona) VALUES ('Equipo6',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son muy azules','Sitio1',8);
+INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Lugar,Id_persona) VALUES ('Equipo7',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son muy azules','Sitio2',9);
+INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Lugar,Id_persona) VALUES ('Equipo8',TO_DATE(SYSDATE,'DD/MM/YYYY'),'Las rosas son muy azules','Donosti',10);
+
 
 CREATE TABLE Jugador(
 Id_jugador NUMBER (4) GENERATED ALWAYS AS IDENTITY,
@@ -125,10 +138,18 @@ CONSTRAINT Marc_vis_ck CHECK (Visitante = 0 or Visitante = 1)
 
 INSERT INTO MARCADOR VALUES (DEFAULT,10,0,1,1);
 INSERT INTO MARCADOR VALUES (DEFAULT,30,1,1,2);
-INSERT INTO MARCADOR VALUES (DEFAULT,22,0,2,2);
-INSERT INTO MARCADOR VALUES (DEFAULT,15,1,2,1);
-INSERT INTO MARCADOR VALUES (DEFAULT,20,0,3,1);
-INSERT INTO MARCADOR VALUES (DEFAULT,40,1,3,2);
-INSERT INTO MARCADOR VALUES (DEFAULT,14,0,4,2);
-INSERT INTO MARCADOR VALUES (DEFAULT,12,1,4,1);
+INSERT INTO MARCADOR VALUES (DEFAULT,22,0,2,3);
+INSERT INTO MARCADOR VALUES (DEFAULT,15,1,2,4);
+INSERT INTO MARCADOR VALUES (DEFAULT,20,0,3,5);
+INSERT INTO MARCADOR VALUES (DEFAULT,40,1,3,6);
+INSERT INTO MARCADOR VALUES (DEFAULT,14,0,4,7);
+INSERT INTO MARCADOR VALUES (DEFAULT,12,1,4,8);
+INSERT INTO MARCADOR VALUES (DEFAULT,10,0,5,8);
+INSERT INTO MARCADOR VALUES (DEFAULT,30,1,5,7);
+INSERT INTO MARCADOR VALUES (DEFAULT,22,0,6,6);
+INSERT INTO MARCADOR VALUES (DEFAULT,15,1,6,5);
+INSERT INTO MARCADOR VALUES (DEFAULT,20,0,7,4);
+INSERT INTO MARCADOR VALUES (DEFAULT,40,1,7,3);
+INSERT INTO MARCADOR VALUES (DEFAULT,14,0,8,2);
+INSERT INTO MARCADOR VALUES (DEFAULT,12,1,8,1);
 
