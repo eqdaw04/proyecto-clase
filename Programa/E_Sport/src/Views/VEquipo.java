@@ -71,13 +71,13 @@ public class VEquipo extends javax.swing.JDialog {
         taPlantilla = new javax.swing.JTextArea();
         cFechaCreacion = new org.freixas.jcalendar.JCalendarCombo();
         jLabel5 = new javax.swing.JLabel();
-        cbDuenno = new javax.swing.JComboBox<String>();
+        cbDuenno = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         tfLugar = new javax.swing.JTextField();
         imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
+        setMinimumSize(new java.awt.Dimension(693, 683));
         getContentPane().setLayout(null);
 
         bUltimo.setText(">|");
@@ -144,7 +144,7 @@ public class VEquipo extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 36)); // NOI18N
         jLabel1.setText("EQUIPO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(239, 25, 124, 54);
+        jLabel1.setBounds(239, 25, 139, 47);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("Nombre:");
