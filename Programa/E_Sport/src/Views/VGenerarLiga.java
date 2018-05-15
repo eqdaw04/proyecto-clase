@@ -232,7 +232,11 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jLabel9.setText("Lugar del partido:");
 
         tfLugar.setEditable(false);
-        tfLugar.setText("MIKEL ES MUY LISTO");
+        tfLugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfLugarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -499,6 +503,10 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_lPartidoMouseClicked
+
+    private void tfLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLugarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfLugarActionPerformed
     
     /**
      * Metodo para cargar el partido.

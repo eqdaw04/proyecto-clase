@@ -376,8 +376,10 @@
         <Component class="javax.swing.JTextField" name="tfLugar">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="MIKEL ES MUY LISTO"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfLugarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
