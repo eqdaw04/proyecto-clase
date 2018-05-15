@@ -274,4 +274,42 @@ public class BDEquipo {
         return Date.valueOf(fecha);
     }
     
+    public ArrayList<Object> resultadoFinal() throws Exception{
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("SELECT (SELECT nombre FROM equipo WHERE equipo.id_equipo = marcador.id_equipo) AS equipo, SUM(puntuacion) AS punto FROM marcador GROUP BY id_equipo ORDER BY punto DESC");
+        ResultSet rs;
+        rs = sentencia.executeQuery();
+        ArrayList <Object> lista = new ArrayList();
+        int x = 0;
+        while(rs.next()){
+            x++;
+            Object[] fila = new Object[3];
+            fila[0] = x;
+            fila[1] = rs.getString("equipo");
+            fila[2] = rs.getString("punto");
+            lista.add(fila);
+        }
+        return lista;
+    }
+    
+    public ArrayList<Object> resultadoUltimaJornada() throws Exception{
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("SELECT (SELECT nombre FROM equipo WHERE equipo.id_equipo = marcador.id_equipo) AS equipo,"
+                + " SUM(puntuacion) AS punto FROM marcador GROUP BY id_equipo ORDER BY punto DESC");
+        ResultSet rs;
+        rs = sentencia.executeQuery();
+        ArrayList <Object> lista = new ArrayList();
+        int x = 0;
+        while(rs.next()){
+            x++;
+            Object[] fila = new Object[3];
+            fila[0] = x;
+            fila[1] = rs.getString("equipo");
+            fila[2] = rs.getString("punto");
+            lista.add(fila);
+        }
+        return lista;
+    }
 }

@@ -75,6 +75,7 @@ public class VPrincipal extends javax.swing.JFrame {
         introducirResultados = new javax.swing.JMenuItem();
         equipos = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         ver = new javax.swing.JMenu();
         verCalendario = new javax.swing.JMenuItem();
         verResultClasi = new javax.swing.JMenuItem();
@@ -238,6 +239,14 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         });
         equipos.add(jMenuItem1);
+
+        jMenuItem2.setText("Resultados");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        equipos.add(jMenuItem2);
 
         jMenuBar1.add(equipos);
 
@@ -406,7 +415,7 @@ public class VPrincipal extends javax.swing.JFrame {
             // Abrir ventana
             Main.abrirVentana(8, "");
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_verCalendarioActionPerformed
 
@@ -435,6 +444,14 @@ public class VPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_generarCalendarioActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        try {
+            Main.abrirVentana(9, NombreUsu.getText());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel NombreUsu;
     private javax.swing.JMenu administracion;
@@ -455,6 +472,7 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem modificarEquipo;
     private javax.swing.JMenuItem modificarJugador;

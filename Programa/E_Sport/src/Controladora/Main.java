@@ -159,12 +159,18 @@ public class Main {
                 
             case 6:
                 new VIntroducirResultado(n);
-                break;                
+                break;     
+                
             case 7:
                 new VGenerarLiga(n);
                 break;
+                
             case 8:
                 new VCalendario();
+                break; 
+                
+            case 9:
+                new VDResultados(tipo);
                 break;
         }
     }
@@ -218,8 +224,13 @@ public class Main {
             case 7:
                 new VGenerarLiga(n);
                 break;
+                
             case 8:
                 new VCalendario();
+                break;
+                
+            case 9:
+                new VDResultados(tipo);
                 break;
         }
     }
@@ -565,6 +576,15 @@ public class Main {
         else{
             campo.setBackground(Color.white);
         }
+    }
+    
+    
+    public static ArrayList<Object> resultados() throws Exception{
+        return bdEquipo.resultadoFinal();
+    }
+    
+    public static ArrayList<Object> resultadosUltimaJornada() throws Exception{
+        return bdEquipo.resultadoUltimaJornada();
     }
     
     /**
