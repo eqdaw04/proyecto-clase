@@ -521,6 +521,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
     
     private void cargarMarcador(){
         ccCalendario.setDate(p.getFecha().getTime());
+        
         if(p.geteLocal() == null){
             tfLocal.setText("DESCANSO");
             tfLugar.setText("SE ENCUENTRA EN DESCANSO");

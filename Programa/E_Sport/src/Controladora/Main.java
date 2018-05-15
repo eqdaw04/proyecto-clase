@@ -337,7 +337,7 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static void modificarPersona(String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil) throws Exception {
+    public static void modificarPersona(String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil, Calendar fecha) throws Exception {
         persona.setNombre(nombre);
         persona.setApellido1(ape1);
         persona.setApellido2(ape2);
@@ -345,6 +345,7 @@ public class Main {
         persona.setContrasenna(contrasenna);
         persona.setEmail(email);
         persona.setPerfil(bdPerfil.buscarPorNombre(perfil));
+        persona.setFechaAlta(fecha);
         bdPersona.modificarPersona(persona);
     }
     
@@ -931,9 +932,10 @@ public class Main {
      */
 
     // Imanol Luis
-    public static void modificarEquipo(String nombre, String lugar, String comentario) throws Exception {
+    public static void modificarEquipo(String nombre, String lugar, Date fecha, String comentario) throws Exception {
         equipo.setNombre(nombre);
         equipo.setLugar(lugar);
+        equipo.setFechaCreacion(fecha);
         equipo.setComentario(comentario);
         bdEquipo.modificarEquipo(equipo);
     }

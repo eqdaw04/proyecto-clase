@@ -407,7 +407,7 @@ public class VUsuario extends javax.swing.JDialog {
             throw new Excepcion(18);
         }
         //mandar al main para modificar el usuario con los nuevos datos
-        Main.modificarPersona(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), String.valueOf(cbPerfil.getSelectedItem()));
+        Main.modificarPersona(tfUsuario.getText(), String.valueOf(pfContrasenna.getPassword()), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfEmail.getText(), String.valueOf(cbPerfil.getSelectedItem()), ccFechaAlta.getCalendar());
         JOptionPane.showMessageDialog(this, "El usuario se ha dado modificado correctamente.");
         Main.reabrir(this, tipo, n);
     }
@@ -494,6 +494,10 @@ public class VUsuario extends javax.swing.JDialog {
         {
             if(tipo.equals("listado"))
             {
+                // se habilita la edición del calendario para luego deshabilitarlo
+                // ya que si no se habilita, no carga la vista del calendario, pero sí su dato
+                // visualmente no se actualiza la fecha, pero al extraer la información sí se actualiza
+                ccFechaAlta.setEditable(true);
                 // comprobar si el administrador ha rellenado el campo Usuario y cargar únicamente ese usuario, en caso contrario, array de todos los usuarios.
                 if(tfUsuario.getText().equals("")){
                     bSiguiente.setEnabled(true);
@@ -515,6 +519,7 @@ public class VUsuario extends javax.swing.JDialog {
                     bSiguiente.setEnabled(false);
                     bUltimo.setEnabled(false);
                 }
+                ccFechaAlta.setEditable(false);
             }
             else
             {
@@ -555,6 +560,10 @@ public class VUsuario extends javax.swing.JDialog {
     
     private void mostrarDatos(Persona p) {
         try{
+            // se habilita la edición del calendario para luego deshabilitarlo
+            // ya que si no se habilita, no carga la vista del calendario, pero sí su dato
+            // visualmente no se actualiza la fecha, pero al extraer la información sí se actualiza
+            ccFechaAlta.setEditable(true);
             tfUsuario.setText(p.getUsuario());
             pfContrasenna.setText(p.getContrasenna());
             tfNombre.setText(p.getNombre());
@@ -562,7 +571,7 @@ public class VUsuario extends javax.swing.JDialog {
             tfApellido2.setText(p.getApellido2());
             tfEmail.setText(p.getEmail());
             ccFechaAlta.setDate(p.getFechaAlta().getTime());
-
+            ccFechaAlta.setEditable(false);
             cbPerfil.setSelectedItem(p.getPerfil().getNombre());
         }    
         catch(Exception ex){

@@ -81,8 +81,8 @@ public class VJugador extends javax.swing.JDialog {
         bUltimo = new javax.swing.JButton();
         ftfSueldo = new javax.swing.JFormattedTextField();
         bBuscar = new javax.swing.JButton();
-        cFechaAlta = new org.freixas.jcalendar.JCalendarCombo();
         jLabel9 = new javax.swing.JLabel();
+        cFechaAlta = new org.freixas.jcalendar.JCalendarCombo();
         imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -229,14 +229,12 @@ public class VJugador extends javax.swing.JDialog {
         getContentPane().add(bBuscar);
         bBuscar.setBounds(474, 142, 71, 25);
 
-        cFechaAlta.setEnabled(false);
-        getContentPane().add(cFechaAlta);
-        cFechaAlta.setBounds(253, 325, 214, 22);
-
         jLabel9.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel9.setText("Apellido 2:");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(118, 234, 90, 21);
+        getContentPane().add(cFechaAlta);
+        cFechaAlta.setBounds(250, 320, 220, 22);
         getContentPane().add(imgfondo);
         imgfondo.setBounds(0, 0, 680, 500);
 
@@ -354,6 +352,7 @@ public class VJugador extends javax.swing.JDialog {
                 buscarJugador(tfDNI.getText());
                 if(tipo.equals("modificacion"))
                 {
+                    cFechaAlta.setEditable(true);
                     tfNombre.setEditable(true);
                     tfApellido1.setEditable(true);
                     tfApellido2.setEditable(true);
@@ -534,6 +533,10 @@ public class VJugador extends javax.swing.JDialog {
                 bUltimo.setVisible(true);
                 break;
             case "consulta":
+                // se habilita la edición del calendario para luego deshabilitarlo
+                // ya que si no se habilita, no carga la vista del calendario, pero sí su dato
+                // visualmente no se actualiza la fecha, pero al extraer la información sí se actualiza
+                cFechaAlta.setEditable(true);
                 tfDNI.setText(j.getDni());
                 tfDNI.setEditable(false);
                 tfNombre.setText(j.getNombre());
@@ -546,6 +549,7 @@ public class VJugador extends javax.swing.JDialog {
                 bBuscar.setVisible(false);
                 bAceptar.setVisible(false);
                 bCancelar.setVisible(true);
+                cFechaAlta.setEditable(false);
                 break;
         }
         setVisible(true);
@@ -591,6 +595,10 @@ public class VJugador extends javax.swing.JDialog {
      */
     
     private void mostrarDatos(Jugador j) throws Exception {
+        // se habilita la edición del calendario para luego deshabilitarlo
+        // ya que si no se habilita, no carga la vista del calendario, pero sí su dato
+        // visualmente no se actualiza la fecha, pero al extraer la información sí se actualiza
+        cFechaAlta.setEditable(true);
         tfDNI.setText(j.getDni());
         tfNombre.setText(j.getNombre());
         tfApellido1.setText(j.getApellido1());
@@ -599,5 +607,6 @@ public class VJugador extends javax.swing.JDialog {
         ftfSueldo.setText(String.valueOf(j.getSueldo()));
         cFechaAlta.setDate(j.getFechaAlta());
         taComentario.setText(j.getComentario());
+        cFechaAlta.setEditable(false);
     }
 }

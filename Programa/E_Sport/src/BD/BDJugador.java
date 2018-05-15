@@ -330,7 +330,7 @@ public class BDJugador {
     public void modificarJugador(Jugador j) throws Exception {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET DNI=?, NOMBRE=?, APELLIDO1=?, APELLIDO2=?, NICKNAME=?, SUELDO=?, COMENTARIO=? WHERE ID_JUGADOR=?"); 
+        sentencia = con.getConnection().prepareStatement("UPDATE Jugador SET DNI=?, NOMBRE=?, APELLIDO1=?, APELLIDO2=?, NICKNAME=?, SUELDO=?, COMENTARIO=?, fecha_alta = TO_DATE(?,'DD/MM/RRRR') WHERE ID_JUGADOR=?"); 
         sentencia.setString(1, j.getDni()); 
         sentencia.setString(2, j.getNombre()); 
         sentencia.setString(3, j.getApellido1()); 
@@ -338,7 +338,8 @@ public class BDJugador {
         sentencia.setString(5, j.getNickname()); 
         sentencia.setFloat(6, j.getSueldo()); 
         sentencia.setString(7, j.getComentario()); 
-        sentencia.setInt(8, j.getIdJugador());                          
+        sentencia.setDate(8, formatearFecha(j.getFechaAlta()));
+        sentencia.setInt(9, j.getIdJugador());    
         if(sentencia.executeUpdate()!=1)
         {
             throw new Excepcion(25);

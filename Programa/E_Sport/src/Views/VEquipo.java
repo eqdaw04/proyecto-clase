@@ -190,8 +190,6 @@ public class VEquipo extends javax.swing.JDialog {
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(249, 183, 218, 133);
-
-        cFechaCreacion.setEnabled(false);
         getContentPane().add(cFechaCreacion);
         cFechaCreacion.setBounds(249, 148, 218, 22);
 
@@ -314,7 +312,7 @@ public class VEquipo extends javax.swing.JDialog {
                         throw new Excepcion(53);
                     }
                     // Modificar el equipo
-                    Main.modificarEquipo(tfNombre.getText(), tfLugar.getText(), taComentario.getText());
+                    Main.modificarEquipo(tfNombre.getText(), tfLugar.getText(), cFechaCreacion.getDate(), taComentario.getText());
                     JOptionPane.showMessageDialog(this, "El equipo se ha modificado correctamente.");
                     break;
             }
@@ -574,6 +572,7 @@ public class VEquipo extends javax.swing.JDialog {
      */
     
     private void mostrarDatos(Equipo e) throws Exception {
+        cFechaCreacion.setEditable(true);
         tfNombre.setText(e.getNombre());  
         cFechaCreacion.setDate(e.getFechaCreacion());
         taPlantilla.setText(Main.buscarPlantilla(e));
