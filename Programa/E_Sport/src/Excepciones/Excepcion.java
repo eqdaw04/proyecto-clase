@@ -28,7 +28,6 @@ public class Excepcion extends Exception {
                 dato += "El usuario no puede estar vacío.";
                 break;
                 
-                
             case 2:
                 dato += "La contraseña no puede estar vacía.";
                 break;
@@ -151,9 +150,11 @@ public class Excepcion extends Exception {
                 
             case 32:
                 dato += "Ha habido un error al eliminar.";
+                break;
                 
             case 33:
-                dato += "El dueño no tiene asignado un equipo.";
+                dato += "El dueño no tiene asignado un equipo.\nPida primero al administrador que le asigne un equipo.";
+                break;
                 
             case 40:
                 dato += "Error al insertar la Jornada.";

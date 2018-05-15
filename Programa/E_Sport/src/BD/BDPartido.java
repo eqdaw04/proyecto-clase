@@ -18,7 +18,6 @@ import java.sql.CallableStatement;
 import java.util.Calendar;
 import oracle.jdbc.OracleCallableStatement;
 import oracle.jdbc.OracleTypes;
-import sun.awt.AWTAccessor;
 
 /**
  * Clase en la que controlaremos e introduciremos los partidos a la base de datos.
