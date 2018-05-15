@@ -93,12 +93,13 @@ public class BDEquipo {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
         // preparar la sentencia
-        sentencia = con.getConnection().prepareStatement("UPDATE Equipo SET NOMBRE=?, COMENTARIO=?, LUGAR=? WHERE ID_EQUIPO = ?");
+        sentencia = con.getConnection().prepareStatement("UPDATE Equipo SET NOMBRE=?, COMENTARIO=?, fecha_creacion = TO_DATE(?,'DD/MM/RRRR'), LUGAR=? WHERE ID_EQUIPO = ?");
         // cargar los datos al ?
         sentencia.setString(1, e.getNombre());
         sentencia.setString(2, e.getComentario());
-        sentencia.setString(3, e.getLugar());
-        sentencia.setInt(4, e.getIdEquipo());
+        sentencia.setDate(3, formatearFecha(e.getFechaCreacion()));
+        sentencia.setString(4, e.getLugar());
+        sentencia.setInt(5, e.getIdEquipo());
         // ejecutar sentencia y comprobar si devuelve 1, en caso contrario, mostrar error
         if(sentencia.executeUpdate()!=1)
         {

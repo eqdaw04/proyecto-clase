@@ -11,8 +11,6 @@ import UML.Jornada;
 import UML.Partido;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -23,7 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class VGenerarLiga extends javax.swing.JDialog {
 
-    int n;
+    int n, segundos;
     Partido p;
     ArrayList<Jornada> listaJornada;
     ArrayList<Partido> listaPartido;
@@ -47,6 +45,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         listaJornada = new ArrayList();
         listaPartido = new ArrayList();
+        pEspera.setVisible(false);
         cargarDatos();
         setVisible(true);
     }
@@ -123,6 +122,8 @@ public class VGenerarLiga extends javax.swing.JDialog {
     private void initComponents() {
 
         bAceptar = new javax.swing.JButton();
+        pEspera = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         bCancelar = new javax.swing.JButton();
         bGenerarCalendario = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -155,6 +156,8 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(906, 633));
+        getContentPane().setLayout(null);
 
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
@@ -163,6 +166,35 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 bAceptarActionPerformed(evt);
             }
         });
+        getContentPane().add(bAceptar);
+        bAceptar.setBounds(530, 530, 77, 25);
+
+        pEspera.setBackground(new java.awt.Color(255, 255, 255));
+        pEspera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("Un momento por favor...");
+
+        javax.swing.GroupLayout pEsperaLayout = new javax.swing.GroupLayout(pEspera);
+        pEspera.setLayout(pEsperaLayout);
+        pEsperaLayout.setHorizontalGroup(
+            pEsperaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pEsperaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pEsperaLayout.setVerticalGroup(
+            pEsperaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pEsperaLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel14)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(pEspera);
+        pEspera.setBounds(290, 250, 300, 80);
 
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +202,8 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 bCancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(bCancelar);
+        bCancelar.setBounds(720, 530, 83, 25);
 
         bGenerarCalendario.setText("Generar Calendario");
         bGenerarCalendario.setEnabled(false);
@@ -178,8 +212,12 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 bGenerarCalendarioActionPerformed(evt);
             }
         });
+        getContentPane().add(bGenerarCalendario);
+        bGenerarCalendario.setBounds(620, 140, 183, 25);
 
         jLabel5.setText("Seleccione fecha para el primer Partido: (Recuerde que 1 jornada consta de 7 Días)");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(40, 40, 767, 16);
 
         bBorrar.setText("Borrar Todo");
         bBorrar.setEnabled(false);
@@ -188,10 +226,16 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 bBorrarActionPerformed(evt);
             }
         });
+        getContentPane().add(bBorrar);
+        bBorrar.setBounds(320, 140, 118, 25);
 
         jLabel7.setText("Número de Jornada");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(40, 200, 112, 16);
 
         jLabel8.setText("Número del Partido");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(290, 200, 514, 16);
 
         lPartido.setEnabled(false);
         lPartido.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -201,6 +245,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
         });
         jScrollPane3.setViewportView(lPartido);
 
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(280, 230, 197, 326);
+
         lJornada.setEnabled(false);
         lJornada.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -208,6 +255,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         jScrollPane4.setViewportView(lJornada);
+
+        getContentPane().add(jScrollPane4);
+        jScrollPane4.setBounds(40, 230, 182, 326);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Compiten"));
 
@@ -251,14 +301,17 @@ public class VGenerarLiga extends javax.swing.JDialog {
                                     .addComponent(tfVisitante)))
                             .addComponent(jLabel3)
                             .addComponent(ccCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
                             .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(tfLocal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(cbHora, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cbMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(tfLocal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(cbHora, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(cbMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(387, 387, 387)))
                             .addComponent(jLabel9))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -266,7 +319,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ccCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,11 +344,20 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(530, 230, 503, 293);
+
         jLabel10.setText("Borrar la LIGA actual: (Se borrará la liga actual)");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(40, 140, 275, 16);
 
         ccCalendarioInicial.setEnabled(false);
+        getContentPane().add(ccCalendarioInicial);
+        ccCalendarioInicial.setBounds(40, 60, 188, 22);
 
         jLabel6.setText("Seleccione Hora último partido:");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(530, 100, 180, 16);
 
         cbHoraI.setEnabled(false);
         cbHoraI.addActionListener(new java.awt.event.ActionListener() {
@@ -303,104 +365,24 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 cbHoraIActionPerformed(evt);
             }
         });
+        getContentPane().add(cbHoraI);
+        cbHoraI.setBounds(230, 100, 42, 22);
 
         jLabel11.setText("Seleccione Hora primer partido:");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(40, 100, 183, 16);
 
         cbHoraF.setEnabled(false);
+        getContentPane().add(cbHoraF);
+        cbHoraF.setBounds(720, 100, 42, 22);
 
         jLabel12.setText("Si La jornada comienza el lunes, acabará el domingo.");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(250, 70, 561, 16);
 
         jLabel13.setText("Fecha y Hora del Partido");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
-                        .addComponent(bGenerarCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ccCalendarioInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbHoraI, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbHoraF, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(49, 49, 49))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel13)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(bAceptar)
-                                            .addGap(115, 115, 115)
-                                            .addComponent(bCancelar)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ccCalendarioInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel6)
-                    .addComponent(cbHoraI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbHoraF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bGenerarCalendario)
-                    .addComponent(jLabel10)
-                    .addComponent(bBorrar))
-                .addGap(17, 17, 17)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bAceptar)
-                            .addComponent(bCancelar)))
-                    .addComponent(jScrollPane4)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
-        );
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(530, 180, 140, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -415,14 +397,11 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
     private void bGenerarCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGenerarCalendarioActionPerformed
         try {
-            //Generar calendario
-            Calendar fecha = Calendar.getInstance();
-            fecha.setTime(ccCalendarioInicial.getDate());
-            fecha.set(Calendar.HOUR_OF_DAY, Integer.parseInt(cbHoraI.getSelectedItem().toString()));
-            fecha.set(Calendar.MINUTE, 0);
-            fecha.set(Calendar.SECOND, 0);
-            fecha.set(Calendar.MILLISECOND, 0);
-            JOptionPane.showMessageDialog(this, Main.generarCalendario(fecha, Integer.parseInt(cbHoraF.getSelectedItem().toString())));
+            // mostrar pantalla de espera
+            pEspera.setVisible(true);
+            if(JOptionPane.showConfirmDialog(this, "Puede tardar unos minutos, ¿Desea continuar?","",2) == 0){
+                generarCalendario();
+            }
             Main.reabrir(this, "", 7);
         } 
         /*
@@ -434,6 +413,17 @@ public class VGenerarLiga extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_bGenerarCalendarioActionPerformed
 
+    private void generarCalendario() throws Exception{
+        //Generar calendario
+        Calendar fecha = Calendar.getInstance();
+        fecha.setTime(ccCalendarioInicial.getDate());
+        fecha.set(Calendar.HOUR_OF_DAY, Integer.parseInt(cbHoraI.getSelectedItem().toString()));
+        fecha.set(Calendar.MINUTE, 0);
+        fecha.set(Calendar.SECOND, 0);
+        fecha.set(Calendar.MILLISECOND, 0);
+        JOptionPane.showMessageDialog(this, Main.generarCalendario(fecha, Integer.parseInt(cbHoraF.getSelectedItem().toString())));
+    }
+    
     private void cbHoraIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHoraIActionPerformed
 
         cbHoraF.setEnabled(true);
@@ -521,6 +511,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
     
     private void cargarMarcador(){
         ccCalendario.setDate(p.getFecha().getTime());
+        
         if(p.geteLocal() == null){
             tfLocal.setText("DESCANSO");
             tfLugar.setText("SE ENCUENTRA EN DESCANSO");
@@ -562,6 +553,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -575,6 +567,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JList<Integer> lJornada;
     private javax.swing.JList<Integer> lPartido;
+    private javax.swing.JPanel pEspera;
     private javax.swing.JTextField tfLocal;
     private javax.swing.JTextField tfLugar;
     private javax.swing.JTextField tfVisitante;

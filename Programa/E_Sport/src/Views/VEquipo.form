@@ -239,9 +239,6 @@
       </SubComponents>
     </Container>
     <Component class="org.freixas.jcalendar.JCalendarCombo" name="cFechaCreacion">
-      <Properties>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="249" y="148" width="218" height="-1"/>
