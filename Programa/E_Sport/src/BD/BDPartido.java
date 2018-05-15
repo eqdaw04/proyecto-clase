@@ -15,7 +15,6 @@ import javax.swing.Timer;
 import UML.Equipo;
 import UML.Partido;
 import java.util.Calendar;
-import javax.swing.JOptionPane;
 
 /**
  * Clase en la que controlaremos e introduciremos los partidos a la base de datos.

@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dom.clasificacion;
+package Parsers;
 
 import com.sun.org.apache.xml.internal.serialize.OutputFormat;
 import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
+import dom.clasificacion.Equipo;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

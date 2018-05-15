@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sax_liga;
+package Parsers;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -18,6 +18,9 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
 import org.xml.sax.helpers.DefaultHandler;
+import sax_liga.Equipo;
+import sax_liga.Jornada;
+import sax_liga.Partido;
 /**
  *
  * @author yaiza

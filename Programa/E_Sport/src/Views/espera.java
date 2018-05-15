@@ -25,6 +25,8 @@ public class espera extends javax.swing.JDialog {
         Icon icono = new ImageIcon (usuario.getImage().getScaledInstance(jLabel2.getWidth(), jLabel2.getHeight(), Image.SCALE_DEFAULT));
         jLabel2.setIcon(icono);
         this.repaint();
+        
+        sdf
         setVisible(true);
     }
 

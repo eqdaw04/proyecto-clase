@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sax_jornada.en.curso;
+package Parsers;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +18,8 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
 import org.xml.sax.helpers.DefaultHandler;
+import sax_jornada.en.curso.Equipo;
+import sax_jornada.en.curso.Partido;
 
 public class SAX_JornadaEnCurso extends DefaultHandler{
 
