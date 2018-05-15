@@ -7,6 +7,7 @@ package Views;
 
 import Controladora.Main;
 import UML.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,6 +52,7 @@ public class VCalendario extends javax.swing.JDialog {
         bAnterior = new javax.swing.JButton();
         bSiguiente = new javax.swing.JButton();
         bUltimo = new javax.swing.JButton();
+        bSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -103,6 +105,14 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
 
+        bSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bSalir.setText("Salir");
+        bSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,10 +132,7 @@ public class VCalendario extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(Njornada))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(spPartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
+                        .addGap(150, 150, 150)
                         .addComponent(bPrimero)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bAnterior)
@@ -133,7 +140,16 @@ public class VCalendario extends javax.swing.JDialog {
                         .addComponent(bSiguiente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bUltimo)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 57, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(spPartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,13 +165,15 @@ public class VCalendario extends javax.swing.JDialog {
                     .addComponent(Label2))
                 .addGap(50, 50, 50)
                 .addComponent(spPartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bPrimero)
                     .addComponent(bAnterior)
                     .addComponent(bUltimo)
                     .addComponent(bSiguiente))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(bSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -203,6 +221,10 @@ public class VCalendario extends javax.swing.JDialog {
         bAnterior.setEnabled(true);
     }//GEN-LAST:event_bUltimoActionPerformed
 
+    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+       Main.cerrar(this); // TODO add your handling code here:
+    }//GEN-LAST:event_bSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -213,6 +235,7 @@ public class VCalendario extends javax.swing.JDialog {
     private javax.swing.JLabel Njornada;
     private javax.swing.JButton bAnterior;
     private javax.swing.JButton bPrimero;
+    private javax.swing.JButton bSalir;
     private javax.swing.JButton bSiguiente;
     private javax.swing.JButton bUltimo;
     private javax.swing.JLabel jLabel1;
@@ -242,6 +265,7 @@ public class VCalendario extends javax.swing.JDialog {
 
     private void rellenar(int pos) {
         Njornada.setText(String.valueOf(jornadas.get(pos).getIdJornada()));
+        //falla la fecha ayuda joooonXu
         lbFechaIni.setText(String.valueOf(jornadas.get(pos).getFechaInicio()));
         lbFechaFin.setText(String.valueOf(jornadas.get(pos).getFechaFinal()));
         String titulos[] ={"Equipos","Fecha","Lugar"};
@@ -253,7 +277,9 @@ public class VCalendario extends javax.swing.JDialog {
         }
         JTable tPartidos = new JTable (datos,titulos);
         tPartidos.setEnabled(false);
-        tPartidos.setShowGrid(false);
+        tPartidos.setShowVerticalLines(false);
+        tPartidos.setGridColor(Color.BLUE);
+        tPartidos.setRowHeight(40);
         spPartidos.setViewportView(tPartidos);
         
         
