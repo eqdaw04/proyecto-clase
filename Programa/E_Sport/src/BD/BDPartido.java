@@ -265,6 +265,7 @@ public class BDPartido {
                 else{
                     p.seteVisitante(e);
                 } 
+                partidos.add(p);
             }else{
             if(rs.getInt("Id_partido")==partidos.get(partidos.size()-1).getIdPartido()){
                 if(rs.getInt("visitante")==1){
@@ -281,10 +282,10 @@ public class BDPartido {
                 }
                 else{
                     p.seteVisitante(e);
-                } 
+                }
+                partidos.add(p);
             }
-            }        
-            partidos.add(p);
+            }                    
         }
         return partidos;
     }

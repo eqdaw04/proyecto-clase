@@ -47,6 +47,10 @@ public class VCalendario extends javax.swing.JDialog {
         lbFechaFin = new javax.swing.JLabel();
         Label2 = new javax.swing.JLabel();
         spPartidos = new javax.swing.JScrollPane();
+        bPrimero = new javax.swing.JButton();
+        bAnterior = new javax.swing.JButton();
+        bSiguiente = new javax.swing.JButton();
+        bUltimo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,6 +68,40 @@ public class VCalendario extends javax.swing.JDialog {
 
         Label2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Label2.setText("-");
+
+        spPartidos.setBorder(null);
+
+        bPrimero.setText("|<");
+        bPrimero.setEnabled(false);
+        bPrimero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bPrimeroActionPerformed(evt);
+            }
+        });
+
+        bAnterior.setText("<");
+        bAnterior.setEnabled(false);
+        bAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAnteriorActionPerformed(evt);
+            }
+        });
+
+        bSiguiente.setText(">");
+        bSiguiente.setEnabled(false);
+        bSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSiguienteActionPerformed(evt);
+            }
+        });
+
+        bUltimo.setText(">|");
+        bUltimo.setEnabled(false);
+        bUltimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bUltimoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,9 +122,18 @@ public class VCalendario extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(Njornada))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(spPartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(95, Short.MAX_VALUE))
+                        .addGap(85, 85, 85)
+                        .addComponent(spPartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(bPrimero)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bAnterior)
+                        .addGap(94, 94, 94)
+                        .addComponent(bSiguiente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bUltimo)))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,11 +149,59 @@ public class VCalendario extends javax.swing.JDialog {
                     .addComponent(Label2))
                 .addGap(50, 50, 50)
                 .addComponent(spPartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bPrimero)
+                    .addComponent(bAnterior)
+                    .addComponent(bUltimo)
+                    .addComponent(bSiguiente))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrimeroActionPerformed
+        pos = 0;
+        rellenar(pos);
+        bSiguiente.setEnabled(true);
+        bUltimo.setEnabled(true);
+        bPrimero.setEnabled(false);
+        bAnterior.setEnabled(false);
+
+    }//GEN-LAST:event_bPrimeroActionPerformed
+
+    private void bAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnteriorActionPerformed
+        pos--;
+        rellenar(pos);
+        bSiguiente.setEnabled(true);
+        bUltimo.setEnabled(true);
+        if(pos == 0){
+            bPrimero.setEnabled(false);
+            bAnterior.setEnabled(false);
+        }
+
+    }//GEN-LAST:event_bAnteriorActionPerformed
+
+    private void bSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSiguienteActionPerformed
+        pos++;
+        rellenar(pos);
+        bPrimero.setEnabled(true);
+        bAnterior.setEnabled(true);
+        if(pos == jornadas.size()-1){
+            bSiguiente.setEnabled(false);
+            bUltimo.setEnabled(false);
+        }
+    }//GEN-LAST:event_bSiguienteActionPerformed
+
+    private void bUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUltimoActionPerformed
+        pos = jornadas.size()-1;
+        rellenar(pos);
+        bSiguiente.setEnabled(false);
+        bUltimo.setEnabled(false);
+        bPrimero.setEnabled(true);
+        bAnterior.setEnabled(true);
+    }//GEN-LAST:event_bUltimoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,6 +211,10 @@ public class VCalendario extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Njornada;
+    private javax.swing.JButton bAnterior;
+    private javax.swing.JButton bPrimero;
+    private javax.swing.JButton bSiguiente;
+    private javax.swing.JButton bUltimo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbFechaFin;
     private javax.swing.JLabel lbFechaIni;
@@ -134,6 +233,10 @@ public class VCalendario extends javax.swing.JDialog {
             } catch (Exception ex) {
                 Logger.getLogger(VCalendario.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        if(jornadas.size()>1){
+            bSiguiente.setEnabled(true);
+            bUltimo.setEnabled(true);
         }
     }
 
