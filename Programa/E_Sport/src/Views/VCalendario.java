@@ -14,9 +14,9 @@ public class VCalendario extends javax.swing.JDialog {
     /**
      * Creates new form VCalendario
      */
-    public VCalendario(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public VCalendario() {
         initComponents();
+        initComopnents2();
     }
 
     /**
@@ -30,8 +30,11 @@ public class VCalendario extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         Njornada = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        pPartido1 = new javax.swing.JPanel();
+        lbE1 = new javax.swing.JLabel();
+        lbE2 = new javax.swing.JLabel();
+        VS = new javax.swing.JLabel();
+        lbFecha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -41,21 +44,46 @@ public class VCalendario extends javax.swing.JDialog {
         Njornada.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         Njornada.setText("X");
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        pPartido1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        lbE1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        lbE1.setText("Equipo1");
+
+        lbE2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        lbE2.setText("Equipo2");
+
+        VS.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        VS.setText("VS");
+
+        lbFecha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        lbFecha.setText("Fechaaaaaaa");
+
+        javax.swing.GroupLayout pPartido1Layout = new javax.swing.GroupLayout(pPartido1);
+        pPartido1.setLayout(pPartido1Layout);
+        pPartido1Layout.setHorizontalGroup(
+            pPartido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPartido1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbE1)
+                .addGap(32, 32, 32)
+                .addComponent(VS)
+                .addGap(32, 32, 32)
+                .addComponent(lbE2)
+                .addGap(70, 70, 70)
+                .addComponent(lbFecha)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pPartido1Layout.setVerticalGroup(
+            pPartido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPartido1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pPartido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbE1)
+                    .addComponent(lbE2)
+                    .addComponent(VS)
+                    .addComponent(lbFecha))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,25 +92,25 @@ public class VCalendario extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(305, 305, 305)
+                        .addGap(233, 233, 233)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(Njornada))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(155, Short.MAX_VALUE))
+                        .addGap(101, 101, 101)
+                        .addComponent(pPartido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Njornada))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(48, 48, 48)
+                .addComponent(pPartido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(293, Short.MAX_VALUE))
         );
 
         pack();
@@ -91,49 +119,61 @@ public class VCalendario extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VCalendario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VCalendario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VCalendario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VCalendario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                VCalendario dialog = new VCalendario(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Njornada;
+    private javax.swing.JLabel VS;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbE1;
+    private javax.swing.JLabel lbE2;
+    private javax.swing.JLabel lbFecha;
+    private javax.swing.JPanel pPartido1;
     // End of variables declaration//GEN-END:variables
+
+    private void initComopnents2() {
+        javax.swing.GroupLayout pPartido1Layout = new javax.swing.GroupLayout(pPartido1);
+        pPartido1.setLayout(pPartido1Layout);
+        pPartido1Layout.setHorizontalGroup(
+            pPartido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPartido1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbE1)
+                .addGap(32, 32, 32)
+                .addComponent(VS)
+                .addGap(32, 32, 32)
+                .addComponent(lbE2)
+                .addGap(70, 70, 70)
+                .addComponent(lbFecha)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pPartido1Layout.setVerticalGroup(
+            pPartido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPartido1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pPartido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbE1)
+                    .addComponent(lbE2)
+                    .addComponent(VS)
+                    .addComponent(lbFecha))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(233, 233, 233)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(Njornada))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(pPartido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(130, Short.MAX_VALUE))
+        );
+    }
 }
