@@ -1,7 +1,6 @@
 package UML;
 
 import java.util.Calendar;
-
 /**
  * Clase en la que definiremos los datos personales, la fecha de alta y el usuario, contraseña y email de la persona.
  * Fecha de la creación de la clase: 23/04/2018

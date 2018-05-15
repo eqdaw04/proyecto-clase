@@ -64,10 +64,10 @@ public class VModificarEquipo extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         nombeEquipo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        liJugEqui = new javax.swing.JList<>();
+        liJugEqui = new javax.swing.JList<String>();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        liJugDisp = new javax.swing.JList<>();
+        liJugDisp = new javax.swing.JList<String>();
         jLabel3 = new javax.swing.JLabel();
         bEliminar = new javax.swing.JButton();
         bAnnadir = new javax.swing.JButton();
@@ -78,21 +78,19 @@ public class VModificarEquipo extends javax.swing.JDialog {
         imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(903, 625));
-        setMinimumSize(new java.awt.Dimension(903, 625));
-        setModal(true);
+        setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 30)); // NOI18N
         jLabel1.setText("Modificar Equipo");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(236, 27, 223, 39);
+        jLabel1.setBounds(236, 27, 229, 44);
 
         nombeEquipo.setFont(new java.awt.Font("Bauhaus 93", 0, 30)); // NOI18N
         nombeEquipo.setForeground(new java.awt.Color(51, 102, 255));
         nombeEquipo.setText("NOMBREEQUIPO");
         getContentPane().add(nombeEquipo);
-        nombeEquipo.setBounds(483, 27, 247, 39);
+        nombeEquipo.setBounds(483, 27, 219, 44);
 
         liJugEqui.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         liJugEqui.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
