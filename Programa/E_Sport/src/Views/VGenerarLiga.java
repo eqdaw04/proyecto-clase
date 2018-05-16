@@ -237,7 +237,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bBorrar);
-        bBorrar.setBounds(290, 180, 118, 25);
+        bBorrar.setBounds(290, 180, 170, 25);
 
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel7.setText("Número de Jornada");

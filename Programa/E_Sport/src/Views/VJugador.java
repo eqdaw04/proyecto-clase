@@ -79,8 +79,8 @@ public class VJugador extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
-        setMaximumSize(new java.awt.Dimension(519, 502));
-        setMinimumSize(new java.awt.Dimension(519, 502));
+        setMaximumSize(new java.awt.Dimension(510, 529));
+        setMinimumSize(new java.awt.Dimension(510, 529));
         setModal(true);
         getContentPane().setLayout(null);
 
@@ -180,7 +180,7 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bPrimero);
-        bPrimero.setBounds(172, 435, 49, 25);
+        bPrimero.setBounds(149, 450, 60, 25);
 
         bAnterior.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bAnterior.setText("<");
@@ -191,7 +191,7 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnterior);
-        bAnterior.setBounds(226, 435, 43, 25);
+        bAnterior.setBounds(223, 450, 50, 25);
 
         bSiguiente.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bSiguiente.setText(">");
@@ -202,7 +202,7 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(274, 435, 43, 25);
+        bSiguiente.setBounds(280, 450, 50, 25);
 
         bUltimo.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bUltimo.setText(">|");
@@ -213,7 +213,7 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bUltimo);
-        bUltimo.setBounds(322, 435, 49, 25);
+        bUltimo.setBounds(340, 450, 60, 25);
 
         ftfSueldo.setEditable(false);
         ftfSueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
@@ -241,7 +241,7 @@ public class VJugador extends javax.swing.JDialog {
         jLabel10.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(0, 0, 520, 500);
+        jLabel10.setBounds(0, 0, 510, 530);
 
         pack();
         setLocationRelativeTo(null);

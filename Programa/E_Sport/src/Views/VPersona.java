@@ -119,7 +119,8 @@ public class VPersona extends javax.swing.JDialog {
         imagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(468, 445));
+        setMaximumSize(new java.awt.Dimension(459, 480));
+        setMinimumSize(new java.awt.Dimension(459, 480));
         getContentPane().setLayout(null);
 
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
@@ -166,7 +167,7 @@ public class VPersona extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bPrimero);
-        bPrimero.setBounds(122, 381, 49, 25);
+        bPrimero.setBounds(110, 400, 60, 25);
 
         bAnterior.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bAnterior.setText("<");
@@ -177,7 +178,7 @@ public class VPersona extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnterior);
-        bAnterior.setBounds(176, 381, 43, 25);
+        bAnterior.setBounds(180, 400, 50, 25);
 
         bSiguiente.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bSiguiente.setText(">");
@@ -188,7 +189,7 @@ public class VPersona extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(224, 381, 43, 25);
+        bSiguiente.setBounds(240, 400, 50, 25);
 
         bUltimo.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bUltimo.setText(">|");
@@ -199,7 +200,7 @@ public class VPersona extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bUltimo);
-        bUltimo.setBounds(280, 380, 49, 25);
+        bUltimo.setBounds(300, 400, 60, 25);
 
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         jLabel1.setText("USUARIO");
@@ -278,7 +279,7 @@ public class VPersona extends javax.swing.JDialog {
         imagen.setMaximumSize(new java.awt.Dimension(468, 445));
         imagen.setMinimumSize(new java.awt.Dimension(468, 445));
         getContentPane().add(imagen);
-        imagen.setBounds(0, 0, 470, 450);
+        imagen.setBounds(0, 0, 460, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
