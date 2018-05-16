@@ -129,7 +129,7 @@ public class VCalendario extends javax.swing.JDialog {
         getContentPane().add(bUltimo);
         bUltimo.setBounds(387, 448, 47, 25);
 
-        bSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bSalir.setFont(new java.awt.Font("Verdana", 1, 15)); // NOI18N
         bSalir.setText("Salir");
         bSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +137,7 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSalir);
-        bSalir.setBounds(443, 491, 72, 35);
+        bSalir.setBounds(443, 491, 120, 35);
 
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(imagen);

@@ -14,6 +14,7 @@ import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /**
  * Ventana equipo.
@@ -36,6 +37,7 @@ public class VEquipo extends javax.swing.JDialog {
     public VEquipo(String tipo, int n) {
         initComponents();
         cargarDatos(tipo, n);
+        
         
     }
 
@@ -100,14 +102,19 @@ public class VEquipo extends javax.swing.JDialog {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(249, 382, 218, 96);
 
-        bBuscar.setText("Buscar");
+        bBuscar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        bBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa2.png"))); // NOI18N
+        bBuscar.setBorder(null);
+        bBuscar.setBorderPainted(false);
+        bBuscar.setContentAreaFilled(false);
+        bBuscar.setPreferredSize(new java.awt.Dimension(50, 50));
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bBuscarActionPerformed(evt);
             }
         });
         getContentPane().add(bBuscar);
-        bBuscar.setBounds(474, 115, 71, 25);
+        bBuscar.setBounds(490, 110, 50, 30);
 
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);

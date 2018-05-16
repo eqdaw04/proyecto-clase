@@ -169,7 +169,7 @@
     <Component class="javax.swing.JButton" name="bSalir">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="14" style="0"/>
+          <Font name="Verdana" size="15" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
@@ -178,7 +178,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="443" y="491" width="72" height="35"/>
+          <AbsoluteConstraints x="443" y="491" width="120" height="35"/>
         </Constraint>
       </Constraints>
     </Component>
