@@ -182,7 +182,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(567, 469, 203, 16);
         getContentPane().add(logotipo);
-        logotipo.setBounds(900, 560, 80, 70);
+        logotipo.setBounds(630, 600, 80, 70);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

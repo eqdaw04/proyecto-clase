@@ -8,7 +8,6 @@ package BD;
 import Controladora.Main;
 import Excepciones.Excepcion;
 import UML.Equipo;
-import UML.Jornada;
 import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -319,6 +318,9 @@ public class BDEquipo {
             fila[2] = rs.getString("punto");
             lista.add(fila);
         }
+        rs.close();
+        sentencia.close();
+        con.desconectar();
         return lista;
     }
 }
