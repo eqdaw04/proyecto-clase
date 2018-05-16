@@ -75,8 +75,8 @@ public class VEquipo extends javax.swing.JDialog {
         imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(672, 590));
-        setMinimumSize(new java.awt.Dimension(672, 590));
+        setMaximumSize(new java.awt.Dimension(675, 626));
+        setMinimumSize(new java.awt.Dimension(675, 626));
         getContentPane().setLayout(null);
 
         bUltimo.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -224,7 +224,7 @@ public class VEquipo extends javax.swing.JDialog {
         imgfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         imgfondo.setName(""); // NOI18N
         getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 670, 590);
+        imgfondo.setBounds(0, 0, 680, 630);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
