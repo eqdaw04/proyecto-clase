@@ -117,7 +117,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAceptar);
-        bAceptar.setBounds(250, 490, 90, 25);
+        bAceptar.setBounds(220, 490, 130, 25);
 
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +126,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bCancelar);
-        bCancelar.setBounds(373, 490, 90, 25);
+        bCancelar.setBounds(393, 490, 150, 25);
 
         bPrimero.setText("|<");
         bPrimero.setEnabled(false);
@@ -141,7 +141,7 @@ public class VEquipo extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         jLabel1.setText("EQUIPO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(239, 25, 170, 42);
+        jLabel1.setBounds(239, 25, 280, 42);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("Nombre:");

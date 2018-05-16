@@ -199,7 +199,7 @@ public class VUsuario extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         jLabel1.setText("USUARIO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(138, 13, 164, 47);
+        jLabel1.setBounds(138, 13, 230, 42);
 
         bBuscar.setText("Buscar");
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
