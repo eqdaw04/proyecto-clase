@@ -53,25 +53,41 @@ public class VCalendario extends javax.swing.JDialog {
         bSiguiente = new javax.swing.JButton();
         bUltimo = new javax.swing.JButton();
         bSalir = new javax.swing.JButton();
+        imagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(563, 543));
+        setMinimumSize(new java.awt.Dimension(563, 543));
+        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         jLabel1.setText("Jornada");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(160, 30, 196, 42);
 
-        Njornada.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        Njornada.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         Njornada.setText("X");
+        getContentPane().add(Njornada);
+        Njornada.setBounds(363, 30, 52, 42);
 
-        lbFechaIni.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        lbFechaIni.setText("FechaIni");
+        lbFechaIni.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        lbFechaIni.setText("Fecha inicio");
+        getContentPane().add(lbFechaIni);
+        lbFechaIni.setBounds(115, 90, 144, 21);
 
-        lbFechaFin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        lbFechaFin.setText("FechaFin");
+        lbFechaFin.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        lbFechaFin.setText("Fecha fin");
+        getContentPane().add(lbFechaFin);
+        lbFechaFin.setBounds(337, 90, 136, 21);
 
-        Label2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        Label2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         Label2.setText("-");
+        getContentPane().add(Label2);
+        Label2.setBounds(277, 90, 8, 21);
 
         spPartidos.setBorder(null);
+        getContentPane().add(spPartidos);
+        spPartidos.setBounds(57, 161, 446, 269);
 
         bPrimero.setText("|<");
         bPrimero.setEnabled(false);
@@ -80,6 +96,8 @@ public class VCalendario extends javax.swing.JDialog {
                 bPrimeroActionPerformed(evt);
             }
         });
+        getContentPane().add(bPrimero);
+        bPrimero.setBounds(150, 448, 47, 25);
 
         bAnterior.setText("<");
         bAnterior.setEnabled(false);
@@ -88,6 +106,8 @@ public class VCalendario extends javax.swing.JDialog {
                 bAnteriorActionPerformed(evt);
             }
         });
+        getContentPane().add(bAnterior);
+        bAnterior.setBounds(204, 448, 41, 25);
 
         bSiguiente.setText(">");
         bSiguiente.setEnabled(false);
@@ -96,6 +116,8 @@ public class VCalendario extends javax.swing.JDialog {
                 bSiguienteActionPerformed(evt);
             }
         });
+        getContentPane().add(bSiguiente);
+        bSiguiente.setBounds(339, 448, 41, 25);
 
         bUltimo.setText(">|");
         bUltimo.setEnabled(false);
@@ -104,6 +126,8 @@ public class VCalendario extends javax.swing.JDialog {
                 bUltimoActionPerformed(evt);
             }
         });
+        getContentPane().add(bUltimo);
+        bUltimo.setBounds(387, 448, 47, 25);
 
         bSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         bSalir.setText("Salir");
@@ -112,69 +136,12 @@ public class VCalendario extends javax.swing.JDialog {
                 bSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(bSalir);
+        bSalir.setBounds(443, 491, 72, 35);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(lbFechaIni)
-                        .addGap(28, 28, 28)
-                        .addComponent(Label2)
-                        .addGap(27, 27, 27)
-                        .addComponent(lbFechaFin))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(Njornada))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(bPrimero)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bAnterior)
-                        .addGap(94, 94, 94)
-                        .addComponent(bSiguiente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bUltimo)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 57, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(spPartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(Njornada))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbFechaIni)
-                    .addComponent(lbFechaFin)
-                    .addComponent(Label2))
-                .addGap(50, 50, 50)
-                .addComponent(spPartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bPrimero)
-                    .addComponent(bAnterior)
-                    .addComponent(bUltimo)
-                    .addComponent(bSiguiente))
-                .addGap(18, 18, 18)
-                .addComponent(bSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
+        getContentPane().add(imagen);
+        imagen.setBounds(0, 0, 570, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -238,6 +205,7 @@ public class VCalendario extends javax.swing.JDialog {
     private javax.swing.JButton bSalir;
     private javax.swing.JButton bSiguiente;
     private javax.swing.JButton bUltimo;
+    private javax.swing.JLabel imagen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbFechaFin;
     private javax.swing.JLabel lbFechaIni;

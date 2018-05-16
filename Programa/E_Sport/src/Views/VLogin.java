@@ -30,25 +30,7 @@ public class VLogin extends javax.swing.JFrame {
         this.getContentPane().setBackground(new Color(70, 130, 180));
         setVisible(true);
         
-        ImageIcon usuario = new ImageIcon("../../imagenes/user.png");
-        Icon icono = new ImageIcon (usuario.getImage().getScaledInstance(imgusu.getWidth(), imgusu.getHeight(), Image.SCALE_DEFAULT));
-        imgusu.setIcon(icono);
-        this.repaint();
-        
-        ImageIcon passw = new ImageIcon("../../imagenes/contrasenna.png");
-        Icon icono2 = new ImageIcon (passw.getImage().getScaledInstance(imgpassw.getWidth(), imgpassw.getHeight(), Image.SCALE_DEFAULT));
-        imgpassw.setIcon(icono2);
-        this.repaint();
-        
-        ImageIcon logo = new ImageIcon("../../imagenes/4fan.png");
-        Icon icono3 = new ImageIcon(logo.getImage().getScaledInstance(logotipo.getWidth(), logotipo.getHeight(), Image.SCALE_DEFAULT));
-        logotipo.setIcon(icono3);
-        this.repaint();
-        
-        ImageIcon fondo = new ImageIcon("../../imagenes/fondo2.jpg");
-        Icon icono4 = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
-        imgfondo.setIcon(icono4);
-        this.repaint();
+        CrearImagenes();
         
 
         jTextField1.grabFocus();
@@ -164,6 +146,28 @@ public class VLogin extends javax.swing.JFrame {
      * Metodo para obtener la contraseña.
      * @return devuelve la contraseña 
      */
+    
+    private  void CrearImagenes(){
+        ImageIcon usuario = new ImageIcon("../../imagenes/user.png");
+        Icon icono = new ImageIcon (usuario.getImage().getScaledInstance(imgusu.getWidth(), imgusu.getHeight(), Image.SCALE_DEFAULT));
+        imgusu.setIcon(icono);
+        this.repaint();
+        
+        ImageIcon passw = new ImageIcon("../../imagenes/contrasenna.png");
+        Icon icono2 = new ImageIcon (passw.getImage().getScaledInstance(imgpassw.getWidth(), imgpassw.getHeight(), Image.SCALE_DEFAULT));
+        imgpassw.setIcon(icono2);
+        this.repaint();
+        
+        ImageIcon logo = new ImageIcon("../../imagenes/4fan.png");
+        Icon icono3 = new ImageIcon(logo.getImage().getScaledInstance(logotipo.getWidth(), logotipo.getHeight(), Image.SCALE_DEFAULT));
+        logotipo.setIcon(icono3);
+        this.repaint();
+        
+        ImageIcon fondo = new ImageIcon("../../imagenes/fondo2.jpg");
+        Icon icono4 = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
+        imgfondo.setIcon(icono4);
+        this.repaint();
+    }
     
     public JPasswordField getPfContrasenna() {
         return pfContrasenna;

@@ -127,8 +127,10 @@ public class VDResultados extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         lNombre = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(976, 605));
         setMinimumSize(new java.awt.Dimension(976, 538));
         getContentPane().setLayout(null);
 
@@ -199,10 +201,10 @@ public class VDResultados extends javax.swing.JDialog {
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(50, 150, 319, 269);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel3.setText("Clasificación Actual:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(50, 120, 155, 22);
+        jLabel3.setBounds(50, 111, 260, 30);
 
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -211,12 +213,12 @@ public class VDResultados extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(830, 40, 96, 25);
+        jButton1.setBounds(796, 40, 130, 40);
 
-        lNombre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lNombre.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         lNombre.setText("Bienvenido SR./SRA. ");
         getContentPane().add(lNombre);
-        lNombre.setBounds(50, 40, 540, 22);
+        lNombre.setBounds(50, 40, 540, 50);
 
         jButton3.setText("Ver en Gráfico");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -225,7 +227,11 @@ public class VDResultados extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(50, 440, 115, 25);
+        jButton3.setBounds(50, 440, 130, 50);
+
+        img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
+        getContentPane().add(img);
+        img.setBounds(0, 0, 980, 610);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -252,6 +258,7 @@ public class VDResultados extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel img;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

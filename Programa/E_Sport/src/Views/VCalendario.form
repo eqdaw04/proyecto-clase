@@ -3,6 +3,12 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[563, 543]"/>
+    </Property>
+    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[563, 543]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -20,123 +26,74 @@
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
   </AuxValues>
 
-  <Layout>
-    <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
-                      <Component id="lbFechaIni" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="Label2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="lbFechaFin" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="Njornada" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                      <Component id="bPrimero" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bAnterior" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-                      <Component id="bSiguiente" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bUltimo" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="57" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="spPartidos" min="-2" pref="446" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="bSalir" min="-2" pref="72" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-          </Group>
-      </Group>
-    </DimensionLayout>
-    <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Njornada" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lbFechaIni" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbFechaFin" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Label2" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-              <Component id="spPartidos" min="-2" pref="269" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="bPrimero" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bUltimo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bSiguiente" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="bSalir" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
-          </Group>
-      </Group>
-    </DimensionLayout>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+    <Property name="useNullLayout" type="boolean" value="true"/>
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="18" style="0"/>
+          <Font name="Berlin Sans FB Demi" size="36" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Jornada"/>
       </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="160" y="30" width="196" height="-1"/>
+        </Constraint>
+      </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="Njornada">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="18" style="0"/>
+          <Font name="Berlin Sans FB Demi" size="36" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="X"/>
       </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="363" y="30" width="52" height="-1"/>
+        </Constraint>
+      </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="lbFechaIni">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="14" style="0"/>
+          <Font name="Verdana" size="16" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="FechaIni"/>
+        <Property name="text" type="java.lang.String" value="Fecha inicio"/>
       </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="115" y="90" width="144" height="-1"/>
+        </Constraint>
+      </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="lbFechaFin">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="14" style="0"/>
+          <Font name="Verdana" size="16" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="FechaFin"/>
+        <Property name="text" type="java.lang.String" value="Fecha fin"/>
       </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="337" y="90" width="136" height="-1"/>
+        </Constraint>
+      </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="Label2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="14" style="0"/>
+          <Font name="Verdana" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="-"/>
       </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="277" y="90" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
     </Component>
     <Container class="javax.swing.JScrollPane" name="spPartidos">
       <Properties>
@@ -144,6 +101,11 @@
           <Border info="null"/>
         </Property>
       </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="57" y="161" width="446" height="269"/>
+        </Constraint>
+      </Constraints>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
     </Container>
@@ -155,6 +117,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bPrimeroActionPerformed"/>
       </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="150" y="448" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="bAnterior">
       <Properties>
@@ -164,6 +131,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAnteriorActionPerformed"/>
       </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="204" y="448" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="bSiguiente">
       <Properties>
@@ -173,6 +145,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bSiguienteActionPerformed"/>
       </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="339" y="448" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="bUltimo">
       <Properties>
@@ -182,6 +159,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bUltimoActionPerformed"/>
       </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="387" y="448" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="bSalir">
       <Properties>
@@ -193,6 +175,23 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bSalirActionPerformed"/>
       </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="443" y="491" width="72" height="35"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="imagen">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/imagenes/fondo2.jpg"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="0" width="570" height="550"/>
+        </Constraint>
+      </Constraints>
     </Component>
   </SubComponents>
 </Form>

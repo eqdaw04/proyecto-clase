@@ -42,7 +42,13 @@ public class VPrincipal extends javax.swing.JFrame {
                 break;
         }
         
+        crearImagenes();
 
+        
+    }
+    
+    private void crearImagenes(){
+        
         ImageIcon logo = new ImageIcon("../../imagenes/4fan.png");
         Icon icono3 = new ImageIcon(logo.getImage().getScaledInstance(logotipo.getWidth(), logotipo.getHeight(), Image.SCALE_DEFAULT));
         logotipo.setIcon(icono3);
@@ -50,8 +56,7 @@ public class VPrincipal extends javax.swing.JFrame {
         
         Image img = new ImageIcon ("../../imagenes/fondo2.jpg").getImage();
         ImageIcon img2 = new ImageIcon(img.getScaledInstance(988, 691, Image.SCALE_SMOOTH));
-        imgfondo.setIcon(img2);
-        
+        imgfondo.setIcon(img2);  
     }
 
     /**
@@ -123,7 +128,7 @@ public class VPrincipal extends javax.swing.JFrame {
         getContentPane().add(logotipo);
         logotipo.setBounds(900, 560, 80, 70);
         getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 990, 670);
+        imgfondo.setBounds(0, 0, 990, 640);
 
         administracion.setText("Administración");
 

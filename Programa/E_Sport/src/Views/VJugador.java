@@ -87,7 +87,7 @@ public class VJugador extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         jLabel1.setText("JUGADOR");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(185, 13, 163, 42);
+        jLabel1.setBounds(185, 13, 260, 42);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("DNI:");
@@ -148,7 +148,7 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAceptar);
-        bAceptar.setBounds(172, 403, 77, 25);
+        bAceptar.setBounds(129, 403, 120, 25);
 
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +157,7 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bCancelar);
-        bCancelar.setBounds(286, 403, 83, 25);
+        bCancelar.setBounds(286, 403, 130, 25);
 
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel7.setText("Sueldo:");
@@ -221,7 +221,7 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bBuscar);
-        bBuscar.setBounds(388, 77, 71, 25);
+        bBuscar.setBounds(388, 77, 100, 25);
 
         jLabel9.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel9.setText("Apellido 2:");
