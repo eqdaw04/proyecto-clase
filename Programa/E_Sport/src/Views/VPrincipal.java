@@ -107,10 +107,9 @@ public class VPrincipal extends javax.swing.JFrame {
         introducirResultados = new javax.swing.JMenuItem();
         equipos = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         ver = new javax.swing.JMenu();
         verCalendario = new javax.swing.JMenuItem();
-        verResultClasi = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(988, 691));
@@ -285,14 +284,6 @@ public class VPrincipal extends javax.swing.JFrame {
         });
         equipos.add(jMenuItem1);
 
-        jMenuItem2.setText("Resultados");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        equipos.add(jMenuItem2);
-
         jMenuBar1.add(equipos);
 
         ver.setText("Ver");
@@ -305,13 +296,13 @@ public class VPrincipal extends javax.swing.JFrame {
         });
         ver.add(verCalendario);
 
-        verResultClasi.setText("Result. y Clasi.");
-        verResultClasi.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("Resultados y Clasificación");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verResultClasiActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        ver.add(verResultClasi);
+        ver.add(jMenuItem2);
 
         jMenuBar1.add(ver);
 
@@ -437,11 +428,6 @@ public class VPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_verCalendarioActionPerformed
 
-    private void verResultClasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verResultClasiActionPerformed
-        // TODO add your handling code here:
-        // Abrir ventana
-    }//GEN-LAST:event_verResultClasiActionPerformed
-
     private void bCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCerrarSesionActionPerformed
         Main.cerrarSesion(this);
     }//GEN-LAST:event_bCerrarSesionActionPerformed
@@ -501,7 +487,6 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem verCalendario;
     private javax.swing.JMenuItem verEquipo;
     private javax.swing.JMenuItem verJugador;
-    private javax.swing.JMenuItem verResultClasi;
     private javax.swing.JMenuItem verUsuario;
     // End of variables declaration//GEN-END:variables
 }
