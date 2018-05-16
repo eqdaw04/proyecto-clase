@@ -6,8 +6,11 @@
 package Views;
 
 import Controladora.Main;
+import java.awt.Image;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -38,6 +41,16 @@ public class VPrincipal extends javax.swing.JFrame {
                 equipos.setEnabled(false);                
                 break;
         }
+        
+        /*ImageIcon fondo = new ImageIcon("../../imagenes/fondo2.jpg");
+        Icon icono = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
+        imgfondo.setIcon(icono);
+        this.repaint();*/
+        
+        Image img = new ImageIcon ("../../imagenes/fondo2.jpg").getImage();
+        ImageIcon img2 = new ImageIcon(img.getScaledInstance(988, 691, Image.SCALE_SMOOTH));
+        imgfondo.setIcon(img2);
+        
     }
 
     /**
@@ -52,6 +65,7 @@ public class VPrincipal extends javax.swing.JFrame {
         bCerrarSesion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         NombreUsu = new javax.swing.JLabel();
+        imgfondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         administracion = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -81,7 +95,9 @@ public class VPrincipal extends javax.swing.JFrame {
         verResultClasi = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(988, 691));
         setMinimumSize(new java.awt.Dimension(988, 691));
+        getContentPane().setLayout(null);
 
         bCerrarSesion.setText("Cerrar sesión");
         bCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -89,13 +105,21 @@ public class VPrincipal extends javax.swing.JFrame {
                 bCerrarSesionActionPerformed(evt);
             }
         });
+        getContentPane().add(bCerrarSesion);
+        bCerrarSesion.setBounds(816, 13, 160, 25);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 36)); // NOI18N
         jLabel1.setText("Bienvenido");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(40, 490, 174, 54);
 
-        NombreUsu.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        NombreUsu.setForeground(new java.awt.Color(51, 153, 0));
+        NombreUsu.setFont(new java.awt.Font("Bauhaus 93", 0, 36)); // NOI18N
+        NombreUsu.setForeground(new java.awt.Color(0, 153, 255));
         NombreUsu.setText("Nombre");
+        getContentPane().add(NombreUsu);
+        NombreUsu.setBounds(250, 490, 130, 54);
+        getContentPane().add(imgfondo);
+        imgfondo.setBounds(0, 0, 990, 640);
 
         administracion.setText("Administración");
 
@@ -272,33 +296,6 @@ public class VPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bCerrarSesion)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addComponent(NombreUsu)
-                .addContainerGap(727, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bCerrarSesion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 443, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(NombreUsu))
-                .addGap(152, 152, 152))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -464,6 +461,7 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem eliminarUsuario;
     private javax.swing.JMenu equipos;
     private javax.swing.JMenuItem generarCalendario;
+    private javax.swing.JLabel imgfondo;
     private javax.swing.JMenuItem introducirResultados;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu4;

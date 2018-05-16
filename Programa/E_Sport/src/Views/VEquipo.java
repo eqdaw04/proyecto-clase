@@ -71,7 +71,7 @@ public class VEquipo extends javax.swing.JDialog {
         taPlantilla = new javax.swing.JTextArea();
         cFechaCreacion = new org.freixas.jcalendar.JCalendarCombo();
         jLabel5 = new javax.swing.JLabel();
-        cbDuenno = new javax.swing.JComboBox<>();
+        cbDuenno = new javax.swing.JComboBox<String>();
         jLabel7 = new javax.swing.JLabel();
         tfLugar = new javax.swing.JTextField();
         imgfondo = new javax.swing.JLabel();
@@ -120,7 +120,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAceptar);
-        bAceptar.setBounds(249, 485, 77, 25);
+        bAceptar.setBounds(250, 490, 90, 25);
 
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +129,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bCancelar);
-        bCancelar.setBounds(384, 485, 83, 25);
+        bCancelar.setBounds(373, 490, 90, 25);
 
         bPrimero.setText("|<");
         bPrimero.setEnabled(false);
@@ -144,7 +144,7 @@ public class VEquipo extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 36)); // NOI18N
         jLabel1.setText("EQUIPO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(239, 25, 139, 47);
+        jLabel1.setBounds(239, 25, 124, 54);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("Nombre:");
