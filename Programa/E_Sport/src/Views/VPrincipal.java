@@ -7,8 +7,6 @@ package Views;
 
 import Controladora.Main;
 import java.awt.Image;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -24,6 +22,10 @@ public class VPrincipal extends javax.swing.JFrame {
     
     public VPrincipal(int tipo,String usuario) {
         initComponents();
+        cargarDatos(tipo, usuario);
+    }
+    
+    private void cargarDatos(int tipo, String usuario){
         setLocationRelativeTo(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
@@ -54,9 +56,13 @@ public class VPrincipal extends javax.swing.JFrame {
         logotipo.setIcon(icono3);
         this.repaint();
         
+        imgfondo.setSize(this.getWidth(), this.getHeight());
         Image img = new ImageIcon ("../../imagenes/fondo2.jpg").getImage();
-        ImageIcon img2 = new ImageIcon(img.getScaledInstance(988, 691, Image.SCALE_SMOOTH));
-        imgfondo.setIcon(img2);  
+        ImageIcon img2 = new ImageIcon(img.getScaledInstance( imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
+        imgfondo.setIcon(img2);
+        this.repaint();
+        
+        bCerrarSesion.setLocation(this.getWidth()- (bCerrarSesion.getWidth()+50), 50 );
     }
 
     /**
@@ -104,6 +110,7 @@ public class VPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(988, 691));
         setMinimumSize(new java.awt.Dimension(988, 691));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         bCerrarSesion.setText("Cerrar sesión");
@@ -118,17 +125,17 @@ public class VPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         jLabel1.setText("Bienvenido");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(50, 490, 220, 42);
+        jLabel1.setBounds(50, 490, 220, 47);
 
         NombreUsu.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         NombreUsu.setForeground(new java.awt.Color(0, 153, 255));
         NombreUsu.setText("Nombre");
         getContentPane().add(NombreUsu);
-        NombreUsu.setBounds(270, 490, 170, 42);
+        NombreUsu.setBounds(270, 490, 170, 47);
         getContentPane().add(logotipo);
         logotipo.setBounds(900, 560, 80, 70);
         getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 990, 640);
+        imgfondo.setBounds(0, 0, 990, 670);
 
         administracion.setText("Administración");
 
