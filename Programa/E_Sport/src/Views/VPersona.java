@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * @author eqdaw04
  */
 
-public class VUsuario extends javax.swing.JDialog {
+public class VPersona extends javax.swing.JDialog {
     private String tipo;
     private int n, contador;
     /**
@@ -28,7 +28,7 @@ public class VUsuario extends javax.swing.JDialog {
 
     ArrayList <Persona> lPersona;
     
-    public VUsuario(String tipo, int n) {
+    public VPersona(String tipo, int n) {
         initComponents();
         //mostrar opciones según tipo de operaciones CRUD que se quiera realizar
         cargarDatos(tipo, n);
@@ -119,7 +119,6 @@ public class VUsuario extends javax.swing.JDialog {
         imagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(468, 445));
         setMinimumSize(new java.awt.Dimension(468, 445));
         getContentPane().setLayout(null);
 
@@ -130,7 +129,7 @@ public class VUsuario extends javax.swing.JDialog {
 
         tfEmail.setEditable(false);
         getContentPane().add(tfEmail);
-        tfEmail.setBounds(156, 241, 212, 19);
+        tfEmail.setBounds(156, 241, 212, 22);
 
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
@@ -164,7 +163,7 @@ public class VUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bPrimero);
-        bPrimero.setBounds(122, 381, 42, 25);
+        bPrimero.setBounds(122, 381, 47, 25);
 
         bAnterior.setText("<");
         bAnterior.setEnabled(false);
@@ -174,7 +173,7 @@ public class VUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnterior);
-        bAnterior.setBounds(176, 381, 40, 25);
+        bAnterior.setBounds(176, 381, 41, 25);
 
         bSiguiente.setText(">");
         bSiguiente.setEnabled(false);
@@ -184,7 +183,7 @@ public class VUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(224, 381, 40, 25);
+        bSiguiente.setBounds(224, 381, 41, 25);
 
         bUltimo.setText(">|");
         bUltimo.setEnabled(false);
@@ -194,7 +193,7 @@ public class VUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bUltimo);
-        bUltimo.setBounds(272, 381, 42, 25);
+        bUltimo.setBounds(272, 381, 47, 25);
 
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         jLabel1.setText("USUARIO");
@@ -208,16 +207,16 @@ public class VUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bBuscar);
-        bBuscar.setBounds(375, 88, 69, 25);
+        bBuscar.setBounds(375, 88, 71, 25);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("Usuario:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(24, 88, 73, 21);
         getContentPane().add(tfUsuario);
-        tfUsuario.setBounds(156, 89, 212, 19);
+        tfUsuario.setBounds(156, 89, 212, 22);
         getContentPane().add(ccFechaAlta);
-        ccFechaAlta.setBounds(156, 271, 212, 24);
+        ccFechaAlta.setBounds(156, 271, 212, 22);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel3.setText("Nombre:");
@@ -226,7 +225,7 @@ public class VUsuario extends javax.swing.JDialog {
 
         tfNombre.setEditable(false);
         getContentPane().add(tfNombre);
-        tfNombre.setBounds(156, 151, 212, 19);
+        tfNombre.setBounds(156, 151, 212, 22);
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel4.setText("Apellido 1:");
@@ -235,11 +234,11 @@ public class VUsuario extends javax.swing.JDialog {
 
         tfApellido1.setEditable(false);
         getContentPane().add(tfApellido1);
-        tfApellido1.setBounds(156, 181, 212, 19);
+        tfApellido1.setBounds(156, 181, 212, 22);
 
         tfApellido2.setEditable(false);
         getContentPane().add(tfApellido2);
-        tfApellido2.setBounds(156, 211, 212, 19);
+        tfApellido2.setBounds(156, 211, 212, 22);
 
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel6.setText("Contraseña:");
@@ -248,7 +247,7 @@ public class VUsuario extends javax.swing.JDialog {
 
         pfContrasenna.setEditable(false);
         getContentPane().add(pfContrasenna);
-        pfContrasenna.setBounds(156, 121, 212, 19);
+        pfContrasenna.setBounds(156, 121, 212, 22);
 
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel7.setText("Perfil:");
@@ -258,7 +257,7 @@ public class VUsuario extends javax.swing.JDialog {
         cbPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Dueño", "Usuario" }));
         cbPerfil.setSelectedIndex(-1);
         getContentPane().add(cbPerfil);
-        cbPerfil.setBounds(156, 301, 212, 24);
+        cbPerfil.setBounds(156, 301, 212, 22);
 
         jLabel10.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel10.setText("Apellido 2:");

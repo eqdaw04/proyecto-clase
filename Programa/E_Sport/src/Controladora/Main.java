@@ -150,7 +150,7 @@ public class Main {
                 break;
                 
             case 3:
-                new VUsuario(tipo, n);
+                new VPersona(tipo, n);
                 break;
 
             case 5:
@@ -210,7 +210,7 @@ public class Main {
                 break;
                 
             case 3:
-                new VUsuario(tipo, n);
+                new VPersona(tipo, n);
                 break;
                 
             case 5:
