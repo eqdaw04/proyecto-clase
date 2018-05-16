@@ -56,8 +56,8 @@ public class VCalendario extends javax.swing.JDialog {
         imagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(563, 543));
-        setMinimumSize(new java.awt.Dimension(563, 543));
+        setMaximumSize(new java.awt.Dimension(581, 596));
+        setMinimumSize(new java.awt.Dimension(581, 596));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
@@ -141,7 +141,7 @@ public class VCalendario extends javax.swing.JDialog {
 
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(imagen);
-        imagen.setBounds(0, 0, 570, 550);
+        imagen.setBounds(0, 0, 580, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

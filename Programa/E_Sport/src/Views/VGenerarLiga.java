@@ -155,10 +155,12 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(906, 633));
-        setMinimumSize(new java.awt.Dimension(906, 633));
+        setMaximumSize(new java.awt.Dimension(1004, 711));
+        setMinimumSize(new java.awt.Dimension(1004, 711));
         getContentPane().setLayout(null);
 
         bAceptar.setText("Aceptar");
@@ -169,12 +171,12 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAceptar);
-        bAceptar.setBounds(540, 590, 77, 25);
+        bAceptar.setBounds(600, 620, 120, 25);
 
         pEspera.setBackground(new java.awt.Color(255, 255, 255));
         pEspera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Un momento por favor...");
 
@@ -184,7 +186,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             pEsperaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pEsperaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pEsperaLayout.setVerticalGroup(
@@ -192,11 +194,11 @@ public class VGenerarLiga extends javax.swing.JDialog {
             .addGroup(pEsperaLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel14)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         getContentPane().add(pEspera);
-        pEspera.setBounds(300, 320, 300, 80);
+        pEspera.setBounds(300, 290, 300, 80);
 
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +207,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bCancelar);
-        bCancelar.setBounds(730, 590, 83, 25);
+        bCancelar.setBounds(790, 620, 120, 25);
 
         bGenerarCalendario.setText("Generar Calendario");
         bGenerarCalendario.setEnabled(false);
@@ -230,15 +232,17 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bBorrar);
-        bBorrar.setBounds(330, 180, 118, 25);
+        bBorrar.setBounds(290, 180, 118, 25);
 
+        jLabel7.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel7.setText("Número de Jornada");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(80, 250, 160, 16);
+        jLabel7.setBounds(50, 260, 200, 21);
 
+        jLabel8.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel8.setText("Número del Partido");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(330, 250, 200, 16);
+        jLabel8.setBounds(290, 260, 240, 21);
 
         lPartido.setEnabled(false);
         lPartido.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -264,24 +268,29 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Compiten"));
 
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel1.setText("Equipo Local");
 
         tfLocal.setEditable(false);
 
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel2.setText("Equipo Visitante");
 
         tfVisitante.setEditable(false);
 
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel3.setText("Fecha celebración");
 
         ccCalendario.setEnabled(false);
 
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel4.setText("Hora");
 
         cbHora.setEnabled(false);
 
         cbMinuto.setEnabled(false);
 
+        jLabel9.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel9.setText("Lugar del partido:");
 
         tfLugar.setEditable(false);
@@ -293,15 +302,6 @@ public class VGenerarLiga extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfVisitante)))
-                    .addComponent(jLabel3)
-                    .addComponent(ccCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(tfLocal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -311,9 +311,20 @@ public class VGenerarLiga extends javax.swing.JDialog {
                                     .addComponent(cbHora, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(cbMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(387, 387, 387)))
-                    .addComponent(jLabel9))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addContainerGap(387, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(17, 17, 17)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel3)
+                            .addComponent(ccCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(144, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,19 +355,21 @@ public class VGenerarLiga extends javax.swing.JDialog {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(530, 290, 491, 293);
+        jPanel1.setBounds(530, 280, 491, 301);
 
-        jLabel10.setText("Borrar la LIGA actual: (Se borrará la liga actual)");
+        jLabel10.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        jLabel10.setText("Borrar la LIGA actual:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(50, 180, 275, 16);
+        jLabel10.setBounds(50, 180, 240, 21);
 
         ccCalendarioInicial.setEnabled(false);
         getContentPane().add(ccCalendarioInicial);
         ccCalendarioInicial.setBounds(40, 100, 203, 22);
 
-        jLabel6.setText("Seleccione Hora último partido:");
+        jLabel6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        jLabel6.setText("Seleccione hora del último partido:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(570, 140, 180, 16);
+        jLabel6.setBounds(490, 140, 330, 21);
 
         cbHoraI.setEnabled(false);
         cbHoraI.addActionListener(new java.awt.event.ActionListener() {
@@ -365,28 +378,40 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(cbHoraI);
-        cbHoraI.setBounds(230, 140, 42, 22);
+        cbHoraI.setBounds(370, 140, 42, 22);
 
-        jLabel11.setText("Seleccione Hora primer partido:");
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel11.setText("Seleccione hora del primer partido:");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(40, 140, 183, 16);
+        jLabel11.setBounds(40, 140, 287, 20);
 
         cbHoraF.setEnabled(false);
         getContentPane().add(cbHoraF);
-        cbHoraF.setBounds(760, 140, 42, 22);
+        cbHoraF.setBounds(820, 140, 42, 22);
 
+        jLabel12.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel12.setText("Si La jornada comienza el lunes, acabará el domingo.");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(250, 110, 561, 16);
+        jLabel12.setBounds(250, 96, 561, 30);
 
-        jLabel13.setText("Fecha y Hora del Partido");
+        jLabel13.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel13.setText("Fecha y hora del partido");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(560, 250, 140, 16);
+        jLabel13.setBounds(580, 243, 300, 30);
 
         jLabel15.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jLabel15.setText("(Recuerde que 1 jornada consta de 7 días)");
         getContentPane().add(jLabel15);
         jLabel15.setBounds(70, 60, 330, 17);
+
+        jLabel16.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        jLabel16.setText("(Se borrará la liga actual)");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(80, 210, 230, 17);
+
+        img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
+        getContentPane().add(img);
+        img.setBounds(0, 0, 1000, 710);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -552,6 +577,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cbMinuto;
     private org.freixas.jcalendar.JCalendarCombo ccCalendario;
     private org.freixas.jcalendar.JCalendarCombo ccCalendarioInicial;
+    private javax.swing.JLabel img;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -559,6 +585,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
