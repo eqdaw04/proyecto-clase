@@ -159,8 +159,8 @@ public class VGenerarLiga extends javax.swing.JDialog {
         img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(906, 633));
-        setMinimumSize(new java.awt.Dimension(906, 633));
+        setMaximumSize(new java.awt.Dimension(1004, 711));
+        setMinimumSize(new java.awt.Dimension(1004, 711));
         getContentPane().setLayout(null);
 
         bAceptar.setText("Aceptar");
@@ -171,7 +171,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAceptar);
-        bAceptar.setBounds(540, 590, 120, 25);
+        bAceptar.setBounds(600, 620, 120, 25);
 
         pEspera.setBackground(new java.awt.Color(255, 255, 255));
         pEspera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -207,7 +207,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bCancelar);
-        bCancelar.setBounds(730, 590, 120, 25);
+        bCancelar.setBounds(790, 620, 120, 25);
 
         bGenerarCalendario.setText("Generar Calendario");
         bGenerarCalendario.setEnabled(false);
@@ -411,7 +411,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(img);
-        img.setBounds(0, 0, 910, 640);
+        img.setBounds(0, 0, 1000, 710);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
