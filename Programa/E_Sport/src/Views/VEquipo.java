@@ -37,7 +37,7 @@ public class VEquipo extends javax.swing.JDialog {
         initComponents();
         cargarDatos(tipo, n);
         
-        ImageIcon fondo = new ImageIcon("../../../imagenes/fondo2.jpg");
+        ImageIcon fondo = new ImageIcon("../../imagenes/fondo2.jpg");
         Icon icono = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
         imgfondo.setIcon(icono);
         this.repaint();
