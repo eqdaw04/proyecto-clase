@@ -205,6 +205,7 @@ public class VDResultados extends javax.swing.JDialog {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(50, 111, 260, 30);
 
+        jButton1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,6 +220,7 @@ public class VDResultados extends javax.swing.JDialog {
         getContentPane().add(lNombre);
         lNombre.setBounds(50, 40, 540, 50);
 
+        jButton3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jButton3.setText("Ver en Gráfico");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,7 +228,7 @@ public class VDResultados extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(50, 440, 130, 50);
+        jButton3.setBounds(50, 440, 190, 50);
 
         img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(img);

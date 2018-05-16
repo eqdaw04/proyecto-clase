@@ -9,12 +9,15 @@ import Controladora.Main;
 import Excepciones.Excepcion;
 import UML.Equipo;
 import UML.Jornada;
+import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import oracle.jdbc.OracleCallableStatement;
+import oracle.jdbc.OracleTypes;
 
 /**
  *Clase en la que introduciremos y controlaremos los equipos a la base de datos.
@@ -276,10 +279,13 @@ public class BDEquipo {
     
     public ArrayList<Object> resultadoFinal() throws Exception{
         BDConexion con = new BDConexion();
-        PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT (SELECT nombre FROM equipo WHERE equipo.id_equipo = marcador.id_equipo) AS equipo, SUM(puntuacion) AS punto FROM marcador GROUP BY id_equipo ORDER BY punto DESC");
+        CallableStatement sentencia;
+        // preparar sentencia
+        sentencia = con.getConnection().prepareCall("{call Pkg_Clasificacion.clasif(?)}");
+        sentencia.registerOutParameter(1, OracleTypes.CURSOR);
+        sentencia.execute();
         ResultSet rs;
-        rs = sentencia.executeQuery();
+        rs = ((OracleCallableStatement)sentencia).getCursor(1);
         ArrayList <Object> lista = new ArrayList();
         int x = 0;
         while(rs.next()){

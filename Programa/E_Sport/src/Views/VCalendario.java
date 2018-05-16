@@ -63,12 +63,12 @@ public class VCalendario extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         jLabel1.setText("Jornada");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(160, 30, 196, 47);
+        jLabel1.setBounds(160, 30, 196, 42);
 
         Njornada.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         Njornada.setText("X");
         getContentPane().add(Njornada);
-        Njornada.setBounds(363, 30, 52, 47);
+        Njornada.setBounds(363, 30, 52, 42);
 
         lbFechaIni.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         lbFechaIni.setText("Fecha inicio");
@@ -89,6 +89,7 @@ public class VCalendario extends javax.swing.JDialog {
         getContentPane().add(spPartidos);
         spPartidos.setBounds(57, 161, 446, 269);
 
+        bPrimero.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bPrimero.setText("|<");
         bPrimero.setEnabled(false);
         bPrimero.addActionListener(new java.awt.event.ActionListener() {
@@ -97,8 +98,9 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bPrimero);
-        bPrimero.setBounds(150, 448, 47, 25);
+        bPrimero.setBounds(150, 448, 60, 25);
 
+        bAnterior.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bAnterior.setText("<");
         bAnterior.setEnabled(false);
         bAnterior.addActionListener(new java.awt.event.ActionListener() {
@@ -107,8 +109,9 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnterior);
-        bAnterior.setBounds(204, 448, 41, 25);
+        bAnterior.setBounds(220, 450, 50, 25);
 
+        bSiguiente.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bSiguiente.setText(">");
         bSiguiente.setEnabled(false);
         bSiguiente.addActionListener(new java.awt.event.ActionListener() {
@@ -117,8 +120,9 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(339, 448, 41, 25);
+        bSiguiente.setBounds(330, 450, 50, 25);
 
+        bUltimo.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bUltimo.setText(">|");
         bUltimo.setEnabled(false);
         bUltimo.addActionListener(new java.awt.event.ActionListener() {
@@ -127,9 +131,9 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bUltimo);
-        bUltimo.setBounds(387, 448, 47, 25);
+        bUltimo.setBounds(387, 448, 60, 25);
 
-        bSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bSalir.setFont(new java.awt.Font("Verdana", 1, 15)); // NOI18N
         bSalir.setText("Salir");
         bSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +141,7 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSalir);
-        bSalir.setBounds(443, 491, 72, 35);
+        bSalir.setBounds(443, 491, 120, 35);
 
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(imagen);

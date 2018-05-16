@@ -131,9 +131,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        lPartido = new javax.swing.JList<>();
+        lPartido = new javax.swing.JList<Integer>();
         jScrollPane4 = new javax.swing.JScrollPane();
-        lJornada = new javax.swing.JList<>();
+        lJornada = new javax.swing.JList<Integer>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tfLocal = new javax.swing.JTextField();
@@ -142,16 +142,16 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         ccCalendario = new org.freixas.jcalendar.JCalendarCombo();
         jLabel4 = new javax.swing.JLabel();
-        cbHora = new javax.swing.JComboBox<>();
-        cbMinuto = new javax.swing.JComboBox<>();
+        cbHora = new javax.swing.JComboBox<String>();
+        cbMinuto = new javax.swing.JComboBox<String>();
         jLabel9 = new javax.swing.JLabel();
         tfLugar = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         ccCalendarioInicial = new org.freixas.jcalendar.JCalendarCombo();
         jLabel6 = new javax.swing.JLabel();
-        cbHoraI = new javax.swing.JComboBox<>();
+        cbHoraI = new javax.swing.JComboBox<String>();
         jLabel11 = new javax.swing.JLabel();
-        cbHoraF = new javax.swing.JComboBox<>();
+        cbHoraF = new javax.swing.JComboBox<String>();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -163,6 +163,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
         setMinimumSize(new java.awt.Dimension(1004, 711));
         getContentPane().setLayout(null);
 
+        bAceptar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
         bAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -171,7 +172,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAceptar);
-        bAceptar.setBounds(600, 620, 120, 25);
+        bAceptar.setBounds(600, 620, 120, 27);
 
         pEspera.setBackground(new java.awt.Color(255, 255, 255));
         pEspera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -200,6 +201,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
         getContentPane().add(pEspera);
         pEspera.setBounds(300, 290, 300, 80);
 
+        bCancelar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,8 +209,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bCancelar);
-        bCancelar.setBounds(790, 620, 120, 25);
+        bCancelar.setBounds(790, 620, 120, 27);
 
+        bGenerarCalendario.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         bGenerarCalendario.setText("Generar Calendario");
         bGenerarCalendario.setEnabled(false);
         bGenerarCalendario.addActionListener(new java.awt.event.ActionListener() {
@@ -224,6 +227,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(60, 30, 410, 21);
 
+        bBorrar.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         bBorrar.setText("Borrar Todo");
         bBorrar.setEnabled(false);
         bBorrar.addActionListener(new java.awt.event.ActionListener() {

@@ -235,6 +235,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="bCerrarSesion">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="16" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Cerrar sesi&#xf3;n"/>
       </Properties>
       <Events>
@@ -242,7 +245,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="816" y="13" width="160" height="-1"/>
+          <AbsoluteConstraints x="816" y="13" width="160" height="50"/>
         </Constraint>
       </Constraints>
     </Component>

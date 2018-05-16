@@ -173,8 +173,9 @@ public class VIntroducirResultado extends javax.swing.JDialog {
             }
         });
         getContentPane().add(ccFecha);
-        ccFecha.setBounds(190, 110, 260, 22);
+        ccFecha.setBounds(270, 110, 260, 22);
 
+        bAceptar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
         bAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -183,8 +184,9 @@ public class VIntroducirResultado extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAceptar);
-        bAceptar.setBounds(20, 560, 120, 25);
+        bAceptar.setBounds(20, 560, 140, 27);
 
+        bCancelar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +194,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bCancelar);
-        bCancelar.setBounds(550, 560, 120, 25);
+        bCancelar.setBounds(550, 560, 140, 27);
 
         jLabel11.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel11.setText("Partido número: ");
@@ -207,6 +209,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         getContentPane().add(cbPartido);
         cbPartido.setBounds(220, 150, 73, 22);
 
+        bModificar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bModificar.setText("Modificar Partido");
         bModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,7 +217,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bModificar);
-        bModificar.setBounds(40, 110, 129, 25);
+        bModificar.setBounds(40, 110, 165, 27);
 
         img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(img);
