@@ -43,6 +43,10 @@ public class VPrincipal extends javax.swing.JFrame {
         }
         
 
+        ImageIcon logo = new ImageIcon("../../imagenes/4fan.png");
+        Icon icono3 = new ImageIcon(logo.getImage().getScaledInstance(logotipo.getWidth(), logotipo.getHeight(), Image.SCALE_DEFAULT));
+        logotipo.setIcon(icono3);
+        this.repaint();
         
         Image img = new ImageIcon ("../../imagenes/fondo2.jpg").getImage();
         ImageIcon img2 = new ImageIcon(img.getScaledInstance(988, 691, Image.SCALE_SMOOTH));
@@ -62,6 +66,7 @@ public class VPrincipal extends javax.swing.JFrame {
         bCerrarSesion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         NombreUsu = new javax.swing.JLabel();
+        logotipo = new javax.swing.JLabel();
         imgfondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         administracion = new javax.swing.JMenu();
@@ -105,16 +110,18 @@ public class VPrincipal extends javax.swing.JFrame {
         getContentPane().add(bCerrarSesion);
         bCerrarSesion.setBounds(816, 13, 160, 25);
 
-        jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         jLabel1.setText("Bienvenido");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(40, 490, 174, 54);
+        jLabel1.setBounds(50, 490, 220, 42);
 
-        NombreUsu.setFont(new java.awt.Font("Bauhaus 93", 0, 36)); // NOI18N
+        NombreUsu.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         NombreUsu.setForeground(new java.awt.Color(0, 153, 255));
         NombreUsu.setText("Nombre");
         getContentPane().add(NombreUsu);
-        NombreUsu.setBounds(250, 490, 130, 54);
+        NombreUsu.setBounds(270, 490, 170, 42);
+        getContentPane().add(logotipo);
+        logotipo.setBounds(900, 560, 80, 70);
         getContentPane().add(imgfondo);
         imgfondo.setBounds(0, 0, 990, 670);
 
@@ -469,6 +476,7 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JLabel logotipo;
     private javax.swing.JMenuItem modificarEquipo;
     private javax.swing.JMenuItem modificarJugador;
     private javax.swing.JMenuItem modificarUsuario;

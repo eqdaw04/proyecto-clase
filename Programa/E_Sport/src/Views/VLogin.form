@@ -159,7 +159,6 @@
     </Component>
     <Component class="javax.swing.JLabel" name="logotipo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel2"/>
         <Property name="alignmentX" type="float" value="0.5"/>
       </Properties>
       <Constraints>

@@ -151,7 +151,6 @@ public class VLogin extends javax.swing.JFrame {
         getContentPane().add(imgpassw);
         imgpassw.setBounds(130, 220, 40, 40);
 
-        logotipo.setText("jLabel2");
         logotipo.setAlignmentX(0.5F);
         getContentPane().add(logotipo);
         logotipo.setBounds(480, 390, 80, 70);
