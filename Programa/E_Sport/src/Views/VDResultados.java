@@ -130,7 +130,6 @@ public class VDResultados extends javax.swing.JDialog {
         img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(976, 605));
         setMinimumSize(new java.awt.Dimension(976, 538));
         getContentPane().setLayout(null);
 

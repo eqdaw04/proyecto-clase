@@ -31,8 +31,6 @@ public class VLogin extends javax.swing.JFrame {
         setVisible(true);
         
         CrearImagenes();
-        
-
         jTextField1.grabFocus();
         
 

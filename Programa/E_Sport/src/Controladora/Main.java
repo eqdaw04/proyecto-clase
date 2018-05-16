@@ -122,7 +122,13 @@ public class Main {
         else if(Arrays.equals(persona.getContrasenna().toCharArray(), contrasenna)){
             perfil = persona.getPerfil().getIdPerfil();
             login.dispose();
-            new VPrincipal(perfil,persona.getUsuario());
+            if(perfil == 3){
+                new VUPrincipal();
+            }
+            else{
+                new VPrincipal(perfil,persona.getUsuario());
+            }
+            
         }
         else if(cont <3){
             throw new Excepcion(12);

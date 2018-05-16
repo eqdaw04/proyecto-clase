@@ -290,6 +290,9 @@ public class BDEquipo {
             fila[2] = rs.getString("punto");
             lista.add(fila);
         }
+        rs.close();
+        sentencia.close();
+        con.desconectar();
         return lista;
     }
     
