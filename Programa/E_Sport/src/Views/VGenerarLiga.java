@@ -11,6 +11,8 @@ import UML.Jornada;
 import UML.Partido;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -131,9 +133,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        lPartido = new javax.swing.JList<Integer>();
+        lPartido = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
-        lJornada = new javax.swing.JList<Integer>();
+        lJornada = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tfLocal = new javax.swing.JTextField();
@@ -142,16 +144,16 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         ccCalendario = new org.freixas.jcalendar.JCalendarCombo();
         jLabel4 = new javax.swing.JLabel();
-        cbHora = new javax.swing.JComboBox<String>();
-        cbMinuto = new javax.swing.JComboBox<String>();
+        cbHora = new javax.swing.JComboBox<>();
+        cbMinuto = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         tfLugar = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         ccCalendarioInicial = new org.freixas.jcalendar.JCalendarCombo();
         jLabel6 = new javax.swing.JLabel();
-        cbHoraI = new javax.swing.JComboBox<String>();
+        cbHoraI = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        cbHoraF = new javax.swing.JComboBox<String>();
+        cbHoraF = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -160,7 +162,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1004, 711));
-        setMinimumSize(new java.awt.Dimension(1004, 711));
+        setMinimumSize(new java.awt.Dimension(964, 688));
         getContentPane().setLayout(null);
 
         bAceptar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -199,7 +201,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
         );
 
         getContentPane().add(pEspera);
-        pEspera.setBounds(300, 290, 300, 80);
+        pEspera.setBounds(320, 270, 300, 80);
 
         bCancelar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bCancelar.setText("Cancelar");
@@ -229,7 +231,6 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         bBorrar.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         bBorrar.setText("Borrar Todo");
-        bBorrar.setEnabled(false);
         bBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bBorrarActionPerformed(evt);
@@ -359,7 +360,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(530, 280, 491, 301);
+        jPanel1.setBounds(530, 280, 380, 301);
 
         jLabel10.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel10.setText("Borrar la LIGA actual:");
@@ -415,13 +416,22 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(img);
-        img.setBounds(0, 0, 1000, 710);
+        img.setBounds(0, 0, 970, 690);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBorrarActionPerformed
-        // TODO add your handling code here:
+        try {
+            if(Main.borrarLiga()){
+                JOptionPane.showMessageDialog(this, "Soy dios");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "caca");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(VGenerarLiga.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_bBorrarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed

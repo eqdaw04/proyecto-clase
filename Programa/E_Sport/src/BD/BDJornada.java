@@ -156,4 +156,40 @@ public class BDJornada {
         
     }
     
+    public boolean borrarTodo() throws Exception{
+        boolean estado;
+        estado = false;
+        BDConexion con = new BDConexion();
+        
+        
+        for(int x = 0; x<3; x++){
+            PreparedStatement sentencia;
+            /*
+            String dato= "";
+            switch (x){
+                case 0:
+                    dato = "DELETE FROM marcador";
+                    break;
+                case 1:
+                    dato = "DELETE FROM partido";
+                    break;
+                case 2:
+                    dato = "DELETE FROM jornada";
+                    break;
+            }
+            */
+            sentencia = con.getConnection().prepareStatement("DELETE FROM marcador");
+            sentencia.executeUpdate();
+            sentencia = con.getConnection().prepareStatement("DELETE FROM partido");
+            sentencia.executeUpdate();
+            sentencia = con.getConnection().prepareStatement("DELETE FROM jornada");
+            sentencia.executeUpdate();
+            sentencia.close();
+        }
+        estado = true;
+        
+        con.desconectar();
+        return estado;
+    }
+    
 }

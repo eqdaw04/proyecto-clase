@@ -181,7 +181,9 @@ public class Main {
         }
     }
 
-    
+    public static boolean borrarLiga() throws Exception{
+        return bdJornada.borrarTodo();
+    }
     /**
      * Metodo para cerrar la ventana abierta
      * @param v JDialog

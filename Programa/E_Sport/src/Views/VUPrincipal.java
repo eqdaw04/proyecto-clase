@@ -6,11 +6,12 @@
 package Views;
 
 import Controladora.Main;
-import java.awt.Dimension;
 import java.awt.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
+
 
 /**
  *
@@ -30,7 +31,8 @@ public class VUPrincipal extends javax.swing.JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
         crearImagenes();
-
+        setTitle("Bienvenido a E-Sport");
+        
         
     }
     
@@ -67,6 +69,8 @@ public class VUPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         logotipo = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(819, 789));
@@ -140,7 +144,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel7.setText("Hola ");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(20, 40, 200, 30);
+        jLabel7.setBounds(20, 40, 590, 30);
 
         jLabel8.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel8.setText("Número de Jornada");
@@ -154,13 +158,13 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(570, 500, 200, 25);
+        jButton1.setBounds(570, 510, 200, 25);
 
         jButton2.setText("<html><center>Ver en un gráfico<br></br>los resultados de la Liga</center></html>");
         jButton2.setActionCommand("");
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jButton2);
-        jButton2.setBounds(570, 536, 200, 56);
+        jButton2.setBounds(570, 550, 200, 56);
 
         jButton3.setText("Cerrar Sesión");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -182,23 +186,26 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(567, 469, 203, 16);
         getContentPane().add(logotipo);
-        logotipo.setBounds(630, 600, 80, 70);
+        logotipo.setBounds(690, 30, 80, 70);
+
+        jButton4.setText("Ver El Calendario");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4);
+        jButton4.setBounds(570, 620, 200, 25);
+
+        img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
+        getContentPane().add(img);
+        img.setBounds(0, 0, 860, 790);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void lJornada8ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lJornada8ValueChanged
-        try {
-            bAceptar.setEnabled(false);
-            ccCalendario.setEnabled(false);
-            cbHora.setEnabled(false);
-            cbMinuto.setEnabled(false);
-            listaPartido = Main.consultarPartidosPorJornada(lJornada.getSelectedValue());
-            cargarPartido(listaPartido);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
-        }
-
+     
     }//GEN-LAST:event_lJornada8ValueChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -209,11 +216,21 @@ public class VUPrincipal extends javax.swing.JFrame {
         Main.cerrarSesion(this);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+            Main.abrirVentana(8, "");
+        } catch (Exception ex) {
+            Logger.getLogger(VUPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel img;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

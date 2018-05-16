@@ -26,15 +26,7 @@ public class VLogin extends javax.swing.JFrame {
     
     public VLogin() {
         initComponents();
-        setLocationRelativeTo(null);
-        this.getContentPane().setBackground(new Color(70, 130, 180));
-        setVisible(true);
-        
         CrearImagenes();
-        jTextField1.grabFocus();
-        
-
-        
     }
 
     /**
@@ -148,6 +140,11 @@ public class VLogin extends javax.swing.JFrame {
      */
     
     private  void CrearImagenes(){
+        setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(70, 130, 180));
+        setVisible(true);
+        setTitle("Bienvenido a E-Sport");
+        
         ImageIcon usuario = new ImageIcon("../../imagenes/user.png");
         Icon icono = new ImageIcon (usuario.getImage().getScaledInstance(imgusu.getWidth(), imgusu.getHeight(), Image.SCALE_DEFAULT));
         imgusu.setIcon(icono);
@@ -167,6 +164,8 @@ public class VLogin extends javax.swing.JFrame {
         Icon icono4 = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
         imgfondo.setIcon(icono4);
         this.repaint();
+        
+        jTextField1.grabFocus();
     }
     
     public JPasswordField getPfContrasenna() {
