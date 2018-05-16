@@ -15,6 +15,7 @@ import javax.swing.Timer;
 import UML.Equipo;
 import UML.Partido;
 import java.sql.CallableStatement;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import oracle.jdbc.OracleCallableStatement;
 import oracle.jdbc.OracleTypes;
@@ -141,8 +142,11 @@ public class BDPartido {
          ArrayList <Partido> listaPartido = new ArrayList();
          BDConexion con = new BDConexion();
          PreparedStatement sentencia;
-         sentencia = con.getConnection().prepareStatement("SELECT * FROM partido WHERE fecha = to_timestamp(?,'RRRR-MM-DD HH24:MI:SS.FF')");
+         sentencia = con.getConnection().prepareStatement("SELECT * FROM partido "
+                 + "WHERE fecha > to_timestamp(?,'RRRR-MM-DD HH24:MI:SS.FF') "
+                 + "AND fecha < to_timestamp(?,'RRRR-MM-DD HH24:MI:SS.FF')");
          sentencia.setString(1, String.valueOf(new java.sql.Timestamp(fecha.getTimeInMillis())));
+         sentencia.setString(2, convertirFecha(fecha.getTime()));
          ResultSet rs;
          rs = sentencia.executeQuery();
          while(rs.next()){
@@ -160,6 +164,12 @@ public class BDPartido {
          con.desconectar();
          return listaPartido;
      }
+    
+    private String convertirFecha(Date fecha){
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        String dato = f.format(fecha) + " 23:59:59.00";
+        return dato;
+    }
     /**
      * Metodo para consultar el marcador de un partido.
      * @param p Partido

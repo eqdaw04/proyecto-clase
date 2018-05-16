@@ -47,7 +47,9 @@ public class VIntroducirResultado extends javax.swing.JDialog {
             listaPartido = Main.consultarLosPartidosPorFecha(ccFecha.getCalendar());
             cbPartido.removeAllItems();
             for(Partido pa:listaPartido) {
-                cbPartido.addItem(String.valueOf(pa.getIdPartido()));
+                int fd = pa.getIdPartido();
+                cbPartido.addItem(String.valueOf(fd));
+
             }
             if(cbPartido.getItemCount() !=0){
                 cbPartido.setSelectedIndex(0);
@@ -283,7 +285,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
                 if(p.getIdPartido() == Integer.valueOf(cbPartido.getSelectedItem().toString())){
                     SimpleDateFormat f = new SimpleDateFormat("hh:mm");
                     tfHora.setText(f.format(p.getFecha().getTime()));
-                    tfLugar.setText(p.geteLocal().getLugar());
+                    
                     tfPuntosLocal.setText(String.valueOf(p.getmLocal()));
                     tfPuntosVisitante.setText(String.valueOf(p.getmLocal()));
                     tfPuntosLocal.setEditable(true);
@@ -292,12 +294,14 @@ public class VIntroducirResultado extends javax.swing.JDialog {
                     String dato;
                     dato = "";
                     if(p.geteLocal() != null){
+                        tfLugar.setText(p.geteLocal().getLugar());
                         if(!p.geteLocal().getComentario().equals("")){
                             dato = p.geteLocal().getComentario();
                         }
                         taLocal.setText(p.geteLocal().getNombre() + "\n" + dato);
                     }
                     else{
+                        tfLugar.setText("EL EQUIPO SE ENCUENTRA EN DESCANSO");
                         taLocal.setText("EN DESCANSO");
                     }
 
@@ -308,6 +312,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
                         taVisitante.setText(p.geteVisitante().getNombre() + "\n" + dato);
                     }
                     else{
+                        tfLugar.setText("EL EQUIPO SE ENCUENTRA EN DESCANSO");
                         taVisitante.setText("EN DESCANSO");
                     }
 
