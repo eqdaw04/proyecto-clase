@@ -114,7 +114,7 @@ public class VPersona extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         pfContrasenna = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
-        cbPerfil = new javax.swing.JComboBox<>();
+        cbPerfil = new javax.swing.JComboBox<String>();
         jLabel10 = new javax.swing.JLabel();
         imagen = new javax.swing.JLabel();
 
@@ -131,6 +131,7 @@ public class VPersona extends javax.swing.JDialog {
         getContentPane().add(tfEmail);
         tfEmail.setBounds(156, 241, 212, 22);
 
+        bAceptar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
         bAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -139,8 +140,9 @@ public class VPersona extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAceptar);
-        bAceptar.setBounds(122, 349, 110, 25);
+        bAceptar.setBounds(110, 350, 130, 27);
 
+        bCancelar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,7 +150,7 @@ public class VPersona extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bCancelar);
-        bCancelar.setBounds(260, 350, 120, 25);
+        bCancelar.setBounds(250, 350, 140, 27);
 
         jLabel8.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel8.setText("Fecha de alta:");
@@ -198,16 +200,18 @@ public class VPersona extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         jLabel1.setText("USUARIO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(138, 13, 230, 47);
+        jLabel1.setBounds(138, 13, 230, 42);
 
-        bBuscar.setText("Buscar");
+        bBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa2.png"))); // NOI18N
+        bBuscar.setBorderPainted(false);
+        bBuscar.setContentAreaFilled(false);
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bBuscarActionPerformed(evt);
             }
         });
         getContentPane().add(bBuscar);
-        bBuscar.setBounds(375, 88, 71, 25);
+        bBuscar.setBounds(375, 88, 50, 30);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("Usuario:");
@@ -254,7 +258,7 @@ public class VPersona extends javax.swing.JDialog {
         getContentPane().add(jLabel7);
         jLabel7.setBounds(24, 300, 52, 21);
 
-        cbPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Dueño", "Usuario" }));
+        cbPerfil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Dueño", "Usuario" }));
         cbPerfil.setSelectedIndex(-1);
         getContentPane().add(cbPerfil);
         cbPerfil.setBounds(156, 301, 212, 22);

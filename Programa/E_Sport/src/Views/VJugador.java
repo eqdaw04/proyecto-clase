@@ -140,6 +140,7 @@ public class VJugador extends javax.swing.JDialog {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(167, 289, 214, 96);
 
+        bAceptar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
         bAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -148,8 +149,9 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAceptar);
-        bAceptar.setBounds(129, 403, 120, 25);
+        bAceptar.setBounds(129, 403, 120, 27);
 
+        bCancelar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +159,7 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bCancelar);
-        bCancelar.setBounds(286, 403, 130, 25);
+        bCancelar.setBounds(286, 403, 130, 27);
 
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel7.setText("Sueldo:");
@@ -214,14 +216,16 @@ public class VJugador extends javax.swing.JDialog {
         getContentPane().add(ftfSueldo);
         ftfSueldo.setBounds(167, 230, 214, 22);
 
-        bBuscar.setText("Buscar");
+        bBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa2.png"))); // NOI18N
+        bBuscar.setBorderPainted(false);
+        bBuscar.setContentAreaFilled(false);
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bBuscarActionPerformed(evt);
             }
         });
         getContentPane().add(bBuscar);
-        bBuscar.setBounds(388, 77, 100, 25);
+        bBuscar.setBounds(388, 72, 40, 30);
 
         jLabel9.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel9.setText("Apellido 2:");

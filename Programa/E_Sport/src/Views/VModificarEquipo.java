@@ -124,6 +124,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(290, 440, 170, 21);
 
+        bEliminar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bEliminar.setText("Eliminar Jugador");
         bEliminar.setEnabled(false);
         bEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -132,8 +133,9 @@ public class VModificarEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bEliminar);
-        bEliminar.setBounds(70, 466, 150, 25);
+        bEliminar.setBounds(50, 466, 170, 27);
 
+        bAnnadir.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bAnnadir.setText("Añadir Jugador");
         bAnnadir.setEnabled(false);
         bAnnadir.addActionListener(new java.awt.event.ActionListener() {
@@ -142,8 +144,9 @@ public class VModificarEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnnadir);
-        bAnnadir.setBounds(640, 480, 150, 25);
+        bAnnadir.setBounds(620, 460, 170, 27);
 
+        bConsultar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bConsultar.setText("Consultar");
         bConsultar.setEnabled(false);
         bConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +155,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bConsultar);
-        bConsultar.setBounds(368, 280, 140, 25);
+        bConsultar.setBounds(358, 280, 150, 27);
 
         tfSueldo.setEditable(false);
         tfSueldo.setText("Sueldo");
@@ -164,6 +167,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(520, 151, 201, 21);
 
+        bSalir.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bSalir.setText("Salir");
         bSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,7 +175,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSalir);
-        bSalir.setBounds(717, 523, 73, 25);
+        bSalir.setBounds(690, 523, 100, 27);
 
         imgfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(imgfondo);

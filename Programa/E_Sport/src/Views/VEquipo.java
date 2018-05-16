@@ -116,6 +116,7 @@ public class VEquipo extends javax.swing.JDialog {
         getContentPane().add(bBuscar);
         bBuscar.setBounds(490, 110, 50, 30);
 
+        bAceptar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
         bAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -124,8 +125,9 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAceptar);
-        bAceptar.setBounds(220, 490, 130, 25);
+        bAceptar.setBounds(220, 490, 130, 27);
 
+        bCancelar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +135,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bCancelar);
-        bCancelar.setBounds(393, 490, 150, 25);
+        bCancelar.setBounds(393, 490, 150, 27);
 
         bPrimero.setText("|<");
         bPrimero.setEnabled(false);

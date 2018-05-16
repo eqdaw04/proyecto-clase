@@ -117,6 +117,7 @@ public class VPrincipal extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(988, 691));
         getContentPane().setLayout(null);
 
+        bCerrarSesion.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         bCerrarSesion.setText("Cerrar sesión");
         bCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,18 +125,18 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bCerrarSesion);
-        bCerrarSesion.setBounds(816, 13, 160, 25);
+        bCerrarSesion.setBounds(816, 13, 160, 50);
 
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         jLabel1.setText("Bienvenido");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(50, 490, 220, 47);
+        jLabel1.setBounds(50, 490, 220, 42);
 
         NombreUsu.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         NombreUsu.setForeground(new java.awt.Color(0, 153, 255));
         NombreUsu.setText("Nombre");
         getContentPane().add(NombreUsu);
-        NombreUsu.setBounds(270, 490, 170, 47);
+        NombreUsu.setBounds(270, 490, 170, 42);
         getContentPane().add(logotipo);
         logotipo.setBounds(900, 560, 80, 70);
         getContentPane().add(imgfondo);
