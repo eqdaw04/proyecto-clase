@@ -271,9 +271,20 @@ public class VCalendario extends javax.swing.JDialog {
         String titulos[] ={"Equipos","Fecha","Lugar"};
         String datos [] []= new String[jornadas.get(pos).getListaPartidos().size()] [3];
         for (int x=0; x < datos.length;x++){
-            datos [x][0] = jornadas.get(pos).getListaPartidos().get(x).geteLocal().getNombre()+"  VS  "+jornadas.get(pos).getListaPartidos().get(x).geteVisitante().getNombre();
+            datos [x][2] = "";
+            if(jornadas.get(pos).getListaPartidos().get(x).geteLocal()== null){
+                datos [x][0] = jornadas.get(pos).getListaPartidos().get(x).geteVisitante().getNombre() + " Descansa";
+            }else{
+                if(jornadas.get(pos).getListaPartidos().get(x).geteVisitante() == null){
+                    datos [x][0] = jornadas.get(pos).getListaPartidos().get(x).geteLocal().getNombre()+ " Descansa";
+                }else{
+                    datos [x][0] = jornadas.get(pos).getListaPartidos().get(x).geteLocal().getNombre()+"  VS  "+jornadas.get(pos).getListaPartidos().get(x).geteVisitante().getNombre();
+                    datos [x][2] = jornadas.get(pos).getListaPartidos().get(x).geteLocal().getLugar();
+                }
+            }
+            
             datos [x][1] = String.valueOf(jornadas.get(pos).getListaPartidos().get(x).getFecha());
-            datos [x][2] = jornadas.get(pos).getListaPartidos().get(x).geteLocal().getLugar();
+            
         }
         JTable tPartidos = new JTable (datos,titulos);
         tPartidos.setEnabled(false);
