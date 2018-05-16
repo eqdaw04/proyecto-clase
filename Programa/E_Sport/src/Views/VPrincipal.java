@@ -55,7 +55,7 @@ public class VPrincipal extends javax.swing.JFrame {
         Icon icono3 = new ImageIcon(logo.getImage().getScaledInstance(logotipo.getWidth(), logotipo.getHeight(), Image.SCALE_DEFAULT));
         logotipo.setIcon(icono3);
         this.repaint();
-        
+        logotipo.setLocation(this.getWidth()-(logotipo.getWidth()+50), this.getHeight()-(logotipo.getHeight()+100));
         imgfondo.setSize(this.getWidth(), this.getHeight());
         Image img = new ImageIcon ("../../imagenes/fondo2.jpg").getImage();
         ImageIcon img2 = new ImageIcon(img.getScaledInstance( imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
@@ -111,6 +111,7 @@ public class VPrincipal extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(988, 691));
         setMinimumSize(new java.awt.Dimension(988, 691));
         setResizable(false);
+        setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(null);
 
         bCerrarSesion.setText("Cerrar sesión");
@@ -135,7 +136,7 @@ public class VPrincipal extends javax.swing.JFrame {
         getContentPane().add(logotipo);
         logotipo.setBounds(900, 560, 80, 70);
         getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 990, 670);
+        imgfondo.setBounds(0, 0, 950, 640);
 
         administracion.setText("Administración");
 
