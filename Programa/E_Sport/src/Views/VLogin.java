@@ -87,7 +87,7 @@ public class VLogin extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Bauhaus 93", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         jLabel1.setText("¡Bienvenidos a E-Sport!");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(50, 40, 450, 70);

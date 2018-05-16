@@ -42,7 +42,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Bauhaus 93" size="36" style="1"/>
+          <Font name="Berlin Sans FB Demi" size="36" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#xa1;Bienvenidos a E-Sport!"/>
       </Properties>
