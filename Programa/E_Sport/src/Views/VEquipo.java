@@ -37,10 +37,6 @@ public class VEquipo extends javax.swing.JDialog {
         initComponents();
         cargarDatos(tipo, n);
         
-        ImageIcon fondo = new ImageIcon("../../imagenes/fondo2.jpg");
-        Icon icono = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
-        imgfondo.setIcon(icono);
-        this.repaint();
     }
 
     /**
@@ -77,7 +73,8 @@ public class VEquipo extends javax.swing.JDialog {
         imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(693, 683));
+        setMaximumSize(new java.awt.Dimension(672, 590));
+        setMinimumSize(new java.awt.Dimension(672, 590));
         getContentPane().setLayout(null);
 
         bUltimo.setText(">|");
@@ -141,10 +138,10 @@ public class VEquipo extends javax.swing.JDialog {
         getContentPane().add(bPrimero);
         bPrimero.setBounds(249, 517, 47, 25);
 
-        jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         jLabel1.setText("EQUIPO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(239, 25, 124, 54);
+        jLabel1.setBounds(239, 25, 170, 42);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("Nombre:");
@@ -211,9 +208,10 @@ public class VEquipo extends javax.swing.JDialog {
         getContentPane().add(tfLugar);
         tfLugar.setBounds(249, 323, 218, 22);
 
+        imgfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         imgfondo.setName(""); // NOI18N
         getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 600, 610);
+        imgfondo.setBounds(0, 0, 670, 590);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
