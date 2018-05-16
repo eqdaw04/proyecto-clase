@@ -37,10 +37,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
         initComponents();
         setModal(true);
         setLocationRelativeTo(null);
-        ImageIcon fondo = new ImageIcon("../../imagenes/fondo2.jpg");
-        Icon icono = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
-        imgfondo.setIcon(icono);
-        this.repaint();
+
         
         e = Main.ConsultarEquipoPorUsuario(usu);
         if(e != null){
@@ -64,10 +61,10 @@ public class VModificarEquipo extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         nombeEquipo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        liJugEqui = new javax.swing.JList<>();
+        liJugEqui = new javax.swing.JList<String>();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        liJugDisp = new javax.swing.JList<>();
+        liJugDisp = new javax.swing.JList<String>();
         jLabel3 = new javax.swing.JLabel();
         bEliminar = new javax.swing.JButton();
         bAnnadir = new javax.swing.JButton();
@@ -78,19 +75,20 @@ public class VModificarEquipo extends javax.swing.JDialog {
         imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(931, 675));
         setMinimumSize(new java.awt.Dimension(931, 675));
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 30)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 30)); // NOI18N
         jLabel1.setText("Modificar Equipo");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(236, 27, 223, 39);
+        jLabel1.setBounds(190, 30, 300, 35);
 
-        nombeEquipo.setFont(new java.awt.Font("Bauhaus 93", 0, 30)); // NOI18N
+        nombeEquipo.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 30)); // NOI18N
         nombeEquipo.setForeground(new java.awt.Color(51, 102, 255));
         nombeEquipo.setText("NOMBREEQUIPO");
         getContentPane().add(nombeEquipo);
-        nombeEquipo.setBounds(483, 27, 247, 39);
+        nombeEquipo.setBounds(440, 30, 290, 35);
 
         liJugEqui.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         liJugEqui.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -124,7 +122,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel3.setText("Sueldo del jugador:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(241, 437, 170, 21);
+        jLabel3.setBounds(290, 440, 170, 21);
 
         bEliminar.setText("Eliminar Jugador");
         bEliminar.setEnabled(false);
@@ -159,7 +157,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
         tfSueldo.setEditable(false);
         tfSueldo.setText("Sueldo");
         getContentPane().add(tfSueldo);
-        tfSueldo.setBounds(416, 434, 110, 30);
+        tfSueldo.setBounds(470, 430, 110, 30);
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel4.setText("Jugadores Disponibles:");
@@ -174,8 +172,10 @@ public class VModificarEquipo extends javax.swing.JDialog {
         });
         getContentPane().add(bSalir);
         bSalir.setBounds(717, 523, 73, 25);
+
+        imgfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 860, 570);
+        imgfondo.setBounds(0, 0, 870, 610);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
