@@ -74,7 +74,7 @@ public class VEquipo extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(672, 590));
-        setMinimumSize(new java.awt.Dimension(693, 683));
+        setMinimumSize(new java.awt.Dimension(672, 590));
         getContentPane().setLayout(null);
 
         bUltimo.setText(">|");

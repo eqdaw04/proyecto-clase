@@ -79,8 +79,8 @@ public class VJugador extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
-        setMaximumSize(new java.awt.Dimension(719, 612));
-        setMinimumSize(new java.awt.Dimension(719, 612));
+        setMaximumSize(new java.awt.Dimension(519, 502));
+        setMinimumSize(new java.awt.Dimension(519, 502));
         setModal(true);
         getContentPane().setLayout(null);
 

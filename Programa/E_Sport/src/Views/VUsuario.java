@@ -116,7 +116,7 @@ public class VUsuario extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         cbPerfil = new javax.swing.JComboBox<String>();
         jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        imagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(468, 445));
@@ -140,7 +140,7 @@ public class VUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAceptar);
-        bAceptar.setBounds(122, 349, 77, 25);
+        bAceptar.setBounds(122, 349, 110, 25);
 
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -149,7 +149,7 @@ public class VUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bCancelar);
-        bCancelar.setBounds(236, 349, 83, 25);
+        bCancelar.setBounds(260, 350, 120, 25);
 
         jLabel8.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel8.setText("Fecha de alta:");
@@ -265,9 +265,13 @@ public class VUsuario extends javax.swing.JDialog {
         getContentPane().add(jLabel10);
         jLabel10.setBounds(24, 210, 90, 21);
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(0, 0, 470, 450);
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
+        imagen.setLabelFor(this);
+        imagen.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        imagen.setMaximumSize(new java.awt.Dimension(468, 445));
+        imagen.setMinimumSize(new java.awt.Dimension(468, 445));
+        getContentPane().add(imagen);
+        imagen.setBounds(0, 0, 470, 450);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -549,6 +553,7 @@ public class VUsuario extends javax.swing.JDialog {
     private javax.swing.JButton bUltimo;
     private javax.swing.JComboBox<String> cbPerfil;
     private org.freixas.jcalendar.JCalendarCombo ccFechaAlta;
+    private javax.swing.JLabel imagen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -558,7 +563,6 @@ public class VUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField pfContrasenna;
     private javax.swing.JTextField tfApellido1;
     private javax.swing.JTextField tfApellido2;
