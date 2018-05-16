@@ -42,10 +42,7 @@ public class VPrincipal extends javax.swing.JFrame {
                 break;
         }
         
-        /*ImageIcon fondo = new ImageIcon("../../imagenes/fondo2.jpg");
-        Icon icono = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
-        imgfondo.setIcon(icono);
-        this.repaint();*/
+
         
         Image img = new ImageIcon ("../../imagenes/fondo2.jpg").getImage();
         ImageIcon img2 = new ImageIcon(img.getScaledInstance(988, 691, Image.SCALE_SMOOTH));
@@ -119,7 +116,7 @@ public class VPrincipal extends javax.swing.JFrame {
         getContentPane().add(NombreUsu);
         NombreUsu.setBounds(250, 490, 130, 54);
         getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 990, 640);
+        imgfondo.setBounds(0, 0, 990, 670);
 
         administracion.setText("Administración");
 
