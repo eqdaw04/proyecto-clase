@@ -12,6 +12,7 @@ import Recurso.*;
 import static BD.BDConexion.*;
 import Excepciones.Excepcion;
 import Views.*;
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,8 +20,12 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  * Clase controladora.
@@ -154,12 +159,18 @@ public class Main {
                 
             case 6:
                 new VIntroducirResultado(n);
-                break;
+                break;     
                 
             case 7:
                 new VGenerarLiga(n);
+                break;
+                
             case 8:
                 new VCalendario();
+                break; 
+                
+            case 9:
+                new VDResultados(tipo);
                 break;
         }
     }
@@ -213,10 +224,14 @@ public class Main {
             case 7:
                 new VGenerarLiga(n);
                 break;
+                
             case 8:
                 new VCalendario();
                 break;
                 
+            case 9:
+                new VDResultados(tipo);
+                break;
         }
     }
     
@@ -227,12 +242,9 @@ public class Main {
       //-------Mikel
  
     public static void abrirVJugador (Jugador j){
-        new VJugador("consulta",1,j);
-    }
-    //-------Mikel
  
-    public static void abrirVJornada (int n){
-        new VJornada(n);
+        new VJugador("consulta",1,j);
+ 
     }
     
     /**
@@ -302,7 +314,7 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static void altaPersona( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Date fecha, String perfil) throws Exception{
+    public static void altaPersona( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Calendar fecha, String perfil) throws Exception{
         Persona p = new Persona(nombre, ape1, ape2, fecha, usuario, contrasenna, email);
         p.setPerfil(bdPerfil.buscarPorNombre(perfil));
         bdPersona.altaPersona(p);
@@ -336,7 +348,9 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static void modificarPersona(String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil) throws Exception {
+    public static void modificarPersona(int id,String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil, Calendar fecha) throws Exception {
+        persona.setIdPersona(id);
+        persona.setUsuario(usuario);
         persona.setNombre(nombre);
         persona.setApellido1(ape1);
         persona.setApellido2(ape2);
@@ -344,6 +358,7 @@ public class Main {
         persona.setContrasenna(contrasenna);
         persona.setEmail(email);
         persona.setPerfil(bdPerfil.buscarPorNombre(perfil));
+        persona.setFechaAlta(fecha);
         bdPersona.modificarPersona(persona);
     }
     
@@ -384,7 +399,11 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static ArrayList <Partido> consultarLosPartidosPorFecha(Date fecha) throws Exception{
+    public static ArrayList <Partido> consultarLosPartidosPorFecha(Calendar fecha) throws Exception{
+        fecha.set(Calendar.HOUR_OF_DAY, 00);
+        fecha.set(Calendar.MINUTE, 00);
+        fecha.set(Calendar.SECOND, 00);
+        fecha.set(Calendar.MILLISECOND, 00);
         return bdPartido.consultarPartidoPorFecha(fecha);
     }
     
@@ -450,7 +469,6 @@ public class Main {
         Emparejamiento emp = new Emparejamiento(lEquipo);
         // ejecutar el algoritmo para los equipos aleatorios
         // Abrir conexion y mantenerlo abierto hasta que acabe que introducir las partidas para no tener que abrir y cerrar constantemente hasta introducir los X partidos
-        
         emp.calcularPartido(fecha, horaF);
         return emp.getDato();
     }
@@ -486,6 +504,7 @@ public class Main {
     
     public static void modificarJornada(Jornada jornada, BDConexion con) throws Exception{
         // modificar la fecha final de la jornada
+        
         bdJornada.modificarJornada(jornada, con);
         
     }
@@ -536,9 +555,83 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static Equipo consultarEquipoPorNumero(int n) throws Exception{
-        Equipo e = null;
-        e = bdEquipo.consultarEquipoPorNumero(n);
-        return e;
+        return bdEquipo.consultarEquipoPorNumero(n);
+    }
+    
+    //---------- JON XU JIN ----------
+    
+    public static boolean modificarMarcador(Partido p) throws Exception{
+        return bdPartido.modificarMarcador(p);
+    }
+    
+    //----------JON XU JIN ----------
+    public static void validar(int cod, JTextField campo) throws Exception{
+        
+        Pattern p=Pattern.compile(datoPatron(cod));
+        Matcher m=p.matcher(campo.getText());
+        if(!m.matches())
+        {
+            campo.setBackground(Color.red);
+            campo.grabFocus();
+            throw new Excepcion(cod);
+        }
+        else{
+            campo.setBackground(Color.white);
+        }
+    }
+    
+    
+    public static ArrayList<Object> resultados() throws Exception{
+        return bdEquipo.resultadoFinal();
+    }
+    
+    public static ArrayList<Object> resultadosUltimaJornada() throws Exception{
+        return bdEquipo.resultadoUltimaJornada();
+    }
+    
+    /**
+     * Metodo que guarda los patterns que utilizaremos en el programa.
+     * @param cod int
+     * @return devuelve el patrón a utilizar.
+     */
+    
+    public static String datoPatron(int cod){
+        String dato = "";
+        switch(cod){
+
+            case 46: // marcador
+                dato = "^[0-9]{1,}$";
+                break;
+                
+            case 3: // NIF
+                dato = "^[A-Z0-9][0-9]{7}[A-Z]$";
+                break;
+                
+            case 4: // Nombre
+                dato = "^[A-ZÑ][a-zñ]{2,}$";
+                break;
+                
+            case 5: // Apellidos
+                dato = "^[A-ZÑ][a-zñ]{2,}$";
+                break;
+                
+            case 6: // e-mail
+                dato = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,})$";
+                break;
+                
+            case 7: // Usuario
+                dato = "^[A-ZÑña-z0-9]{3,}$";
+                break;
+                
+            case 8: // Contraseña
+                dato = "^[A-ZñÑa-z0-9]{3,}$";
+                break;
+                
+            case 29: // lugar
+                dato = "^[A-ZÑ][a-zñ]{2,}$";
+                break;
+        }
+        return dato;
     }
     
     /**
@@ -795,7 +888,7 @@ public class Main {
      */
     
     //------------Mikel
-    public static boolean EliminarJugadorEquipo (String nickname){
+    public static boolean EliminarJugadorEquipo (String nickname) throws Exception{
        
         return bdJugador.QuitarJugadorEquipo(nickname);
     }
@@ -821,15 +914,10 @@ public class Main {
         return bdJugador.buscarJugadorNickname(nickname);
  
     }
-    //-------------Mikel
-    
-    public static Jornada consultarJornadaPorNumeroDeJornada(int n) throws Exception{
-        return bdJornada.consultarJornadaPorNumeroDeJornada(n);
-    } 
+ 
     /**
      * Metodo para dar de alta un equipo en la base de datos.
      * @param nombre String
-     * @param lugar String
      * @param usuario String
      * @param fechaCreacion Date
      * @param comentario String
@@ -860,15 +948,15 @@ public class Main {
     /**
      * Metodo para modificar un equipo de la base de datos.
      * @param nombre String
-     * @param lugar String
      * @param comentario String
      * @throws Exception 
      */
 
     // Imanol Luis
-    public static void modificarEquipo(String nombre, String lugar, String comentario) throws Exception {
+    public static void modificarEquipo(String nombre, String lugar, Date fecha, String comentario) throws Exception {
         equipo.setNombre(nombre);
         equipo.setLugar(lugar);
+        equipo.setFechaCreacion(fecha);
         equipo.setComentario(comentario);
         bdEquipo.modificarEquipo(equipo);
     }
@@ -969,6 +1057,12 @@ public class Main {
      */
 
     public static Persona obtenerPersona(int idPersona) throws Exception {
-        return bdPersona.buscarPersona(idPersona);
+        Persona p = null;
+        p = bdPersona.buscarPersona(idPersona);
+        return p;
+    }
+    //----------------MIKEL
+    public static ArrayList <Partido> BuscarPartidosPorJornada (int j) throws Exception{
+        return bdPartido.BuscarPartidosPorJornada (j);
     }
 }

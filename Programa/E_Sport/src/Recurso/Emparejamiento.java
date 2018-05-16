@@ -15,7 +15,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
-import javax.swing.JOptionPane;
 
 /**
  * Clase en la que definimos los emparejamientos de los equipos por partido.
@@ -34,6 +33,7 @@ public class Emparejamiento {
     Calendar fecha;
     String dato;
     int horaI, horaF;
+    
     public Emparejamiento() {
     }
     
@@ -49,6 +49,9 @@ public class Emparejamiento {
     /**
      * Metodo para calcular el partido.
      * Obtenemos el número de jornadas y partidos.
+     * @param fecha
+     * @param horaF
+     * @throws java.lang.Exception
      */
     
     public void calcularPartido(Calendar fecha, int horaF) throws Exception{
@@ -91,7 +94,7 @@ public class Emparejamiento {
             }
         }
         // Completar asignar equipos locales omitiendo array puesto 0, array[x][0 omitido]
-        int horizontal = 0;
+        int horizontal;
         horizontal = lJPEquipoL[0].length;
         int c = 0;
         for(int x = 0; x<e-1; x++){
@@ -138,7 +141,7 @@ public class Emparejamiento {
         // guardo los datos en un String para mostrarlo al final, para comprobar que sí que se ha hecho seún algoritmo
         dato = "Los Partidos se quedarán de la siguiente manera:\nJornadas 1-" + (e-1) + " Equipos:\n";
         
-        boolean sumar = true;
+        boolean sumar;
         int dia = 0,
             jornada = 1,
             partido = 1;
@@ -154,7 +157,6 @@ public class Emparejamiento {
             int d = 0;
             for(int y = 0; y< horizontal; y++){
                 dato += nombreSemana(fecha.get(Calendar.DAY_OF_WEEK)) + " día " + formatearFecha(fecha) + ", " ;
-                fecha.add(Calendar.DAY_OF_YEAR, 1);
                 dato += lJPEquipoL[x][y].getNombre() + " vs " + lJPEquipoV[x][y].getNombre() + "   ";
                 Partido p = new Partido();
                 p.setIdPartido(partido);
@@ -168,6 +170,7 @@ public class Emparejamiento {
                 if(!Main.insertarPartido(p, j, con)){
                     throw new Excepcion(42);
                 }
+                fecha.add(Calendar.DAY_OF_YEAR, 1);
                 d++;
                 // si supera la semana antes de acabar la jornada, se volverá al primer día del inicio de la jornada y así sucesivamente
                 if(d==7){
@@ -182,7 +185,10 @@ public class Emparejamiento {
                 partido++;
             }
             fecha.add(Calendar.DAY_OF_YEAR, 7-d);
-            j.setFechaFinal(fecha.getTime());
+            Calendar ff = Calendar.getInstance();
+            ff.setTime(fecha.getTime());
+            ff.add(Calendar.DAY_OF_YEAR, -1);
+            j.setFechaFinal(ff.getTime());
             Main.modificarJornada(j, con);
             dato += "\n";
             dia = dia + 7 - d;
@@ -203,9 +209,7 @@ public class Emparejamiento {
             sumar = true;
             int d = 0;
             for(int y = 0; y< horizontal; y++){
-                
                 dato += nombreSemana(fecha.get(Calendar.DAY_OF_WEEK)) + " día " + formatearFecha(fecha) + ", " ;
-                fecha.add(Calendar.DAY_OF_YEAR, 1);
                 dato += lJPEquipoV[x][y].getNombre() + " vs " + lJPEquipoL[x][y].getNombre() + "   ";
                 Partido p = new Partido();
                 p.setIdPartido(partido);
@@ -219,6 +223,7 @@ public class Emparejamiento {
                 if(!Main.insertarPartido(p, j, con)){
                     throw new Excepcion(42);
                 }
+                fecha.add(Calendar.DAY_OF_YEAR, 1);
                 d++;
                 if(d==7){
                     fecha.add(Calendar.DAY_OF_YEAR, -7);
@@ -232,7 +237,10 @@ public class Emparejamiento {
                 partido++;
             }
             fecha.add(Calendar.DAY_OF_YEAR, 7-d);
-            j.setFechaFinal(fecha.getTime());
+            Calendar ff = Calendar.getInstance();
+            ff.setTime(fecha.getTime());
+            ff.add(Calendar.DAY_OF_YEAR, -1);
+            j.setFechaFinal(ff.getTime());
             Main.modificarJornada(j, con);
             dato += "\n";
             dia = dia + 7 - d;
@@ -249,7 +257,7 @@ public class Emparejamiento {
     private void cambiarHora(){
         if(horaI != horaF){
             Random aleatorio = new Random();
-            int ale = 0, 
+            int ale, 
                 rango = horaF - horaI;
             ale = horaI + 1+aleatorio.nextInt(rango);
             fecha.set(Calendar.HOUR_OF_DAY, ale);
@@ -265,9 +273,9 @@ public class Emparejamiento {
     
     private String formatearFecha(Calendar fecha){
         SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
-        String dato = "";
-        dato = f.format(fecha.getTime());
-        return dato;
+        String valor;
+        valor = f.format(fecha.getTime());
+        return valor;
     }
     
     /**
@@ -277,38 +285,39 @@ public class Emparejamiento {
      */
     
     private String nombreSemana(int n){
-        String dato = ""; 
+        String valor; 
+        valor = "";
         switch(n){
             case 1:
-                dato = "Domingo";
+                valor = "Domingo";
                 break;
                 
             case 2:
-                dato = "Lunes";
+                valor = "Lunes";
                 break;
                 
             case 3:
-                dato = "Martes";
+                valor = "Martes";
                 break;
                 
             case 4:
-                dato = "Miércoles";
+                valor = "Miércoles";
                 break;
                       
             case 5:
-                dato = "Jueves";
+                valor = "Jueves";
                 break;
                 
             case 6:
-                dato = "Viernes";
+                valor = "Viernes";
                 break;
                 
             case 7:
-                dato = "Sábado";
+                valor = "Sábado";
                 break;
                         
         }
-        return dato;
+        return valor;
     }
 
     public Equipo[][] getlJPEquipoL() {

@@ -14,9 +14,10 @@ import java.util.Date;
 import javax.swing.Timer;
 import UML.Equipo;
 import UML.Partido;
-import java.text.SimpleDateFormat;
+import java.sql.CallableStatement;
 import java.util.Calendar;
-import javax.swing.JOptionPane;
+import oracle.jdbc.OracleCallableStatement;
+import oracle.jdbc.OracleTypes;
 
 /**
  * Clase en la que controlaremos e introduciremos los partidos a la base de datos.
@@ -32,6 +33,7 @@ public class BDPartido {
     ArrayList <Equipo> lEquipo;
     Jornada jornada;
     Integer local, pLocal, visitante, pVisitante;
+    private Partido p;
 
     public BDPartido() {
         lEquipo = new ArrayList();
@@ -49,7 +51,7 @@ public class BDPartido {
     public boolean insertarPartido(Partido p, Jornada jornada, BDConexion con) throws Exception{
         boolean estado = false;
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("INSERT INTO partido (id_partido, fecha, ID_JORNADA) values(?, to_timestamp(?,'YYYY-MM-DD HH24:MI:SS.FF'), ?)");
+        sentencia = con.getConnection().prepareStatement("INSERT INTO partido (id_partido, fecha, ID_JORNADA) values(?, to_timestamp(?,'RRRR-MM-DD HH24:MI:SS.FF'), ?)");
         sentencia.setInt(1, p.getIdPartido());
         // IMPORTANTE se ha decidido convertir el date long a String porque no habia manera de que java reconozca el long con la máscara
         // java.sql.SQLDataException: ORA-01830: la máscara de formato de fecha termina antes de convertir toda la cadena de entrada
@@ -76,7 +78,8 @@ public class BDPartido {
     
     public boolean insertarEquipoAPartido(Partido p, BDConexion con) throws Exception{
         boolean estado = false;
-        PreparedStatement sentencia = null;
+        PreparedStatement sentencia;
+        sentencia = null;
         int n = 0;
         // insertar en el marcador el primer equipo
         // 1 es visitante y 0 es local; 1 false 0 true
@@ -122,13 +125,8 @@ public class BDPartido {
         while(rs.next()){
             Partido p = new Partido();
             p.setIdPartido(rs.getInt("id_partido"));
-            
             long as = rs.getTimestamp("fecha").getTime();
-            
-            //SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy HH:MM:SS");
-            
             Calendar c = Calendar.getInstance();
-            //c.setTime(f.parse(rs.getString("fecha")));
             c.setTimeInMillis(as);
             p.setFecha(c);
             lPartido.add(p);
@@ -139,18 +137,12 @@ public class BDPartido {
         return lPartido;
     } 
     
-    private String fechaAString (Date fecha){
-        SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
-        String dato = f.format(fecha);
-        return dato;
-    }
-    
-    public ArrayList <Partido> consultarPartidoPorFecha(Date fecha) throws Exception{
+    public ArrayList <Partido> consultarPartidoPorFecha(Calendar fecha) throws Exception{
          ArrayList <Partido> listaPartido = new ArrayList();
          BDConexion con = new BDConexion();
          PreparedStatement sentencia;
-         sentencia = con.getConnection().prepareStatement("SELECT * FROM partido WHERE fecha = ?");
-         sentencia.setString(1, fechaAString(fecha));
+         sentencia = con.getConnection().prepareStatement("SELECT * FROM partido WHERE fecha = to_timestamp(?,'RRRR-MM-DD HH24:MI:SS.FF')");
+         sentencia.setString(1, String.valueOf(new java.sql.Timestamp(fecha.getTimeInMillis())));
          ResultSet rs;
          rs = sentencia.executeQuery();
          while(rs.next()){
@@ -161,7 +153,11 @@ public class BDPartido {
             Calendar c = Calendar.getInstance();
             c.setTimeInMillis(as);
             p.setFecha(c);
+            listaPartido.add(p);
          }
+         rs.close();
+         sentencia.close();
+         con.desconectar();
          return listaPartido;
      }
     /**
@@ -181,9 +177,11 @@ public class BDPartido {
         while(rs.next()){
             // 1 visitante 0 local; 1 = false y 0 = true
             if(rs.getInt("visitante")==1){
+                p.setmLocal(rs.getInt("puntuacion"));
                 p.seteLocal(Main.consultarEquipoPorNumero(rs.getInt("id_equipo")));
             }
             else{
+                p.setmVisitante(rs.getInt("puntuacion"));
                 p.seteVisitante(Main.consultarEquipoPorNumero(rs.getInt("id_equipo")));
             }
         }
@@ -204,12 +202,90 @@ public class BDPartido {
         boolean estado = false;
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("UPDATE partido SET fecha = to_timestamp(?,'YYYY-MM-DD HH24:MI:SS.FF') WHERE id_partido = ?" );
+        sentencia = con.getConnection().prepareStatement("UPDATE partido SET fecha = to_timestamp(?,'RRRR-MM-DD HH24:MI:SS.FF') WHERE id_partido = ?" );
         sentencia.setString(1, String.valueOf(new java.sql.Timestamp(p.getFecha().getTimeInMillis())));
         sentencia.setInt(2, p.getIdPartido());
         if(sentencia.executeUpdate()==1){
             estado = true;
         }
+        sentencia.close();
+        con.desconectar();
         return estado;
+    }
+    
+    public boolean modificarMarcador(Partido p) throws Exception{
+        boolean estado = false;
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("UPDATE marcador SET puntuacion = ? WHERE id_partido = ? and id_equipo = ?" );
+        sentencia.setInt(1, p.getmLocal());
+        sentencia.setInt(2, p.getIdPartido());
+        sentencia.setInt(3, p.geteLocal().getIdEquipo());
+                
+        if(sentencia.executeUpdate()==1){
+            sentencia = con.getConnection().prepareStatement("UPDATE marcador SET puntuacion = ? WHERE id_partido = ? and id_equipo = ?" );
+            sentencia.setInt(1, p.getmVisitante());
+            sentencia.setInt(2, p.getIdPartido());
+            sentencia.setInt(3, p.geteVisitante().getIdEquipo());
+            if(sentencia.executeUpdate()==1){
+                estado = true;
+            }
+        }
+        sentencia.close();
+        con.desconectar();
+        return estado;
+    }
+    public ArrayList<Partido> BuscarPartidosPorJornada (int j) throws Exception{
+        ArrayList<Partido> partidos = new ArrayList();
+        // abrir conexión
+        BDConexion con = new BDConexion();
+        // instanciar un array de tipo objeto equipo
+        ArrayList a = new ArrayList();
+        CallableStatement sentencia;
+        // preparar sentencia
+        sentencia = con.getConnection().prepareCall("{call Pkg_Jornada.PartidosPorJornada(?,?)}");
+        sentencia.setInt(1,j);        
+        sentencia.registerOutParameter(2, OracleTypes.CURSOR);
+        sentencia.execute();
+        // instanciar rs, ejecutar sentencia y cargar los datos al rs
+        ResultSet rs = ((OracleCallableStatement)sentencia).getCursor(2);
+        
+        while(rs.next()){
+            Equipo e=new Equipo();
+            e.setIdEquipo(rs.getInt("Id_equipo"));
+            e.setNombre(rs.getString("Nombre"));
+            e.setLugar(rs.getString("Lugar"));
+            if(partidos.isEmpty()){
+                p=new Partido();
+                p.setIdPartido(rs.getInt("Id_partido"));
+                if(rs.getInt("visitante")==1){
+                    p.seteLocal(e);
+                }
+                else{
+                    p.seteVisitante(e);
+                } 
+                partidos.add(p);
+            }else{
+            if(rs.getInt("Id_partido")==partidos.get(partidos.size()-1).getIdPartido()){
+                if(rs.getInt("visitante")==1){
+                    partidos.get(partidos.size()-1).seteLocal(e);
+                }
+                else{
+                    partidos.get(partidos.size()-1).seteVisitante(e);
+                }
+            }else{
+                p=new Partido();
+                p.setIdPartido(rs.getInt("Id_partido"));
+                if(rs.getInt("visitante")==1){
+                    p.seteLocal(e);
+                }
+                else{
+                    p.seteVisitante(e);
+                }
+                partidos.add(p);
+            }
+            }                    
+        }
+        return partidos;
     }
 }

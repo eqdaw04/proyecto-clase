@@ -8,7 +8,6 @@ package Views;
 import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
-import Recurso.ValidacionDeDatosDeEntrada;
 import UML.Equipo;
 import UML.Persona;
 import java.awt.Image;
@@ -72,14 +71,13 @@ public class VEquipo extends javax.swing.JDialog {
         taPlantilla = new javax.swing.JTextArea();
         cFechaCreacion = new org.freixas.jcalendar.JCalendarCombo();
         jLabel5 = new javax.swing.JLabel();
-        cbDuenno = new javax.swing.JComboBox<String>();
+        cbDuenno = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         tfLugar = new javax.swing.JTextField();
         imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
-        setResizable(false);
+        setMinimumSize(new java.awt.Dimension(693, 683));
         getContentPane().setLayout(null);
 
         bUltimo.setText(">|");
@@ -146,7 +144,7 @@ public class VEquipo extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 36)); // NOI18N
         jLabel1.setText("EQUIPO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(239, 25, 124, 54);
+        jLabel1.setBounds(239, 25, 139, 47);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("Nombre:");
@@ -192,8 +190,6 @@ public class VEquipo extends javax.swing.JDialog {
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(249, 183, 218, 133);
-
-        cFechaCreacion.setEnabled(false);
         getContentPane().add(cFechaCreacion);
         cFechaCreacion.setBounds(249, 148, 218, 22);
 
@@ -291,6 +287,7 @@ public class VEquipo extends javax.swing.JDialog {
                 case "alta":
                     // Validación de datos
                     validarNombre();
+                    validarLugar();
                     validarDuenno();
                     if(tfLugar.getText().isEmpty())
                     {
@@ -315,7 +312,7 @@ public class VEquipo extends javax.swing.JDialog {
                         throw new Excepcion(53);
                     }
                     // Modificar el equipo
-                    Main.modificarEquipo(tfNombre.getText(), tfLugar.getText(), taComentario.getText());
+                    Main.modificarEquipo(tfNombre.getText(), tfLugar.getText(), cFechaCreacion.getDate(), taComentario.getText());
                     JOptionPane.showMessageDialog(this, "El equipo se ha modificado correctamente.");
                     break;
             }
@@ -486,6 +483,7 @@ public class VEquipo extends javax.swing.JDialog {
             case "alta":
                 cbDuenno.setEnabled(true);
                 taComentario.setEditable(true);
+                tfLugar.setEditable(true);
                 bAceptar.setEnabled(true);
                 bBuscar.setVisible(false);
                 break;
@@ -495,10 +493,21 @@ public class VEquipo extends javax.swing.JDialog {
                 bSiguiente.setVisible(true);
                 bUltimo.setVisible(true);
                 bAceptar.setVisible(false);
-                bCancelar.setVisible(false);
+                bCancelar.setVisible(true);
                 break;
         }
         setVisible(true);
+    }
+    
+    private void validarLugar() throws Exception {
+        // Validar nombre para ver si existe algún equipo con ese nombre
+        if(tfLugar.getText().isEmpty())
+        {
+            throw new Excepcion(49);
+        }
+        else{
+            Main.validar(29, tfLugar);
+        }
     }
     
      /**
@@ -514,6 +523,7 @@ public class VEquipo extends javax.swing.JDialog {
         }
         if(tipo.equals("alta"))
         {
+            Main.validar(4, tfNombre);
             // Comprobar si existe un equipo con ese nombre
             if(Main.buscarEquipo(tfNombre.getText()) != null)
             {
@@ -562,6 +572,7 @@ public class VEquipo extends javax.swing.JDialog {
      */
     
     private void mostrarDatos(Equipo e) throws Exception {
+        cFechaCreacion.setEditable(true);
         tfNombre.setText(e.getNombre());  
         cFechaCreacion.setDate(e.getFechaCreacion());
         taPlantilla.setText(Main.buscarPlantilla(e));

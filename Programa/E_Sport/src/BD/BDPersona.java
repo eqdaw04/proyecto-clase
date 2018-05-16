@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 /**
  * Clase en la que controlaremos e introduciremos personas a la base de datos.
@@ -49,17 +51,9 @@ public class BDPersona {
         rs = sentencia.executeQuery();
        // buscar si existe datos en la rs
         if(rs.next()){
-            // crear la persona con base Persona y llenar los datos
-            p = new Persona();
-            p.setIdPersona(rs.getInt(1));
-            p.setNombre(rs.getString(2));
-            p.setApellido1(rs.getString(3));
-            p.setApellido2(rs.getString(4));
-            p.setFechaAlta(rs.getDate(5));
-            p.setUsuario(rs.getString(6));
-            p.setContrasenna(rs.getString(7));
-            p.setEmail(rs.getString(8));
-            p.setPerfil(Main.consultarPerfil(rs.getInt(9)));
+            
+            p = recorrer(rs);
+            
         }
         // cerrar conexiones y retornar objeto obtenido mediante consulta
         rs.close();
@@ -68,6 +62,23 @@ public class BDPersona {
         return p;
     }
     
+    private Persona recorrer(ResultSet rs) throws Exception{
+        // crear la persona con base Persona y llenar los datos
+        Persona p = new Persona();
+        p.setIdPersona(rs.getInt("id_persona"));
+        p.setNombre(rs.getString("nombre"));
+        p.setApellido1(rs.getString("apellido1"));
+        p.setApellido2(rs.getString("apellido2"));
+        long as = rs.getTimestamp("fecha_alta").getTime();
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(as);
+        p.setFechaAlta(c);
+        p.setUsuario(rs.getString("usuario"));
+        p.setContrasenna(rs.getString("contrasenna"));
+        p.setEmail(rs.getString("email"));
+        p.setPerfil(Main.consultarPerfil(rs.getInt("id_perfil")));
+        return p;
+    }
     /**
      * Metodo para buscar una persona.
      * @param id int
@@ -91,17 +102,7 @@ public class BDPersona {
         rs = sentencia.executeQuery();
        // buscar si existe datos en la rs
         if(rs.next()){
-            // crear la persona con base Persona y llenar los datos
-            p = new Persona();
-            p.setIdPersona(rs.getInt(1));
-            p.setNombre(rs.getString(2));
-            p.setApellido1(rs.getString(3));
-            p.setApellido2(rs.getString(4));
-            p.setFechaAlta(rs.getDate(5));
-            p.setUsuario(rs.getString(6));
-            p.setContrasenna(rs.getString(7));
-            p.setEmail(rs.getString(8));
-            p.setPerfil(Main.consultarPerfil(rs.getInt(9)));
+            p = recorrer(rs);
         }
         // cerrar conexiones y retornar objeto obtenido mediante consulta
         rs.close();
@@ -131,16 +132,7 @@ public class BDPersona {
        // buscar si existe datos en la rs
         while(rs.next()){
             // crear la persona con base Persona y llenar los datos
-            Persona p = new Persona();
-            p.setIdPersona(rs.getInt(1));
-            p.setNombre(rs.getString(2));
-            p.setApellido1(rs.getString(3));
-            p.setApellido2(rs.getString(4));
-            p.setFechaAlta(rs.getDate(5));
-            p.setUsuario(rs.getString(6));
-            p.setContrasenna(rs.getString(7));
-            p.setEmail(rs.getString(8));
-            p.setPerfil(Main.consultarPerfil(rs.getInt(9)));
+            Persona p = recorrer(rs);
             lPersona.add(p);
         }
         // cerrar conexiones y retornar objeto obtenido mediante consulta
@@ -166,7 +158,7 @@ public class BDPersona {
         sentencia.setString(1, p.getNombre());        
         sentencia.setString(2, p.getApellido1());
         sentencia.setString(3, p.getApellido2());
-        sentencia.setDate(4, formatearFecha(p.getFechaAlta()));
+        sentencia.setDate(4, formatearFecha(p.getFechaAlta().getTime()));
         sentencia.setString(5, p.getUsuario());
         sentencia.setString(6, p.getContrasenna());
         sentencia.setString(7, p.getEmail());
@@ -214,7 +206,7 @@ public class BDPersona {
         BDConexion con = new BDConexion();
         // preparar la conexion y sentencia
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("UPDATE Persona SET Nombre = ?, Apellido1 = ?, Apellido2 = ?, Contrasenna = ?, Email = ?, Id_perfil = ? WHERE usuario = ?");
+        sentencia = con.getConnection().prepareStatement("UPDATE Persona SET Nombre = ?, Apellido1 = ?, Apellido2 = ?, Contrasenna = ?, Email = ?, Id_perfil = ?, fecha_alta = TO_DATE(?,'DD/MM/RRRR'), usuario = ? WHERE id_persona = ?");
         // datos a insertar
         sentencia.setString(1, p.getNombre());        
         sentencia.setString(2, p.getApellido1());
@@ -222,7 +214,9 @@ public class BDPersona {
         sentencia.setString(4, p.getContrasenna());
         sentencia.setString(5, p.getEmail());
         sentencia.setInt(6, p.getPerfil().getIdPerfil());
-        sentencia.setString(7, p.getUsuario());
+        sentencia.setDate(7, formatearFecha(p.getFechaAlta().getTime()));
+        sentencia.setString(8, p.getUsuario());
+        sentencia.setInt(9, p.getIdPersona());
         // ejecutar la sentencia
         if(sentencia.executeUpdate() != 1){
             throw new Excepcion(25);
@@ -252,16 +246,7 @@ public class BDPersona {
        // buscar si existe datos en la rs
         while(rs.next()){
             // crear la persona con base Persona y llenar los datos
-            Persona p = new Persona();
-            p.setIdPersona(rs.getInt(1));
-            p.setNombre(rs.getString(2));
-            p.setApellido1(rs.getString(3));
-            p.setApellido2(rs.getString(4));
-            p.setFechaAlta(rs.getDate(5));
-            p.setUsuario(rs.getString(6));
-            p.setContrasenna(rs.getString(7));
-            p.setEmail(rs.getString(8));
-            p.setPerfil(Main.consultarPerfil(rs.getInt(9)));
+            Persona p = recorrer(rs);
             lPersona.add(p);
         }
         // cerrar conexiones y retornar objeto obtenido mediante consulta

@@ -1,15 +1,11 @@
 SET SERVEROUTPUT ON
 
---Privilegios???
---GRANT EXECUTE ON Pkg_resultados to public;
-
-DROP PACKAGE Pkg_resultados;
-CREATE OR REPLACE PACKAGE Pkg_resultados IS
+CREATE OR REPLACE PACKAGE Pkg_Resultados IS
       TYPE TCURSOR IS REF CURSOR;
       PROCEDURE Resul (C_partjor OUT TCURSOR);
 END Pkg_resultados;
 /
-CREATE OR REPLACE PACKAGE BODY Pkg_resultados IS
+CREATE OR REPLACE PACKAGE BODY Pkg_Resultados IS
   PROCEDURE Resul (C_partjor OUT TCURSOR) AS
   BEGIN
   OPEN C_partjor for
@@ -18,17 +14,17 @@ CREATE OR REPLACE PACKAGE BODY Pkg_resultados IS
       WHERE P.Id_partido = M.Id_partido
       ORDER BY P.Id_jornada, P.Id_partido,M.Id_equipo;
   END;
-END Pkg_resultados;
+END Pkg_Resultados;
 /
 --Procedimiento anónimo de llamada
 DECLARE
-      V_Cur  Pkg_resultados.TCURSOR;
+      V_Cur  Pkg_Resultados.TCURSOR;
       V_Id_jornada Partido.Id_jornada%TYPE;
       V_Id_partido Partido.Id_partido%TYPE;
       V_Id_equipo Marcador.Id_equipo%TYPE;
       V_Puntuacion Marcador.Puntuacion%TYPE;
 BEGIN
-    Pkg_resultados.Resul(V_Cur);
+    Pkg_Resultados.Resul(V_Cur);
     LOOP
         FETCH V_Cur INTO V_Id_jornada,V_Id_partido,V_Id_equipo,V_Puntuacion;
         EXIT WHEN V_CUR%NOTFOUND;

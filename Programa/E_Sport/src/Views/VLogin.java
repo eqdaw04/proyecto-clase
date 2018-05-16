@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -47,7 +48,10 @@ public class VLogin extends javax.swing.JFrame {
 
         jTextField1.grabFocus();
         
-        
+        /*ImageIcon accederimg = new ImageIcon("../../../imagenes/BAcceder.png");
+        Icon icono4 = new ImageIcon (accederimg.getImage().getScaledInstance(labelacceder.getWidth(), labelacceder.getHeight(), Image.SCALE_DEFAULT));
+        labelacceder.setIcon(icono4);
+        this.repaint();*/
         
     }
 
@@ -212,11 +216,11 @@ public class VLogin extends javax.swing.JFrame {
         {
             pfContrasenna.setText("");
             pfContrasenna.grabFocus();
-            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
+            JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
         }
         catch (Exception e)
         {
-            javax.swing.JOptionPane.showMessageDialog(this, e.getClass());
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         }
         finally{
             if(error == 13){
@@ -246,11 +250,11 @@ public class VLogin extends javax.swing.JFrame {
         {
             pfContrasenna.setText("");
             pfContrasenna.grabFocus();
-            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
+            JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
         }
         catch (Exception e)
         {
-            javax.swing.JOptionPane.showMessageDialog(this, e.getClass());
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         }
         finally{
             if(error == 13){
@@ -279,11 +283,11 @@ public class VLogin extends javax.swing.JFrame {
         {
             pfContrasenna.setText("");
             pfContrasenna.grabFocus();
-            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
+            JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
         }
         catch (Exception e)
         {
-            javax.swing.JOptionPane.showMessageDialog(this, e.getClass());
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         }
         finally{
             if(error == 13){

@@ -6,12 +6,10 @@
 package Views;
 
 import Controladora.Main;
-import java.awt.Image;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  * Ventana principal.
@@ -40,11 +38,6 @@ public class VPrincipal extends javax.swing.JFrame {
                 equipos.setEnabled(false);                
                 break;
         }
-        
-        ImageIcon fondo = new ImageIcon("../../../imagenes/fondo2.jpg");
-        Icon icono = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
-        imgfondo.setIcon(icono);
-        this.repaint();
     }
 
     /**
@@ -59,7 +52,6 @@ public class VPrincipal extends javax.swing.JFrame {
         bCerrarSesion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         NombreUsu = new javax.swing.JLabel();
-        imgfondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         administracion = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -83,14 +75,13 @@ public class VPrincipal extends javax.swing.JFrame {
         introducirResultados = new javax.swing.JMenuItem();
         equipos = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         ver = new javax.swing.JMenu();
         verCalendario = new javax.swing.JMenuItem();
         verResultClasi = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
-        setResizable(false);
-        getContentPane().setLayout(null);
+        setMinimumSize(new java.awt.Dimension(988, 691));
 
         bCerrarSesion.setText("Cerrar sesión");
         bCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -98,21 +89,13 @@ public class VPrincipal extends javax.swing.JFrame {
                 bCerrarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(bCerrarSesion);
-        bCerrarSesion.setBounds(420, 13, 109, 25);
 
-        jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 30)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setText("Bienvenido");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(28, 225, 180, 40);
 
-        NombreUsu.setFont(new java.awt.Font("Bauhaus 93", 0, 30)); // NOI18N
-        NombreUsu.setForeground(new java.awt.Color(0, 102, 255));
+        NombreUsu.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        NombreUsu.setForeground(new java.awt.Color(51, 153, 0));
         NombreUsu.setText("Nombre");
-        getContentPane().add(NombreUsu);
-        NombreUsu.setBounds(230, 220, 120, 44);
-        getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 550, 400);
 
         administracion.setText("Administración");
 
@@ -257,6 +240,14 @@ public class VPrincipal extends javax.swing.JFrame {
         });
         equipos.add(jMenuItem1);
 
+        jMenuItem2.setText("Resultados");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        equipos.add(jMenuItem2);
+
         jMenuBar1.add(equipos);
 
         ver.setText("Ver");
@@ -281,6 +272,33 @@ public class VPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bCerrarSesion)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1)
+                .addGap(30, 30, 30)
+                .addComponent(NombreUsu)
+                .addContainerGap(727, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bCerrarSesion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 443, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(NombreUsu))
+                .addGap(152, 152, 152))
+        );
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -288,7 +306,7 @@ public class VPrincipal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(1, "alta");
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_crearJugadorActionPerformed
 
@@ -296,7 +314,7 @@ public class VPrincipal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(2, "alta");
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_crearEquipoActionPerformed
 
@@ -304,7 +322,7 @@ public class VPrincipal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(3, "alta");
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_crearUsuarioActionPerformed
 
@@ -312,7 +330,7 @@ public class VPrincipal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(1, "modificacion");
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_modificarJugadorActionPerformed
 
@@ -320,7 +338,7 @@ public class VPrincipal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(2, "modificacion");
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_modificarEquipoActionPerformed
 
@@ -328,7 +346,7 @@ public class VPrincipal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(3, "modificacion");
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_modificarUsuarioActionPerformed
 
@@ -336,7 +354,7 @@ public class VPrincipal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(1, "baja");
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_eliminarJugadorActionPerformed
 
@@ -344,7 +362,7 @@ public class VPrincipal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(2, "baja");
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_eliminarEquipoActionPerformed
 
@@ -352,7 +370,7 @@ public class VPrincipal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(3, "baja");
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_eliminarUsuarioActionPerformed
 
@@ -360,7 +378,7 @@ public class VPrincipal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(1, "listado");
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_verJugadorActionPerformed
 
@@ -368,7 +386,7 @@ public class VPrincipal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(2, "listado");
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_verEquipoActionPerformed
 
@@ -376,7 +394,7 @@ public class VPrincipal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(3, "listado");
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_verUsuarioActionPerformed
 
@@ -384,15 +402,21 @@ public class VPrincipal extends javax.swing.JFrame {
         // Abrir la ventana para la introduccion de los resultados de los partidos
         
         try {
-            Main.abrirVentana(6, "resultado");
+            Main.abrirVentana(6, "");
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_introducirResultadosActionPerformed
 
     private void verCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCalendarioActionPerformed
-        // TODO add your handling code here:
-        // Abrir ventana
+        try {
+            // TODO add your handling code here:
+            // Abrir ventana
+            Main.abrirVentana(8, "");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
+        }
     }//GEN-LAST:event_verCalendarioActionPerformed
 
     private void verResultClasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verResultClasiActionPerformed
@@ -408,7 +432,7 @@ public class VPrincipal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(5, NombreUsu.getText());
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -416,9 +440,17 @@ public class VPrincipal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(7, "");
         } catch (Exception ex) {
-            Logger.getLogger(VPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_generarCalendarioActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        try {
+            Main.abrirVentana(9, NombreUsu.getText());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel NombreUsu;
@@ -432,7 +464,6 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem eliminarUsuario;
     private javax.swing.JMenu equipos;
     private javax.swing.JMenuItem generarCalendario;
-    private javax.swing.JLabel imgfondo;
     private javax.swing.JMenuItem introducirResultados;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu4;
@@ -441,6 +472,7 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem modificarEquipo;
     private javax.swing.JMenuItem modificarJugador;

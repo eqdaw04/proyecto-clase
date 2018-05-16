@@ -8,12 +8,8 @@ package Views;
 import Controladora.Main;
 import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
-import Recurso.ValidacionDeDatosDeEntrada;
 import UML.Jugador;
-import java.awt.Image;
 import java.util.ArrayList;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 
 /**
  * Vista jugadores.
@@ -36,12 +32,7 @@ public class VJugador extends javax.swing.JDialog {
     
     public VJugador(String tipo, int n) {
         initComponents();
-        cargarDatos(tipo, n);      
-        
-        ImageIcon fondo = new ImageIcon("../../../imagenes/fondo2.jpg");
-        Icon icono = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
-        imgfondo.setIcon(icono);
-        this.repaint();
+        cargarDatos(tipo, n);        
     }
     
     public VJugador(String tipo, int n, Jugador j) {
@@ -82,71 +73,41 @@ public class VJugador extends javax.swing.JDialog {
         bUltimo = new javax.swing.JButton();
         ftfSueldo = new javax.swing.JFormattedTextField();
         bBuscar = new javax.swing.JButton();
-        cFechaAlta = new org.freixas.jcalendar.JCalendarCombo();
         jLabel9 = new javax.swing.JLabel();
+        cFechaAlta = new org.freixas.jcalendar.JCalendarCombo();
         imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
-        setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
-        setResizable(false);
-        getContentPane().setLayout(null);
+        setMaximumSize(new java.awt.Dimension(719, 612));
+        setMinimumSize(new java.awt.Dimension(719, 612));
+        setModal(true);
 
-        jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("JUGADOR");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(280, 40, 150, 54);
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("DNI:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(118, 142, 40, 21);
-        getContentPane().add(tfDNI);
-        tfDNI.setBounds(253, 143, 214, 22);
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel3.setText("Nombre:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(118, 174, 76, 21);
 
         tfNombre.setEditable(false);
-        getContentPane().add(tfNombre);
-        tfNombre.setBounds(253, 175, 214, 22);
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel4.setText("Apellido 1:");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(118, 204, 90, 21);
 
         tfApellido1.setEditable(false);
-        getContentPane().add(tfApellido1);
-        tfApellido1.setBounds(253, 205, 214, 22);
 
         tfApellido2.setEditable(false);
-        getContentPane().add(tfApellido2);
-        tfApellido2.setBounds(253, 235, 214, 22);
 
-        jLabel5.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel5.setText("Nickname:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(118, 264, 91, 21);
 
         tfNickname.setEditable(false);
-        getContentPane().add(tfNickname);
-        tfNickname.setBounds(253, 265, 214, 22);
 
-        jLabel6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel6.setText("Comentario:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(118, 354, 108, 21);
 
         taComentario.setEditable(false);
         taComentario.setColumns(20);
         taComentario.setRows(5);
         jScrollPane1.setViewportView(taComentario);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(253, 354, 214, 96);
 
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
@@ -155,8 +116,6 @@ public class VJugador extends javax.swing.JDialog {
                 bAceptarActionPerformed(evt);
             }
         });
-        getContentPane().add(bAceptar);
-        bAceptar.setBounds(253, 457, 77, 25);
 
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -164,18 +123,10 @@ public class VJugador extends javax.swing.JDialog {
                 bCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(bCancelar);
-        bCancelar.setBounds(384, 457, 83, 25);
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel7.setText("Sueldo:");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(118, 294, 65, 21);
 
-        jLabel8.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel8.setText("Fecha de alta:");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(118, 324, 123, 21);
 
         bPrimero.setText("|<");
         bPrimero.setEnabled(false);
@@ -184,8 +135,6 @@ public class VJugador extends javax.swing.JDialog {
                 bPrimeroActionPerformed(evt);
             }
         });
-        getContentPane().add(bPrimero);
-        bPrimero.setBounds(253, 489, 47, 25);
 
         bAnterior.setText("<");
         bAnterior.setEnabled(false);
@@ -194,8 +143,6 @@ public class VJugador extends javax.swing.JDialog {
                 bAnteriorActionPerformed(evt);
             }
         });
-        getContentPane().add(bAnterior);
-        bAnterior.setBounds(307, 489, 41, 25);
 
         bSiguiente.setText(">");
         bSiguiente.setEnabled(false);
@@ -204,8 +151,6 @@ public class VJugador extends javax.swing.JDialog {
                 bSiguienteActionPerformed(evt);
             }
         });
-        getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(372, 489, 41, 25);
 
         bUltimo.setText(">|");
         bUltimo.setEnabled(false);
@@ -214,13 +159,9 @@ public class VJugador extends javax.swing.JDialog {
                 bUltimoActionPerformed(evt);
             }
         });
-        getContentPane().add(bUltimo);
-        bUltimo.setBounds(420, 489, 47, 25);
 
         ftfSueldo.setEditable(false);
         ftfSueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        getContentPane().add(ftfSueldo);
-        ftfSueldo.setBounds(253, 295, 214, 22);
 
         bBuscar.setText("Buscar");
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -228,19 +169,105 @@ public class VJugador extends javax.swing.JDialog {
                 bBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(bBuscar);
-        bBuscar.setBounds(474, 142, 71, 25);
 
-        cFechaAlta.setEnabled(false);
-        getContentPane().add(cFechaAlta);
-        cFechaAlta.setBounds(253, 325, 214, 22);
-
-        jLabel9.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel9.setText("Apellido 2:");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(118, 234, 90, 21);
-        getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 710, 600);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfNickname)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(bAceptar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bCancelar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bPrimero)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bAnterior)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bSiguiente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bUltimo))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                            .addComponent(ftfSueldo)
+                            .addComponent(cFechaAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfDNI)
+                            .addComponent(tfNombre)
+                            .addComponent(tfApellido1)
+                            .addComponent(tfApellido2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bBuscar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(bBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfNickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(ftfSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(cFechaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bAceptar)
+                    .addComponent(bCancelar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bPrimero)
+                    .addComponent(bAnterior)
+                    .addComponent(bSiguiente)
+                    .addComponent(bUltimo))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -254,10 +281,10 @@ public class VJugador extends javax.swing.JDialog {
            {
                case "alta":
                    // Validación de datos
-                    ValidacionDeDatosDeEntrada.validar(3, tfDNI);
-                    ValidacionDeDatosDeEntrada.validar(4, tfNombre);
-                    ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
-                    ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
+                    Main.validar(3, tfDNI);
+                    Main.validar(4, tfNombre);
+                    Main.validar(5, tfApellido1);
+                    Main.validar(5, tfApellido2);
                     if(tfNickname.getText().isEmpty())
                     {
                         throw new Excepcion(26);
@@ -282,10 +309,10 @@ public class VJugador extends javax.swing.JDialog {
                    break;
                case "modificacion":
                    // Validación de datos
-                    ValidacionDeDatosDeEntrada.validar(3, tfDNI);
-                    ValidacionDeDatosDeEntrada.validar(4, tfNombre);  
-                    ValidacionDeDatosDeEntrada.validar(5, tfApellido1);
-                    ValidacionDeDatosDeEntrada.validar(5, tfApellido2);
+                    Main.validar(3, tfDNI);
+                    Main.validar(4, tfNombre);  
+                    Main.validar(5, tfApellido1);
+                    Main.validar(5, tfApellido2);
                     if(tfNickname.getText().isEmpty())
                     {
                         throw new Excepcion(26);
@@ -341,7 +368,7 @@ public class VJugador extends javax.swing.JDialog {
                 }
                 else
                 {
-                    ValidacionDeDatosDeEntrada.validar(3, tfDNI);
+                    Main.validar(3, tfDNI);
                     buscarJugador(tfDNI.getText());
                     bPrimero.setEnabled(false);
                     bAnterior.setEnabled(false);
@@ -352,10 +379,11 @@ public class VJugador extends javax.swing.JDialog {
             else
             {
                 // Localiza un jugador en exclusiva para su modificación o borrado
-                ValidacionDeDatosDeEntrada.validar(3, tfDNI);
+                Main.validar(3, tfDNI);
                 buscarJugador(tfDNI.getText());
                 if(tipo.equals("modificacion"))
                 {
+                    cFechaAlta.setEditable(true);
                     tfNombre.setEditable(true);
                     tfApellido1.setEditable(true);
                     tfApellido2.setEditable(true);
@@ -529,13 +557,16 @@ public class VJugador extends javax.swing.JDialog {
                 break;
             case "listado":
                 bAceptar.setVisible(false);
-                bCancelar.setVisible(false);       
                 bPrimero.setVisible(true);
                 bAnterior.setVisible(true);
                 bSiguiente.setVisible(true);
                 bUltimo.setVisible(true);
                 break;
             case "consulta":
+                // se habilita la edición del calendario para luego deshabilitarlo
+                // ya que si no se habilita, no carga la vista del calendario, pero sí su dato
+                // visualmente no se actualiza la fecha, pero al extraer la información sí se actualiza
+                cFechaAlta.setEditable(true);
                 tfDNI.setText(j.getDni());
                 tfDNI.setEditable(false);
                 tfNombre.setText(j.getNombre());
@@ -547,7 +578,8 @@ public class VJugador extends javax.swing.JDialog {
                 taComentario.setText(j.getComentario());
                 bBuscar.setVisible(false);
                 bAceptar.setVisible(false);
-                bCancelar.setVisible(false);
+                bCancelar.setVisible(true);
+                cFechaAlta.setEditable(false);
                 break;
         }
         setVisible(true);
@@ -560,7 +592,7 @@ public class VJugador extends javax.swing.JDialog {
      */
     
     private void buscarJugador(String dni) throws Exception {
-        Jugador j = Main.buscarJugador(dni);
+        j = Main.buscarJugador(dni);
         if(j==null)
         {
             throw new Excepcion(17);
@@ -574,7 +606,7 @@ public class VJugador extends javax.swing.JDialog {
      */
     
     private void seleccionarJugador() throws Exception {
-        Jugador j;
+        j = null;
         if(listaJugadores.size()>1)
         {
             j=listaJugadores.get(posicion);
@@ -593,6 +625,10 @@ public class VJugador extends javax.swing.JDialog {
      */
     
     private void mostrarDatos(Jugador j) throws Exception {
+        // se habilita la edición del calendario para luego deshabilitarlo
+        // ya que si no se habilita, no carga la vista del calendario, pero sí su dato
+        // visualmente no se actualiza la fecha, pero al extraer la información sí se actualiza
+        cFechaAlta.setEditable(true);
         tfDNI.setText(j.getDni());
         tfNombre.setText(j.getNombre());
         tfApellido1.setText(j.getApellido1());
@@ -601,5 +637,6 @@ public class VJugador extends javax.swing.JDialog {
         ftfSueldo.setText(String.valueOf(j.getSueldo()));
         cFechaAlta.setDate(j.getFechaAlta());
         taComentario.setText(j.getComentario());
+        cFechaAlta.setEditable(false);
     }
 }

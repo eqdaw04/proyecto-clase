@@ -23,18 +23,25 @@ import java.util.Calendar;
 public class BDJornada {
     
     public Jornada insertarJornada(int nJornada, Calendar fecha, BDConexion con) throws Exception{
+        // instanciar objetoo en null
         Jornada j = null;        
+        // preparar sentencia
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("INSERT INTO jornada VALUES(?, TO_DATE(?,'DD/MM/YYYY'), null)");
+        sentencia = con.getConnection().prepareStatement("INSERT INTO jornada VALUES(?, TO_DATE(?,'DD/MM/RRRR'), null)");
+        // cargar datos al ?
         sentencia.setInt(1, nJornada);
         sentencia.setDate(2, convertirFechaASql(fecha.getTime()));
-        int n = sentencia.executeUpdate();
-        if(n==1){
+        // ejecutar la sentencia y comprobar si se ha insertado
+        if(sentencia.executeUpdate()==1){
+            // instanciar objeto jornada
             j = new Jornada();
+            // cargar los datos al objeto
             j.setIdJornada(nJornada);
             j.setFechaInicio(fecha.getTime());
         }
+        // cerrar la sentencia
         sentencia.close();
+        // devolver el objeto
         return j;
     }
     
@@ -46,8 +53,10 @@ public class BDJornada {
      */
     
     private Date convertirFechaASql(java.util.Date fecha) throws Exception{
+        // formatear la fecha con el formato establecido
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
         String ff = f.format(fecha);
+        // parsearlo a formato fecha
         java.util.Date parsed = f.parse(ff);
         Date fSQL = new Date(parsed.getTime());
         return fSQL;
@@ -61,12 +70,14 @@ public class BDJornada {
      */
     
     public void modificarJornada(Jornada jornada, BDConexion con) throws Exception{
+        // preparar sentencia
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("UPDATE jornada SET fecha_fin = TO_DATE(?,'DD/MM/YYYY') WHERE id_jornada = ?");
+        sentencia = con.getConnection().prepareStatement("UPDATE jornada SET fecha_fin = TO_DATE(?,'DD/MM/RRRR') WHERE id_jornada = ?");
+        // cargar los datos al ?
         sentencia.setDate(1, convertirFechaASql(jornada.getFechaFinal()));
         sentencia.setInt(2, jornada.getIdJornada());
-        int n = sentencia.executeUpdate();
-        if(n!=1){
+        // comprobar si se ha modificado el dato, en caso contrario, mostrar error
+        if(sentencia.executeUpdate()!=1){
             throw new Excepcion(43);
         }
         sentencia.close();
@@ -79,35 +90,42 @@ public class BDJornada {
      */
     
     public ArrayList <Jornada> consultarTodasLasJornadas() throws Exception{
+        // instanciar una lista
         ArrayList <Jornada> lJornada = new ArrayList();
+        // abrir la conexion
         BDConexion con = new BDConexion();
+        // preparar la sentencia
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM jornada");
+        sentencia = con.getConnection().prepareStatement("SELECT id_jornada, fecha_inicio, fecha_fin FROM jornada");
+        // instanciar rs, ejecutar la sentencia y cargar los datos al rs
         ResultSet rs;
         rs = sentencia.executeQuery();
+        // comprobar si existe datos en el rs
         while(rs.next()){
+            // instanciar objeto jornada y cargar los datos del rs al objeto
             Jornada j = new Jornada();
             j.setIdJornada(rs.getInt("id_jornada"));
             j.setFechaInicio(rs.getDate("fecha_inicio"));
             j.setFechaFinal(rs.getDate("fecha_fin"));
-            // Se ha cargará los datos a la memoria según demanda, para así no cargar en excesiva con datos que no se va ha utilizar y precisa que esté 
-            // actualizado en todo momento con la bbdd
-            //j.setListaPartidos(Main.consultarPartidosPorJornada(j.getIdJornada()));
+            // añadir el objeto a la lista
             lJornada.add(j);
         }
-        
+        // cerrar lo abierto
         rs.close();
         sentencia.close();
         con.desconectar();
+        // devolver lista
         return lJornada;
     }
     
     /**
      * Metodo para consultar una jornada por su número.
+     * @param j Id Jornada
      * @param n int
      * @return devuelve un objeto jornada
      * @throws Exception 
      */
+    
     
     public Jornada consultarJornadaPorNumeroDeJornada(int n) throws Exception{
         // abre la conexion
@@ -116,7 +134,7 @@ public class BDJornada {
         Jornada j = null;
         // preparar la conexion y sentencia
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM jornada WHERE id_jornada = ?");
+        sentencia = con.getConnection().prepareStatement("SELECT id_jornada FROM jornada WHERE id_jornada = ?");
         // formatear fecha a fecha para sql como condicion
         sentencia.setInt(1, n);
         // crear objeto para el resultado de la consulta
