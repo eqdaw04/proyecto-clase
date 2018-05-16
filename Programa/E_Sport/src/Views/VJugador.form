@@ -240,6 +240,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="bPrimero">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="|&lt;"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -254,6 +257,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="bAnterior">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&lt;"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -268,6 +274,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="bSiguiente">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&gt;"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -282,6 +291,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="bUltimo">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&gt;|"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -346,6 +358,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="14" style="1"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/imagenes/fondo2.jpg"/>
         </Property>

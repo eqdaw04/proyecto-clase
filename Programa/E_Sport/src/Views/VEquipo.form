@@ -33,6 +33,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="bUltimo">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&gt;|"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -41,7 +44,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="420" y="517" width="-1" height="-1"/>
+          <AbsoluteConstraints x="420" y="530" width="60" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -140,6 +143,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="bPrimero">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="|&lt;"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -148,7 +154,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="249" y="517" width="-1" height="-1"/>
+          <AbsoluteConstraints x="250" y="530" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -200,6 +206,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="bAnterior">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&lt;"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -208,12 +217,15 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="303" y="517" width="-1" height="-1"/>
+          <AbsoluteConstraints x="300" y="530" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="bSiguiente">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&gt;"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -222,7 +234,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="372" y="517" width="-1" height="-1"/>
+          <AbsoluteConstraints x="370" y="530" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

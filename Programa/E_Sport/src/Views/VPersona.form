@@ -99,6 +99,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="bPrimero">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="|&lt;"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -113,6 +116,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="bAnterior">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&lt;"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -127,6 +133,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="bSiguiente">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&gt;"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -141,6 +150,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="bUltimo">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&gt;|"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -149,7 +161,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="272" y="381" width="-1" height="-1"/>
+          <AbsoluteConstraints x="280" y="380" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

@@ -157,6 +157,7 @@ public class VPersona extends javax.swing.JDialog {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(24, 270, 123, 21);
 
+        bPrimero.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bPrimero.setText("|<");
         bPrimero.setEnabled(false);
         bPrimero.addActionListener(new java.awt.event.ActionListener() {
@@ -165,8 +166,9 @@ public class VPersona extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bPrimero);
-        bPrimero.setBounds(122, 381, 47, 25);
+        bPrimero.setBounds(122, 381, 49, 25);
 
+        bAnterior.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bAnterior.setText("<");
         bAnterior.setEnabled(false);
         bAnterior.addActionListener(new java.awt.event.ActionListener() {
@@ -175,8 +177,9 @@ public class VPersona extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnterior);
-        bAnterior.setBounds(176, 381, 41, 25);
+        bAnterior.setBounds(176, 381, 43, 25);
 
+        bSiguiente.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bSiguiente.setText(">");
         bSiguiente.setEnabled(false);
         bSiguiente.addActionListener(new java.awt.event.ActionListener() {
@@ -185,8 +188,9 @@ public class VPersona extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(224, 381, 41, 25);
+        bSiguiente.setBounds(224, 381, 43, 25);
 
+        bUltimo.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bUltimo.setText(">|");
         bUltimo.setEnabled(false);
         bUltimo.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +199,7 @@ public class VPersona extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bUltimo);
-        bUltimo.setBounds(272, 381, 47, 25);
+        bUltimo.setBounds(280, 380, 49, 25);
 
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         jLabel1.setText("USUARIO");

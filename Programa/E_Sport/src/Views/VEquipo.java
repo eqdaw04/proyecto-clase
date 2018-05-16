@@ -79,6 +79,7 @@ public class VEquipo extends javax.swing.JDialog {
         setMinimumSize(new java.awt.Dimension(672, 590));
         getContentPane().setLayout(null);
 
+        bUltimo.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bUltimo.setText(">|");
         bUltimo.setEnabled(false);
         bUltimo.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +88,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bUltimo);
-        bUltimo.setBounds(420, 517, 47, 25);
+        bUltimo.setBounds(420, 530, 60, 25);
 
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel6.setText("Comentarios:");
@@ -137,6 +138,7 @@ public class VEquipo extends javax.swing.JDialog {
         getContentPane().add(bCancelar);
         bCancelar.setBounds(393, 490, 150, 27);
 
+        bPrimero.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bPrimero.setText("|<");
         bPrimero.setEnabled(false);
         bPrimero.addActionListener(new java.awt.event.ActionListener() {
@@ -145,7 +147,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bPrimero);
-        bPrimero.setBounds(249, 517, 47, 25);
+        bPrimero.setBounds(250, 530, 49, 25);
 
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         jLabel1.setText("EQUIPO");
@@ -164,6 +166,7 @@ public class VEquipo extends javax.swing.JDialog {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(59, 147, 164, 21);
 
+        bAnterior.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bAnterior.setText("<");
         bAnterior.setEnabled(false);
         bAnterior.addActionListener(new java.awt.event.ActionListener() {
@@ -172,8 +175,9 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnterior);
-        bAnterior.setBounds(303, 517, 41, 25);
+        bAnterior.setBounds(300, 530, 43, 25);
 
+        bSiguiente.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bSiguiente.setText(">");
         bSiguiente.setEnabled(false);
         bSiguiente.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +186,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(372, 517, 41, 25);
+        bSiguiente.setBounds(370, 530, 43, 25);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel3.setText("Plantilla:");

@@ -171,6 +171,7 @@ public class VJugador extends javax.swing.JDialog {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(32, 259, 123, 21);
 
+        bPrimero.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bPrimero.setText("|<");
         bPrimero.setEnabled(false);
         bPrimero.addActionListener(new java.awt.event.ActionListener() {
@@ -179,8 +180,9 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bPrimero);
-        bPrimero.setBounds(172, 435, 47, 25);
+        bPrimero.setBounds(172, 435, 49, 25);
 
+        bAnterior.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bAnterior.setText("<");
         bAnterior.setEnabled(false);
         bAnterior.addActionListener(new java.awt.event.ActionListener() {
@@ -189,8 +191,9 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnterior);
-        bAnterior.setBounds(226, 435, 41, 25);
+        bAnterior.setBounds(226, 435, 43, 25);
 
+        bSiguiente.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bSiguiente.setText(">");
         bSiguiente.setEnabled(false);
         bSiguiente.addActionListener(new java.awt.event.ActionListener() {
@@ -199,8 +202,9 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(274, 435, 41, 25);
+        bSiguiente.setBounds(274, 435, 43, 25);
 
+        bUltimo.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bUltimo.setText(">|");
         bUltimo.setEnabled(false);
         bUltimo.addActionListener(new java.awt.event.ActionListener() {
@@ -209,7 +213,7 @@ public class VJugador extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bUltimo);
-        bUltimo.setBounds(322, 435, 47, 25);
+        bUltimo.setBounds(322, 435, 49, 25);
 
         ftfSueldo.setEditable(false);
         ftfSueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
@@ -234,6 +238,7 @@ public class VJugador extends javax.swing.JDialog {
         getContentPane().add(cFechaAlta);
         cFechaAlta.setBounds(167, 260, 214, 22);
 
+        jLabel10.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(jLabel10);
         jLabel10.setBounds(0, 0, 520, 500);
