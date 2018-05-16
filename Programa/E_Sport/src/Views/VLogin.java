@@ -67,6 +67,7 @@ public class VLogin extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(562, 496));
         setPreferredSize(new java.awt.Dimension(562, 496));
         setResizable(false);
+        setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N

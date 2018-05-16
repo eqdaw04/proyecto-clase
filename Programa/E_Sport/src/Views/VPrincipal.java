@@ -6,6 +6,7 @@
 package Views;
 
 import Controladora.Main;
+import java.awt.Dimension;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -26,8 +27,9 @@ public class VPrincipal extends javax.swing.JFrame {
     }
     
     private void cargarDatos(int tipo, String usuario){
-        setLocationRelativeTo(null);
+        
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         setVisible(true);
         NombreUsu.setText(usuario);
         switch(tipo)
@@ -43,7 +45,10 @@ public class VPrincipal extends javax.swing.JFrame {
                 equipos.setEnabled(false);                
                 break;
         }
-        
+        // obtener el tamaño de la ventana y asignarle como valor mínimo para no perder la forma de la pantalla
+        this.setMinimumSize(new Dimension(this.getWidth(), this.getHeight()));
+        setLocationRelativeTo(null);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         crearImagenes();
 
         
@@ -110,8 +115,6 @@ public class VPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(988, 691));
         setMinimumSize(new java.awt.Dimension(988, 691));
-        setResizable(false);
-        setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(null);
 
         bCerrarSesion.setText("Cerrar sesión");
