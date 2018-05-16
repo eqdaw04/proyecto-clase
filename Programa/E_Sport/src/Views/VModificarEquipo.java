@@ -82,7 +82,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 30)); // NOI18N
         jLabel1.setText("Modificar Equipo");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(190, 30, 300, 35);
+        jLabel1.setBounds(130, 30, 360, 35);
 
         nombeEquipo.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 30)); // NOI18N
         nombeEquipo.setForeground(new java.awt.Color(51, 102, 255));
@@ -152,7 +152,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bConsultar);
-        bConsultar.setBounds(368, 280, 110, 25);
+        bConsultar.setBounds(368, 280, 140, 25);
 
         tfSueldo.setEditable(false);
         tfSueldo.setText("Sueldo");

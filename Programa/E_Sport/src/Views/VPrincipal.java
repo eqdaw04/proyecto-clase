@@ -123,7 +123,7 @@ public class VPrincipal extends javax.swing.JFrame {
         getContentPane().add(logotipo);
         logotipo.setBounds(900, 560, 80, 70);
         getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 990, 670);
+        imgfondo.setBounds(0, 0, 990, 640);
 
         administracion.setText("Administración");
 
