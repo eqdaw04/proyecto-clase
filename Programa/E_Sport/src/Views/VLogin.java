@@ -40,18 +40,20 @@ public class VLogin extends javax.swing.JFrame {
         imgpassw.setIcon(icono2);
         this.repaint();
         
+        ImageIcon logo = new ImageIcon("../../imagenes/4fan.png");
+        Icon icono3 = new ImageIcon(logo.getImage().getScaledInstance(logotipo.getWidth(), logotipo.getHeight(), Image.SCALE_DEFAULT));
+        logotipo.setIcon(icono3);
+        this.repaint();
+        
         ImageIcon fondo = new ImageIcon("../../imagenes/fondo2.jpg");
-        Icon icono3 = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
-        imgfondo.setIcon(icono3);
+        Icon icono4 = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
+        imgfondo.setIcon(icono4);
         this.repaint();
         
 
         jTextField1.grabFocus();
         
-        /*ImageIcon accederimg = new ImageIcon("../../../imagenes/BAcceder.png");
-        Icon icono4 = new ImageIcon (accederimg.getImage().getScaledInstance(labelacceder.getWidth(), labelacceder.getHeight(), Image.SCALE_DEFAULT));
-        labelacceder.setIcon(icono4);
-        this.repaint();*/
+
         
     }
 
@@ -73,6 +75,7 @@ public class VLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         imgusu = new javax.swing.JLabel();
         imgpassw = new javax.swing.JLabel();
+        logotipo = new javax.swing.JLabel();
         imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -147,6 +150,11 @@ public class VLogin extends javax.swing.JFrame {
         imgusu.setBounds(130, 150, 40, 40);
         getContentPane().add(imgpassw);
         imgpassw.setBounds(130, 220, 40, 40);
+
+        logotipo.setText("jLabel2");
+        logotipo.setAlignmentX(0.5F);
+        getContentPane().add(logotipo);
+        logotipo.setBounds(480, 390, 80, 70);
         getContentPane().add(imgfondo);
         imgfondo.setBounds(0, 0, 560, 500);
 
@@ -309,6 +317,7 @@ public class VLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel logotipo;
     private javax.swing.JPasswordField pfContrasenna;
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
