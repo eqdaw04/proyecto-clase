@@ -1,5 +1,5 @@
 SET SERVEROUTPUT ON
-
+/*
 CREATE OR REPLACE PACKAGE Pkg_Clasificacion IS
   TYPE Nes_punt IS TABLE OF INTEGER;
   TYPE Nes_nom_equ IS TABLE OF Equipo.nombre%type;
@@ -51,7 +51,7 @@ CREATE OR REPLACE PACKAGE BODY Pkg_Clasificacion IS
     END LOOP;
 IF V_nes_punt.COUNT > 0 THEN
     IF V_nom_equ.COUNT > 0 THEN
-        FOR i IN V_nes_punt.FIRST..V_nes_punt.LAST LOOP
+     FOR i IN V_nes_punt.FIRST..V_nes_punt.LAST LOOP
         DBMS_OUTPUT.PUT_LINE(V_nom_equ(i)||' '||V_nes_punt(i));   
         END LOOP;
       END IF;
@@ -59,11 +59,49 @@ IF V_nes_punt.COUNT > 0 THEN
 END;
 END Pkg_Clasificacion;
  / 
+--Procedimiento anónimo de llamada
+DECLARE
+      V_tab  Pkg_Clasificacion.Nes_punt;
+      V_tabl  Pkg_Clasificacion.Nes_nom_equ;
+      V_nombre Equipo.Nombre%TYPE;
+      V_Puntuacion Marcador.Puntuacion%TYPE;
+BEGIN
+    Pkg_Clasificacion.Clasif(V_tab,V_tabl);
+        FOR i IN V_tab.FIRST..V_tab.LAST LOOP
+        DBMS_OUTPUT.PUT_LINE(V_tab(i)||' '||V_tabl(i));   
+        END LOOP;
+END;
+*/
 
-execute Pkg_Clasificacion.Clasif;
+DROP PACKAGE Pkg_Clasificacion;
+CREATE OR REPLACE PACKAGE Pkg_Clasificacion IS
+      TYPE TCURSOR IS REF CURSOR;
+      PROCEDURE clasif (C_partidos OUT TCURSOR);
+END Pkg_Clasificacion;
+/
+CREATE OR REPLACE PACKAGE BODY Pkg_Clasificacion IS
+  PROCEDURE clasif (C_partidos OUT TCURSOR) AS
+  BEGIN
+  OPEN C_partidos for
+      SELECT E.Nombre AS Equipo, SUM(M.Puntuacion) AS punto FROM EQUIPO E,MARCADOR M 
+            WHERE E.ID_EQUIPO = M.ID_EQUIPO
+            GROUP BY  E.Nombre
+            ORDER BY punto DESC;
+  END;
+END Pkg_Clasificacion;
 
-
-
-
+--Procedimiento anónimo de llamada
+DECLARE
+      V_Cur  Pkg_Clasificacion.TCURSOR;
+      V_nombre Equipo.Nombre%TYPE;
+      V_Puntuacion Marcador.Puntuacion%TYPE;
+BEGIN
+    Pkg_Clasificacion.clasif(V_Cur);
+    LOOP
+        FETCH V_Cur INTO V_nombre,V_Puntuacion;
+        EXIT WHEN V_CUR%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(V_nombre || ' ' ||  V_Puntuacion);
+    END LOOP;
+END;
 
 
