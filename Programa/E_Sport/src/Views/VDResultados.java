@@ -6,6 +6,7 @@
 package Views;
 
 import Controladora.Main;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -84,6 +85,9 @@ public class VDResultados extends javax.swing.JDialog {
 	tJornada.getColumnModel().getColumn(0).setPreferredWidth(75);
 	tJornada.getColumnModel().getColumn(1).setPreferredWidth(360);
 	tJornada.getColumnModel().getColumn(2).setPreferredWidth(75);
+        tJornada.setRowHeight(40);
+        tJornada.setShowVerticalLines(false);
+        tJornada.setGridColor(Color.BLUE);
         mClasificacion = new DefaultTableModel();
         
 	Object[] vec2 = {"Posición","Equipo","Marcador"};
@@ -92,7 +96,9 @@ public class VDResultados extends javax.swing.JDialog {
 	tClasificacion.getColumnModel().getColumn(0).setPreferredWidth(65);
 	tClasificacion.getColumnModel().getColumn(1).setPreferredWidth(150);
 	tClasificacion.getColumnModel().getColumn(2).setPreferredWidth(75);
-        
+        tClasificacion.setRowHeight(40);
+        tClasificacion.setShowVerticalLines(false);
+        tClasificacion.setGridColor(Color.BLUE);
         DefaultTableCellRenderer centrar = new DefaultTableCellRenderer();
         centrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tJornada.getColumnModel().getColumn(0).setCellRenderer(centrar);
