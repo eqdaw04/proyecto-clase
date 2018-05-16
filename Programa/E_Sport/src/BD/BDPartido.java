@@ -296,6 +296,9 @@ public class BDPartido {
             }
             }                    
         }
+        rs.close();
+        sentencia.close();
+        con.desconectar();
         return partidos;
     }
 }

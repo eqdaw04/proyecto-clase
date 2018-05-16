@@ -14,7 +14,6 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import javax.swing.JOptionPane;
 
 /**
  * Clase en la que controlaremos e introduciremos personas a la base de datos.
@@ -252,6 +251,7 @@ public class BDPersona {
         // cerrar conexiones y retornar objeto obtenido mediante consulta
         rs.close();
         sentencia.close();
+        con.desconectar();
         return lPersona;
     }
     

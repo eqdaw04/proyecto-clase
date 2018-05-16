@@ -195,6 +195,7 @@ public class BDJugador {
        a = recorrer(rs, a);
        
        rs.close();
+       sentencia.close();
        con.desconectar();
        
        return a;
