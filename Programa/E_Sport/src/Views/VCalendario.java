@@ -101,7 +101,7 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bPrimero);
-        bPrimero.setBounds(150, 448, 60, 25);
+        bPrimero.setBounds(150, 448, 60, 26);
 
         bAnterior.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bAnterior.setText("<");
@@ -112,7 +112,7 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnterior);
-        bAnterior.setBounds(220, 450, 50, 25);
+        bAnterior.setBounds(220, 450, 50, 26);
 
         bSiguiente.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bSiguiente.setText(">");
@@ -123,7 +123,7 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(330, 450, 50, 25);
+        bSiguiente.setBounds(330, 450, 50, 26);
 
         bUltimo.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bUltimo.setText(">|");
@@ -134,7 +134,7 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bUltimo);
-        bUltimo.setBounds(387, 448, 60, 25);
+        bUltimo.setBounds(387, 448, 60, 26);
 
         bSalir.setFont(new java.awt.Font("Verdana", 1, 15)); // NOI18N
         bSalir.setText("Salir");
