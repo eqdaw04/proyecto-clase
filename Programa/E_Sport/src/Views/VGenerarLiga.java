@@ -11,6 +11,7 @@ import UML.Jornada;
 import UML.Partido;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -443,17 +444,23 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
     private void bGenerarCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGenerarCalendarioActionPerformed
         try {
-            // mostrar pantalla de espera
-            pEspera.setVisible(true);
-            if(JOptionPane.showConfirmDialog(this, "Dependiendo de la cantidad de equipos y la velocidad de conexión a la base de datos, puede tardar unos minutos\n¿Desea continuar?","",2) == 0){
-                generarCalendario();
+            Date hoy = new Date();
+            if(ccCalendarioInicial.getDate().after(hoy)){
+                // mostrar pantalla de espera
+                pEspera.setVisible(true);
+                if(JOptionPane.showConfirmDialog(this, "Dependiendo de la cantidad de equipos y la velocidad de conexión a la base de datos, puede tardar unos minutos\n¿Desea continuar?","",2) == 0){
+                    generarCalendario();
+                }
+                Main.reabrir(this, "", 7);
             }
-            Main.reabrir(this, "", 7);
+            else{
+                throw new Excepcion(34);
+            }
         } 
-        /*
+        
         catch (Excepcion e){
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
-        }*/
+        }
         catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
@@ -502,7 +509,19 @@ public class VGenerarLiga extends javax.swing.JDialog {
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try {
             Calendar fecha = Calendar.getInstance();
+            for(int x = 0; x<listaJornada.size(); x++){
+                if(lJornada.getSelectedValue() == listaJornada.get(x).getIdJornada()){
+                    Jornada j = listaJornada.get(x);
+                    Date hoy = new Date();
+                    if(ccCalendario.getDate().before(j.getFechaInicio()) || ccCalendario.getDate().after(j.getFechaFinal())  || ccCalendario.getDate().before(hoy)){
+                           throw new Excepcion(35);
+                    }
+                    
+                    x=listaJornada.size();
+                }
+            }
             fecha.setTime(ccCalendario.getDate());
+            
             fecha.set(Calendar.HOUR_OF_DAY, Integer.parseInt(cbHora.getSelectedItem().toString()));
             fecha.set(Calendar.MINUTE, Integer.parseInt(cbMinuto.getSelectedItem().toString()));
             p.setFecha(fecha);
@@ -573,13 +592,21 @@ public class VGenerarLiga extends javax.swing.JDialog {
         else{
             tfVisitante.setText(p.geteVisitante().getNombre());
         }
-        
-        bAceptar.setEnabled(true);
         cbHora.setSelectedIndex(p.getFecha().get(Calendar.HOUR_OF_DAY));
         cbMinuto.setSelectedIndex(p.getFecha().get(Calendar.MINUTE));
         ccCalendario.setEnabled(true);
+        bAceptar.setEnabled(true);
         cbHora.setEnabled(true);
         cbMinuto.setEnabled(true);
+        Date hoy = new Date();
+        if(p.getFecha().getTime().before(hoy)){
+            ccCalendario.setEnabled(false);
+            bAceptar.setEnabled(false);
+            cbHora.setEnabled(false);
+            cbMinuto.setEnabled(false);
+            JOptionPane.showMessageDialog(this, "El partido ya se ha celebrado.\nNo se permite ninguna modificación.");
+        }
+            
         
     }
 

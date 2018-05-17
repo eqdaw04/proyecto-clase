@@ -156,6 +156,14 @@ public class Excepcion extends Exception {
                 dato += "El dueño no tiene asignado un equipo.\nPida primero al administrador que le asigne un equipo.";
                 break;
                 
+            case 34:
+                dato += "La Fecha inicial debe ser posterior a la fecha actual.";
+                break;
+                
+            case 35:
+                dato += "La fecha no puede ser anterior a la de hoy ni de la jornada y tampoco puede ser después de la jornada.";
+                break;
+                
             case 40:
                 dato += "Error al insertar la Jornada.";
                 break;

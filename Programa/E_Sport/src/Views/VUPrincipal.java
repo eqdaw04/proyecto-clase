@@ -73,6 +73,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(819, 789));
         setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(null);
@@ -85,7 +86,7 @@ public class VUPrincipal extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Posición", "Local VS Visitante", "Marcador"
+                "Partido", "Local VS Visitante", "Marcador"
             }
         ) {
             Class[] types = new Class [] {
@@ -110,13 +111,13 @@ public class VUPrincipal extends javax.swing.JFrame {
 
         tClasificacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Posición", "Local VS Visitante", "Marcador"
             }
         ));
         tClasificacion.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
@@ -238,24 +239,8 @@ public class VUPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JList<Integer> lJornada;
-    private javax.swing.JList<Integer> lJornada1;
-    private javax.swing.JList<Integer> lJornada2;
-    private javax.swing.JList<Integer> lJornada3;
-    private javax.swing.JList<Integer> lJornada4;
-    private javax.swing.JList<Integer> lJornada5;
-    private javax.swing.JList<Integer> lJornada6;
-    private javax.swing.JList<Integer> lJornada7;
     private javax.swing.JList<Integer> lJornada8;
     private javax.swing.JLabel logotipo;
     private javax.swing.JTable tClasificacion;
