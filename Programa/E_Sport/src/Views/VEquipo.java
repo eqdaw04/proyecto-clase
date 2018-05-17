@@ -147,7 +147,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bPrimero);
-        bPrimero.setBounds(250, 530, 50, 26);
+        bPrimero.setBounds(229, 530, 70, 25);
 
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         jLabel1.setText("EQUIPO");
@@ -175,7 +175,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnterior);
-        bAnterior.setBounds(300, 530, 44, 26);
+        bAnterior.setBounds(300, 530, 60, 25);
 
         bSiguiente.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bSiguiente.setText(">");
@@ -186,7 +186,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(370, 530, 44, 26);
+        bSiguiente.setBounds(360, 530, 60, 25);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel3.setText("Plantilla:");
