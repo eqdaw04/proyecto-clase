@@ -1,10 +1,10 @@
 Url del blog de equipo -> # [EQDAW04](http://10.1.11.1)
-Repositorios que encontraremos en este directorio GitHub -> BBDD
-                                                            Diagramas BBDD - UML
-                                                            Documentaciones
-                                                            Imagenes
-                                                            Programa
-                                                            XML
+Repositorios que encontraremos en este directorio GitHub -> BBDD,
+                                                            Diagramas BBDD - UML,
+                                                            Documentaciones,
+                                                            Imagenes,
+                                                            Programa,
+                                                            XML.
                                                             
 Que encontraremos en cada uno de ellos? 
 
