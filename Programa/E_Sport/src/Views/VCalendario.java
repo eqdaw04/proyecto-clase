@@ -8,6 +8,7 @@ package Views;
 import Controladora.Main;
 import UML.*;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -257,7 +258,8 @@ public class VCalendario extends javax.swing.JDialog {
                     datos [x][2] = jornadas.get(pos).getListaPartidos().get(x).geteLocal().getLugar();
                 }
             }
-            datos [x][1] = String.valueOf(jornadas.get(pos).getListaPartidos().get(x).getFecha());
+            SimpleDateFormat f = new SimpleDateFormat("dd-MM-YYYY");
+            datos [x][1] = (f.format(jornadas.get(pos).getListaPartidos().get(x).getFecha().getTime()));
             
         }
         JTable tPartidos = new JTable (datos,titulos);

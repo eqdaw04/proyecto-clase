@@ -27,19 +27,7 @@ import oracle.jdbc.OracleTypes;
  */
 
 public class BDPartido {
-    int idPartido;
-    Date fecha;
-    Timer horaInicio;
-    String lugar;
-    ArrayList <Equipo> lEquipo;
-    Jornada jornada;
-    Integer local, pLocal, visitante, pVisitante;
-    private Partido p;
-
-    public BDPartido() {
-        lEquipo = new ArrayList();
-    }
-    
+  
     /**
      * Metodo para insertar un partido a la base de datos.
      * @param p Partido
@@ -126,10 +114,7 @@ public class BDPartido {
         while(rs.next()){
             Partido p = new Partido();
             p.setIdPartido(rs.getInt("id_partido"));
-            long as = rs.getTimestamp("fecha").getTime();
-            Calendar c = Calendar.getInstance();
-            c.setTimeInMillis(as);
-            p.setFecha(c);
+            p.setFecha(DateACalendar(rs.getTimestamp("fecha")));
             lPartido.add(p);
         }
         rs.close();
@@ -137,7 +122,13 @@ public class BDPartido {
         con.desconectar();
         return lPartido;
     } 
-    
+    public Calendar DateACalendar(Date fecha){
+        long as = fecha.getTime();
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(as);
+        System.out.println(c);
+        return c;
+    }
     public ArrayList <Partido> consultarPartidoPorFecha(Calendar fecha) throws Exception{
          ArrayList <Partido> listaPartido = new ArrayList();
          BDConexion con = new BDConexion();
@@ -259,7 +250,7 @@ public class BDPartido {
         sentencia.execute();
         // instanciar rs, ejecutar sentencia y cargar los datos al rs
         ResultSet rs = ((OracleCallableStatement)sentencia).getCursor(2);
-        
+        Partido p= new Partido();
         while(rs.next()){
             Equipo e=new Equipo();
             e.setIdEquipo(rs.getInt("Id_equipo"));
@@ -268,6 +259,7 @@ public class BDPartido {
             if(partidos.isEmpty()){
                 p=new Partido();
                 p.setIdPartido(rs.getInt("Id_partido"));
+                p.setFecha(DateACalendar(rs.getDate("Fecha")));
                 if(rs.getInt("visitante")==1){
                     p.seteLocal(e);
                 }
@@ -286,6 +278,7 @@ public class BDPartido {
             }else{
                 p=new Partido();
                 p.setIdPartido(rs.getInt("Id_partido"));
+                p.setFecha(DateACalendar(rs.getDate("Fecha")));
                 if(rs.getInt("visitante")==1){
                     p.seteLocal(e);
                 }
