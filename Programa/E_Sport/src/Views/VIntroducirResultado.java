@@ -88,7 +88,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         bAceptar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        cbPartido = new javax.swing.JComboBox<>();
+        cbPartido = new javax.swing.JComboBox<String>();
         bModificar = new javax.swing.JButton();
         img = new javax.swing.JLabel();
 
@@ -100,7 +100,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         jLabel1.setText("Inserción de los resultados del partido");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(12, 13, 700, 47);
+        jLabel1.setBounds(12, 13, 700, 42);
 
         taLocal.setEditable(false);
         taLocal.setColumns(20);
