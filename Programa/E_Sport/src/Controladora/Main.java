@@ -60,10 +60,37 @@ public class Main {
         usuario = "eqdaw04";
         contrasenna = "eqdaw04";
         //construccion de la ruta completa.
+        aplicarEstilo();
         inicializarValores();
         
         login = new VLogin();
         //new VPrincipal(1,"Jon");
+    }
+    
+    /**
+     * Metodo para aplicar el estilo de la interfaz gráfica
+     * @throws Exception 
+     */
+    
+    public static void aplicarEstilo() throws Exception {
+        
+        // http://codejavu.blogspot.com.es/2014/05/ejemplo-look-and-feel-en-java.html
+        
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        JDialog.setDefaultLookAndFeelDecorated(true);
+        
+        // Nimbus
+        UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+        
+        // Metal
+        // UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+        
+        // Windows
+        // UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        
+        // Motif
+        // UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+        
     }
     
     /**
@@ -72,11 +99,6 @@ public class Main {
      */
     
     public static void inicializarValores() throws Exception{
-        
-        JFrame.setDefaultLookAndFeelDecorated(true);
-        JDialog.setDefaultLookAndFeelDecorated(true);
-        UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");        
-  
         bdEquipo = new BDEquipo();
         bdJornada = new BDJornada();
         bdJugador = new BDJugador();
