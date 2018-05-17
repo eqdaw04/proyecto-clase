@@ -23,6 +23,7 @@ CREATE OR REPLACE PACKAGE BODY Pkg_Jornada IS
   END;
 END Pkg_Jornada;
 /
+/*
 --Procedimiento anónimo de llamada
 DECLARE
       V_Cur  Pkg_Jornada.TCURSOR;
@@ -40,3 +41,4 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE(V_Id_partido|| ' ' || V_Id_equipo || ' ' || V_Nombre || ' ' || V_Visitante|| ' ' ||V_Lugar);
     END LOOP;
 END;
+*/
