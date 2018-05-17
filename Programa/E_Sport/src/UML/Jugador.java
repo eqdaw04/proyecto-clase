@@ -24,6 +24,19 @@ public class Jugador {
         return idJugador;
     }
 
+    public Jugador(String dni, String nombre, String apellido1, String apellido2, String nickname, float sueldo, Date fechaAlta, String comentario) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.nickname = nickname;
+        this.sueldo = sueldo;
+        this.fechaAlta = fechaAlta;
+        this.comentario = comentario;
+    }
+    
+    
+
     public void setIdJugador(int idJugador) {
         this.idJugador = idJugador;
     }

@@ -162,6 +162,9 @@ public class Emparejamiento {
             dato += "Jornada " + jornada + " compiten: ";
             // insertar la jornada a la BBDD
             Jornada j = Main.insertarJornada(jornada, fecha, con);
+            if(j == null){
+                throw new Excepcion(40);
+            }
             sumar = true;
             int d = 0;
             for(int y = 0; y< horizontal; y++){
@@ -215,6 +218,9 @@ public class Emparejamiento {
             dato += "Jornada " + jornada + " compiten: ";
             // insertar la jornada a la BBDD
             Jornada j = Main.insertarJornada(jornada, fecha, con);
+            if(j == null){
+                throw new Excepcion(40);
+            }
             sumar = true;
             int d = 0;
             for(int y = 0; y< horizontal; y++){

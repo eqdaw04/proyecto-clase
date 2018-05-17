@@ -8,23 +8,17 @@ package Controladora;
 import Recurso.Emparejamiento;
 import UML.*;
 import BD.*;
-import Recurso.*;
-import static BD.BDConexion.*;
 import Excepciones.Excepcion;
 import Views.*;
 import java.awt.Color;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
@@ -49,6 +43,9 @@ public class Main {
     private static Persona persona;
     private static Equipo equipo;
     private static Jugador jugador;
+    //No se precisa objetos de jornada ni partido, ya que casi no se usa
+    //El objeto perfil no es necesario, ya que sólo precisamos el nivel de la persona
+    //Con estas omisiones de objetos, se ahorrá recursos del sistema 
     private static int perfil;
     private static VLogin login;
     private static String driver, url, usuario, contrasenna;
@@ -347,9 +344,9 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static void altaPersona( String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, Calendar fecha, String perfil) throws Exception{
-        Persona p = new Persona(nombre, ape1, ape2, fecha, usuario, contrasenna, email);
-        p.setPerfil(bdPerfil.buscarPorNombre(perfil));
-        bdPersona.altaPersona(p);
+        persona = new Persona(nombre, ape1, ape2, fecha, usuario, contrasenna, email);
+        persona.setPerfil(bdPerfil.buscarPorNombre(perfil));
+        bdPersona.altaPersona(persona);
     }
     
     /**
@@ -366,6 +363,7 @@ public class Main {
     
     /**
      * Metodo para modificar una persona de la base de datos.
+     * @param id
      * @param usuario String
      * @param contrasenna String
      * @param nombre String
@@ -378,17 +376,12 @@ public class Main {
     
     //---------- JON XU JIN ----------
     
-    public static void modificarPersona(int id,String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil, Calendar fecha) throws Exception {
+    public static void modificarPersona(int id, String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil, Calendar fecha) throws Exception {
+        // en ved de modificar cada atributo, crear uno nuevo con su constructor se ahorra código
+        jilhkgjfhd
+        persona = new Persona(nombre, ape1, ape2, fecha, usuario, contrasenna, email);
         persona.setIdPersona(id);
-        persona.setUsuario(usuario);
-        persona.setNombre(nombre);
-        persona.setApellido1(ape1);
-        persona.setApellido2(ape2);
-        persona.setUsuario(usuario);
-        persona.setContrasenna(contrasenna);
-        persona.setEmail(email);
         persona.setPerfil(bdPerfil.buscarPorNombre(perfil));
-        persona.setFechaAlta(fecha);
         bdPersona.modificarPersona(persona);
     }
     
@@ -402,7 +395,8 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static Persona consultarPersona(String usuario) throws Exception{
-        return bdPersona.buscarPersonaPorUsuario(usuario);
+        persona = bdPersona.buscarPersonaPorUsuario(usuario);
+        return persona;
     }
     
     /**
@@ -503,12 +497,7 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static Jornada insertarJornada(int nJornada, Calendar fecha, BDConexion con) throws Exception{
-        // insertar la jornada según calendario y devolver si se ha insertado, en caso contrario, saltar excepcion
-        Jornada j = bdJornada.insertarJornada(nJornada, fecha, con);
-        if(j == null){
-            throw new Excepcion(40);
-        }
-        return j;
+        return bdJornada.insertarJornada(nJornada, fecha, con);
     }
     
     /**
@@ -568,7 +557,8 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static Equipo consultarEquipoPorNumero(int n) throws Exception{
-        return bdEquipo.consultarEquipoPorNumero(n);
+        equipo = bdEquipo.consultarEquipoPorNumero(n);
+        return equipo;
     }
     
     //---------- JON XU JIN ----------
@@ -786,16 +776,8 @@ public class Main {
      */
     
     // Imanol Luis
-    public static void altaJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String sueldo, Date fechaAlta, String comentario) throws Exception {
-        jugador=new Jugador();
-        jugador.setDni(dni);
-        jugador.setNombre(nombre);
-        jugador.setApellido1(apellido1);
-        jugador.setApellido2(apellido2);
-        jugador.setNickname(nickname);
-        jugador.setSueldo(Float.parseFloat(sueldo.replace(",", ".")));
-        jugador.setFechaAlta(fechaAlta);
-        jugador.setComentario(comentario);
+    public static void altaJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, float sueldo, Date fechaAlta, String comentario) throws Exception {
+        jugador = new Jugador(dni, nombre, apellido1, apellido2, nickname, sueldo, fechaAlta, comentario);
         bdJugador.insertarJugador(jugador);
     }
     
@@ -811,6 +793,8 @@ public class Main {
     
     /**
      * Metodo para modificar a un jugador de la base de datos.
+     * @param id
+     * @param j
      * @param dni String
      * @param nombre String
      * @param apellido1 String
@@ -822,14 +806,9 @@ public class Main {
      */
     
     // Imanol Luis
-    public static void modificarJugador(String dni, String nombre, String apellido1, String apellido2, String nickname, String sueldo, String comentario) throws Exception {
-        jugador.setDni(dni);
-        jugador.setNombre(nombre);
-        jugador.setApellido1(apellido1);
-        jugador.setApellido2(apellido2);
-        jugador.setNickname(nickname);
-        jugador.setSueldo(Float.parseFloat(sueldo.replace(",", ".")));
-        jugador.setComentario(comentario);
+    public static void modificarJugador(int id , String dni, String nombre, String apellido1, String apellido2, String nickname, float sueldo,Date fecha, String comentario) throws Exception {
+        jugador = new Jugador(dni, nombre, apellido1, apellido2, nickname, sueldo, fecha, comentario);
+        jugador.setIdJugador(id);
         bdJugador.modificarJugador(jugador);
     }
     
@@ -841,8 +820,9 @@ public class Main {
      */
     
     // Imanol Luis   
-    public static Jugador buscarJugador(String dni) throws Exception {   
-       return bdJugador.BuscarJugador(dni);
+    public static Jugador buscarJugador(String dni) throws Exception {  
+        jugador = bdJugador.BuscarJugador(dni);
+       return jugador;
     }
     
     /**
@@ -877,7 +857,8 @@ public class Main {
 
     //------------Mikel
     public static Equipo ConsultarEquipoPorUsuario(String usu) throws Exception{
-        return bdEquipo.BuscarEquipoPorUsuario(usu);
+        equipo = bdEquipo.BuscarEquipoPorUsuario(usu);
+        return equipo;
     }
     
     /**
@@ -928,6 +909,7 @@ public class Main {
     /**
      * Metodo para dar de alta un equipo en la base de datos.
      * @param nombre String
+     * @param lugar
      * @param usuario String
      * @param fechaCreacion Date
      * @param comentario String
@@ -980,7 +962,8 @@ public class Main {
 
     // Imanol Luis
     public static Equipo buscarEquipo(String nombre) throws Exception {
-       return bdEquipo.BuscarEquipo(nombre);
+        equipo = bdEquipo.BuscarEquipo(nombre);
+       return equipo;
     }
     
     /**
@@ -1044,8 +1027,8 @@ public class Main {
 
     // Imanol Luis
     public static boolean duennoTieneEquipo(String usuario) throws Exception {
-        Equipo e=bdEquipo.BuscarEquipoPorUsuario(usuario);
-        if(e==null)
+        equipo = bdEquipo.BuscarEquipoPorUsuario(usuario);
+        if(equipo == null)
         {
             return false;
         }
@@ -1063,7 +1046,8 @@ public class Main {
      */
 
     public static Persona obtenerPersona(int idPersona) throws Exception {
-        return bdPersona.buscarPersona(idPersona);
+        bdPersona.buscarPersona(idPersona);
+        return persona;
     }
     //----------------MIKEL
     public static ArrayList <Partido> BuscarPartidosPorJornada (int j) throws Exception{

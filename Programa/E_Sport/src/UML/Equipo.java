@@ -23,6 +23,15 @@ public class Equipo {
     public Equipo() {
     }
 
+    public Equipo(String nombre, Date fechaCreacion, String lugar, String comentario) {
+        this.nombre = nombre;
+        this.fechaCreacion = fechaCreacion;
+        this.lugar = lugar;
+        this.comentario = comentario;
+    }
+
+    
+    
     public int getIdEquipo() {
         return idEquipo;
     }
