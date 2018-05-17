@@ -250,7 +250,7 @@ public class Main {
     }
     
     /**
-     * Metodo para abrir ventana jugador.
+     * Metodo para abrir ventana jugador como consulta única.
      * @param j Jugador
      */
       //-------Mikel
@@ -293,9 +293,7 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static ArrayList <Perfil> consultarTodosLosPerfiles() throws Exception{
-        ArrayList <Perfil> listaPerfil =  new ArrayList();
-        listaPerfil = bdPerfil.buscarPerfiles();
-        return listaPerfil;
+        return bdPerfil.buscarPerfiles();
     }
     
     /**
@@ -308,9 +306,7 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static Perfil consultarPerfil(int cod) throws Exception{
-        Perfil p = null;
-        p = bdPerfil.buscarPorCodigo(cod);
-        return p;
+        return bdPerfil.buscarPorCodigo(cod);
     }
     
     /**
@@ -343,9 +339,7 @@ public class Main {
     //---------- JON XU JIN ----------
 
     public static void bajaPersona(String usuario) throws Exception {
-        Persona p = new Persona();
-        p.setUsuario(usuario);
-        bdPersona.bajaPersona(p);
+        bdPersona.bajaPersona(usuario);
     }
     
     /**
@@ -386,9 +380,7 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static Persona consultarPersona(String usuario) throws Exception{
-        persona = null;
-        persona = bdPersona.buscarPersonaPorUsuario(usuario); 
-        return persona;
+        return bdPersona.buscarPersonaPorUsuario(usuario);
     }
     
     /**
@@ -400,9 +392,7 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static ArrayList <Persona> consultarTodasLasPersonas() throws Exception{
-        ArrayList <Persona> listadoPersona = new ArrayList();
-        listadoPersona = bdPersona.buscarTodasLasPersona();
-        return listadoPersona;
+        return bdPersona.buscarTodasLasPersona();
     }
     
     /**
@@ -431,9 +421,7 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static ArrayList <Partido> consultarPartidosPorJornada(int n) throws Exception{
-        ArrayList<Partido> lPartido = new ArrayList();
-        lPartido = bdPartido.consultarPartidosPorJornada(n);
-        return lPartido;
+        return bdPartido.consultarPartidosPorJornada(n);
     }
     
     /**
@@ -446,8 +434,7 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static Partido consultarMarcadorPorPartido(Partido p) throws Exception{
-        p = bdPartido.consultarMarcadores(p);
-        return p;
+        return bdPartido.consultarMarcadores(p);
     }
     
     /**
@@ -460,9 +447,7 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static ArrayList<Jornada> consultarTodasLasJornadas() throws Exception{
-        ArrayList <Jornada> lJornada = new ArrayList();
-        lJornada = bdJornada.consultarTodasLasJornadas();
-        return lJornada;
+        return bdJornada.consultarTodasLasJornadas();
     }
     
     /**
@@ -476,11 +461,8 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static String generarCalendario(Calendar fecha, int horaF) throws Exception{
-        // extraer de la bbdd los equipos disponibles
-        ArrayList <Equipo> lEquipo = new ArrayList();
-        lEquipo = buscarEquipo();
-        // instanciar el algoritmo de emparejamiento
-        Emparejamiento emp = new Emparejamiento(lEquipo);
+        // extraer de la bbdd los equipos disponibles e instanciar el algoritmo de emparejamiento
+        Emparejamiento emp = new Emparejamiento(bdEquipo.BuscarEquipo());
         // ejecutar el algoritmo para los equipos aleatorios
         // Abrir conexion y mantenerlo abierto hasta que acabe que introducir las partidas para no tener que abrir y cerrar constantemente hasta introducir los X partidos
         emp.calcularPartido(fecha, horaF);
@@ -517,8 +499,7 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static void modificarJornada(Jornada jornada, BDConexion con) throws Exception{
-        // modificar la fecha final de la jornada
-        
+        // modificar la fecha final de la jornada        
         bdJornada.modificarJornada(jornada, con);
         
     }
@@ -535,11 +516,7 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static boolean insertarPartido(Partido partido, Jornada jornada, BDConexion con) throws Exception{
-        boolean estado = false;
-        if(bdPartido.insertarPartido(partido, jornada, con)){
-            estado = true;
-        }
-        return estado;
+        return bdPartido.insertarPartido(partido, jornada, con);
     }
     
     /**
@@ -552,11 +529,7 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static boolean modificarPartido(Partido partido) throws Exception{
-        boolean estado = false;
-        if(bdPartido.modificarPartido(partido)){
-            estado = true;
-        }
-        return estado;
+        return bdPartido.modificarPartido(partido);
     }
     
     /**
@@ -579,8 +552,7 @@ public class Main {
     }
     
     //----------JON XU JIN ----------
-    public static void validar(int cod, JTextField campo) throws Exception{
-        
+    public static void validar(int cod, JTextField campo) throws Exception{        
         Pattern p=Pattern.compile(datoPatron(cod));
         Matcher m=p.matcher(campo.getText());
         if(!m.matches())
@@ -844,9 +816,7 @@ public class Main {
     
     // Imanol Luis   
     public static Jugador buscarJugador(String dni) throws Exception {   
-       jugador = new Jugador();
-       jugador = bdJugador.BuscarJugador(dni);
-       return jugador;
+       return bdJugador.BuscarJugador(dni);
     }
     
     /**
@@ -984,9 +954,7 @@ public class Main {
 
     // Imanol Luis
     public static Equipo buscarEquipo(String nombre) throws Exception {
-       equipo = new Equipo();
-       equipo = bdEquipo.BuscarEquipo(nombre);
-       return equipo;
+       return bdEquipo.BuscarEquipo(nombre);
     }
     
     /**
@@ -1013,8 +981,7 @@ public class Main {
         
         ArrayList<Jugador> listaJugadores=bdJugador.BuscarEqui(String.valueOf(equipo.getIdEquipo()));
         
-        for(int x=0;x<listaJugadores.size();x++)
-        {
+        for(int x=0;x<listaJugadores.size();x++){
             if(x>0)
             {
                 plantilla = plantilla + "\n";
@@ -1028,7 +995,6 @@ public class Main {
             
             plantilla=plantilla + dni + " – " + nombre + " " + apellido1 + " " + apellido2 + " – " + nickname;
         }
-        
         return plantilla;
     }
     
@@ -1071,9 +1037,7 @@ public class Main {
      */
 
     public static Persona obtenerPersona(int idPersona) throws Exception {
-        Persona p = null;
-        p = bdPersona.buscarPersona(idPersona);
-        return p;
+        return bdPersona.buscarPersona(idPersona);
     }
     //----------------MIKEL
     public static ArrayList <Partido> BuscarPartidosPorJornada (int j) throws Exception{

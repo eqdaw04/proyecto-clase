@@ -177,14 +177,14 @@ public class BDPersona {
      * @throws Exception 
      */
     
-    public void bajaPersona(Persona p) throws Exception{
+    public void bajaPersona(String u) throws Exception{
         // abre la conexion
         BDConexion con = new BDConexion();
         // preparar la conexion y sentencia
         PreparedStatement sentencia;
         sentencia = con.getConnection().prepareStatement("DELETE FROM persona WHERE usuario = ?");
         // datos a insertar
-        sentencia.setString(1, p.getUsuario());
+        sentencia.setString(1, u);
         // ejecutar la sentencia
         if(sentencia.executeUpdate() != 1){
             throw new Excepcion(25);
