@@ -158,7 +158,7 @@ public class BDJugador {
         ArrayList<Jugador> a = new ArrayList();
         
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador");
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador ORDER BY Id_jugador");
         
         // Ejecuta la consulta e inserta las filas en un ArrayList de jugadores
         ResultSet rs;
@@ -185,7 +185,7 @@ public class BDJugador {
        ArrayList<Jugador> a= new ArrayList();
        
        PreparedStatement sentencia;
-       sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo = ?");
+       sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo = ? ORDER BY Id_jugador");
        
        sentencia.setString(1,id);
        
@@ -244,7 +244,7 @@ public class BDJugador {
        ArrayList<Jugador> a= new ArrayList();
         
        PreparedStatement sentencia;
-       sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo is null");
+       sentencia = con.getConnection().prepareStatement("SELECT * FROM Jugador WHERE Id_equipo is null ORDER BY Id_jugador");
        sentencia.executeUpdate();
         
        // Ejecuta la consulta e inserta las filas en un ArrayList de jugadores

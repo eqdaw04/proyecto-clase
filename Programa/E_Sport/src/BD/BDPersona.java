@@ -123,7 +123,7 @@ public class BDPersona {
         BDConexion con = new BDConexion();
         // preparar la conexion y sentencia
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM persona");
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM persona ORDER BY Id_persona");
         // crear objeto para el resultado de la consulta
         ResultSet rs;
         // cargar objeto sentencia al objeto rs
@@ -239,7 +239,7 @@ public class BDPersona {
         BDConexion con = new BDConexion();
         // preparar la conexion y sentencia
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM persona WHERE Id_perfil = (SELECT Id_perfil FROM Perfil WHERE Nombre = ?)");
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM persona WHERE Id_perfil = (SELECT Id_perfil FROM Perfil WHERE Nombre = ?) ORDER BY Id_persona");
         sentencia.setString(1, "Dueño");
         ResultSet rs = sentencia.executeQuery();
        // buscar si existe datos en la rs

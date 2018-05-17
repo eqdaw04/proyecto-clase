@@ -107,7 +107,7 @@ public class BDPartido {
         ArrayList<Partido> lPartido = new ArrayList();
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM partido WHERE id_jornada = ?");
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM partido WHERE id_jornada = ? ORDER BY Id_partido");
         sentencia.setInt(1, jornada);
         ResultSet rs;
         rs = sentencia.executeQuery();
@@ -134,7 +134,8 @@ public class BDPartido {
          PreparedStatement sentencia;
          sentencia = con.getConnection().prepareStatement("SELECT * FROM partido "
                  + "WHERE fecha >= to_timestamp(?,'RRRR-MM-DD HH24:MI:SS.FF') "
-                 + "AND fecha <= to_timestamp(?,'RRRR-MM-DD HH24:MI:SS.FF')");
+                 + "AND fecha <= to_timestamp(?,'RRRR-MM-DD HH24:MI:SS.FF')"
+                 + "ORDER BY Id_partido");
          sentencia.setString(1, String.valueOf(new java.sql.Timestamp(fecha.getTimeInMillis())));
          sentencia.setString(2, convertirFecha(fecha.getTime()));
          ResultSet rs;

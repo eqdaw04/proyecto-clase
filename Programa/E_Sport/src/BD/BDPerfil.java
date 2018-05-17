@@ -71,7 +71,7 @@ public class BDPerfil {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
         
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM perfil");
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM perfil ORDER BY Id_perfil");
         // crear rs para cargar los resultados
         ResultSet rs;
         rs = sentencia.executeQuery();

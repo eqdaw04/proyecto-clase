@@ -96,7 +96,7 @@ public class BDJornada {
         BDConexion con = new BDConexion();
         // preparar la sentencia
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT id_jornada, fecha_inicio, fecha_fin FROM jornada");
+        sentencia = con.getConnection().prepareStatement("SELECT id_jornada, fecha_inicio, fecha_fin FROM Jornada ORDER BY Id_jornada");
         // instanciar rs, ejecutar la sentencia y cargar los datos al rs
         ResultSet rs;
         rs = sentencia.executeQuery();
