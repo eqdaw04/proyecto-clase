@@ -79,7 +79,6 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         tfHora = new javax.swing.JTextField();
         tfLugar = new javax.swing.JTextField();
@@ -140,21 +139,16 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(330, 230, 75, 16);
 
-        jLabel6.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        jLabel6.setText("Modificar resultado anterior: Haga click modificar partido y seleccione la fecha");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(30, 70, 680, 17);
-
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel7.setText("Hora del Partido:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(460, 150, 150, 18);
+        jLabel7.setBounds(470, 140, 150, 18);
 
         tfHora.setEditable(false);
         tfHora.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfHora.setText("10:00");
         getContentPane().add(tfHora);
-        tfHora.setBounds(630, 150, 80, 22);
+        tfHora.setBounds(640, 140, 80, 22);
 
         tfLugar.setEditable(false);
         getContentPane().add(tfLugar);
@@ -173,7 +167,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
             }
         });
         getContentPane().add(ccFecha);
-        ccFecha.setBounds(270, 110, 260, 22);
+        ccFecha.setBounds(360, 80, 260, 22);
 
         bAceptar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bAceptar.setText("Aceptar");
@@ -199,7 +193,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         jLabel11.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel11.setText("Partido número: ");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(30, 150, 150, 18);
+        jLabel11.setBounds(40, 140, 150, 18);
 
         cbPartido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,17 +201,18 @@ public class VIntroducirResultado extends javax.swing.JDialog {
             }
         });
         getContentPane().add(cbPartido);
-        cbPartido.setBounds(220, 150, 73, 22);
+        cbPartido.setBounds(230, 140, 73, 22);
 
         bModificar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        bModificar.setText("Modificar Partido");
+        bModificar.setText("Introducir resultado");
+        bModificar.setToolTipText("");
         bModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bModificarActionPerformed(evt);
             }
         });
         getContentPane().add(bModificar);
-        bModificar.setBounds(40, 110, 165, 27);
+        bModificar.setBounds(40, 80, 240, 27);
 
         img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(img);
@@ -326,7 +321,6 @@ public class VIntroducirResultado extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
