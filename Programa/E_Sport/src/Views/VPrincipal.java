@@ -129,13 +129,13 @@ public class VPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         jLabel1.setText("Bienvenido");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(50, 490, 220, 42);
+        jLabel1.setBounds(50, 490, 220, 47);
 
         NombreUsu.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         NombreUsu.setForeground(new java.awt.Color(0, 153, 255));
         NombreUsu.setText("Nombre");
         getContentPane().add(NombreUsu);
-        NombreUsu.setBounds(270, 490, 170, 42);
+        NombreUsu.setBounds(270, 490, 170, 47);
         getContentPane().add(logotipo);
         logotipo.setBounds(900, 560, 80, 70);
         getContentPane().add(imgfondo);

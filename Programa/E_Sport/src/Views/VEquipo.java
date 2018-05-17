@@ -69,7 +69,7 @@ public class VEquipo extends javax.swing.JDialog {
         taPlantilla = new javax.swing.JTextArea();
         cFechaCreacion = new org.freixas.jcalendar.JCalendarCombo();
         jLabel5 = new javax.swing.JLabel();
-        cbDuenno = new javax.swing.JComboBox<String>();
+        cbDuenno = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         tfLugar = new javax.swing.JTextField();
         imgfondo = new javax.swing.JLabel();
@@ -152,7 +152,7 @@ public class VEquipo extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         jLabel1.setText("EQUIPO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(239, 25, 280, 42);
+        jLabel1.setBounds(239, 25, 280, 47);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("Nombre:");
