@@ -1,15 +1,20 @@
 SET SERVEROUTPUT ON
 
-DROP PACKAGE Pkg_Jornada;
+--Creamos el paquete Pkg_Resultados, que contiene el procedimiento Resul, el cual devuelve los partidos y equipos que intervienen para la jornada indicada
 CREATE OR REPLACE PACKAGE Pkg_Jornada IS
+--Declaramos Tcursor de tipo ref cursor
       TYPE TCURSOR IS REF CURSOR;
+-- Declaramos el procedimiento PartidosPorJornada con el parametro de entrada P_id_jor de tipo Integer y de salida C_partidos de tipo TCURSOR
       PROCEDURE PartidosPorJornada (P_id_jor integer,C_partidos OUT TCURSOR);
 END Pkg_Jornada;
 /
+--Declaramos el cuerpo del paquete
 CREATE OR REPLACE PACKAGE BODY Pkg_Jornada IS
   PROCEDURE PartidosPorJornada (P_id_jor integer,C_partidos OUT TCURSOR) AS
   BEGIN
+-- Abrimos el cursor
   OPEN C_partidos for
+--Llenamos el cursor con el Id de partido y equipo, su nombre su "lugar" y si es visitante o no
       SELECT  M.Id_partido,E.Id_equipo,E.Nombre,M.Visitante,E.Lugar 
       FROM Equipo E, MARCADOR M
       WHERE E.Id_equipo = M.Id_equipo
