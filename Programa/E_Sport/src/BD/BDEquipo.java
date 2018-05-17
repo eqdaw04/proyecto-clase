@@ -95,6 +95,7 @@ public class BDEquipo {
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
         // preparar la sentencia
+        // En las sentencias se usa RRRR en vez de YYYY por el efecto 2000, 
         sentencia = con.getConnection().prepareStatement("UPDATE Equipo SET NOMBRE=?, COMENTARIO=?, fecha_creacion = TO_DATE(?,'DD/MM/RRRR'), LUGAR=? WHERE ID_EQUIPO = ?");
         // cargar los datos al ?
         sentencia.setString(1, e.getNombre());

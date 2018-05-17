@@ -225,7 +225,9 @@ public class VCalendario extends javax.swing.JDialog {
         }
         for (int x=0;x<jornadas.size();x++){
             try {
-                jornadas.get(x).setListaPartidos(Main.BuscarPartidosPorJornada(jornadas.get(x).getIdJornada()));
+                ArrayList <Partido> lp= new ArrayList();
+                lp=Main.BuscarPartidosPorJornada(jornadas.get(x).getIdJornada());
+                jornadas.get(x).setListaPartidos(lp);
             } catch (Exception ex) {
                 Logger.getLogger(VCalendario.class.getName()).log(Level.SEVERE, null, ex);
             }
