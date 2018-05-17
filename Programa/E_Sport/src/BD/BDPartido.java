@@ -143,8 +143,8 @@ public class BDPartido {
          BDConexion con = new BDConexion();
          PreparedStatement sentencia;
          sentencia = con.getConnection().prepareStatement("SELECT * FROM partido "
-                 + "WHERE fecha > to_timestamp(?,'RRRR-MM-DD HH24:MI:SS.FF') "
-                 + "AND fecha < to_timestamp(?,'RRRR-MM-DD HH24:MI:SS.FF')");
+                 + "WHERE fecha >= to_timestamp(?,'RRRR-MM-DD HH24:MI:SS.FF') "
+                 + "AND fecha <= to_timestamp(?,'RRRR-MM-DD HH24:MI:SS.FF')");
          sentencia.setString(1, String.valueOf(new java.sql.Timestamp(fecha.getTimeInMillis())));
          sentencia.setString(2, convertirFecha(fecha.getTime()));
          ResultSet rs;

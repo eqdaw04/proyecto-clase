@@ -227,7 +227,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        // TODO add your handling code here:
+        Main.cerrar(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarActionPerformed
@@ -240,7 +240,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
             p = listaPartido.get(x);
             if(cbPartido.getSelectedIndex()>=0){
                 if(p.getIdPartido() == Integer.valueOf(cbPartido.getSelectedItem().toString())){
-                    SimpleDateFormat f = new SimpleDateFormat("hh:mm");
+                    SimpleDateFormat f = new SimpleDateFormat("HH:MM");
                     tfHora.setText(f.format(p.getFecha().getTime()));
                     
                     tfPuntosLocal.setText(String.valueOf(p.getmLocal()));

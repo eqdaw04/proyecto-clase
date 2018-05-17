@@ -56,6 +56,9 @@ public class Emparejamiento {
     
     public void calcularPartido(Calendar fecha, int horaF) throws Exception{
         int e = lEquipo.size();
+        fecha.set(Calendar.MINUTE, 00);
+        fecha.set(Calendar.SECOND, 00);
+        fecha.set(Calendar.MILLISECOND, 00);
         this.fecha = fecha;
         horaI = fecha.get(Calendar.HOUR_OF_DAY);
         this.horaF = horaF;

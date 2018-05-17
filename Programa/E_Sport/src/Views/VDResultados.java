@@ -8,8 +8,7 @@ package Views;
 import Controladora.Main;
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
@@ -20,7 +19,7 @@ import org.jfree.data.general.DefaultPieDataset;
 /**
  *
  * @author v6222
- * librería para el gráfico en
+ * Se ha usado la librería para el gráfico en
  * http://www.jfree.org/jfreechart/download.html
  */
 public class VDResultados extends javax.swing.JDialog {
@@ -29,6 +28,7 @@ public class VDResultados extends javax.swing.JDialog {
     
     /**
      * Creates new form VDResultados
+     * @param nombre
      */
     public VDResultados(String nombre) {
         initComponents();
@@ -52,7 +52,7 @@ public class VDResultados extends javax.swing.JDialog {
             */
             graficoClasificacion(Main.resultados());
         } catch (Exception ex) {
-            Logger.getLogger(VDResultados.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
 	pGrafico.setVisible(false);
         setVisible(true);
@@ -249,7 +249,7 @@ public class VDResultados extends javax.swing.JDialog {
             }
             
         } catch (Exception ex) {
-            Logger.getLogger(VDResultados.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

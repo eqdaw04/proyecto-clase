@@ -93,8 +93,10 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 ccCalendarioInicial.setEnabled(true);
                 cbHoraI.setEnabled(true);
                 cbHoraF.setEnabled(true);
+                
             }
             else{
+                bBorrar.setEnabled(true);
                 cbHoraF.setEnabled(false);
                 lJornada.setEnabled(true);
                 cargarJornada(listaJornada);
@@ -162,7 +164,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1004, 711));
-        setMinimumSize(new java.awt.Dimension(964, 688));
+        setMinimumSize(new java.awt.Dimension(964, 709));
         getContentPane().setLayout(null);
 
         bAceptar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -231,6 +233,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         bBorrar.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         bBorrar.setText("Borrar Todo");
+        bBorrar.setEnabled(false);
         bBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bBorrarActionPerformed(evt);
@@ -369,7 +372,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         ccCalendarioInicial.setEnabled(false);
         getContentPane().add(ccCalendarioInicial);
-        ccCalendarioInicial.setBounds(40, 100, 203, 22);
+        ccCalendarioInicial.setBounds(40, 100, 185, 22);
 
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel6.setText("Seleccione hora del último partido:");
@@ -416,18 +419,18 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(img);
-        img.setBounds(0, 0, 970, 690);
+        img.setBounds(0, 0, 970, 710);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBorrarActionPerformed
         try {
-            if(Main.borrarLiga()){
-                JOptionPane.showMessageDialog(this, "Soy dios");
-            }
-            else{
-                JOptionPane.showMessageDialog(this, "caca");
+            if(JOptionPane.showConfirmDialog(this, "¿Realmente desea borrar toda la Liga?\nAtención: Esto implica borrar todos los marcadores, partidos y jornadas actuales.","Borrar toda la Liga",2) == 0){
+                if(Main.borrarLiga()){
+                    JOptionPane.showMessageDialog(this, "Liga borrada correctamente.");
+                    Main.reabrir(this, "", n);
+                }
             }
         } catch (Exception ex) {
             Logger.getLogger(VGenerarLiga.class.getName()).log(Level.SEVERE, null, ex);
@@ -442,7 +445,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
         try {
             // mostrar pantalla de espera
             pEspera.setVisible(true);
-            if(JOptionPane.showConfirmDialog(this, "Puede tardar unos minutos, ¿Desea continuar?","",2) == 0){
+            if(JOptionPane.showConfirmDialog(this, "Dependiendo de la cantidad de equipos y la velocidad de conexión a la base de datos, puede tardar unos minutos\n¿Desea continuar?","",2) == 0){
                 generarCalendario();
             }
             Main.reabrir(this, "", 7);
