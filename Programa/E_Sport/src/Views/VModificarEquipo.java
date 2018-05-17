@@ -37,7 +37,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
         initComponents();
         setModal(true);
         setLocationRelativeTo(null);
-
+        setVisible(true);
         
         e = Main.ConsultarEquipoPorUsuario(usu);
         if(e != null){
@@ -61,10 +61,10 @@ public class VModificarEquipo extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         nombeEquipo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        liJugEqui = new javax.swing.JList<String>();
+        liJugEqui = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        liJugDisp = new javax.swing.JList<String>();
+        liJugDisp = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         bEliminar = new javax.swing.JButton();
         bAnnadir = new javax.swing.JButton();
@@ -82,13 +82,13 @@ public class VModificarEquipo extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 30)); // NOI18N
         jLabel1.setText("Modificar Equipo");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(130, 30, 360, 35);
+        jLabel1.setBounds(130, 30, 360, 39);
 
         nombeEquipo.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 30)); // NOI18N
         nombeEquipo.setForeground(new java.awt.Color(51, 102, 255));
         nombeEquipo.setText("NOMBREEQUIPO");
         getContentPane().add(nombeEquipo);
-        nombeEquipo.setBounds(440, 30, 290, 35);
+        nombeEquipo.setBounds(440, 30, 290, 39);
 
         liJugEqui.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         liJugEqui.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -133,7 +133,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bEliminar);
-        bEliminar.setBounds(50, 466, 170, 27);
+        bEliminar.setBounds(50, 466, 170, 28);
 
         bAnnadir.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bAnnadir.setText("Añadir Jugador");
@@ -144,7 +144,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnnadir);
-        bAnnadir.setBounds(620, 460, 170, 27);
+        bAnnadir.setBounds(620, 460, 170, 28);
 
         bConsultar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bConsultar.setText("Consultar");
@@ -155,7 +155,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bConsultar);
-        bConsultar.setBounds(358, 280, 150, 27);
+        bConsultar.setBounds(358, 280, 150, 28);
 
         tfSueldo.setEditable(false);
         tfSueldo.setText("Sueldo");
@@ -175,7 +175,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSalir);
-        bSalir.setBounds(690, 523, 100, 27);
+        bSalir.setBounds(690, 523, 100, 28);
 
         imgfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(imgfondo);

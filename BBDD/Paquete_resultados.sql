@@ -22,6 +22,7 @@ CREATE OR REPLACE PACKAGE BODY Pkg_Resultados IS
   END;
 END Pkg_Resultados;
 /
+/*
 --Procedimiento anónimo de llamada
 DECLARE
       V_Cur  Pkg_Resultados.TCURSOR;
@@ -37,3 +38,4 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE(V_Id_jornada || ' ' || V_Id_partido || ' ' || V_Id_equipo || ' ' || V_Puntuacion);
     END LOOP;
 END;
+*/

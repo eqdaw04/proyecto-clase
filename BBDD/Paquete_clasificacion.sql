@@ -22,6 +22,7 @@ CREATE OR REPLACE PACKAGE BODY Pkg_Clasificacion IS
   END;
 END Pkg_Clasificacion;
 /
+/*
 --Procedimiento anónimo de llamada
 DECLARE
       V_Cur  Pkg_Clasificacion.TCURSOR;
@@ -35,5 +36,5 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE(V_nombre || ' ' ||  V_Puntuacion);
     END LOOP;
 END;
-
+*/
 
