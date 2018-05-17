@@ -26,6 +26,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 /**
  * Clase controladora.
@@ -71,6 +72,11 @@ public class Main {
      */
     
     public static void inicializarValores() throws Exception{
+        
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        JDialog.setDefaultLookAndFeelDecorated(true);
+        UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");        
+  
         bdEquipo = new BDEquipo();
         bdJornada = new BDJornada();
         bdJugador = new BDJugador();

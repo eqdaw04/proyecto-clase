@@ -88,7 +88,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bUltimo);
-        bUltimo.setBounds(450, 530, 60, 25);
+        bUltimo.setBounds(470, 550, 50, 25);
 
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel6.setText("Comentarios:");
@@ -101,7 +101,7 @@ public class VEquipo extends javax.swing.JDialog {
         jScrollPane1.setViewportView(taComentario);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(249, 382, 218, 96);
+        jScrollPane1.setBounds(240, 380, 280, 120);
 
         bBuscar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         bBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa2.png"))); // NOI18N
@@ -115,7 +115,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bBuscar);
-        bBuscar.setBounds(490, 110, 50, 30);
+        bBuscar.setBounds(530, 110, 50, 30);
 
         bAceptar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bAceptar.setText("Aceptar");
@@ -126,7 +126,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAceptar);
-        bAceptar.setBounds(220, 490, 130, 27);
+        bAceptar.setBounds(240, 510, 100, 27);
 
         bCancelar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bCancelar.setText("Cancelar");
@@ -136,7 +136,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bCancelar);
-        bCancelar.setBounds(393, 490, 150, 27);
+        bCancelar.setBounds(410, 510, 110, 27);
 
         bPrimero.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bPrimero.setText("|<");
@@ -147,19 +147,20 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bPrimero);
-        bPrimero.setBounds(220, 530, 70, 25);
+        bPrimero.setBounds(240, 550, 60, 25);
 
-        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("EQUIPO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(239, 25, 280, 47);
+        jLabel1.setBounds(-1, 25, 680, 44);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("Nombre:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(59, 115, 76, 21);
         getContentPane().add(tfNombre);
-        tfNombre.setBounds(249, 116, 218, 20);
+        tfNombre.setBounds(240, 110, 280, 25);
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel4.setText("Fecha de creación:");
@@ -175,7 +176,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnterior);
-        bAnterior.setBounds(300, 530, 60, 25);
+        bAnterior.setBounds(320, 550, 50, 25);
 
         bSiguiente.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bSiguiente.setText(">");
@@ -186,7 +187,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(380, 530, 60, 25);
+        bSiguiente.setBounds(390, 550, 50, 25);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel3.setText("Plantilla:");
@@ -199,9 +200,9 @@ public class VEquipo extends javax.swing.JDialog {
         jScrollPane2.setViewportView(taPlantilla);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(249, 183, 218, 133);
+        jScrollPane2.setBounds(240, 180, 280, 133);
         getContentPane().add(cFechaCreacion);
-        cFechaCreacion.setBounds(249, 148, 218, 20);
+        cFechaCreacion.setBounds(240, 140, 280, 28);
 
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel5.setText("Dueño:");
@@ -210,7 +211,7 @@ public class VEquipo extends javax.swing.JDialog {
 
         cbDuenno.setEnabled(false);
         getContentPane().add(cbDuenno);
-        cbDuenno.setBounds(249, 353, 218, 20);
+        cbDuenno.setBounds(240, 350, 280, 25);
 
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel7.setText("Lugar:");
@@ -219,7 +220,7 @@ public class VEquipo extends javax.swing.JDialog {
 
         tfLugar.setEditable(false);
         getContentPane().add(tfLugar);
-        tfLugar.setBounds(249, 323, 218, 20);
+        tfLugar.setBounds(240, 320, 280, 25);
 
         imgfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         imgfondo.setName(""); // NOI18N
