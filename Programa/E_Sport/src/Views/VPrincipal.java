@@ -112,7 +112,6 @@ public class VPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(988, 691));
         setMinimumSize(new java.awt.Dimension(988, 691));
         getContentPane().setLayout(null);
 
@@ -126,12 +125,12 @@ public class VPrincipal extends javax.swing.JFrame {
         getContentPane().add(bCerrarSesion);
         bCerrarSesion.setBounds(816, 13, 160, 50);
 
-        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         jLabel1.setText("Bienvenido");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(50, 490, 220, 47);
 
-        NombreUsu.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
+        NombreUsu.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         NombreUsu.setForeground(new java.awt.Color(0, 153, 255));
         NombreUsu.setText("Nombre");
         getContentPane().add(NombreUsu);
