@@ -454,11 +454,12 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 Main.reabrir(this, "", 7);
             }
             else{
+                
                 throw new Excepcion(34);
             }
-        } 
-        
+        }
         catch (Excepcion e){
+            pEspera.setVisible(false);
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
         }
         catch (Exception ex) {

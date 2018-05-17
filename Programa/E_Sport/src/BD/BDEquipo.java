@@ -243,7 +243,7 @@ public class BDEquipo {
         ArrayList<Equipo> a = new ArrayList();
         PreparedStatement sentencia;
         // preparar sentencia
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM equipo Order by Id_equipo");
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM equipo");
         // instanciar rs, ejecutar sentencia y cargar los datos al rs
         ResultSet rs;
         rs = sentencia.executeQuery();
@@ -261,6 +261,53 @@ public class BDEquipo {
         // devolver lista
         return a;
     }
+    
+    public ArrayList<Equipo> BuscarEquipo6() throws Exception {
+        // abrir conexión
+        BDConexion con = new BDConexion();
+        // instanciar un array de tipo objeto equipo
+        ArrayList<Equipo> a = new ArrayList();
+        ArrayList<Integer> cantidad = new ArrayList();
+        PreparedStatement sentencia;
+        // preparar sentencia
+        sentencia = con.getConnection().prepareStatement("SELECT equipo.id_equipo AS equipo, COUNT(jugador.id_equipo) AS suma FROM equipo INNER JOIN jugador ON jugador.id_equipo = equipo.id_equipo GROUP BY jugador.id_equipo");
+        // instanciar rs, ejecutar sentencia y cargar los datos al rs
+        ResultSet rs;
+        rs = sentencia.executeQuery();
+        // comprobar si hay datos
+        while (rs.next()){
+            // mandar a una función el rs
+            if(rs.getInt("suma")==6){
+                cantidad.add(rs.getInt("equipo"));
+            }
+        }
+        if(cantidad.size()>0){
+            a = BuscarEquipoLosEquiposPorIDEquipo(con, sentencia, rs, cantidad);
+        }
+        
+        // cerrar lo abierto
+        rs.close();
+        sentencia.close();
+        con.desconectar();
+        // devolver lista
+        return a;
+    }
+    
+    public ArrayList<Equipo> BuscarEquipoLosEquiposPorIDEquipo(BDConexion con, PreparedStatement sentencia, ResultSet rs, ArrayList <Integer> cantidad) throws Exception {
+        ArrayList<Equipo> a = new ArrayList();
+        for(int x = 0; x<cantidad.size(); x++){
+            sentencia = con.connection.prepareStatement("SELECT * FROM equipo WHERE id_equipo = ?");
+            sentencia.setInt(1, cantidad.get(x));
+            rs = sentencia.executeQuery();
+            if(rs.next()){
+                Equipo e = recorrer(rs);
+                // añadir objeto a la lista
+                a.add(e);
+            }
+        }
+        return a;
+        
+    } 
     
            /**
      * Metodo para formatear la fecha de alta.

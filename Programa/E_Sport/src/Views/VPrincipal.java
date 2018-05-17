@@ -6,8 +6,10 @@
 package Views;
 
 import Controladora.Main;
+import UML.Jornada;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.util.Date;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -35,23 +37,43 @@ public class VPrincipal extends javax.swing.JFrame {
         switch(tipo)
         {
             case 1:
-                equipos.setEnabled(false);
+                equipos.setVisible(false);
                 break;
             case 2:
-                administracion.setEnabled(false);
+                comprobarJornada();
+                administracion.setVisible(false);
                 break;
             case 3:
-                administracion.setEnabled(false);
-                equipos.setEnabled(false);                
+                administracion.setVisible(false);
+                equipos.setVisible(false);                
                 break;
         }
+                  
         // obtener el tamaño de la ventana y asignarle como valor mínimo para no perder la forma de la pantalla
         this.setMinimumSize(new Dimension(this.getWidth(), this.getHeight()));
         setLocationRelativeTo(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         crearImagenes();
-
+        //comprobar si ha comenzado la liga
         
+        
+    }
+    
+    private void comprobarJornada(){
+        
+        try{
+            Date hoy = new Date();
+            Jornada j = Main.consultarInicioJornada();
+            if(j != null){
+                if(hoy.after(j.getFechaInicio()) || hoy.compareTo(j.getFechaInicio()) == 1 ){
+                    equipos.setVisible(false);
+                    JOptionPane.showMessageDialog(this, "Se ha deshabilitado la opción de Editar Equipo, ya que la liga ha comenzado ya.");
+                }
+            }
+        }
+        catch( Exception ex){
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
+        }
     }
     
     private void crearImagenes(){

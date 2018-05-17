@@ -118,6 +118,22 @@ public class BDJornada {
         return lJornada;
     }
     
+    public Jornada consultarInicio() throws Exception{
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM jornada WHERE id_jornada = (SELECT MIN(id_jornada) FROM jornada)");
+        ResultSet rs;
+        Jornada j = null;
+        rs = sentencia.executeQuery();
+        if(rs.next()){
+            j = new Jornada();
+            j.setIdJornada(rs.getInt("id_jornada"));
+            j.setFechaInicio(rs.getDate("fecha_inicio"));
+            j.setFechaFinal(rs.getDate("fecha_fin"));
+        }
+        return j;
+    }
+    
     /**
      * Metodo para consultar una jornada por su número.
      * @param j Id Jornada

@@ -61,7 +61,7 @@ public class Excepcion extends Exception {
                 break;
                 
             case 10:
-                dato += "No has introducido el sueldo del jugador.";
+                dato += "El salario mínimo ha de ser de 735,90 y el máximo de 196320,00.";
                 break;
                 
             case 11:
@@ -162,6 +162,10 @@ public class Excepcion extends Exception {
                 
             case 35:
                 dato += "La fecha no puede ser anterior a la de hoy ni de la jornada y tampoco puede ser después de la jornada.";
+                break;
+                
+            case 36:
+                dato += "No se ha generado la liga, ya que no hay suficientes equipos con sus respectivos jugadores.\nSe precisa un mínimo de 2 equipos para generar al menos 1 partida.";
                 break;
                 
             case 40:

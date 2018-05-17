@@ -264,7 +264,7 @@ public class VJugador extends javax.swing.JDialog {
                     {
                         throw new Excepcion(26);
                     }
-                    if(ftfSueldo.getText().equals("Unparseable number: \"\""))
+                    if(Double.parseDouble(ftfSueldo.getText()) < 735.90 && Double.parseDouble(ftfSueldo.getText()) > 196320.00 )
                     {
                         throw new Excepcion(10);
                     }

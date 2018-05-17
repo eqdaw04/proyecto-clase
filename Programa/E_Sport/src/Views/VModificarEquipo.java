@@ -37,7 +37,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
         initComponents();
         setModal(true);
         setLocationRelativeTo(null);
-        setVisible(true);
+        
         
         e = Main.ConsultarEquipoPorUsuario(usu);
         if(e != null){
@@ -47,6 +47,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
         else{
             throw new Excepcion(33);
         }
+        setVisible(true);
     }
 
     /**
@@ -133,7 +134,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bEliminar);
-        bEliminar.setBounds(50, 466, 170, 28);
+        bEliminar.setBounds(50, 466, 170, 27);
 
         bAnnadir.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bAnnadir.setText("Añadir Jugador");
@@ -144,7 +145,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnnadir);
-        bAnnadir.setBounds(620, 460, 170, 28);
+        bAnnadir.setBounds(620, 460, 170, 27);
 
         bConsultar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bConsultar.setText("Consultar");
@@ -155,7 +156,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bConsultar);
-        bConsultar.setBounds(358, 280, 150, 28);
+        bConsultar.setBounds(358, 280, 150, 27);
 
         tfSueldo.setEditable(false);
         tfSueldo.setText("Sueldo");
@@ -175,11 +176,11 @@ public class VModificarEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSalir);
-        bSalir.setBounds(690, 523, 100, 28);
+        bSalir.setBounds(690, 523, 100, 27);
 
         imgfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(imgfondo);
-        imgfondo.setBounds(0, 0, 870, 610);
+        imgfondo.setBounds(0, 0, 900, 640);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

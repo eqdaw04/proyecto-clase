@@ -56,26 +56,32 @@ public class Emparejamiento {
     
     public void calcularPartido(Calendar fecha, int horaF) throws Exception{
         int e = lEquipo.size();
-        fecha.set(Calendar.MINUTE, 00);
-        fecha.set(Calendar.SECOND, 00);
-        fecha.set(Calendar.MILLISECOND, 00);
-        this.fecha = fecha;
-        horaI = fecha.get(Calendar.HOUR_OF_DAY);
-        this.horaF = horaF;
-        // Si es impar añadir 1 numero equipo fantasma y crear Array
-        if(e%2!=0){
-            // si el equipo es impar, se añade un equipo fantasma
-            Equipo f = new Equipo();
-            f.setNombre("DESCANSO");
-            lEquipo.add(f);
-            e = lEquipo.size();
+        if(e<2){
+            throw new Excepcion(36);
         }
-        int j = (e-1);
-        int p = e/2;
-        lJPEquipoL = new Equipo[j][p];
-        lJPEquipoV = new Equipo[j][p];
-        // rellenar array con los equipos
-        llenarArray(j, p, e);
+        else{
+            fecha.set(Calendar.MINUTE, 00);
+            fecha.set(Calendar.SECOND, 00);
+            fecha.set(Calendar.MILLISECOND, 00);
+            this.fecha = fecha;
+            horaI = fecha.get(Calendar.HOUR_OF_DAY);
+            this.horaF = horaF;
+            // Si es impar añadir 1 numero equipo fantasma y crear Array
+            if(e%2!=0){
+                // si el equipo es impar, se añade un equipo fantasma
+                Equipo f = new Equipo();
+                f.setNombre("DESCANSO");
+                lEquipo.add(f);
+                e = lEquipo.size();
+            }
+            int j = (e-1);
+            int p = e/2;
+            lJPEquipoL = new Equipo[j][p];
+            lJPEquipoV = new Equipo[j][p];
+            // rellenar array con los equipos
+            llenarArray(j, p, e);
+        }
+            
     }
     
     /**

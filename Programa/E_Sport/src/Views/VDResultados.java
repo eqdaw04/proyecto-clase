@@ -41,15 +41,6 @@ public class VDResultados extends javax.swing.JDialog {
         modelarTabla();
         this.setLocationRelativeTo(null);
         try {
-            /*
-            Object[] fila = new Object[4];
-            for (int i=0;i<4;i++)
-            {
-            fila[i]= "Hola";
-            }
-            mJornada.addRow(fila);
-            mClasificacion.addRow(fila);
-            */
             graficoClasificacion(Main.resultados());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);

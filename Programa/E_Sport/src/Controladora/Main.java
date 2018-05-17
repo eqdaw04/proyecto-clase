@@ -484,7 +484,7 @@ public class Main {
     
     public static String generarCalendario(Calendar fecha, int horaF) throws Exception{
         // extraer de la bbdd los equipos disponibles e instanciar el algoritmo de emparejamiento
-        Emparejamiento emp = new Emparejamiento(bdEquipo.BuscarEquipo());
+        Emparejamiento emp = new Emparejamiento(bdEquipo.BuscarEquipo6());
         // ejecutar el algoritmo para los equipos aleatorios
         // Abrir conexion y mantenerlo abierto hasta que acabe que introducir las partidas para no tener que abrir y cerrar constantemente hasta introducir los X partidos
         emp.calcularPartido(fecha, horaF);
@@ -539,6 +539,10 @@ public class Main {
     
     public static boolean insertarPartido(Partido partido, Jornada jornada, BDConexion con) throws Exception{
         return bdPartido.insertarPartido(partido, jornada, con);
+    }
+    
+    public static Jornada consultarInicioJornada() throws Exception{
+        return bdJornada.consultarInicio();
     }
     
     /**

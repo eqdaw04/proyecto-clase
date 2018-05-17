@@ -6,11 +6,19 @@
 package Views;
 
 import Controladora.Main;
+import java.awt.Color;
 import java.awt.Image;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 
 /**
@@ -19,6 +27,8 @@ import javax.swing.ImageIcon;
  */
 public class VUPrincipal extends javax.swing.JFrame {
 
+    DefaultTableModel mJornada, mClasificacion;
+    
     /**
      * Creates new form VUPrincipal
      */
@@ -28,12 +38,64 @@ public class VUPrincipal extends javax.swing.JFrame {
     }
 
     private void cargarDatos(){
-        setVisible(true);
+        
         setLocationRelativeTo(null);
         crearImagenes();
         setTitle("Bienvenido a E-Sport");
+        modelarTabla();
+        graficoClasificacion();
+        setVisible(true);
+    }
+    
+    private void graficoClasificacion(ArrayList<Object> lista){
+        DefaultPieDataset pieDataset = new DefaultPieDataset();
+        for(int x =0; x< lista.size(); x++){
+            
+            Object[] fila = (Object[]) lista.get(x);
+            for (int i=0;i<3;i++)
+            pieDataset.setValue(String.valueOf(fila[1]), new Integer(Integer.parseInt(fila[2].toString())));
+            mClasificacion.addRow(fila);
+        }
+        JFreeChart chart = ChartFactory.createPieChart("",pieDataset, true, true, false);
         
+        //Mostramos la grafica en pantalla
+        ChartPanel panel = new ChartPanel(chart);
+        pGrafico.setLayout(new java.awt.BorderLayout());
+        pGrafico.add(panel);
+        pGrafico.validate();
         
+    }
+    private void modelarTabla(){
+        
+	mJornada = new DefaultTableModel();
+	Object[] vec1 = {"Partido","Local VS Visitante","Marcador"};
+	mJornada.setColumnIdentifiers(vec1);
+	tJornada.setModel(mJornada);
+	tJornada.getColumnModel().getColumn(0).setPreferredWidth(75);
+	tJornada.getColumnModel().getColumn(1).setPreferredWidth(360);
+	tJornada.getColumnModel().getColumn(2).setPreferredWidth(75);
+        tJornada.setRowHeight(40);
+        tJornada.setShowVerticalLines(false);
+        tJornada.setGridColor(Color.BLUE);
+        mClasificacion = new DefaultTableModel();
+        
+	Object[] vec2 = {"Posición","Equipo","Marcador"};
+	mClasificacion.setColumnIdentifiers(vec2);
+	tClasificacion.setModel(mClasificacion);
+	tClasificacion.getColumnModel().getColumn(0).setPreferredWidth(65);
+	tClasificacion.getColumnModel().getColumn(1).setPreferredWidth(150);
+	tClasificacion.getColumnModel().getColumn(2).setPreferredWidth(75);
+        tClasificacion.setRowHeight(40);
+        tClasificacion.setShowVerticalLines(false);
+        tClasificacion.setGridColor(Color.BLUE);
+        DefaultTableCellRenderer centrar = new DefaultTableCellRenderer();
+        centrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tJornada.getColumnModel().getColumn(0).setCellRenderer(centrar);
+        tJornada.getColumnModel().getColumn(1).setCellRenderer(centrar);
+        tJornada.getColumnModel().getColumn(2).setCellRenderer(centrar);
+        tClasificacion.getColumnModel().getColumn(0).setCellRenderer(centrar);
+        tClasificacion.getColumnModel().getColumn(1).setCellRenderer(centrar);
+        tClasificacion.getColumnModel().getColumn(2).setCellRenderer(centrar);
     }
     
     private void crearImagenes(){
@@ -53,6 +115,7 @@ public class VUPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pGrafico = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tJornada = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -77,6 +140,20 @@ public class VUPrincipal extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(819, 789));
         setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(null);
+
+        javax.swing.GroupLayout pGraficoLayout = new javax.swing.GroupLayout(pGrafico);
+        pGrafico.setLayout(pGraficoLayout);
+        pGraficoLayout.setHorizontalGroup(
+            pGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 540, Short.MAX_VALUE)
+        );
+        pGraficoLayout.setVerticalGroup(
+            pGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 310, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(pGrafico);
+        pGrafico.setBounds(230, 90, 540, 310);
 
         tJornada.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -164,6 +241,11 @@ public class VUPrincipal extends javax.swing.JFrame {
         jButton2.setText("<html><center>Ver en un gráfico<br></br>los resultados de la Liga</center></html>");
         jButton2.setActionCommand("");
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2);
         jButton2.setBounds(570, 550, 200, 56);
 
@@ -225,6 +307,10 @@ public class VUPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel img;
@@ -243,6 +329,7 @@ public class VUPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<Integer> lJornada8;
     private javax.swing.JLabel logotipo;
+    private javax.swing.JPanel pGrafico;
     private javax.swing.JTable tClasificacion;
     private javax.swing.JTable tJornada;
     // End of variables declaration//GEN-END:variables
