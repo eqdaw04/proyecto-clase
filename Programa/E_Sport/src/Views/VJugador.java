@@ -84,17 +84,17 @@ public class VJugador extends javax.swing.JDialog {
         setModal(true);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         jLabel1.setText("JUGADOR");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(185, 13, 260, 42);
+        jLabel1.setBounds(160, 20, 260, 47);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setText("DNI:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(32, 77, 40, 21);
         getContentPane().add(tfDNI);
-        tfDNI.setBounds(167, 78, 214, 22);
+        tfDNI.setBounds(167, 78, 214, 20);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel3.setText("Nombre:");
@@ -103,7 +103,7 @@ public class VJugador extends javax.swing.JDialog {
 
         tfNombre.setEditable(false);
         getContentPane().add(tfNombre);
-        tfNombre.setBounds(167, 110, 214, 22);
+        tfNombre.setBounds(167, 110, 214, 20);
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel4.setText("Apellido 1:");
@@ -112,11 +112,11 @@ public class VJugador extends javax.swing.JDialog {
 
         tfApellido1.setEditable(false);
         getContentPane().add(tfApellido1);
-        tfApellido1.setBounds(167, 140, 214, 22);
+        tfApellido1.setBounds(167, 140, 214, 20);
 
         tfApellido2.setEditable(false);
         getContentPane().add(tfApellido2);
-        tfApellido2.setBounds(167, 170, 214, 22);
+        tfApellido2.setBounds(167, 170, 214, 20);
 
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel5.setText("Nickname:");
@@ -125,7 +125,7 @@ public class VJugador extends javax.swing.JDialog {
 
         tfNickname.setEditable(false);
         getContentPane().add(tfNickname);
-        tfNickname.setBounds(167, 200, 214, 22);
+        tfNickname.setBounds(167, 200, 214, 20);
 
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel6.setText("Comentario:");
@@ -218,7 +218,7 @@ public class VJugador extends javax.swing.JDialog {
         ftfSueldo.setEditable(false);
         ftfSueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         getContentPane().add(ftfSueldo);
-        ftfSueldo.setBounds(167, 230, 214, 22);
+        ftfSueldo.setBounds(167, 230, 214, 20);
 
         bBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa2.png"))); // NOI18N
         bBuscar.setBorderPainted(false);
@@ -236,7 +236,7 @@ public class VJugador extends javax.swing.JDialog {
         getContentPane().add(jLabel9);
         jLabel9.setBounds(32, 169, 90, 21);
         getContentPane().add(cFechaAlta);
-        cFechaAlta.setBounds(167, 260, 214, 22);
+        cFechaAlta.setBounds(167, 260, 214, 20);
 
         jLabel10.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
