@@ -87,7 +87,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         bAceptar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        cbPartido = new javax.swing.JComboBox<String>();
+        cbPartido = new javax.swing.JComboBox<>();
         bModificar = new javax.swing.JButton();
         img = new javax.swing.JLabel();
 
@@ -99,7 +99,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
         jLabel1.setText("Inserción de los resultados del partido");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(12, 13, 700, 42);
+        jLabel1.setBounds(12, 13, 700, 47);
 
         taLocal.setEditable(false);
         taLocal.setColumns(20);
@@ -257,7 +257,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
                         tfLugar.setText("EL EQUIPO SE ENCUENTRA EN DESCANSO");
                         taLocal.setText("EN DESCANSO");
                     }
-
+                    dato = "";
                     if(p.geteVisitante() != null){
                         if(p.geteVisitante().getComentario().equals("")){
                             dato = p.geteVisitante().getComentario();
@@ -289,7 +289,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
             Main.validar(46, tfPuntosLocal);
             Main.validar(46, tfPuntosVisitante);
             if(Main.modificarMarcador(p)){
-                JOptionPane.showMessageDialog(this, "Marcador modificado correctamente.");
+                JOptionPane.showMessageDialog(this, "Marcador actualizado correctamente.");
                 Main.reabrir(this, "", 6);
             }
             else{
