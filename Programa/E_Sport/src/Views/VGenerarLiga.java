@@ -373,7 +373,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         ccCalendarioInicial.setEnabled(false);
         getContentPane().add(ccCalendarioInicial);
-        ccCalendarioInicial.setBounds(40, 100, 185, 22);
+        ccCalendarioInicial.setBounds(40, 100, 189, 22);
 
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel6.setText("Seleccione hora del último partido:");

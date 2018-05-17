@@ -38,7 +38,7 @@ public class VUPrincipal extends javax.swing.JFrame {
     }
 
     private void cargarDatos(){
-        
+        NIEVES: CONTROLADORA BBDD EN MAIN Y VJUGADOR, LOS GLOBALES VALOR EN VJUGADOR O MAIN
         setLocationRelativeTo(null);
         crearImagenes();
         setTitle("Bienvenido a E-Sport");

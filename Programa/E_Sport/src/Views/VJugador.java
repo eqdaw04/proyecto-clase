@@ -22,6 +22,7 @@ public class VJugador extends javax.swing.JDialog {
     private ArrayList<Jugador> listaJugadores;
     private String tipo;
     private int posicion, n;
+    float sueldoMin, sueldoMax;
     private Jugador j;
     
     /**
@@ -40,7 +41,65 @@ public class VJugador extends javax.swing.JDialog {
         this.j=j;
         cargarDatos(tipo, n);        
     }
- 
+ /**
+     * Metodo para la carga de datos de la vista.
+     * @param tipo String
+     * @param n int
+     */
+    
+    private void cargarDatos(String tipo, int n) {
+        sueldoMin = 735.90f;
+        sueldoMax = 196320.00f;
+        this.n=n;
+        this.tipo=tipo;
+        setModal(true);
+        this.setLocationRelativeTo(null);
+        listaJugadores = new ArrayList();        
+        bPrimero.setVisible(false);
+        bAnterior.setVisible(false);
+        bSiguiente.setVisible(false);
+        bUltimo.setVisible(false);
+        switch(tipo)
+        {
+            case "alta":
+                tfNombre.setEditable(true);
+                tfApellido1.setEditable(true);
+                tfApellido2.setEditable(true);
+                tfNickname.setEditable(true);
+                ftfSueldo.setEditable(true);
+                taComentario.setEditable(true);
+                bAceptar.setEnabled(true);
+                bBuscar.setVisible(false);
+                break;
+            case "listado":
+                bAceptar.setVisible(false);
+                bPrimero.setVisible(true);
+                bAnterior.setVisible(true);
+                bSiguiente.setVisible(true);
+                bUltimo.setVisible(true);
+                break;
+            case "consulta":
+                // se habilita la edición del calendario para luego deshabilitarlo
+                // ya que si no se habilita, no carga la vista del calendario, pero sí su dato
+                // visualmente no se actualiza la fecha, pero al extraer la información sí se actualiza
+                cFechaAlta.setEditable(true);
+                tfDNI.setText(j.getDni());
+                tfDNI.setEditable(false);
+                tfNombre.setText(j.getNombre());
+                tfApellido1.setText(j.getApellido1());
+                tfApellido2.setText(j.getApellido2()); 
+                tfNickname.setText(j.getNickname());
+                cFechaAlta.setDate(j.getFechaAlta());
+                ftfSueldo.setText(String.valueOf(j.getSueldo())); 
+                taComentario.setText(j.getComentario());
+                bBuscar.setVisible(false);
+                bAceptar.setVisible(false);
+                bCancelar.setVisible(true);
+                cFechaAlta.setEditable(false);
+                break;
+        }
+        setVisible(true);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -252,6 +311,7 @@ public class VJugador extends javax.swing.JDialog {
         // TODO add your handling code here:
        try
        {
+           float sueldo;
            switch(tipo)
            {
                case "alta":
@@ -264,7 +324,8 @@ public class VJugador extends javax.swing.JDialog {
                     {
                         throw new Excepcion(26);
                     }
-                    if(Double.parseDouble(ftfSueldo.getText()) < 735.90 && Double.parseDouble(ftfSueldo.getText()) > 196320.00 )
+                    sueldo = Float.valueOf(ftfSueldo.getText().replaceAll(",", "."));
+                    if(sueldo < sueldoMin || sueldo > sueldoMax )
                     {
                         throw new Excepcion(10);
                     }
@@ -274,7 +335,7 @@ public class VJugador extends javax.swing.JDialog {
                        throw new Excepcion(23);
                    }
                    // Insertar el jugador
-                   Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), cFechaAlta.getDate(), taComentario.getText());
+                   Main.altaJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), sueldo, cFechaAlta.getDate(), taComentario.getText());
                    JOptionPane.showMessageDialog(this, "El jugador se ha dado de alta correctamente.");
                    break;
                case "baja":
@@ -292,7 +353,12 @@ public class VJugador extends javax.swing.JDialog {
                     {
                         throw new Excepcion(26);
                     }
-                   Main.modificarJugador(tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), ftfSueldo.getText(), taComentario.getText());
+                    sueldo = Float.valueOf(ftfSueldo.getText().replaceAll(",", "."));
+                    if(sueldo < sueldoMin || sueldo > sueldoMax )
+                    {
+                        throw new Excepcion(10);
+                    }
+                   Main.modificarJugador(j.getIdJugador() , tfDNI.getText(), tfNombre.getText(), tfApellido1.getText(), tfApellido2.getText(), tfNickname.getText(), sueldo, cFechaAlta.getDate(), taComentario.getText());
                    JOptionPane.showMessageDialog(this, "El jugador se ha modificado correctamente.");
                    break;
            }
@@ -502,63 +568,7 @@ public class VJugador extends javax.swing.JDialog {
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     * Metodo para la carga de datos de la vista.
-     * @param tipo String
-     * @param n int
-     */
     
-    private void cargarDatos(String tipo, int n) {
-        this.n=n;
-        this.tipo=tipo;
-        setModal(true);
-        this.setLocationRelativeTo(null);
-        listaJugadores = new ArrayList();        
-        bPrimero.setVisible(false);
-        bAnterior.setVisible(false);
-        bSiguiente.setVisible(false);
-        bUltimo.setVisible(false);
-        switch(tipo)
-        {
-            case "alta":
-                tfNombre.setEditable(true);
-                tfApellido1.setEditable(true);
-                tfApellido2.setEditable(true);
-                tfNickname.setEditable(true);
-                ftfSueldo.setEditable(true);
-                taComentario.setEditable(true);
-                bAceptar.setEnabled(true);
-                bBuscar.setVisible(false);
-                break;
-            case "listado":
-                bAceptar.setVisible(false);
-                bPrimero.setVisible(true);
-                bAnterior.setVisible(true);
-                bSiguiente.setVisible(true);
-                bUltimo.setVisible(true);
-                break;
-            case "consulta":
-                // se habilita la edición del calendario para luego deshabilitarlo
-                // ya que si no se habilita, no carga la vista del calendario, pero sí su dato
-                // visualmente no se actualiza la fecha, pero al extraer la información sí se actualiza
-                cFechaAlta.setEditable(true);
-                tfDNI.setText(j.getDni());
-                tfDNI.setEditable(false);
-                tfNombre.setText(j.getNombre());
-                tfApellido1.setText(j.getApellido1());
-                tfApellido2.setText(j.getApellido2()); 
-                tfNickname.setText(j.getNickname());
-                cFechaAlta.setDate(j.getFechaAlta());
-                ftfSueldo.setText(String.valueOf(j.getSueldo())); 
-                taComentario.setText(j.getComentario());
-                bBuscar.setVisible(false);
-                bAceptar.setVisible(false);
-                bCancelar.setVisible(true);
-                cFechaAlta.setEditable(false);
-                break;
-        }
-        setVisible(true);
-    }
     
     /**
      * Metodo para buscar un jugador por su dni.
