@@ -126,7 +126,6 @@ public class BDPartido {
         long as = fecha.getTime();
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(as);
-        System.out.println(c);
         return c;
     }
     public ArrayList <Partido> consultarPartidoPorFecha(Calendar fecha) throws Exception{
