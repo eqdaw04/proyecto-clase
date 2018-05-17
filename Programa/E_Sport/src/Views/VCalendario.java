@@ -26,12 +26,11 @@ public class VCalendario extends javax.swing.JDialog {
     private int pos=0;
     public VCalendario() {
         initComponents();
-        setModal(true);
-        
+        setModal(true);      
         setLocationRelativeTo(null);
-        setVisible(true);
         obtenerDatos();
         rellenar(pos);
+        setVisible(true);
     }
 
     /**
@@ -256,7 +255,7 @@ public class VCalendario extends javax.swing.JDialog {
                     datos [x][2] = jornadas.get(pos).getListaPartidos().get(x).geteLocal().getLugar();
                 }
             }
-            
+           
             datos [x][1] = String.valueOf(jornadas.get(pos).getListaPartidos().get(x).getFecha());
             
         }
