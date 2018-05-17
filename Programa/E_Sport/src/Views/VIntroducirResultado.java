@@ -135,9 +135,10 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(430, 270, 150, 18);
 
+        jLabel5.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel5.setText("Puntuaciones");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(330, 230, 75, 16);
+        jLabel5.setBounds(300, 230, 150, 18);
 
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel7.setText("Hora del Partido:");
