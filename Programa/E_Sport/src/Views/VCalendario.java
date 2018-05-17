@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 /**
@@ -240,7 +241,6 @@ public class VCalendario extends javax.swing.JDialog {
 
     private void rellenar(int pos) {
         Njornada.setText(String.valueOf(jornadas.get(pos).getIdJornada()));
-        //falla la fecha ayuda joooonXu
         lbFechaIni.setText(String.valueOf(jornadas.get(pos).getFechaInicio()));
         lbFechaFin.setText(String.valueOf(jornadas.get(pos).getFechaFinal()));
         String titulos[] ={"Equipos","Fecha","Lugar"};
@@ -257,7 +257,6 @@ public class VCalendario extends javax.swing.JDialog {
                     datos [x][2] = jornadas.get(pos).getListaPartidos().get(x).geteLocal().getLugar();
                 }
             }
-           
             datos [x][1] = String.valueOf(jornadas.get(pos).getListaPartidos().get(x).getFecha());
             
         }
