@@ -29,7 +29,6 @@ public class VPrincipal extends javax.swing.JFrame {
     }
     
     private void cargarDatos(int tipo, String usuario){
-        
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setTitle("Bienvenido a E-Sport");
         setVisible(true);
