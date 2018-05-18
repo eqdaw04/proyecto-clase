@@ -292,6 +292,7 @@ public class Main {
     public static void salir(JFrame v){
         //salir del programa
         v.dispose();
+        System.exit(0);
     }
     
     /**
