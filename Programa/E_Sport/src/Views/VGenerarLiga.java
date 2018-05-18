@@ -177,7 +177,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAceptar);
-        bAceptar.setBounds(600, 620, 120, 27);
+        bAceptar.setBounds(600, 620, 120, 28);
 
         pEspera.setBackground(new java.awt.Color(255, 255, 255));
         pEspera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -214,7 +214,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bCancelar);
-        bCancelar.setBounds(790, 620, 120, 27);
+        bCancelar.setBounds(790, 620, 120, 28);
 
         bGenerarCalendario.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         bGenerarCalendario.setText("Generar Calendario");
@@ -225,7 +225,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bGenerarCalendario);
-        bGenerarCalendario.setBounds(620, 190, 183, 25);
+        bGenerarCalendario.setBounds(620, 190, 183, 27);
 
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel5.setText("Seleccione fecha para el primer partido:");
@@ -241,7 +241,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bBorrar);
-        bBorrar.setBounds(290, 180, 170, 25);
+        bBorrar.setBounds(290, 180, 170, 27);
 
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel7.setText("Número de Jornada");
@@ -364,7 +364,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(530, 280, 380, 301);
+        jPanel1.setBounds(530, 280, 380, 288);
 
         jLabel10.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel10.setText("Borrar la LIGA actual:");
@@ -373,7 +373,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         ccCalendarioInicial.setEnabled(false);
         getContentPane().add(ccCalendarioInicial);
-        ccCalendarioInicial.setBounds(40, 100, 189, 22);
+        ccCalendarioInicial.setBounds(40, 100, 165, 24);
 
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel6.setText("Seleccione hora del último partido:");
@@ -387,7 +387,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(cbHoraI);
-        cbHoraI.setBounds(370, 140, 42, 22);
+        cbHoraI.setBounds(370, 140, 42, 24);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel11.setText("Seleccione hora del primer partido:");
@@ -396,7 +396,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         cbHoraF.setEnabled(false);
         getContentPane().add(cbHoraF);
-        cbHoraF.setBounds(820, 140, 42, 22);
+        cbHoraF.setBounds(820, 140, 42, 24);
 
         jLabel12.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel12.setText("Si La jornada comienza el lunes, acabará el domingo.");
