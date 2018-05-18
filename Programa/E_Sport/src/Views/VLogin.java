@@ -24,9 +24,9 @@ public class VLogin extends javax.swing.JFrame {
 
     int error, cont = 0;
     
-    public VLogin() {
+    public VLogin(int n) {
         initComponents();
-        CrearImagenes();
+        CrearImagenes(n);
     }
 
     /**
@@ -138,7 +138,7 @@ public class VLogin extends javax.swing.JFrame {
      * @return devuelve la contraseña 
      */
     
-    private  void CrearImagenes(){
+    private  void CrearImagenes(int n){
         try{
             setLocationRelativeTo(null);
             this.getContentPane().setBackground(new Color(70, 130, 180));
@@ -165,7 +165,9 @@ public class VLogin extends javax.swing.JFrame {
             imgfondo.setIcon(icono4);
             this.repaint();
 
-            Thread.sleep(1);
+            if(n==0){
+                Thread.sleep(3000);
+            }
 
             jTextField1.grabFocus();
             setVisible(true);
