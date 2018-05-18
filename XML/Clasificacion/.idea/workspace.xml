@@ -14,7 +14,7 @@
       <file leaf-file-name="XML-Jornada-en-curso.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../Jornada en curso/XML-Jornada-en-curso.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="-213">
               <caret line="9" column="30" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="9" selection-end-column="30" />
               <folding />
             </state>
@@ -123,12 +123,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1526663431303</updated>
-      <workItem from="1526663432743" duration="2489000" />
+      <workItem from="1526663432743" duration="3504000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2489000" />
+    <option name="totallyTimeSpent" value="3504000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1087" extended-state="0" />
@@ -183,7 +183,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Jornada en curso/XML-Jornada-en-curso.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="-213">
           <caret line="9" column="30" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="9" selection-end-column="30" />
           <folding />
         </state>
