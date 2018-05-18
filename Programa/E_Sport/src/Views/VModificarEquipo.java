@@ -9,12 +9,9 @@ import Controladora.Main;
 import Excepciones.*;
 import UML.Equipo;
 import UML.Jugador;
-import java.awt.Image;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -229,10 +226,10 @@ public class VModificarEquipo extends javax.swing.JDialog {
         }  catch (SQLException ex){
             switch(ex.getErrorCode()){
                 case 20001:
-                JOptionPane.showMessageDialog(this, new Excepcion(28).getMessage());
+                JOptionPane.showMessageDialog(this, new Excepcion(30).getMessage());
                 break;
                 case 20002:
-                JOptionPane.showMessageDialog(this, new Excepcion(29).getMessage());
+                JOptionPane.showMessageDialog(this, new Excepcion(31).getMessage());
                 break;
             }
         }catch (Exception ex) {
@@ -275,9 +272,12 @@ public class VModificarEquipo extends javax.swing.JDialog {
         jEquipo=new ArrayList();
         jEquipo=Main.obtenerJugEqui(String.valueOf(e.getIdEquipo()));
         DefaultListModel<String> model = new DefaultListModel();
-        for (int x=0;x < jEquipo.size();x++){
-            model.addElement(jEquipo.get(x).getNickname());
+        if(jEquipo.isEmpty()){
+            for (int x=0;x < jEquipo.size();x++){
+                model.addElement(jEquipo.get(x).getNickname());
+            }
         }
+            
         liJugEqui.setModel(model);
     }
     
@@ -289,9 +289,12 @@ public class VModificarEquipo extends javax.swing.JDialog {
         jDisp=new ArrayList();
         jDisp=Main.consultarJugadoresDisponibles();
         DefaultListModel<String> modelo = new DefaultListModel();
-        for (int y=0;y< jDisp.size();y++){
-            modelo.addElement(jDisp.get(y).getNickname());
+        if(jDisp.isEmpty()){
+            for (int y=0;y< jDisp.size();y++){
+                modelo.addElement(jDisp.get(y).getNickname());
+            }
         }
+            
         liJugDisp.setModel(modelo);
     }
     
