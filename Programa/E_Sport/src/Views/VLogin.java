@@ -51,14 +51,12 @@ public class VLogin extends javax.swing.JFrame {
         imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(0, 66, 255));
         setFocusCycleRoot(false);
         setMaximumSize(new java.awt.Dimension(562, 496));
         setMinimumSize(new java.awt.Dimension(562, 496));
         setPreferredSize(new java.awt.Dimension(562, 496));
         setResizable(false);
-        setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
@@ -67,7 +65,7 @@ public class VLogin extends javax.swing.JFrame {
         jLabel1.setBounds(50, 40, 450, 70);
 
         tfUsuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        tfUsuario.setText("admin");
+        tfUsuario.setText("d1");
         tfUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfUsuarioActionPerformed(evt);
@@ -99,7 +97,7 @@ public class VLogin extends javax.swing.JFrame {
         bSalir.setBounds(290, 300, 120, 40);
 
         pfContrasenna.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        pfContrasenna.setText("root");
+        pfContrasenna.setText("d1");
         getContentPane().add(pfContrasenna);
         pfContrasenna.setBounds(190, 230, 150, 30);
 
