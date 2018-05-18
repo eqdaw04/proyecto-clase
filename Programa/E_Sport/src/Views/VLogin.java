@@ -79,7 +79,6 @@ public class VLogin extends javax.swing.JFrame {
         bAcceder.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         bAcceder.setText("Acceder");
         bAcceder.setAutoscrolls(true);
-        bAcceder.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         bAcceder.setPreferredSize(new java.awt.Dimension(67, 31));
         bAcceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +90,6 @@ public class VLogin extends javax.swing.JFrame {
 
         bSalir.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         bSalir.setText("Salir");
-        bSalir.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         bSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bSalirActionPerformed(evt);
@@ -167,7 +165,7 @@ public class VLogin extends javax.swing.JFrame {
             imgfondo.setIcon(icono4);
             this.repaint();
 
-            Thread.sleep(3000);
+            Thread.sleep(1);
 
             jTextField1.grabFocus();
             setVisible(true);

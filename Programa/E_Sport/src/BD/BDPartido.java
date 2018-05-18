@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.Timer;
 import UML.Equipo;
 import UML.Partido;
 import java.sql.CallableStatement;
@@ -175,7 +174,7 @@ public class BDPartido {
         sentencia.setInt(1, p.getIdPartido());
         ResultSet rs;
         rs = sentencia.executeQuery();
-        if(rs.next()){
+        while(rs.next()){
             // 1 visitante 0 local; 1 = false y 0 = true
             if(rs.getInt("visitante")==1){
                 p.setmLocal(rs.getInt("puntuacion"));
