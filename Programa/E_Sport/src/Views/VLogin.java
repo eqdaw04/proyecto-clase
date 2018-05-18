@@ -9,6 +9,8 @@ import Controladora.Main;
 import Excepciones.Excepcion;
 import java.awt.Color;
 import java.awt.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -142,7 +144,7 @@ public class VLogin extends javax.swing.JFrame {
     private  void CrearImagenes(){
         setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(70, 130, 180));
-        setVisible(true);
+        
         setTitle("Bienvenido a E-Sport");
         
         ImageIcon usuario = new ImageIcon("../../imagenes/user.png");
@@ -165,7 +167,14 @@ public class VLogin extends javax.swing.JFrame {
         imgfondo.setIcon(icono4);
         this.repaint();
         
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(VLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         jTextField1.grabFocus();
+        setVisible(true);
     }
     
     public JPasswordField getPfContrasenna() {
