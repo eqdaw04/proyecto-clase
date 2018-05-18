@@ -15,9 +15,10 @@ CREATE OR REPLACE PACKAGE BODY Pkg_Jornada IS
 -- Abrimos el cursor
   OPEN C_partidos for
 --Llenamos el cursor con el Id de partido y equipo, su nombre su "lugar" y si es visitante o no
-      SELECT  M.Id_partido,E.Id_equipo,E.Nombre,M.Visitante,E.Lugar 
-      FROM Equipo E, MARCADOR M
+      SELECT  M.Id_partido,E.Id_equipo,E.Nombre,M.Visitante,E.Lugar ,P.Fecha
+      FROM Equipo E, MARCADOR M, Partido P
       WHERE E.Id_equipo = M.Id_equipo
+      AND P.Id_partido = M.Id_partido
       AND M.Id_partido in (SELECT Id_partido FROM Partido WHERE Id_jornada = P_id_jor)
       ORDER BY M.Id_partido,M.Visitante;
   END;
