@@ -123,7 +123,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         tClasificacion = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane12 = new javax.swing.JScrollPane();
-        lJornada8 = new javax.swing.JList<Integer>();
+        lJornada8 = new javax.swing.JList<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -137,7 +137,8 @@ public class VUPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMinimumSize(new java.awt.Dimension(819, 789));
+        setMaximumSize(new java.awt.Dimension(860, 790));
+        setMinimumSize(new java.awt.Dimension(860, 790));
         setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(null);
 
@@ -222,12 +223,12 @@ public class VUPrincipal extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel7.setText("Hola ");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(20, 40, 590, 30);
+        jLabel7.setBounds(30, 40, 590, 30);
 
         jLabel8.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel8.setText("Número de Jornada");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(0, 90, 220, 23);
+        jLabel8.setBounds(10, 90, 220, 23);
 
         jButton1.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jButton1.setText("Actualizar datos");
@@ -273,7 +274,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(567, 469, 203, 17);
         getContentPane().add(logotipo);
-        logotipo.setBounds(690, 30, 80, 70);
+        logotipo.setBounds(760, 20, 80, 70);
 
         jButton4.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jButton4.setText("Ver El Calendario");
