@@ -11,6 +11,7 @@ import BD.*;
 import Excepciones.Excepcion;
 import Views.*;
 import java.awt.Color;
+import java.awt.SplashScreen;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -61,8 +62,7 @@ public class Main {
         aplicarEstilo();
         inicializarValores();
         
-        login = new VLogin();
-        //new VPrincipal(1,"Jon");
+        login = new VLogin(0);
     }
     
     /**
@@ -303,7 +303,7 @@ public class Main {
     
     public static void cerrarSesion(JFrame v){
         v.dispose();
-        login = new VLogin();
+        login = new VLogin(1);
     }
     
     /**
