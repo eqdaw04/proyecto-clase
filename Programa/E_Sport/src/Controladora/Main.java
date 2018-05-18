@@ -377,7 +377,7 @@ public class Main {
     //---------- JON XU JIN ----------
     
     public static void modificarPersona(int id, String usuario, String contrasenna, String nombre, String ape1, String ape2, String email, String perfil, Calendar fecha) throws Exception {
-        // en ved de modificar cada atributo, crear uno nuevo con su constructor se ahorra código
+        // en vez de modificar cada atributo, crear uno nuevo con su constructor se ahorra código
         jilhkgjfhd
         persona = new Persona(nombre, ape1, ape2, fecha, usuario, contrasenna, email);
         persona.setIdPersona(id);
