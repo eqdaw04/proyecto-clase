@@ -254,6 +254,7 @@ public class BDPartido {
             Equipo e=new Equipo();
             e.setIdEquipo(rs.getInt("Id_equipo"));
             e.setNombre(rs.getString("Nombre"));
+            e.setComentario(rs.getString("Comentario"));
             e.setLugar(rs.getString("Lugar"));
             if(partidos.isEmpty()){
                 p=new Partido();
@@ -293,4 +294,62 @@ public class BDPartido {
         con.desconectar();
         return partidos;
     }
+    //este metodo es la version dopada del de arriba (Sería mejor hacer uno único aunque luego en algunos casos no se utilicen todos los datos 
+    public ArrayList<Partido> BuscarPartidosPorJornada2 (int j) throws Exception{
+        ArrayList<Partido> partidos = new ArrayList();
+        // abrir conexión
+        BDConexion con = new BDConexion();
+        // instanciar un array de tipo objeto equipo
+        ArrayList a = new ArrayList();
+        CallableStatement sentencia;
+        // preparar sentencia
+        sentencia = con.getConnection().prepareCall("{call Pkg_Jornada.PartidosPorJornada(?,?)}");
+        sentencia.setInt(1,j);        
+        sentencia.registerOutParameter(2, OracleTypes.CURSOR);
+        sentencia.execute();
+        // instanciar rs, ejecutar sentencia y cargar los datos al rs
+        ResultSet rs = ((OracleCallableStatement)sentencia).getCursor(2);
+        Partido p= new Partido();
+        while(rs.next()){
+            Equipo e=new Equipo();
+            e.setIdEquipo(rs.getInt("Id_equipo"));
+            e.setNombre(rs.getString("Nombre"));
+            e.setLugar(rs.getString("Lugar"));
+            if(partidos.isEmpty()){
+                p=new Partido();
+                p.setIdPartido(rs.getInt("Id_partido"));
+                p.setFecha(DateACalendar(rs.getDate("Fecha")));
+                if(rs.getInt("visitante")==1){
+                    p.seteLocal(e);
+                }
+                else{
+                    p.seteVisitante(e);
+                } 
+                partidos.add(p);
+            }else{
+            if(rs.getInt("Id_partido")==partidos.get(partidos.size()-1).getIdPartido()){
+                if(rs.getInt("visitante")==1){
+                    partidos.get(partidos.size()-1).seteLocal(e);
+                }
+                else{
+                    partidos.get(partidos.size()-1).seteVisitante(e);
+                }
+            }else{
+                p=new Partido();
+                p.setIdPartido(rs.getInt("Id_partido"));
+                p.setFecha(DateACalendar(rs.getDate("Fecha")));
+                if(rs.getInt("visitante")==1){
+                    p.seteLocal(e);
+                }
+                else{
+                    p.seteVisitante(e);
+                }
+                partidos.add(p);
+            }
+            }                    
+        }
+        rs.close();
+        sentencia.close();
+        con.desconectar();
+        return partidos;
 }

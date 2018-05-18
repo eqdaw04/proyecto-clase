@@ -289,7 +289,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
         jDisp=new ArrayList();
         jDisp=Main.consultarJugadoresDisponibles();
         DefaultListModel<String> modelo = new DefaultListModel();
-        if(jDisp.isEmpty()){
+        if(!jDisp.isEmpty()){
             for (int y=0;y< jDisp.size();y++){
                 modelo.addElement(jDisp.get(y).getNickname());
             }
