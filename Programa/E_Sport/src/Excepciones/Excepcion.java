@@ -125,7 +125,7 @@ public class Excepcion extends Exception {
                 break;
                 
             case 26:
-                dato += "El nicname no puede estar vacío.";
+                dato += "El nickname no puede estar vacío.";
                 break;
                 
             case 27:
