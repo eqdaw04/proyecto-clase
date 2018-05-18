@@ -168,6 +168,10 @@ public class Excepcion extends Exception {
                 dato += "No se ha generado la liga, ya que no hay suficientes equipos con sus respectivos jugadores.\nSe precisa un mínimo de 2 equipos para generar al menos 1 partida.";
                 break;
                 
+            case 37:
+                dato += "Actualmente no hay ninguna liga.";
+                break;
+                
             case 40:
                 dato += "Error al insertar la Jornada.";
                 break;

@@ -6,12 +6,11 @@
 package Views;
 
 import Controladora.Main;
+import Excepciones.Excepcion;
 import UML.*;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
@@ -32,8 +31,7 @@ public class VCalendario extends javax.swing.JDialog {
         setModal(true);      
         setLocationRelativeTo(null);
         obtenerDatos();
-        rellenar(pos);
-        setVisible(true);
+        
     }
 
     /**
@@ -67,12 +65,12 @@ public class VCalendario extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         jLabel1.setText("Jornada");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(160, 30, 196, 42);
+        jLabel1.setBounds(160, 30, 196, 47);
 
         Njornada.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         Njornada.setText("X");
         getContentPane().add(Njornada);
-        Njornada.setBounds(363, 30, 52, 42);
+        Njornada.setBounds(363, 30, 52, 47);
 
         lbFechaIni.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         lbFechaIni.setText("Fecha inicio");
@@ -224,23 +222,34 @@ public class VCalendario extends javax.swing.JDialog {
     
     private void obtenerDatos() {
         try {
-        jornadas= Main.consultarTodasLasJornadas();
-        } catch (Exception ex) {
-            Logger.getLogger(VCalendario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        for (int x=0;x<jornadas.size();x++){
-            try {
-                ArrayList <Partido> lp= new ArrayList();
-                lp=Main.BuscarPartidosPorJornada(jornadas.get(x).getIdJornada());
-                jornadas.get(x).setListaPartidos(lp);
-            } catch (Exception ex) {
-                Logger.getLogger(VCalendario.class.getName()).log(Level.SEVERE, null, ex);
+            jornadas= Main.consultarTodasLasJornadas();
+            if(jornadas.isEmpty()){
+                
+                throw new Excepcion(37);
+                
             }
+            else{
+                for (int x=0;x<jornadas.size();x++){
+                    ArrayList <Partido> lp= new ArrayList();
+                    lp=Main.BuscarPartidosPorJornada(jornadas.get(x).getIdJornada());
+                    jornadas.get(x).setListaPartidos(lp);
+                }
+                if(jornadas.size()>1){
+                    bSiguiente.setEnabled(true);
+                    bUltimo.setEnabled(true);
+                }
+                rellenar(pos);
+                setVisible(true);
+            }
+                
         }
-        if(jornadas.size()>1){
-            bSiguiente.setEnabled(true);
-            bUltimo.setEnabled(true);
+        catch(Excepcion e){ 
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", 0);
+            Main.cerrar(this);
         }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
+        } 
     }
 
     private void rellenar(int pos) {

@@ -9,8 +9,6 @@ import Controladora.Main;
 import Excepciones.Excepcion;
 import java.awt.Color;
 import java.awt.Image;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -143,39 +141,42 @@ public class VLogin extends javax.swing.JFrame {
      */
     
     private  void CrearImagenes(){
-        setLocationRelativeTo(null);
-        this.getContentPane().setBackground(new Color(70, 130, 180));
-        
-        setTitle("Bienvenido a E-Sport");
-        
-        ImageIcon usuario = new ImageIcon("../../imagenes/user.png");
-        Icon icono = new ImageIcon (usuario.getImage().getScaledInstance(imgusu.getWidth(), imgusu.getHeight(), Image.SCALE_DEFAULT));
-        imgusu.setIcon(icono);
-        this.repaint();
-        
-        ImageIcon passw = new ImageIcon("../../imagenes/contrasenna.png");
-        Icon icono2 = new ImageIcon (passw.getImage().getScaledInstance(imgpassw.getWidth(), imgpassw.getHeight(), Image.SCALE_DEFAULT));
-        imgpassw.setIcon(icono2);
-        this.repaint();
-        
-        ImageIcon logo = new ImageIcon("../../imagenes/4fan.png");
-        Icon icono3 = new ImageIcon(logo.getImage().getScaledInstance(logotipo.getWidth(), logotipo.getHeight(), Image.SCALE_DEFAULT));
-        logotipo.setIcon(icono3);
-        this.repaint();
-        
-        ImageIcon fondo = new ImageIcon("../../imagenes/fondo2.jpg");
-        Icon icono4 = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
-        imgfondo.setIcon(icono4);
-        this.repaint();
-        
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(VLogin.class.getName()).log(Level.SEVERE, null, ex);
+        try{
+            setLocationRelativeTo(null);
+            this.getContentPane().setBackground(new Color(70, 130, 180));
+
+            setTitle("Bienvenido a E-Sport");
+
+            ImageIcon usuario = new ImageIcon("../../imagenes/user.png");
+            Icon icono = new ImageIcon (usuario.getImage().getScaledInstance(imgusu.getWidth(), imgusu.getHeight(), Image.SCALE_DEFAULT));
+            imgusu.setIcon(icono);
+            this.repaint();
+
+            ImageIcon passw = new ImageIcon("../../imagenes/contrasenna.png");
+            Icon icono2 = new ImageIcon (passw.getImage().getScaledInstance(imgpassw.getWidth(), imgpassw.getHeight(), Image.SCALE_DEFAULT));
+            imgpassw.setIcon(icono2);
+            this.repaint();
+
+            ImageIcon logo = new ImageIcon("../../imagenes/4fan.png");
+            Icon icono3 = new ImageIcon(logo.getImage().getScaledInstance(logotipo.getWidth(), logotipo.getHeight(), Image.SCALE_DEFAULT));
+            logotipo.setIcon(icono3);
+            this.repaint();
+
+            ImageIcon fondo = new ImageIcon("../../imagenes/fondo2.jpg");
+            Icon icono4 = new ImageIcon (fondo.getImage().getScaledInstance(imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
+            imgfondo.setIcon(icono4);
+            this.repaint();
+
+            Thread.sleep(3000);
+
+            jTextField1.grabFocus();
+            setVisible(true);
+        }
+        catch (InterruptedException e)
+        {
+            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         }
         
-        jTextField1.grabFocus();
-        setVisible(true);
     }
     
     public JPasswordField getPfContrasenna() {
