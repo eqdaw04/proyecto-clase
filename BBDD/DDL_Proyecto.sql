@@ -69,6 +69,7 @@ CONSTRAINT Jug_ape2_ck CHECK (Apellido2 = INITCAP(Apellido2))
 );
 
 
+
 CREATE TABLE Jornada(
 Id_jornada NUMBER (2)  NOT NULL,
 Fecha_inicio DATE NOT NULL,
@@ -98,4 +99,3 @@ CONSTRAINT Marc_equi_fk FOREIGN KEY (Id_equipo) REFERENCES Equipo (Id_equipo),
 -- Cuando visitante es = 0 , el equipo al que hace referenia el marcador (Foreign Key de Id_equipo) juega como Local
 CONSTRAINT Marc_vis_ck CHECK (Visitante = 0 or Visitante = 1)
 );
-
