@@ -472,7 +472,7 @@ public class VEquipo extends javax.swing.JDialog {
         listaEquipos = new ArrayList();
         try
         {
-            relllenarLista();
+            rellenarListaSinDuennoConEquipo();
         }
         catch (Excepcion e)
         {
@@ -585,7 +585,8 @@ public class VEquipo extends javax.swing.JDialog {
         cFechaCreacion.setDate(e.getFechaCreacion());
         taPlantilla.setText(Main.buscarPlantilla(e));
         tfLugar.setText(e.getLugar());
-        cbDuenno.setSelectedItem(e.getPersona().getUsuario());
+        cbDuenno.removeAllItems();
+        cbDuenno.addItem(e.getPersona().getNombre());
         taComentario.setText(e.getComentario());
     }
     
@@ -594,9 +595,9 @@ public class VEquipo extends javax.swing.JDialog {
      * @throws Exception 
      */
     
-    private void relllenarLista() throws Exception {
+    private void rellenarListaSinDuennoConEquipo() throws Exception {
         cbDuenno.removeAllItems();
-        ArrayList<Persona> listaDuennos=Main.buscarUsuariosDuennos();
+        ArrayList<Persona> listaDuennos=Main.buscarDuennosSinEquipo();
         
         for(int x=0;x<listaDuennos.size();x++)
         {

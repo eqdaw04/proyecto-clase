@@ -1053,6 +1053,10 @@ public class Main {
         return plantilla;
     }
     
+    public static ArrayList<Persona> buscarDuennosSinEquipo() throws Exception {
+         return bdPersona.buscarDuennosSinEquipo();
+    }
+    
     /**
      * Metodo para buscar los usuarios que sean dueños.
      * @return Devuelve todos los usuarios que sean dueños.

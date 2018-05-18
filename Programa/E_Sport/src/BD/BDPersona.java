@@ -255,6 +255,28 @@ public class BDPersona {
         return lPersona;
     }
     
+    public ArrayList<Persona> buscarDuennosSinEquipo() throws Exception {
+        // crear array de personas
+        ArrayList <Persona> lPersona = new ArrayList();
+        // abre la conexion
+        BDConexion con = new BDConexion();
+        // preparar la conexion y sentencia
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM persona WHERE id_perfil=2 and id_persona not in (SELECT id_persona FROM equipo)");
+        ResultSet rs = sentencia.executeQuery();
+       // buscar si existe datos en la rs
+        while(rs.next()){
+            // crear la persona con base Persona y llenar los datos
+            Persona p = recorrer(rs);
+            lPersona.add(p);
+        }
+        // cerrar conexiones y retornar objeto obtenido mediante consulta
+        rs.close();
+        sentencia.close();
+        con.desconectar();
+        return lPersona;
+    }
+    
         /**
      * Metodo para formatear la fecha de alta.
      * @param fechaE Date
