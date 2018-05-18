@@ -254,7 +254,6 @@ public class BDPartido {
             Equipo e=new Equipo();
             e.setIdEquipo(rs.getInt("Id_equipo"));
             e.setNombre(rs.getString("Nombre"));
-            e.setComentario(rs.getString("Comentario"));
             e.setLugar(rs.getString("Lugar"));
             if(partidos.isEmpty()){
                 p=new Partido();

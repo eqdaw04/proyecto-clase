@@ -272,7 +272,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
         jEquipo=new ArrayList();
         jEquipo=Main.obtenerJugEqui(String.valueOf(e.getIdEquipo()));
         DefaultListModel<String> model = new DefaultListModel();
-        if(jEquipo.isEmpty()){
+        if(!jEquipo.isEmpty()){
             for (int x=0;x < jEquipo.size();x++){
                 model.addElement(jEquipo.get(x).getNickname());
             }
