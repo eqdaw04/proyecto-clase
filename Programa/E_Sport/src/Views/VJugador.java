@@ -22,7 +22,6 @@ public class VJugador extends javax.swing.JDialog {
     private ArrayList<Jugador> listaJugadores;
     private String tipo;
     private int posicion, n;
-    float sueldoMin, sueldoMax;
     private Jugador j;
     
     /**
@@ -48,8 +47,7 @@ public class VJugador extends javax.swing.JDialog {
      */
     
     private void cargarDatos(String tipo, int n) {
-        sueldoMin = 735.90f;
-        sueldoMax = 196320.00f;
+        
         this.n=n;
         this.tipo=tipo;
         setModal(true);
@@ -325,7 +323,7 @@ public class VJugador extends javax.swing.JDialog {
                         throw new Excepcion(26);
                     }
                     sueldo = Float.valueOf(ftfSueldo.getText().replaceAll(",", "."));
-                    if(sueldo < sueldoMin || sueldo > sueldoMax )
+                    if(sueldo < Main.getSalarioMin() || sueldo > Main.getSalarioMax() )
                     {
                         throw new Excepcion(10);
                     }
@@ -354,7 +352,7 @@ public class VJugador extends javax.swing.JDialog {
                         throw new Excepcion(26);
                     }
                     sueldo = Float.valueOf(ftfSueldo.getText().replaceAll(",", "."));
-                    if(sueldo < sueldoMin || sueldo > sueldoMax )
+                    if(sueldo < Main.getSalarioMin() || sueldo > Main.getSalarioMax() )
                     {
                         throw new Excepcion(10);
                     }

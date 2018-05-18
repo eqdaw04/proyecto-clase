@@ -53,6 +53,7 @@ public class VLogin extends javax.swing.JFrame {
         imgfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(0, 66, 255));
         setFocusCycleRoot(false);
         setMaximumSize(new java.awt.Dimension(562, 496));

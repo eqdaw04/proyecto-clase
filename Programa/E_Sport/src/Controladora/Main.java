@@ -47,6 +47,7 @@ public class Main {
     //El objeto perfil no es necesario, ya que sólo precisamos el nivel de la persona
     //Con estas omisiones de objetos, se ahorrá recursos del sistema 
     private static int perfil;
+    private static float salarioMin, salarioMax;
     private static VLogin login;
     private static String driver, url, usuario, contrasenna;
     
@@ -102,6 +103,8 @@ public class Main {
         bdPartido = new BDPartido();
         bdPerfil = new BDPerfil();
         bdPersona = new BDPersona();
+        salarioMin = 735.90f;
+        salarioMax = 196320.00f;
     }
     
     /**
@@ -787,6 +790,24 @@ public class Main {
         Main.persona = persona;
     }
 
+    public static float getSalarioMin() {
+        return salarioMin;
+    }
+
+    public static float getSalarioMax() {
+        return salarioMax;
+    }
+
+    // se mantiene los set de salario max y min, por si un futuro se plantea integrar los salarios en la bbdd
+    // aunque actualmente no tiene uso alguna
+    public static void setSalarioMax(float salarioMax) {
+        Main.salarioMax = salarioMax;
+    }
+
+    public static void setSalarioMin(float salarioMin) {
+        Main.salarioMin = salarioMin;
+    }
+    
     /**
      * Metodo para dar de alta a un jugador en la base de datos.
      * @param dni String
