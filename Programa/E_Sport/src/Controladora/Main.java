@@ -60,8 +60,7 @@ public class Main {
         contrasenna = "eqdaw04";
         //construccion de la ruta completa.
         aplicarEstilo();
-        inicializarValores();
-        
+        inicializarValores();       
         login = new VLogin(0);
     }
     

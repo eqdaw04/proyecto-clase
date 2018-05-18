@@ -236,11 +236,10 @@ public class BDPartido {
         return estado;
     }
     public ArrayList<Partido> BuscarPartidosPorJornada (int j) throws Exception{
-        ArrayList<Partido> partidos = new ArrayList();
         // abrir conexión
         BDConexion con = new BDConexion();
-        // instanciar un array de tipo objeto equipo
-        ArrayList a = new ArrayList();
+        // instanciar un array de tipo objeto Partido
+        ArrayList<Partido> partidos = new ArrayList();
         CallableStatement sentencia;
         // preparar sentencia
         sentencia = con.getConnection().prepareCall("{call Pkg_Jornada.PartidosPorJornada(?,?)}");
@@ -251,14 +250,18 @@ public class BDPartido {
         ResultSet rs = ((OracleCallableStatement)sentencia).getCursor(2);
         Partido p= new Partido();
         while(rs.next()){
+            //Se instancia un objeto de tipo Equipo
             Equipo e=new Equipo();
+            //Se rellena el objeto de tipo Equipo
             e.setIdEquipo(rs.getInt("Id_equipo"));
             e.setNombre(rs.getString("Nombre"));
             e.setLugar(rs.getString("Lugar"));
+            //Este if, es para la primera vez bucle, para que en uno de los proximos if's no se de una excepción al solicitar el id del partido
             if(partidos.isEmpty()){
                 p=new Partido();
                 p.setIdPartido(rs.getInt("Id_partido"));
                 p.setFecha(DateACalendar(rs.getDate("Fecha")));
+                //Según el equipo sea visitante o local, será añadido al respectivo parametro de Partido
                 if(rs.getInt("visitante")==1){
                     p.seteLocal(e);
                 }
@@ -267,6 +270,7 @@ public class BDPartido {
                 } 
                 partidos.add(p);
             }else{
+            //Este if, es para conseguir que un mismo partido tenga dos equipos como parametros, y no se añada un objeto partido por cada equipo
             if(rs.getInt("Id_partido")==partidos.get(partidos.size()-1).getIdPartido()){
                 if(rs.getInt("visitante")==1){
                     partidos.get(partidos.size()-1).seteLocal(e);
@@ -293,16 +297,15 @@ public class BDPartido {
         con.desconectar();
         return partidos;
     }
-    //este metodo es la version dopada del de arriba (Sería mejor hacer uno único aunque luego en algunos casos no se utilicen todos los datos 
+    //este metodo es la version dopada del de arriba 
     public ArrayList<Partido> BuscarPartidosPorJornada2 (int j) throws Exception{
-        ArrayList<Partido> partidos = new ArrayList();
         // abrir conexión
         BDConexion con = new BDConexion();
-        // instanciar un array de tipo objeto equipo
-        ArrayList a = new ArrayList();
+        // instanciar un array de tipo objeto Partido
+        ArrayList<Partido> partidos = new ArrayList();
         CallableStatement sentencia;
         // preparar sentencia
-        sentencia = con.getConnection().prepareCall("{call Pkg_Jornada.PartidosPorJornada(?,?)}");
+        sentencia = con.getConnection().prepareCall("{call Pkg_Resultados.ResultadosPorJornada(?,?)}");
         sentencia.setInt(1,j);        
         sentencia.registerOutParameter(2, OracleTypes.CURSOR);
         sentencia.execute();
@@ -310,28 +313,38 @@ public class BDPartido {
         ResultSet rs = ((OracleCallableStatement)sentencia).getCursor(2);
         Partido p= new Partido();
         while(rs.next()){
+            //Se instancia un objeto de tipo Equipo
             Equipo e=new Equipo();
+            //Se rellena el objeto de tipo Equipo
             e.setIdEquipo(rs.getInt("Id_equipo"));
             e.setNombre(rs.getString("Nombre"));
             e.setLugar(rs.getString("Lugar"));
+            e.setComentario(rs.getString("comentario"));
+            //Este if, es para la primera vez bucle, para que en uno de los proximos if's no se de una excepción al solicitar el id del partido
             if(partidos.isEmpty()){
                 p=new Partido();
                 p.setIdPartido(rs.getInt("Id_partido"));
                 p.setFecha(DateACalendar(rs.getDate("Fecha")));
+                //Según el equipo sea visitante o local, será añadido al respectivo parametro de Partido
                 if(rs.getInt("visitante")==1){
                     p.seteLocal(e);
+                    p.setmLocal(rs.getInt("Puntuacion"));
                 }
                 else{
                     p.seteVisitante(e);
+                    p.setmVisitante(rs.getInt("Puntuacion"));
                 } 
                 partidos.add(p);
             }else{
+            //Este if, es para conseguir que un mismo partido tenga dos equipos como parametros, y no se añada un objeto partido por cada equipo
             if(rs.getInt("Id_partido")==partidos.get(partidos.size()-1).getIdPartido()){
                 if(rs.getInt("visitante")==1){
                     partidos.get(partidos.size()-1).seteLocal(e);
+                    partidos.get(partidos.size()-1).setmLocal(rs.getInt("Puntuacion"));
                 }
                 else{
                     partidos.get(partidos.size()-1).seteVisitante(e);
+                    partidos.get(partidos.size()-1).setmVisitante(rs.getInt("Puntuacion"));
                 }
             }else{
                 p=new Partido();
@@ -339,9 +352,11 @@ public class BDPartido {
                 p.setFecha(DateACalendar(rs.getDate("Fecha")));
                 if(rs.getInt("visitante")==1){
                     p.seteLocal(e);
+                    p.setmLocal(rs.getInt("Puntuacion"));
                 }
                 else{
                     p.seteVisitante(e);
+                    p.setmVisitante(rs.getInt("Puntuacion"));
                 }
                 partidos.add(p);
             }
@@ -351,4 +366,5 @@ public class BDPartido {
         sentencia.close();
         con.desconectar();
         return partidos;
+    }
 }
