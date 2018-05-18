@@ -10,11 +10,7 @@ import javax.swing.JOptionPane;
 import Excepciones.Excepcion;
 import UML.Equipo;
 import UML.Persona;
-import java.awt.Image;
 import java.util.ArrayList;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 
 /**
  * Ventana equipo.

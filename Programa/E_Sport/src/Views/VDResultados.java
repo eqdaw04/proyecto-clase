@@ -43,11 +43,19 @@ public class VDResultados extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         try {
             graficoClasificacion(Main.resultados());
+            tablaUltimaJornada(Main.resultadosUltimaJornada());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
 	pGrafico.setVisible(false);
         setVisible(true);
+    }
+    
+    private void tablaUltimaJornada(ArrayList<Object> lista){
+        for(int x =0; x< lista.size(); x++){
+            Object[] fila = (Object[]) lista.get(x);
+            mJornada.addRow(fila);
+        }
     }
     
     /**
@@ -58,7 +66,6 @@ public class VDResultados extends javax.swing.JDialog {
     private void graficoClasificacion(ArrayList<Object> lista){
         DefaultPieDataset pieDataset = new DefaultPieDataset();
         for(int x =0; x< lista.size(); x++){
-            
             Object[] fila = (Object[]) lista.get(x);
             for (int i=0;i<3;i++)
             pieDataset.setValue(String.valueOf(fila[1]), new Integer(Integer.parseInt(fila[2].toString())));

@@ -214,7 +214,7 @@ public class VLogin extends javax.swing.JFrame {
     }
     
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
-        Main.salir(this);
+        Main.salirDelPrograma(this);
     }//GEN-LAST:event_bSalirActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

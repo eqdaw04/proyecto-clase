@@ -137,7 +137,6 @@ public class VUPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(860, 790));
         setMinimumSize(new java.awt.Dimension(860, 790));
         setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(null);

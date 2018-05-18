@@ -352,8 +352,7 @@ public class BDEquipo {
     public ArrayList<Object> resultadoUltimaJornada() throws Exception{
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT (SELECT nombre FROM equipo WHERE equipo.id_equipo = marcador.id_equipo) AS equipo,"
-                + " SUM(puntuacion) AS punto FROM marcador GROUP BY id_equipo ORDER BY punto DESC");
+        sentencia = con.getConnection().prepareStatement("SELECT equipo.nombre AS equipo, SUM(marcador.puntuacion) as punto FROM marcador INNER JOIN equipo ON marcador.id_equipo = equipo.id_equipo GROUP BY equipo.nombre ORDER BY punto");
         ResultSet rs;
         rs = sentencia.executeQuery();
         ArrayList <Object> lista = new ArrayList();

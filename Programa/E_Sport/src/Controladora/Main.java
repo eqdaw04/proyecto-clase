@@ -294,6 +294,10 @@ public class Main {
         v.dispose();
     }
     
+    public static void salirDelPrograma(JFrame v){
+        v.dispose();
+        System.exit(0);
+    }
     /**
      * Metodo para cerrar sesión y volver al login
      * @param v JFrame
@@ -634,11 +638,11 @@ public class Main {
                 break;
                 
             case 4: // Nombre
-                dato = "^[A-ZÑ][a-zñ]{2,}$";
+                dato = "^[A-ZÑ 0-9][a-zñ 0-9]{2,}$";
                 break;
                 
             case 5: // Apellidos
-                dato = "^[A-ZÑ][a-zñ]{2,}$";
+                dato = "^[A-ZÑ ][a-zñ ]{2,}$";
                 break;
                 
             case 6: // e-mail
