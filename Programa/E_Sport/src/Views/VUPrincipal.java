@@ -22,8 +22,9 @@ import org.jfree.data.general.DefaultPieDataset;
 
 
 /**
- *
- * @author v6222
+ * Vista para el usuario.
+ * Fecha de la creación de la vista: 16/05/2018
+ * @author eqdaw04
  */
 public class VUPrincipal extends javax.swing.JFrame {
 
@@ -123,7 +124,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         tClasificacion = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane12 = new javax.swing.JScrollPane();
-        lJornada8 = new javax.swing.JList<>();
+        lJornada8 = new javax.swing.JList<Integer>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -203,10 +204,10 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(230, 440, 319, 269);
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel3.setText("Clasificación Actual:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(230, 400, 260, 30);
+        jLabel3.setBounds(230, 400, 270, 30);
 
         lJornada8.setEnabled(false);
         lJornada8.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -224,11 +225,12 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel7);
         jLabel7.setBounds(20, 40, 590, 30);
 
-        jLabel8.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel8.setText("Número de Jornada");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(20, 90, 200, 23);
+        jLabel8.setBounds(0, 90, 220, 23);
 
+        jButton1.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jButton1.setText("Actualizar datos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,8 +238,9 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(570, 510, 200, 25);
+        jButton1.setBounds(570, 510, 240, 25);
 
+        jButton2.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jButton2.setText("<html><center>Ver en un gráfico<br></br>los resultados de la Liga</center></html>");
         jButton2.setActionCommand("");
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -247,8 +250,9 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(570, 550, 200, 56);
+        jButton2.setBounds(570, 550, 240, 56);
 
+        jButton3.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jButton3.setText("Cerrar Sesión");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,21 +260,23 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(570, 684, 200, 25);
+        jButton3.setBounds(570, 684, 240, 25);
 
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Última actualización de la Liga");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(567, 440, 203, 16);
+        jLabel2.setBounds(530, 430, 320, 18);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("12/12/2018");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(567, 469, 203, 16);
+        jLabel4.setBounds(567, 469, 203, 17);
         getContentPane().add(logotipo);
         logotipo.setBounds(690, 30, 80, 70);
 
+        jButton4.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jButton4.setText("Ver El Calendario");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,7 +284,7 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(570, 620, 200, 25);
+        jButton4.setBounds(570, 620, 240, 25);
 
         img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(img);

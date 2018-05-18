@@ -17,8 +17,9 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 
 /**
- *
- * @author v6222
+ * Vista resultados. Veremos la clasificación actual, y el resultado de la última jornada.
+ * Fecha de creación de la vista: 15/05/2018
+ * @author eqdaw04
  * Se ha usado la librería para el gráfico en
  * http://www.jfree.org/jfreechart/download.html
  */
@@ -49,6 +50,11 @@ public class VDResultados extends javax.swing.JDialog {
         setVisible(true);
     }
     
+    /**
+     * Metodo para crear el gráfico.
+     * @param lista Object
+     */
+    
     private void graficoClasificacion(ArrayList<Object> lista){
         DefaultPieDataset pieDataset = new DefaultPieDataset();
         for(int x =0; x< lista.size(); x++){
@@ -67,6 +73,11 @@ public class VDResultados extends javax.swing.JDialog {
         pGrafico.validate();
         
     }
+    
+    /**
+     * Metodo para darle forma a la tabla en la que aparecen los resultados.
+     */
+    
     private void modelarTabla(){
         
 	mJornada = new DefaultTableModel();
