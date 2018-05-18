@@ -65,7 +65,7 @@ public class VLogin extends javax.swing.JFrame {
         jLabel1.setBounds(50, 40, 450, 70);
 
         tfUsuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        tfUsuario.setText("d1");
+        tfUsuario.setText("usu");
         tfUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfUsuarioActionPerformed(evt);
@@ -97,7 +97,12 @@ public class VLogin extends javax.swing.JFrame {
         bSalir.setBounds(290, 300, 120, 40);
 
         pfContrasenna.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        pfContrasenna.setText("d1");
+        pfContrasenna.setText("sus");
+        pfContrasenna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pfContrasennaActionPerformed(evt);
+            }
+        });
         getContentPane().add(pfContrasenna);
         pfContrasenna.setBounds(190, 230, 150, 30);
 
@@ -318,6 +323,10 @@ public class VLogin extends javax.swing.JFrame {
     private void tfUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfUsuarioActionPerformed
+
+    private void pfContrasennaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfContrasennaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pfContrasennaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAcceder;

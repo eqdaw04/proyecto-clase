@@ -60,9 +60,9 @@ public class VUPrincipal extends javax.swing.JFrame {
         
         //Mostramos la grafica en pantalla
         ChartPanel panel = new ChartPanel(chart);
-        pGrafico.setLayout(new java.awt.BorderLayout());
-        pGrafico.add(panel);
-        pGrafico.validate();
+        pGraficoJornada.setLayout(new java.awt.BorderLayout());
+        pGraficoJornada.add(panel);
+        pGraficoJornada.validate();
         
     }
     private void modelarTabla(){
@@ -115,7 +115,8 @@ public class VUPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pGrafico = new javax.swing.JPanel();
+        pGraficoJornada = new javax.swing.JPanel();
+        pGraficoClasificacion = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tJornada = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -141,19 +142,33 @@ public class VUPrincipal extends javax.swing.JFrame {
         setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout pGraficoLayout = new javax.swing.GroupLayout(pGrafico);
-        pGrafico.setLayout(pGraficoLayout);
-        pGraficoLayout.setHorizontalGroup(
-            pGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pGraficoJornadaLayout = new javax.swing.GroupLayout(pGraficoJornada);
+        pGraficoJornada.setLayout(pGraficoJornadaLayout);
+        pGraficoJornadaLayout.setHorizontalGroup(
+            pGraficoJornadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 540, Short.MAX_VALUE)
         );
-        pGraficoLayout.setVerticalGroup(
-            pGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pGraficoJornadaLayout.setVerticalGroup(
+            pGraficoJornadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 310, Short.MAX_VALUE)
         );
 
-        getContentPane().add(pGrafico);
-        pGrafico.setBounds(230, 90, 540, 310);
+        getContentPane().add(pGraficoJornada);
+        pGraficoJornada.setBounds(230, 90, 540, 310);
+
+        javax.swing.GroupLayout pGraficoClasificacionLayout = new javax.swing.GroupLayout(pGraficoClasificacion);
+        pGraficoClasificacion.setLayout(pGraficoClasificacionLayout);
+        pGraficoClasificacionLayout.setHorizontalGroup(
+            pGraficoClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 540, Short.MAX_VALUE)
+        );
+        pGraficoClasificacionLayout.setVerticalGroup(
+            pGraficoClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 310, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(pGraficoClasificacion);
+        pGraficoClasificacion.setBounds(20, 440, 540, 310);
 
         tJornada.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -201,12 +216,12 @@ public class VUPrincipal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tClasificacion);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(230, 440, 319, 269);
+        jScrollPane2.setBounds(19, 440, 530, 269);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel3.setText("Clasificación Actual:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(230, 400, 270, 30);
+        jLabel3.setBounds(20, 400, 270, 30);
 
         lJornada8.setEnabled(false);
         lJornada8.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -217,7 +232,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         jScrollPane12.setViewportView(lJornada8);
 
         getContentPane().add(jScrollPane12);
-        jScrollPane12.setBounds(20, 120, 182, 590);
+        jScrollPane12.setBounds(20, 120, 182, 280);
 
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel7.setText("Hola ");
@@ -334,7 +349,8 @@ public class VUPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<Integer> lJornada8;
     private javax.swing.JLabel logotipo;
-    private javax.swing.JPanel pGrafico;
+    private javax.swing.JPanel pGraficoClasificacion;
+    private javax.swing.JPanel pGraficoJornada;
     private javax.swing.JTable tClasificacion;
     private javax.swing.JTable tJornada;
     // End of variables declaration//GEN-END:variables
