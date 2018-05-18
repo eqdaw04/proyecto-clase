@@ -243,7 +243,7 @@ public class BDEquipo {
         ArrayList<Equipo> a = new ArrayList();
         PreparedStatement sentencia;
         // preparar sentencia
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM equipo");
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM equipo ORDER BY id_equipo");
         // instanciar rs, ejecutar sentencia y cargar los datos al rs
         ResultSet rs;
         rs = sentencia.executeQuery();

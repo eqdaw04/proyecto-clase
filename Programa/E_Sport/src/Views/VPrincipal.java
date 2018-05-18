@@ -34,6 +34,11 @@ public class VPrincipal extends javax.swing.JFrame {
         setTitle("Bienvenido a E-Sport");
         setVisible(true);
         NombreUsu.setText(usuario);
+        // obtener el tamaño de la ventana y asignarle como valor mínimo para no perder la forma de la pantalla
+        this.setMinimumSize(new Dimension(this.getWidth(), this.getHeight()));
+        setLocationRelativeTo(null);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        crearImagenes();
         switch(tipo)
         {
             case 1:
@@ -48,19 +53,10 @@ public class VPrincipal extends javax.swing.JFrame {
                 equipos.setVisible(false);                
                 break;
         }
-                  
-        // obtener el tamaño de la ventana y asignarle como valor mínimo para no perder la forma de la pantalla
-        this.setMinimumSize(new Dimension(this.getWidth(), this.getHeight()));
-        setLocationRelativeTo(null);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        crearImagenes();
-        //comprobar si ha comenzado la liga
-        
-        
     }
     
     private void comprobarJornada(){
-        
+        //comprobar si ha comenzado la liga
         try{
             Date hoy = new Date();
             Jornada j = Main.consultarInicioJornada();
