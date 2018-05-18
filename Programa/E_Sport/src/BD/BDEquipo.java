@@ -157,7 +157,8 @@ public class BDEquipo {
         e.setFechaCreacion(c.getTime());            
         e.setComentario(rs.getString("comentario"));
         e.setLugar(rs.getString("lugar"));
-        e.setPersona(Main.obtenerPersona(rs.getInt("id_persona")));
+        int x = rs.getInt("id_persona");
+        e.setPersona(Main.obtenerPersona(x));
         // devolver el objeto cargado
         return e;
     }
