@@ -45,7 +45,7 @@ public class Main {
     private static Persona persona;
     private static Equipo equipo;
     private static Jugador jugador;
-    private static DomResultadosUltimaJornada domResultadosUltimaJornada;
+    private static DOMJornadaEnCurso domResultadosUltimaJornada;
     //No se precisa objetos de jornada ni partido, ya que casi no se usa
     //El objeto perfil no es necesario, ya que sólo precisamos el nivel de la persona
     //Con estas omisiones de objetos, se ahorrá recursos del sistema 
@@ -104,7 +104,7 @@ public class Main {
         bdPartido = new BDPartido();
         bdPerfil = new BDPerfil();
         bdPersona = new BDPersona();
-        domResultadosUltimaJornada = new DomResultadosUltimaJornada();
+        domResultadosUltimaJornada = new DOMJornadaEnCurso();
         salarioMin = 735.90f;
         salarioMax = 196320.00f;
     }
@@ -1141,6 +1141,6 @@ public class Main {
         return bdPartido.BuscarPartidosPorJornada2(j);
     }
     public static void domUltimaJornada (int j) throws Exception{
-        domResultadosUltimaJornada.xmlResUltJor(BuscarPartidosPorJornada2(1),j);
+        domResultadosUltimaJornada.xmlUltJor(BuscarPartidosPorJornada2(1),j);
     }
 }

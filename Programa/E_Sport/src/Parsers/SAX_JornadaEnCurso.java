@@ -5,6 +5,8 @@
  */
 package Parsers;
 
+import UML.Partido;
+import UML.Equipo;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,28 +25,17 @@ import sax_jornada.en.curso.Partido;
 
 public class SAX_JornadaEnCurso extends DefaultHandler{
 
-    List equipo;
-    List partido;
-        private String caracteres;
-        private String expiracion;
-        
-    private Partido part;
-    private Equipo eq;
+    private ArrayList<Partido> partidos;
+    private String expiracion;
+    private StringBuilder buffer=new StringBuilder();        
+    private Partido p;
+    private Equipo e;
     
     public SAX_JornadaEnCurso(){
 
-        partido = new ArrayList();
+        partidos = new ArrayList();
     }
     
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-        System.out.println("SAX_JornadaEnCurso");
-        System.out.println("---");
-        
-        SAX_JornadaEnCurso jecsax = new SAX_JornadaEnCurso();
-        jecsax.metodoraiz();
-    }
     
     public void metodoraiz(){
         parsearjornada();
@@ -57,7 +48,7 @@ public class SAX_JornadaEnCurso extends DefaultHandler{
             
             SAXParser sp = spf.newSAXParser();
             
-            sp.parse("../XML/XML-Jornada-en-curso.xml", this);
+            sp.parse("JornadaEnCurso.xml", this);
             
          } catch (SAXException se) {
             se.printStackTrace();
@@ -71,30 +62,72 @@ public class SAX_JornadaEnCurso extends DefaultHandler{
     private void printData(){
         System.out.println("Atención, esta lista caduca el " + expiracion);
         
-        Iterator it = partido.iterator();
+        Iterator it = partidos.iterator();
         while (it.hasNext()){
             System.out.println(it.next().toString());
         }
     }
     
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException { 
-        
-        caracteres="";
-        if(qName.equalsIgnoreCase("partido")){
-            part = new Partido();
-            part.setIdPartido(Integer.parseInt(attributes.getValue("id_partido")));
-        } else if (qName.equalsIgnoreCase("equipo")){
-            eq = new Equipo();
-            eq.setIdEquipo(Integer.parseInt(attributes.getValue("id_equipo")));
-        }
+        switch (qName){
+            case "partido":
+                p = new Partido();
+                p.setIdPartido(Integer.parseInt(attributes.getValue("id_partido")));
+                partidos.add(p);     
+                break;
+            case "fecha":
+                buffer.delete(0,buffer.length());
+                break;
+            case "hora":
+                break;
+            case "lugar":
+                break;
+            case "Equipo":
+                break;
+            case "nombre":
+                break;
+            case "comentario":
+                break;
+            case "puntuacion":
+                break;
+            case "visitante":
+                break;
+        }               
     }
     
         public void characters(char[] ch, int start, int length) throws SAXException {
-        caracteres = new String(ch, start, length);
+        buffer.append(ch,start,length);
     }
        
       public void endElement(String uri, String localName, String qName) throws SAXException {
-          
+          switch(qName){
+             case "partido":
+                break;
+            case "fecha":
+                break;
+            case "hora":
+                break;
+            case "lugar":
+                p.se
+                break;
+            case "Equipo":
+                
+                break;
+            case "nombre":
+                e.setNombre(buffer.toString());
+                break;
+            case "comentario":
+                e.setComentario(buffer.toString());
+                break;
+            case "puntuacion":
+                //variable local o visitante
+                break;
+            case "visitante":
+                
+                break;
+            case "jornada":
+                break;
+          }
           if (qName.equalsIgnoreCase("fecha_expiracion")){
               expiracion = caracteres;
           }
