@@ -10,6 +10,7 @@ import UML.*;
 import BD.*;
 import Excepciones.Excepcion;
 import Views.*;
+import Parsers.*;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,6 +45,7 @@ public class Main {
     private static Persona persona;
     private static Equipo equipo;
     private static Jugador jugador;
+    private static DomResultadosUltimaJornada domResultadosUltimaJornada;
     //No se precisa objetos de jornada ni partido, ya que casi no se usa
     //El objeto perfil no es necesario, ya que sólo precisamos el nivel de la persona
     //Con estas omisiones de objetos, se ahorrá recursos del sistema 
@@ -102,6 +104,7 @@ public class Main {
         bdPartido = new BDPartido();
         bdPerfil = new BDPerfil();
         bdPersona = new BDPersona();
+        domResultadosUltimaJornada = new DomResultadosUltimaJornada();
         salarioMin = 735.90f;
         salarioMax = 196320.00f;
     }
@@ -154,6 +157,8 @@ public class Main {
             }
             else{
                 new VPrincipal(perfil,persona.getUsuario());
+                domResultadosUltimaJornada.xmlResUltJor(BuscarPartidosPorJornada2(1));
+
             }
             
         }
@@ -1133,5 +1138,8 @@ public class Main {
     //----------------MIKEL
     public static ArrayList <Partido> BuscarPartidosPorJornada (int j) throws Exception{
         return bdPartido.BuscarPartidosPorJornada (j);
+    }
+    public static ArrayList<Partido> BuscarPartidosPorJornada2 (int j) throws Exception{
+        return bdPartido.BuscarPartidosPorJornada2(j);
     }
 }
