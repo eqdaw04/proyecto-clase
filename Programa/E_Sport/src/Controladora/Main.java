@@ -12,7 +12,6 @@ import Excepciones.Excepcion;
 import Views.*;
 import Parsers.*;
 import java.awt.Color;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,7 +21,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
@@ -55,14 +53,11 @@ public class Main {
     private static int perfil;
     private static float salarioMin, salarioMax;
     private static VLogin login;
-    private static String driver, url, usuario, contrasenna;
+    private static String url;
     
     
     public static void main(String[] args) throws Exception {
-        //driver para la conexion
-        driver = "oracle.jdbc.OracleDriver";
-        usuario = "eqdaw04";
-        contrasenna = "eqdaw04";
+
         //construccion de la ruta completa.
         aplicarEstilo();
         inicializarValores();       
@@ -124,9 +119,7 @@ public class Main {
     //---------- JON XU JIN ----------
 
     public static void accederPrincipal(String usuario, char[] contrasenna, int numero) throws Exception{
-        String tipo = "oracle",
-        servidor = "10.10.10.9",//"localhost"
-        puerto = "1521",
+        String servidor = "",
         bbdd = "db12102";
         switch(numero){
             case 1:
@@ -143,7 +136,7 @@ public class Main {
                 break;
                         
         }
-        url = "jdbc:" + tipo + ":thin:@" + servidor + ":" + puerto + ":" + bbdd;
+        url = "jdbc:oracle:thin:@" + servidor + ":1521:" + bbdd;
         persona = null;
         
         persona = bdPersona.buscarPersonaPorUsuario(usuario);
@@ -751,24 +744,6 @@ public class Main {
     }
     
     /**
-     *  Metodo para obtener el driver de la conexion.
-     * @return driver
-     */
-
-    public static String getDriver() {
-        return driver;
-    }
-    
-    /**
-     *  Metodo para establecer el driver de la conexión.
-     * @param driver String
-     */
-
-    public static void setDriver(String driver) {
-        Main.driver = driver;
-    }
-    
-    /**
      *  Metodo para obtener la url de la conexión.
      * @return url
      */
@@ -785,43 +760,7 @@ public class Main {
     public static void setUrl(String url) {
         Main.url = url;
     }
-    
-    /**
-     *  Metodo para obtener el usuario con el que se inicia sesión en la conexión.
-     * @return usuario
-     */
-
-    public static String getUsuario() {
-        return usuario;
-    }
-    
-    /**
-     *  Metodo para establecer el usuario con el que se inicia sesión en la conexión.
-     * @param usuario String
-     */
-
-    public static void setUsuario(String usuario) {
-        Main.usuario = usuario;
-    }
-    
-    /**
-     * Metodo para obtener la contraseña con la que se inicia sesión en la conexión.
-     * @return 
-     */
-
-    public static String getContrasenna() {
-        return contrasenna;
-    }
-    
-    /**
-     * Metodo para establecer la contraseña con ka que se inicia sesión en la conexión.
-     * @param contrasenna 
-     */
-
-    public static void setContrasenna(String contrasenna) {
-        Main.contrasenna = contrasenna;
-    }
-    
+      
     /**
      * Metodo para obtener una persona.
      * @return objeto persona

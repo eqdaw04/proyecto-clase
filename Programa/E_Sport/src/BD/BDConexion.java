@@ -29,9 +29,9 @@ public class BDConexion {
     public BDConexion() throws Exception{
        try{
            // cargar el driver
-            Class.forName(Main.getDriver());
+            Class.forName("oracle.jdbc.OracleDriver");
             // establecer la conexión
-            connection = DriverManager.getConnection(Main.getUrl(), Main.getUsuario(), Main.getContrasenna());
+            connection = DriverManager.getConnection(Main.getUrl(), "eqdaw04", "eqdaw04");
             // comprueba si está conectado, en caso contrario, mostrar error
             if(connection == null){
                 //System.out.println("conexion establecida");
