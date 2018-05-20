@@ -7,12 +7,8 @@ package Views;
 
 import Controladora.Main;
 import UML.Jornada;
-import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
-import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.Icon;
@@ -22,12 +18,9 @@ import javax.swing.JOptionPane;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.xy.DefaultXYDataset;
 
 /**
  * Ventana principal.
@@ -104,8 +97,8 @@ public class VPrincipal extends javax.swing.JFrame {
             this.repaint();
 
             bCerrarSesion.setLocation(this.getWidth()- (bCerrarSesion.getWidth()+50), 50 );
-            lBienvenido.setLocation(20, (this.getHeight()/2-50));
-            lNombreUsu.setLocation(20 + lBienvenido.getSize().width, (this.getHeight()/2-50));
+            lBienvenido.setLocation(20, 50);
+            lNombreUsu.setLocation(20 + lBienvenido.getSize().width, 50);
             graficoClasificacion(Main.resultados());
             graficosEvolucion(Main.resultadosTodosLosPartidos());
         }
@@ -153,9 +146,10 @@ public class VPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        verGrande = new javax.swing.JButton();
+        pGraficoEvolucionEquipo = new javax.swing.JPanel();
         bCerrarSesion = new javax.swing.JButton();
         pGraficoClasificacion = new javax.swing.JPanel();
-        pGraficoEvolucionEquipo = new javax.swing.JPanel();
         lBienvenido = new javax.swing.JLabel();
         lNombreUsu = new javax.swing.JLabel();
         logotipo = new javax.swing.JLabel();
@@ -198,6 +192,32 @@ public class VPrincipal extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(988, 691));
         getContentPane().setLayout(null);
 
+        verGrande.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        verGrande.setText("Ver Evolución en grande");
+        verGrande.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verGrandeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(verGrande);
+        verGrande.setBounds(430, 450, 280, 40);
+
+        pGraficoEvolucionEquipo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout pGraficoEvolucionEquipoLayout = new javax.swing.GroupLayout(pGraficoEvolucionEquipo);
+        pGraficoEvolucionEquipo.setLayout(pGraficoEvolucionEquipoLayout);
+        pGraficoEvolucionEquipoLayout.setHorizontalGroup(
+            pGraficoEvolucionEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 758, Short.MAX_VALUE)
+        );
+        pGraficoEvolucionEquipoLayout.setVerticalGroup(
+            pGraficoEvolucionEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 308, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(pGraficoEvolucionEquipo);
+        pGraficoEvolucionEquipo.setBounds(430, 130, 760, 310);
+
         bCerrarSesion.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         bCerrarSesion.setText("Cerrar sesión");
         bCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -222,23 +242,7 @@ public class VPrincipal extends javax.swing.JFrame {
         );
 
         getContentPane().add(pGraficoClasificacion);
-        pGraficoClasificacion.setBounds(430, 550, 530, 340);
-
-        pGraficoEvolucionEquipo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout pGraficoEvolucionEquipoLayout = new javax.swing.GroupLayout(pGraficoEvolucionEquipo);
-        pGraficoEvolucionEquipo.setLayout(pGraficoEvolucionEquipoLayout);
-        pGraficoEvolucionEquipoLayout.setHorizontalGroup(
-            pGraficoEvolucionEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 758, Short.MAX_VALUE)
-        );
-        pGraficoEvolucionEquipoLayout.setVerticalGroup(
-            pGraficoEvolucionEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 308, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pGraficoEvolucionEquipo);
-        pGraficoEvolucionEquipo.setBounds(430, 130, 760, 310);
+        pGraficoClasificacion.setBounds(430, 500, 530, 340);
 
         lBienvenido.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         lBienvenido.setText("Bienvenido");
@@ -251,7 +255,7 @@ public class VPrincipal extends javax.swing.JFrame {
         getContentPane().add(lNombreUsu);
         lNombreUsu.setBounds(270, 490, 170, 47);
         getContentPane().add(logotipo);
-        logotipo.setBounds(900, 560, 80, 70);
+        logotipo.setBounds(280, 580, 80, 70);
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton7.setText("Ver el Calendario");
@@ -261,7 +265,7 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton7);
-        jButton7.setBounds(990, 600, 200, 40);
+        jButton7.setBounds(990, 550, 200, 40);
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton6.setText("Ver Resultados");
@@ -271,7 +275,7 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton6);
-        jButton6.setBounds(990, 550, 200, 40);
+        jButton6.setBounds(990, 500, 200, 40);
 
         bMarcador.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         bMarcador.setText("Insertar Marcador");
@@ -281,7 +285,7 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bMarcador);
-        bMarcador.setBounds(990, 850, 200, 40);
+        bMarcador.setBounds(990, 800, 200, 40);
 
         bAlta.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         bAlta.setText("Alta de Usuario");
@@ -291,7 +295,7 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bAlta);
-        bAlta.setBounds(990, 650, 200, 40);
+        bAlta.setBounds(990, 600, 200, 40);
 
         bBaja.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         bBaja.setText("Baja de Usuario");
@@ -301,7 +305,7 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bBaja);
-        bBaja.setBounds(990, 750, 200, 40);
+        bBaja.setBounds(990, 700, 200, 40);
 
         bConsulta.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         bConsulta.setText("Consulta de Usuario");
@@ -311,7 +315,7 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bConsulta);
-        bConsulta.setBounds(990, 800, 200, 40);
+        bConsulta.setBounds(990, 750, 200, 40);
 
         bModificar.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         bModificar.setText("Modificar Usuario");
@@ -322,7 +326,7 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bModificar);
-        bModificar.setBounds(990, 700, 200, 40);
+        bModificar.setBounds(990, 650, 200, 40);
         getContentPane().add(imgfondo);
         imgfondo.setBounds(0, 0, 950, 640);
 
@@ -723,6 +727,26 @@ public class VPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void verGrandeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verGrandeActionPerformed
+        if(verGrande.getText().equals("Reducir el tamaño")){
+            verGrande.setLocation(430, 450);
+            pGraficoEvolucionEquipo.setLocation(430, 130);
+            pGraficoEvolucionEquipo.setSize(760, 310);
+            verGrande.setText("Ver Evolución en grande");
+            pGraficoEvolucionEquipo.validate();
+        }    
+        else{
+            verGrande.setLocation((this.getWidth()-verGrande.getWidth())/2, logotipo.getY()+20);
+            pGraficoEvolucionEquipo.setLocation(0, 0);
+            pGraficoEvolucionEquipo.setSize(this.getWidth()-10, verGrande.getY()- 40);
+            verGrande.setText("Reducir el tamaño");
+            pGraficoEvolucionEquipo.validate();
+        }
+            
+        
+        
+    }//GEN-LAST:event_verGrandeActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu administracion;
     private javax.swing.JButton bAlta;
@@ -762,6 +786,7 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu ver;
     private javax.swing.JMenuItem verCalendario;
     private javax.swing.JMenuItem verEquipo;
+    private javax.swing.JButton verGrande;
     private javax.swing.JMenuItem verJugador;
     private javax.swing.JMenuItem verUsuario;
     // End of variables declaration//GEN-END:variables

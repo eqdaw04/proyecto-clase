@@ -65,7 +65,7 @@ public class VLogin extends javax.swing.JFrame {
         jLabel1.setBounds(50, 40, 450, 70);
 
         tfUsuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        tfUsuario.setText("a1");
+        tfUsuario.setText("u1");
         tfUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfUsuarioActionPerformed(evt);
@@ -97,7 +97,7 @@ public class VLogin extends javax.swing.JFrame {
         bSalir.setBounds(290, 300, 120, 40);
 
         pfContrasenna.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        pfContrasenna.setText("a1");
+        pfContrasenna.setText("u1");
         pfContrasenna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pfContrasennaActionPerformed(evt);
@@ -106,7 +106,6 @@ public class VLogin extends javax.swing.JFrame {
         getContentPane().add(pfContrasenna);
         pfContrasenna.setBounds(190, 230, 150, 30);
 
-        jTextField1.setText("2");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);

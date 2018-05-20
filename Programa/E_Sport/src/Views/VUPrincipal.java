@@ -115,8 +115,6 @@ public class VUPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pGraficoEvolucionEquipo = new javax.swing.JPanel();
-        pGraficoCurso = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tJornada = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -136,48 +134,18 @@ public class VUPrincipal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         logotipo = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
-        pGraficoClasificacion = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tClasificacion1 = new javax.swing.JTable();
+        pGraficoEvolucionEquipo = new javax.swing.JPanel();
+        pGraficoCurso = new javax.swing.JPanel();
+        pGraficoClasificacion = new javax.swing.JPanel();
         img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(1163, 823));
         getContentPane().setLayout(null);
-
-        pGraficoEvolucionEquipo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout pGraficoEvolucionEquipoLayout = new javax.swing.GroupLayout(pGraficoEvolucionEquipo);
-        pGraficoEvolucionEquipo.setLayout(pGraficoEvolucionEquipoLayout);
-        pGraficoEvolucionEquipoLayout.setHorizontalGroup(
-            pGraficoEvolucionEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 758, Short.MAX_VALUE)
-        );
-        pGraficoEvolucionEquipoLayout.setVerticalGroup(
-            pGraficoEvolucionEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 308, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pGraficoEvolucionEquipo);
-        pGraficoEvolucionEquipo.setBounds(30, 460, 760, 310);
-
-        pGraficoCurso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout pGraficoCursoLayout = new javax.swing.GroupLayout(pGraficoCurso);
-        pGraficoCurso.setLayout(pGraficoCursoLayout);
-        pGraficoCursoLayout.setHorizontalGroup(
-            pGraficoCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 528, Short.MAX_VALUE)
-        );
-        pGraficoCursoLayout.setVerticalGroup(
-            pGraficoCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 308, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pGraficoCurso);
-        pGraficoCurso.setBounds(30, 90, 530, 310);
 
         tJornada.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -329,22 +297,6 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jButton4);
         jButton4.setBounds(840, 670, 240, 40);
 
-        pGraficoClasificacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout pGraficoClasificacionLayout = new javax.swing.GroupLayout(pGraficoClasificacion);
-        pGraficoClasificacion.setLayout(pGraficoClasificacionLayout);
-        pGraficoClasificacionLayout.setHorizontalGroup(
-            pGraficoClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 528, Short.MAX_VALUE)
-        );
-        pGraficoClasificacionLayout.setVerticalGroup(
-            pGraficoClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 308, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pGraficoClasificacion);
-        pGraficoClasificacion.setBounds(580, 90, 530, 310);
-
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel5.setText("Clasificación Actual:");
         getContentPane().add(jLabel5);
@@ -367,9 +319,57 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jScrollPane3);
         jScrollPane3.setBounds(580, 130, 530, 269);
 
+        pGraficoEvolucionEquipo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout pGraficoEvolucionEquipoLayout = new javax.swing.GroupLayout(pGraficoEvolucionEquipo);
+        pGraficoEvolucionEquipo.setLayout(pGraficoEvolucionEquipoLayout);
+        pGraficoEvolucionEquipoLayout.setHorizontalGroup(
+            pGraficoEvolucionEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 758, Short.MAX_VALUE)
+        );
+        pGraficoEvolucionEquipoLayout.setVerticalGroup(
+            pGraficoEvolucionEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 308, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(pGraficoEvolucionEquipo);
+        pGraficoEvolucionEquipo.setBounds(30, 460, 760, 310);
+
+        pGraficoCurso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout pGraficoCursoLayout = new javax.swing.GroupLayout(pGraficoCurso);
+        pGraficoCurso.setLayout(pGraficoCursoLayout);
+        pGraficoCursoLayout.setHorizontalGroup(
+            pGraficoCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 528, Short.MAX_VALUE)
+        );
+        pGraficoCursoLayout.setVerticalGroup(
+            pGraficoCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 308, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(pGraficoCurso);
+        pGraficoCurso.setBounds(30, 90, 530, 310);
+
+        pGraficoClasificacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout pGraficoClasificacionLayout = new javax.swing.GroupLayout(pGraficoClasificacion);
+        pGraficoClasificacion.setLayout(pGraficoClasificacionLayout);
+        pGraficoClasificacionLayout.setHorizontalGroup(
+            pGraficoClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 528, Short.MAX_VALUE)
+        );
+        pGraficoClasificacionLayout.setVerticalGroup(
+            pGraficoClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 308, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(pGraficoClasificacion);
+        pGraficoClasificacion.setBounds(580, 90, 530, 310);
+
         img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(img);
-        img.setBounds(0, 0, 1170, 820);
+        img.setBounds(0, 0, 1170, 850);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
