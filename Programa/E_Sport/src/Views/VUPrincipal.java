@@ -7,6 +7,7 @@ package Views;
 
 import Controladora.Main;
 import Excepciones.Excepcion;
+import UML.Partido;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
@@ -112,7 +113,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         tClasificacion.setGridColor(Color.BLUE);
         
         mCurso = new DefaultTableModel();
-	Object[] vec3 = {"Posición","Equipo","Marcador"};
+	Object[] vec3 = {"Partido","Equipo","Marcador"};
 	mCurso.setColumnIdentifiers(vec3);
 	tCurso.setModel(mCurso);
 	tCurso.getColumnModel().getColumn(0).setPreferredWidth(65);
@@ -525,10 +526,24 @@ public class VUPrincipal extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
+        
     }//GEN-LAST:event_DomActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        try {
+            ArrayList <Partido> partidos = Main.saxUltimaJornada();
+            for (int x=0;x<partidos.size();x++){
+                Object[] fila =new Object[3];
+                fila[0]= partidos.get(x).getIdPartido();
+                fila[1]= partidos.get(x).geteLocal().getNombre()+" vs "+partidos.get(x).geteVisitante().getNombre();
+                fila[2]= partidos.get(x).getmLocal()+" | "+partidos.get(x).getmVisitante();
+                mCurso.addRow(fila);
+        }
         
+        } catch (ParseException ex) {
+            Logger.getLogger(VUPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }//GEN-LAST:event_jButton7ActionPerformed
 
 
