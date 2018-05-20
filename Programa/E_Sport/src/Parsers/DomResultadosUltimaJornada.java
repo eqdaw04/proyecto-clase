@@ -47,10 +47,13 @@ public class DomResultadosUltimaJornada {
         generarXML();
     }
     public void generarDocumento (ArrayList <Partido> partidos){
+        Element jornada= doc.createElement("jornada");
+        jornada.setAttribute("Id_jornada", "1");
+        doc.appendChild(jornada);
         for(int x=0;x<partidos.size();x++){
             Element partido= doc.createElement("partido");
             partido.setAttribute("id_partido", String.valueOf(partidos.get(x).getIdPartido()));
-            doc.appendChild(partido);       
+            jornada.appendChild(partido);       
             
             //en fecha y hora falta la mascara y todo eso
             Element fecha= doc.createElement("fecha");
