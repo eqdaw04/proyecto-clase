@@ -173,7 +173,7 @@ public class Excepcion extends Exception {
                 break;
                 
             case 38:
-                dato += "No se mostrará la información de la última jornada, ya que la liga aún no ha comenzado.";
+                dato += "No se mostrará la información de la última jornada, ya que la jornada aún no ha comenzado.";
                 break;
                 
             case 39:

@@ -13,7 +13,6 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -32,10 +31,10 @@ import org.w3c.dom.Element;
  *
  * @author usuario
  */
-public class DOMJornadaEnCurso {
+public class DOM_JornadaEnCurso {
     private Document doc;
     
-    public DOMJornadaEnCurso() throws ParserConfigurationException, IOException, TransformerException {
+    public DOM_JornadaEnCurso() throws ParserConfigurationException, IOException, TransformerException {
         DocumentBuilderFactory factoria = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factoria.newDocumentBuilder();
         doc = builder.newDocument();  
@@ -120,7 +119,7 @@ public class DOMJornadaEnCurso {
     }
     
     public String obtenerHora (Calendar c){
-        SimpleDateFormat ff = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat ff = new SimpleDateFormat("hh:mm");
         return ff.format(c.getTime());
     }
 }

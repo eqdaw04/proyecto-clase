@@ -84,7 +84,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bUltimo);
-        bUltimo.setBounds(470, 550, 50, 26);
+        bUltimo.setBounds(470, 550, 50, 25);
 
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel6.setText("Comentarios:");
@@ -122,7 +122,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAceptar);
-        bAceptar.setBounds(240, 510, 100, 28);
+        bAceptar.setBounds(240, 510, 100, 27);
 
         bCancelar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bCancelar.setText("Cancelar");
@@ -132,7 +132,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bCancelar);
-        bCancelar.setBounds(410, 510, 110, 28);
+        bCancelar.setBounds(410, 510, 110, 27);
 
         bPrimero.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bPrimero.setText("|<");
@@ -143,7 +143,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bPrimero);
-        bPrimero.setBounds(240, 550, 60, 26);
+        bPrimero.setBounds(240, 550, 60, 25);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -172,7 +172,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnterior);
-        bAnterior.setBounds(320, 550, 50, 26);
+        bAnterior.setBounds(320, 550, 50, 25);
 
         bSiguiente.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bSiguiente.setText(">");
@@ -183,7 +183,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(390, 550, 50, 26);
+        bSiguiente.setBounds(390, 550, 50, 25);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel3.setText("Plantilla:");

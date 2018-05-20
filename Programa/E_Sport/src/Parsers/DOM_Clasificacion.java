@@ -17,10 +17,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
-public class DOMClasificacion {
+public class DOM_Clasificacion {
     Document dom;
     
-    public DOMClasificacion() throws Exception{
+    public DOM_Clasificacion() throws Exception{
         crearDocumento();
     }
 
@@ -38,9 +38,6 @@ public class DOMClasificacion {
     private void crearDOM(String fecha) throws Exception{
     
         Element rootEle = dom.createElement("clasificacion");
-        dom.setDocumentURI("sfdgfhd");
-        dom.setNodeValue("kiuyjtrg");
-        dom.setTextContent("yurieowp");
         dom.appendChild(rootEle);
         
         Element fechaExp = dom.createElement("fecha_expiracion");

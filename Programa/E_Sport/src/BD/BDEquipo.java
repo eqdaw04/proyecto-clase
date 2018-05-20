@@ -432,6 +432,12 @@ public class BDEquipo {
         return lista;
     }
     
+    
+    
+    
+    
+    
+    // revisar     ;ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
     public ArrayList<Object> resultadoTodasLasJornadas() throws Exception{
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
@@ -440,6 +446,7 @@ public class BDEquipo {
                     + "FROM marcador INNER JOIN partido ON partido.id_partido = marcador.id_partido "
                     + "INNER JOIN jornada ON jornada.ID_JORNADA = partido.id_jornada "
                     + "INNER JOIN equipo ON equipo.id_equipo = marcador.id_equipo "
+                    + "WHERE TO_DATE(SYSDATE,'DD/MM/RRRR') >= jornada.fecha_inicio "
                     + "ORDER BY jornada.id_jornada");
         ResultSet rs;
         rs = sentencia.executeQuery();

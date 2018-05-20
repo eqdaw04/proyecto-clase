@@ -47,7 +47,7 @@ public class Main {
     private static Persona persona;
     private static Equipo equipo;
     private static Jugador jugador;
-    private static DOMJornadaEnCurso domResultadosUltimaJornada;
+    private static DOM_JornadaEnCurso domResultadosUltimaJornada;
     private static SAX_JornadaEnCurso saxJornadaEnCurso;
     //No se precisa objetos de jornada ni partido, ya que casi no se usa
     //El objeto perfil no es necesario, ya que sólo precisamos el nivel de la persona
@@ -107,7 +107,7 @@ public class Main {
         bdPartido = new BDPartido();
         bdPerfil = new BDPerfil();
         bdPersona = new BDPersona();
-        domResultadosUltimaJornada = new DOMJornadaEnCurso();
+        domResultadosUltimaJornada = new DOM_JornadaEnCurso();
         saxJornadaEnCurso = new SAX_JornadaEnCurso();
         salarioMin = 735.90f;
         salarioMax = 196320.00f;
@@ -1175,7 +1175,7 @@ public class Main {
     
     //------------------Jon
     public static void domClasificacion() throws Exception{
-        DOMClasificacion liga = new DOMClasificacion();
+        DOM_Clasificacion liga = new DOM_Clasificacion();
         Date hoy = new Date();
         SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
         liga.ejecutar(ff.format(hoy));
@@ -1203,4 +1203,5 @@ public class Main {
         }
         return lista;
     }
+    
 }

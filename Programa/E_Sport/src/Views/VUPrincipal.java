@@ -11,13 +11,9 @@ import UML.Partido;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -87,6 +83,7 @@ public class VUPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }
+ 
     
     private void modelarTabla(){
         
@@ -203,8 +200,6 @@ public class VUPrincipal extends javax.swing.JFrame {
         tCurso = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         Dom = new javax.swing.JButton();
-        jScrollPane12 = new javax.swing.JScrollPane();
-        lJornada8 = new javax.swing.JList<>();
         lNombre = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -254,7 +249,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tJornada);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(230, 490, 560, 280);
+        jScrollPane1.setBounds(30, 490, 760, 280);
 
         pGraficoClasificacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -275,7 +270,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Partidos de la Jornada ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(230, 460, 560, 22);
+        jLabel1.setBounds(30, 460, 560, 22);
 
         tCurso.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -308,17 +303,6 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(Dom);
         Dom.setBounds(1070, 500, 73, 25);
 
-        lJornada8.setEnabled(false);
-        lJornada8.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lJornada8ValueChanged(evt);
-            }
-        });
-        jScrollPane12.setViewportView(lJornada8);
-
-        getContentPane().add(jScrollPane12);
-        jScrollPane12.setBounds(30, 490, 182, 280);
-
         lNombre.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         lNombre.setForeground(new java.awt.Color(0, 153, 255));
         lNombre.setText("Hola ");
@@ -329,6 +313,15 @@ public class VUPrincipal extends javax.swing.JFrame {
         jLabel9.setText("Hola ");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(30, 40, 90, 30);
+
+        jButton7.setText("Liga Actual");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7);
+        jButton7.setBounds(1010, 410, 140, 25);
 
         jLabel8.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel8.setText("Jornadas:");
@@ -481,10 +474,6 @@ public class VUPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lJornada8ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lJornada8ValueChanged
-     
-    }//GEN-LAST:event_lJornada8ValueChanged
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             Main.domClasificacion();
@@ -529,6 +518,7 @@ public class VUPrincipal extends javax.swing.JFrame {
     private void DomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DomActionPerformed
         try {
             Main.domUltimaJornada(1);
+            Main.saxUltimaJornada();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
@@ -567,14 +557,11 @@ public class VUPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lFechaActualizacion;
-    private javax.swing.JList<Integer> lJornada8;
     private javax.swing.JLabel lNombre;
     private javax.swing.JLabel logotipo;
     private javax.swing.JPanel pGraficoClasificacion;
