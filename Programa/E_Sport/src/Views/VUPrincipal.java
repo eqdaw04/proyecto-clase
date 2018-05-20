@@ -11,7 +11,10 @@ import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -143,6 +146,9 @@ public class VUPrincipal extends javax.swing.JFrame {
     }
     
     private void cargarClasificacion(ArrayList<Object> lista){
+        Calendar hoy = Calendar.getInstance();
+        SimpleDateFormat ff = new SimpleDateFormat("dd-MM-yyyy");
+        lFechaActualizacion.setText(ff.format(hoy.getTime()));
         graficoClasificacion(lista);
         pGraficoClasificacion.setVisible(false);
     }
@@ -193,7 +199,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        lFechaActualizacion = new javax.swing.JLabel();
         logotipo = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -389,11 +395,11 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jButton8);
         jButton8.setBounds(1060, 440, 51, 25);
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("12/12/2018");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(840, 510, 240, 17);
+        lFechaActualizacion.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        lFechaActualizacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lFechaActualizacion.setText("12/12/2018");
+        getContentPane().add(lFechaActualizacion);
+        lFechaActualizacion.setBounds(840, 510, 240, 17);
         getContentPane().add(logotipo);
         logotipo.setBounds(1030, 10, 80, 70);
 
@@ -540,7 +546,6 @@ public class VUPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -548,6 +553,7 @@ public class VUPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lFechaActualizacion;
     private javax.swing.JList<Integer> lJornada8;
     private javax.swing.JLabel lNombre;
     private javax.swing.JLabel logotipo;
