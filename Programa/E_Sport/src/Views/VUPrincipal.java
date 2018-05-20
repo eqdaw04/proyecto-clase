@@ -134,6 +134,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         logotipo = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
@@ -299,6 +300,15 @@ public class VUPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Última actualización de la Liga");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(800, 470, 320, 18);
+
+        jButton7.setText("sax");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7);
+        jButton7.setBounds(1060, 440, 52, 25);
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

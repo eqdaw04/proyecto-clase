@@ -32,23 +32,23 @@ import org.w3c.dom.Element;
  *
  * @author usuario
  */
-public class DomResultadosUltimaJornada {
+public class DOMJornadaEnCurso {
     private Document doc;
     
-    public DomResultadosUltimaJornada() throws ParserConfigurationException, IOException, TransformerException {
+    public DOMJornadaEnCurso() throws ParserConfigurationException, IOException, TransformerException {
         DocumentBuilderFactory factoria = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factoria.newDocumentBuilder();
         doc = builder.newDocument();  
         
     }
     
-    public void xmlResUltJor (ArrayList <Partido> partidos) throws IOException, TransformerException{
-        generarDocumento (partidos);
+    public void xmlUltJor (ArrayList <Partido> partidos,int j) throws IOException, TransformerException{
+        generarDocumento (partidos,j);
         generarXML();
     }
-    public void generarDocumento (ArrayList <Partido> partidos){
+    public void generarDocumento (ArrayList <Partido> partidos,int j){
         Element jornada= doc.createElement("jornada");
-        jornada.setAttribute("Id_jornada", "1");
+        jornada.setAttribute("Id_jornada", String.valueOf(j));
         doc.appendChild(jornada);
         for(int x=0;x<partidos.size();x++){
             Element partido= doc.createElement("partido");
@@ -73,13 +73,15 @@ public class DomResultadosUltimaJornada {
             Element nombrel= doc.createElement("nombre");
                 nombrel.appendChild(doc.createTextNode(partidos.get(x).geteLocal().getNombre()));
                     equipol.appendChild(nombrel);
-            //hacer pruebas con esto; que pasa si se hace if? en algunos se crea y otros no? o da error??
             Element comentariol= doc.createElement("comentario");
                 comentariol.appendChild(doc.createTextNode(partidos.get(x).geteLocal().getComentario()));
                     equipol.appendChild(comentariol);
             Element puntuacionl= doc.createElement("puntuacion");
                 puntuacionl.appendChild(doc.createTextNode(String.valueOf(partidos.get(x).getmLocal())));
                     equipol.appendChild(puntuacionl);
+            Element visitantel= doc.createElement("visitante");
+                visitantel.appendChild(doc.createTextNode("false"));
+                    equipol.appendChild(visitantel);
             
             //Equipo Visitante
             Element equipov= doc.createElement("equipo");
@@ -88,22 +90,23 @@ public class DomResultadosUltimaJornada {
             Element nombrev= doc.createElement("nombre");
                 nombrev.appendChild(doc.createTextNode(partidos.get(x).geteVisitante().getNombre()));
                     equipov.appendChild(nombrev);
-            //hacer pruebas con esto; que pasa si se hace if? en algunos se crea y otros no? o da error??
             Element comentariov= doc.createElement("comentario");
                 comentariov.appendChild(doc.createTextNode(partidos.get(x).geteVisitante().getComentario()));
                     equipov.appendChild(comentariov);
             Element puntuacionv= doc.createElement("puntuacion");
                 puntuacionv.appendChild(doc.createTextNode(String.valueOf(partidos.get(x).getmVisitante())));
                     equipov.appendChild(puntuacionv);
-        }
-    }
+           Element visitantev= doc.createElement("visitante");
+                visitantev.appendChild(doc.createTextNode("true"));
+                    equipov.appendChild(visitantev);
+    }   }
     
     public void generarXML () throws TransformerConfigurationException, IOException, TransformerException{
         TransformerFactory factoria = TransformerFactory.newInstance();
         Transformer transformador= factoria.newTransformer();
         
         Source source= new DOMSource(doc);
-        File archivo = new File("ResultadoUltimaJornada.xml");
+        File archivo = new File("JornadaEnCurso.xml");
         FileWriter fw = new FileWriter(archivo);
         PrintWriter pw = new PrintWriter(fw);
         Result rs = new StreamResult(pw);
@@ -112,12 +115,12 @@ public class DomResultadosUltimaJornada {
     }
     
     public String obtenerFecha (Calendar c){
-        SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
         return ff.format(c.getTime());
     }
     
     public String obtenerHora (Calendar c){
-        SimpleDateFormat ff = new SimpleDateFormat("hh24:mm");
+        SimpleDateFormat ff = new SimpleDateFormat("HH:mm");
         return ff.format(c.getTime());
     }
 }
