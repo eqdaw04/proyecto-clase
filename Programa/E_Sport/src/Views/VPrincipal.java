@@ -11,6 +11,8 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -45,6 +47,7 @@ public class VPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         crearImagenes();
+        botonDOM.setVisible(true);
         switch(tipo)
         {
             case 1:

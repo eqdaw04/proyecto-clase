@@ -157,8 +157,6 @@ public class Main {
             }
             else{
                 new VPrincipal(perfil,persona.getUsuario());
-                domResultadosUltimaJornada.xmlResUltJor(BuscarPartidosPorJornada2(1));
-
             }
             
         }
@@ -1141,5 +1139,8 @@ public class Main {
     }
     public static ArrayList<Partido> BuscarPartidosPorJornada2 (int j) throws Exception{
         return bdPartido.BuscarPartidosPorJornada2(j);
+    }
+    public static void domUltimaJornada (int j) throws Exception{
+        domResultadosUltimaJornada.xmlResUltJor(BuscarPartidosPorJornada2(1));
     }
 }
