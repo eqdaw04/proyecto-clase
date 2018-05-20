@@ -135,7 +135,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         logotipo = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
@@ -237,7 +237,7 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton7);
-        jButton7.setBounds(1009, 420, 140, 25);
+        jButton7.setBounds(1010, 410, 140, 25);
 
         jLabel8.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel8.setText("Jornadas:");
@@ -302,14 +302,14 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(800, 470, 320, 18);
 
-        jButton7.setText("sax");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButton8.setText("sax");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7);
-        jButton7.setBounds(1060, 440, 52, 25);
+        getContentPane().add(jButton8);
+        jButton8.setBounds(1060, 440, 51, 25);
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -448,9 +448,10 @@ public class VUPrincipal extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         try {
-            Main.saxUltimaJornada();
-        } catch (ParseException ex) {
-            Logger.getLogger(VUPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            Main.saxClasificacion();
+            Main.domClasificacion();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -465,6 +466,7 @@ public class VUPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

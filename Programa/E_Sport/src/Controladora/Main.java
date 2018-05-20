@@ -1177,4 +1177,20 @@ public class Main {
     public static ArrayList<Object> resultadoFinalOrdenEquipo() throws Exception{
         return bdEquipo.resultadoFinalOrdenEquipo();
     }
+    
+    public static void saxClasificacion() throws Exception{
+        SAX_Clasificacion clasax = new SAX_Clasificacion();
+        ArrayList<Object> lista;
+        lista = clasax.metodoraiz();
+        Calendar fecha = Calendar.getInstance();
+        SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
+        fecha.setTime(ff.parse(clasax.getExpiracion()));
+        Date hoy = new Date();
+        if(fecha.equals(hoy)){
+            JOptionPane.showMessageDialog(null, "Igual");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No igual");
+        }
+    }
 }
