@@ -42,13 +42,13 @@ public class DomResultadosUltimaJornada {
         
     }
     
-    public void xmlResUltJor (ArrayList <Partido> partidos) throws IOException, TransformerException{
-        generarDocumento (partidos);
+    public void xmlResUltJor (ArrayList <Partido> partidos,int j) throws IOException, TransformerException{
+        generarDocumento (partidos,j);
         generarXML();
     }
-    public void generarDocumento (ArrayList <Partido> partidos){
+    public void generarDocumento (ArrayList <Partido> partidos,int j){
         Element jornada= doc.createElement("jornada");
-        jornada.setAttribute("Id_jornada", "1");
+        jornada.setAttribute("Id_jornada", String.valueOf(j));
         doc.appendChild(jornada);
         for(int x=0;x<partidos.size();x++){
             Element partido= doc.createElement("partido");
@@ -117,7 +117,7 @@ public class DomResultadosUltimaJornada {
     }
     
     public String obtenerHora (Calendar c){
-        SimpleDateFormat ff = new SimpleDateFormat("hh24:mm");
+        SimpleDateFormat ff = new SimpleDateFormat("HH24:mm");
         return ff.format(c.getTime());
     }
 }

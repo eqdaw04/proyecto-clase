@@ -1141,6 +1141,6 @@ public class Main {
         return bdPartido.BuscarPartidosPorJornada2(j);
     }
     public static void domUltimaJornada (int j) throws Exception{
-        domResultadosUltimaJornada.xmlResUltJor(BuscarPartidosPorJornada2(1));
+        domResultadosUltimaJornada.xmlResUltJor(BuscarPartidosPorJornada2(1),j);
     }
 }
