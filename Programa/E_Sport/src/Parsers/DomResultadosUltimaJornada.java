@@ -110,11 +110,11 @@ public class DomResultadosUltimaJornada {
     
     public String obtenerFecha (Calendar c){
         SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
-        return ff.format(c);
+        return ff.format(c.getTime());
     }
     
     public String obtenerHora (Calendar c){
         SimpleDateFormat ff = new SimpleDateFormat("hh24:mm");
-        return ff.format(c);
+        return ff.format(c.getTime());
     }
 }

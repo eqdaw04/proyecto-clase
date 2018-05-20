@@ -121,6 +121,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tClasificacion = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
+        Dom = new javax.swing.JButton();
         jScrollPane12 = new javax.swing.JScrollPane();
         lJornada8 = new javax.swing.JList<>();
         jLabel7 = new javax.swing.JLabel();
@@ -199,6 +200,15 @@ public class VUPrincipal extends javax.swing.JFrame {
         jLabel3.setText("Jornada en Curso:");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 90, 270, 30);
+
+        Dom.setText("jButton7");
+        Dom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DomActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Dom);
+        Dom.setBounds(1070, 500, 73, 25);
 
         lJornada8.setEnabled(false);
         lJornada8.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -406,8 +416,17 @@ public class VUPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void DomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DomActionPerformed
+        try {
+            Main.domUltimaJornada(1);
+        } catch (Exception ex) {
+            Logger.getLogger(VUPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_DomActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Dom;
     private javax.swing.JLabel img;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
