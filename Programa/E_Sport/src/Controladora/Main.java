@@ -46,6 +46,7 @@ public class Main {
     private static Equipo equipo;
     private static Jugador jugador;
     private static DOMJornadaEnCurso domResultadosUltimaJornada;
+    private static SAX_JornadaEnCurso saxJornadaEnCurso;
     //No se precisa objetos de jornada ni partido, ya que casi no se usa
     //El objeto perfil no es necesario, ya que sólo precisamos el nivel de la persona
     //Con estas omisiones de objetos, se ahorrá recursos del sistema 
@@ -105,6 +106,7 @@ public class Main {
         bdPerfil = new BDPerfil();
         bdPersona = new BDPersona();
         domResultadosUltimaJornada = new DOMJornadaEnCurso();
+        saxJornadaEnCurso = new SAX_JornadaEnCurso();
         salarioMin = 735.90f;
         salarioMax = 196320.00f;
     }
@@ -1142,5 +1144,8 @@ public class Main {
     }
     public static void domUltimaJornada (int j) throws Exception{
         domResultadosUltimaJornada.xmlUltJor(BuscarPartidosPorJornada2(1),j);
+    }
+    public static void saxUltimaJornada(){
+        saxJornadaEnCurso.metodoraiz();
     }
 }

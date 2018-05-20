@@ -8,9 +8,15 @@ package Parsers;
 import UML.Partido;
 import UML.Equipo;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -20,19 +26,17 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
 import org.xml.sax.helpers.DefaultHandler;
-import sax_jornada.en.curso.Equipo;
-import sax_jornada.en.curso.Partido;
+
 
 public class SAX_JornadaEnCurso extends DefaultHandler{
 
     private ArrayList<Partido> partidos;
-    private String expiracion;
+    private String expiracion,fecha,lugar,puntuacion;
     private StringBuilder buffer=new StringBuilder();        
     private Partido p;
     private Equipo e;
     
     public SAX_JornadaEnCurso(){
-
         partidos = new ArrayList();
     }
     
@@ -60,11 +64,11 @@ public class SAX_JornadaEnCurso extends DefaultHandler{
     }
     
     private void printData(){
-        System.out.println("Atención, esta lista caduca el " + expiracion);
+        System.out.println("Atención, esta lista caduca el ");
         
         Iterator it = partidos.iterator();
         while (it.hasNext()){
-            System.out.println(it.next().toString());
+            System.out.println(it.hasNext());
         }
     }
     
@@ -79,39 +83,57 @@ public class SAX_JornadaEnCurso extends DefaultHandler{
                 buffer.delete(0,buffer.length());
                 break;
             case "hora":
+                buffer.delete(0,buffer.length());
                 break;
             case "lugar":
+                buffer.delete(0,buffer.length());
                 break;
             case "Equipo":
+                e = new Equipo();
+                e.setIdEquipo(Integer.parseInt(attributes.getValue("id_equipo")));
                 break;
             case "nombre":
+                buffer.delete(0,buffer.length());
                 break;
             case "comentario":
+                buffer.delete(0,buffer.length());
                 break;
             case "puntuacion":
+                buffer.delete(0,buffer.length());
                 break;
             case "visitante":
+                buffer.delete(0,buffer.length());
                 break;
+            case "jornada":
+                buffer.delete(0,buffer.length());
+                break;
+
         }               
     }
     
         public void characters(char[] ch, int start, int length) throws SAXException {
-        buffer.append(ch,start,length);
-    }
+            buffer.append(ch,start,length);
+        }
        
       public void endElement(String uri, String localName, String qName) throws SAXException {
           switch(qName){
-             case "partido":
-                break;
             case "fecha":
+                fecha= buffer.toString();
                 break;
             case "hora":
+                SimpleDateFormat sp= new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                fecha=fecha+" "+buffer.toString();
+              try {
+                Date dat=sp.parse(fecha);
+                Calendar calendar= Calendar.getInstance();
+                calendar.setTimeInMillis(dat.getTime());
+                p.setFecha(calendar);
+              } catch (ParseException ex) {
+                  Logger.getLogger(SAX_JornadaEnCurso.class.getName()).log(Level.SEVERE, null, ex);
+              } 
                 break;
             case "lugar":
-                p.se
-                break;
-            case "Equipo":
-                
+                lugar=buffer.toString();
                 break;
             case "nombre":
                 e.setNombre(buffer.toString());
@@ -120,34 +142,18 @@ public class SAX_JornadaEnCurso extends DefaultHandler{
                 e.setComentario(buffer.toString());
                 break;
             case "puntuacion":
-                //variable local o visitante
+                puntuacion = buffer.toString();
                 break;
             case "visitante":
-                
+                if(buffer.toString().equalsIgnoreCase("true")){
+                    p.seteVisitante(e);
+                    p.setmVisitante(Integer.parseInt(puntuacion));
+                }else{
+                    e.setLugar(lugar);
+                    p.seteLocal(e);
+                    p.setmLocal(Integer.parseInt(puntuacion));
+                }
                 break;
-            case "jornada":
-                break;
           }
-          if (qName.equalsIgnoreCase("fecha_expiracion")){
-              expiracion = caracteres;
-          }
-          if (qName.equalsIgnoreCase("partido")){
-              partido.add(part);
-              
-
-          } else if (qName.equalsIgnoreCase("fecha_partido")){
-             part.setFechaPartido(caracteres);
-          } else if (qName.equalsIgnoreCase("hora_inicio")){
-              part.setHoraInicio(caracteres);        
-          } else if (qName.equalsIgnoreCase("hora_fin")){
-              part.setHoraFin(caracteres);
-          }
-          
-        if (qName.equalsIgnoreCase("equipo")){
-            part.setListaequipos(eq);
-        
-        } else if (qName.equalsIgnoreCase("nombre")){
-            eq.setNombre(caracteres);
-        }
       }   
 }
