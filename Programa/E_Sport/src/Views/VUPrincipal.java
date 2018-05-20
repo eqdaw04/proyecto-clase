@@ -116,9 +116,9 @@ public class VUPrincipal extends javax.swing.JFrame {
 	Object[] vec3 = {"Partido","Equipo","Marcador"};
 	mCurso.setColumnIdentifiers(vec3);
 	tCurso.setModel(mCurso);
-	tCurso.getColumnModel().getColumn(0).setPreferredWidth(65);
-	tCurso.getColumnModel().getColumn(1).setPreferredWidth(150);
-	tCurso.getColumnModel().getColumn(2).setPreferredWidth(75);
+	tCurso.getColumnModel().getColumn(0).setPreferredWidth(125);
+	tCurso.getColumnModel().getColumn(1).setPreferredWidth(255);
+	tCurso.getColumnModel().getColumn(2).setPreferredWidth(125);
         tCurso.setRowHeight(40);
         tCurso.setShowVerticalLines(false);
         tCurso.setGridColor(Color.BLUE);
@@ -191,7 +191,6 @@ public class VUPrincipal extends javax.swing.JFrame {
         lJornada8 = new javax.swing.JList<>();
         lNombre = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -291,7 +290,7 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Dom);
-        Dom.setBounds(1070, 500, 79, 25);
+        Dom.setBounds(1070, 500, 73, 25);
 
         lJornada8.setEnabled(false);
         lJornada8.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -314,15 +313,6 @@ public class VUPrincipal extends javax.swing.JFrame {
         jLabel9.setText("Hola ");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(30, 40, 90, 30);
-
-        jButton7.setText("Liga Actual");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton7);
-        jButton7.setBounds(1010, 410, 140, 25);
 
         jLabel8.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel8.setText("Jornadas:");
@@ -394,7 +384,7 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton8);
-        jButton8.setBounds(1060, 440, 51, 25);
+        jButton8.setBounds(1060, 440, 52, 25);
 
         lFechaActualizacion.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         lFechaActualizacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -506,13 +496,13 @@ public class VUPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void bGraficoClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGraficoClasificacionActionPerformed
-        if(bGraficoClasificacion.getText().equals("Ver en Gráfico de la Liga actual")){
+        if(bGraficoClasificacion.getText().equals("Ver el Gráfico de la Liga actual")){
             pGraficoClasificacion.setVisible(true);
             bGraficoClasificacion.setText("Ocultar Gráfigo Liga Actual");
         }
         else{
             pGraficoClasificacion.setVisible(false);
-            bGraficoClasificacion.setText("Ver en Gráfico de la Liga actual");
+            bGraficoClasificacion.setText("Ver el Gráfico de la Liga actual");
         }
     }//GEN-LAST:event_bGraficoClasificacionActionPerformed
 
@@ -556,7 +546,6 @@ public class VUPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
