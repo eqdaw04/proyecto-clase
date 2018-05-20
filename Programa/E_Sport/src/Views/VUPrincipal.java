@@ -60,9 +60,9 @@ public class VUPrincipal extends javax.swing.JFrame {
         
         //Mostramos la grafica en pantalla
         ChartPanel panel = new ChartPanel(chart);
-        pGraficoJornada.setLayout(new java.awt.BorderLayout());
-        pGraficoJornada.add(panel);
-        pGraficoJornada.validate();
+        pGraficoEvolucionEquipo.setLayout(new java.awt.BorderLayout());
+        pGraficoEvolucionEquipo.add(panel);
+        pGraficoEvolucionEquipo.validate();
         
     }
     private void modelarTabla(){
@@ -115,8 +115,8 @@ public class VUPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pGraficoJornada = new javax.swing.JPanel();
-        pGraficoClasificacion = new javax.swing.JPanel();
+        pGraficoEvolucionEquipo = new javax.swing.JPanel();
+        pGraficoCurso = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tJornada = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -130,45 +130,54 @@ public class VUPrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         logotipo = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        pGraficoClasificacion = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tClasificacion1 = new javax.swing.JTable();
         img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMinimumSize(new java.awt.Dimension(860, 790));
-        setType(java.awt.Window.Type.UTILITY);
+        setMinimumSize(new java.awt.Dimension(1163, 823));
         getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout pGraficoJornadaLayout = new javax.swing.GroupLayout(pGraficoJornada);
-        pGraficoJornada.setLayout(pGraficoJornadaLayout);
-        pGraficoJornadaLayout.setHorizontalGroup(
-            pGraficoJornadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+        pGraficoEvolucionEquipo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout pGraficoEvolucionEquipoLayout = new javax.swing.GroupLayout(pGraficoEvolucionEquipo);
+        pGraficoEvolucionEquipo.setLayout(pGraficoEvolucionEquipoLayout);
+        pGraficoEvolucionEquipoLayout.setHorizontalGroup(
+            pGraficoEvolucionEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 758, Short.MAX_VALUE)
         );
-        pGraficoJornadaLayout.setVerticalGroup(
-            pGraficoJornadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
+        pGraficoEvolucionEquipoLayout.setVerticalGroup(
+            pGraficoEvolucionEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 308, Short.MAX_VALUE)
         );
 
-        getContentPane().add(pGraficoJornada);
-        pGraficoJornada.setBounds(230, 90, 540, 310);
+        getContentPane().add(pGraficoEvolucionEquipo);
+        pGraficoEvolucionEquipo.setBounds(30, 460, 760, 310);
 
-        javax.swing.GroupLayout pGraficoClasificacionLayout = new javax.swing.GroupLayout(pGraficoClasificacion);
-        pGraficoClasificacion.setLayout(pGraficoClasificacionLayout);
-        pGraficoClasificacionLayout.setHorizontalGroup(
-            pGraficoClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+        pGraficoCurso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout pGraficoCursoLayout = new javax.swing.GroupLayout(pGraficoCurso);
+        pGraficoCurso.setLayout(pGraficoCursoLayout);
+        pGraficoCursoLayout.setHorizontalGroup(
+            pGraficoCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 528, Short.MAX_VALUE)
         );
-        pGraficoClasificacionLayout.setVerticalGroup(
-            pGraficoClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
+        pGraficoCursoLayout.setVerticalGroup(
+            pGraficoCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 308, Short.MAX_VALUE)
         );
 
-        getContentPane().add(pGraficoClasificacion);
-        pGraficoClasificacion.setBounds(20, 440, 540, 310);
+        getContentPane().add(pGraficoCurso);
+        pGraficoCurso.setBounds(30, 90, 530, 310);
 
         tJornada.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -194,12 +203,12 @@ public class VUPrincipal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tJornada);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(230, 120, 540, 269);
+        jScrollPane1.setBounds(230, 490, 560, 280);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Partidos de la Jornada ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(230, 90, 540, 22);
+        jLabel1.setBounds(230, 460, 560, 22);
 
         tClasificacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -216,12 +225,12 @@ public class VUPrincipal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tClasificacion);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(19, 440, 530, 269);
+        jScrollPane2.setBounds(30, 130, 530, 269);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel3.setText("Clasificación Actual:");
+        jLabel3.setText("Jornada en Curso:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 400, 270, 30);
+        jLabel3.setBounds(30, 90, 270, 30);
 
         lJornada8.setEnabled(false);
         lJornada8.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -232,7 +241,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         jScrollPane12.setViewportView(lJornada8);
 
         getContentPane().add(jScrollPane12);
-        jScrollPane12.setBounds(20, 120, 182, 280);
+        jScrollPane12.setBounds(30, 490, 182, 280);
 
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel7.setText("Hola ");
@@ -240,11 +249,11 @@ public class VUPrincipal extends javax.swing.JFrame {
         jLabel7.setBounds(30, 40, 590, 30);
 
         jLabel8.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel8.setText("Número de Jornada");
+        jLabel8.setText("Jornadas:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(10, 90, 220, 23);
+        jLabel8.setBounds(30, 460, 210, 23);
 
-        jButton1.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jButton1.setText("Actualizar datos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,10 +261,10 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(570, 510, 240, 25);
+        jButton1.setBounds(840, 550, 240, 40);
 
-        jButton2.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        jButton2.setText("<html><center>Ver en un gráfico<br></br>los resultados de la Liga</center></html>");
+        jButton2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        jButton2.setText("<html><center>Ver gráfico<br></br>evolución de Equipos</center></html>");
         jButton2.setActionCommand("");
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -264,9 +273,9 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(570, 550, 240, 56);
+        jButton2.setBounds(840, 600, 240, 60);
 
-        jButton3.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jButton3.setText("Cerrar Sesión");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,23 +283,43 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(570, 684, 240, 25);
+        jButton3.setBounds(840, 730, 240, 40);
+
+        jButton5.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        jButton5.setText("Ver en Gráfico de la Liga actual");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5);
+        jButton5.setBounds(580, 409, 370, 40);
+
+        jButton6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        jButton6.setText("Ver en Gráfico la jornada en curso");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6);
+        jButton6.setBounds(30, 409, 370, 40);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Última actualización de la Liga");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(530, 430, 320, 18);
+        jLabel2.setBounds(800, 470, 320, 18);
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("12/12/2018");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(567, 469, 203, 17);
+        jLabel4.setBounds(840, 510, 240, 17);
         getContentPane().add(logotipo);
-        logotipo.setBounds(760, 20, 80, 70);
+        logotipo.setBounds(1030, 10, 80, 70);
 
-        jButton4.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jButton4.setText("Ver El Calendario");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,11 +327,49 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(570, 620, 240, 25);
+        jButton4.setBounds(840, 670, 240, 40);
+
+        pGraficoClasificacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout pGraficoClasificacionLayout = new javax.swing.GroupLayout(pGraficoClasificacion);
+        pGraficoClasificacion.setLayout(pGraficoClasificacionLayout);
+        pGraficoClasificacionLayout.setHorizontalGroup(
+            pGraficoClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 528, Short.MAX_VALUE)
+        );
+        pGraficoClasificacionLayout.setVerticalGroup(
+            pGraficoClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 308, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(pGraficoClasificacion);
+        pGraficoClasificacion.setBounds(580, 90, 530, 310);
+
+        jLabel5.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel5.setText("Clasificación Actual:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(580, 90, 270, 30);
+
+        tClasificacion1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Posición", "Local VS Visitante", "Marcador"
+            }
+        ));
+        tClasificacion1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jScrollPane3.setViewportView(tClasificacion1);
+
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(580, 130, 530, 269);
 
         img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(img);
-        img.setBounds(0, 0, 860, 790);
+        img.setBounds(0, 0, 1170, 820);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -331,6 +398,14 @@ public class VUPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel img;
@@ -338,20 +413,26 @@ public class VUPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JList<Integer> lJornada8;
     private javax.swing.JLabel logotipo;
     private javax.swing.JPanel pGraficoClasificacion;
-    private javax.swing.JPanel pGraficoJornada;
+    private javax.swing.JPanel pGraficoCurso;
+    private javax.swing.JPanel pGraficoEvolucionEquipo;
     private javax.swing.JTable tClasificacion;
+    private javax.swing.JTable tClasificacion1;
     private javax.swing.JTable tJornada;
     // End of variables declaration//GEN-END:variables
 }

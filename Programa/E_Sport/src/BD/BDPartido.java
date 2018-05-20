@@ -70,7 +70,7 @@ public class BDPartido {
         sentencia = null;
         int n = 0;
         // insertar en el marcador el primer equipo
-        // 1 es visitante y 0 es local; 1 false 0 true
+        // 1 es local y 0 es visitante; 1 false 0 true
         if(p.geteLocal().getIdEquipo()!=0){
             sentencia = con.getConnection().prepareStatement("INSERT INTO marcador VALUES (DEFAULT, '0', '1', ?, ?)");
             sentencia.setInt(1, p.getIdPartido());

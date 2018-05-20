@@ -11,7 +11,6 @@ import BD.*;
 import Excepciones.Excepcion;
 import Views.*;
 import java.awt.Color;
-import java.awt.SplashScreen;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -20,6 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
@@ -419,6 +419,7 @@ public class Main {
     
     /**
      * Metodo que devuelve todos los partidos 
+     * @param fecha
      * @return 
      * @throws Exception 
      */
@@ -589,8 +590,64 @@ public class Main {
         return bdEquipo.resultadoFinal();
     }
     
+    public static ArrayList<Object> resultadosTodosLosPartidos() throws Exception{
+        return bdEquipo.resultadoTodasLasJornadas();
+    }
+    
     public static ArrayList<Object> resultadosUltimaJornada() throws Exception{
-        return bdEquipo.resultadoUltimaJornada();
+        ArrayList <Object> lista;
+                
+        lista = bdEquipo.resultadoUltimaJornada();
+        if(lista.size() > 1){
+            ArrayList <Object> listaFinal = new ArrayList();
+            String p2 = "";
+            // partido, equipo, puntos, visitante
+            for(int x = 0; x<lista.size(); x++){
+                String p = "",
+                       el = "",
+                       ev = "",
+                       pl = "",
+                       pv = "";
+                Object[] partido = (Object[]) lista.get(x);
+                p = partido[0].toString();
+           
+                if(!p2.equals(p)){
+                    for(int y = 0; y<lista.size(); y++){
+                    Object[] equipo = (Object[]) lista.get(y);
+                    if(p.equals(equipo[0])){
+                        // local
+                        if(equipo[3].equals("1")){
+                            el = equipo[1].toString();
+                            pl = equipo[2].toString();
+                        }
+                        // visitante
+                        else{
+                            ev = equipo[1].toString();
+                            pv = equipo[2].toString();
+                            }
+                        }
+                    }
+                    if(el.equals("")){
+                        String fila[] = {p, ev + "   Se encuentra en Descando", pv};
+                        listaFinal.add(fila);
+                    }
+                    else if(ev.equals("")){
+                        String fila[] = {p, el + "   Se encuentra en Descando", pl};
+                        listaFinal.add(fila);
+                    }
+                    else{
+                        String fila[] = {p, el + "   VS   " + ev, pl + "   |   " + pv};
+                        listaFinal.add(fila);
+                    }
+                }
+                
+                
+                p2 = p;
+            }
+            lista = listaFinal;
+        }   
+        
+        return lista;
     }
     
     /**

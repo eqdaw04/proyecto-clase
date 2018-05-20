@@ -256,7 +256,7 @@ public class VCalendario extends javax.swing.JDialog {
         Njornada.setText(String.valueOf(jornadas.get(pos).getIdJornada()));
         lbFechaIni.setText(String.valueOf(jornadas.get(pos).getFechaInicio()));
         lbFechaFin.setText(String.valueOf(jornadas.get(pos).getFechaFinal()));
-        String titulos[] ={"Equipos","Fecha","Lugar"};
+        String titulos[] ={"Local VS Visitante","Fecha","Lugar"};
         String datos [] []= new String[jornadas.get(pos).getListaPartidos().size()] [3];
         for (int x=0; x < datos.length;x++){
             datos [x][2] = "";

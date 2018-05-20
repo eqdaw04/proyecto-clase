@@ -10,6 +10,7 @@ import Excepciones.Excepcion;
 import UML.Partido;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,7 +38,15 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         setModal(true);
         setLocationRelativeTo(null);
         // Cargar los partidos del día de hoy, si existe
-        cargarPartido();
+        // De alguna manera java no coge la fecha del JComboCalendar si no se selecciona una fecha y por ello hay que instanciar un valor para actualizarlo
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR, 00);
+        cal.set(Calendar.MINUTE, 00);
+        cal.set(Calendar.SECOND, 00);
+        cal.set(Calendar.MILLISECOND, 00);
+        ccFecha.setDate(cal.getTime());
+        cargarPartido(ccFecha.getCalendar());
+        
         ccFecha.setEnabled(false);
         setVisible(true);
     }
@@ -46,10 +55,10 @@ public class VIntroducirResultado extends javax.swing.JDialog {
      * Metodo que carga el partido que se ha jugado el día indicado.
      */
 
-    private void cargarPartido(){
+    private void cargarPartido(Calendar cal){
         try{
             listaPartido = new ArrayList();
-            listaPartido = Main.consultarLosPartidosPorFecha(ccFecha.getCalendar());
+            listaPartido = Main.consultarLosPartidosPorFecha(cal);
             cbPartido.removeAllItems();
             for(Partido pa:listaPartido) {
                 int fd = pa.getIdPartido();
@@ -152,7 +161,6 @@ public class VIntroducirResultado extends javax.swing.JDialog {
 
         tfHora.setEditable(false);
         tfHora.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfHora.setText("10:00");
         getContentPane().add(tfHora);
         tfHora.setBounds(640, 140, 80, 22);
 
@@ -166,7 +174,6 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         jLabel8.setBounds(30, 190, 150, 18);
 
         ccFecha.setEditable(true);
-        ccFecha.setEnabled(false);
         ccFecha.addDateListener(new org.freixas.jcalendar.DateListener() {
             public void dateChanged(org.freixas.jcalendar.DateEvent evt) {
                 ccFechaDateChanged(evt);
@@ -201,6 +208,11 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         getContentPane().add(jLabel11);
         jLabel11.setBounds(40, 140, 150, 18);
 
+        cbPartido.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbPartidoItemStateChanged(evt);
+            }
+        });
         cbPartido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbPartidoActionPerformed(evt);
@@ -233,6 +245,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
 
     private void bModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarActionPerformed
         ccFecha.setEnabled(true);
+        cargarPartido(ccFecha.getCalendar());
     }//GEN-LAST:event_bModificarActionPerformed
 
     private void cbPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPartidoActionPerformed
@@ -241,11 +254,11 @@ public class VIntroducirResultado extends javax.swing.JDialog {
             p = listaPartido.get(x);
             if(cbPartido.getSelectedIndex()>=0){
                 if(p.getIdPartido() == Integer.valueOf(cbPartido.getSelectedItem().toString())){
-                    SimpleDateFormat f = new SimpleDateFormat("HH:MM");
+                    SimpleDateFormat f = new SimpleDateFormat("hh:mm");
                     tfHora.setText(f.format(p.getFecha().getTime()));
                     
                     tfPuntosLocal.setText(String.valueOf(p.getmLocal()));
-                    tfPuntosVisitante.setText(String.valueOf(p.getmLocal()));
+                    tfPuntosVisitante.setText(String.valueOf(p.getmVisitante()));
                     tfPuntosLocal.setEditable(true);
                     tfPuntosVisitante.setEditable(true);
                     bAceptar.setEnabled(true);
@@ -312,8 +325,12 @@ public class VIntroducirResultado extends javax.swing.JDialog {
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void ccFechaDateChanged(org.freixas.jcalendar.DateEvent evt) {//GEN-FIRST:event_ccFechaDateChanged
-        cargarPartido();
+        cargarPartido(ccFecha.getCalendar());
     }//GEN-LAST:event_ccFechaDateChanged
+
+    private void cbPartidoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbPartidoItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbPartidoItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;

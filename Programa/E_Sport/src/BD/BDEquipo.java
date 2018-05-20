@@ -353,18 +353,50 @@ public class BDEquipo {
     public ArrayList<Object> resultadoUltimaJornada() throws Exception{
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT equipo.nombre AS equipo, SUM(marcador.puntuacion) as punto FROM marcador INNER JOIN equipo ON marcador.id_equipo = equipo.id_equipo GROUP BY equipo.nombre ORDER BY punto");
+        sentencia = con.getConnection().prepareStatement(
+                // SYSDATE
+            "SELECT equipo.nombre AS equipo, marcador.puntuacion AS puntos, marcador.visitante AS visitante, partido.id_partido AS partido "
+                    + "FROM marcador INNER JOIN partido ON partido.id_partido = marcador.id_partido "
+                    + "INNER JOIN equipo ON equipo.id_equipo = marcador.id_equipo "
+                    + "WHERE partido.id_jornada = "
+                    + "(SELECT id_jornada-1 FROM jornada "
+                    + "WHERE TO_DATE(SYSDATE,'DD/MM/RRRR') >= fecha_inicio AND TO_DATE(SYSDATE,'DD/MM/RRRR') <= fecha_fin) "
+                    + "ORDER BY partido.id_partido");
         ResultSet rs;
         rs = sentencia.executeQuery();
         ArrayList <Object> lista = new ArrayList();
-        int x = 0;
         while(rs.next()){
-            x++;
-            Object[] fila = new Object[3];
-            fila[0] = x;
+            String [] fila = new String[4];
+            fila[0] = rs.getString("partido");
             fila[1] = rs.getString("equipo");
-            fila[2] = rs.getString("punto");
-            lista.add(fila);
+            fila[2] = rs.getString("puntos");
+            fila[3] = rs.getString("visitante");
+            lista.add(fila);   
+        }
+        rs.close();
+        sentencia.close();
+        con.desconectar();
+        return lista;
+    }
+    
+    public ArrayList<Object> resultadoTodasLasJornadas() throws Exception{
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement(
+            "SELECT equipo.nombre AS equipos, marcador.puntuacion AS puntos, jornada.id_jornada AS jornada "
+                    + "FROM marcador INNER JOIN partido ON partido.id_partido = marcador.id_partido "
+                    + "INNER JOIN jornada ON jornada.ID_JORNADA = partido.id_jornada "
+                    + "INNER JOIN equipo ON equipo.id_equipo = marcador.id_equipo "
+                    + "ORDER BY jornada.id_jornada");
+        ResultSet rs;
+        rs = sentencia.executeQuery();
+        ArrayList <Object> lista = new ArrayList();
+        while(rs.next()){
+            String [] fila = new String[4];
+            fila[0] = rs.getString("jornada");
+            fila[1] = rs.getString("equipos");
+            fila[2] = rs.getString("puntos");
+            lista.add(fila);   
         }
         rs.close();
         sentencia.close();

@@ -49,7 +49,7 @@ public class BDPersona {
         // cargar objeto sentencia al objeto rs
         rs = sentencia.executeQuery();
        // buscar si existe datos en la rs
-        if(rs.next()){
+        while(rs.next()){
             
             p = recorrer(rs);
             

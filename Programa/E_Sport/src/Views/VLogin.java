@@ -65,7 +65,7 @@ public class VLogin extends javax.swing.JFrame {
         jLabel1.setBounds(50, 40, 450, 70);
 
         tfUsuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        tfUsuario.setText("usu");
+        tfUsuario.setText("a1");
         tfUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfUsuarioActionPerformed(evt);
@@ -97,7 +97,7 @@ public class VLogin extends javax.swing.JFrame {
         bSalir.setBounds(290, 300, 120, 40);
 
         pfContrasenna.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        pfContrasenna.setText("sus");
+        pfContrasenna.setText("a1");
         pfContrasenna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pfContrasennaActionPerformed(evt);
@@ -106,6 +106,7 @@ public class VLogin extends javax.swing.JFrame {
         getContentPane().add(pfContrasenna);
         pfContrasenna.setBounds(190, 230, 150, 30);
 
+        jTextField1.setText("2");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -169,7 +170,8 @@ public class VLogin extends javax.swing.JFrame {
             this.repaint();
 
             if(n==0){
-                Thread.sleep(3000);
+                // cambiar a 3000 a la entrega de la app
+                Thread.sleep(1);
             }
 
             jTextField1.grabFocus();
@@ -314,7 +316,7 @@ public class VLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         }
         finally{
-            if(error == 13){
+            if(cont == 3){
                 Main.salir(this);
             }
         }

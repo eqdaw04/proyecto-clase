@@ -43,6 +43,7 @@ public class VDResultados extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         try {
             graficoClasificacion(Main.resultados());
+            // se ha programado para el la última jornada y no la actual, ya que así lo pide el enunciado
             tablaUltimaJornada(Main.resultadosUltimaJornada());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
@@ -52,8 +53,13 @@ public class VDResultados extends javax.swing.JDialog {
     }
     
     private void tablaUltimaJornada(ArrayList<Object> lista){
+        // partido, equipo, puntos, visitante
         for(int x =0; x< lista.size(); x++){
-            Object[] fila = (Object[]) lista.get(x);
+            Object[] dato = (Object[]) lista.get(x);
+            Object[] fila = new Object[3];
+            fila[0] = dato[0];
+            fila[1] = dato[1];
+            fila[2] = dato[2];
             mJornada.addRow(fila);
         }
     }
@@ -67,7 +73,6 @@ public class VDResultados extends javax.swing.JDialog {
         DefaultPieDataset pieDataset = new DefaultPieDataset();
         for(int x =0; x< lista.size(); x++){
             Object[] fila = (Object[]) lista.get(x);
-            for (int i=0;i<3;i++)
             pieDataset.setValue(String.valueOf(fila[1]), new Integer(Integer.parseInt(fila[2].toString())));
             mClasificacion.addRow(fila);
         }
