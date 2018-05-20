@@ -170,6 +170,22 @@ public class VUPrincipal extends javax.swing.JFrame {
         pGraficoClasificacion.validate();
         
     }
+    private void graficoCurso(ArrayList<Partido> partidos){
+        DefaultPieDataset pieDataset = new DefaultPieDataset();
+        for(int x =0; x< partidos.size(); x++){
+            Object[] fila = (Object[]) partidos.get(x);
+            pieDataset.setValue(String.valueOf(fila[1]), new Integer(Integer.parseInt(fila[2].toString())));
+            mCurso.addRow(fila);
+        }
+        JFreeChart chart = ChartFactory.createPieChart("",pieDataset, true, true, false);
+        
+        //Mostramos la grafica en pantalla
+        ChartPanel panel = new ChartPanel(chart);
+        pGraficoClasificacion.setLayout(new java.awt.BorderLayout());
+        pGraficoClasificacion.add(panel);
+        pGraficoClasificacion.validate();
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
