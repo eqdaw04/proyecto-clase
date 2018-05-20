@@ -432,12 +432,6 @@ public class BDEquipo {
         return lista;
     }
     
-    
-    
-    
-    
-    
-    // revisar     ;ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
     public ArrayList<Object> resultadoTodasLasJornadas() throws Exception{
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;

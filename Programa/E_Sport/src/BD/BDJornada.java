@@ -227,4 +227,17 @@ public class BDJornada {
         }
         return j;
     }
+    
+    public int consultaUltimaJornadaActual() throws Exception{
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("SELECT MAX(id_jornada) as id_jornada FROM jornada where TO_DATE(SYSDATE,'DD/MM/RRRR') >= fecha_inicio");
+        ResultSet rs;
+        rs = sentencia.executeQuery();
+        int j = 0;
+        if(rs.next()){
+            j = rs.getInt("id_jornada");
+        }
+        return j;
+    }
 }

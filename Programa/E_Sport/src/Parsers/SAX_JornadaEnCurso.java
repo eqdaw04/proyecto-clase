@@ -12,9 +12,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,35 +38,16 @@ public class SAX_JornadaEnCurso extends DefaultHandler{
     }
     
     
-    public ArrayList<Partido> metodoraiz(){
+    public ArrayList<Partido> metodoraiz() throws Exception{
         parsearjornada();
         return partidos;
     }
     
-    private void parsearjornada(){
-        SAXParserFactory spf = SAXParserFactory.newInstance();
-        try {
-            
-            SAXParser sp = spf.newSAXParser();
-            
-            sp.parse("JornadaEnCurso.xml", this);
-            
-         } catch (SAXException se) {
-            se.printStackTrace();
-        } catch (ParserConfigurationException pce) {
-            pce.printStackTrace();
-        } catch (IOException ie) {
-            ie.printStackTrace();
-        }
-    }
-    
-    private void printData(){
-        System.out.println("Atención, esta lista caduca el ");
+    private void parsearjornada() throws Exception{
+        SAXParserFactory spf = SAXParserFactory.newInstance();  
+        SAXParser sp = spf.newSAXParser();
+        sp.parse("xml/JornadaEnCurso.xml", this);
         
-        Iterator it = partidos.iterator();
-        while (it.hasNext()){
-            System.out.println(it.hasNext());
-        }
     }
     
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException { 

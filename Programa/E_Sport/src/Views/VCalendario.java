@@ -60,6 +60,11 @@ public class VCalendario extends javax.swing.JDialog {
         setAlwaysOnTop(true);
         setMaximumSize(new java.awt.Dimension(581, 596));
         setMinimumSize(new java.awt.Dimension(581, 596));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
@@ -195,8 +200,12 @@ public class VCalendario extends javax.swing.JDialog {
     }//GEN-LAST:event_bUltimoActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
-       Main.cerrar(this); // TODO add your handling code here:
+       Main.cerrar(this);
     }//GEN-LAST:event_bSalirActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+ 
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

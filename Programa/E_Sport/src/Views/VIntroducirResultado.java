@@ -108,6 +108,11 @@ public class VIntroducirResultado extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(796, 646));
         setMinimumSize(new java.awt.Dimension(796, 646));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 36)); // NOI18N
@@ -331,6 +336,10 @@ public class VIntroducirResultado extends javax.swing.JDialog {
     private void cbPartidoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbPartidoItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_cbPartidoItemStateChanged
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+     
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;

@@ -121,6 +121,11 @@ public class VPersona extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(507, 560));
         setMinimumSize(new java.awt.Dimension(507, 560));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
@@ -522,6 +527,10 @@ public class VPersona extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_bBuscarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * Metodo para mostrar todos los datos de una persona. 

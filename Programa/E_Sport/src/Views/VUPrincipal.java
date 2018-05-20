@@ -22,6 +22,8 @@ import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
 
@@ -48,6 +50,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         setTitle("Bienvenido a E-Sport");
         lNombre.setText(usuario);
         modelarTabla();
+        pGraficoEvolucionEquipo.setVisible(false);
         try {
             cargarTodoClasificacion();
         } catch (Exception ex) {
@@ -57,10 +60,47 @@ public class VUPrincipal extends javax.swing.JFrame {
         setVisible(true);
     }
 
+    private void cargarUltimaJornada() throws Exception{
+        try {
+            pGraficoCurso.setVisible(false);
+            ArrayList <Partido> partidos = Main.saxUltimaJornada();
+            if(partidos.isEmpty()){
+                throw new Excepcion(54);
+            }
+            else{
+                cargarUltimoPartido(partidos);
+            }
+        } 
+        catch(IOException ex){
+            if(JOptionPane.showConfirmDialog(this, "¿Desea crear el Archivo que falta?","Crear XML Última Jornada",2) == 0){
+                Main.domUltimaJornada(Main.consultarUltimaJornadaActual());
+                cargarUltimaJornada();
+            }
+        }
+        catch(Excepcion ex){
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Atención", 1);
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
+        }
+    }
+    
+    private void cargarUltimoPartido(ArrayList <Partido> partidos) throws Exception{
+        for (int x=0;x<partidos.size();x++){
+            Object[] fila =new Object[3];
+            fila[0]= partidos.get(x).getIdPartido();
+            fila[1]= partidos.get(x).geteLocal().getNombre()+" vs "+partidos.get(x).geteVisitante().getNombre();
+            fila[2]= partidos.get(x).getmLocal()+" | "+partidos.get(x).getmVisitante();
+            mCurso.addRow(fila);
+        }
+        graficoCurso(partidos);
+    }
+    
     private void cargarTodoClasificacion() throws Exception{
         try {
             pGraficoClasificacion.setVisible(false);
             ArrayList<Object> lista = Main.saxClasificacion();
+            cargarUltimaJornada();
             if(lista.isEmpty()){
                 throw new Excepcion(39);
             }
@@ -170,18 +210,41 @@ public class VUPrincipal extends javax.swing.JFrame {
     private void graficoCurso(ArrayList<Partido> partidos){
         DefaultPieDataset pieDataset = new DefaultPieDataset();
         for(int x =0; x< partidos.size(); x++){
-            Object[] fila = (Object[]) partidos.get(x);
-            pieDataset.setValue(String.valueOf(fila[1]), new Integer(Integer.parseInt(fila[2].toString())));
-            mCurso.addRow(fila);
+            Partido p = partidos.get(x);
+            if(p.geteLocal() != null){
+                pieDataset.setValue(p.geteLocal().getNombre(), p.getmLocal());
+            }
+            if(p.geteVisitante() != null){
+                pieDataset.setValue(p.geteVisitante().getNombre(), p.getmVisitante());
+            }
+            
+            
+            //mCurso.addRow(fila);
         }
         JFreeChart chart = ChartFactory.createPieChart("",pieDataset, true, true, false);
         
         //Mostramos la grafica en pantalla
         ChartPanel panel = new ChartPanel(chart);
-        pGraficoClasificacion.setLayout(new java.awt.BorderLayout());
-        pGraficoClasificacion.add(panel);
-        pGraficoClasificacion.validate();
+        pGraficoCurso.setLayout(new java.awt.BorderLayout());
+        pGraficoCurso.add(panel);
+        pGraficoCurso.validate();
         
+    }
+    
+    private void graficosEvolucion(ArrayList<Object> lista) throws Exception{
+        DefaultCategoryDataset line_chart_dataset = new DefaultCategoryDataset();
+        for(int x =0; x< lista.size(); x++){
+            Object[] fila = (Object[]) lista.get(x);
+            line_chart_dataset.addValue(Integer.valueOf(fila[2].toString()), fila[1].toString(), fila[0].toString());
+        }
+        // Creando el Grafico
+        JFreeChart chart=ChartFactory.createLineChart("",
+                "Jornada","Marcador",line_chart_dataset,PlotOrientation.VERTICAL, true, true, true);
+        ChartPanel chartPanel = new ChartPanel(chart);
+        pGraficoEvolucionEquipo.setLayout(new java.awt.BorderLayout());
+        pGraficoEvolucionEquipo.removeAll();
+        pGraficoEvolucionEquipo.add(chartPanel);
+        pGraficoEvolucionEquipo.validate();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -194,35 +257,41 @@ public class VUPrincipal extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tJornada = new javax.swing.JTable();
+        pGraficoEvolucionEquipo = new javax.swing.JPanel();
+        pGraficoCurso = new javax.swing.JPanel();
         pGraficoClasificacion = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tCurso = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        Dom = new javax.swing.JButton();
         lNombre = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        lJornada = new javax.swing.JList<>();
+        jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bEvolucion = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         bGraficoClasificacion = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jBotonUltima = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
         lFechaActualizacion = new javax.swing.JLabel();
         logotipo = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tClasificacion = new javax.swing.JTable();
-        pGraficoEvolucionEquipo = new javax.swing.JPanel();
-        pGraficoCurso = new javax.swing.JPanel();
         img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(1163, 823));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         tJornada.setModel(new javax.swing.table.DefaultTableModel(
@@ -249,7 +318,39 @@ public class VUPrincipal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tJornada);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 490, 760, 280);
+        jScrollPane1.setBounds(220, 490, 570, 280);
+
+        pGraficoEvolucionEquipo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout pGraficoEvolucionEquipoLayout = new javax.swing.GroupLayout(pGraficoEvolucionEquipo);
+        pGraficoEvolucionEquipo.setLayout(pGraficoEvolucionEquipoLayout);
+        pGraficoEvolucionEquipoLayout.setHorizontalGroup(
+            pGraficoEvolucionEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1078, Short.MAX_VALUE)
+        );
+        pGraficoEvolucionEquipoLayout.setVerticalGroup(
+            pGraficoEvolucionEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 308, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(pGraficoEvolucionEquipo);
+        pGraficoEvolucionEquipo.setBounds(30, 90, 1080, 310);
+
+        pGraficoCurso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout pGraficoCursoLayout = new javax.swing.GroupLayout(pGraficoCurso);
+        pGraficoCurso.setLayout(pGraficoCursoLayout);
+        pGraficoCursoLayout.setHorizontalGroup(
+            pGraficoCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 528, Short.MAX_VALUE)
+        );
+        pGraficoCursoLayout.setVerticalGroup(
+            pGraficoCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 268, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(pGraficoCurso);
+        pGraficoCurso.setBounds(30, 130, 530, 270);
 
         pGraficoClasificacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -261,16 +362,16 @@ public class VUPrincipal extends javax.swing.JFrame {
         );
         pGraficoClasificacionLayout.setVerticalGroup(
             pGraficoClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 308, Short.MAX_VALUE)
+            .addGap(0, 268, Short.MAX_VALUE)
         );
 
         getContentPane().add(pGraficoClasificacion);
-        pGraficoClasificacion.setBounds(580, 90, 530, 310);
+        pGraficoClasificacion.setBounds(580, 130, 530, 270);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Partidos de la Jornada ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 460, 560, 22);
+        jLabel1.setBounds(220, 460, 560, 22);
 
         tCurso.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -294,20 +395,27 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 90, 270, 30);
 
-        Dom.setText("jButton7");
-        Dom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DomActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Dom);
-        Dom.setBounds(1070, 500, 73, 25);
-
         lNombre.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         lNombre.setForeground(new java.awt.Color(0, 153, 255));
         lNombre.setText("Hola ");
         getContentPane().add(lNombre);
         lNombre.setBounds(130, 40, 90, 30);
+
+        lJornada.setEnabled(false);
+        lJornada.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lJornadaValueChanged(evt);
+            }
+        });
+        jScrollPane4.setViewportView(lJornada);
+
+        getContentPane().add(jScrollPane4);
+        jScrollPane4.setBounds(30, 490, 182, 280);
+
+        jLabel7.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel7.setText("Jornada número");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(30, 460, 180, 23);
 
         jLabel9.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel9.setText("Hola ");
@@ -323,11 +431,6 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jButton7);
         jButton7.setBounds(1010, 410, 140, 25);
 
-        jLabel8.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel8.setText("Jornadas:");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(30, 460, 210, 23);
-
         jButton1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jButton1.setText("Actualizar datos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -338,17 +441,17 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(840, 550, 240, 40);
 
-        jButton2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jButton2.setText("<html><center>Ver gráfico<br></br>evolución de Equipos</center></html>");
-        jButton2.setActionCommand("");
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bEvolucion.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        bEvolucion.setText("<html><center>Ver gráfico<br></br>evolución de Equipos</center></html>");
+        bEvolucion.setActionCommand("");
+        bEvolucion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bEvolucion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bEvolucionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(840, 600, 240, 60);
+        getContentPane().add(bEvolucion);
+        bEvolucion.setBounds(840, 600, 240, 60);
 
         jButton3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jButton3.setText("Cerrar Sesión");
@@ -370,30 +473,21 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(bGraficoClasificacion);
         bGraficoClasificacion.setBounds(580, 409, 370, 40);
 
-        jButton6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jButton6.setText("Ver en Gráfico la jornada en curso");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jBotonUltima.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        jBotonUltima.setText("Ver en Gráfico la jornada en curso");
+        jBotonUltima.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jBotonUltimaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6);
-        jButton6.setBounds(30, 409, 370, 40);
+        getContentPane().add(jBotonUltima);
+        jBotonUltima.setBounds(30, 409, 370, 40);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Última actualización de la Liga");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(800, 470, 320, 18);
-
-        jButton8.setText("sax");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton8);
-        jButton8.setBounds(1060, 440, 52, 25);
 
         lFechaActualizacion.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         lFechaActualizacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -435,38 +529,6 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jScrollPane3);
         jScrollPane3.setBounds(580, 130, 530, 269);
 
-        pGraficoEvolucionEquipo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout pGraficoEvolucionEquipoLayout = new javax.swing.GroupLayout(pGraficoEvolucionEquipo);
-        pGraficoEvolucionEquipo.setLayout(pGraficoEvolucionEquipoLayout);
-        pGraficoEvolucionEquipoLayout.setHorizontalGroup(
-            pGraficoEvolucionEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 758, Short.MAX_VALUE)
-        );
-        pGraficoEvolucionEquipoLayout.setVerticalGroup(
-            pGraficoEvolucionEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 308, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pGraficoEvolucionEquipo);
-        pGraficoEvolucionEquipo.setBounds(30, 460, 760, 310);
-
-        pGraficoCurso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout pGraficoCursoLayout = new javax.swing.GroupLayout(pGraficoCurso);
-        pGraficoCurso.setLayout(pGraficoCursoLayout);
-        pGraficoCursoLayout.setHorizontalGroup(
-            pGraficoCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 528, Short.MAX_VALUE)
-        );
-        pGraficoCursoLayout.setVerticalGroup(
-            pGraficoCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 308, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pGraficoCurso);
-        pGraficoCurso.setBounds(30, 90, 530, 310);
-
         img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(img);
         img.setBounds(0, 0, 1170, 850);
@@ -477,6 +539,7 @@ public class VUPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             Main.domClasificacion();
+            Main.domUltimaJornada(Main.consultarUltimaJornadaActual());
             Main.reabrirFrame(this,lNombre.getText());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
@@ -496,72 +559,79 @@ public class VUPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void bEvolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEvolucionActionPerformed
+        try {
+            if(bEvolucion.getText().equals("<html><center>Ver gráfico<br></br>evolución de Equipos</center></html>")){
+                pGraficoEvolucionEquipo.setVisible(true);
+                bEvolucion.setText("<html><center>Ocultar Gráfigo Evolución</center></html>");
+            }
+            else{
+                pGraficoEvolucionEquipo.setVisible(false);
+                bEvolucion.setText("<html><center>Ver gráfico<br></br>evolución de Equipos</center></html>");
+            }
+            graficosEvolucion(Main.resultadosTodosLosPartidos());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
+        }
+    }//GEN-LAST:event_bEvolucionActionPerformed
 
     private void bGraficoClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGraficoClasificacionActionPerformed
-        if(bGraficoClasificacion.getText().equals("Ver el Gráfico de la Liga actual")){
+        if(bGraficoClasificacion.getText().equals("Ver en Gráfico de la Liga actual")){
             pGraficoClasificacion.setVisible(true);
             bGraficoClasificacion.setText("Ocultar Gráfigo Liga Actual");
         }
         else{
             pGraficoClasificacion.setVisible(false);
-            bGraficoClasificacion.setText("Ver el Gráfico de la Liga actual");
+            bGraficoClasificacion.setText("Ver en Gráfico de la Liga actual");
         }
     }//GEN-LAST:event_bGraficoClasificacionActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void DomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DomActionPerformed
-        try {
-            Main.domUltimaJornada(1);
-            Main.saxUltimaJornada();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
+    private void jBotonUltimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonUltimaActionPerformed
+        if(jBotonUltima.getText().equals("Ver en Gráfico la jornada en curso")){
+            pGraficoCurso.setVisible(true);
+            jBotonUltima.setText("Ocultar Gráfico la jornada en curso");
         }
-        
-    }//GEN-LAST:event_DomActionPerformed
+        else{
+            pGraficoCurso.setVisible(false);
+            jBotonUltima.setText("Ver en Gráfico la jornada en curso");
+        }
+    }//GEN-LAST:event_jBotonUltimaActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        try {
-            ArrayList <Partido> partidos = Main.saxUltimaJornada();
-            for (int x=0;x<partidos.size();x++){
-                Object[] fila =new Object[3];
-                fila[0]= partidos.get(x).getIdPartido();
-                fila[1]= partidos.get(x).geteLocal().getNombre()+" vs "+partidos.get(x).geteVisitante().getNombre();
-                fila[2]= partidos.get(x).getmLocal()+" | "+partidos.get(x).getmVisitante();
-                mCurso.addRow(fila);
-        }
         
-        } catch (ParseException ex) {
-            Logger.getLogger(VUPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
        
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
+    }//GEN-LAST:event_formWindowClosing
+
+    private void lJornadaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lJornadaValueChanged
+
+    }//GEN-LAST:event_lJornadaValueChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Dom;
+    private javax.swing.JButton bEvolucion;
     private javax.swing.JButton bGraficoClasificacion;
     private javax.swing.JLabel img;
+    private javax.swing.JButton jBotonUltima;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lFechaActualizacion;
+    private javax.swing.JList<Integer> lJornada;
     private javax.swing.JLabel lNombre;
     private javax.swing.JLabel logotipo;
     private javax.swing.JPanel pGraficoClasificacion;

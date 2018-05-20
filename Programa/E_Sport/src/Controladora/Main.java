@@ -1157,21 +1157,16 @@ public class Main {
         return bdPartido.BuscarPartidosPorJornada2(j);
     }
     public static void domUltimaJornada (int j) throws Exception{
-        domResultadosUltimaJornada.xmlUltJor(BuscarPartidosPorJornada2(1),j);
+        domResultadosUltimaJornada.xmlUltJor(BuscarPartidosPorJornada2(j),j);
     }
-    public static ArrayList<Partido> saxUltimaJornada() throws ParseException{
-        ArrayList <Partido> p=saxJornadaEnCurso.metodoraiz();
-        for (int x=0;x<p.size();x++){
-            System.out.println(p.get(x).getIdPartido());
-            System.out.println(p.get(x).getFecha());
-            System.out.println(p.get(x).geteVisitante().getNombre());
-            System.out.println(p.get(x).geteLocal().getNombre());
-            
-            
-        }
-        return p;
+    public static ArrayList<Partido> saxUltimaJornada() throws Exception{
+        return saxJornadaEnCurso.metodoraiz();
     }
     
+    public static int consultarUltimaJornadaActual() throws Exception{
+        int j = bdJornada.consultaUltimaJornadaActual();
+        return j;
+    }
     
     //------------------Jon
     public static void domClasificacion() throws Exception{
@@ -1187,7 +1182,7 @@ public class Main {
     
     public static ArrayList<Object> saxClasificacion() throws Exception{
         SAX_Clasificacion clasax = new SAX_Clasificacion();
-        ArrayList<Object> lista;
+        ArrayList<Object> lista = new ArrayList();
         lista = clasax.metodoraiz();
         Calendar fecha = Calendar.getInstance();
         SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
@@ -1197,9 +1192,12 @@ public class Main {
         hoy.set(Calendar.MINUTE, 00);
         hoy.set(Calendar.SECOND, 00);
         hoy.set(Calendar.MILLISECOND, 00);
-        // si no es fecha actual se vacía la lista
+        // si no es fecha actual se vacía la lista y actualiza la lista
         if(!fecha.equals(hoy)){
             lista = new ArrayList();
+            domClasificacion();
+            lista = clasax.metodoraiz();
+            domUltimaJornada(consultarUltimaJornadaActual());
         }
         return lista;
     }

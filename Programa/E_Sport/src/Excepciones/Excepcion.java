@@ -235,6 +235,10 @@ public class Excepcion extends Exception {
             case 53:
                 dato += "El lugar del equipo es obligatorio.";
                 break;
+                
+            case 54:
+                dato += "No hay datos de la última jornada.";
+                break;
         }
         return dato;
     }

@@ -105,7 +105,7 @@ public class DOM_JornadaEnCurso {
         Transformer transformador= factoria.newTransformer();
         
         Source source= new DOMSource(doc);
-        File archivo = new File("JornadaEnCurso.xml");
+        File archivo = new File("xml/JornadaEnCurso.xml");
         FileWriter fw = new FileWriter(archivo);
         PrintWriter pw = new PrintWriter(fw);
         Result rs = new StreamResult(pw);
