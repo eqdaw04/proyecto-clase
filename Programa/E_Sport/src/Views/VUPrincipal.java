@@ -8,6 +8,7 @@ package Views;
 import Controladora.Main;
 import java.awt.Color;
 import java.awt.Image;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -82,21 +83,21 @@ public class VUPrincipal extends javax.swing.JFrame {
         
 	Object[] vec2 = {"Posición","Equipo","Marcador"};
 	mClasificacion.setColumnIdentifiers(vec2);
-	tClasificacion.setModel(mClasificacion);
-	tClasificacion.getColumnModel().getColumn(0).setPreferredWidth(65);
-	tClasificacion.getColumnModel().getColumn(1).setPreferredWidth(150);
-	tClasificacion.getColumnModel().getColumn(2).setPreferredWidth(75);
-        tClasificacion.setRowHeight(40);
-        tClasificacion.setShowVerticalLines(false);
-        tClasificacion.setGridColor(Color.BLUE);
+	tCurso.setModel(mClasificacion);
+	tCurso.getColumnModel().getColumn(0).setPreferredWidth(65);
+	tCurso.getColumnModel().getColumn(1).setPreferredWidth(150);
+	tCurso.getColumnModel().getColumn(2).setPreferredWidth(75);
+        tCurso.setRowHeight(40);
+        tCurso.setShowVerticalLines(false);
+        tCurso.setGridColor(Color.BLUE);
         DefaultTableCellRenderer centrar = new DefaultTableCellRenderer();
         centrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tJornada.getColumnModel().getColumn(0).setCellRenderer(centrar);
         tJornada.getColumnModel().getColumn(1).setCellRenderer(centrar);
         tJornada.getColumnModel().getColumn(2).setCellRenderer(centrar);
-        tClasificacion.getColumnModel().getColumn(0).setCellRenderer(centrar);
-        tClasificacion.getColumnModel().getColumn(1).setCellRenderer(centrar);
-        tClasificacion.getColumnModel().getColumn(2).setCellRenderer(centrar);
+        tCurso.getColumnModel().getColumn(0).setCellRenderer(centrar);
+        tCurso.getColumnModel().getColumn(1).setCellRenderer(centrar);
+        tCurso.getColumnModel().getColumn(2).setCellRenderer(centrar);
     }
     
     private void crearImagenes(){
@@ -120,7 +121,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         tJornada = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tClasificacion = new javax.swing.JTable();
+        tCurso = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         Dom = new javax.swing.JButton();
         jScrollPane12 = new javax.swing.JScrollPane();
@@ -140,7 +141,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tClasificacion1 = new javax.swing.JTable();
+        tClasificacion = new javax.swing.JTable();
         pGraficoEvolucionEquipo = new javax.swing.JPanel();
         pGraficoCurso = new javax.swing.JPanel();
         pGraficoClasificacion = new javax.swing.JPanel();
@@ -182,7 +183,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(230, 460, 560, 22);
 
-        tClasificacion.setModel(new javax.swing.table.DefaultTableModel(
+        tCurso.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -193,8 +194,8 @@ public class VUPrincipal extends javax.swing.JFrame {
                 "Posición", "Local VS Visitante", "Marcador"
             }
         ));
-        tClasificacion.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        jScrollPane2.setViewportView(tClasificacion);
+        tCurso.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jScrollPane2.setViewportView(tCurso);
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(30, 130, 530, 269);
@@ -333,7 +334,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(580, 90, 270, 30);
 
-        tClasificacion1.setModel(new javax.swing.table.DefaultTableModel(
+        tClasificacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -344,8 +345,8 @@ public class VUPrincipal extends javax.swing.JFrame {
                 "Posición", "Local VS Visitante", "Marcador"
             }
         ));
-        tClasificacion1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        jScrollPane3.setViewportView(tClasificacion1);
+        tClasificacion.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jScrollPane3.setViewportView(tClasificacion);
 
         getContentPane().add(jScrollPane3);
         jScrollPane3.setBounds(580, 130, 530, 269);
@@ -447,9 +448,9 @@ public class VUPrincipal extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         try {
-            Main.domClasificacion();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
+            Main.saxUltimaJornada();
+        } catch (ParseException ex) {
+            Logger.getLogger(VUPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -481,7 +482,7 @@ public class VUPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel pGraficoCurso;
     private javax.swing.JPanel pGraficoEvolucionEquipo;
     private javax.swing.JTable tClasificacion;
-    private javax.swing.JTable tClasificacion1;
+    private javax.swing.JTable tCurso;
     private javax.swing.JTable tJornada;
     // End of variables declaration//GEN-END:variables
 }

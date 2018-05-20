@@ -41,9 +41,9 @@ public class SAX_JornadaEnCurso extends DefaultHandler{
     }
     
     
-    public void metodoraiz(){
+    public ArrayList<Partido> metodoraiz(){
         parsearjornada();
-        printData();
+        return partidos;
     }
     
     private void parsearjornada(){
@@ -88,7 +88,7 @@ public class SAX_JornadaEnCurso extends DefaultHandler{
             case "lugar":
                 buffer.delete(0,buffer.length());
                 break;
-            case "Equipo":
+            case "equipo":
                 e = new Equipo();
                 e.setIdEquipo(Integer.parseInt(attributes.getValue("id_equipo")));
                 break;
@@ -104,10 +104,6 @@ public class SAX_JornadaEnCurso extends DefaultHandler{
             case "visitante":
                 buffer.delete(0,buffer.length());
                 break;
-            case "jornada":
-                buffer.delete(0,buffer.length());
-                break;
-
         }               
     }
     
@@ -121,16 +117,17 @@ public class SAX_JornadaEnCurso extends DefaultHandler{
                 fecha= buffer.toString();
                 break;
             case "hora":
-                SimpleDateFormat sp= new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                fecha=fecha+" "+buffer.toString();
+                SimpleDateFormat ff = new SimpleDateFormat("yyyy-mm-dd hh:mm");
+                Calendar fechas = Calendar.getInstance();
+                fecha += " " + buffer.toString();
+          {
               try {
-                Date dat=sp.parse(fecha);
-                Calendar calendar= Calendar.getInstance();
-                calendar.setTimeInMillis(dat.getTime());
-                p.setFecha(calendar);
+                  fechas.setTime(ff.parse(fecha));
               } catch (ParseException ex) {
                   Logger.getLogger(SAX_JornadaEnCurso.class.getName()).log(Level.SEVERE, null, ex);
-              } 
+              }
+          }
+                p.setFecha(fechas);
                 break;
             case "lugar":
                 lugar=buffer.toString();

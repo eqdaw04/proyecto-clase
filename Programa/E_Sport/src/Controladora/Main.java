@@ -12,6 +12,7 @@ import Excepciones.Excepcion;
 import Views.*;
 import Parsers.*;
 import java.awt.Color;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -1152,8 +1153,17 @@ public class Main {
     public static void domUltimaJornada (int j) throws Exception{
         domResultadosUltimaJornada.xmlUltJor(BuscarPartidosPorJornada2(1),j);
     }
-    public static void saxUltimaJornada(){
-        saxJornadaEnCurso.metodoraiz();
+    public static ArrayList<Partido> saxUltimaJornada() throws ParseException{
+        ArrayList <Partido> p=saxJornadaEnCurso.metodoraiz();
+        for (int x=0;x<p.size();x++){
+            System.out.println(p.get(x).getIdPartido());
+            System.out.println(p.get(x).getFecha());
+            System.out.println(p.get(x).geteVisitante().getNombre());
+            System.out.println(p.get(x).geteLocal().getNombre());
+            
+            
+        }
+        return p;
     }
     
     
