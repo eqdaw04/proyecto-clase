@@ -1,112 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<clasificacion>
-    <equipo>HOOOOOOOOOOLLLLLLLLLAAAAAAAAAAAAAAAAAAAAAAAAAA</equipo>
-    <equipo id_equipo="1">
-        <Nombre>Equipo1</Nombre>
-        <comentario>blablabla</comentario>
-        <puntuacion>5</puntuacion>
-        <visitante>false</visitante>
-    </equipo>
+<!DOCTYPE clasificacion SYSTEM "DTD-Clasificacion.dtd">
+<clasificacion xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSD-Clasificacion.xsd">
+    <fecha_expiracion> 2019-03-15 </fecha_expiracion>
     <equipo id_equipo="2">
-        <Nombre>Equipo1</Nombre>
-        <comentario>blablabla</comentario>
-        <puntuacion>5</puntuacion>
-        <visitante>true</visitante>
-    </equipo>
-    <equipo id_equipo="3">
-        <Nombre>Equipo1</Nombre>
-        <comentario/>
-        <puntuacion>5</puntuacion>
-        <visitante>false</visitante>
-    </equipo>
-    <equipo id_equipo="4">
-        <Nombre>Equipo1</Nombre>
-        <comentario/>
-        <puntuacion>5</puntuacion>
-        <visitante>true</visitante>
-    </equipo>
-    <equipo id_equipo="5">
-        <Nombre>Equipo1</Nombre>
-        <comentario/>
-        <puntuacion>5</puntuacion>
-        <visitante>false</visitante>
-    </equipo>
-    <equipo id_equipo="6">
-        <Nombre>Equipo1</Nombre>
-        <comentario/>
-        <puntuacion>5</puntuacion>
-        <visitante>true</visitante>
-    </equipo>
-    <equipo id_equipo="2">
-        <Nombre>Equipo1</Nombre>
-        <comentario/>
-        <puntuacion>5</puntuacion>
-        <visitante>false</visitante>
-    </equipo>
-    <equipo id_equipo="3">
-        <Nombre>Equipo1</Nombre>
-        <comentario/>
-        <puntuacion>5</puntuacion>
-        <visitante>true</visitante>
-    </equipo>
-    <equipo id_equipo="4">
-        <Nombre>Equipo1</Nombre>
-        <comentario/>
-        <puntuacion>5</puntuacion>
-        <visitante>false</visitante>
-    </equipo>
-    <equipo id_equipo="5">
-        <Nombre>Equipo1</Nombre>
-        <comentario/>
-        <puntuacion>5</puntuacion>
-        <visitante>true</visitante>
-    </equipo>
-    <equipo id_equipo="6">
-        <Nombre>Equipo1</Nombre>
-        <comentario/>
-        <puntuacion>5</puntuacion>
-        <visitante>false</visitante>
+        <nombre> Equipo2 </nombre>
+        <puntuacion>150</puntuacion>
     </equipo>
     <equipo id_equipo="1">
-        <Nombre>Equipo1</Nombre>
-        <comentario/>
-        <puntuacion>5</puntuacion>
-        <visitante>true</visitante>
-    </equipo>
-    <equipo id_equipo="3">
-        <Nombre>Equipo1</Nombre>
-        <comentario/>
-        <puntuacion>5</puntuacion>
-        <visitante>false</visitante>
+        <nombre> Equipo1 </nombre>
+        <puntuacion>135</puntuacion>
     </equipo>
     <equipo id_equipo="4">
-        <Nombre>Equipo1</Nombre>
-        <comentario/>
-        <puntuacion>5</puntuacion>
-        <visitante>true</visitante>
+        <nombre> Equipo4 </nombre>
+        <puntuacion>110</puntuacion>
+    </equipo>
+    <equipo id_equipo="3">
+        <nombre> Equipo3 </nombre>
+        <puntuacion>104</puntuacion>
     </equipo>
     <equipo id_equipo="5">
-        <Nombre>Equipo1</Nombre>
-        <comentario/>
-        <puntuacion>5</puntuacion>
-        <visitante>false</visitante>
-    </equipo>
-    <equipo id_equipo="6">
-        <Nombre>Equipo1</Nombre>
-        <comentario/>
-        <puntuacion>5</puntuacion>
-        <visitante>true</visitante>
-    </equipo>
-    <equipo id_equipo="1">
-        <Nombre>Equipo1</Nombre>
-        <comentario>dsfszfSzfv</comentario>
-        <puntuacion>5</puntuacion>
-        <visitante>false</visitante>
-    </equipo>
-    <equipo id_equipo="2">
-        <Nombre>Equipo1</Nombre>
-        <comentario>SFSVrSzrvzr</comentario>
-        <puntuacion>5</puntuacion>
-        <visitante>true</visitante>
+        <nombre> Equipo5 </nombre>
+        <puntuacion>98</puntuacion>
     </equipo>
 </clasificacion>

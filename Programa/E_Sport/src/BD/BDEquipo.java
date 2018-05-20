@@ -350,17 +350,70 @@ public class BDEquipo {
         return lista;
     }
     
+    public ArrayList<Object> resultadoFinalOrdenEquipo() throws Exception{
+        BDConexion con = new BDConexion();
+        CallableStatement sentencia;
+        // preparar sentencia
+        sentencia = con.getConnection().prepareCall("{call Pkg_ClasificacionConIDEquipo.clasif(?)}");
+        sentencia.registerOutParameter(1, OracleTypes.CURSOR);
+        sentencia.execute();
+        ResultSet rs;
+        rs = ((OracleCallableStatement)sentencia).getCursor(1);
+        ArrayList <Object> lista = new ArrayList();
+
+        while(rs.next()){
+
+            Object[] fila = new Object[3];
+            fila[0] = rs.getString("id_equipo");
+            fila[1] = rs.getString("equipo");
+            fila[2] = rs.getString("punto");
+            lista.add(fila);
+        }
+        rs.close();
+        sentencia.close();
+        con.desconectar();
+        return lista;
+    }
+    
     public ArrayList<Object> resultadoUltimaJornada() throws Exception{
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
         sentencia = con.getConnection().prepareStatement(
-                // SYSDATE
             "SELECT equipo.nombre AS equipo, marcador.puntuacion AS puntos, marcador.visitante AS visitante, partido.id_partido AS partido "
                     + "FROM marcador INNER JOIN partido ON partido.id_partido = marcador.id_partido "
                     + "INNER JOIN equipo ON equipo.id_equipo = marcador.id_equipo "
                     + "WHERE partido.id_jornada = "
                     + "(SELECT id_jornada-1 FROM jornada "
-                    + "WHERE TO_DATE(SYSDATE,'DD/MM/RRRR') >= fecha_inicio AND TO_DATE(SYSDATE,'DD/MM/RRRR') <= fecha_fin) "
+                    + "WHERE TO_DATE (SYSDATE, 'DD-MM-RRRR') BETWEEN fecha_inicio and fecha_fin)"
+                    + "ORDER BY partido.id_partido");
+        ResultSet rs;
+        rs = sentencia.executeQuery();
+        ArrayList <Object> lista = new ArrayList();
+        while(rs.next()){
+            String [] fila = new String[4];
+            fila[0] = rs.getString("partido");
+            fila[1] = rs.getString("equipo");
+            fila[2] = rs.getString("puntos");
+            fila[3] = rs.getString("visitante");
+            lista.add(fila);   
+        }
+        rs.close();
+        sentencia.close();
+        con.desconectar();
+        return lista;
+    }
+    
+    public ArrayList<Object> resultadoUltimaJornadaDeLaLiga() throws Exception{
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement(
+            "SELECT equipo.nombre AS equipo, marcador.puntuacion AS puntos, marcador.visitante AS visitante, partido.id_partido AS partido "
+                    + "FROM marcador "
+                    + "INNER JOIN partido ON partido.id_partido = marcador.id_partido "
+                    + "INNER JOIN equipo ON equipo.id_equipo = marcador.id_equipo "
+                    + "INNER JOIN jornada ON jornada.id_jornada = partido.id_jornada "
+                    + "WHERE partido.id_jornada = "
+                    + "(SELECT max(id_jornada) FROM jornada) AND TO_DATE(SYSDATE,'DD/MM/RRRR') >= jornada.fecha_inicio "
                     + "ORDER BY partido.id_partido");
         ResultSet rs;
         rs = sentencia.executeQuery();

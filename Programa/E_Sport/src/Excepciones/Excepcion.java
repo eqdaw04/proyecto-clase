@@ -172,6 +172,10 @@ public class Excepcion extends Exception {
                 dato += "Actualmente no hay ninguna liga.";
                 break;
                 
+            case 38:
+                dato += "No se mostrará la información de la última jornada, ya que la liga aún no ha comenzado.";
+                break;
+                
             case 40:
                 dato += "Error al insertar la Jornada.";
                 break;

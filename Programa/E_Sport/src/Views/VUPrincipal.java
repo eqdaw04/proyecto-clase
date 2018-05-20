@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
@@ -125,6 +126,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         jScrollPane12 = new javax.swing.JScrollPane();
         lJornada8 = new javax.swing.JList<>();
         jLabel7 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -208,7 +210,7 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Dom);
-        Dom.setBounds(1070, 500, 73, 25);
+        Dom.setBounds(1070, 500, 79, 25);
 
         lJornada8.setEnabled(false);
         lJornada8.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -225,6 +227,15 @@ public class VUPrincipal extends javax.swing.JFrame {
         jLabel7.setText("Hola ");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(30, 40, 590, 30);
+
+        jButton7.setText("Liga Actual");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7);
+        jButton7.setBounds(1009, 420, 140, 25);
 
         jLabel8.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel8.setText("Jornadas:");
@@ -400,7 +411,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         try {
             Main.abrirVentana(8, "");
         } catch (Exception ex) {
-            Logger.getLogger(VUPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -420,9 +431,17 @@ public class VUPrincipal extends javax.swing.JFrame {
         try {
             Main.domUltimaJornada(1);
         } catch (Exception ex) {
-            Logger.getLogger(VUPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_DomActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        try {
+            Main.domClasificacion();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -434,6 +453,7 @@ public class VUPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

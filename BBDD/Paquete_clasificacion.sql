@@ -22,6 +22,31 @@ CREATE OR REPLACE PACKAGE BODY Pkg_Clasificacion IS
   END;
 END Pkg_Clasificacion;
 /
+
+
+--Creamos el paquete Pkg_clasificación, que contiene el procedimiento clasif, el cual devuelve la puntuación total por equipo
+CREATE OR REPLACE PACKAGE Pkg_ClasificacionConIDEquipo IS
+--Declaramos Tcursor de tipo ref cursor
+      TYPE TCURSOR IS REF CURSOR;
+-- Declaramos el procedimiento Clasif con el parametro de salida C_partidos de tipo TCURSOR
+      PROCEDURE Clasif (C_partidos OUT TCURSOR);
+END Pkg_ClasificacionConIDEquipo;
+/
+--Declaramos el cuerpo del paquete
+CREATE OR REPLACE PACKAGE BODY Pkg_ClasificacionConIDEquipo IS
+  PROCEDURE Clasif (C_partidos OUT TCURSOR) AS
+  BEGIN
+-- Abrimos el cursor 
+  OPEN C_partidos for
+--Llenamos el cursor con el nombre del equipo y el sumatorio de sus puntuaciones, y se ordena por la puntuación de forma descendente
+      SELECT E.id_equipo, E.Nombre AS Equipo, SUM(M.Puntuacion) AS punto FROM EQUIPO E,MARCADOR M 
+            WHERE E.ID_EQUIPO = M.ID_EQUIPO
+            GROUP BY  E.Nombre, E.id_equipo
+            ORDER BY punto DESC;
+  END;
+END Pkg_ClasificacionConIDEquipo;
+/
+
 /*
 --Procedimiento anónimo de llamada
 DECLARE

@@ -12,6 +12,7 @@ import Excepciones.Excepcion;
 import Views.*;
 import Parsers.*;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -601,6 +602,9 @@ public class Main {
         ArrayList <Object> lista;
                 
         lista = bdEquipo.resultadoUltimaJornada();
+        if(lista.isEmpty()){
+            lista = bdEquipo.resultadoUltimaJornadaDeLaLiga();
+        }
         if(lista.size() > 1){
             ArrayList <Object> listaFinal = new ArrayList();
             String p2 = "";
@@ -648,7 +652,10 @@ public class Main {
                 p2 = p;
             }
             lista = listaFinal;
-        }   
+        }
+        else{
+            throw new Excepcion(38);
+        }
         
         return lista;
     }
@@ -1142,5 +1149,17 @@ public class Main {
     }
     public static void domUltimaJornada (int j) throws Exception{
         domResultadosUltimaJornada.xmlResUltJor(BuscarPartidosPorJornada2(1));
+    }
+    
+    
+    //------------------Jon
+    public static void domClasificacion() throws Exception{
+        DOMClasificacion liga = new DOMClasificacion();
+        Date hoy = new Date();
+        SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
+        liga.ejecutar(ff.format(hoy));
+    }
+    public static ArrayList<Object> resultadoFinalOrdenEquipo() throws Exception{
+        return bdEquipo.resultadoFinalOrdenEquipo();
     }
 }

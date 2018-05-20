@@ -136,7 +136,6 @@ public class BDJornada {
     
     /**
      * Metodo para consultar una jornada por su número.
-     * @param j Id Jornada
      * @param n int
      * @return devuelve un objeto jornada
      * @throws Exception 
@@ -188,4 +187,44 @@ public class BDJornada {
         return true;
     }
     
+    private String convertirFecha(Date fecha){
+        SimpleDateFormat ff = new SimpleDateFormat("dd-MM-yyyy");
+        return ff.format(fecha);
+    }
+    
+    
+    // ACTUALMENTE NO TIENE USO
+    public Jornada consultarJornadaPorFecha(Date fecha) throws Exception{
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM jornada WHERE TO_DATE (?, 'DD-MM-RRRR') BETWEEN fecha_inicio and fecha_fin");
+        sentencia.setString(1, convertirFecha(fecha));
+        ResultSet rs;
+        rs = sentencia.executeQuery();
+        Jornada j = null;
+        if(rs.next()){
+            j = new Jornada();
+            j.setIdJornada(rs.getInt("id_jornada"));
+            j.setFechaInicio(rs.getDate("fecha_inicio"));
+            j.setFechaFinal(rs.getDate("fecha_fin"));
+        }
+        return j;
+    }
+    
+    public Jornada consultaUltimaJornada(Date fecha) throws Exception{
+        BDConexion con = new BDConexion();
+        PreparedStatement sentencia;
+        sentencia = con.getConnection().prepareStatement("SELECT * FROM jornada WHERE id_jornada = (SELECT max(id_jornada) FROM jornada)");
+        sentencia.setString(1, convertirFecha(fecha));
+        ResultSet rs;
+        rs = sentencia.executeQuery();
+        Jornada j = null;
+        if(rs.next()){
+            j = new Jornada();
+            j.setIdJornada(rs.getInt("id_jornada"));
+            j.setFechaInicio(rs.getDate("fecha_inicio"));
+            j.setFechaFinal(rs.getDate("fecha_fin"));
+        }
+        return j;
+    }
 }

@@ -6,6 +6,7 @@
 package Views;
 
 import Controladora.Main;
+import Excepciones.Excepcion;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -45,7 +46,11 @@ public class VDResultados extends javax.swing.JDialog {
             graficoClasificacion(Main.resultados());
             // se ha programado para el la última jornada y no la actual, ya que así lo pide el enunciado
             tablaUltimaJornada(Main.resultadosUltimaJornada());
-        } catch (Exception ex) {
+        } 
+        catch (Excepcion e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Atencón", 1);
+        }
+        catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
 	pGrafico.setVisible(false);
@@ -118,9 +123,15 @@ public class VDResultados extends javax.swing.JDialog {
         tJornada.getColumnModel().getColumn(0).setCellRenderer(centrar);
         tJornada.getColumnModel().getColumn(1).setCellRenderer(centrar);
         tJornada.getColumnModel().getColumn(2).setCellRenderer(centrar);
+        tJornada.getColumnModel().getColumn(0).setHeaderRenderer(centrar);
+        tJornada.getColumnModel().getColumn(1).setHeaderRenderer(centrar);
+        tJornada.getColumnModel().getColumn(2).setHeaderRenderer(centrar);
         tClasificacion.getColumnModel().getColumn(0).setCellRenderer(centrar);
         tClasificacion.getColumnModel().getColumn(1).setCellRenderer(centrar);
         tClasificacion.getColumnModel().getColumn(2).setCellRenderer(centrar);
+        tClasificacion.getColumnModel().getColumn(0).setHeaderRenderer(centrar);
+        tClasificacion.getColumnModel().getColumn(1).setHeaderRenderer(centrar);
+        tClasificacion.getColumnModel().getColumn(2).setHeaderRenderer(centrar);
     }
     /**
      * This method is called from within the constructor to initialize the form.
