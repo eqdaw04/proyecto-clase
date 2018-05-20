@@ -434,7 +434,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
                 }
             }
         } catch (Exception ex) {
-            Logger.getLogger(VGenerarLiga.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_bBorrarActionPerformed
 

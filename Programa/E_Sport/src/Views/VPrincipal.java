@@ -11,6 +11,8 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -117,6 +119,7 @@ public class VPrincipal extends javax.swing.JFrame {
                 "Jornada","Marcador",line_chart_dataset,PlotOrientation.VERTICAL, true, true, true);
         ChartPanel chartPanel = new ChartPanel(chart);
         pGraficoEvolucionEquipo.setLayout(new java.awt.BorderLayout());
+        pGraficoEvolucionEquipo.removeAll();
         pGraficoEvolucionEquipo.add(chartPanel);
         pGraficoEvolucionEquipo.validate();
     }
@@ -132,6 +135,7 @@ public class VPrincipal extends javax.swing.JFrame {
         //Mostramos la grafica en pantalla
         ChartPanel panel = new ChartPanel(chart);
         pGraficoClasificacion.setLayout(new java.awt.BorderLayout());
+        pGraficoClasificacion.removeAll();
         pGraficoClasificacion.add(panel);
         pGraficoClasificacion.validate();
         
@@ -146,8 +150,9 @@ public class VPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        verGrande = new javax.swing.JButton();
+        bVerGrande = new javax.swing.JButton();
         pGraficoEvolucionEquipo = new javax.swing.JPanel();
+        bActualizarGráfico = new javax.swing.JButton();
         bCerrarSesion = new javax.swing.JButton();
         pGraficoClasificacion = new javax.swing.JPanel();
         lBienvenido = new javax.swing.JLabel();
@@ -190,17 +195,29 @@ public class VPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(988, 691));
-        getContentPane().setLayout(null);
-
-        verGrande.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        verGrande.setText("Ver Evolución en grande");
-        verGrande.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verGrandeActionPerformed(evt);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
             }
         });
-        getContentPane().add(verGrande);
-        verGrande.setBounds(430, 450, 280, 40);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
+        getContentPane().setLayout(null);
+
+        bVerGrande.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        bVerGrande.setText("Ver Evolución en grande");
+        bVerGrande.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVerGrandeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bVerGrande);
+        bVerGrande.setBounds(430, 450, 280, 40);
 
         pGraficoEvolucionEquipo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -217,6 +234,16 @@ public class VPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(pGraficoEvolucionEquipo);
         pGraficoEvolucionEquipo.setBounds(430, 130, 760, 310);
+
+        bActualizarGráfico.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        bActualizarGráfico.setText("Actualizar Los Gráficos");
+        bActualizarGráfico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bActualizarGráficoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bActualizarGráfico);
+        bActualizarGráfico.setBounds(720, 450, 240, 40);
 
         bCerrarSesion.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         bCerrarSesion.setText("Cerrar sesión");
@@ -727,34 +754,54 @@ public class VPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void verGrandeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verGrandeActionPerformed
-        if(verGrande.getText().equals("Reducir el tamaño")){
-            verGrande.setLocation(430, 450);
+    private void bVerGrandeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVerGrandeActionPerformed
+        if(bVerGrande.getText().equals("Reducir el tamaño")){
+            bVerGrande.setLocation(430, 450);
             pGraficoEvolucionEquipo.setLocation(430, 130);
             pGraficoEvolucionEquipo.setSize(760, 310);
-            verGrande.setText("Ver Evolución en grande");
+            bVerGrande.setText("Ver Evolución en grande");
             pGraficoEvolucionEquipo.validate();
         }    
         else{
-            verGrande.setLocation((this.getWidth()-verGrande.getWidth())/2, logotipo.getY()+20);
+            bVerGrande.setLocation((this.getWidth()-bVerGrande.getWidth())/2, logotipo.getY()+20);
             pGraficoEvolucionEquipo.setLocation(0, 0);
-            pGraficoEvolucionEquipo.setSize(this.getWidth()-10, verGrande.getY()- 40);
-            verGrande.setText("Reducir el tamaño");
+            pGraficoEvolucionEquipo.setSize(this.getWidth()-10, bVerGrande.getY()- 40);
+            bVerGrande.setText("Reducir el tamaño");
             pGraficoEvolucionEquipo.validate();
         }
             
         
         
-    }//GEN-LAST:event_verGrandeActionPerformed
+    }//GEN-LAST:event_bVerGrandeActionPerformed
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+
+    }//GEN-LAST:event_formFocusGained
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void bActualizarGráficoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarGráficoActionPerformed
+        
+        try {
+            graficoClasificacion(Main.resultados());
+            graficosEvolucion(Main.resultadosTodosLosPartidos());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
+        }
+    }//GEN-LAST:event_bActualizarGráficoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu administracion;
+    private javax.swing.JButton bActualizarGráfico;
     private javax.swing.JButton bAlta;
     private javax.swing.JButton bBaja;
     private javax.swing.JButton bCerrarSesion;
     private javax.swing.JButton bConsulta;
     private javax.swing.JButton bMarcador;
     private javax.swing.JButton bModificar;
+    private javax.swing.JButton bVerGrande;
     private javax.swing.JMenuItem crearEquipo;
     private javax.swing.JMenuItem crearJugador;
     private javax.swing.JMenuItem crearUsuario;
@@ -786,7 +833,6 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu ver;
     private javax.swing.JMenuItem verCalendario;
     private javax.swing.JMenuItem verEquipo;
-    private javax.swing.JButton verGrande;
     private javax.swing.JMenuItem verJugador;
     private javax.swing.JMenuItem verUsuario;
     // End of variables declaration//GEN-END:variables

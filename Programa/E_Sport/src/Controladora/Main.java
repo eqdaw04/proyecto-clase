@@ -157,7 +157,7 @@ public class Main {
             perfil = persona.getPerfil().getIdPerfil();
             login.dispose();
             if(perfil == 3){
-                new VUPrincipal();
+                new VUPrincipal(persona.getUsuario());
             }
             else{
                 new VPrincipal(perfil,persona.getUsuario());
@@ -274,7 +274,13 @@ public class Main {
             case 9:
                 new VDResultados(tipo);
                 break;
+            
         }
+    }
+    
+    public static void reabrirFrame(JFrame v, String tipo) throws Exception {
+        v.dispose();
+        new VUPrincipal(tipo);
     }
     
     /**
@@ -1173,24 +1179,28 @@ public class Main {
         Date hoy = new Date();
         SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
         liga.ejecutar(ff.format(hoy));
+        
     }
     public static ArrayList<Object> resultadoFinalOrdenEquipo() throws Exception{
         return bdEquipo.resultadoFinalOrdenEquipo();
     }
     
-    public static void saxClasificacion() throws Exception{
+    public static ArrayList<Object> saxClasificacion() throws Exception{
         SAX_Clasificacion clasax = new SAX_Clasificacion();
         ArrayList<Object> lista;
         lista = clasax.metodoraiz();
         Calendar fecha = Calendar.getInstance();
         SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
         fecha.setTime(ff.parse(clasax.getExpiracion()));
-        Date hoy = new Date();
-        if(fecha.equals(hoy)){
-            JOptionPane.showMessageDialog(null, "Igual");
+        Calendar hoy = Calendar.getInstance();
+        hoy.set(Calendar.HOUR_OF_DAY, 00);
+        hoy.set(Calendar.MINUTE, 00);
+        hoy.set(Calendar.SECOND, 00);
+        hoy.set(Calendar.MILLISECOND, 00);
+        // si no es fecha actual se vacía la lista
+        if(!fecha.equals(hoy)){
+            lista = new ArrayList();
         }
-        else{
-            JOptionPane.showMessageDialog(null, "No igual");
-        }
+        return lista;
     }
 }

@@ -6,8 +6,10 @@
 package Views;
 
 import Controladora.Main;
+import Excepciones.Excepcion;
 import java.awt.Color;
 import java.awt.Image;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -30,43 +32,58 @@ import org.jfree.data.general.DefaultPieDataset;
  */
 public class VUPrincipal extends javax.swing.JFrame {
 
-    DefaultTableModel mJornada, mClasificacion;
+    DefaultTableModel mJornada, mClasificacion, mCurso;
     
     /**
      * Creates new form VUPrincipal
      */
-    public VUPrincipal() {
+    public VUPrincipal(String usuario) {
         initComponents();
-        cargarDatos();
+        cargarDatos(usuario);
     }
 
-    private void cargarDatos(){
+    private void cargarDatos(String usuario){
         setLocationRelativeTo(null);
         crearImagenes();
         setTitle("Bienvenido a E-Sport");
+        lNombre.setText(usuario);
         modelarTabla();
-        //graficoClasificacion();
+        try {
+            cargarTodoClasificacion();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
+        }
+        
         setVisible(true);
     }
-    
-    private void graficoClasificacion(ArrayList<Object> lista){
-        DefaultPieDataset pieDataset = new DefaultPieDataset();
-        for(int x =0; x< lista.size(); x++){
+
+    private void cargarTodoClasificacion() throws Exception{
+        try {
+            pGraficoClasificacion.setVisible(false);
+            ArrayList<Object> lista = Main.saxClasificacion();
+            if(lista.isEmpty()){
+                throw new Excepcion(39);
+            }
+            else{
+                cargarClasificacion(lista);
+            }
             
-            Object[] fila = (Object[]) lista.get(x);
-            for (int i=0;i<3;i++)
-            pieDataset.setValue(String.valueOf(fila[1]), new Integer(Integer.parseInt(fila[2].toString())));
-            mClasificacion.addRow(fila);
+        } 
+        catch(IOException ex){
+            if(JOptionPane.showConfirmDialog(this, "¿Desea crear el Archivo que falta?","Crear XML Clasificación",2) == 0){
+                Main.domClasificacion();
+                cargarTodoClasificacion();
+            }
+            
         }
-        JFreeChart chart = ChartFactory.createPieChart("",pieDataset, true, true, false);
-        
-        //Mostramos la grafica en pantalla
-        ChartPanel panel = new ChartPanel(chart);
-        pGraficoEvolucionEquipo.setLayout(new java.awt.BorderLayout());
-        pGraficoEvolucionEquipo.add(panel);
-        pGraficoEvolucionEquipo.validate();
-        
+        catch(Excepcion ex){
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Atención", 1);
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
+        }
     }
+    
     private void modelarTabla(){
         
 	mJornada = new DefaultTableModel();
@@ -79,22 +96,38 @@ public class VUPrincipal extends javax.swing.JFrame {
         tJornada.setRowHeight(40);
         tJornada.setShowVerticalLines(false);
         tJornada.setGridColor(Color.BLUE);
-        mClasificacion = new DefaultTableModel();
         
+        mClasificacion = new DefaultTableModel();
 	Object[] vec2 = {"Posición","Equipo","Marcador"};
 	mClasificacion.setColumnIdentifiers(vec2);
-	tCurso.setModel(mClasificacion);
+	tClasificacion.setModel(mClasificacion);
+	tClasificacion.getColumnModel().getColumn(0).setPreferredWidth(125);
+	tClasificacion.getColumnModel().getColumn(1).setPreferredWidth(255);
+	tClasificacion.getColumnModel().getColumn(2).setPreferredWidth(125);
+        tClasificacion.setRowHeight(40);
+        tClasificacion.setShowVerticalLines(false);
+        tClasificacion.setGridColor(Color.BLUE);
+        
+        mCurso = new DefaultTableModel();
+	Object[] vec3 = {"Posición","Equipo","Marcador"};
+	mCurso.setColumnIdentifiers(vec3);
+	tCurso.setModel(mCurso);
 	tCurso.getColumnModel().getColumn(0).setPreferredWidth(65);
 	tCurso.getColumnModel().getColumn(1).setPreferredWidth(150);
 	tCurso.getColumnModel().getColumn(2).setPreferredWidth(75);
         tCurso.setRowHeight(40);
         tCurso.setShowVerticalLines(false);
         tCurso.setGridColor(Color.BLUE);
+        
+        
         DefaultTableCellRenderer centrar = new DefaultTableCellRenderer();
         centrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tJornada.getColumnModel().getColumn(0).setCellRenderer(centrar);
         tJornada.getColumnModel().getColumn(1).setCellRenderer(centrar);
         tJornada.getColumnModel().getColumn(2).setCellRenderer(centrar);
+        tClasificacion.getColumnModel().getColumn(0).setCellRenderer(centrar);
+        tClasificacion.getColumnModel().getColumn(1).setCellRenderer(centrar);
+        tClasificacion.getColumnModel().getColumn(2).setCellRenderer(centrar);
         tCurso.getColumnModel().getColumn(0).setCellRenderer(centrar);
         tCurso.getColumnModel().getColumn(1).setCellRenderer(centrar);
         tCurso.getColumnModel().getColumn(2).setCellRenderer(centrar);
@@ -108,6 +141,28 @@ public class VUPrincipal extends javax.swing.JFrame {
         this.repaint();
         this.repaint();
     }
+    
+    private void cargarClasificacion(ArrayList<Object> lista){
+        graficoClasificacion(lista);
+        pGraficoClasificacion.setVisible(false);
+    }
+    
+    private void graficoClasificacion(ArrayList<Object> lista){
+        DefaultPieDataset pieDataset = new DefaultPieDataset();
+        for(int x =0; x< lista.size(); x++){
+            Object[] fila = (Object[]) lista.get(x);
+            pieDataset.setValue(String.valueOf(fila[1]), new Integer(Integer.parseInt(fila[2].toString())));
+            mClasificacion.addRow(fila);
+        }
+        JFreeChart chart = ChartFactory.createPieChart("",pieDataset, true, true, false);
+        
+        //Mostramos la grafica en pantalla
+        ChartPanel panel = new ChartPanel(chart);
+        pGraficoClasificacion.setLayout(new java.awt.BorderLayout());
+        pGraficoClasificacion.add(panel);
+        pGraficoClasificacion.validate();
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -119,6 +174,7 @@ public class VUPrincipal extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tJornada = new javax.swing.JTable();
+        pGraficoClasificacion = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tCurso = new javax.swing.JTable();
@@ -126,13 +182,14 @@ public class VUPrincipal extends javax.swing.JFrame {
         Dom = new javax.swing.JButton();
         jScrollPane12 = new javax.swing.JScrollPane();
         lJornada8 = new javax.swing.JList<>();
-        jLabel7 = new javax.swing.JLabel();
+        lNombre = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        bGraficoClasificacion = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
@@ -144,7 +201,6 @@ public class VUPrincipal extends javax.swing.JFrame {
         tClasificacion = new javax.swing.JTable();
         pGraficoEvolucionEquipo = new javax.swing.JPanel();
         pGraficoCurso = new javax.swing.JPanel();
-        pGraficoClasificacion = new javax.swing.JPanel();
         img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -177,6 +233,22 @@ public class VUPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(230, 490, 560, 280);
+
+        pGraficoClasificacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout pGraficoClasificacionLayout = new javax.swing.GroupLayout(pGraficoClasificacion);
+        pGraficoClasificacion.setLayout(pGraficoClasificacionLayout);
+        pGraficoClasificacionLayout.setHorizontalGroup(
+            pGraficoClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 528, Short.MAX_VALUE)
+        );
+        pGraficoClasificacionLayout.setVerticalGroup(
+            pGraficoClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 308, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(pGraficoClasificacion);
+        pGraficoClasificacion.setBounds(580, 90, 530, 310);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Partidos de la Jornada ");
@@ -225,10 +297,16 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jScrollPane12);
         jScrollPane12.setBounds(30, 490, 182, 280);
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jLabel7.setText("Hola ");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(30, 40, 590, 30);
+        lNombre.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        lNombre.setForeground(new java.awt.Color(0, 153, 255));
+        lNombre.setText("Hola ");
+        getContentPane().add(lNombre);
+        lNombre.setBounds(130, 40, 90, 30);
+
+        jLabel9.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel9.setText("Hola ");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(30, 40, 90, 30);
 
         jButton7.setText("Liga Actual");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -276,15 +354,15 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jButton3);
         jButton3.setBounds(840, 730, 240, 40);
 
-        jButton5.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jButton5.setText("Ver en Gráfico de la Liga actual");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        bGraficoClasificacion.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        bGraficoClasificacion.setText("Ver en Gráfico de la Liga actual");
+        bGraficoClasificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                bGraficoClasificacionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5);
-        jButton5.setBounds(580, 409, 370, 40);
+        getContentPane().add(bGraficoClasificacion);
+        bGraficoClasificacion.setBounds(580, 409, 370, 40);
 
         jButton6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jButton6.setText("Ver en Gráfico la jornada en curso");
@@ -383,22 +461,6 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(pGraficoCurso);
         pGraficoCurso.setBounds(30, 90, 530, 310);
 
-        pGraficoClasificacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout pGraficoClasificacionLayout = new javax.swing.GroupLayout(pGraficoClasificacion);
-        pGraficoClasificacion.setLayout(pGraficoClasificacionLayout);
-        pGraficoClasificacionLayout.setHorizontalGroup(
-            pGraficoClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 528, Short.MAX_VALUE)
-        );
-        pGraficoClasificacionLayout.setVerticalGroup(
-            pGraficoClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 308, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pGraficoClasificacion);
-        pGraficoClasificacion.setBounds(580, 90, 530, 310);
-
         img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(img);
         img.setBounds(0, 0, 1170, 850);
@@ -411,7 +473,13 @@ public class VUPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lJornada8ValueChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            Main.domClasificacion();
+            Main.reabrirFrame(this,lNombre.getText());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -430,9 +498,16 @@ public class VUPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void bGraficoClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGraficoClasificacionActionPerformed
+        if(bGraficoClasificacion.getText().equals("Ver en Gráfico de la Liga actual")){
+            pGraficoClasificacion.setVisible(true);
+            bGraficoClasificacion.setText("Ocultar Gráfigo Liga Actual");
+        }
+        else{
+            pGraficoClasificacion.setVisible(false);
+            bGraficoClasificacion.setText("Ver en Gráfico de la Liga actual");
+        }
+    }//GEN-LAST:event_bGraficoClasificacionActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
@@ -447,23 +522,18 @@ public class VUPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_DomActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        try {
-            Main.saxClasificacion();
-            Main.domClasificacion();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
-        }
+        
     }//GEN-LAST:event_jButton7ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Dom;
+    private javax.swing.JButton bGraficoClasificacion;
     private javax.swing.JLabel img;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -472,13 +542,14 @@ public class VUPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JList<Integer> lJornada8;
+    private javax.swing.JLabel lNombre;
     private javax.swing.JLabel logotipo;
     private javax.swing.JPanel pGraficoClasificacion;
     private javax.swing.JPanel pGraficoCurso;

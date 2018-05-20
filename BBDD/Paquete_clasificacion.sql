@@ -42,7 +42,7 @@ CREATE OR REPLACE PACKAGE BODY Pkg_ClasificacionConIDEquipo IS
       SELECT E.id_equipo, E.Nombre AS Equipo, SUM(M.Puntuacion) AS punto FROM EQUIPO E,MARCADOR M 
             WHERE E.ID_EQUIPO = M.ID_EQUIPO
             GROUP BY  E.Nombre, E.id_equipo
-            ORDER BY punto DESC;
+            ORDER BY punto desc, E.ID_EQUIPO;
   END;
 END Pkg_ClasificacionConIDEquipo;
 /
