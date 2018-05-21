@@ -202,7 +202,7 @@ public class Main {
                 break;
                 
             case 8:
-                new VCalendario();
+                new VCalendario(tipo);
                 break; 
                 
             case 9:
