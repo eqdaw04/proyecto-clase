@@ -42,10 +42,10 @@ public class DOM_Liga {
         SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
         int x;
         for(x=0;x<jornadas.size() && hoy.before(jornadas.get(x).getFechaFinal());x++){}
-        generarDocumento (jornadas,ff.format(jornadas.get(x-1).getFechaFinal()));
+        generarDocumento (jornadas,ff.format(jornadas.get(x-1).getFechaFinal()),ff);
         generarXML();
     }
-    public void generarDocumento (ArrayList <Jornada> jornadas,String caduca){
+    public void generarDocumento (ArrayList <Jornada> jornadas,String caduca,SimpleDateFormat ff){
         Element liga= doc.createElement("liga");
             doc.appendChild(liga);
         Element fechaExp= doc.createElement("fecha_expiracion");
@@ -55,6 +55,12 @@ public class DOM_Liga {
             Element jornada= doc.createElement("jornada");
                 jornada.setAttribute("Id_jornada", String.valueOf(jornadas.get(x).getIdJornada()));
                     liga.appendChild(jornada);
+            Element fechaInicio=doc.createElement("fecha_inicio");
+                fechaInicio.appendChild(doc.createTextNode(ff.format(jornadas.get(x).getFechaInicio())));
+                    jornada.appendChild(fechaInicio);
+            Element fechaFin=doc.createElement("fecha_fin");
+                fechaFin.appendChild(doc.createTextNode(ff.format(jornadas.get(x).getFechaFinal())));
+                    jornada.appendChild(fechaFin);
             for (int y=0;y<jornadas.get(x).getListaPartidos().size();y++){
                 Element partido= doc.createElement("partido");
                     partido.setAttribute("id_partido", String.valueOf(jornadas.get(x).getListaPartidos().get(y).getIdPartido()));
