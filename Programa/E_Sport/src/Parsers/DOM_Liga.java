@@ -54,7 +54,7 @@ public class DOM_Liga {
                     liga.appendChild(fechaExp);
         for(int x=0;x<jornadas.size();x++){
             Element jornada= doc.createElement("jornada");
-                jornada.setAttribute("Id_jornada", String.valueOf(jornadas.get(x).getIdJornada()));
+                jornada.setAttribute("id_jornada", String.valueOf(jornadas.get(x).getIdJornada()));
                     liga.appendChild(jornada);
             Element fechaInicio=doc.createElement("fecha_inicio");
                 fechaInicio.appendChild(doc.createTextNode(ff.format(jornadas.get(x).getFechaInicio())));

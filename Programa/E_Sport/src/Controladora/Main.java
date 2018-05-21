@@ -56,7 +56,6 @@ public class Main {
     private static int perfil;
     private static float salarioMin, salarioMax;
     private static VLogin login;
-    private static String url;
     
     
     public static void main(String[] args) throws Exception {
@@ -121,25 +120,8 @@ public class Main {
     
     //---------- JON XU JIN ----------
 
-    public static void accederPrincipal(String usuario, char[] contrasenna, int numero) throws Exception{
-        String servidor = "",
-        bbdd = "db12102";
-        switch(numero){
-            case 1:
-                servidor = "SrvOracle";
-                bbdd = "orcl";
-                break;
-                
-            case 2:
-                servidor = "localhost";
-                break;
-                
-            case 3:
-                servidor = "10.10.10.9";
-                break;
-                        
-        }
-        url = "jdbc:oracle:thin:@" + servidor + ":1521:" + bbdd;
+    public static void accederPrincipal(String usuario, char[] contrasenna) throws Exception{
+        
         persona = null;
         
         persona = bdPersona.buscarPersonaPorUsuario(usuario);
@@ -770,24 +752,7 @@ public class Main {
     public static void setLogin(VLogin login) {
         Main.login = login;
     }
-    
-    /**
-     *  Metodo para obtener la url de la conexión.
-     * @return url
-     */
-
-    public static String getUrl() {
-        return url;
-    }
-    
-    /**
-     *  Metodo para establecer la url de la conexión.
-     * @param url String
-     */
-
-    public static void setUrl(String url) {
-        Main.url = url;
-    }
+ 
       
     /**
      * Metodo para obtener una persona.

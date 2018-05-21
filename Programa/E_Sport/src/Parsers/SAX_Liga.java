@@ -8,12 +8,10 @@ package Parsers;
 import UML.Partido;
 import UML.Equipo;
 import UML.Jornada;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
@@ -50,6 +48,7 @@ public class SAX_Liga extends DefaultHandler{
     }
     
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException { 
+        
         switch (qName){
             case "fecha_expiracion":
                 buffer.delete(0,buffer.length());
@@ -60,6 +59,15 @@ public class SAX_Liga extends DefaultHandler{
                 j.setIdJornada(Integer.parseInt(attributes.getValue("id_jornada")));
                 jornadas.add(j);
                 break;
+                
+            case "fecha_inicio":
+                buffer.delete(0,buffer.length());
+                break;
+                
+            case "fecha_fin":
+                buffer.delete(0,buffer.length());
+                break;
+                
             case "partido":
                 p = new Partido();
                 p.setIdPartido(Integer.parseInt(attributes.getValue("id_partido")));
@@ -98,24 +106,29 @@ public class SAX_Liga extends DefaultHandler{
         }
        
       public void endElement(String uri, String localName, String qName) throws SAXException {
+          SimpleDateFormat ff = new SimpleDateFormat("dd-MM-yyyy");
+          try{
           switch(qName){
             case "fecha_expiracion":
                 expiracion=buffer.toString();
                 break;
+                
+            case "fecha_inicio":
+                j.setFechaInicio(ff.parse(buffer.toString()));
+                break;
+                
+            case "fecha_fin":
+                j.setFechaFinal(ff.parse(buffer.toString()));
+                break;
+                
             case "fecha":
                 fecha= buffer.toString();
                 break;
             case "hora":
-                SimpleDateFormat ff = new SimpleDateFormat("yyyy-mm-dd hh:mm");
+                
                 Calendar fechas = Calendar.getInstance();
                 fecha += " " + buffer.toString();
-          {
-              try {
                   fechas.setTime(ff.parse(fecha));
-              } catch (ParseException ex) {
-                  Logger.getLogger(SAX_Liga.class.getName()).log(Level.SEVERE, null, ex);
-              }
-          }
                 p.setFecha(fechas);
                 break;
             case "lugar":
@@ -140,6 +153,10 @@ public class SAX_Liga extends DefaultHandler{
                     p.setmLocal(Integer.parseInt(puntuacion));
                 }
                 break;
+          }
+          }
+          catch(Exception ex){
+              JOptionPane.showMessageDialog(null, e.getClass() + " \n " + ex.getMessage(), "Error", 0);
           }
       }  
 

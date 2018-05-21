@@ -123,10 +123,11 @@ public class VUPrincipal extends javax.swing.JFrame {
                 modelo.addElement(partidos.get(x).getIdJornada());
             }
             else{
-                lJornada.setModel(modelo);
+                
                 x = partidos.size();
             }
         }
+        lJornada.setModel(modelo);
     }
     
     private void graficoJornadas(ArrayList<Jornada> lista){
@@ -235,16 +236,8 @@ public class VUPrincipal extends javax.swing.JFrame {
     
     private void modelarTabla(){
         
-	mJornada = new DefaultTableModel();
-	Object[] vec1 = {"Partido","Local VS Visitante","Marcador"};
-	mJornada.setColumnIdentifiers(vec1);
-	tJornada.setModel(mJornada);
-	tJornada.getColumnModel().getColumn(0).setPreferredWidth(75);
-	tJornada.getColumnModel().getColumn(1).setPreferredWidth(360);
-	tJornada.getColumnModel().getColumn(2).setPreferredWidth(75);
-        tJornada.setRowHeight(40);
-        tJornada.setShowVerticalLines(false);
-        tJornada.setGridColor(Color.BLUE);
+	
+        
         
         mClasificacion = new DefaultTableModel();
 	Object[] vec2 = {"Posición","Equipo","Marcador"};
@@ -373,14 +366,11 @@ public class VUPrincipal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tCurso = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        DOM = new javax.swing.JButton();
         lNombre = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         lJornada = new javax.swing.JList<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         bActualizar = new javax.swing.JButton();
         bEvolucion = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -506,22 +496,12 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 90, 270, 30);
 
-        DOM.setText("DOM");
-        DOM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DOMActionPerformed(evt);
-            }
-        });
-        getContentPane().add(DOM);
-        DOM.setBounds(480, 30, 57, 25);
-
         lNombre.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         lNombre.setForeground(new java.awt.Color(0, 153, 255));
         lNombre.setText("Hola ");
         getContentPane().add(lNombre);
         lNombre.setBounds(130, 40, 350, 30);
 
-        lJornada.setEnabled(false);
         lJornada.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lJornadaValueChanged(evt);
@@ -541,24 +521,6 @@ public class VUPrincipal extends javax.swing.JFrame {
         jLabel9.setText("Hola ");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(30, 40, 90, 30);
-
-        jButton7.setText("Liga Actual");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton7);
-        jButton7.setBounds(1010, 410, 140, 25);
-
-        jButton1.setText("SAX");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(570, 30, 56, 25);
 
         bActualizar.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         bActualizar.setText("Actualizar datos");
@@ -726,17 +688,28 @@ public class VUPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBotonUltimaActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        
-       
-    }//GEN-LAST:event_jButton7ActionPerformed
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 
     }//GEN-LAST:event_formWindowClosing
-
+    private void borrarTabla(){
+        mJornada = new DefaultTableModel();
+	Object[] vec1 = {"Partido","Local VS Visitante","Marcador"};
+	mJornada.setColumnIdentifiers(vec1);
+	tJornada.setModel(mJornada);
+	tJornada.getColumnModel().getColumn(0).setPreferredWidth(75);
+	tJornada.getColumnModel().getColumn(1).setPreferredWidth(360);
+	tJornada.getColumnModel().getColumn(2).setPreferredWidth(75);
+        tJornada.setRowHeight(40);
+        tJornada.setShowVerticalLines(false);
+        tJornada.setGridColor(Color.BLUE);
+        DefaultTableCellRenderer centrar = new DefaultTableCellRenderer();
+        centrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tJornada.getColumnModel().getColumn(0).setCellRenderer(centrar);
+        tJornada.getColumnModel().getColumn(1).setCellRenderer(centrar);
+        tJornada.getColumnModel().getColumn(2).setCellRenderer(centrar);
+    }
     private void lJornadaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lJornadaValueChanged
-
+        borrarTabla();
         for (int x=0;x<listaJornada.get(lJornada.getSelectedValue()).getListaPartidos().size();x++){
             Partido partidos = listaJornada.get(lJornada.getSelectedValue()).getListaPartidos().get(x);
             Object[] fila =new Object[3];
@@ -747,34 +720,15 @@ public class VUPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lJornadaValueChanged
 
-    private void DOMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DOMActionPerformed
-        try {
-            Main.domLiga();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
-        }
-    }//GEN-LAST:event_DOMActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            Main.saxLiga();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton DOM;
     private javax.swing.JButton bActualizar;
     private javax.swing.JButton bEvolucion;
     private javax.swing.JButton bGraficoClasificacion;
     private javax.swing.JLabel img;
     private javax.swing.JButton jBotonUltima;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

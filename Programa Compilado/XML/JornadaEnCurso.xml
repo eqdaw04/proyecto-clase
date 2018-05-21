@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jornada Id_jornada="5">
-    <fecha_expiracion>2018-06-21</fecha_expiracion>
+    <fecha_expiracion>2018-06-22</fecha_expiracion>
     <partido id_partido="17">
         <fecha>2018-06-19</fecha>
         <hora>12:00</hora>
@@ -8,13 +8,13 @@
         <equipo id_equipo="5">
             <nombre>Equipo5</nombre>
             <comentario>Somos el Equipo 5</comentario>
-            <puntuacion>0</puntuacion>
+            <puntuacion>7</puntuacion>
             <visitante>false</visitante>
         </equipo>
         <equipo id_equipo="7">
             <nombre>Equipo7</nombre>
             <comentario>Somos el Equipo 7</comentario>
-            <puntuacion>0</puntuacion>
+            <puntuacion>8</puntuacion>
             <visitante>true</visitante>
         </equipo>
     </partido>
@@ -25,13 +25,13 @@
         <equipo id_equipo="8">
             <nombre>Equipo8</nombre>
             <comentario>Somos el Equipo 8</comentario>
-            <puntuacion>0</puntuacion>
+            <puntuacion>9</puntuacion>
             <visitante>false</visitante>
         </equipo>
         <equipo id_equipo="4">
             <nombre>Equipo4</nombre>
             <comentario>Somos el Equipo 4</comentario>
-            <puntuacion>0</puntuacion>
+            <puntuacion>1</puntuacion>
             <visitante>true</visitante>
         </equipo>
     </partido>
@@ -42,13 +42,13 @@
         <equipo id_equipo="3">
             <nombre>Equipo3</nombre>
             <comentario>Somos el Equipo 3</comentario>
-            <puntuacion>0</puntuacion>
+            <puntuacion>2</puntuacion>
             <visitante>false</visitante>
         </equipo>
         <equipo id_equipo="2">
             <nombre>Equipo2</nombre>
             <comentario>Somos el Equipo 2</comentario>
-            <puntuacion>0</puntuacion>
+            <puntuacion>3</puntuacion>
             <visitante>true</visitante>
         </equipo>
     </partido>
@@ -59,13 +59,13 @@
         <equipo id_equipo="1">
             <nombre>Equipo1</nombre>
             <comentario>Somos el Equipo 1</comentario>
-            <puntuacion>0</puntuacion>
+            <puntuacion>4</puntuacion>
             <visitante>false</visitante>
         </equipo>
         <equipo id_equipo="6">
             <nombre>Equipo6</nombre>
             <comentario>Somos el Equipo 6</comentario>
-            <puntuacion>0</puntuacion>
+            <puntuacion>5</puntuacion>
             <visitante>true</visitante>
         </equipo>
     </partido>

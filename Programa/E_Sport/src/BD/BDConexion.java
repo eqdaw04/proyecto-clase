@@ -31,10 +31,8 @@ public class BDConexion {
            // cargar el driver
             Class.forName("oracle.jdbc.OracleDriver");
             // establecer la conexión
-            // cambiar cuando finaliza el proyecto main.geturl por
-            // "jdbc:oracle:thin:@SrvOracle:1521:orcl"
             
-            connection = DriverManager.getConnection(Main.getUrl(), "eqdaw04", "eqdaw04");
+            connection = DriverManager.getConnection("jdbc:oracle:thin:@SrvOracle:1521:orcl", "eqdaw04", "eqdaw04");
             // comprueba si está conectado, en caso contrario, mostrar error
             if(connection == null){
                 //System.out.println("conexion establecida");

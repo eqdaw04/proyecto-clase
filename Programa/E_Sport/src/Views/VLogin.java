@@ -43,8 +43,6 @@ public class VLogin extends javax.swing.JFrame {
         bAcceder = new javax.swing.JButton();
         bSalir = new javax.swing.JButton();
         pfContrasenna = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         imgusu = new javax.swing.JLabel();
         imgpassw = new javax.swing.JLabel();
         logotipo = new javax.swing.JLabel();
@@ -105,23 +103,6 @@ public class VLogin extends javax.swing.JFrame {
         });
         getContentPane().add(pfContrasenna);
         pfContrasenna.setBounds(190, 230, 150, 30);
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField1KeyReleased(evt);
-            }
-        });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(20, 410, 69, 22);
-
-        jLabel4.setText("1. Clase; 2. Jon; 3. Mikel");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 380, 160, 16);
         getContentPane().add(imgusu);
         imgusu.setBounds(130, 150, 40, 40);
         getContentPane().add(imgpassw);
@@ -172,8 +153,6 @@ public class VLogin extends javax.swing.JFrame {
                 // cambiar a 3000 a la entrega de la app
                 Thread.sleep(1);
             }
-
-            jTextField1.grabFocus();
             setVisible(true);
         }
         catch (InterruptedException e)
@@ -221,73 +200,6 @@ public class VLogin extends javax.swing.JFrame {
         Main.salirDelPrograma(this);
     }//GEN-LAST:event_bSalirActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        try
-        {
-            if (tfUsuario.getText().isEmpty())
-            {
-                throw new Excepcion(1);
-            }
-            else if (String.copyValueOf(pfContrasenna.getPassword()).isEmpty())
-            {
-                throw new Excepcion(2);
-            }
-            else{
-                
-                Main.accederPrincipal(tfUsuario.getText(), pfContrasenna.getPassword(), Integer.parseInt(jTextField1.getText()) );
-            }
-        }
-        catch (Excepcion e)
-        {
-            pfContrasenna.setText("");
-            pfContrasenna.grabFocus();
-            JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
-        }
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
-        }
-        finally{
-            if(error == 13){
-                Main.salir(this);
-            }
-        }
-        
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-        try
-        {
-            if (tfUsuario.getText().isEmpty())
-            {
-                throw new Excepcion(1);
-            }
-            else if (String.copyValueOf(pfContrasenna.getPassword()).isEmpty())
-            {
-                throw new Excepcion(2);
-            }
-            else{
-                
-                Main.accederPrincipal(tfUsuario.getText(), pfContrasenna.getPassword(), Integer.parseInt(jTextField1.getText()) );
-            }
-        }
-        catch (Excepcion e)
-        {
-            pfContrasenna.setText("");
-            pfContrasenna.grabFocus();
-            JOptionPane.showMessageDialog(this, e.getMessage() + "(" + cont + "/3)", "Error", 0);
-        }
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
-        }
-        finally{
-            if(error == 13){
-                Main.salir(this);
-            }
-        }
-    }//GEN-LAST:event_jTextField1KeyReleased
-
     private void bAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAccederActionPerformed
         try
         {
@@ -301,7 +213,7 @@ public class VLogin extends javax.swing.JFrame {
             }
             else{
 
-                Main.accederPrincipal(tfUsuario.getText(), pfContrasenna.getPassword(), Integer.parseInt(jTextField1.getText()) );
+                Main.accederPrincipal(tfUsuario.getText(), pfContrasenna.getPassword());
             }
         }
         catch (Excepcion e)
@@ -336,8 +248,6 @@ public class VLogin extends javax.swing.JFrame {
     private javax.swing.JLabel imgpassw;
     private javax.swing.JLabel imgusu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel logotipo;
     private javax.swing.JPasswordField pfContrasenna;
     private javax.swing.JTextField tfUsuario;
