@@ -237,7 +237,7 @@ public class Excepcion extends Exception {
                 break;
                 
             case 54:
-                dato += "No hay datos de la última jornada.";
+                dato += "No hay ninguna jornada en curso.";
                 break;
                 
             case 55:
