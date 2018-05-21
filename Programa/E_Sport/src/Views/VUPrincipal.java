@@ -716,7 +716,7 @@ public class VUPrincipal extends javax.swing.JFrame {
     }
     private void lJornadaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lJornadaValueChanged
         borrarTabla();
-        for (int x=0;x<listaJornada.get(lJornada.getSelectedValue()).getListaPartidos().size();x++){
+        for (int x=0;x<listaJornada.get(lJornada.getSelectedValue()-1).getListaPartidos().size();x++){
             Partido partidos = listaJornada.get(lJornada.getSelectedValue()-1).getListaPartidos().get(x);
             Object[] fila =new Object[3];
             fila[0]= partidos.getIdPartido();
