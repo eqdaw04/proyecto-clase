@@ -23,7 +23,7 @@ public class BDConexion {
     
     /**
      * Metodo en el que controlamos si la conexión se ha establecido correctamente o no.
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
 
     public BDConexion() throws Exception{
