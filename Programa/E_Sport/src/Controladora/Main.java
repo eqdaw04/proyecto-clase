@@ -701,7 +701,7 @@ public class Main {
                 break;
                 
             case 29: // lugar
-                dato = "^[A-ZÑ][a-zñ]{2,}$";
+                dato = "^[A-Z][a-z ]{3,}([ --][A-Z][a-z]{2,})*$";
                 break;
         }
         return dato;

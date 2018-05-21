@@ -1,3 +1,54 @@
+
+    DELETE FROM MARCADOR;
+    DELETE FROM PARTIDO;
+    DELETE FROM JORNADA;
+    DELETE FROM EQUIPO;
+    DELETE FROM PERSONA;
+    DELETE FROM JUGADOR;
+    ALTER TABLE persona MODIFY (Id_persona NUMBER (4,0) GENERATED ALWAYS AS IDENTITY MINVALUE 0 Start with 0);
+    ALTER TABLE equipo MODIFY (Id_equipo NUMBER (4,0) GENERATED ALWAYS AS IDENTITY MINVALUE 1 Start with 1);
+    ALTER TABLE jugador MODIFY (id_jugador NUMBER (4,0) GENERATED ALWAYS AS IDENTITY MINVALUE 0 Start with 0);
+    
+DECLARE 
+    contador NUMBER(3) := 0;
+    cequipo NUMBER(3) := 1;
+    
+BEGIN
+    INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Administrador','Principal',TO_DATE(SYSDATE,'DD/MM/RRRR'), 'a1','a1',1);
+
+    FOR i IN 1..15 LOOP
+        INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Dueño' || i, 'Ape1l' || i, TO_DATE(SYSDATE,'DD/MM/RRRR'), 'd'||i,'d' || i, 2);
+        INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Lugar,Id_persona) VALUES ('Equipo' || i, TO_DATE(SYSDATE,'DD/MM/RRRR'),'Somos el Equipo ' || i,'Lugar' || i , i);        
+    END LOOP;
+
+    FOR i IN 1..90 LOOP
+        contador := contador + 1;
+        INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,Comentario, id_equipo) VALUES ('10000000'+i || 'A','Jugador' || i, 'Papellido' || i,'Sapellido' || i,'nickname' || i,30000,TO_DATE(SYSDATE,'DD/MM/RRRR'),'Soy el jugador ' || i, cequipo);
+        IF contador = 6 THEN
+            contador := 0;
+            cequipo := cequipo + 1;
+        END IF;
+    END LOOP;
+END;
+/
+
+DECLARE 
+    contador NUMBER(3) := 0;
+BEGIN
+
+    FOR i IN 0..450 LOOP
+        contador := contador + 1;
+        UPDATE MARCADOR SET PUNTUACION = CONTADOR WHERE ID_MARCADOR = i;
+        IF contador = 9 THEN
+            contador := 0;
+        END IF;
+    END LOOP;
+END;
+/
+
+
+
+
 --Insert de personas
 INSERT INTO Persona VALUES (DEFAULT,'Usuario1','Apellidorandom2',null,TO_DATE(SYSDATE,'DD/MM/RRRR'),'usu','sus',null,3);
 INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Dueño1','Ape1',TO_DATE(SYSDATE,'DD/MM/RRRR'), 'dueño1','d1',2);

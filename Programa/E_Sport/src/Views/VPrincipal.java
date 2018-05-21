@@ -110,6 +110,7 @@ public class VPrincipal extends javax.swing.JFrame {
         DefaultCategoryDataset line_chart_dataset = new DefaultCategoryDataset();
         for(int x =0; x< lista.size(); x++){
             Object[] fila = (Object[]) lista.get(x);
+            // 0 jornada, 1 equipo 2 puntos
             line_chart_dataset.addValue(Integer.valueOf(fila[2].toString()), fila[1].toString(), fila[0].toString());
         }
         // Creando el Grafico
