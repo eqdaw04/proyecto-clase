@@ -322,15 +322,21 @@ public class VJugador extends javax.swing.JDialog {
                     Main.validar(3, tfDNI);
                     Main.validar(4, tfNombre);
                     Main.validar(5, tfApellido1);
-                    Main.validar(5, tfApellido2);
+                    if(!tfApellido2.getText().equals("")){
+                        Main.validar(5, tfApellido2);
+                    }
+                    
                     if(tfNickname.getText().isEmpty())
                     {
                         throw new Excepcion(26);
                     }
                     sueldo = Float.valueOf(ftfSueldo.getText().replaceAll(",", "."));
-                    if(sueldo < Main.getSalarioMin() || sueldo > Main.getSalarioMax() )
+                    if(sueldo < Main.getSalarioMin() )
                     {
                         throw new Excepcion(10);
+                    }
+                    else if(sueldo > Main.getSalarioMax()){
+                        throw new Excepcion(55);
                     }
                     // Comprobar si existe, en caso contrario se procede el alta.
                    if(Main.buscarJugador(tfDNI.getText())!=null)

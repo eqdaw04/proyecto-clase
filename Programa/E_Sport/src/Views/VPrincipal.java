@@ -108,9 +108,10 @@ public class VPrincipal extends javax.swing.JFrame {
     }
     private void graficosEvolucion(ArrayList<Object> lista) throws Exception{
         DefaultCategoryDataset line_chart_dataset = new DefaultCategoryDataset();
+        // cargar los datos reales
         for(int x =0; x< lista.size(); x++){
             Object[] fila = (Object[]) lista.get(x);
-            // 0 jornada, 1 equipo 2 puntos
+            // el objeto tiene los siguientes datos según su puesto en el array 0 jornada, 1 equipo 2 puntos
             line_chart_dataset.addValue(Integer.valueOf(fila[2].toString()), fila[1].toString(), fila[0].toString());
         }
         // Creando el Grafico

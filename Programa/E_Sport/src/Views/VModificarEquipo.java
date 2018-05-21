@@ -95,6 +95,11 @@ public class VModificarEquipo extends javax.swing.JDialog {
 
         liJugEqui.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         liJugEqui.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        liJugEqui.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                liJugEquiMousePressed(evt);
+            }
+        });
         liJugEqui.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 liJugEquiValueChanged(evt);
@@ -112,6 +117,14 @@ public class VModificarEquipo extends javax.swing.JDialog {
 
         liJugDisp.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         liJugDisp.setToolTipText("");
+        liJugDisp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                liJugDispMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                liJugDispMouseReleased(evt);
+            }
+        });
         liJugDisp.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 liJugDispValueChanged(evt);
@@ -188,19 +201,11 @@ public class VModificarEquipo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void liJugEquiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_liJugEquiValueChanged
-        bEliminar.setEnabled(true);
-        bConsultar.setEnabled(true);
-        bAnnadir.setEnabled(false);
-        liJugDisp.clearSelection();
-        tfSueldo.setText(String.valueOf(jEquipo.get(liJugEqui.getSelectedIndex()).getSueldo()));
+        
     }//GEN-LAST:event_liJugEquiValueChanged
 
     private void liJugDispValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_liJugDispValueChanged
-        bEliminar.setEnabled(false);
-        bConsultar.setEnabled(true);
-        bAnnadir.setEnabled(true);
-        liJugEqui.clearSelection();
-        tfSueldo.setText(String.valueOf(jDisp.get(liJugDisp.getSelectedIndex()).getSueldo()));
+        
     }//GEN-LAST:event_liJugDispValueChanged
 
     private void bEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarActionPerformed
@@ -267,6 +272,39 @@ public class VModificarEquipo extends javax.swing.JDialog {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 
     }//GEN-LAST:event_formWindowClosing
+
+    private void liJugDispMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_liJugDispMousePressed
+        bEliminar.setEnabled(false);
+        bConsultar.setEnabled(true);
+        bAnnadir.setEnabled(true);
+        liJugEqui.clearSelection();
+        if(liJugDisp.getSelectedIndex()>=0){
+            tfSueldo.setText(String.valueOf(jDisp.get(liJugDisp.getSelectedIndex()).getSueldo()));
+            bAnnadir.setEnabled(true);
+        }
+        else{
+            bAnnadir.setEnabled(false);
+        }
+    }//GEN-LAST:event_liJugDispMousePressed
+
+    private void liJugEquiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_liJugEquiMousePressed
+        bEliminar.setEnabled(true);
+        bConsultar.setEnabled(true);
+        bAnnadir.setEnabled(false);
+        liJugDisp.clearSelection();
+        if(liJugEqui.getSelectedIndex()>=0){
+            tfSueldo.setText(String.valueOf(jEquipo.get(liJugEqui.getSelectedIndex()).getSueldo()));
+            bEliminar.setEnabled(true);
+        }
+        else{
+            bEliminar.setEnabled(false);
+        }
+        
+    }//GEN-LAST:event_liJugEquiMousePressed
+
+    private void liJugDispMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_liJugDispMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_liJugDispMouseReleased
 
     private void rellenar() throws Exception{
         //No entiendo muy bien porque, pero sipongo directamente el codigo el segundo modelo (sea cual sea) no funciona correctamente

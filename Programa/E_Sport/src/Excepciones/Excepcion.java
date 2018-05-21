@@ -61,7 +61,7 @@ public class Excepcion extends Exception {
                 break;
                 
             case 10:
-                dato += "El salario mínimo ha de ser de 735,90 y el máximo de 196320,00.";
+                dato += "El salario mínimo no puede ser inferior a 735,90.";
                 break;
                 
             case 11:
@@ -238,6 +238,10 @@ public class Excepcion extends Exception {
                 
             case 54:
                 dato += "No hay datos de la última jornada.";
+                break;
+                
+            case 55:
+                dato += "El salario Máximo no puede ser superior a 196320,00.";
                 break;
         }
         return dato;

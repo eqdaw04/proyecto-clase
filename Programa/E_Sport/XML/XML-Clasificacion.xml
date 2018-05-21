@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <clasificacion>
-    <fecha_expiracion>2018-05-21</fecha_expiracion>
+    <fecha_expiracion>2018-04-21</fecha_expiracion>
     <equipo id_equipo="10">
         <Nombre>Equipo10</Nombre>
         <puntuacion>50</puntuacion>
