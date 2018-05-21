@@ -108,7 +108,7 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bPrimero);
-        bPrimero.setBounds(60, 450, 60, 26);
+        bPrimero.setBounds(60, 450, 60, 25);
 
         bAnterior.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bAnterior.setText("<");
@@ -119,7 +119,7 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnterior);
-        bAnterior.setBounds(180, 450, 50, 26);
+        bAnterior.setBounds(180, 450, 50, 25);
 
         bSiguiente.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bSiguiente.setText(">");
@@ -130,7 +130,7 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(310, 450, 50, 26);
+        bSiguiente.setBounds(310, 450, 50, 25);
 
         bUltimo.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bUltimo.setText(">|");
@@ -141,7 +141,7 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bUltimo);
-        bUltimo.setBounds(440, 450, 60, 26);
+        bUltimo.setBounds(440, 450, 60, 25);
 
         bSalir.setFont(new java.awt.Font("Verdana", 1, 15)); // NOI18N
         bSalir.setText("Salir");
@@ -273,9 +273,10 @@ public class VCalendario extends javax.swing.JDialog {
      */
 
     private void rellenar(int pos) {
+        SimpleDateFormat ff = new SimpleDateFormat("dd-MM-yyyy");
         Njornada.setText(String.valueOf(jornadas.get(pos).getIdJornada()));
-        lbFechaIni.setText(String.valueOf(jornadas.get(pos).getFechaInicio()));
-        lbFechaFin.setText(String.valueOf(jornadas.get(pos).getFechaFinal()));
+        lbFechaIni.setText(ff.format(jornadas.get(pos).getFechaInicio()));
+        lbFechaFin.setText(ff.format(jornadas.get(pos).getFechaFinal()));
         String titulos[] ={"Local VS Visitante","Fecha","Lugar"};
         String datos [] []= new String[jornadas.get(pos).getListaPartidos().size()] [3];
         for (int x=0; x < datos.length;x++){
@@ -290,8 +291,7 @@ public class VCalendario extends javax.swing.JDialog {
                     datos [x][2] = jornadas.get(pos).getListaPartidos().get(x).geteLocal().getLugar();
                 }
             }
-            SimpleDateFormat f = new SimpleDateFormat("dd-MM-YYYY");
-            datos [x][1] = (f.format(jornadas.get(pos).getListaPartidos().get(x).getFecha().getTime()));
+            datos [x][1] = (ff.format(jornadas.get(pos).getListaPartidos().get(x).getFecha().getTime()));
             
         }
         JTable tPartidos = new JTable (datos,titulos);
