@@ -34,7 +34,6 @@ CONSTRAINT Pers_ape1_ck  CHECK (Apellido1 = INITCAP(Apellido1)),
 CONSTRAINT Pers_ape2_ck  CHECK (Apellido2 = INITCAP(Apellido2))
 );
 
-INSERT INTO Persona VALUES (DEFAULT,'Admin1','Apellidorandom',null,TO_DATE(SYSDATE,'DD/MM/RRRR'),'admin','root',null,1);
 
 CREATE TABLE Equipo(
 Id_equipo NUMBER (3)GENERATED ALWAYS AS IDENTITY,
