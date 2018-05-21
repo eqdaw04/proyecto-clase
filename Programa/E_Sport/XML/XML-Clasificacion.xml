@@ -5,56 +5,56 @@
         <Nombre>Equipo10</Nombre>
         <puntuacion>50</puntuacion>
     </equipo>
-    <equipo id_equipo="1">
-        <Nombre>Equipo1</Nombre>
-        <puntuacion>20</puntuacion>
-    </equipo>
     <equipo id_equipo="9">
-        <Nombre>Equipo9</Nombre>
-        <puntuacion>10</puntuacion>
+        <Nombre>Maccabi Tel Aviv</Nombre>
+        <puntuacion>3</puntuacion>
     </equipo>
-    <equipo id_equipo="3">
-        <Nombre>Equipo3</Nombre>
-        <puntuacion>8</puntuacion>
+    <equipo id_equipo="12">
+        <Nombre>Real Madrid</Nombre>
+        <puntuacion>3</puntuacion>
     </equipo>
-    <equipo id_equipo="11">
-        <Nombre>Equipo11</Nombre>
-        <puntuacion>5</puntuacion>
+    <equipo id_equipo="1">
+        <Nombre>Anadolu Efes</Nombre>
+        <puntuacion>0</puntuacion>
     </equipo>
     <equipo id_equipo="2">
-        <Nombre>Equipo2</Nombre>
+        <Nombre>Armani Exchange Olimpia Milan</Nombre>
+        <puntuacion>0</puntuacion>
+    </equipo>
+    <equipo id_equipo="3">
+        <Nombre>Buducnost</Nombre>
         <puntuacion>0</puntuacion>
     </equipo>
     <equipo id_equipo="4">
-        <Nombre>Equipo4</Nombre>
+        <Nombre>C.S.K.A. Moscow</Nombre>
         <puntuacion>0</puntuacion>
     </equipo>
     <equipo id_equipo="5">
-        <Nombre>Equipo5</Nombre>
+        <Nombre>Darussafaka</Nombre>
         <puntuacion>0</puntuacion>
     </equipo>
     <equipo id_equipo="6">
-        <Nombre>Equipo6</Nombre>
-        <puntuacion>0</puntuacion>
-    </equipo>
-    <equipo id_equipo="7">
-        <Nombre>Equipo7</Nombre>
+        <Nombre>F.C. Bayern Munich</Nombre>
         <puntuacion>0</puntuacion>
     </equipo>
     <equipo id_equipo="8">
-        <Nombre>Equipo8</Nombre>
+        <Nombre>Fenerbahce Dogus</Nombre>
         <puntuacion>0</puntuacion>
     </equipo>
-    <equipo id_equipo="12">
-        <Nombre>Equipo12</Nombre>
+    <equipo id_equipo="10">
+        <Nombre>Olympiacos</Nombre>
+        <puntuacion>0</puntuacion>
+    </equipo>
+    <equipo id_equipo="11">
+        <Nombre>Panathinaikos Superfoods</Nombre>
         <puntuacion>0</puntuacion>
     </equipo>
     <equipo id_equipo="13">
-        <Nombre>Equipo13</Nombre>
+        <Nombre>Unics</Nombre>
         <puntuacion>0</puntuacion>
     </equipo>
     <equipo id_equipo="14">
-        <Nombre>Equipo14</Nombre>
+        <Nombre>Valencia Basket</Nombre>
         <puntuacion>0</puntuacion>
     </equipo>
 </clasificacion>
