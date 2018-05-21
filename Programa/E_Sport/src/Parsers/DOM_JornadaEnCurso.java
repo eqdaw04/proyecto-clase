@@ -6,26 +6,18 @@
 package Parsers;
 
 import UML.Partido;
+import com.sun.org.apache.xml.internal.serialize.OutputFormat;
+import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Text;
 
 /**
  *
@@ -34,21 +26,26 @@ import org.w3c.dom.Element;
 public class DOM_JornadaEnCurso {
     private Document doc;
     
-    public DOM_JornadaEnCurso() throws ParserConfigurationException, IOException, TransformerException {
+    public DOM_JornadaEnCurso() throws Exception {
         DocumentBuilderFactory factoria = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factoria.newDocumentBuilder();
         doc = builder.newDocument();  
         
     }
     
-    public void xmlUltJor (ArrayList <Partido> partidos,int j) throws IOException, TransformerException{
-        generarDocumento (partidos,j);
+    public void xmlUltJor (ArrayList <Partido> partidos,int j, String fechas) throws Exception{
+        generarDocumento (partidos,j, fechas);
         generarXML();
     }
-    public void generarDocumento (ArrayList <Partido> partidos,int j){
+    public void generarDocumento (ArrayList <Partido> partidos,int j, String fechas){
         Element jornada= doc.createElement("jornada");
         jornada.setAttribute("Id_jornada", String.valueOf(j));
-        doc.appendChild(jornada);
+        doc.appendChild(jornada);                 
+                    
+        Element fechaExp = doc.createElement("fecha_expiracion");
+        fechaExp.appendChild(doc.createTextNode(fechas));
+        jornada.appendChild(fechaExp);
+        
         for(int x=0;x<partidos.size();x++){
             Element partido= doc.createElement("partido");
             partido.setAttribute("id_partido", String.valueOf(partidos.get(x).getIdPartido()));
@@ -100,17 +97,12 @@ public class DOM_JornadaEnCurso {
                     equipov.appendChild(visitantev);
     }   }
     
-    public void generarXML () throws TransformerConfigurationException, IOException, TransformerException{
-        TransformerFactory factoria = TransformerFactory.newInstance();
-        Transformer transformador= factoria.newTransformer();
-        
-        Source source= new DOMSource(doc);
-        File archivo = new File("xml/JornadaEnCurso.xml");
-        FileWriter fw = new FileWriter(archivo);
-        PrintWriter pw = new PrintWriter(fw);
-        Result rs = new StreamResult(pw);
-        
-        transformador.transform(source, rs);
+    public void generarXML () throws Exception{
+        OutputFormat format = new OutputFormat(doc);
+        format.setIndenting(true);
+        XMLSerializer serializer;
+        serializer = new XMLSerializer(new FileOutputStream(new File("xml/JornadaEnCurso.xml")), format);
+        serializer.serialize(doc);
     }
     
     public String obtenerFecha (Calendar c){

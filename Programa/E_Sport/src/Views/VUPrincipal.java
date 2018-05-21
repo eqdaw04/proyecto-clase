@@ -45,6 +45,12 @@ public class VUPrincipal extends javax.swing.JFrame {
         initComponents();
         cargarDatos(usuario);
     }
+    
+    public VUPrincipal(String usuario, boolean estado) {
+        initComponents();
+        cargarDatos(usuario);
+        bActualizar.setVisible(estado);
+    }
 
     private void cargarDatos(String usuario){
         setLocationRelativeTo(null);
@@ -294,7 +300,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        bActualizar = new javax.swing.JButton();
         bEvolucion = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         bGraficoClasificacion = new javax.swing.JButton();
@@ -426,7 +432,7 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(DOM);
-        DOM.setBounds(480, 30, 57, 25);
+        DOM.setBounds(480, 30, 59, 25);
 
         lNombre.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         lNombre.setForeground(new java.awt.Color(0, 153, 255));
@@ -464,15 +470,15 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jButton7);
         jButton7.setBounds(1010, 410, 140, 25);
 
-        jButton1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jButton1.setText("Actualizar datos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bActualizar.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        bActualizar.setText("Actualizar datos");
+        bActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bActualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(840, 550, 240, 40);
+        getContentPane().add(bActualizar);
+        bActualizar.setBounds(840, 550, 240, 40);
 
         bEvolucion.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         bEvolucion.setText("<html><center>Ver gráfico<br></br>evolución de Equipos</center></html>");
@@ -569,16 +575,16 @@ public class VUPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarActionPerformed
         try {
             Main.domClasificacion();
             Main.domUltimaJornada(Main.consultarUltimaJornadaActual());
-            Main.reabrirFrame(this,lNombre.getText());
+            Main.reabrirFrame(this,lNombre.getText(), false);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bActualizarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Main.cerrarSesion(this);
@@ -654,11 +660,11 @@ public class VUPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DOM;
+    private javax.swing.JButton bActualizar;
     private javax.swing.JButton bEvolucion;
     private javax.swing.JButton bGraficoClasificacion;
     private javax.swing.JLabel img;
     private javax.swing.JButton jBotonUltima;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;

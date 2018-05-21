@@ -273,9 +273,15 @@ public class Main {
         }
     }
     
-    public static void reabrirFrame(JFrame v, String tipo) throws Exception {
+    public static void reabrirFrame(JFrame v, String tipo, boolean estado) throws Exception {
         v.dispose();
-        new VUPrincipal(tipo);
+        if(estado){
+            new VUPrincipal(tipo);
+        }
+        else{
+            new VUPrincipal(tipo, estado);
+        }
+        
     }
     
     /**
@@ -1123,7 +1129,9 @@ public class Main {
         return bdPartido.BuscarPartidosPorJornada2(j);
     }
     public static void domUltimaJornada (int j) throws Exception{
-        domResultadosUltimaJornada.xmlUltJor(BuscarPartidosPorJornada2(j),j);
+        Date hoy = new Date();
+        SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
+        domResultadosUltimaJornada.xmlUltJor(BuscarPartidosPorJornada2(j),j, ff.format(hoy));
     }
     public static ArrayList<Partido> saxUltimaJornada() throws Exception{
         return saxJornadaEnCurso.metodoraiz();
@@ -1151,9 +1159,7 @@ public class Main {
         clasif.ejecutar(ff.format(hoy));
         
     }
-    public static ArrayList<Object> resultadoFinalOrdenEquipo() throws Exception{
-        return bdEquipo.resultadoFinalOrdenEquipo();
-    }
+
     
     /**
      * Metodo de creación del parser sax.
