@@ -12,6 +12,7 @@ import Excepciones.Excepcion;
 import Views.*;
 import Parsers.*;
 import java.awt.Color;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +24,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * Clase controladora.
@@ -1131,6 +1133,12 @@ public class Main {
         int j = bdJornada.consultaUltimaJornadaActual();
         return j;
     }
+    public static void domLiga () throws Exception{
+        DOM_Liga liga = new DOM_Liga();
+        Date hoy = new Date();
+        SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
+        liga.xmlLiga(, url);
+    }
     
     /**
      * Metodo de creación y ejecución de parser.
@@ -1139,10 +1147,10 @@ public class Main {
     
     //------------------Jon
     public static void domClasificacion() throws Exception{
-        DOM_Clasificacion liga = new DOM_Clasificacion();
+        DOM_Clasificacion clasif = new DOM_Clasificacion();
         Date hoy = new Date();
         SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
-        liga.ejecutar(ff.format(hoy));
+        clasif.ejecutar(ff.format(hoy));
         
     }
     public static ArrayList<Object> resultadoFinalOrdenEquipo() throws Exception{

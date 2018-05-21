@@ -7,14 +7,18 @@ package BD;
 
 import Controladora.Main;
 import Excepciones.Excepcion;
+import UML.Equipo;
 import UML.Jornada;
+import UML.Partido;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.sql.CallableStatement;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
+import oracle.jdbc.OracleCallableStatement;
+import oracle.jdbc.OracleTypes;
 /**
  * Clase en la que controlaremos e introduciremos datos de la jornada actual a la base de datos.
  * Fecha de creación de la clase: 24/04/2018
@@ -239,5 +243,97 @@ public class BDJornada {
             j = rs.getInt("id_jornada");
         }
         return j;
+    }
+    public ArrayList<Jornada> BuscarJornadas () throws Exception{
+        // abrir conexión
+        BDConexion con = new BDConexion();
+        // instanciar un array de tipo objeto Partido
+        ArrayList<Jornada> jornadas = new ArrayList();
+        CallableStatement sentencia;
+        // preparar sentencia
+        sentencia = con.getConnection().prepareCall("{call Pkg_Jornada.Jornadas(?)}");  
+        sentencia.registerOutParameter(1, OracleTypes.CURSOR);
+        sentencia.execute();
+        // instanciar rs, ejecutar sentencia y cargar los datos al rs
+        ResultSet rs = ((OracleCallableStatement)sentencia).getCursor(1);
+        
+        while(rs.next()){
+            //Se instancia un objeto de tipo Equipo
+            if (jornadas.isEmpty()){
+                Jornada j= new Jornada();
+                j.setIdJornada(rs.getInt("Id_jornada"));
+                j.setFechaInicio(rs.getDate("Fecha_inicio"));
+                j.setFechaFinal(rs.getDate("Fecha_fin"));
+                ArrayList<Partido> partidos= new ArrayList();
+                if (partidos.isEmpty()){
+                    Partido p=new Partido();
+                    p.setIdPartido(rs.getInt("Id_partido"));
+                    p.setFecha(DateACalendar(rs.getDate("Fecha")));
+                        Equipo e=new Equipo();
+                        e.setIdEquipo(rs.getInt("Id_equipo"));
+                        e.setNombre(rs.getString("Nombre"));
+                        e.setLugar(rs.getString("Lugar"));
+                        e.setComentario(rs.getString("comentario"));
+                }
+            }
+            
+            
+            //Se rellena el objeto de tipo Equipo
+            e.setIdEquipo(rs.getInt("Id_equipo"));
+            e.setNombre(rs.getString("Nombre"));
+            e.setLugar(rs.getString("Lugar"));
+            e.setComentario(rs.getString("comentario"));
+            //Este if, es para la primera vez bucle, para que en uno de los proximos if's no se de una excepción al solicitar el id del partido
+            if(partidos.isEmpty()){
+                p=new Partido();
+                p.setIdPartido(rs.getInt("Id_partido"));
+                p.setFecha(DateACalendar(rs.getDate("Fecha")));
+                //Según el equipo sea visitante o local, será añadido al respectivo parametro de Partido
+                if(rs.getInt("visitante")==1){
+                    p.seteLocal(e);
+                    p.setmLocal(rs.getInt("Puntuacion"));
+                }
+                else{
+                    p.seteVisitante(e);
+                    p.setmVisitante(rs.getInt("Puntuacion"));
+                } 
+                partidos.add(p);
+            }else{
+            //Este if, es para conseguir que un mismo partido tenga dos equipos como parametros, y no se añada un objeto partido por cada equipo
+            if(rs.getInt("Id_partido")==partidos.get(partidos.size()-1).getIdPartido()){
+                if(rs.getInt("visitante")==1){
+                    partidos.get(partidos.size()-1).seteLocal(e);
+                    partidos.get(partidos.size()-1).setmLocal(rs.getInt("Puntuacion"));
+                }
+                else{
+                    partidos.get(partidos.size()-1).seteVisitante(e);
+                    partidos.get(partidos.size()-1).setmVisitante(rs.getInt("Puntuacion"));
+                }
+            }else{
+                p=new Partido();
+                p.setIdPartido(rs.getInt("Id_partido"));
+                p.setFecha(DateACalendar(rs.getDate("Fecha")));
+                if(rs.getInt("visitante")==1){
+                    p.seteLocal(e);
+                    p.setmLocal(rs.getInt("Puntuacion"));
+                }
+                else{
+                    p.seteVisitante(e);
+                    p.setmVisitante(rs.getInt("Puntuacion"));
+                }
+                partidos.add(p);
+            }
+            }                    
+        }
+        rs.close();
+        sentencia.close();
+        con.desconectar();
+        return partidos;
+    }
+    public Calendar DateACalendar(java.util.Date fecha){
+        long as = fecha.getTime();
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(as);
+        return c;
     }
 }
