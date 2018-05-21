@@ -37,27 +37,3 @@ CREATE OR REPLACE PACKAGE BODY Pkg_Jornada IS
   END;
 END Pkg_Jornada;
 /
-/*
---Procedimiento anónimo de llamada
-DECLARE
-      V_Cur  Pkg_Jornada.TCURSOR;
-      V_id_jornada Jornada.Id_jornada%TYPE;
-      V_Fecha_inicio Jornada.Fecha_inicio%TYPE;
-      V_Fecha_fin Jornada.Fecha_fin%TYPE;
-      V_Id_partido partido.Id_partido%TYPE;
-      V_Fecha Partido.Fecha%TYPE;
-      V_Lugar Equipo.Lugar%TYPE;
-      V_Id_equipo Equipo.Id_equipo%TYPE;
-      V_Nombre Equipo.Nombre%TYPE;
-      V_Comentario Equipo.Comentario%TYPE;
-      V_Puntuacion Marcador.Puntuacion%TYPE;
-      V_Visitante Marcador.Visitante%TYPE;     
-BEGIN
-    Pkg_Jornada.Jornadas(V_Cur);
-    LOOP
-        FETCH V_Cur INTO V_id_jornada,V_Fecha_inicio,V_Fecha_fin,V_Id_partido,V_Fecha,V_Lugar,V_Id_equipo,V_Nombre,V_Comentario,V_Puntuacion,V_Visitante ;
-        EXIT WHEN V_CUR%NOTFOUND;
-        DBMS_OUTPUT.PUT_LINE(V_id_jornada|| ' ' ||V_Fecha_inicio|| ' ' ||V_Fecha_fin|| ' ' ||V_Id_partido|| ' ' ||V_Fecha|| ' ' ||V_Lugar|| ' ' ||V_Id_equipo|| ' ' ||V_Nombre|| ' ' ||V_Comentario|| ' ' ||V_Puntuacion|| ' ' ||V_Visitante);
-    END LOOP;
-END;
-*/

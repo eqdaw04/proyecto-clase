@@ -22,20 +22,3 @@ CREATE OR REPLACE PACKAGE BODY Pkg_Clasificacion IS
   END;
 END Pkg_Clasificacion;
 /
-
-/*
---Procedimiento anónimo de llamada
-DECLARE
-      V_Cur  Pkg_Clasificacion.TCURSOR;
-      V_nombre Equipo.Nombre%TYPE;
-      V_Puntuacion Marcador.Puntuacion%TYPE;
-BEGIN
-    Pkg_Clasificacion.Clasif(V_Cur);
-    LOOP
-        FETCH V_Cur INTO V_nombre,V_Puntuacion;
-        EXIT WHEN V_CUR%NOTFOUND;
-        DBMS_OUTPUT.PUT_LINE(V_nombre || ' ' ||  V_Puntuacion);
-    END LOOP;
-END;
-*/
-
