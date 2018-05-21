@@ -66,6 +66,10 @@ public class VPrincipal extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Metodo que comprueba si la liga ha empezado.
+     */
+    
     private void comprobarJornada(){
         //comprobar si ha comenzado la liga
         try{
@@ -105,6 +109,10 @@ public class VPrincipal extends javax.swing.JFrame {
         catch( Exception ex){
             JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
+        
+        /**
+         * Metodo para crear el gráfico lineal que guarda la puntuación del equipo en la jornada.
+         */
     }
     private void graficosEvolucion(ArrayList<Object> lista) throws Exception{
         DefaultCategoryDataset line_chart_dataset = new DefaultCategoryDataset();
@@ -123,6 +131,11 @@ public class VPrincipal extends javax.swing.JFrame {
         pGraficoEvolucionEquipo.add(chartPanel);
         pGraficoEvolucionEquipo.validate();
     }
+    
+    /**
+     * Metodo que crea el gráfico de la clasificación, que guarda la puntuación global del equipo.
+     * @param lista 
+     */
     
     private void graficoClasificacion(ArrayList<Object> lista){
         DefaultPieDataset pieDataset = new DefaultPieDataset();
