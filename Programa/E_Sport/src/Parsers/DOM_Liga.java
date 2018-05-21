@@ -6,24 +6,20 @@
 package Parsers;
 
 import UML.Jornada;
+import com.sun.org.apache.xml.internal.serialize.OutputFormat;
+import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -42,81 +38,82 @@ public class DOM_Liga {
     }
     
     public void xmlLiga (ArrayList <Jornada> jornadas) throws IOException, TransformerException{
-        generarDocumento (jornadas);
+        Date hoy = new Date();
+        SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
+        int x;
+        for(x=0;x<jornadas.size() && hoy.before(jornadas.get(x).getFechaFinal());x++){}
+        generarDocumento (jornadas,ff.format(jornadas.get(x-1).getFechaFinal()));
         generarXML();
     }
-    public void generarDocumento (ArrayList <Partido> partidos,int j){
+    public void generarDocumento (ArrayList <Jornada> jornadas,String caduca){
         Element liga= doc.createElement("liga");
             doc.appendChild(liga);
-        Element fecha= doc.createElement("fecha");
-                fecha.appendChild(doc.createTextNode(obtenerFecha(partidos.get(x).getFecha())));
-                    partido.appendChild(fecha);
-        for(int x=0;x<partidos.size();x++){
+        Element fechaExp= doc.createElement("fecha_expiracion");
+                fechaExp.appendChild(doc.createTextNode(caduca));
+                    liga.appendChild(fechaExp);
+        for(int x=0;x<jornadas.size();x++){
             Element jornada= doc.createElement("jornada");
-                jornada.setAttribute("Id_jornada", String.valueOf(j));
-                    doc.appendChild(jornada);
-        
-            Element partido= doc.createElement("partido");
-            partido.setAttribute("id_partido", String.valueOf(partidos.get(x).getIdPartido()));
-            jornada.appendChild(partido);       
+                jornada.setAttribute("Id_jornada", String.valueOf(jornadas.get(x).getIdJornada()));
+                    liga.appendChild(jornada);
+            for (int y=0;y<jornadas.get(x).getListaPartidos().size();y++){
+                Element partido= doc.createElement("partido");
+                    partido.setAttribute("id_partido", String.valueOf(jornadas.get(x).getListaPartidos().get(y).getIdPartido()));
+                        jornada.appendChild(partido);       
             
             //en fecha y hora falta la mascara y todo eso
-            Element fecha= doc.createElement("fecha");
-                fecha.appendChild(doc.createTextNode(obtenerFecha(partidos.get(x).getFecha())));
-                    partido.appendChild(fecha);
-            Element hora= doc.createElement("hora");
-                hora.appendChild(doc.createTextNode(obtenerHora(partidos.get(x).getFecha())));
-                    partido.appendChild(hora);
-            Element lugar= doc.createElement("lugar");
-                lugar.appendChild(doc.createTextNode(partidos.get(x).geteLocal().getLugar()));
-                    partido.appendChild(lugar);
+                Element fecha= doc.createElement("fecha");
+                    fecha.appendChild(doc.createTextNode(obtenerFecha(jornadas.get(x).getListaPartidos().get(y).getFecha())));
+                        partido.appendChild(fecha);
+                Element hora= doc.createElement("hora");
+                    hora.appendChild(doc.createTextNode(obtenerHora(jornadas.get(x).getListaPartidos().get(y).getFecha())));
+                        partido.appendChild(hora);
+                Element lugar= doc.createElement("lugar");
+                    lugar.appendChild(doc.createTextNode(jornadas.get(x).getListaPartidos().get(y).geteLocal().getLugar()));
+                        partido.appendChild(lugar);
             
             //Equipo Local
-            Element equipol= doc.createElement("equipo");
-                equipol.setAttribute("id_equipo",String.valueOf(partidos.get(x).geteLocal().getIdEquipo()));
-                    partido.appendChild(equipol);
-            Element nombrel= doc.createElement("nombre");
-                nombrel.appendChild(doc.createTextNode(partidos.get(x).geteLocal().getNombre()));
-                    equipol.appendChild(nombrel);
-            Element comentariol= doc.createElement("comentario");
-                comentariol.appendChild(doc.createTextNode(partidos.get(x).geteLocal().getComentario()));
-                    equipol.appendChild(comentariol);
-            Element puntuacionl= doc.createElement("puntuacion");
-                puntuacionl.appendChild(doc.createTextNode(String.valueOf(partidos.get(x).getmLocal())));
-                    equipol.appendChild(puntuacionl);
-            Element visitantel= doc.createElement("visitante");
-                visitantel.appendChild(doc.createTextNode("false"));
-                    equipol.appendChild(visitantel);
+                Element equipol= doc.createElement("equipo");
+                    equipol.setAttribute("id_equipo",String.valueOf(jornadas.get(x).getListaPartidos().get(y).geteLocal().getIdEquipo()));
+                        partido.appendChild(equipol);
+                Element nombrel= doc.createElement("nombre");
+                    nombrel.appendChild(doc.createTextNode(jornadas.get(x).getListaPartidos().get(y).geteLocal().getNombre()));
+                        equipol.appendChild(nombrel);
+                Element comentariol= doc.createElement("comentario");
+                    comentariol.appendChild(doc.createTextNode(jornadas.get(x).getListaPartidos().get(y).geteLocal().getComentario()));
+                        equipol.appendChild(comentariol);
+                Element puntuacionl= doc.createElement("puntuacion");
+                    puntuacionl.appendChild(doc.createTextNode(String.valueOf(jornadas.get(x).getListaPartidos().get(y).getmLocal())));
+                        equipol.appendChild(puntuacionl);
+                Element visitantel= doc.createElement("visitante");
+                    visitantel.appendChild(doc.createTextNode("false"));
+                        equipol.appendChild(visitantel);
             
             //Equipo Visitante
-            Element equipov= doc.createElement("equipo");
-                equipov.setAttribute("id_equipo", String.valueOf(partidos.get(x).geteVisitante().getIdEquipo()));
-                    partido.appendChild(equipov);
-            Element nombrev= doc.createElement("nombre");
-                nombrev.appendChild(doc.createTextNode(partidos.get(x).geteVisitante().getNombre()));
-                    equipov.appendChild(nombrev);
-            Element comentariov= doc.createElement("comentario");
-                comentariov.appendChild(doc.createTextNode(partidos.get(x).geteVisitante().getComentario()));
-                    equipov.appendChild(comentariov);
-            Element puntuacionv= doc.createElement("puntuacion");
-                puntuacionv.appendChild(doc.createTextNode(String.valueOf(partidos.get(x).getmVisitante())));
-                    equipov.appendChild(puntuacionv);
-           Element visitantev= doc.createElement("visitante");
-                visitantev.appendChild(doc.createTextNode("true"));
-                    equipov.appendChild(visitantev);
-    }   }
+                Element equipov= doc.createElement("equipo");
+                    equipov.setAttribute("id_equipo", String.valueOf(jornadas.get(x).getListaPartidos().get(y).geteVisitante().getIdEquipo()));
+                        partido.appendChild(equipov);
+                Element nombrev= doc.createElement("nombre");
+                    nombrev.appendChild(doc.createTextNode(jornadas.get(x).getListaPartidos().get(y).geteVisitante().getNombre()));
+                        equipov.appendChild(nombrev);
+                Element comentariov= doc.createElement("comentario");
+                    comentariov.appendChild(doc.createTextNode(jornadas.get(x).getListaPartidos().get(y).geteVisitante().getComentario()));
+                        equipov.appendChild(comentariov);
+                Element puntuacionv= doc.createElement("puntuacion");
+                    puntuacionv.appendChild(doc.createTextNode(String.valueOf(jornadas.get(x).getListaPartidos().get(y).getmVisitante())));
+                        equipov.appendChild(puntuacionv);
+                Element visitantev= doc.createElement("visitante");
+                    visitantev.appendChild(doc.createTextNode("true"));
+                        equipov.appendChild(visitantev);
+            }
+        }   
+    }
     
     public void generarXML () throws TransformerConfigurationException, IOException, TransformerException{
-        TransformerFactory factoria = TransformerFactory.newInstance();
-        Transformer transformador= factoria.newTransformer();
-        
-        Source source= new DOMSource(doc);
-        File archivo = new File("xml/JornadaEnCurso.xml");
-        FileWriter fw = new FileWriter(archivo);
-        PrintWriter pw = new PrintWriter(fw);
-        Result rs = new StreamResult(pw);
-        
-        transformador.transform(source, rs);
+        OutputFormat format = new OutputFormat(doc);
+        format.setIndenting(true);
+        XMLSerializer serializer;
+        serializer = new XMLSerializer(new FileOutputStream(new File("xml/XML-Clasificacion.xml")), format);
+        serializer.serialize(doc);
     }
     
     public String obtenerFecha (Calendar c){
