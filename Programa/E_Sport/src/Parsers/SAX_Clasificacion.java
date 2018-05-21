@@ -34,7 +34,7 @@ public class SAX_Clasificacion extends DefaultHandler {
     private void parsearclasificacion()throws Exception{
         SAXParserFactory spf = SAXParserFactory.newInstance();
         SAXParser sp = spf.newSAXParser();
-        sp.parse("xml/XML-Clasificacion.xml", this);
+        sp.parse("XML/XML-Clasificacion.xml", this);
       
     }
 

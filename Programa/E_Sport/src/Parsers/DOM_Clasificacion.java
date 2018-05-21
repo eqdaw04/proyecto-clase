@@ -77,7 +77,7 @@ public class DOM_Clasificacion {
         OutputFormat format = new OutputFormat(dom);
         format.setIndenting(true);
         XMLSerializer serializer;
-        serializer = new XMLSerializer(new FileOutputStream(new File("xml/XML-Clasificacion.xml")), format);
+        serializer = new XMLSerializer(new FileOutputStream(new File("XML/XML-Clasificacion.xml")), format);
         serializer.serialize(dom);
     }
 

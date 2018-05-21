@@ -1,4 +1,4 @@
-
+-- Eliminar los datos para cargar datos demo
     DELETE FROM MARCADOR;
     DELETE FROM PARTIDO;
     DELETE FROM JORNADA;
@@ -8,19 +8,22 @@
     ALTER TABLE persona MODIFY (Id_persona NUMBER (4,0) GENERATED ALWAYS AS IDENTITY MINVALUE 0 Start with 0);
     ALTER TABLE equipo MODIFY (Id_equipo NUMBER (4,0) GENERATED ALWAYS AS IDENTITY MINVALUE 1 Start with 1);
     ALTER TABLE jugador MODIFY (id_jugador NUMBER (4,0) GENERATED ALWAYS AS IDENTITY MINVALUE 0 Start with 0);
-    
+-- Generar las personas, así como el administrador, dueños y usuarios demo    
 DECLARE 
     contador NUMBER(3) := 0;
     cequipo NUMBER(3) := 1;
     
 BEGIN
+-- Añadir administrador
     INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Administrador','Principal',TO_DATE(SYSDATE,'DD/MM/RRRR'), 'a1','a1',1);
 
+-- añadir 15 dueños y sus equipos
     FOR i IN 1..15 LOOP
         INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Dueño' || i, 'Ape1l' || i, TO_DATE(SYSDATE,'DD/MM/RRRR'), 'd'||i,'d' || i, 2);
         INSERT INTO Equipo (Nombre,FECHA_CREACION,COMENTARIO,Lugar,Id_persona) VALUES ('Equipo' || i, TO_DATE(SYSDATE,'DD/MM/RRRR'),'Somos el Equipo ' || i,'Lugar' || i , i);        
     END LOOP;
-
+    
+-- Añadir los 90 jugadores para los 15 equipos, 6 por cada equipo
     FOR i IN 1..90 LOOP
         contador := contador + 1;
         INSERT INTO Jugador (Dni,Nombre,Apellido1,Apellido2,Nickname,Sueldo,Fecha_alta,Comentario, id_equipo) VALUES ('10000000'+i || 'A','Jugador' || i, 'Papellido' || i,'Sapellido' || i,'nickname' || i,30000,TO_DATE(SYSDATE,'DD/MM/RRRR'),'Soy el jugador ' || i, cequipo);
@@ -29,9 +32,15 @@ BEGIN
             cequipo := cequipo + 1;
         END IF;
     END LOOP;
+-- Añadir 10 usuarios
+    FOR i IN 1..10 LOOP
+        INSERT INTO Persona (Nombre, Apellido1, Fecha_alta, Usuario, Contrasenna, Id_perfil) VALUES ('Usuario' || i, 'Ape1lusu' || i, TO_DATE(SYSDATE,'DD/MM/RRRR'), 'u'||i,'u' || i, 3);
+    END LOOP;
 END;
 /
 
+
+-- Modifica los marcadores
 DECLARE 
     contador NUMBER(3) := 0;
 BEGIN
