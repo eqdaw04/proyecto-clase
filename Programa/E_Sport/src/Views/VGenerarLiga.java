@@ -387,7 +387,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(cbHoraI);
-        cbHoraI.setBounds(370, 140, 50, 22);
+        cbHoraI.setBounds(370, 140, 50, 20);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel11.setText("Seleccione hora del primer partido:");
@@ -396,7 +396,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         cbHoraF.setEnabled(false);
         getContentPane().add(cbHoraF);
-        cbHoraF.setBounds(820, 140, 50, 22);
+        cbHoraF.setBounds(820, 140, 50, 20);
 
         jLabel12.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel12.setText("Si La jornada comienza el lunes, acabará el domingo.");

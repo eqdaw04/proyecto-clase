@@ -420,7 +420,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         lNombre.setForeground(new java.awt.Color(0, 153, 255));
         lNombre.setText("Hola ");
         getContentPane().add(lNombre);
-        lNombre.setBounds(130, 40, 90, 30);
+        lNombre.setBounds(130, 40, 350, 30);
 
         lJornada.setEnabled(false);
         lJornada.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -450,7 +450,7 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton7);
-        jButton7.setBounds(1010, 410, 140, 25);
+        jButton7.setBounds(1010, 410, 140, 23);
 
         jButton1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jButton1.setText("Actualizar datos");
