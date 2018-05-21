@@ -329,7 +329,7 @@ public class BDJugador {
      * Metodo para dar da baja un jugador de un equipo.
      * @param nickname String
      * @return Devuelve valor booleano si la sentencia se ejecuta correctamente
-     * @throws java.lang.Exception
+     * @throws java.lang.Exception salta excepcion
      */
 
     public boolean QuitarJugadorEquipo(String nickname) throws Exception {
