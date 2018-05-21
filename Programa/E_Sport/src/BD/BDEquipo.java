@@ -32,7 +32,7 @@ public class BDEquipo {
     /**
      * Metodo para insertar un equipo.
      * @param e Equipo
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public void insertarEquipo(Equipo e) throws Exception {
@@ -62,7 +62,7 @@ public class BDEquipo {
     /**
      * Metodo para eliminar un equipo.
      * @param e Equipo
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public void eliminarEquipo(Equipo e) throws Exception {
@@ -87,7 +87,7 @@ public class BDEquipo {
     /**
      * Metodo para modificar un equipo.
      * @param e Equipo
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public void modificarEquipo(Equipo e) throws Exception {
@@ -118,7 +118,7 @@ public class BDEquipo {
      * Metodo para buscar un equipo por nombre de un usuario integrante.
      * @param usu String
      * @return devuelve un objeto equipo
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public Equipo BuscarEquipoPorUsuario(String usu) throws Exception  {
@@ -150,7 +150,7 @@ public class BDEquipo {
      * Método que recorre los datos
      * @param rs
      * @return
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     private Equipo recorrer(ResultSet rs) throws Exception{
@@ -173,7 +173,7 @@ public class BDEquipo {
      * Metodo para buscar una lista de equipos por nombre.
      * @param nombre String
      * @return devuelve el nombre del equipo encontrado
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public Equipo BuscarEquipo(String nombre) throws Exception {
@@ -206,7 +206,7 @@ public class BDEquipo {
      * Metodo para consultar un equipo por su número de id
      * @param n int
      * @return devuelve un objeto equipo
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public Equipo consultarEquipoPorNumero(int n) throws Exception{
@@ -241,7 +241,7 @@ public class BDEquipo {
     /**
      * Metodo para buscar una lista de todos los equipos.
      * @return devuelve una lista de equipos
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public ArrayList<Equipo> BuscarEquipo() throws Exception {

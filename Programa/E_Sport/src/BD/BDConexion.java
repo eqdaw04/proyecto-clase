@@ -65,7 +65,7 @@ public class BDConexion {
     
         /**
      * Metodo para desconectarnos de la base de datos.
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
  
     // cerrar conexión establecida
