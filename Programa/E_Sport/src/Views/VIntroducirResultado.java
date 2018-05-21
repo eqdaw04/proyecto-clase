@@ -25,7 +25,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
     Partido p;
     /**
      * Creates new form VIntroducirResultado
-     * @param n
+     * @param n integer
      */
     public VIntroducirResultado(int n) {
         initComponents();
@@ -53,6 +53,7 @@ public class VIntroducirResultado extends javax.swing.JDialog {
     
     /**
      * Metodo que carga el partido que se ha jugado el día indicado.
+     * @param cal calendario
      */
 
     private void cargarPartido(Calendar cal){

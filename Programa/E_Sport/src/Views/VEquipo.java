@@ -529,7 +529,7 @@ public class VEquipo extends javax.swing.JDialog {
     
      /**
      * Metodo para validar el nombre.
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     private void validarNombre() throws Exception {
@@ -552,7 +552,7 @@ public class VEquipo extends javax.swing.JDialog {
        /**
      * Metodo para buscar equipo por nombre.
      * @param equipo String
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */ 
     
     private void buscarEquipo(String equipo) throws Exception {
@@ -566,7 +566,7 @@ public class VEquipo extends javax.swing.JDialog {
     
        /**
      * Metodo para seleccionar un equipo de toda la lista.
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */ 
     
     private void seleccionarEquipo() throws Exception {
@@ -585,7 +585,7 @@ public class VEquipo extends javax.swing.JDialog {
         /**
      * Metodo para mostrar los datos de un equipo.
      * @param e Equipo
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */
     
     private void mostrarDatos(Equipo e) throws Exception {
@@ -601,7 +601,7 @@ public class VEquipo extends javax.swing.JDialog {
     
     /**
      * Metodo para rellenar la lista de dueños.
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */
     
     private void rellenarListaSinDuennoConEquipo() throws Exception {
@@ -617,7 +617,7 @@ public class VEquipo extends javax.swing.JDialog {
     
     /**
      * Metodo para validar el dueño.
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */
     
     private void validarDuenno() throws Exception {

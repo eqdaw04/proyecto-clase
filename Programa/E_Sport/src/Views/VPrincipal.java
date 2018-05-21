@@ -134,7 +134,7 @@ public class VPrincipal extends javax.swing.JFrame {
     
     /**
      * Metodo que crea el gráfico de la clasificación, que guarda la puntuación global del equipo.
-     * @param lista 
+     * @param lista array
      */
     
     private void graficoClasificacion(ArrayList<Object> lista){

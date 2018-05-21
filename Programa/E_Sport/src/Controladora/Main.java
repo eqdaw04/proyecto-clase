@@ -12,7 +12,6 @@ import Excepciones.Excepcion;
 import Views.*;
 import Parsers.*;
 import java.awt.Color;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,10 +21,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
-import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * Clase controladora.
@@ -35,10 +32,6 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
-    
     private static BDEquipo bdEquipo;
     private static BDJornada bdJornada;
     private static BDJugador bdJugador;
@@ -57,7 +50,11 @@ public class Main {
     private static float salarioMin, salarioMax;
     private static VLogin login;
     
-    
+    /**
+     *
+     * @param args nada...
+     * @throws Exception lanza excepcion
+     */
     public static void main(String[] args) throws Exception {
 
         //construccion de la ruta completa.
@@ -68,7 +65,7 @@ public class Main {
     
     /**
      * Metodo para aplicar el estilo de la interfaz gráfica
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     public static void aplicarEstilo() throws Exception {
@@ -94,7 +91,7 @@ public class Main {
     
     /**
      * Metodo para crear objetos de la base de datos.
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */
     
     public static void inicializarValores() throws Exception{
@@ -114,8 +111,7 @@ public class Main {
      * Metodo para introducir los datos del usuario y servidor.
      * @param usuario String
      * @param contrasenna char
-     * @param numero int
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -153,7 +149,7 @@ public class Main {
          * Metodo para seleccionar la ventana que se desea abrir.
          * @param n int
          * @param tipo String
-         * @throws Exception 
+         * @throws Exception lanza excepcion
          */
     //---------- JON XU JIN ----------
     
@@ -193,6 +189,11 @@ public class Main {
         }
     }
 
+    /**
+     *
+     * @return boolean
+     * @throws Exception lanza excepcion
+     */
     public static boolean borrarLiga() throws Exception{
         return bdJornada.borrarTodo();
     }
@@ -213,7 +214,7 @@ public class Main {
      * @param v JDialog
      * @param tipo String
      * @param n int
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -256,6 +257,13 @@ public class Main {
         }
     }
     
+    /**
+     *
+     * @param v jframe
+     * @param tipo tipo alta baja lista..
+     * @param estado boolean
+     * @throws Exception lanza excepcion
+     */
     public static void reabrirFrame(JFrame v, String tipo, boolean estado) throws Exception {
         v.dispose();
         if(estado){
@@ -290,6 +298,10 @@ public class Main {
         v.dispose();
     }
     
+    /**
+     *
+     * @param v jframe
+     */
     public static void salirDelPrograma(JFrame v){
         v.dispose();
         System.exit(0);
@@ -309,7 +321,7 @@ public class Main {
     /**
      * Metodo que devuelve una lista de todos los perfiles insertados en la base de datos.
      * @return lista de perfiles
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -322,7 +334,7 @@ public class Main {
      * Metodo para consultar un perfil de la base de datos.
      * @param cod int
      * @return un perfil
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -341,7 +353,7 @@ public class Main {
      * @param email String
      * @param fecha Date
      * @param perfil String
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -355,7 +367,7 @@ public class Main {
     /**
      * Metodo para eliminar un usuario de la base de datos.
      * @param usuario String
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -366,7 +378,7 @@ public class Main {
     
     /**
      * Metodo para modificar una persona de la base de datos.
-     * @param id
+     * @param id integer de id
      * @param usuario String
      * @param contrasenna String
      * @param nombre String
@@ -374,7 +386,8 @@ public class Main {
      * @param ape2 String
      * @param email String
      * @param perfil String
-     * @throws Exception 
+     * @param fecha fecha 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -392,7 +405,7 @@ public class Main {
      * Metodo para localizar a una persona por su usuario.
      * @param usuario String
      * @return una persona ya insertada en la base de datos
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -405,7 +418,7 @@ public class Main {
     /**
      * Metodo que devuelve todas las personas guardadas en la base de datos.
      * @return lista de personas
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -416,9 +429,9 @@ public class Main {
     
     /**
      * Metodo que devuelve todos los partidos 
-     * @param fecha
+     * @param fecha fecha
      * @return fecha
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -431,7 +444,7 @@ public class Main {
      * Metodo para consultar los partidos de la jornada.
      * @param n int
      * @return una lista de partidos
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -444,7 +457,7 @@ public class Main {
      * Metodo para consultar el marcador por partido. 
      * @param p Partido
      * @return objeto partido
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -456,7 +469,7 @@ public class Main {
     /**
      * Metodo para consultar todas las jornadas.
      * @return lista de jornadas
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     
@@ -471,7 +484,7 @@ public class Main {
      * @param fecha Calendar
      * @param horaF int
      * @return el dato obtenido de un objeto emparejamiento
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -491,7 +504,7 @@ public class Main {
      * @param fecha Calendar
      * @param con BDConexion
      * @return objeto jornada
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -504,7 +517,7 @@ public class Main {
      * Metodo para modificar una jornada.
      * @param jornada Jornada
      * @param con BDConexion
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -521,7 +534,7 @@ public class Main {
      * @param jornada Jornada
      * @param con BDConexion
      * @return el estado "correcto" si se ha insertado sin problemas
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -530,6 +543,11 @@ public class Main {
         return bdPartido.insertarPartido(partido, jornada, con);
     }
     
+    /**
+     *
+     * @return Jornada
+     * @throws Exception lanza excepcion
+     */
     public static Jornada consultarInicioJornada() throws Exception{
         return bdJornada.consultarInicio();
     }
@@ -538,7 +556,7 @@ public class Main {
      * Metodo para modificar un partido.
      * @param partido Partido
      * @return el estado "correcto" si se ha insertado sin problemas
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
   
     //---------- JON XU JIN ----------
@@ -551,7 +569,7 @@ public class Main {
      * Metodo para consultar un equipo por su id.
      * @param n int
      * @return objeto equipo
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //---------- JON XU JIN ----------
@@ -562,6 +580,13 @@ public class Main {
     }
     
     //---------- JON XU JIN ----------
+
+    /**
+     *
+     * @param p partido
+     * @return boolean
+     * @throws Exception lanza excepcion
+     */
     
     public static boolean modificarMarcador(Partido p) throws Exception{
         return bdPartido.modificarMarcador(p);
@@ -571,7 +596,7 @@ public class Main {
      * Metodo que valida los datos correctos por su patrón introducido.
      * @param cod int
      * @param campo campo de texto
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //----------JON XU JIN ----------
@@ -592,7 +617,7 @@ public class Main {
     /**
      * Metodo que devuelve los resultados de los equipos.
      * @return resultado
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     
@@ -600,6 +625,11 @@ public class Main {
         return bdEquipo.resultadoFinal();
     }
     
+    /**
+     *
+     * @return array object
+     * @throws Exception lanza excepcion
+     */
     public static ArrayList<Object> resultadosTodosLosPartidos() throws Exception{
         return bdEquipo.resultadoTodasLasJornadas();
     }
@@ -607,7 +637,7 @@ public class Main {
     /**
      * Metodo que devuelve los resultados de la última jornada jugada, guardando los partidos, equipos y puntuación del partido.
      * @return una lista de resultados
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     public static ArrayList<Object> resultadosUltimaJornada() throws Exception{
@@ -772,20 +802,37 @@ public class Main {
         Main.persona = persona;
     }
 
+    /**
+     *
+     * @return float
+     */
     public static float getSalarioMin() {
         return salarioMin;
     }
 
+    /**
+     *
+     * @return float
+     */
     public static float getSalarioMax() {
         return salarioMax;
     }
 
     // se mantiene los set de salario max y min, por si un futuro se plantea integrar los salarios en la bbdd
     // aunque actualmente no tiene uso alguna
+
+    /**
+     *
+     * @param salarioMax float
+     */
     public static void setSalarioMax(float salarioMax) {
         Main.salarioMax = salarioMax;
     }
 
+    /**
+     *
+     * @param salarioMin float
+     */
     public static void setSalarioMin(float salarioMin) {
         Main.salarioMin = salarioMin;
     }
@@ -800,7 +847,7 @@ public class Main {
      * @param sueldo String
      * @param fechaAlta Date
      * @param comentario String
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     // Imanol Luis
@@ -811,7 +858,7 @@ public class Main {
     
     /**
      * Metodo para dar de baja a un jugador de la base de datos.
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
 
     // Imanol Luis
@@ -821,16 +868,16 @@ public class Main {
     
     /**
      * Metodo para modificar a un jugador de la base de datos.
-     * @param id
-     * @param j
+     * @param id integer
      * @param dni String
      * @param nombre String
      * @param apellido1 String
      * @param apellido2 String
      * @param nickname String
+     * @param fecha date
      * @param sueldo String
      * @param comentario String
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     // Imanol Luis
@@ -844,7 +891,7 @@ public class Main {
      * Metodo para buscar a un jugador a traves del DNI.
      * @param dni String
      * @return objeto jugador
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     // Imanol Luis   
@@ -856,7 +903,7 @@ public class Main {
     /**
      * Metodo para buscar todos los jugadores de la base de datos.
      * @return devuelve los jugadores introducidos en la clase BDJugador
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     // Imanol Luis   
@@ -868,7 +915,7 @@ public class Main {
      * Metodo para buscar jugadores pertenecientes a un equipo.
      * @param id String
      * @return devuelve los ids introducidos en la clase BDJugador
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //------------Mikel
@@ -880,7 +927,7 @@ public class Main {
      * Metodo para consultar el equipo de un dueño mediante su usuario
      * @param usu String
      * @return devuelve el equipo que dirige el dueño
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
 
     //------------Mikel
@@ -892,7 +939,7 @@ public class Main {
     /**
      * Metodo que consulta los jugadores que no pertenecen a ningún equipo.
      * @return devuelve jugadores sin equipo
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //------------Mikel
@@ -904,6 +951,7 @@ public class Main {
      * Metodo para eliminar de un equipo a un jugador.
      * @param nickname String
      * @return devuelve el nickname del jugador y al eliminarlo pone el id del equipo al que pertenecía a null
+     * @throws java.lang.Exception lanza excepcion
      */
     
     //------------Mikel
@@ -917,7 +965,7 @@ public class Main {
      * @param nickname String
      * @param id String
      * @return devuelve el nickname del jugador y le añade el id del equipo al que se le va a añadir.
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //------------Mikel
@@ -927,6 +975,13 @@ public class Main {
     //------------Mikel
  
     // Busca a un jugador por su nickname yle añade el id_equipo del equipo al que se le quiere añadir
+
+    /**
+     *
+     * @param nickname string
+     * @return jugador
+     * @throws Exception lanza excepcion
+     */
  
     public static Jugador consultarJugadorNickname(String nickname) throws Exception {
  
@@ -937,11 +992,11 @@ public class Main {
     /**
      * Metodo para dar de alta un equipo en la base de datos.
      * @param nombre String
-     * @param lugar
+     * @param lugar string
      * @param usuario String
      * @param fechaCreacion Date
      * @param comentario String
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     // Imanol Luis
@@ -957,7 +1012,7 @@ public class Main {
     
     /**
      * Metodo para dar de baja un equipo de la base de datos.
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
 
     // Imanol Luis
@@ -968,8 +1023,10 @@ public class Main {
     /**
      * Metodo para modificar un equipo de la base de datos.
      * @param nombre String
+     * @param lugar string
+     * @param fecha date
      * @param comentario String
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
 
     // Imanol Luis
@@ -985,7 +1042,7 @@ public class Main {
      * Metodo para buscar un equipo de la base de datos a traves del nombre
      * @param nombre String
      * @return objeto equipo
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
 
     // Imanol Luis
@@ -997,7 +1054,7 @@ public class Main {
     /**
      * Metodo para buscar todos los equipos de la base de datos
      * @return todos los equipos de la base de datos
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
 
     // Imanol Luis
@@ -1009,7 +1066,7 @@ public class Main {
      * Metodo para obtener todos los datos de todos los jugadores de un equipo
      * @param equipo Equipo
      * @return String
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
 
     public static String buscarPlantilla(Equipo equipo) throws Exception {
@@ -1038,7 +1095,7 @@ public class Main {
     /**
      * Metodo para buscar los dueños que no tengan equipo asignado.
      * @return devuelve dueños.
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     public static ArrayList<Persona> buscarDuennosSinEquipo() throws Exception {
@@ -1048,7 +1105,7 @@ public class Main {
     /**
      * Metodo para buscar los usuarios que sean dueños.
      * @return Devuelve todos los usuarios que sean dueños.
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
 
     // Imanol Luis
@@ -1060,7 +1117,7 @@ public class Main {
      * Metodo para comprobar que el dueño pertenece a un equipo.
      * @param usuario String
      * @return objeto equipo cuando todo está correcto.
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
 
     // Imanol Luis
@@ -1080,7 +1137,7 @@ public class Main {
      * Metodo para obtener persona por su id.
      * @param idPersona int
      * @return objeto persona
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
 
     public static Persona obtenerPersona(int idPersona) throws Exception {
@@ -1088,29 +1145,71 @@ public class Main {
         return persona;
     }
     //----------------MIKEL
+
+    /**
+     *
+     * @param j int
+     * @return ArrayList Partido
+     * @throws Exception lanza excepcion
+     */
     public static ArrayList <Partido> BuscarPartidosPorJornada (int j) throws Exception{
         return bdPartido.BuscarPartidosPorJornada (j);
     }
+
+    /**
+     *
+     * @param j int
+     * @return  ArrayList Partido
+     * @throws Exception lanza excepcion
+     */
     public static ArrayList<Partido> BuscarPartidosPorJornada2 (int j) throws Exception{
         return bdPartido.BuscarPartidosPorJornada2(j);
     }
+
+    /**
+     *
+     * @param j int
+     * @throws Exception lanza excepcion
+     */
     public static void domUltimaJornada (int j) throws Exception{
         Date hoy = new Date();
         SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
         domResultadosUltimaJornada.xmlUltJor(BuscarPartidosPorJornada2(j),j, ff.format(hoy));
     }
+
+    /**
+     *
+     * @return  ArrayList Partido
+     * @throws Exception lanza excepcion
+     */
     public static ArrayList<Partido> saxUltimaJornada() throws Exception{
         return saxJornadaEnCurso.metodoraiz();
     }
     
+    /**
+     *
+     * @return  int
+     * @throws Exception lanza excepcion
+     */
     public static int consultarUltimaJornadaActual() throws Exception{
         int j = bdJornada.consultaUltimaJornadaActual();
         return j;
     }
+
+    /**
+     *
+     * @throws Exception lanza excepcion
+     */
     public static void domLiga () throws Exception{
         DOM_Liga liga = new DOM_Liga();
         liga.xmlLiga(bdJornada.BuscarJornadas());
     }
+
+    /**
+     *
+     * @return ArrayList Jornada
+     * @throws Exception  lanza excepcion
+     */
     public static ArrayList<Jornada> saxLiga() throws Exception{
         SAX_Liga saxLiga=new SAX_Liga();
         ArrayList<Jornada> jornadas=saxLiga.metodoraiz();
@@ -1131,7 +1230,7 @@ public class Main {
     }
     /**
      * Metodo de creación y ejecución de parser.
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     //------------------Jon
@@ -1147,7 +1246,7 @@ public class Main {
     /**
      * Metodo de creación del parser sax.
      * @return devuelve una lista 
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     public static ArrayList<Object> saxClasificacion() throws Exception{

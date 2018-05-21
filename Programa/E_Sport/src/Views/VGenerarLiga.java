@@ -12,8 +12,6 @@ import UML.Partido;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -30,7 +28,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
     ArrayList<Partido> listaPartido;
     /**
      * Creates new form VGenerarLiga
-     * @param n
+     * @param n integer de id liga
      */
     public VGenerarLiga(int n) {
         initComponents();

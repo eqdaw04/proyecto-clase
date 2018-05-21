@@ -209,10 +209,6 @@ public class VCalendario extends javax.swing.JDialog {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
  
     }//GEN-LAST:event_formWindowClosing
-
-    /**
-     * @param args the command line arguments
-     */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -269,7 +265,7 @@ public class VCalendario extends javax.swing.JDialog {
     
     /**
      * Metodo para rellenar la tabla del calendario, en la que guardamos el número de jornada que estamos viendo, la fecha de inicio y fin de ésta y los equipos que juegan.
-     * @param pos 
+     * @param pos posicion de la jornada
      */
 
     private void rellenar(int pos) {

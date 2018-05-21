@@ -30,7 +30,7 @@ public class VDResultados extends javax.swing.JDialog {
     
     /**
      * Creates new form VDResultados
-     * @param nombre
+     * @param nombre string nombre
      */
     public VDResultados(String nombre) {
         initComponents();

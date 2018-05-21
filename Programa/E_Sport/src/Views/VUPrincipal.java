@@ -41,6 +41,7 @@ public class VUPrincipal extends javax.swing.JFrame {
     ArrayList<Jornada> listaJornada;
     /**
      * Creates new form VUPrincipal
+     * @param usuario usuario
      */
     public VUPrincipal(String usuario) {
         initComponents();
@@ -72,7 +73,7 @@ public class VUPrincipal extends javax.swing.JFrame {
     
     /**
      * Metodo para cargar los datos de la última jornada.
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */
 
     private void cargarJornadas() throws Exception{
@@ -183,7 +184,7 @@ public class VUPrincipal extends javax.swing.JFrame {
      * Metodo para cargar los datos del último partido.
      * Guardaremos los equipos que han jugado en el partido y su puntuación.
      * @param partidos Partido
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */
     
     private void cargarUltimoPartido(ArrayList <Partido> partidos) throws Exception{
@@ -199,7 +200,7 @@ public class VUPrincipal extends javax.swing.JFrame {
     
     /**
      * Metodo para generar el gráfico de clasificación. (Se verán los mismo datos que escrito)
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */
     
     private void cargarTodoClasificacion() throws Exception{

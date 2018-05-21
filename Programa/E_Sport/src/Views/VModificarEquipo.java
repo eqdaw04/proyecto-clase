@@ -314,6 +314,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
     
     /**
      * Metodo para buscar los jugadores que forman el equipo y rellenar una lista con ellos. 
+     * @throws Exception lanza excepcion
      */
     private void rellenar1() throws Exception{
         jEquipo=new ArrayList();
@@ -330,6 +331,7 @@ public class VModificarEquipo extends javax.swing.JDialog {
     
     /**
      * Metodo para buscar jugadores sin equipo y rellenar una lista con ellos.
+     * @throws Exception lanza excepcion
      */
     
     private void rellenar2() throws Exception{

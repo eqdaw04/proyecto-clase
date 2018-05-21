@@ -115,10 +115,7 @@ public class VLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * Metodo para obtener la contraseña.
-     * @return devuelve la contraseña 
-     */
+ 
     
     private  void CrearImagenes(int n){
         try{

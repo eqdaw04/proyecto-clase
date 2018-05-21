@@ -148,8 +148,8 @@ public class BDEquipo {
     
     /**
      * Método que recorre los datos
-     * @param rs
-     * @return
+     * @param rs resultset
+     * @return objeto equipo
      * @throws Exception salta excepcion
      */
     

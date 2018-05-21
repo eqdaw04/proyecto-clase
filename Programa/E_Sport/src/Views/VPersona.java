@@ -331,7 +331,7 @@ public class VPersona extends javax.swing.JDialog {
 
     /**
      * Metodo para comprobar todos los datos válidos.
-     * @throws Exception 
+     * @throws Exception  lanza excepcion
      */
     
     private void comprobacion()throws Exception{
@@ -354,7 +354,7 @@ public class VPersona extends javax.swing.JDialog {
     /**
      * Metodo para dar de alta una persona, comprobando que no exista.
      * @param p Persona
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */
     
     private void alta(Persona p)throws Exception{
@@ -371,7 +371,7 @@ public class VPersona extends javax.swing.JDialog {
     /**
      * Metodo para modificar una persona.
      * @param p Persona
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */
     
     private void modificacion(Persona p) throws Exception{
@@ -389,7 +389,7 @@ public class VPersona extends javax.swing.JDialog {
     /**
      * Metodo para dar de baja una persona.
      * @param p Persona
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */
     
     private void baja(Persona p) throws Exception{
@@ -557,9 +557,6 @@ public class VPersona extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;

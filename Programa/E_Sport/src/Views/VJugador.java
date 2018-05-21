@@ -586,7 +586,7 @@ public class VJugador extends javax.swing.JDialog {
     /**
      * Metodo para buscar un jugador por su dni.
      * @param dni String
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */
     
     private void buscarJugador(String dni) throws Exception {
@@ -600,7 +600,7 @@ public class VJugador extends javax.swing.JDialog {
     
     /**
      * Metodo para seleccionar un jugador guardado en la base de datos.
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */
     
     private void seleccionarJugador() throws Exception {
@@ -619,7 +619,7 @@ public class VJugador extends javax.swing.JDialog {
     /**
      * Metodo para mostrar los datos de un jugador encontrado.
      * @param j Jugador
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */
     
     private void mostrarDatos(Jugador j) throws Exception {

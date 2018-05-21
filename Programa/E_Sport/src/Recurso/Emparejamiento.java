@@ -49,9 +49,9 @@ public class Emparejamiento {
     /**
      * Metodo para calcular el partido.
      * Obtenemos el número de jornadas y partidos.
-     * @param fecha
-     * @param horaF
-     * @throws java.lang.Exception
+     * @param fecha fecha 
+     * @param horaF hora final
+     * @throws java.lang.Exception lanza excepcion
      */
     
     public void calcularPartido(Calendar fecha, int horaF) throws Exception{
@@ -89,7 +89,7 @@ public class Emparejamiento {
      * @param j int
      * @param p int
      * @param e int
-     * @throws java.lang.Exception
+     * @throws java.lang.Exception lanza excepcion
      */
     
     public void llenarArray(int j, int p, int e) throws Exception{
@@ -143,7 +143,7 @@ public class Emparejamiento {
      * Metodo para emplearlo en la combinación de equipos en la base de datos.
      * @param e int
      * @param horizontal int
-     * @throws Exception 
+     * @throws Exception lanza excepcion
      */
     
     public void insertarBBDD(int e, int horizontal) throws Exception{
@@ -283,7 +283,7 @@ public class Emparejamiento {
     /**
      * Metodo para formatear la fecha.
      * @param fecha Calendar
-     * @return 
+     * @return devuelve string 
      */
     
     private String formatearFecha(Calendar fecha){
@@ -296,7 +296,7 @@ public class Emparejamiento {
     /**
      * Metodo que guarda los nombres de los días de la semana.
      * @param n int
-     * @return 
+     * @return  devol nombre semana en string
      */
     
     private String nombreSemana(int n){
