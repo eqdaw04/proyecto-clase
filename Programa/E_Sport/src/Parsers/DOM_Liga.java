@@ -41,8 +41,8 @@ public class DOM_Liga {
         
     }
     
-    public void xmlLiga (ArrayList <Jornada> partidos,String fecha) throws IOException, TransformerException{
-        generarDocumento (partidos,j);
+    public void xmlLiga (ArrayList <Jornada> jornadas) throws IOException, TransformerException{
+        generarDocumento (jornadas);
         generarXML();
     }
     public void generarDocumento (ArrayList <Partido> partidos,int j){

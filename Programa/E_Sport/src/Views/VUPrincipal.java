@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -285,6 +287,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tCurso = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
+        DOM = new javax.swing.JButton();
         lNombre = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         lJornada = new javax.swing.JList<>();
@@ -416,6 +419,15 @@ public class VUPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 90, 270, 30);
 
+        DOM.setText("DOM");
+        DOM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DOMActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DOM);
+        DOM.setBounds(480, 30, 57, 25);
+
         lNombre.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         lNombre.setForeground(new java.awt.Color(0, 153, 255));
         lNombre.setText("Hola ");
@@ -450,7 +462,7 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton7);
-        jButton7.setBounds(1010, 410, 140, 23);
+        jButton7.setBounds(1010, 410, 140, 25);
 
         jButton1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jButton1.setText("Actualizar datos");
@@ -631,8 +643,17 @@ public class VUPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_lJornadaValueChanged
 
+    private void DOMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DOMActionPerformed
+        try {
+            Main.domLiga();
+        } catch (Exception ex) {
+            Logger.getLogger(VUPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_DOMActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DOM;
     private javax.swing.JButton bEvolucion;
     private javax.swing.JButton bGraficoClasificacion;
     private javax.swing.JLabel img;
