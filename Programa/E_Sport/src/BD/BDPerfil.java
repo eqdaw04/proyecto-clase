@@ -22,7 +22,7 @@ public class BDPerfil {
      * Metodo para buscar un perfil por código.
      * @param cod int
      * @return devuelve un objeto perfil
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */   
     
     public Perfil buscarPorCodigo(int cod) throws Exception{
@@ -61,7 +61,7 @@ public class BDPerfil {
      /**
      * Metodo para buscar una lista de perfiles.
      * @return devuelve una lista de perfiles.
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */   
     
     public ArrayList <Perfil> buscarPerfiles() throws Exception{
@@ -94,7 +94,7 @@ public class BDPerfil {
      * Metodo para buscar un perfil por nombre.
      * @param nombre String
      * @return objeto perfil
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public Perfil buscarPorNombre(String nombre) throws Exception{

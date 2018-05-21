@@ -30,7 +30,7 @@ public class BDPersona {
      * Metodo para buscar una persona por su nombre de usuario.
      * @param usuario String
      * @return devuelve un objeto persona
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public Persona buscarPersonaPorUsuario(String usuario) throws Exception{
@@ -82,7 +82,7 @@ public class BDPersona {
      * Metodo para buscar una persona.
      * @param id int
      * @return devuelve un objeto persona
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public Persona buscarPersona(int id) throws Exception{
@@ -113,7 +113,7 @@ public class BDPersona {
       /**
      * Metodo para buscar una lista de todas las personas de la base de datos.
      * @return devuelve una lista de personas
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public ArrayList<Persona> buscarTodasLasPersona() throws Exception{
@@ -144,7 +144,7 @@ public class BDPersona {
      /**
      * Metodo para dar de alta una persona.
      * @param p Persona
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public void altaPersona(Persona p) throws Exception{
@@ -173,8 +173,8 @@ public class BDPersona {
     
      /**
      * Metodo para dar de baja una persona.
-     * @param p Persona
-     * @throws Exception 
+     * @param u String
+     * @throws Exception salta excepcion
      */
     
     public void bajaPersona(String u) throws Exception{
@@ -197,7 +197,7 @@ public class BDPersona {
      /**
      * Metodo para modificar los datos de una persona.
      * @param p Persona
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public void modificarPersona(Persona p) throws Exception{
@@ -228,7 +228,7 @@ public class BDPersona {
     /**
      * Metodo para buscar a usuarios que sean dueños.
      * @return devuelve un objeto persona
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     
