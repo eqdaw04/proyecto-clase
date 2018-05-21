@@ -1,10 +1,11 @@
 
 <!ELEMENT liga (fecha_expiracion,jornada+)>
         <!ELEMENT fecha_expiracion (#PCDATA)>
-        <!ELEMENT jornada (partido)+>
+        <!ELEMENT jornada (partido, fecha_inicio, fecha_fin)+>
         <!ATTLIST jornada
                 id_jornada CDATA #REQUIRED>
-
+		<!ELEMENT fecha_inicio(#PCDATA)>
+		<!ELEMENT fecha_fin(#PCDATA)>
         <!ELEMENT partido (fecha, hora, lugar ,equipo+)>
         <!ATTLIST partido
                 id_partido CDATA #REQUIRED>
