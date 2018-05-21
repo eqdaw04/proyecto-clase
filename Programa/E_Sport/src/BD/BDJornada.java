@@ -26,6 +26,7 @@ import oracle.jdbc.OracleTypes;
  */
 public class BDJornada {
     
+    // insertar la jornada
     public Jornada insertarJornada(int nJornada, Calendar fecha, BDConexion con) throws Exception{
         // instanciar objetoo en null
         Jornada j = null;        
@@ -73,6 +74,7 @@ public class BDJornada {
      * @throws Exception 
      */
     
+    // modificar la jornada
     public void modificarJornada(Jornada jornada, BDConexion con) throws Exception{
         // preparar sentencia
         PreparedStatement sentencia;
@@ -93,6 +95,8 @@ public class BDJornada {
      * @throws Exception 
      */
     
+    
+    // obtener las jornadas existentes
     public ArrayList <Jornada> consultarTodasLasJornadas() throws Exception{
         // instanciar una lista
         ArrayList <Jornada> lJornada = new ArrayList();
@@ -122,6 +126,7 @@ public class BDJornada {
         return lJornada;
     }
     
+    // obtener la primera jornada
     public Jornada consultarInicio() throws Exception{
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
@@ -145,7 +150,7 @@ public class BDJornada {
      * @throws Exception 
      */
     
-    
+    // extraer los datos de una jornada mediante el número de jornada
     public Jornada consultarJornadaPorNumeroDeJornada(int n) throws Exception{
         // abre la conexion
         BDConexion con = new BDConexion();
@@ -175,6 +180,8 @@ public class BDJornada {
         
     }
     
+    
+    // Borra la liga entera sin afectar las personas, jugadores ni equipoa
     public boolean borrarTodo() throws Exception{
         BDConexion con = new BDConexion();
             PreparedStatement sentencia;
@@ -191,30 +198,15 @@ public class BDJornada {
         return true;
     }
     
+    
+    // transformar la fecha a un string
     private String convertirFecha(Date fecha){
         SimpleDateFormat ff = new SimpleDateFormat("dd-MM-yyyy");
         return ff.format(fecha);
     }
+   
     
-    
-    // ACTUALMENTE NO TIENE USO
-    public Jornada consultarJornadaPorFecha(Date fecha) throws Exception{
-        BDConexion con = new BDConexion();
-        PreparedStatement sentencia;
-        sentencia = con.getConnection().prepareStatement("SELECT * FROM jornada WHERE TO_DATE (?, 'DD-MM-RRRR') BETWEEN fecha_inicio and fecha_fin");
-        sentencia.setString(1, convertirFecha(fecha));
-        ResultSet rs;
-        rs = sentencia.executeQuery();
-        Jornada j = null;
-        if(rs.next()){
-            j = new Jornada();
-            j.setIdJornada(rs.getInt("id_jornada"));
-            j.setFechaInicio(rs.getDate("fecha_inicio"));
-            j.setFechaFinal(rs.getDate("fecha_fin"));
-        }
-        return j;
-    }
-    
+    // estrar los datos de la última jornada
     public Jornada consultaUltimaJornada(Date fecha) throws Exception{
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
@@ -232,6 +224,8 @@ public class BDJornada {
         return j;
     }
     
+    
+    // extrar la última jornada actual, viene siendo la jornada en curso
     public int consultaUltimaJornadaActual() throws Exception{
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
@@ -244,6 +238,8 @@ public class BDJornada {
         }
         return j;
     }
+    
+    
     public ArrayList<Jornada> BuscarJornadas() throws Exception{
         // abrir conexión
         BDConexion con = new BDConexion();

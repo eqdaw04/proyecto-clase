@@ -46,7 +46,7 @@ public class DOM_Clasificacion {
         fechaExp.appendChild(fe);
         rootEle.appendChild(fechaExp);
         
-        Iterator it = Main.resultadoFinalOrdenEquipo().iterator();
+        Iterator it = Main.resultados().iterator();
         while (it.hasNext()) {
             Object b[] = (Object[]) it.next();
             Element aEle = crearEquipo(b);
@@ -79,7 +79,6 @@ public class DOM_Clasificacion {
         XMLSerializer serializer;
         serializer = new XMLSerializer(new FileOutputStream(new File("xml/XML-Clasificacion.xml")), format);
         serializer.serialize(dom);
-        
     }
 
 }

@@ -146,6 +146,13 @@ public class BDEquipo {
         return e;
     }
     
+    /**
+     * Método que recorre los datos
+     * @param rs
+     * @return
+     * @throws Exception 
+     */
+    
     private Equipo recorrer(ResultSet rs) throws Exception{
         // instanciar el objeto equipo y llenarlo con los datos del rs
         Equipo e = new Equipo();
@@ -325,7 +332,7 @@ public class BDEquipo {
         return Date.valueOf(fecha);
     }
     
-    // obtienes desde un paquete de la bbdd los resultados finales de los equipos
+    // obtienes desde un paquete de la bbdd los resultados finales de los equipos ordenados por marcador
     public ArrayList<Object> resultadoFinal() throws Exception{
         BDConexion con = new BDConexion();
         CallableStatement sentencia;
@@ -350,36 +357,9 @@ public class BDEquipo {
         con.desconectar();
         return lista;
     }
+ 
     
-    
-    // devuelve este devuelve lo mismo que el anterior pero con id equipo
-    // se ha necesitado por el tema de las gráficas, para una orden diferente
-    public ArrayList<Object> resultadoFinalOrdenEquipo() throws Exception{
-        BDConexion con = new BDConexion();
-        CallableStatement sentencia;
-        // preparar sentencia
-        sentencia = con.getConnection().prepareCall("{call Pkg_ClasificacionConIDEquipo.clasif(?)}");
-        sentencia.registerOutParameter(1, OracleTypes.CURSOR);
-        sentencia.execute();
-        ResultSet rs;
-        rs = ((OracleCallableStatement)sentencia).getCursor(1);
-        ArrayList <Object> lista = new ArrayList();
-
-        while(rs.next()){
-
-            Object[] fila = new Object[3];
-            fila[0] = rs.getString("id_equipo");
-            fila[1] = rs.getString("equipo");
-            fila[2] = rs.getString("punto");
-            lista.add(fila);
-        }
-        rs.close();
-        sentencia.close();
-        con.desconectar();
-        return lista;
-    }
-    
-    // 
+    // obtiene los datos de la última jornada, es decir, la que está en curso no, el anterior
     public ArrayList<Object> resultadoUltimaJornada() throws Exception{
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
@@ -408,6 +388,7 @@ public class BDEquipo {
         return lista;
     }
     
+    // obtiene los datos de la última jornada, según fecha a dia de hoy
     public ArrayList<Object> resultadoUltimaJornadaDeLaLiga() throws Exception{
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
@@ -437,6 +418,7 @@ public class BDEquipo {
         return lista;
     }
     
+    // obtiene resultados para tabla y gráfico de la evolución del equipo
     public ArrayList<Object> resultadoTodasLasJornadas() throws Exception{
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
