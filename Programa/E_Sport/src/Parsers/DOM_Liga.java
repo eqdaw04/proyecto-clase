@@ -39,7 +39,7 @@ public class DOM_Liga {
     
     public void xmlLiga (ArrayList <Jornada> jornadas) throws IOException, TransformerException{
         Date hoy = new Date();
-        SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
         int x;
         for(x=0;x<jornadas.size() && hoy.before(jornadas.get(x).getFechaFinal());x++){}
         generarDocumento (jornadas,ff.format(jornadas.get(x-1).getFechaFinal()));

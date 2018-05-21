@@ -300,6 +300,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         bActualizar = new javax.swing.JButton();
         bEvolucion = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -432,7 +433,7 @@ public class VUPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(DOM);
-        DOM.setBounds(480, 30, 59, 25);
+        DOM.setBounds(480, 30, 57, 25);
 
         lNombre.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         lNombre.setForeground(new java.awt.Color(0, 153, 255));
@@ -469,6 +470,15 @@ public class VUPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton7);
         jButton7.setBounds(1010, 410, 140, 25);
+
+        jButton1.setText("SAX");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(570, 30, 56, 25);
 
         bActualizar.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         bActualizar.setText("Actualizar datos");
@@ -657,6 +667,14 @@ public class VUPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_DOMActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            Main.saxLiga();
+        } catch (Exception ex) {
+            Logger.getLogger(VUPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DOM;
@@ -665,6 +683,7 @@ public class VUPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton bGraficoClasificacion;
     private javax.swing.JLabel img;
     private javax.swing.JButton jBotonUltima;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
