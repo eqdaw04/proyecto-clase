@@ -6,6 +6,8 @@
     <fecha_expiracion>2018-12-15</fecha_expiracion>
 
     <jornada id_jornada="1">
+        <fecha_inicio>2018-05-21</fecha_inicio>
+        <fecha_fin> 2018-05-27 </fecha_fin>
 
         <partido id_partido="1">
 
