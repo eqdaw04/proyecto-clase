@@ -26,12 +26,15 @@ public class VCalendario extends javax.swing.JDialog {
      */
     private ArrayList<Jornada> jornadas;
     private int pos=0;
-    public VCalendario() {
+    public VCalendario(String usuario) throws Exception {
         initComponents();
         setModal(true);      
         setLocationRelativeTo(null);
-        obtenerDatos();
-        
+        if(usuario.equals("1")){
+            obtenerDatos2();
+        }else{
+            obtenerDatos();
+        }
     }
 
     /**
@@ -105,7 +108,7 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bPrimero);
-        bPrimero.setBounds(60, 450, 60, 25);
+        bPrimero.setBounds(60, 450, 60, 26);
 
         bAnterior.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bAnterior.setText("<");
@@ -116,7 +119,7 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bAnterior);
-        bAnterior.setBounds(180, 450, 50, 25);
+        bAnterior.setBounds(180, 450, 50, 26);
 
         bSiguiente.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bSiguiente.setText(">");
@@ -127,7 +130,7 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(310, 450, 50, 25);
+        bSiguiente.setBounds(310, 450, 50, 26);
 
         bUltimo.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         bUltimo.setText(">|");
@@ -138,7 +141,7 @@ public class VCalendario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bUltimo);
-        bUltimo.setBounds(440, 450, 60, 25);
+        bUltimo.setBounds(440, 450, 60, 26);
 
         bSalir.setFont(new java.awt.Font("Verdana", 1, 15)); // NOI18N
         bSalir.setText("Salir");
@@ -299,5 +302,15 @@ public class VCalendario extends javax.swing.JDialog {
         spPartidos.setViewportView(tPartidos);
         
         
+    }
+
+    private void obtenerDatos2() throws Exception {
+        jornadas=Main.saxLiga();
+        if(jornadas.size()>1){
+                    bSiguiente.setEnabled(true);
+                    bUltimo.setEnabled(true);
+                }
+        rellenar(pos);
+        setVisible(true);
     }
 }
