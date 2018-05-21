@@ -243,6 +243,10 @@ public class Excepcion extends Exception {
             case 55:
                 dato += "El salario Máximo no puede ser superior a 196320,00.";
                 break;
+                
+            case 56:
+                dato += "Actualmente no hay datos de Jornadas.";
+                break;
         }
         return dato;
     }

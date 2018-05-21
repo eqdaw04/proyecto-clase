@@ -51,6 +51,10 @@ public class SAX_Liga extends DefaultHandler{
     
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException { 
         switch (qName){
+            case "fecha_expiracion":
+                buffer.delete(0,buffer.length());
+                break;
+                
             case "jornada":
                 j= new Jornada();
                 j.setIdJornada(Integer.parseInt(attributes.getValue("id_jornada")));

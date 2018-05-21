@@ -7,6 +7,7 @@ package Views;
 
 import Controladora.Main;
 import Excepciones.Excepcion;
+import UML.Jornada;
 import UML.Partido;
 import java.awt.Color;
 import java.awt.Image;
@@ -14,8 +15,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Date;
+import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -37,7 +38,7 @@ import org.jfree.data.general.DefaultPieDataset;
 public class VUPrincipal extends javax.swing.JFrame {
 
     DefaultTableModel mJornada, mClasificacion, mCurso;
-    
+    ArrayList<Jornada> listaJornada;
     /**
      * Creates new form VUPrincipal
      */
@@ -60,6 +61,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         modelarTabla();
         pGraficoEvolucionEquipo.setVisible(false);
         try {
+            cargarJornadas();
             cargarTodoClasificacion();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
@@ -73,6 +75,83 @@ public class VUPrincipal extends javax.swing.JFrame {
      * @throws Exception 
      */
 
+    private void cargarJornadas() throws Exception{
+        
+        try {
+            pGraficoEvolucionEquipo.setVisible(false);
+            ArrayList<Jornada> lista = Main.saxLiga();
+            if(lista.isEmpty()){
+                throw new Excepcion(56);
+            }
+            else{
+                cargarPartidos(lista);
+            }
+            
+        } 
+        catch(IOException ex){
+            if(JOptionPane.showConfirmDialog(this, "¿Desea crear el Archivo que falta?","Crear XML Liga",2) == 0){
+                Main.domLiga();
+                cargarJornadas();
+            }
+            
+        }
+        catch(Excepcion ex){
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Atención", 1);
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
+        }
+        
+        
+    }
+    
+    private void cargarPartidos(ArrayList<Jornada> lista) throws Exception{
+        listaJornada = new ArrayList();
+        listaJornada = lista;
+        graficoJornadas(lista);
+        cargarJornadas(lista);
+        pGraficoEvolucionEquipo.setVisible(false);
+    }
+    
+    private void cargarJornadas(ArrayList <Jornada> partidos) throws Exception{
+        lJornada.removeAll();
+        Date hoy = new Date();
+        
+        DefaultListModel <Integer> modelo = new DefaultListModel();    
+        for(int x = 0; x < partidos.size(); x++){
+            if(hoy.after(partidos.get(x).getFechaFinal())){
+                modelo.addElement(partidos.get(x).getIdJornada());
+            }
+            else{
+                lJornada.setModel(modelo);
+                x = partidos.size();
+            }
+        }
+    }
+    
+    private void graficoJornadas(ArrayList<Jornada> lista){
+        DefaultCategoryDataset line_chart_dataset = new DefaultCategoryDataset();
+        // cargar los datos reales
+        for(int x =0; x< lista.size(); x++){
+            // el objeto tiene los siguientes datos según su puesto en el array 0 jornada, 1 equipo 2 puntos
+            for(int y = 0; y<lista.get(x).getListaPartidos().size(); y++){
+                line_chart_dataset.addValue(lista.get(x).getIdJornada(), lista.get(x).getListaPartidos().get(y).geteLocal().getNombre(), String.valueOf(lista.get(x).getListaPartidos().get(y).getmLocal()));
+                line_chart_dataset.addValue(lista.get(x).getIdJornada(), lista.get(x).getListaPartidos().get(y).geteVisitante().getNombre(), String.valueOf(lista.get(x).getListaPartidos().get(y).getmVisitante()));
+                
+            }
+            
+        }
+        // Creando el Grafico
+        JFreeChart chart=ChartFactory.createLineChart("",
+                "Jornada","Marcador",line_chart_dataset,PlotOrientation.VERTICAL, true, true, true);
+        ChartPanel chartPanel = new ChartPanel(chart);
+        pGraficoEvolucionEquipo.setLayout(new java.awt.BorderLayout());
+        pGraficoEvolucionEquipo.removeAll();
+        pGraficoEvolucionEquipo.add(chartPanel);
+        pGraficoEvolucionEquipo.validate();
+        
+    }
+    
     private void cargarUltimaJornada() throws Exception{
         try {
             pGraficoCurso.setVisible(false);
@@ -236,6 +315,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         pGraficoClasificacion.validate();
         
     }
+    
     private void graficoCurso(ArrayList<Partido> partidos){
         DefaultPieDataset pieDataset = new DefaultPieDataset();
         for(int x =0; x< partidos.size(); x++){
@@ -657,13 +737,21 @@ public class VUPrincipal extends javax.swing.JFrame {
 
     private void lJornadaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lJornadaValueChanged
 
+        for (int x=0;x<listaJornada.get(lJornada.getSelectedValue()).getListaPartidos().size();x++){
+            Partido partidos = listaJornada.get(lJornada.getSelectedValue()).getListaPartidos().get(x);
+            Object[] fila =new Object[3];
+            fila[0]= partidos.getIdPartido();
+            fila[1]= partidos.geteLocal().getNombre()+" vs "+partidos.geteVisitante().getNombre();
+            fila[2]= partidos.getmLocal()+" | "+partidos.getmVisitante();
+            mJornada.addRow(fila);
+        }
     }//GEN-LAST:event_lJornadaValueChanged
 
     private void DOMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DOMActionPerformed
         try {
             Main.domLiga();
         } catch (Exception ex) {
-            Logger.getLogger(VUPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_DOMActionPerformed
 
@@ -671,7 +759,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         try {
             Main.saxLiga();
         } catch (Exception ex) {
-            Logger.getLogger(VUPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

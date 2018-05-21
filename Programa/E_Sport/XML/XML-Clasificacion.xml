@@ -2,6 +2,7 @@
 <clasificacion>
     <fecha_expiracion>2018-05-21</fecha_expiracion>
     <equipo id_equipo="1">
+<<<<<<< Updated upstream
         <Nombre>Equipo12</Nombre>
         <puntuacion>150</puntuacion>
     </equipo>
@@ -60,5 +61,37 @@
     <equipo id_equipo="15">
         <Nombre>Equipo9</Nombre>
         <puntuacion>150</puntuacion>
+=======
+        <Nombre>Equipo8</Nombre>
+        <puntuacion>0</puntuacion>
+    </equipo>
+    <equipo id_equipo="2">
+        <Nombre>Equipo7</Nombre>
+        <puntuacion>0</puntuacion>
+    </equipo>
+    <equipo id_equipo="3">
+        <Nombre>Equipo1</Nombre>
+        <puntuacion>0</puntuacion>
+    </equipo>
+    <equipo id_equipo="4">
+        <Nombre>Equipo2</Nombre>
+        <puntuacion>0</puntuacion>
+    </equipo>
+    <equipo id_equipo="5">
+        <Nombre>Equipo5</Nombre>
+        <puntuacion>0</puntuacion>
+    </equipo>
+    <equipo id_equipo="6">
+        <Nombre>Equipo3</Nombre>
+        <puntuacion>0</puntuacion>
+    </equipo>
+    <equipo id_equipo="7">
+        <Nombre>Equipo4</Nombre>
+        <puntuacion>0</puntuacion>
+    </equipo>
+    <equipo id_equipo="8">
+        <Nombre>Equipo6</Nombre>
+        <puntuacion>0</puntuacion>
+>>>>>>> Stashed changes
     </equipo>
 </clasificacion>

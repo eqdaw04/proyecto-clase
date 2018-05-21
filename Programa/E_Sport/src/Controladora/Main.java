@@ -22,6 +22,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.xml.parsers.ParserConfigurationException;
@@ -1150,6 +1151,7 @@ public class Main {
         ArrayList<Jornada> jornadas=saxLiga.metodoraiz();
         Calendar fecha = Calendar.getInstance();
         SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
+        String f = saxLiga.getExpiracion().replace(" ", "");
         fecha.setTime(ff.parse(saxLiga.getExpiracion()));
         Calendar hoy = Calendar.getInstance();
         hoy.set(Calendar.HOUR_OF_DAY, 00);
