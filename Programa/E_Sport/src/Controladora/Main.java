@@ -1145,7 +1145,23 @@ public class Main {
         DOM_Liga liga = new DOM_Liga();
         liga.xmlLiga(bdJornada.BuscarJornadas());
     }
-    
+    public static ArrayList<Jornada> saxLiga() throws Exception{
+        SAX_Liga saxLiga=new SAX_Liga();
+        ArrayList<Jornada> jornadas=saxLiga.metodoraiz();
+        Calendar fecha = Calendar.getInstance();
+        SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
+        fecha.setTime(ff.parse(saxLiga.getExpiracion()));
+        Calendar hoy = Calendar.getInstance();
+        hoy.set(Calendar.HOUR_OF_DAY, 00);
+        hoy.set(Calendar.MINUTE, 00);
+        hoy.set(Calendar.SECOND, 00);
+        hoy.set(Calendar.MILLISECOND, 00);
+        if(fecha.equals(hoy)){
+            domLiga ();
+            jornadas= new ArrayList(saxLiga.metodoraiz());
+        }
+        return jornadas;
+    }
     /**
      * Metodo de creación y ejecución de parser.
      * @throws Exception 
