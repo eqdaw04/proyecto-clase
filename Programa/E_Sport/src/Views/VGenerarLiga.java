@@ -387,7 +387,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(cbHoraI);
-        cbHoraI.setBounds(370, 140, 50, 20);
+        cbHoraI.setBounds(370, 140, 50, 22);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel11.setText("Seleccione hora del primer partido:");
@@ -396,7 +396,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
 
         cbHoraF.setEnabled(false);
         getContentPane().add(cbHoraF);
-        cbHoraF.setBounds(820, 140, 50, 20);
+        cbHoraF.setBounds(820, 140, 50, 22);
 
         jLabel12.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel12.setText("Si La jornada comienza el lunes, acabará el domingo.");
@@ -475,7 +475,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
         fecha.set(Calendar.MINUTE, 0);
         fecha.set(Calendar.SECOND, 0);
         fecha.set(Calendar.MILLISECOND, 0);
-        JOptionPane.showMessageDialog(this, Main.generarCalendario(fecha, Integer.parseInt(cbHoraF.getSelectedItem().toString())));
+        Main.generarCalendario(fecha, Integer.parseInt(cbHoraF.getSelectedItem().toString()));
+        // Se anula porque se considera extremadamente FEO. Horrible, enserio, no mirar (el contacto visual directo prolongado puede crear alucinaciones y tendencias suicidas
+        //JOptionPane.showMessageDialog(this, Main.generarCalendario(fecha, Integer.parseInt(cbHoraF.getSelectedItem().toString())));
     }
     
     private void cbHoraIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHoraIActionPerformed
