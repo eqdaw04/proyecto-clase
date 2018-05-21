@@ -119,6 +119,7 @@ public class VUPrincipal extends javax.swing.JFrame {
         
         DefaultListModel <Integer> modelo = new DefaultListModel();    
         for(int x = 0; x < partidos.size(); x++){
+            
             if(hoy.after(partidos.get(x).getFechaFinal())){
                 modelo.addElement(partidos.get(x).getIdJornada());
             }
@@ -263,16 +264,20 @@ public class VUPrincipal extends javax.swing.JFrame {
         
         
         DefaultTableCellRenderer centrar = new DefaultTableCellRenderer();
-        centrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tJornada.getColumnModel().getColumn(0).setCellRenderer(centrar);
-        tJornada.getColumnModel().getColumn(1).setCellRenderer(centrar);
-        tJornada.getColumnModel().getColumn(2).setCellRenderer(centrar);
         tClasificacion.getColumnModel().getColumn(0).setCellRenderer(centrar);
         tClasificacion.getColumnModel().getColumn(1).setCellRenderer(centrar);
         tClasificacion.getColumnModel().getColumn(2).setCellRenderer(centrar);
         tCurso.getColumnModel().getColumn(0).setCellRenderer(centrar);
         tCurso.getColumnModel().getColumn(1).setCellRenderer(centrar);
         tCurso.getColumnModel().getColumn(2).setCellRenderer(centrar);
+        
+        tClasificacion.getColumnModel().getColumn(0).setHeaderRenderer(centrar);
+        tClasificacion.getColumnModel().getColumn(1).setHeaderRenderer(centrar);
+        tClasificacion.getColumnModel().getColumn(2).setHeaderRenderer(centrar);
+        
+        tCurso.getColumnModel().getColumn(0).setHeaderRenderer(centrar);
+        tCurso.getColumnModel().getColumn(1).setHeaderRenderer(centrar);
+        tCurso.getColumnModel().getColumn(2).setHeaderRenderer(centrar);
     }
     
     private void crearImagenes(){

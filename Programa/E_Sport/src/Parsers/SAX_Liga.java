@@ -76,6 +76,15 @@ public class SAX_Liga extends DefaultHandler{
             case "fecha":
                 buffer.delete(0,buffer.length());
                 break;
+                
+            case "fecha_inicio":
+                buffer.delete(0,buffer.length());
+                break;
+                
+            case "fecha_fin":
+                buffer.delete(0,buffer.length());
+                break;
+                
             case "hora":
                 buffer.delete(0,buffer.length());
                 break;
