@@ -70,12 +70,12 @@ public class VCalendario extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         jLabel1.setText("Jornada");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(160, 30, 196, 47);
+        jLabel1.setBounds(160, 30, 196, 42);
 
         Njornada.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         Njornada.setText("X");
         getContentPane().add(Njornada);
-        Njornada.setBounds(363, 30, 52, 47);
+        Njornada.setBounds(363, 30, 52, 42);
 
         lbFechaIni.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         lbFechaIni.setText("Fecha inicio");
@@ -227,7 +227,10 @@ public class VCalendario extends javax.swing.JDialog {
     private javax.swing.JScrollPane spPartidos;
     // End of variables declaration//GEN-END:variables
 
-
+/**
+ * Metodo para obtener los datos de las jornadas jugadas.
+ * 
+ */
     
     private void obtenerDatos() {
         try {
@@ -260,6 +263,11 @@ public class VCalendario extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, e.getClass() + " \n " + e.getMessage(), "Error", 0);
         } 
     }
+    
+    /**
+     * Metodo para rellenar la tabla del calendario, en la que guardamos el número de jornada que estamos viendo, la fecha de inicio y fin de ésta y los equipos que juegan.
+     * @param pos 
+     */
 
     private void rellenar(int pos) {
         Njornada.setText(String.valueOf(jornadas.get(pos).getIdJornada()));

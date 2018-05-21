@@ -59,6 +59,11 @@ public class VUPrincipal extends javax.swing.JFrame {
         
         setVisible(true);
     }
+    
+    /**
+     * Metodo para cargar los datos de la última jornada.
+     * @throws Exception 
+     */
 
     private void cargarUltimaJornada() throws Exception{
         try {
@@ -85,6 +90,13 @@ public class VUPrincipal extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Metodo para cargar los datos del último partido.
+     * Guardaremos los equipos que han jugado en el partido y su puntuación.
+     * @param partidos Partido
+     * @throws Exception 
+     */
+    
     private void cargarUltimoPartido(ArrayList <Partido> partidos) throws Exception{
         for (int x=0;x<partidos.size();x++){
             Object[] fila =new Object[3];
@@ -95,6 +107,11 @@ public class VUPrincipal extends javax.swing.JFrame {
         }
         graficoCurso(partidos);
     }
+    
+    /**
+     * Metodo para generar el gráfico de clasificación. (Se verán los mismo datos que escrito)
+     * @throws Exception 
+     */
     
     private void cargarTodoClasificacion() throws Exception{
         try {
@@ -123,6 +140,10 @@ public class VUPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, ex.getClass() + " \n " + ex.getMessage(), "Error", 0);
         }
     }
+    
+    /**
+     * Metodo para ajustar el tamaño de la tabla de partidos de la jornada.
+     */
  
     
     private void modelarTabla(){
