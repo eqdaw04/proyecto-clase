@@ -31,6 +31,9 @@ public class BDConexion {
            // cargar el driver
             Class.forName("oracle.jdbc.OracleDriver");
             // establecer la conexión
+            // cambiar cuando finaliza el proyecto main.geturl por
+            // "jdbc:oracle:thin:@SrvOracle:1521:orcl"
+            
             connection = DriverManager.getConnection(Main.getUrl(), "eqdaw04", "eqdaw04");
             // comprueba si está conectado, en caso contrario, mostrar error
             if(connection == null){
@@ -38,10 +41,10 @@ public class BDConexion {
                 throw new Excepcion(48);
             }
         }
-       /*
+       
         catch(Excepcion e){
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
-        }*/
+        }
         catch(ClassNotFoundException e){
             JOptionPane.showMessageDialog(null, "El driver de la base de datos no esta disponible!" +e.getMessage());
         }

@@ -325,6 +325,7 @@ public class BDEquipo {
         return Date.valueOf(fecha);
     }
     
+    // obtienes desde un paquete de la bbdd los resultados finales de los equipos
     public ArrayList<Object> resultadoFinal() throws Exception{
         BDConexion con = new BDConexion();
         CallableStatement sentencia;
@@ -350,6 +351,9 @@ public class BDEquipo {
         return lista;
     }
     
+    
+    // devuelve este devuelve lo mismo que el anterior pero con id equipo
+    // se ha necesitado por el tema de las gráficas, para una orden diferente
     public ArrayList<Object> resultadoFinalOrdenEquipo() throws Exception{
         BDConexion con = new BDConexion();
         CallableStatement sentencia;
@@ -375,6 +379,7 @@ public class BDEquipo {
         return lista;
     }
     
+    // 
     public ArrayList<Object> resultadoUltimaJornada() throws Exception{
         BDConexion con = new BDConexion();
         PreparedStatement sentencia;
