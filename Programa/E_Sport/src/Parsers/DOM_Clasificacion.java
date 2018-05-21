@@ -1,7 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Clase de creación del parser DOM Clasificación, en el que guardamos una lista de equipos con su puntuación global y puntuación.
+ * Fecha de creación de la clase: 19/05/2018
+ * @author eqdaw04
+ * 
  */
 package Parsers;
 

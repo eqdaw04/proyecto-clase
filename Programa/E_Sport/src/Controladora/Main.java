@@ -426,7 +426,7 @@ public class Main {
     /**
      * Metodo que devuelve todos los partidos 
      * @param fecha
-     * @return 
+     * @return fecha
      * @throws Exception 
      */
     
@@ -576,6 +576,13 @@ public class Main {
         return bdPartido.modificarMarcador(p);
     }
     
+    /**
+     * Metodo que valida los datos correctos por su patrón introducido.
+     * @param cod int
+     * @param campo campo de texto
+     * @throws Exception 
+     */
+    
     //----------JON XU JIN ----------
     public static void validar(int cod, JTextField campo) throws Exception{        
         Pattern p=Pattern.compile(datoPatron(cod));
@@ -591,6 +598,12 @@ public class Main {
         }
     }
     
+    /**
+     * Metodo que devuelve los resultados de los equipos.
+     * @return resultado
+     * @throws Exception 
+     */
+    
     
     public static ArrayList<Object> resultados() throws Exception{
         return bdEquipo.resultadoFinal();
@@ -599,6 +612,12 @@ public class Main {
     public static ArrayList<Object> resultadosTodosLosPartidos() throws Exception{
         return bdEquipo.resultadoTodasLasJornadas();
     }
+    
+    /**
+     * Metodo que devuelve los resultados de la última jornada jugada, guardando los partidos, equipos y puntuación del partido.
+     * @return una lista de resultados
+     * @throws Exception 
+     */
     
     public static ArrayList<Object> resultadosUltimaJornada() throws Exception{
         ArrayList <Object> lista;
@@ -1042,6 +1061,12 @@ public class Main {
         return plantilla;
     }
     
+    /**
+     * Metodo para buscar los dueños que no tengan equipo asignado.
+     * @return devuelve dueños.
+     * @throws Exception 
+     */
+    
     public static ArrayList<Persona> buscarDuennosSinEquipo() throws Exception {
          return bdPersona.buscarDuennosSinEquipo();
     }
@@ -1107,6 +1132,11 @@ public class Main {
         return j;
     }
     
+    /**
+     * Metodo de creación y ejecución de parser.
+     * @throws Exception 
+     */
+    
     //------------------Jon
     public static void domClasificacion() throws Exception{
         DOM_Clasificacion liga = new DOM_Clasificacion();
@@ -1118,6 +1148,12 @@ public class Main {
     public static ArrayList<Object> resultadoFinalOrdenEquipo() throws Exception{
         return bdEquipo.resultadoFinalOrdenEquipo();
     }
+    
+    /**
+     * Metodo de creación del parser sax.
+     * @return devuelve una lista 
+     * @throws Exception 
+     */
     
     public static ArrayList<Object> saxClasificacion() throws Exception{
         SAX_Clasificacion clasax = new SAX_Clasificacion();
