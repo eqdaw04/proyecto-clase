@@ -1137,7 +1137,7 @@ public class Main {
         DOM_Liga liga = new DOM_Liga();
         Date hoy = new Date();
         SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
-        liga.xmlLiga(, url);
+        liga.xmlLiga(bdJornada.BuscarJornadas(), ff.format(hoy));
     }
     
     /**

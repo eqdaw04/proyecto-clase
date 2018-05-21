@@ -244,7 +244,7 @@ public class BDJornada {
         }
         return j;
     }
-    public ArrayList<Jornada> BuscarJornadas () throws Exception{
+    public ArrayList<Jornada> BuscarJornadas() throws Exception{
         // abrir conexión
         BDConexion con = new BDConexion();
         // instanciar un array de tipo objeto Partido
@@ -259,76 +259,85 @@ public class BDJornada {
         
         while(rs.next()){
             //Se instancia un objeto de tipo Equipo
+            Equipo e=new Equipo();
+                        e.setIdEquipo(rs.getInt("Id_equipo"));
+                        e.setNombre(rs.getString("Nombre"));
+                        e.setLugar(rs.getString("Lugar"));
+                        e.setComentario(rs.getString("comentario"));
             if (jornadas.isEmpty()){
                 Jornada j= new Jornada();
                 j.setIdJornada(rs.getInt("Id_jornada"));
                 j.setFechaInicio(rs.getDate("Fecha_inicio"));
                 j.setFechaFinal(rs.getDate("Fecha_fin"));
                 ArrayList<Partido> partidos= new ArrayList();
-                if (partidos.isEmpty()){
                     Partido p=new Partido();
                     p.setIdPartido(rs.getInt("Id_partido"));
                     p.setFecha(DateACalendar(rs.getDate("Fecha")));
-                        Equipo e=new Equipo();
-                        e.setIdEquipo(rs.getInt("Id_equipo"));
-                        e.setNombre(rs.getString("Nombre"));
-                        e.setLugar(rs.getString("Lugar"));
-                        e.setComentario(rs.getString("comentario"));
-                }
-            }
-            
-            
-            //Se rellena el objeto de tipo Equipo
-            e.setIdEquipo(rs.getInt("Id_equipo"));
-            e.setNombre(rs.getString("Nombre"));
-            e.setLugar(rs.getString("Lugar"));
-            e.setComentario(rs.getString("comentario"));
-            //Este if, es para la primera vez bucle, para que en uno de los proximos if's no se de una excepción al solicitar el id del partido
-            if(partidos.isEmpty()){
-                p=new Partido();
-                p.setIdPartido(rs.getInt("Id_partido"));
-                p.setFecha(DateACalendar(rs.getDate("Fecha")));
-                //Según el equipo sea visitante o local, será añadido al respectivo parametro de Partido
-                if(rs.getInt("visitante")==1){
-                    p.seteLocal(e);
-                    p.setmLocal(rs.getInt("Puntuacion"));
-                }
-                else{
-                    p.seteVisitante(e);
-                    p.setmVisitante(rs.getInt("Puntuacion"));
-                } 
+                        
+                        if(rs.getInt("visitante")==1){
+                            p.seteLocal(e);
+                            p.setmLocal(rs.getInt("Puntuacion"));
+                        }
+                         else{
+                            p.seteVisitante(e);
+                            p.setmVisitante(rs.getInt("Puntuacion"));
+                        }
                 partidos.add(p);
+                j.setListaPartidos(partidos);
+                jornadas.add(j);
             }else{
-            //Este if, es para conseguir que un mismo partido tenga dos equipos como parametros, y no se añada un objeto partido por cada equipo
-            if(rs.getInt("Id_partido")==partidos.get(partidos.size()-1).getIdPartido()){
-                if(rs.getInt("visitante")==1){
-                    partidos.get(partidos.size()-1).seteLocal(e);
-                    partidos.get(partidos.size()-1).setmLocal(rs.getInt("Puntuacion"));
-                }
-                else{
-                    partidos.get(partidos.size()-1).seteVisitante(e);
-                    partidos.get(partidos.size()-1).setmVisitante(rs.getInt("Puntuacion"));
-                }
-            }else{
-                p=new Partido();
-                p.setIdPartido(rs.getInt("Id_partido"));
-                p.setFecha(DateACalendar(rs.getDate("Fecha")));
-                if(rs.getInt("visitante")==1){
-                    p.seteLocal(e);
-                    p.setmLocal(rs.getInt("Puntuacion"));
-                }
-                else{
-                    p.seteVisitante(e);
-                    p.setmVisitante(rs.getInt("Puntuacion"));
-                }
+                if(rs.getInt("Id_jornada")==jornadas.get(jornadas.size()-1).getIdJornada()){
+                    //Este if, es para conseguir que un mismo partido tenga dos equipos como parametros, y no se añada un objeto partido por cada equipo
+                    if(rs.getInt("Id_partido")==jornadas.get(jornadas.size()-1).getListaPartidos().get(jornadas.get(jornadas.size()-1).getListaPartidos().size()-1).getIdPartido()){
+                        if(rs.getInt("visitante")==1){
+                            jornadas.get(jornadas.size()-1).getListaPartidos().get(jornadas.get(jornadas.size()-1).getListaPartidos().size()-1).seteLocal(e);
+                            jornadas.get(jornadas.size()-1).getListaPartidos().get(jornadas.get(jornadas.size()-1).getListaPartidos().size()-1).setmLocal(rs.getInt("Puntuacion"));
+                        }
+                        else{
+                            jornadas.get(jornadas.size()-1).getListaPartidos().get(jornadas.get(jornadas.size()-1).getListaPartidos().size()-1).seteVisitante(e);
+                            jornadas.get(jornadas.size()-1).getListaPartidos().get(jornadas.get(jornadas.size()-1).getListaPartidos().size()-1).setmVisitante(rs.getInt("Puntuacion"));
+                        }
+                    }else{
+                        Partido p=new Partido();
+                        p.setIdPartido(rs.getInt("Id_partido"));
+                        p.setFecha(DateACalendar(rs.getDate("Fecha")));
+                        if(rs.getInt("visitante")==1){
+                            p.seteLocal(e);
+                            p.setmLocal(rs.getInt("Puntuacion"));
+                        }
+                        else{
+                            p.seteVisitante(e);
+                            p.setmVisitante(rs.getInt("Puntuacion"));
+                        }
+                    jornadas.get(jornadas.size()-1).getListaPartidos().add(p);
+                    }
+                }else{
+                    Jornada j= new Jornada();
+                        j.setIdJornada(rs.getInt("Id_jornada"));
+                        j.setFechaInicio(rs.getDate("Fecha_inicio"));
+                        j.setFechaFinal(rs.getDate("Fecha_fin"));
+                    ArrayList<Partido> partidos= new ArrayList();
+                        Partido p=new Partido();
+                            p.setIdPartido(rs.getInt("Id_partido"));
+                            p.setFecha(DateACalendar(rs.getDate("Fecha")));
+                        if(rs.getInt("visitante")==1){
+                            p.seteLocal(e);
+                            p.setmLocal(rs.getInt("Puntuacion"));
+                        }
+                         else{
+                            p.seteVisitante(e);
+                            p.setmVisitante(rs.getInt("Puntuacion"));
+                        }
                 partidos.add(p);
-            }
-            }                    
+                j.setListaPartidos(partidos);
+                jornadas.add(j);
+                }
+            }                                  
         }
         rs.close();
         sentencia.close();
         con.desconectar();
-        return partidos;
+        return jornadas;
     }
     public Calendar DateACalendar(java.util.Date fecha){
         long as = fecha.getTime();

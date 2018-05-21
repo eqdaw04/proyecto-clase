@@ -9,6 +9,8 @@ import Controladora.Main;
 import Excepciones.Excepcion;
 import java.awt.Color;
 import java.awt.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -117,11 +119,11 @@ public class VLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(20, 410, 69, 22);
+        jTextField1.setBounds(20, 410, 69, 19);
 
         jLabel4.setText("1. Clase; 2. Jon; 3. Mikel");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 380, 160, 16);
+        jLabel4.setBounds(20, 380, 160, 15);
         getContentPane().add(imgusu);
         imgusu.setBounds(130, 150, 40, 40);
         getContentPane().add(imgpassw);
