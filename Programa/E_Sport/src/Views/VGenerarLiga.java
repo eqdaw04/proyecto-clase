@@ -546,10 +546,6 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_lPartidoMouseClicked
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-       
-    }//GEN-LAST:event_formWindowClosing
     
     /**
      * Metodo para cargar el partido.
