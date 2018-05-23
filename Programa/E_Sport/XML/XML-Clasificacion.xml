@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <clasificacion>
-    <fecha_expiracion>2018-06-22</fecha_expiracion>
+    <fecha_expiracion>2018-05-22</fecha_expiracion>
     <equipo id_equipo="1">
-        <Nombre>Equipo8</Nombre>
-        <puntuacion>73</puntuacion>
+        <Nombre>Equipo5</Nombre>
+        <puntuacion>55</puntuacion>
     </equipo>
     <equipo id_equipo="2">
-        <Nombre>Equipo6</Nombre>
-        <puntuacion>73</puntuacion>
+        <Nombre>Equipo1</Nombre>
+        <puntuacion>53</puntuacion>
     </equipo>
     <equipo id_equipo="3">
-        <Nombre>Equipo5</Nombre>
-        <puntuacion>73</puntuacion>
+        <Nombre>Equipo7</Nombre>
+        <puntuacion>47</puntuacion>
     </equipo>
     <equipo id_equipo="4">
-        <Nombre>Equipo1</Nombre>
-        <puntuacion>73</puntuacion>
+        <Nombre>Equipo4</Nombre>
+        <puntuacion>44</puntuacion>
     </equipo>
     <equipo id_equipo="5">
-        <Nombre>Equipo7</Nombre>
-        <puntuacion>70</puntuacion>
+        <Nombre>Equipo3</Nombre>
+        <puntuacion>41</puntuacion>
     </equipo>
     <equipo id_equipo="6">
-        <Nombre>Equipo4</Nombre>
-        <puntuacion>64</puntuacion>
+        <Nombre>Equipo6</Nombre>
+        <puntuacion>36</puntuacion>
     </equipo>
     <equipo id_equipo="7">
         <Nombre>Equipo2</Nombre>
-        <puntuacion>64</puntuacion>
+        <puntuacion>35</puntuacion>
     </equipo>
     <equipo id_equipo="8">
-        <Nombre>Equipo3</Nombre>
-        <puntuacion>64</puntuacion>
+        <Nombre>Equipo8</Nombre>
+        <puntuacion>34</puntuacion>
     </equipo>
 </clasificacion>

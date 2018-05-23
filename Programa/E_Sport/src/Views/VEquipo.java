@@ -188,7 +188,7 @@ public class VEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bSiguiente);
-        bSiguiente.setBounds(390, 550, 50, 25);
+        bSiguiente.setBounds(400, 550, 50, 25);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel3.setText("Plantilla:");

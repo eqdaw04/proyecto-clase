@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jornada Id_jornada="5">
-    <fecha_expiracion>2018-06-22</fecha_expiracion>
-    <partido id_partido="17">
-        <fecha>2018-06-19</fecha>
-        <hora>12:00</hora>
+<jornada Id_jornada="10">
+    <fecha_expiracion>2018-05-23</fecha_expiracion>
+    <partido id_partido="37">
+        <fecha>2018-05-21</fecha>
+        <hora>06:00</hora>
+        <lugar>Lugar7</lugar>
+        <equipo id_equipo="7">
+            <nombre>Equipo7</nombre>
+            <comentario>Somos el Equipo 7</comentario>
+            <puntuacion>6</puntuacion>
+            <visitante>false</visitante>
+        </equipo>
+        <equipo id_equipo="8">
+            <nombre>Equipo8</nombre>
+            <comentario>Somos el Equipo 8</comentario>
+            <puntuacion>4</puntuacion>
+            <visitante>true</visitante>
+        </equipo>
+    </partido>
+    <partido id_partido="38">
+        <fecha>2018-05-22</fecha>
+        <hora>05:00</hora>
         <lugar>Lugar5</lugar>
         <equipo id_equipo="5">
             <nombre>Equipo5</nombre>
@@ -11,61 +28,44 @@
             <puntuacion>7</puntuacion>
             <visitante>false</visitante>
         </equipo>
-        <equipo id_equipo="7">
-            <nombre>Equipo7</nombre>
-            <comentario>Somos el Equipo 7</comentario>
-            <puntuacion>8</puntuacion>
-            <visitante>true</visitante>
-        </equipo>
-    </partido>
-    <partido id_partido="18">
-        <fecha>2018-06-20</fecha>
-        <hora>12:00</hora>
-        <lugar>Lugar8</lugar>
-        <equipo id_equipo="8">
-            <nombre>Equipo8</nombre>
-            <comentario>Somos el Equipo 8</comentario>
-            <puntuacion>9</puntuacion>
-            <visitante>false</visitante>
-        </equipo>
-        <equipo id_equipo="4">
-            <nombre>Equipo4</nombre>
-            <comentario>Somos el Equipo 4</comentario>
-            <puntuacion>1</puntuacion>
-            <visitante>true</visitante>
-        </equipo>
-    </partido>
-    <partido id_partido="19">
-        <fecha>2018-06-21</fecha>
-        <hora>12:00</hora>
-        <lugar>Lugar3</lugar>
         <equipo id_equipo="3">
             <nombre>Equipo3</nombre>
             <comentario>Somos el Equipo 3</comentario>
-            <puntuacion>2</puntuacion>
-            <visitante>false</visitante>
-        </equipo>
-        <equipo id_equipo="2">
-            <nombre>Equipo2</nombre>
-            <comentario>Somos el Equipo 2</comentario>
             <puntuacion>3</puntuacion>
             <visitante>true</visitante>
         </equipo>
     </partido>
-    <partido id_partido="20">
-        <fecha>2018-06-22</fecha>
-        <hora>12:00</hora>
-        <lugar>Lugar1</lugar>
+    <partido id_partido="39">
+        <fecha>2018-05-23</fecha>
+        <hora>06:00</hora>
+        <lugar>Lugar4</lugar>
+        <equipo id_equipo="4">
+            <nombre>Equipo4</nombre>
+            <comentario>Somos el Equipo 4</comentario>
+            <puntuacion>6</puntuacion>
+            <visitante>false</visitante>
+        </equipo>
         <equipo id_equipo="1">
             <nombre>Equipo1</nombre>
             <comentario>Somos el Equipo 1</comentario>
-            <puntuacion>4</puntuacion>
+            <puntuacion>5</puntuacion>
+            <visitante>true</visitante>
+        </equipo>
+    </partido>
+    <partido id_partido="40">
+        <fecha>2018-05-24</fecha>
+        <hora>07:00</hora>
+        <lugar>Lugar2</lugar>
+        <equipo id_equipo="2">
+            <nombre>Equipo2</nombre>
+            <comentario>Somos el Equipo 2</comentario>
+            <puntuacion>3</puntuacion>
             <visitante>false</visitante>
         </equipo>
         <equipo id_equipo="6">
             <nombre>Equipo6</nombre>
             <comentario>Somos el Equipo 6</comentario>
-            <puntuacion>5</puntuacion>
+            <puntuacion>1</puntuacion>
             <visitante>true</visitante>
         </equipo>
     </partido>

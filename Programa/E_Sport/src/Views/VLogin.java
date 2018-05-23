@@ -146,7 +146,7 @@ public class VLogin extends javax.swing.JFrame {
 
             if(n==0){
                 // cambiar a 3000 a la entrega de la app
-                Thread.sleep(1);
+                Thread.sleep(1500);
             }
             setVisible(true);
         }

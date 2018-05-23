@@ -51,13 +51,14 @@ public class VPrincipal extends javax.swing.JFrame {
                 equipos.setVisible(false);
                 break;
             case 2:
-                comprobarJornada();
+                
                 administracion.setVisible(false);
                 bAlta.setVisible(false);
                 bModificar.setVisible(false);
                 bBaja.setVisible(false);
                 bConsulta.setVisible(false);
                 bMarcador.setVisible(false);
+                comprobarJornada();
                 break;
             case 3:
                 administracion.setVisible(false);

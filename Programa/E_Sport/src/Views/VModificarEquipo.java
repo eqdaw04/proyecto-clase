@@ -133,12 +133,13 @@ public class VModificarEquipo extends javax.swing.JDialog {
         jScrollPane2.setViewportView(liJugDisp);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(520, 185, 270, 214);
+        jScrollPane2.setBounds(510, 185, 280, 214);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jLabel3.setText("Sueldo del jugador:");
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Sueldo del jugador");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(290, 440, 170, 21);
+        jLabel3.setBounds(350, 420, 170, 21);
 
         bEliminar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bEliminar.setText("Eliminar Jugador");
@@ -171,17 +172,17 @@ public class VModificarEquipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bConsultar);
-        bConsultar.setBounds(358, 280, 150, 27);
+        bConsultar.setBounds(358, 280, 140, 27);
 
         tfSueldo.setEditable(false);
-        tfSueldo.setText("Sueldo");
+        tfSueldo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(tfSueldo);
-        tfSueldo.setBounds(470, 430, 110, 30);
+        tfSueldo.setBounds(350, 460, 170, 30);
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel4.setText("Jugadores Disponibles:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(520, 151, 201, 21);
+        jLabel4.setBounds(510, 150, 201, 21);
 
         bSalir.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         bSalir.setText("Salir");

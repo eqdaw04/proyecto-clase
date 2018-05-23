@@ -171,11 +171,11 @@ public class VDResultados extends javax.swing.JDialog {
         );
         pGraficoLayout.setVerticalGroup(
             pGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGap(0, 310, Short.MAX_VALUE)
         );
 
         getContentPane().add(pGrafico);
-        pGrafico.setBounds(390, 110, 540, 360);
+        pGrafico.setBounds(390, 110, 540, 310);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Última Jornada: ");

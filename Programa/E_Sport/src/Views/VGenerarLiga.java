@@ -130,6 +130,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
         bCancelar = new javax.swing.JButton();
         bGenerarCalendario = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         bBorrar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -153,12 +154,10 @@ public class VGenerarLiga extends javax.swing.JDialog {
         ccCalendarioInicial = new org.freixas.jcalendar.JCalendarCombo();
         jLabel6 = new javax.swing.JLabel();
         cbHoraI = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
         cbHoraF = new javax.swing.JComboBox<>();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -228,12 +227,14 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bGenerarCalendario);
-        bGenerarCalendario.setBounds(620, 190, 183, 25);
+        bGenerarCalendario.setBounds(730, 95, 183, 30);
 
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jLabel5.setText("Seleccione fecha para el primer partido:");
+        jLabel5.setText("Seleccione fecha y hora para el primer partido de la liga:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(60, 30, 410, 21);
+        jLabel5.setBounds(50, 30, 500, 21);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(50, 210, 860, 10);
 
         bBorrar.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         bBorrar.setText("Borrar Todo");
@@ -244,7 +245,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(bBorrar);
-        bBorrar.setBounds(290, 180, 170, 25);
+        bBorrar.setBounds(730, 150, 180, 30);
 
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel7.setText("Número de Jornada");
@@ -365,18 +366,18 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jPanel1.setBounds(530, 280, 380, 330);
 
         jLabel10.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jLabel10.setText("Borrar la LIGA actual:");
+        jLabel10.setText("Borrar la LIGA actual: (Se borrará la liga actual con todos sus marcadores)");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(50, 180, 240, 21);
+        jLabel10.setBounds(50, 150, 680, 21);
 
         ccCalendarioInicial.setEnabled(false);
         getContentPane().add(ccCalendarioInicial);
-        ccCalendarioInicial.setBounds(20, 100, 210, 30);
+        ccCalendarioInicial.setBounds(120, 90, 240, 30);
 
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jLabel6.setText("Seleccione hora del último partido:");
+        jLabel6.setText("-");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(490, 140, 330, 21);
+        jLabel6.setBounds(630, 100, 30, 21);
 
         cbHoraI.setEnabled(false);
         cbHoraI.addActionListener(new java.awt.event.ActionListener() {
@@ -385,21 +386,16 @@ public class VGenerarLiga extends javax.swing.JDialog {
             }
         });
         getContentPane().add(cbHoraI);
-        cbHoraI.setBounds(370, 140, 50, 22);
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel11.setText("Seleccione hora del primer partido:");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(40, 140, 287, 20);
+        cbHoraI.setBounds(560, 100, 50, 22);
 
         cbHoraF.setEnabled(false);
         getContentPane().add(cbHoraF);
-        cbHoraF.setBounds(820, 140, 50, 22);
+        cbHoraF.setBounds(650, 100, 50, 22);
 
-        jLabel12.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jLabel12.setText("Si La jornada comienza el lunes, acabará el domingo.");
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(250, 96, 561, 30);
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel11.setText(" Fecha:                                                        Rango del horario:");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(50, 100, 860, 20);
 
         jLabel13.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel13.setText("Fecha y hora del partido");
@@ -407,14 +403,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
         jLabel13.setBounds(580, 243, 300, 30);
 
         jLabel15.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        jLabel15.setText("(Recuerde que 1 jornada consta de 7 días)");
+        jLabel15.setText("(Recuerde que 1 jornada consta de 7 días, si empieza el lunes, acaba el domingo)");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(70, 60, 330, 17);
-
-        jLabel16.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        jLabel16.setText("(Se borrará la liga actual)");
-        getContentPane().add(jLabel16);
-        jLabel16.setBounds(80, 210, 230, 17);
+        jLabel15.setBounds(50, 60, 860, 17);
 
         img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(img);
@@ -630,11 +621,9 @@ public class VGenerarLiga extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -646,6 +635,7 @@ public class VGenerarLiga extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JList<Integer> lJornada;
     private javax.swing.JList<Integer> lPartido;
     private javax.swing.JPanel pEspera;
