@@ -11,8 +11,6 @@
 
 <xs:complexType name="tipo_jornada">
     <xs:sequence>
-        <xs:element name="fecha_inicio" type="xs:date"></xs:element>
-        <xs:element name="fecha_fin" type="xs:date"></xs:element>
         <xs:element name="partido" type="tipo_partido"  maxOccurs="8"/>
     </xs:sequence>
     <xs:attribute name="id_jornada" type="xs:int"/>

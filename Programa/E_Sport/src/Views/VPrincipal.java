@@ -89,13 +89,13 @@ public class VPrincipal extends javax.swing.JFrame {
     
     private void crearImagenes(){
         try{
-            ImageIcon logo = new ImageIcon("../../imagenes/4fan.png");
+            ImageIcon logo = new ImageIcon("imagenes/4fan.png");
             Icon icono3 = new ImageIcon(logo.getImage().getScaledInstance(logotipo.getWidth(), logotipo.getHeight(), Image.SCALE_DEFAULT));
             logotipo.setIcon(icono3);
             this.repaint();
             logotipo.setLocation(this.getWidth()-(logotipo.getWidth()+50), this.getHeight()-(logotipo.getHeight()+100));
             imgfondo.setSize(this.getWidth(), this.getHeight());
-            Image img = new ImageIcon ("../../imagenes/fondo2.jpg").getImage();
+            Image img = new ImageIcon ("imagenes/fondo2.jpg").getImage();
             ImageIcon img2 = new ImageIcon(img.getScaledInstance( imgfondo.getWidth(), imgfondo.getHeight(), Image.SCALE_DEFAULT));
             imgfondo.setIcon(img2);
             this.repaint();
