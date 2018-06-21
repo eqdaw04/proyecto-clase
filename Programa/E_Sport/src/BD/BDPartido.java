@@ -33,7 +33,7 @@ public class BDPartido {
      * @param jornada Jornada
      * @param con BDConexion
      * @return devuelve el estado "correcto" de la inserción.
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public boolean insertarPartido(Partido p, Jornada jornada, BDConexion con) throws Exception{
@@ -61,7 +61,7 @@ public class BDPartido {
      * @param p Partido
      * @param con BDConexion
      * @return devuelve el estado "correcto" si se ha realizado bien la inserción.
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public boolean insertarEquipoAPartido(Partido p, BDConexion con) throws Exception{
@@ -99,7 +99,7 @@ public class BDPartido {
      * Metodo para consultar los partido de una jornada.
      * @param jornada int
      * @return devuelve una lista de partidos.
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public ArrayList<Partido> consultarPartidosPorJornada (int jornada) throws Exception{
@@ -164,7 +164,7 @@ public class BDPartido {
      * Metodo para consultar el marcador de un partido.
      * @param p Partido
      * @return devuelve un objeto Partido
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
 
     public Partido consultarMarcadores(Partido p) throws Exception{
@@ -195,7 +195,7 @@ public class BDPartido {
      * Metodo para modificar un partido. 
      * @param p Partido
      * @return devuelve el estado "correcto" si se ha realizado bien la inserción.
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public boolean modificarPartido(Partido p) throws Exception{
