@@ -54,7 +54,7 @@ public class BDJornada {
      * Metodo para convertir la fecha.
      * @param fecha Java util date
      * @return devuelve la fecha en el tipo de dato date
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     private Date convertirFechaASql(java.util.Date fecha) throws Exception{
@@ -71,7 +71,7 @@ public class BDJornada {
      * Metodo para modificar la jornada
      * @param jornada Jornada
      * @param con BDConexion
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     // modificar la jornada
@@ -92,7 +92,7 @@ public class BDJornada {
     /**
      * Metodo para consultar una lista de todas las jornadas 
      * @return devuelve la lista de jornadas
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     
@@ -147,7 +147,7 @@ public class BDJornada {
      * Metodo para consultar una jornada por su número.
      * @param n int
      * @return devuelve un objeto jornada
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     // extraer los datos de una jornada mediante el número de jornada

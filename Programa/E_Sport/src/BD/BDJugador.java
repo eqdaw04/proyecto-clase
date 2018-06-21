@@ -28,7 +28,7 @@ public class BDJugador {
     /**
      * Metodo para insertar un jugador.
      * @param j Jugador
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */    
     
     public void insertarJugador(Jugador j) throws Exception {
@@ -59,7 +59,7 @@ public class BDJugador {
     /**
      * Metodo para eliminar un jugador.
      * @param j Jugador
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public void eliminarJugador(Jugador j) throws Exception {
@@ -83,7 +83,7 @@ public class BDJugador {
      /**
      * Metodo para modificar los datos de un jugador.
      * @param j Jugador
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */   
     
     public void modificarJugador(Jugador j) throws Exception {
@@ -115,7 +115,7 @@ public class BDJugador {
      * Metodo para buscar un jugador por DNI.
      * @param dni String
      * @return Devuelve un jugador
-     * @throws Exception
+     * @throws Exception salta excepcion
      */
     
     public Jugador BuscarJugador(String dni) throws Exception {
@@ -150,7 +150,7 @@ public class BDJugador {
     /**
      * Metodo para buscar una lista de todos los jugadores.
      * @return Devuelve un ArrayList de jugadores
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */    
     
     public ArrayList<Jugador> BuscarJugador() throws Exception {
@@ -176,7 +176,7 @@ public class BDJugador {
      * Metodo para buscar todos los jugadores de un equipo. 
      * @param id String
      * @return Devuelve un ArrayList de jugadores
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public ArrayList<Jugador> BuscarEqui(String id) throws Exception {
@@ -206,7 +206,7 @@ public class BDJugador {
      * @param rs ResultSet
      * @param a ArrayList de jugadores
      * @return devuelve un ArrayList de jugadores
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public ArrayList<Jugador> recorrer(ResultSet rs, ArrayList <Jugador> a) throws Exception {
@@ -236,7 +236,7 @@ public class BDJugador {
     /**
      * Metodo para buscar jugadores que no estén en ningún equipo.
      * @return Devuelve un ArrayList de jugadores
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
 
     public ArrayList<Jugador> BuscarJugadoresDisponibles() throws Exception {
@@ -263,7 +263,7 @@ public class BDJugador {
      * Metodo para buscar un jugador por su nickname.
      * @param nickname String
      * @return devuelve una lista de jugadores
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */
     
     public Jugador buscarJugadorNickname(String nickname) throws Exception {
@@ -299,7 +299,7 @@ public class BDJugador {
      * @param nickname String
      * @param id String
      * @return Devuelve valor booleano si la sentencia se ejecuta correctamente
-     * @throws Exception 
+     * @throws Exception salta excepcion
      */  
 
     public boolean PonerJugadorEquipo(String nickname, String id) throws Exception {
@@ -329,7 +329,7 @@ public class BDJugador {
      * Metodo para dar da baja un jugador de un equipo.
      * @param nickname String
      * @return Devuelve valor booleano si la sentencia se ejecuta correctamente
-     * @throws java.lang.Exception
+     * @throws java.lang.Exception salta excepcion
      */
 
     public boolean QuitarJugadorEquipo(String nickname) throws Exception {
