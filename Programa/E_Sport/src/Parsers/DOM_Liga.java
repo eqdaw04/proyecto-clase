@@ -41,11 +41,12 @@ public class DOM_Liga {
         Date hoy = new Date();
         SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
         int x;
-        for(x=0;x<jornadas.size() && hoy.before(jornadas.get(x).getFechaFinal());x++){}
-        generarDocumento (jornadas,ff.format(jornadas.get(x-1).getFechaFinal()),ff);
+        for(x=0;x<jornadas.size() && hoy.after(jornadas.get(x).getFechaInicio());x++){}
+        generarDocumento (jornadas,ff.format(jornadas.get(x-1).getFechaFinal()));
         generarXML();
     }
-    public void generarDocumento (ArrayList <Jornada> jornadas,String caduca,SimpleDateFormat ff){
+    public void generarDocumento (ArrayList <Jornada> jornadas,String caduca){
+        SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
         Element liga= doc.createElement("liga");
             doc.appendChild(liga);
         Element fechaExp= doc.createElement("fecha_expiracion");
@@ -118,7 +119,7 @@ public class DOM_Liga {
         OutputFormat format = new OutputFormat(doc);
         format.setIndenting(true);
         XMLSerializer serializer;
-        serializer = new XMLSerializer(new FileOutputStream(new File("xml/XML-Clasificacion.xml")), format);
+        serializer = new XMLSerializer(new FileOutputStream(new File("xml/XML-Liga.xml")), format);
         serializer.serialize(doc);
     }
     
